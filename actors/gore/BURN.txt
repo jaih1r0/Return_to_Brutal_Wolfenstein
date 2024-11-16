@@ -1,0 +1,3223 @@
+
+/*
+
+
+
+
+
+ACTOR BurningZombieOld
+{   Radius 1
+    Height 1
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    Mass 1000
+    Health 100
+States    {
+    Spawn:
+       TNT1 A 0 BRIGHT
+       TNT1 A 0 A_PlaySound("BURNZOM")
+       BUR2 A 1 BRIGHT
+       BUR2 AABBCCDDEE 3 BRIGHT A_CustomMissile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN FFGGHH 3 BRIGHT A_CustomMissile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN IIJJKKLL 3 BRIGHT A_CustomMissile ("BurnParticles", 28, 0, random (0, 180), 2, random (0, 180))
+       BURN MMN 3 BRIGHT A_CustomMissile ("BurnParticles", 32, 0, random (0, 180), 2, random (0, 180))
+       BURN NOOPP 3 BRIGHT A_CustomMissile ("BurnParticles", 22, 0, random (0, 180), 2, random (0, 180))
+       BURN QQ 3 BRIGHT A_CustomMissile ("BurnParticles", 18, 0, random (0, 180), 2, random (0, 180))
+       TNT1 A 0 A_PlaySound("BURNZOM")
+       BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTT 3 BRIGHT A_CustomMissile ("SmallBurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN UU 3 BRIGHT A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 9 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 360), 2, random (90, 110))
+       BURN V -1
+       Stop}}
+	   
+	   
+*/
+ACTOR DesintegratedHuman
+{   Radius 1
+    Height 1
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    Mass 1000
+    Health 100
+	Scale 0.7
+States    {
+    Spawn:
+	   TNT1 AAAAAAA 0 A_CustomMissile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160))
+	   TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 50, 0, random (0, 360), 2, random (0, 160))
+       ID50 ABCDEF 7
+       ID50 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 13 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 360), 2, random (90, 110))
+       ID50 G -1
+       Stop
+	  }}
+	  
+	
+
+
+
+ACTOR BurningOFFICER
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        OFBU A 0 A_CustomMissile("BurnParticles", 28, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   OFBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+
+	
+GOTO DEATH
+
+	Falling:	
+	    OFBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        OFBU AA 1 Bright
+        OFBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	   OFBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+     OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		OFBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU BBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+       OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+        OFBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ OFBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+OFBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+OFBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ OFBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ OFBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        OFBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+OFBU E -1
+        Stop
+
+	XDEATH:
+	DEATH.SSG:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+	TNT1 A 0 A_PlaySound("misc/xdeath")
+	     TNT1 AA 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	Stop
+    }
+}
+
+ACTOR BurningDOG
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        DOBU A 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNDOG")
+		Goto Suffer
+	Suffer:
+        DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   DOBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        DOBU B 0 A_CustomMissile("BurnParticles", 18, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+GOTO DEATH
+
+	Falling:	
+	   DOBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        DOBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        DOBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		DOBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        DOBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        DOBU AA 1 Bright
+       DOBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		DOBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	    DOBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+       DOBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+       DOBU BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        DOBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		DOBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		DOBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+       DOBU BBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+       DOBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+DOBU c -1
+        Stop
+
+	XDEATH:
+	DEATH.SSG:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+	TNT1 A 0 A_PlaySound("misc/xdeath")
+	     TNT1 AA 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	Stop
+    }
+}
+
+
+
+
+
+
+
+
+
+
+ACTOR NAZICREEPER
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+    -Solid
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was kill by a Kamikaze Officer."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        SPOS A 0 
+TNT1 A 1 A_SpawnItem("NAZI_EXPLODE")
+Stop
+}}
+       
+
+	
+
+
+ACTOR NAZI_EXPLODE
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+    -Solid
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was kill by a Kamikaze Officer."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        SPOS A 0 
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        SPOS AAA 1 A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SPOS B 0 
+		SPOS B 0 
+        SPOS CCC 1 A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SPOS C 0 
+		SPOS C 0 
+		TNT1 A 0 A_Recoil(-1)
+        SPOS DDD 0 
+		Spos D 0 
+
+	
+TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
+		TNT1 A 0 A_JumpIfInventory("DeathTimer1", 20, "Death")
+	Loop
+
+
+    Death:
+SPOS B 1
+        TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+ TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+		 TNT1 A 0 A_CustomMissile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_CustomMissile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_CustomMissile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_CustomMissile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 A 0 A_CustomMissile ("XDeathGuts", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+                 TNT1 A 0 A_CustomMissile ("XDeathSargeLeg1", 35, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
+		TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 180), 2, random (0, 180))
+	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+        
+		TNT1 AA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 8 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+
+		Stop
+
+
+    }
+}
+
+
+
+ACTOR Burninggrenadier
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.85
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        BDT1 AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 CCC 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT1 DDD 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+GOTO DEATH
+
+	Falling:	
+	    BDT2 AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT2 BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BDT2 CC 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BDT2 DD 1 Bright
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	    BDT3 AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        BDT3 BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT3 CCCC 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        BDT3 DDDD 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+		TNT1 A 0 A_Jump(128, "Death2")
+        BDT1 EEFFGGHHiijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        NJEX AAAAAAAAAAAAAAAAAA 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+        NJEX AAAAAAAAAAAAAAAAAA 10 Bright A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+		NJEX A -1
+        Stop
+	Death2:
+	    BDT1 EEFFGGHHiijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        NJEX BBBBBBBBBBBBBBBBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+        NJEX BBBBBBBBBBBBBBBBBB 10 Bright A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+		NJEX B -1
+        Stop
+	XDEATH:
+	DEATH.SSG:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+	TNT1 A 0 A_PlaySound("misc/xdeath")
+	     TNT1 AA 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	Stop
+    }
+}
+
+
+
+
+
+//////HEIL.....HIT......LER.....
+
+
+
+ACTOR BurningHITLER
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near Hitler in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        HIBU A 0 A_CustomMissile("BurnParticles", 28, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+       HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+   HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+
+	
+GOTO DEATH
+
+	Falling:	
+	   HIBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+      HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+      HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+      HIBU AA 1 Bright
+    HIBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	HIBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+      HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+      HIBU BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+      HIBU  B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		HIBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+  HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+        AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV C -1
+        Stop
+
+	XDEATH:
+	DEATH.SSG:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+	TNT1 A 0 A_PlaySound("misc/xdeath")
+	     TNT1 AA 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	Stop
+    }
+}
+
+ACTOR adeseinellamerda
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+INVULNERABLE
+	+FRIENDLY
+    +FLOORCLIP
+-solid
+	+SHOOTABLE
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near Hitler in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        HIBU A 0 A_CustomMissile("BurnParticles", 28, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+       HIBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        HIBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+
+	
+TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
+		TNT1 A 0 A_JumpIfInventory("DeathTimer1", 20, "Death")
+	Loop
+
+	Falling:	
+	   HIBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       HIBU BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+      HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		HIBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+      HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+      HIBU AA 1 Bright
+    HIBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	HIBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+      HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+      HIBU BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+      HIBU  B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		HIBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		HIBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+       HIBU BBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+  HIBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+        AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        AUEV BBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+AUEV AAAA 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+   AUEV BBBB 3 Bright 
+AUEV AAAA 3 Bright 
+   AUEV BBBB 3 Bright 
+AUEV AAAA 3 Bright 
+//TNT1 A 0 A_CustomMissile("HITLER", 0, 0, 0)
+        Stop
+
+
+    }
+}
+
+
+ACTOR INBurningSS
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	+INVULNERABLE
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+-SOLID
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+	DAMAGEFACTOR "Avoid", 0.0
+	DAMAGEFACTOR "CUTLESS", 0.0
+	PainChance "Kick", 0
+	DAMAGEFACTOR "Head", 0
+	DAMAGEFACTOR "Stomp", 0.0
+        DAMAGEFACTOR "Bullet", 0
+	DAMAGEFACTOR "MINORHead", 0
+        DAMAGEFACTOR "Explosive", 0
+        DAMAGEFACTOR "ExplosiveImpact",0
+	Mass 999999
+    States
+    {
+    Spawn:
+        SSBU A 0 A_CustomMissile("BurnParticles", 28, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+	
+
+
+GOTO DEATH
+
+    Death:
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+        SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+SSBU E -1
+        Stop
+    }
+}
+
+
+
+
+ACTOR BurnParticles
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    Speed 0
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    +NODAMAGETHRUST
+    +NOCLIP
+    DamageType Burn
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0 A_Explode(50,30) 
+		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_CustomMissile ("FlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+ACTOR UberBurnParticles
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    Speed 0
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    +NODAMAGETHRUST
+    +NOCLIP
+    DamageType UberBurn
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0 A_Explode(50,30) 
+		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_CustomMissile ("FlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+ACTOR FlamerBurnParticles
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    Speed 0
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    +NODAMAGETHRUST
+    +NOCLIP
+    DamageType Burn
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0 
+		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_CustomMissile ("FlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+ACTOR FlamerSmallBurnParticles: BurnParticles
+{
+	DamageType Burn
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0
+		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_CustomMissile ("SmallFlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+
+ACTOR SmallBurnParticles: BurnParticles
+{
+	DamageType Burn
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0 A_Explode(2,30)
+		TTRB A 0 bright A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_CustomMissile ("SmallFlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+
+
+
+/////New and simpl/////
+
+
+
+
+ACTOR BurningGeneric
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.85
+	Health 100
+	+INVULNERABLE
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	-CANUSEWALLS
+    -CANPUSHWALLS
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	//Mass 999999
+	+dontthrust //???
+    States
+    {
+		Spawn:
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_PlaySound("BURNZOM")
+			Goto Suffer
+		Suffer:
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			BDT1 AAA 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 BBB 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 CCC 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 DDD 1 Bright A_Wander
+			TNT1 A 0 A_Recoil(-1)
+			BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+			BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+			GOTO DEATH
+
+		Death:
+			TNT1 A 0 A_Fall
+			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+			TNT1 A 0 A_ChangeFlag("SOLID", 0)
+			TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+			
+			TNT1 A 0 A_Jump(128, "Death2")
+			BDT1 EEFFGGHHiijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+			NJEX AAAAAAAAAAAAAAAAAA 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+			NJEX AAAAAAAAAAAAAAAAAA 10 Bright A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+			NJEX A -1
+			Stop
+		Death2:
+			BDT1 EEFFGGHHiijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+			NJEX BBBBBBBBBBBBBBBBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+			NJEX BBBBBBBBBBBBBBBBBB 10 Bright A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+			NJEX B -1
+			Stop
+    }
+}
+
+Actor BurningALien: BurningGeneric
+{
+Scale 0.75
+States
+{
+}
+}
+
+ACTOR Burningfemale: BurningGeneric
+{
+States
+{
+Spawn:
+BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+TNT1 A 0 A_PlaySound("BURNFE")
+Goto Suffer
+}
+}
+
+Actor BurningZombie:BurningGeneric
+{
+States
+{
+Spawn:
+BDT1 B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+TNT1 A 0 A_PlaySound("BURNMU")
+Goto Suffer
+}
+}
+
+
+
+ACTOR BurningDemon: BurningGeneric
+{
+    States
+    {
+	Spawn:
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        CRB7 MMM 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+		TNT1 A 0 A_playsound ("demon/pain")
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+       CRB7 NNN 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		CRB7 OOO 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        CRB7 PPP 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 7, "Death")
+		Loop
+Death:
+		TNT1 A 0 A_SpawnItem ("BurnedDemon")
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		Stop
+		
+	XDeath:
+	Death.SSG:
+	Death.Explosive:
+	Death.ExplosiveImpact:
+	TNT1 A 0 A_NOBlocking
+	TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+	TNT1 AA 0 A_CustomMissile ("XDeathBurnedDemonArm", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("XDeathBurnedDemonLeg", 32, 0, random (0, 360), 2, random (0, 160))
+    TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+    Stop
+    }
+}
+
+Actor BurnedDemon
+{
+Radius 1
+Height 1
+States
+{
+Spawn:
+        CRB7 Q  2
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_playsound ("demon/death")
+        CRB7 QQQQ 2 A_CustomMissile ("FlameTrails", 45, 0, random (0, 360), 2, random (50, 130))
+		CRB7 RRRR 2 A_CustomMissile ("FlameTrails", 30, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_Playsound("props/redfire")
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 2 A_CustomMissile ("FlameTrails", 25, 0, random (0, 360), 2, random (50, 130))
+        CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 20 A_CustomMissile ("SmallSmoke", 35, 0, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		CARB J -1
+        Stop
+}
+}
+
+
+
+ACTOR BurningSA
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        SABU A 0 A_CustomMissile("BurnParticles", 28, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SABU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SABU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+
+	
+
+GOTO DEATH
+
+	Falling:	
+	    SABU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        SABU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        SABU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		SABU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        SABU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SABU AA 1 Bright
+        SABU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	    SABU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        SABU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        SABU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SABU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		SABU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU BBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        SABU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+        SABU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SABU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SABU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SABU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SABU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SABU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SABU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+SABU E -1
+        Stop
+
+	XDEATH:
+	DEATH.SSG:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+	TNT1 A 0 A_PlaySound("misc/xdeath")
+	     TNT1 AA 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	Stop
+    }
+}
+
+ACTOR BurningSS
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.98
+	Health 100
+	GibHealth 25
+	DAMAGEFACTOR "Burn", 0.0
+	DAMAGEFACTOR "Fire", 0.0
+	DAMAGEFACTOR "Flames", 0.0
+	DAMAGEFACTOR "Flame", 0.0
+	DAMAGEFACTOR "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+    States
+    {
+    Spawn:
+        SSBU A 0 A_CustomMissile("BurnParticles", 28, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+        SSBU AAA 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Recoil(-1)
+        SSBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_JumpIf(momz < 0, "Falling")
+	
+GOTO DEATH
+
+	Falling:	
+	    SSBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        SSBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU BB 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        SSBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SSBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		SSBU AA 1 Bright
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+        SSBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SSBU AA 1 Bright
+        SSBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SABU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
+		Loop
+	
+	Death.ExplosiveImpact:
+	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,60,0,1)
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	TNT1 A 0
+	Goto Looping
+	
+	Looping:	
+	    SABU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+       SSBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        SSBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		SSBU AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
+		SSBU A 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU BBB 1 Bright A_JumpIf(momz == 0, "fallDeath")
+        SSBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		Loop	
+	
+	FallDeath:
+	    TNT1 AAAAAAAAAA 0 A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+	    TNT1 AAAA 0 A_CustomMissile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		Goto Death
+    Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+        SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+ SSBU CCCC 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SSBU DDDD 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+SSBU E -1
+        Stop
+
+	XDEATH:
+	DEATH.SSG:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+	TNT1 A 0 A_PlaySound("misc/xdeath")
+	     TNT1 AA 0 A_CustomMissile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 A_CustomMissile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 A_CustomMissile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAA 0 A_CustomMissile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+	Stop
+    }
+}
+
+
+ACTOR GenericBurningGuy
+{   Radius 1
+    Height 1
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    Mass 1000
+    Health 100
+States    {
+    Spawn:
+       TNT1 A 0 BRIGHT
+       TNT1 A 0 A_PlaySound("DSFDTHE")
+       BUR2 A 1 BRIGHT
+       BUR2 AABBCCDDEE 3 BRIGHT A_CustomMissile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN FFGGHH 3 BRIGHT A_CustomMissile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN IIJJKKLL 3 BRIGHT A_CustomMissile ("BurnParticles", 28, 0, random (0, 180), 2, random (0, 180))
+       BURN MMN 3 BRIGHT A_CustomMissile ("BurnParticles", 32, 0, random (0, 180), 2, random (0, 180))
+       BURN NOOPP 3 BRIGHT A_CustomMissile ("BurnParticles", 22, 0, random (0, 180), 2, random (0, 180))
+       BURN QQ 3 BRIGHT A_CustomMissile ("BurnParticles", 18, 0, random (0, 180), 2, random (0, 180))
+       TNT1 A 0 A_PlaySound("DSFDTHE")
+       BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTT 3 BRIGHT A_CustomMissile ("SmallBurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN UU 3 BRIGHT A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 9 A_CustomMissile ("PlasmaSmoke", 8, 0, random (0, 360), 2, random (90, 110))
+       BURN V -1
+STOP
+}
+}

@@ -1,0 +1,516 @@
+Actor FG42SSMAG:Inventory
+{
+Inventory.maxamount 20
+}	
+
+Actor FG42SSCombo:Inventory
+{
+Inventory.maxamount 20
+}
+
+ACTOR FG42Nazi:Panzergrenadier 1355
+{
+//$Category BW Enemies 
+//$Title Waffen SS (FG42)
+Game Doom
+Health 135
+Radius 20
+Height 40
+Mass 500
+Speed 8
+FastSpeed 9
+PainChance "tesladamage",255
+PainChance "blood", 0
+damagefactor "blood", 0.0
+PainChance "ExplosiveImpact", 255
+PainChance "Explosiveresistance",255
+PainChance 170
+Monster
++FLOORCLIP
+scale 0.95
++MISSILEMORE
+-FASTER
+-DONTHURTSPECIES
++NOINFIGHTING
++DONTHARMSPECIES
+pAINcHANCE "Kick",255
+	DamageFactor "Uberburn", 0.4
+//BloodType "NashGore_Blood"
+SeeSound "Elite/sight"
+//AttackSound "FG42F"
+PainSound "nazi/pain"
+DeathSound "Elite/death"
+DamageFactor "NaziExplosion",0
+DamageFactor "EnemyHeadShot",0
+DamageFactor "NaziBullet",0
+DROPITEM "FG42"
+DamageFactor "Nazicutless",0
+DamageFactor "DAAXE", 20
+PainChance "PunchInTheFace",255
+PainChance "RocketSplashDamage",255
+Obituary "%o was blitzkrieg'ed by a Waffen SS."
+DropItem ""
+DamageFactor "RifleNoExplode", 2.0
+DamageFactor "Melee", 2.0
+DamageFactor "KillMe", 0.0
+DamageFactor "SSG", 10.0
+DamageFactor "LFGRip",100
+//DamageFactor "LFGSplash",100
+DamageFactor "Sliding",0.2
+DamageFactor "Candelabroencapo",100
+PainChance "Melee", 255
+DamageFactor "PunchInTheFace",0.5
+PainChance "Sliding",255
+MaxStepHeight 24
+MaxDropOffHeight 32
+damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+States
+{
+Spawn:
+TNT1 A 0 A_GiveInventory("SKNazi", 1)
+TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+W4fF A 10 A_Look
+Loop
+
+See:
+TNT1 A 0
+TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
+FGSS AA 1 A_Chase
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS AA 2 A_Chase
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS BB 2 A_Chase
+TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS BB 2 A_Chase
+NULL A 0 A_SpawnItemEx("FootStep6", 0, 0, 40, 0, 0)
+TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS CC 2 A_Chase
+TNT1 C 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS CC 2 A_Chase
+TNT1 C 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS BB 2 A_Chase
+TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FGSS BB 2 A_Chase
+NULL A 0 A_SpawnItemEx("FootStep6", 0, 0, 40, 0, 0)
+TNT1 B 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+Goto See
+		
+		
+Missile:
+TNT1 A 0 A_JumpIfInventory("FG42SSCombo",10,"Missile2")
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_TakeInventory("SKNazi", 1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS E 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 5 A_FACETARGET
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS F 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS E 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS E 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS F 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS E 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS E 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+Goto See
+		
+Missile2:
+TNT1 A 0 A_JumpIfInventory("FG42SSCombo",20,"Missile3")
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_TakeInventory("SKNazi", 1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 5 A_FACETARGET
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+Goto See
+
+		
+Melee:
+TNT1 A 0 A_GiveInventory("FG42SSCombo",20)
+FGSS B 8 A_FaceTarget
+TNT1 A 0 A_PlaySound("KICK")
+TNT1 A 0 A_CustomMissile("WaffenKick",20,0,0)
+WF42 A 8 A_FaceTarget
+Goto Missile3
+		
+Missile3:
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_TakeInventory("FG42SSCombo",20)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 1 A_FACETARGET
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_MonsterRefire(40,"ShootsMoreShots")
+Loop
+		
+ShootsMoreShots:
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+Goto See
+		
+		
+Reload:
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF A 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  B 5 A_FaceTarget
+TNT1 a 0 a_playsound("FG42R1")
+TNT1 A 0 A_CustomMissile("MP44EmptyClip", 38, 0, random(-11, 11), 0)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  C 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  C 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  c 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  D 5 A_FaceTarget
+TNT1 a 0 a_playsound("FG42R2")
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  a 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+42RF  a 5 A_FaceTarget
+tnt1 a 0 a_takeInventory("FG42SSMAG",20)
+Goto See
+
+Pain.RocketSplashDamage:
+Pain.PunchInTheFace:
+	Pain.ExplosiveImpact:
+	pain.Explosiveresistance:
+	Pain.Explosive:
+	         TNT1 A 0
+	         TNT1 A 0 A_Pain
+		 		    TNT1 A 0 A_TakeInventory("SKZombieman", 1)
+        TNT1 A 0 ThrustThingZ(0,40,0,1)
+		TNT1 A 0 A_GIVEINVENTORY("ISDOWN",1)
+         WFDW AB 8
+		Goto FallingAfterImpact
+
+		FallingAfterImpact:
+		WFDW C 1 A_GiveInventory ("FallingHeight", 1)
+		WFDW C 60
+		WFDW C 1 A_CheckFloor ("GetUp")
+		NULL A 0 A_JumpIf (momz == 0, "GetUp")
+		Loop
+		
+		GetUp:
+		TNT1 A 0
+				TNT1 A 0 A_TakeINVENTORY("ISDOWN",1)
+
+		42DW D 10
+         Goto See
+		 
+		 Pain.Down:
+		 WFDW B 5 a_pain
+		 Goto FallingAfterImpact
+		 
+		 		 pain.Sliding:
+		 		TNT1 A 0 A_GiveToTarget("SlidingCoolerTrigger",AAPTR_TARGET)
+			TNT1 A 0 A_TakeInventory("CanStealthKilled",1)
+	         TNT1 A 0
+	         TNT1 A 0 A_Pain
+			 	         TNT1 A 0 a_giveinventory("isdown",1)
+		 		    TNT1 A 0 A_TakeInventory("SKZombieman", 1)
+        TNT1 A 0 ThrustThingZ(0,20,0,1)
+         WFDW AB 8
+		Goto FallingAfterImpact
+		
+			Pain:
+	    TNT1 A 0 A_JumpIfInventory("IsDown",1,"Pain.Down")
+	    TNT1 A 0 A_ChangeFlag(GHOST, 0)
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+		TNT1 A 0 A_PlaySOund("nazi/pain")
+		TNT1 A 0 A_TakeInventory("SKNazi", 1)
+		FGSS G 3
+		TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+		FGSS G 3 A_Pain
+		//TNT1 A 0 A_Jump(128, "Respawned")
+		TNT1 A 0
+		Goto See
+
+
+
+	}
+}
+
+
+Actor EasyFG42SS:FG42Nazi 1353
+{
+//$Category BW Enemies 
+//$Title Easy Waffen SS (FG42)
+SpawnID 3
+States
+{
+
+Missile:
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_TakeInventory("SKNazi", 1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 5 A_FaceTarget
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 5 A_FACETARGET
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 1 A_FaceTarget
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",30,"Reload")
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSCombo",1)
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+FGSS e 2 A_FaceTarget
+Goto See
+Melee:
+Goto missile
+}
+}
+
+Actor HardFG42NAZI:FG42Nazi 1354
+{
+//$Category BW Enemies 
+//$Title Hard Waffen SS (FG42)
+States
+{
+Missile:
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_SpawnItem ("HeadshotTarget8", 0, 40,0)
+FGSS e 1 A_FACETARGET
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10, 15, 0)
+FGSS f 1 BRIGHT A_CustomMissile("STG44Tracer", 38, 0, random(-3, 3), 1)
+TNT1 A 0 A_PlaySound("FG42F")
+TNT1 A 0 A_GiveInventory("FG42SSMAG",1)
+TNT1 A 0 A_SpawnItem ("HeadshotTarget4", 0, 40,0)
+FGSS e 1  A_AlertMonsters
+TNT1 A 0 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+TNT1 A 0 A_JumpIfInventory("FG42SSMAG",20,"Reload")
+TNT1 A 0 A_MonsterRefire(40,"ShootsMoreShots")
+Loop
+}
+}

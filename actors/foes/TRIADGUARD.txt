@@ -1,0 +1,213 @@
+///PLEASE!NO....DON'T SHOT!!!!
+///A little modification of the Light Guard's Return to the triad,a Mod who teleport the world
+///RISE OF THE TRIAD in Zdoom
+
+
+
+ACTOR TRIADGUARD Replaces CommanderKeen
+{
+   Health 50
+   Radius 16
+   Height 40
+   Speed 8
+   PainChance 135
+   Mass 5000
+   MONSTER    
+   +Dropoff
+   +FLOORCLIP
+   +NOTARGET
+   SCALE 0.50
+   SeeSound "TRIADSEE"
+   PainSound "TRIADPAIN"
+   DeathSound "TRIADDEATH"
+   Obituary "%o Encounter a old Homeless Lighting guard."
+   States
+
+   {
+   Spawn:
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       LIGW A 10 A_Look
+       Loop
+   See:
+LIGW  A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       LIGW BCDE 4 A_Chase
+       Loop
+   Missile:
+       LIGW F 8 A_FaceTarget
+       LIGW G 8 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       LIGW G 0 A_PlaySound("TRIADATTACK")
+       LIGW H 8 A_CustomMissile("ZombieManTracer", 32, 0, random(-8, 8), 0)
+       LIGW H 1 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+       LIGW G 8 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       LIGW G 0 A_PlaySound("TRIADATTACK")
+       LIGW H 8 A_CustomMissile("ZombieManTracer", 32, 0, random(-8, 8), 0)
+ LIGW H 1 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+
+       Goto See
+   Pain:
+       TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       NULL A 0 A_JumpIfHealthLower(10,"plead")
+       NULL A 0 a_jump(133,"Pain2")
+       LIGW J 3  A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       LIGW J 4 A_Pain
+       Goto See
+   Pain2:
+       LIGW I 3 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+       LIGW I 4 A_Pain
+       Goto See
+   Plead:
+       LIGW I 1 A_Fall 
+       LIGW A 0 A_SpawnItem("NOOOO")	
+       stop
+   Death:
+//TNT1 AA 0 A_CustomMissile ("Nashgore_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160))
+       LIGW X 0 A_Fall
+       LIGW K 5
+       LIGW L 6 A_Scream
+       LIGW M 7 
+       LIGW N 6 A_GiveToTarget("ScoreItem", 100)
+//	TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
+       LIGW O -1
+       Stop
+   XDeath:
+//       TNT1 a 1 a_spawnitem("DesintegratedPANZERGRENADIER",0,0,0,0)
+       TNT1 A 1 A_GIVETOTARGET("SCOREITEM",1000)
+       Stop
+   Raise:
+       LWGS W 5
+       Goto See
+	 Death.Fire:
+	Death.Flames:
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+TNT1 A 0 A_SpawnItem("Burninggrenadier")
+         TNT1 A 0 A_GiveToTarget("ScoreItem", 600)
+      Stop
+
+   Death.head:
+TNT1 A 0 A_PlaySound("misc/xdeath4")
+//TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BrainBlood", 50, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 AAAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 A 0 A_CustomMissile ("Brains2", 50, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 A 0 A_CustomMissile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 A 0 A_CustomMissile ("Brains4", 50, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 A 0 A_CustomMissile ("Brains5", 50, 0, random (0, 360), 2, random (0, 160))
+//				TNT1 AAAA 0 A_CustomMissile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (0, 40))
+//		TNT1 AAAA 0 A_CustomMissile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 AA 0 A_CustomMissile ("SuperWallRedBlood", 46, 0, random (170, 190), 2, random (0, 40))
+		TNT1 A 0 A_XScream
+		TNT1 A 0 A_NoBlocking
+LINH ABCDE 10
+//	TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
+LINH E -1
+       Stop
+
+   }
+}
+
+ACTOR NOOOO : TRIADGUARD
+{
+   Health 15
+   height 28
+   states
+	{
+    Spawn:
+    See:
+       LIGW R 4
+       LIGW S 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW T 5 
+       LIGW U 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW V 5
+       LIGW W 5 A_PlaySound("LnGuardplea")
+    Pleading:
+       LIGW V 5 
+       LIGW U 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW T 5 
+       LIGW U 5 
+       LIGW V 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW W 5 
+       LIGW V 5 A_PlaySound("LnGuardplea3")
+       LIGW U 5 
+       LIGW V 5 
+       LIGW W 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW T 5 
+       LIGW U 5 
+       LIGW V 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW W 5 
+       LIGW V 5 
+       LIGW U 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       LIGW V 5
+       LIGW W 5
+       LIGW T 5 A_PlaySound("LnGuardplea2")
+       LIGW U 5
+       LIGW V 5
+       LIGW W 5 A_SpawnItem("HeadshotTarget4", 0, 28,0)
+       RISE E 5
+       RISE F 5 A_Scream
+       RISE G 1 A_Fall
+    goto faking
+
+
+    Faking:
+       RISE G 1 
+       RISE G 100
+       RISE G 1 
+       Goto Rising
+              
+    Rising:
+       RISE A 5 A_Fall
+       RISE B 5
+       RISE C 5
+       RISE D 5
+       RISE D 0 A_SpawnItem("COJO")
+       stop
+
+  Pain:
+	goto Pleading
+       stop
+
+   
+   Death:
+//TNT1 AA 0 A_CustomMissile ("Nashgore_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160))
+       LIGW X 0 A_Fall
+       LIGW X 6 
+       LIGW Y 5 A_Scream
+       LIGW Z 5 
+       LIGW [ 4
+//	TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
+       LIGW ] -1
+       Stop
+
+	}
+
+}
+
+ACTOR COJO : TRIADGUARD
+{
+   Health 25
+ states
+	{
+   Pain:
+       NULL A 0 a_jump(133,"Pain2")
+       LIGW J 3
+       LIGW J 4 A_Pain
+       Goto See
+   Pain2:
+       LIGW I 3
+       LIGW I 4 A_Pain
+       Goto See
+   Plead:
+	goto death
+   Death:
+//TNT1 AA 0 A_CustomMissile ("Nashgore_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160))
+       LIGW X 0 A_Fall
+       LIGW K 5 
+       LIGW L 6 A_Scream
+       LIGW M 7 
+       LIGW N 6
+//	TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
+       LIGW O -1
+       Stop
+
+	}
+}

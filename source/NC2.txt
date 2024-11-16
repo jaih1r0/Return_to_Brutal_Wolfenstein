@@ -1,0 +1,7 @@
+#library "NC2"
+#include "zcommon.acs"
+
+script "SlidingTriggerACS" (void)
+{
+SetActorState (0, "SlideAttack");
+}

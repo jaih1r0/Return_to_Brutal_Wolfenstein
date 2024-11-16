@@ -1,0 +1,47 @@
+#include "zcommon.acs"
+#library "recoil"
+
+script 278 (void) //Rifle Recoil
+{
+int angle;
+    angle = GetActorPitch(0);
+
+  SetActorPitch(0, (angle-0.002));
+  delay (6);
+    angle = GetActorPitch(0);
+  SetActorPitch(0, (angle+0.001));
+}
+
+script 279 (void) //Chaingun Recoil
+{
+int angle;
+    angle = GetActorPitch(0);
+
+  SetActorPitch(0, (angle-0.004));
+  delay (4);
+    angle = GetActorPitch(0);
+  SetActorPitch(0, (angle+0.002));
+}
+
+
+script 281 (void) //Shotgun Recoil
+{
+int angle;
+    angle = GetActorPitch(0);
+
+  SetActorPitch(0, (angle-0.008));
+  delay (8);
+    angle = GetActorPitch(0);
+  SetActorPitch(0, (angle+0.004));
+}
+
+script 280 (void) //SSG Recoil
+{
+int angle;
+    angle = GetActorPitch(0);
+
+  SetActorPitch(0, (angle-0.008));
+  delay (4);
+    angle = GetActorPitch(0);
+  SetActorPitch(0, (angle+0.001));
+}

@@ -1,0 +1,48 @@
+#include "models/nashgore/BloodSpot/_models.txt"
+#include "models/nashgore/WallBlood/_models.txt"
+#include "models/nashgore/CorpseBlood/_models.txt"
+#include "models/nashgore/Footprint/_models.txt"
+#include "models/nashgore/BloodTrail/_models.lmp"
+
+/*#include "models/nashgore/BloodSpot/_models.lmp"
+#include "models/nashgore/CorpseBlood/_models.lmp"
+#include "models/nashgore/Footprint/_models.lmp"
+#include "models/nashgore/BloodTrail/_models.lmp"*/
+
+
+
+Model FlatDecal_Concrete
+{
+	UseActorPitch
+	UseActorRoll
+	Path "models/bulletdecals"
+	Model 0 "buldecground1"
+	Skin 0 "impdec1.png"
+	Scale 2.5 2.5 2.5
+	ZOffset 0.1
+	FrameIndex DECA L 0 0
+}
+
+Model FlatDecal_Metal
+{
+	UseActorPitch
+	UseActorRoll
+	Path "models/bulletdecals"
+	Model 0 "buldecground1"
+	Skin 0 "impdec2.png"
+	Scale 3.0 3.0 3.0
+	ZOffset 0.1
+	FrameIndex DECA L 0 0
+}
+
+Model FlatDecal_Wood
+{
+	UseActorPitch
+	UseActorRoll
+	Path "models/bulletdecals"
+	Model 0 "buldecground1"
+	Skin 0 "impdec3.png"
+	Scale 2.5 2.5 2.5
+	ZOffset 0.1
+	FrameIndex DECA L 0 0
+}

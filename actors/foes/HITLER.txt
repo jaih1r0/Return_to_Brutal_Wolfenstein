@@ -1,0 +1,901 @@
+////Mecha Hitler
+
+ACTOR MechaHitler Replaces Cyberdemon 
+//$Category BW Enemies 
+//$Title HITLER
+{
+	Game Doom
+	Health 7500
+	SpawnID 1
+	Radius 25
+	Height 60
+	Mass 10000
+        +SOLID
+	Speed 3
+	FastSpeed 10
+	PainChance 0
+	PainChance "Kick", 0
+	PainChance "Melee", 0
+	PainChance "ExplosiveImpact",0
+	PainChance "Avoid", 120
+	DamageFactor "Shotgun",2.5
+	DamageFactor "RIFLENOEXPLODE",4.0
+	PainChance "Taunt", 0
+	Monster
+	+FLOORCLIP
+        +NOINFIGHTING
+        +DONTHARMSPECIES
+        +NOINFIGHTING
+    BloodType "MechaBlood"
+        SeeSound "hitler1/sight"
+	Obituary "%o Heiled Hitler!"
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "EnemyHeadShot",0
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",0.5
+DamageFactor "RifleNoExplode", 4
+DamageFactor "Shotgun",2.5
+DamageFactor "Explosive",3
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "RocketSplashDamage",0.5
+DamageFactor "Explosive",0.5
+DAMAGEFACTOR "DONTHURTTHEFATSO", 0
+DamageFactor "Kick",0 
+DamageFactor "Sliding",0
+DamageFactor "DAAXE",0.5
+DamageFactor "Coltello",1.5
+DamageFactor "PunchIntheFace",1.5
+DamageFactor "APISTOLADAMAGE",2.0
+		
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
+MaxStepHeight 24
+MaxDropOffHeight 32
+PainChance "blood", 0
+	States
+	{
+	Spawn:
+		MHTL A 10 A_Look
+		Loop
+
+    See:
+	TNT1 A 0 ACS_EXECUTE(220,0,0,0,0)
+	See1:
+TNT1 A 0 A_PLaySound("Hitler/step")
+		MHTL AAAAA 2 A_Chase
+		MHTL BBBBB 2 A_Chase
+TNT1 A 0 A_PLaySound("Hitler/step")
+		MHTL CCCCC 2 A_Chase
+		MHTL DDDDD 2 A_Chase
+		Goto See1
+
+Pain:
+    TNT0 A 0 A_SpawnItem ("DIOCAN", 30)
+TNT1 a 0 A_playSound("Metal/hit")
+Goto See1
+
+
+Missile:
+TNT1 A 0 A_PlaySound("Shaiser")
+MHTL E 15 A_FACETARGET
+              GOTO GUTENTAG
+
+
+  GUTENTAG:
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	MHTL G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	MHTL G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	MHTL G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	MHTL G 2 BRIGHT A_CposRefire
+    goto GUTENTAG+1
+
+
+	Death:
+TNT1 A 0 A_PLAYSOUND("METAL/FALL")
+                SLBT A 5
+		SLBT B 6 
+		SLBT C 5 A_NoBlocking
+		TNT1 A 0 ACS_EXECUTE(1933,0,0,0,0)
+		TNT1 A 0 ACS_TERMINATE(220,0)
+//TNT1 A 0 A_CustomMissile ("AdolfHitler", 0, 0, 0)
+                SLBT D -1 
+		Stop
+
+
+}
+
+}
+
+
+ACTOR MechaBlood 
+{
+	Mass 5
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+ALLOWPARTICLES
+	States
+	{
+	Spawn:
+TNT1 A 0 A_SPAWNITEM("DIOCAN")
+TNT1 a 0 A_playSound("Metal/hit")
+		Stop
+	Spray:
+TNT1 a 0
+		Stop
+	}
+}
+
+
+Actor DIOCAN
+{Game Doom
+	Radius 16
+	Height 56
+	ProjectilePassHeight -16
+        -SOLID
+sTATES
+{
+TNT1 a 0 A_playSound("Metal/hit")
+IPF2 CCDD 1 bright A_SpawnItem ("YellowFlareSmall", 0)
+}
+}
+
+
+ACTOR AdolfHitler 2385
+//$Category BW Enemies 
+//$Title HITLER
+{
+	Game Doom
+	Health 3000
+	SpawnID 1
+	Radius 25
+	Height 60
+	Mass 10000
+        +SOLID
+	Speed 8
+	FastSpeed 10
+	PainChance 20
+	PainChance "Kick", 255
+	PainChance "Melee", 255
+	PainChance "ExplosiveImpact", 255
+	PainChance "Avoid", 120
+	PainChance "Taunt", 255
+	Monster
+	+FLOORCLIP
+        +NOINFIGHTING
+        +DONTHARMSPECIES
+        +NOINFIGHTING
+		DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "EnemyHeadShot",0
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",0.5
+DamageFactor "RifleNoExplode", 4
+DamageFactor "Shotgun",2.5
+DamageFactor "Explosive",3
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "RocketSplashDamage",0.5
+DamageFactor "Explosive",0.5
+DAMAGEFACTOR "DONTHURTTHEFATSO", 0
+DamageFactor "Kick",0 
+DamageFactor "Sliding",0
+DamageFactor "DAAXE",0.5
+DamageFactor "Coltello",1.5
+DamageFactor "PunchIntheFace",1.5
+DamageFactor "APISTOLADAMAGE",2.0
+		
+//    BloodType "NashGore_Blood"
+	DeathSound "hitler2/death"
+	Obituary "%o Heiled Hitler!"
+    DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
+	MaxStepHeight 24
+	MaxDropOffHeight 32
+	States
+	{
+	Spawn:
+		HTLR A 10 A_Look
+		Loop
+
+    See:
+		//TNT1 A 0 ACS_EXECUTE(221,0,0,0,0)
+		See1:
+		HTLR AA 1 A_Chase
+		HTLR AA 2 A_Chase
+		HTLR BB 2 A_Chase
+		HTLR cc 2 A_Chase
+		HTLR DD 2 A_Chase
+		Goto See1
+
+
+Missile:
+TNT1 A 0 A_PlaySound("Shaiser")
+	 
+HTLR E 15 A_FACETARGET
+              GOTO GUTENTAG
+
+
+  GUTENTAG:
+	 
+	HTLR F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	HTLR G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	 
+	HTLR F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	HTLR G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	 
+	HTLR F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	HTLR G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	 
+	HANS F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+	HTLR G 2 BRIGHT A_CposRefire
+    goto GUTENTAG+1
+
+Pain:
+HTLR H 1 
+HTLR H 3 
+goto see1
+
+
+Death:
+ADIEUEVA:
+		TNT1 A 0 ACS_TERMINATE(221,0)
+TNT1 A 0 A_SpawnItem("RedCard")
+ HTLR H 3 A_SCREAM
+//	     TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//		 TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+//TNT1 AA 0 A_CustomMissile ("XDeath1", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("XDeath2", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("XDeath3", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeath4", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathGuts", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("Instestin", 14, 0, random (0, 360), 2, random (0, 160))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+// TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+// TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+TNT1 a 0 A_PlaySound("HITLER/GORE")
+HTLR IIIJJJKKKLLLMMMNNNOOO 1
+HTLR P -1 
+Stop
+
+Death.Fire:
+		TNT1 A 0 ACS_TERMINATE(221,0)
+TNT1 A 0 A_SpawnItem("RedCard")
+
+CAZZOVOAFOCO:
+
+QBHB A 3 A_PlaySound("BURNZOM")
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+
+QBHB A 3 A_PlaySound("BURNZOM")
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 A_PlaySound("BURNZOM")
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 A_PlaySound("BURNZOM")
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 A_PlaySound("BURNZOM")
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 A_PlaySound("BURNZOM")
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB A 3 
+// OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB B 3 
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB C 3 A_NoBlocking
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+//OFBU B 0 A_CustomMissile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+QBHB D 3
+//OFBU B 0 A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		OFBU B 0 A_CustomMissile("ExplosionParticleVerySlow", 20, 0, random (0, 360), 2, random (50, 130))
+LD1A G 120
+LD1A G -1 
+
+}
+}
+
+
+Actor MuseumHitler:AdolfHitler 7523
+{
+//$Category Museum
+//$Title Adolf Hitler(Museum)
+Health 6000
+SeeSound "hitler1/sight"
+States
+{
+Death.Fire:
+Goto CAZZOVOAFOCO
+
+Death:
+ADIEUEVA:
+ HTLR H 3 A_SCREAM
+//	     TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//		 TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+//TNT1 AA 0 A_CustomMissile ("XDeath1", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("XDeath2", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("XDeath3", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeath4", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathGuts", 14, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("Instestin", 14, 0, random (0, 360), 2, random (0, 160))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+// TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+// TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+TNT1 a 0 A_PlaySound("HITLER/GORE")
+HTLR IIIJJJKKKLLLMMMNNNOOO 1
+HTLR P -1 
+Stop
+
+		Death.SpearDamage:
+		SOBI A 1 A_NOBLOCKING
+SOBI A 1 A_scream
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+SOBI B 5
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,0, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,30, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,60, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,90, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,120, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,150, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,180, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,210, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,240, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,270, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,300, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,330, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,360, 2, 160)
+SOBI C 5
+Stop
+}
+}
+
+
+
+
+//////////////////
+
+
+ACTOR UberMechaHitler : MechaHitler
+//$Category BW Enemies 
+//$Title HITLER
+{
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "EnemyHeadShot",0
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",0.5
+DamageFactor "RifleNoExplode", 2
+DamageFactor "Shotgun",1.0
+DamageFactor "Explosive",1.5
+DamageFactor "STG44DAMAGE",0.6
+DAMAGEFACTOR "BULLET",0.5
+DAMAGEFACTOR "CUTLESS",0.8
+Damagefactor "Explosiveresistance",1.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "RocketSplashDamage",0.5
+DamageFactor "Explosive",0.5
+DAMAGEFACTOR "DONTHURTTHEFATSO", 0
+DamageFactor "Kick",0 
+DamageFactor "Sliding",0
+DamageFactor "DAAXE",0.5
+DamageFactor "Coltello",1.5
+DamageFactor "PunchIntheFace",1.5
+DamageFactor "APISTOLADAMAGE",1.5
+Speed 7
+States
+{
+
+
+    See:
+	TNT1 A 0 ACS_EXECUTE(220,0,0,0,0)
+	See1:
+TNT1 A 0 A_PLaySound("Hitler/step")
+		MHTL AAA 2 A_Chase
+		MHTL BBB 2 A_Chase
+TNT1 A 0 A_PLaySound("Hitler/step")
+		MHTL CCC 2 A_Chase
+		MHTL DDD 2 A_Chase
+		Goto See1
+
+Missile:
+TNT1 A 0 A_PlaySound("Shaiser")
+MHTL E 15 A_FACETARGET
+              GOTO GUTENTAG
+			  
+			  Pain:
+    TNT0 A 0 A_SpawnItem ("DIOCAN", 30)
+TNT1 a 0 A_playSound("Metal/hit")
+Goto See1
+
+
+  GUTENTAG:
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 A_CustomMissile("HansTracer",32,16,random(-13,13))
+	MHTL F 1 A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	MHTL G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	MHTL G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	MHTL G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	MHTL F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   MHTL F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	MHTL F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	MHTL G 1 BRIGHT A_CposRefire
+    goto GUTENTAG+1
+
+}
+}
+
+ACTOR UberAdolfHitler : AdolfHitler
+{
+Speed 10
+STATES
+{
+
+Missile:
+TNT1 A 0 A_PlaySound("Shaiser")
+HTLR E 15 A_FACETARGET
+              GOTO GUTENTAG
+
+
+  GUTENTAG:
+	HTLR F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	HTLR G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	 
+	HTLR F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	HTLR G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	 
+	HTLR F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	HTLR G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+	 
+	HANS F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+   HTLR F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+	HTLR F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+	HTLR G 1 BRIGHT A_CposRefire
+    goto GUTENTAG+1
+	}
+	}
+	
+  

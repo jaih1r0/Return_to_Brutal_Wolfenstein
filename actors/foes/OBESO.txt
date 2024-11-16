@@ -1,0 +1,619 @@
+Actor FatFaceCombo: Inventory
+{
+Inventory.MaxAmount 3
+}
+
+
+ACTOR FatFace 9346  //MEIN PUZZAAAA
+{
+//$Category Bosses
+//$Title General FatFace
+Health 12000
+Radius 26
+Height 56
+DeathHeight 0
+Mass 10000
+Speed 8
+DamageFactor "LFGRip",50
+DamageFactor "LFGSplash",0
+PainChance 0 
+PainChance "LFGRip",255
++DONTRIP
+	DamageFactor "NaziExplosion",0
+	DamageFactor "NaziBullet",0
+	DamageFactor "Nazicutless",0
+		DamageFactor "EnemyHeadShot",0
+		DamageFactor "RifleNoExplode", 4
+		DamageFactor "Shotgun",2.5
+DamageFactor "Explosive",3
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "Explosive",0.5
+DAMAGEFACTOR "DONTHURTTHEFATSO", 0
+DamageFactor "Kick",0 
+PainSound ""
+DamageFactor "Sliding",0
+DamageFactor "DAAXE",0.5
+DamageFactor "Coltello",1.5
+DamageFactor "PunchIntheFace",1.5
+damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+Monster
+//BloodType "NashGore_Blood"
++Solid
++FloorClip
++MissileMore
++NoInfighting 
++DONTHARMSPECIES
++NOTARGET
+SeeSound "bos5/sight"
+DeathSound "bos5/death"
+Obituary "%o was devoured by General Fettgesicht."
+BloodColor "FF 00 00"
+//BloodType "Nashgore_Blood"
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
+States
+{
+Spawn:
+TNT1 A 0 A_GiveInventory("ScahbbsFirstSight",1)
+FETG A 5 A_Look
+Loop
+
+See:
+TNT1 A 0 A_JumpIfHealthLower(9000,"acs1")
+tnt1 a 0 a_JumpIfInventory("ScahbbsFirstSight",1,"ActivateOmega12")
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG AA 2 A_Chase
+FETG BB 2 A_Chase
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG cc 2 A_Chase
+FETG DD 2 A_Chase
+Loop
+
+See2:
+TNT1 A 0 A_JumpIfHealthLower(6000,"acs2")
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG AA 2 A_Chase
+FETG BB 2 A_Chase
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG cc 2 A_Chase
+FETG DD 2 A_Chase
+Loop
+
+See3:
+TNT1 A 0 A_JumpIfHealthLower(3000,"acs3")
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG AA 2 A_Chase
+FETG BB 2 A_Chase
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG cc 2 A_Chase
+FETG DD 2 A_Chase
+Loop
+
+See4:
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG AA 2 A_Chase
+FETG BB 2 A_Chase
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG cc 2 A_Chase
+FETG DD 2 A_Chase
+Loop
+
+Acs1:
+TNT1 A 0 A_JumpIfInventory("SCHABBSACS",1,"See2")
+TNT1 A 0 ACS_EXECUTE(500,0)
+TNT1 A 0 A_GIVEINVENTORY("SCHABBSACS",1)
+Goto See
+
+Acs2:
+TNT1 A 0 A_JumpIfInventory("SCHABBSACS",2,"See3")
+TNT1 A 0 ACS_EXECUTE(501,0)
+TNT1 A 0 A_GIVEINVENTORY("SCHABBSACS",1)
+Goto See
+
+Acs3:
+TNT1 A 0 A_JumpIfInventory("SCHABBSACS",3,"See4")
+TNT1 A 0 ACS_EXECUTE(502,0)
+TNT1 A 0 A_GIVEINVENTORY("SCHABBSACS",1)
+Goto See
+
+ActivateOmega12://Get them my childrens....
+TNT1 A 0 A_TAKEINVENTORY("ScahbbsFirstSight",1)
+TNT1 A 0 ACS_EXECUTE(221,0)
+TNT1 A 0 ACS_EXECUTE(220,0)
+Goto See
+
+
+Missile:
+TNT1 A 0 A_JumpIfCloser(200,"KickDaTerrain")
+TNT1 A 0 A_JumpIfInventory("FatFaceCombo",3,"CHIAPPONE")
+TNT1 A 0 A_JumpIfHealthLower(3000,"FourthMissile")
+TNT1 A 0 A_JumpIfHealthLower(6000,"ThirdMissile")
+TNT1 A 0 A_JumpIfHealthLower(9000,"SecondMissile")
+Goto FirstMissile
+
+CHIAPPONE:
+FETG A 5 A_FACETARGET
+TNT1 A 0 A_TakeInventory("FatFaceCombo",3)
+TNT1 A 0 THRUSTTHINGZ(0,40,0,0)
+TNT1 A 0 A_RECOIL(-15)
+2ETG A 5 A_FACETARGET
+Goto ChiapponeVolante
+
+
+ChiapponeVolante:
+TNT1 A 0 A_CHECKFLOOR("CHIAPPEINTERRA")
+2ETG A 1 
+Loop
+
+Chiappeinterra:
+TNT1 A 0 A_EXPLODE(150,300,1,0,0,0,0,"nothing","DONTHURTTHEFATSO")
+TNT1 A 0 A_PLAYSOUND("CLAP",2,1)
+TNT1 A 0 A_Quake(6,70,0,1000)
+2ETG a 40
+Goto See
+
+KickDaTerrain:
+1ETG A 15
+TNT1 A 0 A_EXPLODE(60,200,1,0,0,0,0,"nothing","DONTHURTTHEFATSO")
+TNT1 A 0 A_PLAYSOUND("CLAP",2,1)
+TNT1 A 0 A_Quake(4,70,0,600)
+1ETG B 15
+Goto See
+
+
+FirstMissile:
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("Rockettaro", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("Rockettaro", 30, 13, 0)
+TNT1 A 0 A_PlaySound("Shaiser")
+FETG E 15 A_FaceTarget
+Goto Chainguns
+
+SecondMissile:
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("Rockettaro", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+TNT1 A 0 A_PlaySound("Shaiser")
+FETG E 15 A_FaceTarget
+Goto Chainguns
+
+ThirdMissile:
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+TNT1 A 0 A_Playsound("Flamer/loop",5,1,true)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+TNT1 A 0 A_STOPSOUND(5)
+TNT1 A 0 A_PlaySound("Shaiser")
+FETG E 15 A_FaceTarget
+Goto Chainguns
+
+
+FourthMissile:
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+TNT1 A 0 A_Playsound("Flamer/loop",5,1,true)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+TNT1 A 0 A_STOPSOUND(5)
+TNT1 A 0 A_PlaySound("Shaiser")
+FETG E 15 A_FaceTarget
+Goto Chainguns
+
+Chainguns:
+TNT1 A 0 
+TNT1 A 0 A_GIVEINVENTORY("FatFaceCombo",1)
+FETG h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+FETG h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+USWL h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+USWL h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+FETG h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+FETG h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+FETG h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+FETG h 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG G 2 A_FaceTarget
+FETG F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,13)
+FETG h 0 A_CUSTOMMISSILE("HansTracer",32,16,0)
+FETG h 1 A_FaceTarget
+TNT1 AA 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0)
+FETG g 2 A_FaceTarget
+Goto See
+
+Pain.LFGRip:
+TNT1 A 0 A_Jump(180,"PainTOO")
+TNT1 A 0 ThrustThing(192,4,0,0)
+tnt1 a 0 ThrustThingZ(0,4,0,1)
+TNT1 A 0 A_CHANGEFLAG(FLOAT,TRUE)
+TNT1 A 0 A_CHANGEFLAG(NOGRAVITY,TRUE)
+
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+TNT1 A 0 A_Playsound("Flamer/loop",5,1,true)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+TNT1 A 0 A_STOPSOUND(5)
+TNT1 A 0 A_CHANGEFLAG(FLOAT,FALSE)
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+PainTOO:
+TNT1 A 0 ThrustThing(64,4,0,0)
+tnt1 a 0 ThrustThingZ(0,4,0,1)
+TNT1 A 0 A_CHANGEFLAG(FLOAT,TRUE)
+TNT1 A 0 A_CHANGEFLAG(NOGRAVITY,TRUE)
+
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+FETG E 5 A_FaceTarget
+FETG F 5 BRIGHT A_CustomMissile ("RockettaroSeeker", 30, 13, 0)
+TNT1 A 0 A_Playsound("Flamer/loop",5,1,true)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG E 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTarget4", 0, 40,0)
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+FETG A 1 A_FaceTarget
+FETG F 1 BRIGHT A_CustomMissile("FTFire3",32,12,0)
+TNT1 A 0 A_STOPSOUND(5)
+TNT1 A 0 A_CHANGEFLAG(FLOAT,FALSE)
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+
+
+FallingDownwithMichaelDouglas:
+TNT1 A 0 A_StopSound(5)
+TNT1 A 0 A_SpawnItem("CandelabraDamage")
+2ETG A 1 A_CHECKFLOOR("CHIAPPEINTERRA")
+Loop
+
+
+Death:
+TNT1 A 0 A_STOPSOUND(5)
+WBO5 J 5 A_Scream
+WBO5 K 5 A_NOBLOCKING
+WBO5 L 5
+TNT1 A 0 A_PLAYSOUND("CLAP",2,1)
+TNT1 A 0 A_Quake(6,100,0,1000)
+//TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+WBO5 M 150
+TNT1 A 0 A_Quake(6,100,0,1000)
+WBO5 M 100
+TNT1 A 0 A_Quake(6,100,0,1000)
+TNT1 A 0 A_PLAYSOUND("RTCWGIB",2,1)
+//tNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 a 0 A_CustomMissile("MuchBlood", 0, 120)
+//TNT1 a 0 A_CustomMissile("MuchBlood", 0, 120)
+//TNT1 A 0 A_SPAWNITEM("Macellodagenerale")
+TNT1 A 0 A_SPAWNITEM("REDCARD")
+tnt1 A 200
+Stop
+
+
+
+    }
+
+}
+
+ACTOR Rocchetti
+{
+	Radius 10
+	Height 8
+	Projectile
+	Speed 15
+    Damage 35
+	DamageType Explosive
+    MeleeDamage 0
+    Gravity 0.00
+    Decal "Scorch"
+    -NOGRAVITY
+    +EXTREMEDEATH
+    +BLOODSPLATTER 
+    Health 5
+    SeeSound "weapons/RLL"
+    //SeeSound "RLANSHOT"
+	DeathSound "Explosion"
+	Obituary "$OB_MPROCKET"
+	States
+	{
+	Spawn:
+	    MISL A 1 Bright 
+		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
+		TNT1 A 0 A_CustomMissile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem ("RocketSmokeTrail52")
+		Loop
+		
+	Death:
+EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+
+        TNT1 A 0 A_AlertMonsters
+
+		//EXPL A 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+//TNT1 AA 0 A_CustomMissile ("ExplosionSmoke", 22, 0, random (0, 360), 2, random (0, 360))
+
+        TNT1 A 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 A 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 A 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+//XXXX A 0 A_CustomMissile ("ExplosionQuake", 1, 0, random (0, 360), 2, random (0, 160))
+         
+        TNT1 AAAAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+EXPL AAA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAA 1 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 3
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+				TNT1 AAAAAAAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+		Stop
+	}
+}
+
+Actor MuseumCiccione:FatFace 7525
+{
+//$Category Museum
+//$Title General FatFace(Museum)
+Health 6000
+states
+{
+Spawn:
+FETG A 5 A_Look
+Loop
+
+See:
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG AA 2 A_Chase
+FETG BB 2 A_Chase
+TNT1 A 0 A_PLAYSOUND("Hans/Step",2,1)
+TNT1 A 0 A_QUAKE(4,35,0,200)
+FETG cc 2 A_Chase
+FETG DD 2 A_Chase
+Loop
+
+Missile:
+TNT1 A 0 A_JumpIfCloser(200,"KickDaTerrain")
+TNT1 A 0 A_JumpIfInventory("FatFaceCombo",3,"CHIAPPONE")
+Goto FirstMissile
+
+Acs1:
+Acs2:
+Acs3:
+Goto See
+
+Death:
+TNT1 A 0 A_STOPSOUND(5)
+WBO5 J 5 A_Scream
+WBO5 K 5 A_NOBLOCKING
+WBO5 L 5
+TNT1 A 0 A_PLAYSOUND("CLAP",2,1)
+TNT1 A 0 A_Quake(6,100,0,1000)
+//TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+WBO5 M 150
+TNT1 A 0 A_Quake(6,100,0,1000)
+WBO5 M 100
+TNT1 A 0 A_Quake(6,100,0,1000)
+TNT1 A 0 A_PLAYSOUND("RTCWGIB",2,1)
+//tNT1 A 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 a 0 A_CustomMissile("MuchBlood", 0, 120)
+//TNT1 a 0 A_CustomMissile("MuchBlood", 0, 120)
+//TNT1 A 0 A_SPAWNITEM("Macellodagenerale")
+tnt1 A 200
+Stop
+
+		Death.SpearDamage:
+		SOBI A 1 A_NOBLOCKING
+SOBI A 1 A_scream
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+SOBI B 5
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,0, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,30, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,60, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,90, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,120, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,150, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,180, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,210, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,240, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,270, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,300, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,330, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,360, 2, 160)
+SOBI C 5
+Stop
+}
+}
+
+Actor EasyFatFace:FatFace
+{
+states
+{
+Missile:
+TNT1 A 0 A_JumpIfCloser(200,"KickDaTerrain")
+Goto FirstMissile
+}
+}

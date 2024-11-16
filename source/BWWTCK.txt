@@ -1,0 +1,34 @@
+#library "BWWTCK"
+#include "zcommon.acs"
+
+script "BWCheckFloorType" (void) //Water Small Splash
+{
+  if (CheckActorFloorTexture(0, "FWATER1"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "FWATER2"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "FWATER3"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "FWATER4"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "NUKAGE1"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "SLIME01"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "SLIME05"))    SetActorState(0,"IsOverLiquid");
+  
+  if (CheckActorFloorTexture(0, "SLIME09"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "SLIME10"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "SLIME11"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "SLIME12"))    SetActorState(0,"IsOverLiquid");
+  
+  if (CheckActorFloorTexture(0, "LAVA1"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "LAVA2"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "LAVA3"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "LAVA4"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "PURPLEBL"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "BLOOD1"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "BLOOD2"))    SetActorState(0,"IsOverLiquid");
+  if (CheckActorFloorTexture(0, "BLOOD3"))    SetActorState(0,"IsOverLiquid");
+
+
+
+
+
+}
+
+   

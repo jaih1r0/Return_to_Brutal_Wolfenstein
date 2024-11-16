@@ -1,0 +1,64 @@
+#include "zcommon.acs"
+#library "newrecoil"
+
+//Thanks to Thell for helping me with this
+
+
+script 373 (void) //RifleRecoil
+{
+SetActorPitch(0, (GetActorPitch(0) - 100)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 50));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 50));
+}
+
+script 374 (void) //ShotgunRecoil
+{
+SetActorPitch(0, (GetActorPitch(0) - 700)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+}
+
+
+script 375 (void) //SuperShotgunRecoil
+{
+SetActorPitch(0, (GetActorPitch(0) - 1200)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100)); 
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+Delay(1);
+SetActorPitch(0, (GetActorPitch(0) + 100));
+
+}

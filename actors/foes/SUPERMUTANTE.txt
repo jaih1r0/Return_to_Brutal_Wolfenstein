@@ -1,0 +1,534 @@
+Actor UberCheckIfCanThrowAxes:inventory
+{
+Inventory.MaxAmount 5
+}
+
+
+Actor UBERMUTANTAXE
+{
+Radius 3 
+Height 7
+Speed 20 
++Missile
++FORCEXYBILLBOARD
++NoGravity
++NOEXTREMEDEATH
+Gravity 0.2
+Damage (50)
+DamageType daaxe
+States
+{
+Spawn:
+ZMAX AAAAAA 2 
+Goto Fly
+
+Fly:
+ZMAX A 2
+Loop 
+
+Death:
+TNT1 A 0 A_PLaySound("AxeHitWall")
+TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+TNT1 AAAA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+TNT1 AAAA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+TNT1 AAAA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+Stop
+
+}
+}
+
+ACTOR UberMutantAxeMelee: FastProjectile
+{
+	Radius 6
+	Height 6
+	DamageType Cutless
+	Projectile 
+	+FORCEXYBILLBOARD
+	+NOEXTREMEDEATH
+	RenderStyle Add
+	Alpha 0.6
+    Damage (120)
+    Speed 32
+	//HitObituary "$OB_IMPHIT"
+	SeeSound "none"
+	DeathSound "none"
+	Decal "none"
+	States
+	{
+	Spawn:
+		TNT1 A 1 BRIGHT
+        TNT1 A 1 //A_PlaySound("weapons/gswing")
+		Stop
+	Death:
+		    PUFF A 3 A_PlaySound("player/cyborg/fist")
+    PUFF BCD 3
+		Stop
+	}
+}
+
+Actor UberMutant 2029
+{
+//$Category Bosses
+//$Title Uber-Mutant
+Health 8000
+Radius 32
+Height 60
+Mass 10000
+Speed 6
+PainChance 0 
+DamageFactor "burn",0
+DamageFactor "Flames",0
+DamageFactor "Uberburn",0
+DamageFactor "Kick",0 
+DamageFactor "Fire",0 
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "EnemyHeadShot",0
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",0
+DamageFactor "RifleNoExplode", 4
+DamageFactor "Shotgun",2.5
+DamageFactor "Explosive",3
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "DAAXE",0.5
+DamageFactor "Coltello",1.5
+DamageFactor "PunchIntheFace",1.5
+DamageFactor "Kick",0 
+DamageFactor "APISTOLADAMAGE",2.0
+DeathSound "UBERDTH"
+SeeSound ""
+PainSound ""
+DamageFactor "Sliding",0
+damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+Monster
+//BloodType "ZioPurpleBlood"
++LookAllAround
++Solid
++FloorClip
++MissileMore
++NoInfighting 
++DONTHARMSPECIES
+Obituary "%o was brutalized by the ubermutant while Schabbs and Krist laughed."
+States
+{
+Spawn:
+//TNT1 A 0 A_GiveInventory("hANSWasNotInAlert",1)
+UBER A 10 A_Look
+Loop
+
+
+See:
+//TNT1 A 0 A_JumpIfInventory("hANSWasNotInAlert",1,"FirstSight")
+TNT1 A 0 A_PlaySound("HANS/Step")
+UBER AA 2 A_Chase
+UBER BB 2 A_Chase
+UBER cc 2 A_Chase
+TNT1 A 0 A_PlaySound("HANS/Step")
+UBER DD 2 A_Chase
+Loop
+
+
+FirstSight:
+TNT1 A 0 A_TakeInventory("hANSWasNotInAlert",1)
+UBER A 1 ACS_EXECUTE(220,0,0,0,0) 
+Goto See
+
+Missile:
+TNT1 A 0
+UBER E 10 A_FACETARGET
+
+Missile3:
+TNT1 A 0 A_JumpIfinventory("UberCheckIfCanThrowAxes",3,"Missile2")
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+UBER F 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER F 2 BRIGHT A_FACETARGET
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER G 3 BRIGHT A_FACETARGET
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+UBER F 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER G 2 bright A_FACETARGET
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER G 3 BRIGHT a_facetarget
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER G 2 BRIGHT A_FACETARGET
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER H 3 BRIGHT A_FACETARGET
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+UBER H 2 BRIGHT A_FACETARGET
+UBER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+TNT1 A 0 A_GIVEINVENTORY("UberCheckIfCanThrowAxes",1)
+UBER F 3 BRIGHT 
+UBER E 1 A_MonsterRefire(40,"See")
+Loop
+
+
+Missile2:
+5BER AA 10 A_FaceTarget
+TNT1 A 0 A_PlaySound("weapons/wknife")
+TNT1 A 0 A_CustomMissile("UBERMUTANTAXE",40,-20)
+TNT1 A 0 A_CustomMissile("UBERMUTANTAXE",40,20)
+TNT1 A 0 A_CustomMissile("UBERMUTANTAXE",10,-20)
+TNT1 A 0 A_CustomMissile("UBERMUTANTAXE",10,10)
+5BER BB 3 A_FaceTarget
+5BER C 1 
+TNT1 A 0 A_TAKEINVENTORY("UberCheckIfCanThrowAxes",5)
+5BER CC 6 A_FaceTarget
+UBER E 1 A_MonsterRefire(40,"See")
+Goto Missile3
+
+
+
+Melee:
+5BER AA 2 A_FaceTarget
+TNT1 A 0 A_CustomMissile("UberMutantAxeMelee",32,0,0)
+TNT1 A 0 A_PlaySound("weapons/wknife")
+5BER BB 2 A_FaceTarget
+5BER C 1 
+5BER CC 2 A_FaceTarget
+Goto See
+
+
+Death:
+//TNT1 AAAA 0 A_CustomMissile ("PurpleMuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAAA 0 A_CustomMissile ("UBERMUTANTEARM", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAAA 0 bright A_CustomMissile ("MSuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+1BER A 1 a_scream
+1BER A 20 a_scream
+1BER A 20 
+1BER A 20 
+1BER A 20 
+1BER BC 5 A_NOBLOCKING
+1BER D 3 
+//TNT1 A 0 A_SpawnItem ("PurpleGiantBloodSpot")
+TNT1 A 0 A_Quake(3,70,0,800,"CLAP")
+1BER E 1 ACS_EXECUTE(226,0,0,0,0) 
+TNT1 A 200 
+Stop
+
+}
+}
+
+Actor UberMutantArmless 2030
+{
+//$Category Bosses
+//$Title Uber-Mutant(Armless)
+Health 3000
+Radius 32
+Height 55
+Mass 10000
+Speed 12
+PainChance 0 
+DamageFactor "burn",0
+DamageFactor "Flames",0
+DamageFactor "Explosive",5
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "Uberburn",0
+DamageFactor "Kick",0 
+DamageFactor "Fire",0 
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "EnemyHeadShot",0
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",0
+DamageFactor "RifleNoExplode", 4
+
+DamageFactor "Coltello",0
+DamageFactor "Kick",0 
+DeathSound "UBERDTH"
+SeeSound ""
+PainSound ""
+DamageFactor "Sliding",0
+DamageFactor "DAAXE", 0.2
+damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+Monster
+//BloodType "ZioPurpleBlood"
+-Solid
+-shootable
++FloorClip
++MissileMore
++NoInfighting 
++DONTHARMSPECIES
+Obituary "%o thought the Ubermutant was a quitter."
+States
+{
+Spawn:
+1BER E 1 A_LOOK
+TNT1 A 0 A_JUMPIFINVENTORY("hANSWasNotInAlert",1,"SPAWN1")
+1BER E 10 A_Look
+Loop
+
+Spawn1:
+2BER A 1 A_LOOK
+LOOP
+
+
+
+See:
+1BER E 10 
+TNT1 A 0 A_CHANGEFLAG(SOLID,TRUE)
+TNT1 A 0 A_CHANGEFLAG(SHOOTABLE,TRUE)
+TNT1 A 0 A_JUMPIFINVENTORY("hANSWasNotInAlert",1,"SEE1")
+TNT1 A 0 A_GIVEINVENTORY("hANSWasNotInAlert",1)
+1BER F 1 ACS_EXECUTE(225,0,0,0,0) 
+1BER F 20 A_FACETARGET
+Goto See1
+
+See1:
+//TNT1 A 0 A_JumpIfInventory("hANSWasNotInAlert",1,"FirstSight")
+TNT1 A 0 A_PlaySound("hans/Step")
+2BER AA 2 A_Chase
+2BER BB 2 A_Chase
+2BER cc 2 A_Chase
+TNT1 A 0 A_PlaySound("hans/Step")
+2BER DD 2 A_Chase
+Loop
+
+
+FirstSight:
+TNT1 A 0 A_TakeInventory("hANSWasNotInAlert",1)
+2BER A 1 ACS_EXECUTE(220,0,0,0,0) 
+Goto See
+
+Missile:
+TNT1 A 0
+2BER E 10 A_FACETARGET
+
+Missile3:
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+2BER F 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER F 2 BRIGHT A_FACETARGET
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER G 3 BRIGHT A_FACETARGET
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+2BER F 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER G 2 bright A_FACETARGET
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER G 3 BRIGHT a_facetarget
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER G 2 BRIGHT A_FACETARGET
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER H 3 BRIGHT A_FACETARGET
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER H 2 BRIGHT A_FACETARGET
+2BER F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+TNT1 A 0 BRIGHT A_CustomMissile("UBERMUTANTTracer",30,12,0)
+TNT1 A 0 BRIGHT A_SpawnItem ("Mausercasespawn", 0, 30,0)
+2BER F 3 BRIGHT 
+2BER E 1 A_MonsterRefire(40,"See1")
+Loop
+
+DEATH:
+TNT1 A 0
+TNT1 A 0 A_playSound("RTCWGib")
+//TNT1 A 0 A_SPAWNITEM("MSUPERGORE",0,35,0)
+//TNT1 AA 0 A_CustomMissile ("SuperWallPurpleBlood", 46, 0, random (170, 190), 2, random (0, 40))
+//TNT1 A 0 A_CustomMissile ("PurpleInstestin", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath2", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath3", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath4", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("UberMutantHead", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("GATLINGVOLANTE", 35, 0, random (0, 360), 2, random (0, 160))
+3ber A 15 
+3ber BCD 5 A_NOBLOCKING
+TNT1 A 0 A_Quake(3,70,0,800,"CLAP")
+//TNT1 A 0 A_SpawnItem ("PurpleGiantBloodSpot")
+TNT1 A 0
+3BER E -1
+Stop
+
+Xdeath:
+Death.Explosive:
+Death.ExplosiveResistance:
+Death.GrenadeIntheFuckingFace:
+TNT1 A 0
+TNT1 A 0 A_playSound("RTCWGib")
+//TNT1 A 0 A_SPAWNITEM("MSUPERGORE",0,35,0)
+//TNT1 A 0 A_CustomMissile ("GATLINGVOLANTE", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("SuperWallPurpleBlood", 46, 0, random (170, 190), 2, random (0, 40))
+//TNT1 A 0 A_CustomMissile ("PurpleInstestin", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath2", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath3", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath4", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("UberMutantHead", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("UberMutantLeg", 35, 0, random (0, 360), 2, random (0, 160))
+Stop
+}
+}
+
+
+
+Actor AntlerSaysYouAretheOneKillingMyKinAntlerSaysYouMUSTDIE:UberMutant 7527
+{
+//$Category Museum
+//$Title UberMutant(Museum)
+Health 6000
+states
+{
+DEATH:
+TNT1 A 0
+TNT1 A 0 A_playSound("RTCWGib")
+//TNT1 A 0 A_SPAWNITEM("MSUPERGORE",0,35,0)
+//TNT1 AAAA 0 A_CustomMissile ("UBERMUTANTEARM", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("SuperWallPurpleBlood", 46, 0, random (170, 190), 2, random (0, 40))
+//TNT1 A 0 A_CustomMissile ("PurpleInstestin", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath2", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath3", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath4", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("UberMutantHead", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("GATLINGVOLANTE", 35, 0, random (0, 360), 2, random (0, 160))
+3ber A 15 
+3ber BCD 5 A_NOBLOCKING
+TNT1 A 0 A_Quake(3,70,0,800,"CLAP")
+//TNT1 A 0 A_SpawnItem ("PurpleGiantBloodSpot")
+TNT1 A 0
+3BER E -1
+Stop
+
+Xdeath:
+Death.Explosive:
+Death.ExplosiveResistance:
+Death.GrenadeIntheFuckingFace:
+TNT1 A 0
+TNT1 A 0 A_playSound("RTCWGib")
+//TNT1 A 0 A_SPAWNITEM("MSUPERGORE",0,35,0)
+//TNT1 AAAA 0 A_CustomMissile ("UBERMUTANTEARM", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("GATLINGVOLANTE", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("SuperWallPurpleBlood", 46, 0, random (170, 190), 2, random (0, 40))
+//TNT1 A 0 A_CustomMissile ("PurpleInstestin", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath2", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath3", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("PurpleXDeath4", 40, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("UberMutantHead", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AA 0 A_CustomMissile ("UberMutantLeg", 35, 0, random (0, 360), 2, random (0, 160))
+Stop
+
+		Death.SpearDamage:
+		SOBI A 1 A_NOBLOCKING
+SOBI A 1 A_scream
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+SOBI B 5
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,0, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,30, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,60, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,90, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,120, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,150, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,180, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,210, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,240, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,270, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,300, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,330, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,360, 2, 160)
+SOBI C 5
+Stop
+}
+}
+
+Actor HardUbermutant:UberMutant
+{
+Speed 12
+States
+{
+Missile:
+2BER E 3 A_FACETARGET
+Goto Missile3
+}
+}

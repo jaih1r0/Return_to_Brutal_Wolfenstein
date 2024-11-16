@@ -1,0 +1,373 @@
+Actor GretelCombo: inventory
+{
+Inventory.MaxAmount 3
+}
+
+Actor GretelHealth: inventory
+{
+Inventory.MaxAmount 3
+}
+
+
+Actor GretelGrosse 9345  //MEIN PUZZAAAA
+{
+//$Category Bosses
+//$Title Gretel Grosse
+Health 8500
+Radius 32
+Height 60
+//Scale 0.85
+Mass 10000
+Speed 5
+PainChance 0 
+	DamageFactor "NaziExplosion",0
+	DamageFactor "NaziBullet",0
+	DamageFactor "Nazicutless",0
+		DamageFactor "EnemyHeadShot",0
+DamageFactor "Taunt",0
+//DamageFactor "Nashgore_blood",0
+DamageFactor "RifleNoExplode", 4
+DamageFactor "Shotgun",2.5
+DamageFactor "Explosive",3
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+DamageFactor "Fire",0
+DamageFactor "Flames",0 
+DamageFactor "Kick",0 
+DeathSound "MEINPUZZA"
+SeeSound "GG_KEIN"
+DropItem "YELLOWCARD"
+PainSound ""
+DamageFactor "Sliding",0
+DamageFactor "DAAXE",0.5
+DamageFactor "Coltello",1.5
+DamageFactor "PunchIntheFace",1.5
+DamageFactor "APISTOLADAMAGE",2.0
+damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+Monster
+//BloodType "NashGore_Blood"
++Solid
++FloorClip
++MissileMore
++NoInfighting 
++DONTHARMSPECIES
++NOTARGET
+Obituary "%o talked back to Gretel Grosse."
+States
+{
+
+Spawn:
+TNT1 A 0 A_GiveInventory("ScahbbsFirstSight",1)
+GRET A 10 A_Look
+Loop
+
+See:
+TNT1 A 0 A_JumpIfHealthLower(6000,"acs1")
+tnt1 a 0 a_JumpIfInventory("ScahbbsFirstSight",1,"ActivateOmega12")
+TNT1 A  0 A_PlaySound("Hans/Step")
+GRET AA 2 A_Chase
+GRET BB 2 A_Chase
+TNT1 A 0 A_PlaySound("Hans/Step")
+GRET cc 2 A_Chase
+GRET DD 2 A_Chase
+Loop
+
+ActivateOmega12:
+TNT1 A 0 A_TAKEINVENTORY("ScahbbsFirstSight",1)
+TNT1 A 0 ACS_EXECUTE(220,0)
+TNT1 A 0 ACS_EXECUTE(221,0)
+Goto See
+
+See1:
+TNT1 A 0 A_JumpIfHealthLower(4000,"acs2")
+TNT1 A  0 A_PlaySound("Hans/Step")
+GRET AA 2 A_Chase
+GRET BB 2 A_Chase
+TNT1 A 0 A_PlaySound("Hans/Step")
+GRET cc 2 A_Chase
+GRET DD 2 A_Chase
+Loop
+
+See2:
+TNT1 A 0 A_JumpIfHealthLower(2000,"acs3")
+TNT1 A  0 A_PlaySound("Hans/Step")
+GRET AA 2 A_Chase
+GRET BB 2 A_Chase
+TNT1 A 0 A_PlaySound("Hans/Step")
+GRET cc 2 A_Chase
+GRET DD 2 A_Chase
+Loop
+
+See3:
+TNT1 A  0 A_PlaySound("Hans/Step")
+GRET AA 2 A_Chase
+GRET BB 2 A_Chase
+TNT1 A 0 A_PlaySound("Hans/Step")
+GRET cc 2 A_Chase
+GRET DD 2 A_Chase
+Loop
+
+Acs1:
+TNT1 A 0 A_JumpIfInventory("SCHABBSACS",1,"See1")
+TNT1 A 0 ACS_EXECUTE(500,0)
+TNT1 A 0 A_GIVEINVENTORY("SCHABBSACS",1)
+Goto See
+
+Acs2:
+TNT1 A 0 A_JumpIfInventory("SCHABBSACS",2,"See2")
+TNT1 A 0 ACS_EXECUTE(501,0)
+TNT1 A 0 A_GIVEINVENTORY("SCHABBSACS",1)
+Goto See
+
+Acs3:
+TNT1 A 0 A_JumpIfInventory("SCHABBSACS",3,"See3")
+TNT1 A 0 ACS_EXECUTE(502,0)
+TNT1 A 0 A_GIVEINVENTORY("SCHABBSACS",1)
+Goto See
+
+Missile:
+TNT1 A 0 A_JUMPIFCLOSER(350,"grenades2")
+TNT1 A 0 A_JumpIfInventory("GRETELCombo",3,"Grenades")
+Goto Gutentag
+
+Gutentag:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("GretelCombo",1)
+TNT1 A 0 A_PlaySound("Shaiser")
+GRET E 30 A_FACETARGET
+Goto Chainguns
+
+Chainguns:
+TNT1 A 0
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+GRET G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+GRET G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+GRET G 2 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16)
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16)
+GRET G 2 BRIGHT A_CposRefire
+goto Chainguns+1
+
+
+Grenades:
+TNT1 A 0 A_TakeInventory("GretelCombo",3)
+TNT1 A 0 A_playSound("Pick/granate")
+2RET AA 3 A_FaceTarget
+TNT1 A 0 A_PLaySound ("Launch/granate")
+2RET BB 3 A_FaceTarget
+2RET C 1 A_CustomMissile("SmokeGrenade",32,0,-12,0,0)
+TNT1 A 0 A_CustomMissile("SmokeGrenade",32,0,0,0,0)
+tnt1 a 0 A_CustomMissile("SmokeGrenade",32,0,12,0,0)
+2RET CC 3 A_FaceTarget
+Goto See
+
+Grenades2:
+TNT1 A 0 A_playSound("Pick/granate")
+2RET AA 3 A_FaceTarget
+TNT1 A 0 A_PLaySound ("Launch/granate")
+2RET BB 3 A_FaceTarget
+2RET C 1 A_CustomMissile("Grenade2",32,0,-12,0,0)
+TNT1 A 0 A_CustomMissile("Grenade2",32,0,0,0,0)
+tnt1 a 0 A_CustomMissile("Grenade2",32,0,12,0,0)
+2RET CC 3 A_FaceTarget
+TNT1 A 0 A_JUMPIFCLOSER(350,"grenades2")
+Goto See
+
+Melee:
+TNT1 A 0 A_CustomMissile("HansMelee",32,0,0)
+1RET AA 2 A_FaceTarget
+1RET BB 2 A_FaceTarget
+1RET C 1 
+1RET CC 2 A_FaceTarget
+Goto See
+
+Death:
+GRET HI 5 a_scream
+TNT1 A 0 A_NoBlocking
+//TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
+GRET jk 5
+TNT1 A 0 A_Quake(3,70,0,800,"CLAP")
+GRET L -1 
+Stop
+
+
+Death.Explosive:
+Death.ExplosiveImpact:
+Death.RocketSplashDamage: 
+TNT1 A 0 A_XScream
+TNT1 A 0 A_Scream
+TNT1 A 0 A_NoBlocking
+//TNT1 A 0 A_CustomMissile ("MEINPUZZAXdeath", 0, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAAA 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+Stop
+
+
+}
+}
+
+Actor MuseumMEINPUZZA:GretelGrosse 7524
+{
+//$Category Museum
+//$Title Gretel Grosse(Museum)
+Health 6000
+DropItem ""
+STATES
+{
+Spawn:
+GRET A 10 A_Look
+Loop
+
+See:
+TNT1 A  0 A_PlaySound("Hans/Step")
+GRET AA 2 A_Chase
+GRET BB 2 A_Chase
+TNT1 A 0 A_PlaySound("Hans/Step")
+GRET cc 2 A_Chase
+GRET DD 2 A_Chase
+Loop
+
+Acs1:
+Acs2:
+Acs3:
+Goto See
+
+		Death.SpearDamage:
+		SOBI A 1 A_NOBLOCKING
+SOBI A 1 A_scream
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+SOBI B 5
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,0, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,30, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,60, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,90, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,120, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,150, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,180, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,210, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,240, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,270, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,300, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,330, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,360, 2, 160)
+SOBI C 5
+Stop
+}
+}
+
+Actor EasyMEINPUZZA:GretelGrosse
+{
+States 
+{
+Missile:
+Goto Gutentag
+}
+}
+
+
+Actor HardMEINPUZZA:GRETELGROSSE
+{
+Speed 8
+STATES
+{
+Missile:
+TNT1 A 0 A_JUMPIFCLOSER(350,"grenades2")
+TNT1 A 0 A_JumpIfInventory("GRETELCombo",3,"Grenades")
+Goto Gutentag2
+
+Gutentag2:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("GretelCombo",1)
+TNT1 A 0 A_PlaySound("Shaiser")
+GRET E 15 A_FACETARGET
+Goto Nellaterrapiumerdosaterra
+
+Nellaterrapiumerdosaterra:
+TNT1 A 0
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+GRET G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+GRET G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+GRET G 1 A_SpawnItem ("Mausercasespawn", 0, 30,0)
+GRET F 0 BRIGHT A_PlayWeaponSound("weapons/chaingun")
+GRET F 0 BRIGHT A_CustomMissile("HansTracer",32,16,random(-13,13))
+GRET F 1 BRIGHT A_CustomMissile("HansTracer",32,-16,random(-13,13))
+GRET G 1 BRIGHT A_CposRefire
+goto Nellaterrapiumerdosaterra+1
+}
+}

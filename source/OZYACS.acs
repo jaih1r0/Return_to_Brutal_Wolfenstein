@@ -1,0 +1,9 @@
+//ozymandias81 stuff
+#library "ozystuff"
+#include "zcommon.acs"
+
+//fadescript for map setup
+script "Maplaunch" ENTER
+{
+	FadeRange(0,0,0,1.0,0,0,0,0.0,1.5);
+}

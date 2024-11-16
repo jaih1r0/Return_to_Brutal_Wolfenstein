@@ -1,0 +1,1280 @@
+ACTOR MinorHeadDamage
+{
+Radius 1
+Height 1
+DamageType Head
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
++FORCERADIUSDMG
+PROJECTILE
++MISSILE
+States
+{
+Spawn:
+TNT1 A 0
+        TNT1 A 0 A_Explode(100,12)
+Stop
+ }
+}
+
+Actor HeadshotTargetHans
+{
+	+NOTARGET
+		DamageFactor "NaziExplosion",0
+	DamageFactor "NaziBullet",0
+	DamageFactor "Nazicutless",0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "Blood", 0.0
+DAMAGEFACTOR "BlueBlood", 0.0
+DAMAGEFACTOR "Head", 0.0
+DamageFactor "LFGRip",0.0
+DAMAGEFACTOR "MinorHead", 0.0
+DamageFactor "TeslaDamage",0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "Control", 0.0
+DAMAGEFACTOR "Trample", 0.0
+DAMAGEFACTOR "GibRemoving", 0.0
+//DAMAGEFACTOR "Melee", 0.3
+DAMAGEFACTOR "Alert", 0.0
+DAMAGEFACTOR "SSG", 0.0
+DAMAGEFACTOR "ExplosiveImpact", 0.0
+DamageFactor "Coltello",0.0 
+DamageFactor "Kick",0
+DAMAGEFACTOR "Bullet", 0.0
+DAMAGEFACTOR "GibRemoving", 0.0
+DAMAGEFACTOR "TeleportRemover", 0.0
+DamageFACTOR "Freeze", 0.0
+DamageFACTOR "Shrink", 0.0
+DamageFACTOR "Frost", 0.0
+DamageFACTOR "Ice", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "fire", 0.0 
+damageFactor "flames", 0.0 
+DamageFACTOR "Blackhole", 0.0
+PainChance 0 
+//MONSTER
+-COUNTKILL
+Health 50
+GibHealth 10000
+Radius 16
+Height 20
+DamageType head//MA CAZZO! 
+BloodType "Brutal_Blood"
++NOGRAVITY
++SHOOTABLE
++NOTELEPORT
++FORCERADIUSDMG
+-SOLID
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++GHOST
++SERVERSIDEONLY
+-COUNTKILL
+DAMAGEFACTOR "Trample", 0
+States
+{
+Spawn:
+TNT1 A 60 
+Stop
+
+
+Death:
+TNT1 A 0
+XDT3 A 0 A_Explode(600,12,0)//hs
+TNT1 A 1
+Stop
+
+
+XDeath:
+TNT1 A 0
+TNT1 A 0 A_PlaySound("misc/xdeath4")
+XDT3 A 0 A_Explode(600,12,0)//hs
+TNT1 A 1
+Stop
+}
+}
+
+
+ACTOR HeadshotTargetBase
+{
+	+NOTARGET
+		DamageFactor "NaziExplosion",0
+	DamageFactor "NaziBullet",0
+	DamageFactor "Nazicutless",0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "Blood", 0.0
+DAMAGEFACTOR "BlueBlood", 0.0
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "Control", 0.0
+DAMAGEFACTOR "Trample", 0.0
+DamageFactor "LFGRip",0.0
+DAMAGEFACTOR "GibRemoving", 0.0
+//DAMAGEFACTOR "Melee", 0.3
+DAMAGEFACTOR "Alert", 0.0
+DAMAGEFACTOR "SSG", 1.0
+DAMAGEFACTOR "ExplosiveImpact", 0.0
+DAMAGEFACTOR "Bullet", 1.5
+DAMAGEFACTOR "GibRemoving", 0.0
+DAMAGEFACTOR "TeleportRemover", 0.0
+DamageFACTOR "Freeze", 0.0
+DamageFACTOR "Shrink", 0.0
+DamageFACTOR "Frost", 0.0
+DamageFACTOR "Ice", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "fire", 0.0 
+damageFactor "flames", 0.0 
+DamageFACTOR "Blackhole", 0.0
+DamageFACTOR "CutLess", 3.0
+DamageFactor "STG44Damage", 2.0
+DamageFactor "RifleNoExplode",2.0
+//MONSTER
+-COUNTKILL
+Health 300
+GibHealth 10000
+Radius 7
+Height 18
+DamageType head
+BloodType "Brutal_Blood"
+PainChance 255
++NOGRAVITY
++SHOOTABLE
++NOTELEPORT
++FORCERADIUSDMG
+-SOLID
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++GHOST
++SERVERSIDEONLY
+-COUNTKILL
+DAMAGEFACTOR "Trample", 0
+States
+{
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 3
+XXXX A 1
+Stop
+
+Disappear:
+TNT1 A 0
+TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+Stop
+
+Pain.Explosive:
+TNT1 A 3
+Goto Pain
+
+Pain.ExplosiveImpact:
+TNT1 A 3
+Goto Pain
+
+Pain:
+TNT1 A 0
+//TNT1 A 0 ThrustThingZ(0,-40,0,1)
+TNT1 A 1
+TNT1 A 0 A_JumpIfHealthLower(25, "Pain550")
+TNT1 A 0 A_JumpIfHealthLower(50, "Pain500")
+TNT1 A 0 A_JumpIfHealthLower(75, "Pain450")
+TNT1 A 0 A_JumpIfHealthLower(100, "Pain400")
+TNT1 A 0 A_JumpIfHealthLower(125, "Pain350")
+TNT1 A 0 A_JumpIfHealthLower(150, "Pain300")
+TNT1 A 0 A_JumpIfHealthLower(175, "Pain250")
+TNT1 A 0 A_JumpIfHealthLower(200, "Pain200")
+TNT1 A 0 A_JumpIfHealthLower(225, "Pain150")
+TNT1 A 0 A_JumpIfHealthLower(250, "Pain100")
+TNT1 A 0 A_JumpIfHealthLower(275, "Pain50")
+TNT1 A 0 A_JumpIfHealthLower(288, "Pain35")
+TNT1 A 0 A_JumpIfHealthLower(292, "Pain25")
+XDT3 A 0 A_Explode(20,15,0)//hs
+PLAY A 0
+Stop
+
+Pain.DaAxe:
+Pain.Coltello:
+Pain.Kick:
+TNT1 A 0
+//TNT1 A 0 ThrustThingZ(0,-40,0,1)
+TNT1 A 1
+TNT1 A 0 A_JumpIfHealthLower(25, "1ain550")
+TNT1 A 0 A_JumpIfHealthLower(50, "1ain500")
+TNT1 A 0 A_JumpIfHealthLower(75, "1ain450")
+TNT1 A 0 A_JumpIfHealthLower(100, "1ain400")
+TNT1 A 0 A_JumpIfHealthLower(125, "1ain350")
+TNT1 A 0 A_JumpIfHealthLower(150, "1ain300")
+TNT1 A 0 A_JumpIfHealthLower(175, "1ain250")
+TNT1 A 0 A_JumpIfHealthLower(200, "1ain200")
+TNT1 A 0 A_JumpIfHealthLower(225, "1ain150")
+TNT1 A 0 A_JumpIfHealthLower(250, "1ain100")
+TNT1 A 0 A_JumpIfHealthLower(275, "1ain50")
+TNT1 A 0 A_JumpIfHealthLower(288, "1ain35")
+TNT1 A 0 A_JumpIfHealthLower(292, "1ain25")
+XDT3 A 0 A_Explode(20,15,0)//hs
+PLAY A 0
+Stop
+
+
+Pain25:
+TNT1 A 0
+XDT3 A 0 A_Explode(40,12,0,0,12,0,0,"nothing","MinorHead")
+TNT1 A 1
+Stop
+
+
+Pain35:
+TNT1 A 0
+XDT3 A 0 A_Explode(50,12,0,0,12,0,0,"nothing","MinorHead")
+TNT1 A 1
+Stop
+
+Pain50:
+TNT1 A 0
+XDT3 A 0 A_Explode(60,12,0,0,12,0,0,"nothing","MinorHead")
+TNT1 A 1
+Stop
+
+Pain100:
+TNT1 A 0
+XDT3 A 0 A_Explode(100,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain150:
+TNT1 A 0
+XDT3 A 0 A_Explode(150,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain200:
+TNT1 A 0
+XDT3 A 0 A_Explode(200,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain250:
+TNT1 A 0
+XDT3 A 0 A_Explode(250,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain300:
+TNT1 A 0
+XDT3 A 0 A_Explode(300,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain350:
+Pain.SSG:
+TNT1 A 0
+XDT3 A 0 A_Explode(350,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain400:
+TNT1 A 0
+XDT3 A 0 A_Explode(400,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain450:
+TNT1 A 0
+XDT3 A 0 A_Explode(450,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain500:
+TNT1 A 0
+XDT3 A 0 A_Explode(500,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain550:
+TNT1 A 0
+XDT3 A 0 A_Explode(550,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+Pain600:
+TNT1 A 0
+XDT3 A 0 A_Explode(600,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+
+Death:
+TNT1 A 0
+XDT3 A 0 A_Explode(600,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+
+XDeath:
+TNT1 A 0
+XDT3 A 0 A_Explode(600,12,0,0,12)//hs
+TNT1 A 1
+Stop
+
+
+///////////
+1ain25:
+TNT1 A 0
+XDT3 A 0 A_Explode(40,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+
+1ain35:
+TNT1 A 0
+XDT3 A 0 A_Explode(50,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain50:
+TNT1 A 0
+XDT3 A 0 A_Explode(60,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain100:
+TNT1 A 0
+XDT3 A 0 A_Explode(100,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain150:
+TNT1 A 0
+XDT3 A 0 A_Explode(150,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain200:
+TNT1 A 0
+XDT3 A 0 A_Explode(200,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain250:
+TNT1 A 0
+XDT3 A 0 A_Explode(250,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain300:
+TNT1 A 0
+XDT3 A 0 A_Explode(300,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain350:
+Pain.SSG:
+TNT1 A 0
+XDT3 A 0 A_Explode(350,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain400:
+TNT1 A 0
+XDT3 A 0 A_Explode(400,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain450:
+TNT1 A 0
+XDT3 A 0 A_Explode(450,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain500:
+TNT1 A 0
+XDT3 A 0 A_Explode(500,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain550:
+TNT1 A 0
+XDT3 A 0 A_Explode(550,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+
+1ain600:
+TNT1 A 0
+XDT3 A 0 A_Explode(600,12,0,0,12,0,0,"nothing","Head2")
+TNT1 A 1
+Stop
+ }
+}
+
+
+
+ACTOR HeadshotTarget4Mutant: HeadshotTargetBase
+{
++NoBlood
++NoBloodDecals
+DAMAGEFACTOR "Head", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "fire", 0.0 
+damageFactor "flames", 0.0 
+States
+ {
+Spawn:
+TNT1 A 0
+XXXX A 5
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget4: HeadshotTargetBase
+{
+DAMAGEFACTOR "Head", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "fire", 0.0 
+damageFactor "flames", 0.0 
+States
+ {
+Spawn:
+TNT1 A 0
+XXXX A 5
+XXXX A 1
+Stop
+ }
+}
+
+
+Actor HeadshotTargetUberSoldat: HeadshotTargetBase
+{
+RADIUS 12
+Height 20
+Health 5
+PainChance 0 
+DamageFactor "TESLADAMAGE",0.0
+DAMAGEFACTOR "FIRE",0.0
+States
+{
+Spawn:
+TNT1 A 0
+XXXX A 5
+XXXX A 1
+Stop
+
+Death:
+TNT1 A 0
+XDT3 A 0 A_Explode(50,15,0,0,15,0,0,"nothing","Head")
+TNT1 A 1
+Stop
+
+Death.Cutless:
+TNT1 A 0
+XDT3 A 0 A_Explode(100,15,0,0,15,0,0,"nothing","Head")
+TNT1 A 1
+Stop
+
+Death.DaAxe:
+Death.RifleNoExplode:
+TNT1 A 0
+XDT3 A 0 A_Explode(400,15,0,0,15,0,0,"nothing","Head")
+TNT1 A 1
+Stop
+
+Death.STG44Damage:
+TNT1 A 0
+XDT3 A 0 A_Explode(85,15,0,0,15,0,0,"nothing","Head")
+TNT1 A 1
+Stop
+
+Death.Explosive:
+TNT1 A 0
+XDT3 A 0 A_Explode(1500,15,0,0,15,0,0,"nothing","Explosive")
+TNT1 A 1
+Stop
+
+}
+}
+
+ACTOR HeadshotTarget6: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 6
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget2: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 5
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget8: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 11
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget4b: HeadshotTarget4
+{
+Radius 12
+Height 22
+}
+
+ACTOR HeadshotTarget8b: HeadshotTarget8
+{
+Radius 12
+Height 22
+}
+
+ACTOR HeadshotTarget10: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 12
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget20: HeadshotTargetBase
+{
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 30
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget23: HeadshotTargetBase
+{
+Height 15
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 25
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget30: HeadshotTargetBase
+{
+Height 15
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 33
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget60: HeadshotTargetBase
+{
+Height 15
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 63
+XXXX A 1
+Stop
+ }
+}
+
+ACTOR HeadshotTarget100: HeadshotTargetBase
+{
+Height 15
+States
+ {
+Spawn:
+TNT1 A 0
+//TNT1 A 0 A_CheckSight("Disappear")
+XXXX A 103
+XXXX A 1
+Stop
+ }
+}
+
+
+
+// This ACTOR is spawned after you headshoot somebody. It deals the damage, then vanishes.
+
+
+ACTOR HeadshotHitPlasma
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType Plasma2
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
+PROJECTILE
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+States
+{
+Spawn:
+TNT1 A 0
+XDT3 A 0 A_Explode(60,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+
+
+ACTOR HeadshotHitFire
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType Fire
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
+PROJECTILE
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+States
+{
+Spawn:
+TNT1 A 0
+XDT3 A 0 A_Explode(60,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+
+ACTOR HeadshotHitSaw
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType Decaptate
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
+PROJECTILE
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(150,12)
+XDT3 A 0 A_Explode(150,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+ACTOR HeadshotHitTaunt
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType Decaptate
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
++FORCERADIUSDMG
+PROJECTILE
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(1,12)
+XDT3 A 0 A_Explode(1,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+
+ACTOR HeadshotHit
+{
+	+NOTARGET
++FORCERADIUSDMG
+Radius 10
+Height 10
+DamageType head
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+PROJECTILE
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(150,12)
+XDT3 A 0 A_Explode(150,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+
+ACTOR HeadshotHitKick
+{
+	+NOTARGET
++FORCERADIUSDMG
+Radius 10
+Height 10
+DamageType Kick
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+PROJECTILE
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(10,12)
+XDT3 A 0 A_Explode(10,12)
+TNT1 ABC 1
+Stop
+ }
+} 
+
+ACTOR HeadshotX
+{
+	+NOTARGET
++FORCERADIUSDMG
+Radius 10
+Height 10
+DamageType head
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+PROJECTILE
+//+EXTREMEDEATH
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(250,12)
+XDT3 A 0 A_Explode(250,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+ACTOR HeadshotXX: HeadshotX
+{
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(300,12)
+XDT3 A 0 A_Explode(300,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+ACTOR HeadshotXCyber: HeadshotX
+{
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(150,12)
+XDT3 A 0 A_Explode(150,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+ACTOR HeadshotSSG
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType head
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++FORCERADIUSDMG
++NOEXTREMEDEATH
+States
+{
+Spawn:
+TNT1 A 0 A_Explode(500,12)
+TNT1 A 0 A_Explode(500,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+ACTOR HeadshotMinorHit
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType minorhead
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
+PROJECTILE
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
++NOEXTREMEDEATH
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(70,12)
+XDT3 A 0 A_Explode(70,12)
+TNT1 ABC 3
+Stop
+ }
+}
+
+ACTOR HeadshotMinorHitChaingun
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType head
++NOGRAVITY
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
+PROJECTILE
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
++NOEXTREMEDEATH
+ExplosionRadius 25
+ExplosionDamage 45
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Jump(128, "Minorhit")
+XDT3 A 0 A_Explode(70,12)
+XDT3 A 0 A_Explode(70,12)
+TNT1 ABC 3
+Stop
+
+Minorhit:
+TNT1 A 0
+TNT1 A 0 A_SpawnItem ("HeadshotMinorHit", 0, 0)
+TNT1 A 0
+Stop
+ }
+}
+
+
+ACTOR HeadshotTinyHitChaingun: HeadshotMinorHitChaingun
+{
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(35,12)
+XDT3 A 0 A_Explode(35,12)
+TNT1 ABC 1
+Stop
+ }
+}
+
+ACTOR Behead
+{
+	+NOTARGET
+Radius 10
+Height 10
+DamageType headcut
++NOGRAVITY
++NOTELEPORT
++FORCERADIUSDMG
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
+PROJECTILE
+ExplosionRadius 25
+ExplosionDamage 300
+States
+{
+Spawn:
+XDT3 A 0 A_Explode(300,12)
+XDT3 A 0 A_Explode(300,12)
+TNT1 ABC 3
+Stop
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR XDeathBullHead
+{
+    Radius 10
+    Height 15
+    Speed 4
+	Mass 12
+    Health 30
+	BounceFACTOR 0.6
+	+DOOMBOUNCE
+    -NOBLOCKMAP
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +SHOOTABLE
+    +WINDTHRUST
+    -SOLID
+    +NORADIUSDMG
+    DAMAGEFACTOR "Trample", 100.0
+    DeathSound "misc/xdeath1"
+        DeathSound "misc/xdeath1"
+	Decal BloodSuper
+    States
+    {
+    Spawn:
+        HED8 B 8
+        Loop
+    Death:
+        TNT1 AAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAA 0 A_CustomMissile ("Brains1", 11, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("Brains2", 11, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("Brains3", 11, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("Brains4", 11, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("Brains5", 11, 0, random (0, 360), 2, random (0, 160))
+        Stop
+    Death.Trample:
+	Crush:
+        TNT1 AAAAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        CRS1 A 5
+        CRS1 A -1
+        Stop
+    }
+}
+
+ACTOR XDeathKnightHead
+{
+    Radius 10
+    Height 15
+    Speed 6
+	Mass 12
+    Health 30
+  bloodtype "GreenBlood"
+  bloodcolor darkgreen
+	BounceFACTOR 0.6
+	+DOOMBOUNCE
+    -NOBLOCKMAP
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +SHOOTABLE
+    +WINDTHRUST
+    +SOLID
+    +NORADIUSDMG
+    DAMAGEFACTOR "Trample", 100.0
+    DeathSound "misc/xdeath1"
+	Decal BloodSuper
+    States
+    {
+    Spawn:
+        GORA C 8
+        Loop
+    Death:
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        Stop
+    Death.Trample:
+	Crush:
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        CRS1 A 5
+        CRS1 A -1
+        Stop
+    }
+}
+
+ACTOR XDeathBaronHead
+{
+    Radius 10
+    Height 15
+    Speed 6
+	Mass 12
+    Health 30
+  bloodtype "GreenBlood"
+  bloodcolor darkgreen
+    gravity 0.5
+	Decal BloodSuper
+	BounceFACTOR 0.4
+	+DOOMBOUNCE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +SHOOTABLE
+    +WINDTHRUST
+    +SOLID
+    +NORADIUSDMG
+    DAMAGEFACTOR "Trample", 100.0
+    DeathSound "misc/xdeath1"
+	Decal BloodSuper
+    States
+    {
+    Spawn:
+        GORB B 8
+        Loop
+    Death:
+        TNT1 AAAAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        Stop
+    Death.Trample:
+	Crush:
+        TNT1 AAAAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail5", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        CRS1 B 5
+        CRS1 B -1
+        Stop
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR MeatShield: HeadshotTargetBase
+{
+Speed 9
+	+NOTARGET
+DAMAGEFACTOR "Cut", 1.0
+DAMAGEFACTOR "SSG", 1.0
+DAMAGEFACTOR "Melee", 1.0
+DAMAGEFACTOR "Cutless", 1.0
+DAMAGEFACTOR "Plasma", 1.0
+DAMAGEFACTOR "Blast", 1.0
+DAMAGEFACTOR "Taunt", 1.0
+DAMAGEFACTOR "Blood", 1.0
+DAMAGEFACTOR "BlueBlood", 1.0
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "Explosive", 1.0
+DAMAGEFACTOR "DestroyShield", 0.0
+Health 99999
+Radius 24
+Height 42
+BloodType "Brutal_Blood"
+PainChance 255
++NOGRAVITY
++SHOOTABLE
++NOTELEPORT
+-SOLID
++NODAMAGETHRUST
+-THRUGHOST
++NORADIUSDMG
+-GHOST
+States
+{
+Spawn:
+XXXX A 3
+Stop
+
+Pain:
+Pain.Cutless:
+TNT1 A 0 A_PlaySound ("imp/pain")
+Goto Spawn
+
+Pain.Bullet:
+TNT1 A 0 A_PlaySound ("imp/pain")
+
+TNT1 A 1
+Goto Spawn
+
+Pain.SSG:
+Pain.Cut:
+Pain.Flames:
+Pain.Fire:
+Pain.Burn:
+Pain.Plasma:
+Pain.Eat:
+Pain.Blast:
+Pain.Rip:
+Pain.ImpFatalityMarine:
+Pain.HKF:
+Pain.Melee:
+TNT1 A 0 A_PlaySound ("imp/pain")
+
+TNT1 AAAAAAAAAAAAAA 1
+Goto Spawn
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR BaronHoldingBarrel
+{
+	+NOTARGET
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "Blood", 0.0
+DAMAGEFACTOR "BlueBlood", 0.0
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "Control", 0.0
+DAMAGEFACTOR "Trample", 0.0
+DAMAGEFACTOR "Melee", 0.3
+DAMAGEFACTOR "Alert", 0.0
+DAMAGEFACTOR "SSG", 1.0
+//MONSTER
+-COUNTKILL
++NOBLOOD
+Health 25
+Radius 32
+Height 24
+DamageType Extreme
+PainChance 255
++NOGRAVITY
++SHOOTABLE
++NOTELEPORT
++FORCERADIUSDMG
+-SOLID
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++GHOST
++SERVERSIDEONLY
+-COUNTKILL
+DAMAGEFACTOR "Trample", 0
+States
+{
+Spawn:
+XXXX A 32
+XXXX A 1
+Stop
+
+Death:
+TNT1 A 0
+TNT1 A 0 A_Explode(5000, 30)
+	    TNT1 A 0 A_NoBlocking
+	    TNT1 A 0 A_Fall
+		//TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -15)
+		//TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    //TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,30,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+	    EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+		BEXP B 0 BRIGHT A_Scream
+        
+		TNT1 AA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		
+		//TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn")
+		TNT1 AAAAA 8 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+		Stop
+
+ }
+}

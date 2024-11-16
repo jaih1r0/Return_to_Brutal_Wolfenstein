@@ -1,0 +1,10 @@
+#include "zcommon.acs"
+
+script 100 (void)
+{
+	if (Checkinventory("Points") >= 200) 
+	{
+        GiveInventory("Health",200);
+        GiveInventory("ArmorBonus",200);
+        takeinventory("Points", 200);
+}

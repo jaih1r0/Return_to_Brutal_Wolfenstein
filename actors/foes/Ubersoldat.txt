@@ -1,0 +1,892 @@
+ACTOR UbersoldatSberla: FastProjectile
+{
+Radius 6
+Height 6
+DamageType KickNazi
+Projectile 
++FORCEXYBILLBOARD
++NOEXTREMEDEATH
+RenderStyle Add
+Alpha 0.6
+Damage (60)
+Speed 32
+SeeSound "none"
+DeathSound "none"
+Decal "none"
+States
+{
+Spawn:
+TNT1 A 1 BRIGHT
+Stop
+Death:
+PUFF A 3 A_PlaySound("player/cyborg/fist")
+PUFF BCD 3
+Stop
+	}
+}
+
+Actor UberSoldat 9005
+{
+//$Category BW Enemies 
+//$Title Ubersoldat
+Health 1000
+Radius 24
+Height 40
+Scale 0.85
+Mass 1000
+Speed 7
+FastSpeed 8
+PainChance 0 
+PainChance "TeslaDamage",255
+	DamageFactor "NaziExplosion",0
+	DamageFactor "NaziBullet",0
+	DamageFactor "Nazicutless",0
+		DamageFactor "Candelabroencapo",0
+		DamageFactor "EnemyHeadShot",0
+PainChance "Head",255
+DamageFactor "burn",0
+DamageFactor "Flames",0
+DamageFactor "Taunt",0
+DamageFactor "TeslaDamage", 2.0
+DamageFactor "Explosive",5
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",2.0
+DamageFactor "RifleNoExplode", 0.2
+DamageFactor "Cutless", 0.2 
+DamageFactor "Bullet", 0.2
+DamageFactor "Uberburn",0 
+DamageFactor "STG44Damage",0.4
+DamageFactor "RocketSplashDamage",0
+DamageFactor "PunchinTheFace",0.0
+DamageFactor "Coltello",0
+DamageFactor "DAAXE",0
+DamageFactor "Kick",0 
+DamageFactor "Fire",0 
+DamageFactor "LFGRip",100
+DamageFactor "LFGSplash",50
+DeathSound "Enclave/death"
+SeeSound "Enclave/See"
+PainSound "Enclave/pain"
+DamageFactor "Sliding",0
+DamageFactor "DAAXE", 0.2
+damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+Monster
+//BloodType "NashGore_Blood"
++Solid
++FloorClip
++MissileMore
++NoInfighting 
++DONTHARMSPECIES
+Obituary "%o has proven das Ubersoldat's might."
+States
+{
+Spawn:
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USOL A 1 A_Look
+Loop
+
+See:
+TNT1 A 0 A_PlaySound("Hans/Step")
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL AA 2 A_Chase
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL BB 2 A_Chase
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL cc 2 A_Chase
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_PlaySound("Hans/Step")
+USWL DD 2 A_Chase
+Loop
+
+Missile:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("GrosseCombo",1)
+TNT1 A 0 A_PlaySound("Shaiser")
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+Goto Chainguns
+
+Chainguns:
+TNT1 A 0 
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+Goto See
+
+
+		Pain.TeslaDamage:
+		TNT1 A 0 A_PLaySound("RTCWZap")
+TNT1 A 0 A_CustomMissile ("BlueShoque", 35, 0, random (0, 360), 2, random (0, 160))
+12BW B 4 bright
+12BW A 4
+TNT1 A 0 A_PLaySound("RTCWZap")
+TNT1 A 0 A_CustomMissile ("BlueShoque", 35, 0, random (0, 360), 2, random (0, 160))
+12BW B 4 bright
+12BW A 4
+TNT1 A 0 A_PLaySound("RTCWZap")
+TNT1 A 0 A_CustomMissile ("BlueShoque", 35, 0, random (0, 360), 2, random (0, 160))
+12BW B 4 bright
+Goto See
+		
+
+Melee:
+TNT1 A 0 A_CustomMissile("UbersoldatSberla",32,0,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USPN AA 2 A_FaceTarget
+USPN B 1 
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USPN BB 2 A_FaceTarget
+Goto See
+
+Death.LFGRip:
+Death.LFGSplash:
+TNT1 A 0 A_SpawnItem("MGAmmoReserveDrop") 
+		TNT1 A 0 A_SCREAM
+				TNT1 A 0 A_NoBlocking
+		TNT1 A 0 
+		 TNT1 A 0 A_SpawnItem ("UbersoldatErFaustoDeath")
+		 Stop
+Stop
+
+		Death.SpearDamage:
+		SOBI A 1 A_NOBLOCKING
+SOBI A 1 A_scream
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1
+TNT1 A 0 A_SPAWNITEM("BlueFlare",0,40)
+SOBI A 1 A_SPAWNITEM("MGAMMORESERVEDROP")
+SOBI B 5
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,0, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,30, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,60, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,90, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,120, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,150, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,180, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,210, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,240, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,270, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,300, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,330, 2, 160)
+TNT1 A 0 A_CustomMissile ("SoulParticle",50, 0,360, 2, 160)
+SOBI C 5
+Stop
+
+       
+Death.TeslaDamage:
+TNT1 A 0 A_PlaySound("Tesla/Death")
+TNT1 A 0 A_NoBlocking
+TNT1 A 0 A_SpawnItem("MGAmmoReserveDrop")
+XBRN AA 3 BRIGHT A_SpawnItem("BlueFlare",0,43)
+//TNT1 AAAA 0 A_CustomMissile ("Nashgore_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningArm", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningArm", 32, 0, random (0, 360), 2, random (0, 160))
+TNT1 AAAAAA 0 A_CustomMissile ("BlueShoque", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+XBRN BB 3 BRIGHT A_SpawnItem("BlueFlare",0,43)
+//TNT1 A 0 A_CustomMissile ("Nashgore_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+XBRN CC 3 BRIGHT A_SpawnItem("BlueFlare",0,43)
+TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
+TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
+TNT1 A 0
+Stop	
+
+
+
+
+Death.MinorHead:
+Death.head:
+TNT1 A 0 A_JumpIfInTargetInventory("TeslaGunEquipped",1,"DEATH.TESLADAMAGE")
+Death.Head2:
+TNT1 A 0 A_PlaySound("RTCWGIB")
+//TNT1 A 0 A_SPAWNITEM("SUPERGORE",0,35,0)
+//TNT1 AAAAAAAAAAA 0 A_CustomMissile ("MUCHBLOOD2", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAAA 0 A_CustomMissile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("Brains2", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("Brains4", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("Brains5", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAAA 0 A_CustomMissile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (0, 40))
+//TNT1 AAAA 0 A_CustomMissile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAAA 0 A_CustomMissile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+TNT1 A 0 A_XScream
+TNT1 A 0 A_NoBlocking
+USD1 ABCDE 5
+TNT1 A 0 A_SpawnItem("MGAmmoReserveDrop")
+TNT1 A 0 A_Quake(3,70,0,800,"CLAP")
+//TNT1 A 0 A_SpawnItem ("BigBloodSpot")
+tnt1 a 0 a_spawnitem("unsoldatociccionemorto2")
+TNT1 A 100
+Stop
+
+Death.Explosive:
+Death.ExplosiveImpact:
+Xdeath:
+TNT1 A 0 A_XScream
+TNT1 A 0 A_Scream
+TNT1 A 0 A_NoBlocking
+//	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+//		 		 TNT1 A 0 A_CustomMissile ("UberArm", 32, 0, random (0, 360), 2, random (0, 160))
+//		 		 TNT1 A 0 A_CustomMissile ("UberArm", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
+//		 //TNT1 A 0 A_CustomMissile ("XDeath5", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("XDeathGuts", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("UberLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("UberLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//		 		 TNT1 A 0 A_CustomMissile ("Ubertorso", 32, 0, random (0, 360), 2, random (0, 160))
+//				 		 		 TNT1 A 0 A_CustomMissile ("Ubertorso2", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("Uberhead", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
+TNT1 A 0 A_SpawnItem("MGAmmoReserveDrop")
+//TNT1 AAAA 0 A_CustomMissile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160))
+//TNT1 AAA 0 A_CustomMissile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160))
+Stop
+
+
+Death.CandelabroEnCapo:
+Death: 
+USDT A 5 A_NoBlocking
+USDT B 5 A_Scream
+USDT C 5 A_GiveToTarget("ScoreItem", 500)
+//TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+TNT1 A 0 A_Quake(3,70,0,800,"CLAP")
+TNT1 A 0 A_SpawnItem("MGAmmoReserveDrop")
+tnt1 a 0 a_spawnitem("unsoldatociccionemorto")
+TNT1 A 100
+Stop
+
+Pain.Head:
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USDT A 2 A_PAIN
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USDT A 2 
+Goto See
+}
+}
+
+
+Actor UberSoldatYellow:Ubersoldat 9006
+{
+//$Category BW Enemies 
+//$Title Ubersoldat(yellow key)
+DropItem "YellowCard"
+States
+{
+}
+}
+
+Actor UberSoldatRed:Ubersoldat 9007
+{
+//$Category BW Enemies 
+//$Title Ubersoldat(Red key)
+DropItem "RedCard"
+States
+{
+}
+}
+
+Actor UberSoldatBlue:Ubersoldat 9008
+{
+//$Category BW Enemies 
+//$Title Ubersoldat(Silver key)
+DropItem "BlueCard"
+States
+{
+}
+}
+
+
+
+Actor UbersoldatErFaustoDeath
+{
++NoGravity
++Float
+-solid
+height 38
+radius 16
+Scale 0.85
+Mass 100 
+States
+{
+
+Spawn:
+USD2 A 1
+TNT1 A 0 A_PlaySoundEx("LFLoop",5,true)
+TNT1 A 0 A_Jump(160,"spawn2")
+TNT1 A 0 ThrustThing(192,2,0,0)
+USD2 AAA 4 ThrustThingZ(0,2,0,1)
+USD2 BCDE 4
+USD2 EEEEE 6
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+Spawn2:
+USD2 A 1
+TNT1 A 0 ThrustThing(64,2,0,0)
+USD2 AAA 4 ThrustThingZ(0,2,0,1)
+USD2 BCDE 4
+USD2 EEEEE 6
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+FallingDownwithMichaelDouglas:
+TNT1 A 0 A_StopSound(5)
+USD2 E 1 A_CheckFloor("Death")
+Loop
+ 
+
+Death:
+TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",4,0,0,0,0,0)
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))   
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))     
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))   
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))            
+stop
+}
+}
+
+
+
+
+
+//////////ANCHE QUESTO C'HA I CORPI MOH
+
+
+Actor UnSoldatoCiccioneMorto
+{
+Scale 0.85
+Radius 24
+Height 14
++SHOOTABLE
+-SOLID
++NOTELEPORT
++MOVEWITHSECTOR
++CORPSE
++USESPECIAL
++FLOORCLIP
+-DONTGIB
+//+DROPPED
+Mass 20000
+Health 300
+DAMAGEFACTOR "CANDELABROENCAPO",0.0
+dAMAGEfACTOR "fire",0
+dAMAGEfACTOR "Flames",0
+dAMAGEfACTOR "burn",0
+DamageFactor "UberBurn",0
+dAMAGEfACTOR "flame",0
+damagefactor "Blood", 0.0
+damagefactor "Trample", 0.0
+damagefactor "Melee", 10.0
+damagefactor "Fatality", 10.0
+damagefactor "ExplosiveImpact", 10.0
+damagefactor "Crush", 10.0
+States
+{
+Spawn:
+USDT D -1
+//TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
+Stop
+
+Death.LFGRip:
+Death.LFGSplash:
+TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",4,0,0,0,0,0)
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))   
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))     
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))   
+TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))      
+Stop
+
+
+
+Death.fire:
+Death.Flames:
+Death.burn:
+Death.flame:
+TNT1 A 0 A_Jump(128, "Death2")
+//BDT1 iijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+//NJEX AAAAAAAAAAAAAAAAAA 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+NJEX AAAAAAAAAAAAAAAAAA 10 Bright A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+NJEX A -1
+Stop
+Death2:
+//BDT1 iijjkkLLmm 3 Bright A_CustomMissile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+//NJEX BBBBBBBBBBBBBBBBBB 3 Bright A_CustomMissile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+NJEX BBBBBBBBBBBBBBBBBB 10 Bright A_CustomMissile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+NJEX B -1
+Stop
+
+Death.TeslaDamage:
+TNT1 A 0 A_PlaySound("Tesla/Death")
+TNT1 A 0 A_NoBlocking
+TNT1 A 0 A_SpawnItem("MGAmmoReserveDrop")
+XBRN AA 3 BRIGHT A_SpawnItem("BlueFlare",0,43)
+//TNT1 AAAA 0 A_CustomMissile ("Nashgore_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningArm", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBigBoyBurningArm", 32, 0, random (0, 360), 2, random (0, 160))
+TNT1 AAAAAA 0 A_CustomMissile ("BlueShoque", 35, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
+//TNT1 A 0 A_CustomMissile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+XBRN BB 3 BRIGHT A_SpawnItem("BlueFlare",0,43)
+//TNT1 A 0 A_CustomMissile ("Nashgore_Blood", 30, 0, random (0, 360), 2, random (0, 160))
+XBRN CC 3 BRIGHT A_SpawnItem("BlueFlare",0,43)
+TNT1 AAAAA 0 A_CustomMissile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360))
+TNT1 AAA 0 A_CustomMissile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360))
+TNT1 A 0
+Stop		
+
+Death:
+//	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+//		 		 TNT1 A 0 A_CustomMissile ("UberArm", 32, 0, random (0, 360), 2, random (0, 160))
+//		 		 TNT1 A 0 A_CustomMissile ("UberArm", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
+//		 //TNT1 A 0 A_CustomMissile ("XDeath5", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("XDeathGuts", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("UberLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("UberLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//		 		 TNT1 A 0 A_CustomMissile ("Ubertorso", 32, 0, random (0, 360), 2, random (0, 160))
+//				 		 		 TNT1 A 0 A_CustomMissile ("Ubertorso2", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("Uberhead", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
+Stop
+  
+}
+}
+
+Actor UnSoldatoCiccioneMorto2:UnSoldatoCiccioneMorto
+{
+STATES
+{
+SPAWN:
+USD1 E -1
+STOP
+
+Death:
+//	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
+//		TNT1 AAAAAAAAAAAAAAA 0 A_CustomMissile ("SuperWallRedBlood", 40, 0, random (0, 360), 2, random (-5, 5))
+//	     TNT1 AAAAAA 0 bright A_CustomMissile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+//         TNT1 AAAAAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130))
+//		 		 TNT1 A 0 A_CustomMissile ("UberArm", 32, 0, random (0, 360), 2, random (0, 160))
+//		 		 TNT1 A 0 A_CustomMissile ("UberArm", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AA 0 A_CustomMissile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
+//		 //TNT1 A 0 A_CustomMissile ("XDeath5", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("XDeathGuts", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 AAA 0 A_CustomMissile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("UberLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_CustomMissile ("UberLeg", 32, 0, random (0, 360), 2, random (0, 160))
+//		 		 TNT1 A 0 A_CustomMissile ("Ubertorso", 32, 0, random (0, 360), 2, random (0, 160))
+//				 		 		 TNT1 A 0 A_CustomMissile ("Ubertorso2", 32, 0, random (0, 360), 2, random (0, 160))
+//		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
+Stop
+  
+}
+}
+
+Actor EasyUbersoldat:Ubersoldat
+{
+Health 500
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "Candelabroencapo",25.0
+DamageFactor "EnemyHeadShot",0
+PainChance "Head",255
+DamageFactor "burn",0
+DamageFactor "Flames",0
+DamageFactor "Taunt",0
+DamageFactor "TeslaDamage", 2.0
+DamageFactor "Explosive",5
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 0.5
+//DamageFactor "Nashgore_blood",0
+DamageFactor "ExplosiveImpact",2.0
+DamageFactor "RifleNoExplode", 2.0
+DamageFactor "Cutless", 1.0
+DamageFactor "Bullet", 1.0
+DamageFactor "Uberburn",0 
+DamageFactor "STG44Damage",1.0
+DamageFactor "RocketSplashDamage",0
+DamageFactor "PunchinTheFace",0.0
+DamageFactor "Coltello",0
+DamageFactor "DAAXE",1.0
+DamageFactor "Kick",0 
+DamageFactor "Fire",0 
+DamageFactor "LFGRip",100
+DamageFactor "Sliding",0
+
+States
+{
+Missile:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("GrosseCombo",1)
+TNT1 A 0 A_PlaySound("Shaiser")
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+Goto Chainguns
+
+Chainguns:
+TNT1 A 0 
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,33)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 34, 10,-33)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+USWL F 1 A_FaceTarget
+Goto See
+
+Melee:
+Goto Missile
+
+}
+}
+
+Actor HardUbersoldat:Ubersoldat
+{
+Speed 9
+PainChance "TeslaDamage",80
+DamageFactor "LFGSplash",0.0
+States
+{
+
+Missile:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("GrosseCombo",1)
+TNT1 A 0 A_PlaySound("Shaiser")
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL E 5 A_FACETARGET
+Goto ChaingunLoop
+
+
+ChaingunLoop:
+USWL F 0 A_PlayWeaponSound("weapons/chaingun")
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",32,16,0)
+TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt", 32,-16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,16,0)
+USWL F 0 A_CUSTOMMISSILE("UBERSOLDATTRACER",32,-16,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+USWL F 1 A_FaceTarget
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 A 0 A_SpawnItem("HeadshotTargetUberSoldat", 0, 40,0)
+TNT1 AA 0 A_SpawnItem ("mausercasespawn", 0, 30,0)
+USWL G 2 A_FaceTarget
+TNT1 A 0 A_MonsterRefire(40,"Chainguns")
+Loop
+
+}
+}
+
+
+
+Actor EasyUberSoldatYellow:EasyUbersoldat 
+{
+DropItem "YellowCard"
+States
+{
+}
+}
+
+Actor EasyUberSoldatRed:EasyUbersoldat 
+{
+DropItem "RedCard"
+States
+{
+}
+}
+
+Actor EasyUberSoldatBlue:EasyUbersoldat 
+{
+DropItem "BlueCard"
+States
+{
+}
+}
+
+
+
+
+Actor HardUberSoldatYellow:HardUbersoldat 
+{
+DropItem "YellowCard"
+States
+{
+}
+}
+
+Actor HardUberSoldatRed:HardUbersoldat 
+{
+DropItem "RedCard"
+States
+{
+}
+}
+
+Actor HardUberSoldatBlue:HardUbersoldat 
+{
+DropItem "BlueCard"
+States
+{
+}
+}

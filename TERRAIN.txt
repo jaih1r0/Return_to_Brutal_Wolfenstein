@@ -1,0 +1,546 @@
+//TERRAIN DEFS BY ENJAY
+//********** Splashes **********
+splash 	nukage
+{
+smallclass 	nukagesplashbasesmall
+smallclip		6
+smallsound	world/lavasizzlesmall
+
+baseclass		nukageSplashBase
+chunkclass	    sludgechunk
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	6
+chunkbasezvel	2
+sound		world/lavasizzle
+NoAlert
+}
+
+splash Rock
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		   floor/Rock
+NoAlert
+}
+
+
+Splash Grass
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		   floor/Grass
+NoAlert
+}
+
+
+Splash Bwdirts
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		   floor/Dirt
+NoAlert
+}
+splash carpet
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		   floor/carpet
+NoAlert
+}
+
+
+splash Metal
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		  floor/metal
+NoAlert
+}
+
+
+splash Wood
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		   floor/wood
+NoAlert
+}
+
+splash Slime
+{
+smallclass		SlimeSplashBaseSmall
+smallclip		16
+smallsound		world/sludgegloopsmall
+
+baseclass		SlimeSplashBase
+chunkclass		SlimeChunk
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound			world/sludgegloop
+NoAlert
+}
+
+splash 	water
+{
+smallclass 	watersplashbasesmall
+smallclip		16
+smallsound	dssplash
+
+baseclass		watersplashbase2
+chunkclass	watersplash
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		water
+NoAlert
+}
+
+splash 	PurpleBlood
+{
+smallclass 	PurpleBloodSplashSmall
+smallclip		16
+smallsound	world/sludgegloopsmall
+
+baseclass		PurpleBloodSplashbase
+//chunkclass	PurpleBloodSplashbase
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		world/sludgegloop
+NoAlert
+}
+
+splash 	blood
+{
+smallclass 	bloodsplashbasesmall
+smallclip		16
+smallsound	world/sludgegloopsmall
+
+baseclass		bloodsplashbasebw
+chunkclass	bloodsplash
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		world/sludgegloop
+NoAlert
+}
+
+splash 	lava
+{
+smallclass 	lavasplash
+smallclip		10
+smallsound	world/lavasizzlesmall
+
+baseclass		lavasplash
+chunkclass	lavasmoke
+chunkxvelshift	-1
+chunkyvelshift	-1
+chunkzvelshift	2
+chunkbasezvel	1
+sound		world/lavasizzle
+NoAlert
+}
+
+splash Slimy
+{
+smallclip		16
+chunkxvelshift	8
+chunkyvelshift	8
+chunkzvelshift	8
+chunkbasezvel	2
+sound		   floor/slimy
+NoAlert
+}
+
+
+//********** Terrain **********
+Terrain BWRock
+{
+Splash rock
+FootClip 0
+}
+Terrain BWcarpet
+{
+Splash Carpet
+FootClip 0
+}
+
+Terrain BWmetal
+{
+Splash metal
+FootClip 0
+}
+
+Terrain SilentFloor
+{
+Splash NOTHING
+FootClip 0
+}
+
+terrain	PurpleBloodTerrain
+{
+//splash 	PurpleBlood
+}
+
+Terrain BWWood
+{
+Splash wood
+FootClip 0
+}
+
+Terrain BWGrass
+{
+Splash Grass
+FootClip 0
+}
+
+terrain	 nukage
+{
+splash 	nukage
+footclip	 12
+liquid
+}
+
+terrain	water
+{
+//splash 	water
+liquid
+}
+
+terrain	lava
+{
+splash 	lava
+liquid
+}
+
+terrain	blood
+{
+liquid
+//splash 	blood
+}
+
+terrain Slime
+{
+splash Slime
+liquid
+}
+
+Terrain BWDirt
+{
+Splash Bwdirts
+FootClip 0
+}
+
+Terrain Flesh
+{
+splash slimy
+FootClip 0
+}
+
+//And now the hard floor sound definitions
+splash dirt
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/dirt
+NoAlert
+}
+
+splash gravel
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/gravel
+NoAlert
+}
+
+
+
+splash metal2
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/met2
+NoAlert
+}
+
+
+splash snow
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/snow
+NoAlert
+}
+
+splash hard
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/hard
+NoAlert
+}
+
+splash tile
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/tile
+NoAlert
+}
+
+splash tile2
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/tile2
+NoAlert
+}
+splash electric
+{
+smallclass		None
+smallclip		0
+smallsound		njmt
+
+baseclass		None
+chunkclass		None
+chunkxvelshift	0
+chunkyvelshift	0
+chunkzvelshift	0
+chunkbasezvel	0
+sound			floor/elec1
+NoAlert
+}
+ifdoom
+//Splash floors first
+Floor PURPLEBL PurpleBloodTerrain
+floor BLOOD1 Blood
+floor BLOOD2 Blood
+floor BLOOD3 Blood
+floor FWATER1 Water
+floor FWATER2 Water
+floor FWATER3 Water
+floor FWATER4 Water
+floor LAVA1 Lava
+floor LAVA2 Lava
+floor LAVA3 Lava
+floor LAVA4 Lava
+floor NUKAGE1 Nukage
+floor NUKAGE2 Nukage
+floor NUKAGE3 Nukage
+floor SLIME01 Slime
+floor SLIME02 Slime
+floor SLIME03 Slime
+floor SLIME04 Slime
+floor SLIME05 Slime
+floor SLIME06 Slime
+floor SLIME07 Slime
+floor SLIME08 Slime
+Floor FLOOR0_2 BWrock
+Floor GRNLITE1 BWRock
+Floor FLAT5_5 BWcarpet
+Floor FLAT5_1 BWwood
+Floor FLAT5_4 BWRock
+Floor FLOOR0_3 BWmetal
+Floor SFLR7_4 BWRock
+Floor Flat1 BWROCK
+Floor FLAT1_1 BWROCK
+Floor Flat1_3 BWROCK
+Floor Flat2 BWROCK
+Floor Flat20 BWROCK
+Floor Flat22 BWROCK
+Floor Flat23 BWROCK
+Floor Flat4 BWROCK
+Floor Flat5 BWROCK
+Floor Flat5_2 BWwood
+Floor Flat5_3 BWcarpet
+Floor Flat5_5 BWcarpet
+Floor Flat5_4 BWRock
+Floor Flat9 BWROCK
+Floor Flat14 bwcarpet
+Floor FLAT20 BWROCK
+Floor FLAT4 BWROCK
+Floor FLAT22 BWROCK
+Floor FLAT23 BWROCK
+Floor Floor1_6 BWCARPET
+Floor FLOOR0_1 BWcarpet
+Floor FLOOR0_2 BWRock
+Floor FLOOR4_1 BWRock
+Floor FLOOR0_6 BWDirt
+Floor FLOOR0_7 BWRock
+Floor FLOOR0_7 BWRock
+Floor FLOOR1_1 BWRock
+Floor FLOOR1_6 BWcarpet
+Floor BWMQ2 BWCarpet
+Floor FLOOR1_7 BWRock
+Floor FLOOR3_3 BWwood
+Floor FLOOR4_5 BWwood
+Floor FLOOR4_6 BWwood
+Floor FLOOR4_1 BWRock
+Floor Grass1   BWGrass
+Floor Floor0_1 BWcarpet
+Floor Floor5_1 BWRock
+Floor Floor5_2 BWRock
+Floor Floor5_3 BWRock
+Floor Floor5_4 BWRock
+Floor Floor6_1 BWRock
+Floor Floor6_2 BWRock
+Floor Tlite6_1 BWRock
+Floor Tlite6_4 BWRock
+Floor Tlite6_5 BWRock
+Floor Tlite6_6 BWRock
+Floor FLOOR7_2 BWRock
+Floor FLOOR7_1 BWRock
+Floor Dem1_3 BWWood 
+Floor Dem1_4 BWRock
+Floor Ceil3_1 BWRock
+Floor Ceil3_2 BWRock
+Floor Ceil3_5 BWRock
+Floor FLAT10 BWDirt
+Floor BWFLOOR8 BWDIRT
+Floor F2 BWwood
+Floor RROCK03 BWRock
+Floor RROCK09 BWRock
+Floor RROCK02 BWRock
+Floor RROCK16 BwRock
+Floor RROCK18 BwRock
+Floor F13 BwRock
+Floor CONS1_7 BwRock
+Floor SLIME13 BWROCK
+Floor SLIME14 BWMetal
+Floor SLIME15 Bwmetal
+Floor EP2VO5 BWWood
+Floor LABFLA1 BwRock
+Floor BWB1 BWRock
+Floor BWFLOOR2 BWRock
+Floor CEIL1_2 BWRock
+Floor CEIL3_4 BWRock
+Floor GRASS2 BWGrass
+Floor CEIL3_6 BWRock
+Floor CEIL4_1 BWRock
+Floor RROCK11 BWRock
+Floor MFLR8_4 BWRock
+Floor MFLR8_2 BWDIRT
+Floor F3 BWWood 
+Floor CEIL1_1 BWWood
+Floor FLAT5_7 BWRock
+Floor SFLR6_4 BWROCK
+Floor SODRFL BWRock
+Floor BWFLOR18 BWRock
+Floor BWSO129 BWROCK
+Floor BWSO130 BWROCK
+Floor BWSO131 BWROCK
+Floor BWSO132 BWROCK
+Floor BWFLOOR3 BWROCK
+FLOOR BR_02 BWROCK
+FLOOR BWFLOR16 BWWOOD
+floor BWFLOR13 bwrock
+floor BWFLOOR6 bwrock
+floor BWMQ1 BWcarpet
+floor BWMQ2 BWcarpet
+Floor BWFLOOR5 BwWood
+floor BWFLOR12 bwwood
+floor VWFLOOR6 bwcarpet
+floor BWMQ3 bwcarpet
+floor BWFLOR17 bwrock
+FLOOR BW_ELEV6 BWMETAL
+FLOOR METAL2 BWMETAL
+FLOOR BWSO137 BWCARPET
+Floor SKSNAKE2 FLESH
+Floor SKIN2 FLESH
+Floor RROCK05 bwrock
+Floor RROCK06 bwrock
+Floor RROCK07 bwrock
+Floor RROCK08 bwrock
+Floor CRACKLE4 BWRock
+Floor METAL BWMETAL
+Floor SP_HOT1 BWROCK
+FLOOR REDWALL BWROCK
+Floor SKSPINE2 FLESH
+Floor SLOPPY2 Flesh
+Floor RROCK12 BWROCK
+Floor DEM1_5 BWROCK
+Floor DEM1_6 BWROCK
+Floor SP_FACE2 FLESH
+Floor F10 BWROCK
+Floor GRNROCK BWROCK
