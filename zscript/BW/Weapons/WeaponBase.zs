@@ -49,7 +49,7 @@ Class BaseBWWeapon : DoomWeapon
 			A_setinventory("Meleeattack",0);
 			return resolvestate("KnifeAttack");
 		}
-		if(findinventory("Reloading"))// && !(BWRflags & WRF_ALLOWRELOAD))
+		if(findinventory("Reloading") && (BWRflags & WRF_ALLOWRELOAD))
 		{
 			A_setinventory("Reloading",0);
 			return resolvestate("Reload");
