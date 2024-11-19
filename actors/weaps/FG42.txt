@@ -1,37 +1,35 @@
-
-
-Actor PPSH41: DefaultBWgun 7309
-//$Category Allied Weapons
-//$Title PPSH-41
+Actor FG42:DefaultBWgun  7555
 {
+//$Category BW Weapons
+//$Title FG42
 Weapon.AmmoUse1 0 
 Weapon.AmmoUse2 0
-Weapon.AmmoGive1 71
+Weapon.AmmoGive1 10
 Weapon.AmmoGive2 0
-Weapon.AmmoType2 "PPSHAmmo"
-Weapon.AmmoType1 "PPSHReserve"
+Weapon.AmmoType1 "KarClip"
+Weapon.AmmoType2 "FG42AMMO"
 /*Weapon.BobRangeX 0.75
 Weapon.BobRangeY 0.5
 Weapon.BobSpeed 1.5
-Weapon.BobStyle "InverseAlpha"*/ //Denis Belmondo's Bobstyle.Also,in this case credits goes to him even for the sprites. 
+Weapon.BobStyle "InverseAlpha"*/ //Denis Belmondo's Bobstyle
 AttackSound "None"
-Inventory.PickUpSound "SMGPCK"
-Inventory.PickUpMessage "Picked up a Pistolet-Pulemyot Shpagina 1941(SLOT 3)"//I'm always trying to write the complete name of the weapon for give various ww2 informations :) 
+Inventory.PickUpSound "ARPCK"
+Inventory.PickUpMessage "Picked up a Fallschirmjägergewehr 42(SLOT 4)"
 +WEAPON.NOAUTOAIM
 +WEAPON.NOALERT
 +WEAPON.NOAUTOFIRE
-Scale 0.7
-Tag "Pistolet-Pulemyot Shpagina 1941(SLOT 3)"
+Tag "Fallschirmjägergewehr 42"
+Inventory.Icon "STGBACK"
 States
 {
 Ready:
-TNT1 A 0 A_PlaySound("PPSH/Deploy")
-PPSS ABDFHJ 1 
-Goto RealReady 
+tnt1 a 0 a_playsound("STDEP")
+SG42 AABCC 1 
+Goto RealReady
 
 RealReady:
-Z0SH A 1 BW_WeaponReady(WRF_ALLOWRELOAD)
-TNT1 A 0 A_SetCrosshair(0) 
+FG42 A 1 BW_WeaponReady(WRF_ALLOWRELOAD)
+TNT1 A 0 A_SetCrosshair(0)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")TNT1 A 0 A_JumpIfInventory("ChangeMelee",1,"NewMelee")
 AKFG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
 AKFG A 0 //A_JumpIfInventory("Taunting",1,"Taunt")
@@ -41,7 +39,7 @@ AKFG A 0 //A_JumpIfInventory("Reloading",1,"Reload")
 Loop
 
 Ready2:
-PPS2 A 1 BW_WeaponReady(WRF_ALLOWRELOAD)
+2G42 A 1 BW_WeaponReady(WRF_ALLOWRELOAD)
 TNT1 A 0 A_SetCrosshair(5)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")TNT1 A 0 A_JumpIfInventory("ChangeMelee",1,"NewMelee")
 AKFG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
@@ -51,19 +49,18 @@ AKFG A 0 //A_JumpIfInventory("Taunting",1,"Taunt")
 AKFG A 0 //A_JumpIfInventory("Reloading",1,"Reload")
 Loop
 
-
 Deselect:
 TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
 TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
 TNT1 A 0 A_TakeInventory("ChangeMelee",1)
 TNT1 A 0 A_Takeinventory("Zoomed",1)
 TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_TakeInventory("SlideExecute",1)
 TNT1 A 0 A_Takeinventory("Meleeattack",1)
 TNT1 A 0 A_Takeinventory("BWgrenade",1)
-TNT1 A 0 A_TakeInventory("Slideexecute",1)
 TNT1 A 0 A_Takeinventory("Reloading",1)
 TNT1 A 0 A_ZoomFactor(1.0)
-PPSS JHFDBA 1 
+SG42 CCBAA 1 
 TNT1 A 0 A_Lower
 Wait
 
@@ -76,91 +73,83 @@ Wait
 Fire:
 Tnt1 a 0 A_JumpIfInventory("BWAllowReloadCheck",1,"FireNoReload")
 TNT1 A 0 A_TakeInventory("Meleeattack",1)
-TNT1 A 0 A_JumpIfInventory("PPSHAmmo",1,1)
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",1,1)
 Goto Reload
 TNT1 AAAA 0
 TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Fire2")
-TNT1 A 0 A_StartSound("PPSH41",19)
-Z0SH B 1 BRIGHT A_AlertMonsters
+TNT1 A 0 A_StartSound("FG42F",17)
+FG42 B 1 BRIGHT A_AlertMonsters
 TNT1 A 0 BW_GunSmoke //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-TNT1 A 0 //A_FireBullets (5, 4, -1, 20, "2MP40Puff")
-TNT1 A 0 CustomFireFunction(5,4,-1,20,"2MP40Puff","DoubleMP40")
-TNT1 A 0 A_TakeInventory("PPSHAmmo",1)
-TNT1 A 0 A_GiveInventory("PPSHMAGCount",1)
-TNT1 A 0 A_SetPitch(pitch - 0.4)
-//TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
-TNT1 A 0 BW_Quake(1,5)
+TNT1 A 0 CustomFireFunction(4,2,1,40,"STG44Puff","STG44Damage")
+//TNT1 A 0 A_FireBullets (4,2, 1, 40, "STG44Puff",FBF_NORANDOM)//E' finito il tempo delle mele,puttana!
+TNT1 A 0 A_TakeInventory("FG42AMMO",1)
+TNT1 A 0 A_GiveInventory("FG42MAGCOUNT",1)
+TNT1 A 0 A_SetPitch(pitch - 0.8)
+TNT1 A 0 BW_Quake(2,5) //A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-Z0SH C 1
-Z0SH E 1 
-AKFF C 0 A_FireCustomMissile("thompsoncasespawn",5,0,8,-9)
+FG42 CD 1 
+AKFF C 0 A_FireCustomMissile("mausercasespawn",5,0,8,-9)
 TNT1 A 0 A_Refire
 Goto RealReady
 
-FireNORELOAD:
+FireNoReload:
 TNT1 A 0 A_TakeInventory("Meleeattack",1)
-TNT1 A 0 A_JumpIfInventory("PPSHReserve",1,1)
+TNT1 A 0 A_JumpIfInventory("KarClip",1,1)
 Goto NOAMMO
 TNT1 AAAA 0
 TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Fire2NORELOAD")
-TNT1 A 0 A_StartSound("PPSH41",19)
-Z0SH B 1 BRIGHT A_AlertMonsters
+TNT1 A 0 A_StartSound("FG42F",17)
+FG42 B 1 BRIGHT A_AlertMonsters
 TNT1 A 0 BW_GunSmoke //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-//TNT1 A 0 A_FireBullets (5, 4, -1, 20, "2MP40Puff")
-TNT1 A 0 CustomFireFunction(5,4,-1,20,"2MP40Puff","DoubleMP40")
-TNT1 A 0 A_TakeInventory("PPSHReserve",1)
-TNT1 A 0 A_SetPitch(pitch - 0.4)
-//TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
-TNT1 A 0 BW_Quake(1,5)
+//TNT1 A 0 A_FireBullets (4,2, 1, 40, "STG44Puff",FBF_NORANDOM)//E' finito il tempo delle mele,puttana!
+TNT1 A 0 CustomFireFunction(4,2,1,40,"STG44Puff","STG44Damage")
+TNT1 A 0 A_TakeInventory("KarClip",1)
+TNT1 A 0 A_SetPitch(pitch - 0.8)
+TNT1 A 0 BW_Quake(2,5) //A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-Z0SH C 1
-Z0SH E 1 
-AKFF C 0 A_FireCustomMissile("thompsoncasespawn",5,0,8,-9)
+FG42 CD 1 
+AKFF C 0 A_FireCustomMissile("mausercasespawn",5,0,8,-9)
 TNT1 A 0 A_Refire
 Goto RealReady
 
-Fire2NORELOAD:
-TNT1 A 0 A_JumpIfInventory("PPSHReserve",1,1)
+Fire2noreload:
+TNT1 A 0 A_JumpIfInventory("KarClip",1,1)
 Goto NOAMMO
 TNT1 AAAA 0
-TNT1 A 0 A_StartSound("PPSH41",19)
-PPS2 B 1 BRIGHT A_AlertMonsters
+TNT1 A 0 A_StartSound("FG42F",17)
+2G42 B 1 BRIGHT A_AlertMonsters
 TNT1 A 0 BW_GunSmoke //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-//TNT1 A 0 A_FireBullets (2, 2, -1, 20, "2MP40Puff")
-TNT1 A 0 CustomFireFunction(2,2,-1,20,"2MP40Puff","DoubleMP40")
-TNT1 A 0 A_TakeInventory("PPSHReserve",1)
+//TNT1 A 0 A_FireBullets (2, 1, 1, 40, "STG44Puff",FBF_NORANDOM)//E' finito il tempo delle mele,puttana!
+TNT1 A 0 CustomFireFunction(2,1,1,40,"STG44Puff","STG44Damage")
+TNT1 A 0 A_TakeInventory("KarClip",1)
 TNT1 A 0 A_SetPitch(pitch - 0.2)
-//TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
-TNT1 A 0 BW_Quake(1,5)
+TNT1 A 0 BW_Quake(2,5) //A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-PPS2 C 1 
-PPS2 E 1 
-AKFF C 0 A_FireCustomMissile("thompsoncasespawn",5,0,8,-9)
+2G42 CD 1 
+AKFF C 0 A_FireCustomMissile("mausercasespawn",5,0,8,-9)
 TNT1 A 0 A_Refire
 Goto Ready2
 
 Fire2:
-TNT1 A 0 A_JumpIfInventory("PPSHAmmo",1,1)
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",1,1)
 Goto Reload
 TNT1 AAAA 0
-TNT1 A 0 A_StartSound("PPSH41",19)
-PPS2 B 1 BRIGHT A_AlertMonsters
+TNT1 A 0 A_StartSound("FG42F",17)
+2G42 B 1 BRIGHT A_AlertMonsters
 TNT1 A 0 BW_GunSmoke //A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-//TNT1 A 0 A_FireBullets (2, 2, -1, 20, "2MP40Puff")
-TNT1 A 0 CustomFireFunction(2,2,-1,20,"2MP40Puff","DoubleMP40")
-TNT1 A 0 A_TakeInventory("PPSHAmmo",1)
-TNT1 A 0 A_GiveInventory("PPSHMAGCount",1)
+TNT1 A 0 CustomFireFunction(2,1,1,40,"STG44Puff","STG44Damage")
+//TNT1 A 0 A_FireBullets (2, 1, 1, 40, "STG44Puff",FBF_NORANDOM)//E' finito il tempo delle mele,puttana!
+TNT1 A 0 A_GiveInventory("FG42MAGCOUNT",1)
+TNT1 A 0 A_TakeInventory("FG42AMMO",1)
 TNT1 A 0 A_SetPitch(pitch - 0.2)
-//TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
-TNT1 A 0 BW_Quake(1,5)
+TNT1 A 0 BW_Quake(2,5) //A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
-PPS2 C 1 
-PPS2 E 1 
-AKFF C 0 A_FireCustomMissile("thompsoncasespawn",5,0,8,-9)
+2G42 CD 1 
+AKFF C 0 A_FireCustomMissile("mausercasespawn",5,0,8,-9)
 TNT1 A 0 A_Refire
 Goto Ready2
 
@@ -178,101 +167,86 @@ TNT1 A 0 A_Giveinventory("Zoomed",1)
 TNT1 A 0 A_Giveinventory("GoSpecial",1)
 TNT1 A 0 A_ZoomFactor(2.3)
 TNT1 A 0 A_Giveinventory("ADSmode",1)
-PPSX ABCD 1 
+IS42 ABCD 1 
 Goto Ready2
 
 UnZoom:
 TNT1 A 0 A_Takeinventory("Zoomed",1)
 TNT1 A 0 A_ZoomFactor(1.0)
 TNT1 A 0 A_Takeinventory("ADSmode",1)
-PPSX DCBA 1 
+IS42 DCBA 1 
 Goto RealReady
 
 Reload:
-TNT1 A 0 A_JumpIfInventory("PPSHAmmo",1,"Reload2")
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",1,"Reload2")
 TNT1 A 0 A_ZoomFactor(1.0)
 TNT1 A 0 A_Takeinventory("Reloading",1)
 TNT1 A 0 A_Takeinventory("ADSmode",1)
 TNT1 A 0 A_Takeinventory("Zoomed",1)
-TNT1 A 0 A_JumpIfInventory("PPSHAmmo",71,"InsertBullets")
-TNT1 A 0 A_JumpIfInventory("PPSHReserve",1,3)
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",20,"InsertBullets")
+TNT1 A 0 A_JumpIfInventory("KARClip",1,3)
 Goto NoAmmo
 TNT1 AAA 0
+//////
+3G42 ABC 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
+//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
+//////
 //TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR ABCDEFGH 1  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+FG42 EFG 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR H 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+TNT1 a 0 a_playsound("FG42R1")
+1G42 AABBCCDDEEFFGGHH 1 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPR2 A 2   BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+tnt1 a 0 A_FireCustomMissile("MP44EmptyClip",-5,0,8,-4)
+TNT1 A 0 A_TakeInventory("FG42MAGCOUNT",20)
+FG42 LLL 4 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-TNT1 A 0 A_PlaySound("PPSH41/Out")
-PPR2 BCD 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+FG42 KJIH 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPR2 EFGH 2 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+TNT1 a 0 a_playsound("FG42R2")
+FG42 GFE 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-tnt1 a 0 A_FireCustomMissile("PPSHEmptyClip",-5,0,8,-4)
-TNT1 A 0 A_TakeInventory("PPSHMAGCount",71)
-PPSR NNN 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+3G42 C 2 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR MLK 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")PPSR JI 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+FG42 MMN 3  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-TNT1 A 0 A_PlaySound("PPSH41/In")
-PPSR HH 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+TNT1 A 0 A_PlayWeaponSound("FG42R3")
+FG42 OONM 3 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR GFE 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR D 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPR3 A 3  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPR3 B 3  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-TNT1 A 0 A_PlaySound("PPSH41/Pull")
-PPR3 CDE 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR CBA 1  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+3G42 CBA 2 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
 
 InsertBullets:
 TNT1 AAAA 0
-TNT1 A 0 A_JumpIfInventory("PPSHAmmo",71,"RealReady")
-TNT1 A 0 A_JumpIfInventory("PPSHReserve",1,"AmmoIn")
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",20,"RealReady")
+TNT1 A 0 A_JumpIfInventory("KARClip",1,"AmmoIn")
 Goto RealReady
 
 AmmoIn:
-TNT1 A 0 A_Giveinventory("PPSHAmmo",1)
-TNT1 A 0 A_Takeinventory("PPSHReserve",1)
+TNT1 A 0 A_Giveinventory("FG42AMMO",1)
+TNT1 A 0 A_Takeinventory("KARClip",1)
 Goto InsertBullets
 
 Reload2:
@@ -280,83 +254,84 @@ TNT1 A 0 A_ZoomFactor(1.0)
 TNT1 A 0 A_Takeinventory("Reloading",1)
 TNT1 A 0 A_Takeinventory("ADSmode",1)
 TNT1 A 0 A_Takeinventory("Zoomed",1)
-TNT1 A 0 A_JumpIfInventory("PPSHAmmo",71,"InsertBullets")
-TNT1 A 0 A_JumpIfInventory("PPSHReserve",1,3)
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",20,"InsertBullets")
+TNT1 A 0 A_JumpIfInventory("KARClip",1,3)
 Goto NoAmmo
-TNT1 AAA 0 
+TNT1 AAA 0
+3G42 ABC 2 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
+//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
 //TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR ABCDEFGH 1  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+FG42 EFG 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR HI 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+TNT1 a 0 a_playsound("FG42R1")
+FG42 HIJK 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-TNT1 A 0 A_PlaySound("PPSH41/Out")
-PPSR JK 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR LM 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-tnt1 a 0 a_JumpIfInventory("PPSHMAGCount",71,"Releasemag")
+TNT1 A 0 A_JumpIfInventory("FG42MAGCOUNT",20,"ReleaseMag")
 Goto ContinueReload
 
 ReleaseMag:
-tnt1 a 0 A_FireCustomMissile("PPSHEmptyClip",-5,0,8,-4)
-TNT1 A 0 A_TakeInventory("PPSHMAGCount",71)
+TNT1 A 0 A_TakeInventory("FG42MAGCOUNT",20)
+tnt1 a 0 A_FireCustomMissile("MP44EmptyClip",-5,0,8,-4)
 
 ContinueReload:
-PPSR NNNN 3  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+FG42 LLL 4 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR MLK 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+FG42 KJIH 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR JI 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+TNT1 a 0 a_playsound("FG42R2")
+FG42 GFE 2  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-TNT1 A 0 A_PlaySound("PPSH41/In")
-PPSR HHH 3  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
+3G42 CBA 2 BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
 //TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
 //TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
 PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-PPSR HGFEDCBA 1  BW_WeaponReady (WRF_NOBOB|WRF_NOFIRE)
-//TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")//TNT1 A 0 A_JumpIfInventory("BWgrenade",1,"LaunchGrenade")
-//TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
-PISG A 0 //A_JumpIfInventory("Kicking",1,"DoKick")
-Goto InsertBullets 
+
+InsertBullets2:
+TNT1 AAAA 0
+TNT1 A 0 A_JumpIfInventory("FG42AMMO",20,"RealReady")
+TNT1 A 0 A_JumpIfInventory("KARClip",1,"AmmoIn2")
+Goto RealReady
+
+AmmoIn2:
+TNT1 A 0 A_Giveinventory("FG42AMMO",1)
+TNT1 A 0 A_Takeinventory("KARClip",1)
+Goto InsertBullets2
 
 Spawn:
-PPSZ A -1
+PK42 A -1
 Stop
 
 }
 }
 
 
-ACTOR PPSHAmmo : Ammo
+ACTOR FG42AMMO : Ammo
 {
    Inventory.Amount 0
-   Inventory.MaxAmount 71
+   Inventory.MaxAmount 20
    Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 71
+   Ammo.BackpackMaxAmount 20
 }
 
-ACTOR PPSHMAGCount : Ammo
+ACTOR FG42MAGCOUNT : Ammo
 {
    Inventory.Amount 0
-   Inventory.MaxAmount 71
+   Inventory.MaxAmount 20
    Ammo.BackpackAmount 0
-   Ammo.BackpackMaxAmount 71
+   Ammo.BackpackMaxAmount 20
 }
-
 

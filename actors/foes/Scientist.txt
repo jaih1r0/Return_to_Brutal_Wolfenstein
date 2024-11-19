@@ -1128,7 +1128,7 @@ Actor toxicsmoke
 {
 Radius 20
 Height 30
-RenderStyle Translucent
+RenderStyle add//Translucent
 Speed 0
 +NOBLOCKMAP
 +NOTELEPORT
@@ -1139,6 +1139,7 @@ Speed 0
 +CLIENTSIDEONLY
 DamageType "ToxicOnlyforBJ"
 Damage 4
++bright
 +NOINTERACTION
 States
 	{

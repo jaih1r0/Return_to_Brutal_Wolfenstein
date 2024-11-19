@@ -11,7 +11,53 @@ Class BaseBWWeapon : DoomWeapon
 		Weapon.BobRangeY 0.2;
 		Weapon.BobSpeed 2.0;
 		Weapon.BobStyle "InverseSmooth"; //"Smooth";//"InverseAlpha";
+		+dontgib;
 	}
+
+	enum BWWR_Flags {
+		BWWF_NoAxe		= 1<<26,
+		BWWF_NoGrenade 	= 1<<27,
+		BWWF_NoKick 	= 1<<28,
+		BWWF_NoSlide 	= 1<<28,
+		BWWF_NoTaunt 	= 1<<29,
+	};
+	
+	Action State BW_WeaponReady(int BWRflags = 0)
+	{
+		if(findinventory("SlideExecute") && !(BWRflags & BWWF_NoSlide))
+		{
+			A_setinventory("SlideExecute",0);
+			return resolvestate("SlideAttack");
+		}
+		if(findinventory("Kicking") && !(BWRflags & BWWF_NoKick))
+		{
+			A_setinventory("Kicking",0);
+			return resolvestate("DoKick");
+		}
+		if(findinventory("Taunting") && !(BWRflags & BWWF_NoTaunt))
+		{
+			A_setinventory("Taunting",0);
+			return resolvestate("Taunt");
+		}
+		if(findinventory("BWgrenade") && !(BWRflags & BWWF_NoGrenade))
+		{
+			A_setinventory("BWgrenade",0);
+			return resolvestate("LaunchGrenade");
+		}
+		if(findinventory("Meleeattack") && !(BWRflags & BWWF_NoAxe))
+		{
+			A_setinventory("Meleeattack",0);
+			return resolvestate("KnifeAttack");
+		}
+		if(findinventory("Reloading"))// && !(BWRflags & WRF_ALLOWRELOAD))
+		{
+			A_setinventory("Reloading",0);
+			return resolvestate("Reload");
+		}
+		A_Weaponready(BWRflags);
+		return resolvestate(null);
+	}
+	
 	action void KickDoors(int dist = 70)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
@@ -21,9 +67,41 @@ Class BaseBWWeapon : DoomWeapon
 			t.hitline.Activate(player.mo,t.lineside,SPAC_USE);
 	}
 	
+	const SlideSpeed = 17;
+	
+	action void BW_SlideThrust(double force = 2)
+	{
+		let pl = BWPlayer(player.mo);
+		velfromangle(force,pl.slideAngle);
+	}
+	
+	action void BW_SlideDirSet(bool reset = false)
+	{
+		let pl = BWPlayer(player.mo);
+		if(reset)
+			pl.slideAngle = 0.0;
+		else
+			pl.slideAngle = Angle - VectorAngle(player.cmd.forwardmove, player.cmd.sidemove);
+	}
+	
 	action void BW_Quake(double qstr = 1,int duration = 5,double rol = 1)
 	{
 		A_QuakeEx(qstr,0,0,duration,0,60,"",QF_RELATIVE|QF_SCALEDOWN,1.0,1,1.0,0,0,rol / 2,1);
+	}
+	
+	Action void BW_GunSmoke(double xyofs = 0, double spawnheight = 0, double addangle = 0,string type = "BW_GunSmoke")
+	{
+		if(type)
+		{
+			FTranslatedLineTarget t;
+			vector2 ofs = angletovector(angle,xyofs);
+			double shootangle = self.angle + addangle;
+			Actor misl, realmisl;
+			[misl, realmisl] = SpawnPlayerMissile(type, shootangle, ofs.X, ofs.Y, spawnheight, t, false, 1);
+			if(realmisl)
+				realmisl.vel += vel;
+			
+		}
 	}
 	
 	override void DoEffect()
@@ -407,6 +485,7 @@ class BW_impactpuff : actor
 			case 'PurpleWater': SpawnImpact_water(tp);	break;
 			case 'Blood': SpawnImpact_water(tp);	break;
 			case 'Flesh': SpawnImpact_water(tp);	break;
+			case 'Lava': SpawnImpact_water(tp);	break;
 			case 'Sky':	break;
 		}
 	}
@@ -428,9 +507,11 @@ class BW_impactpuff : actor
 				case 'Electric':
 				case 'Metal':	typ = "Impact_Metal";	break;
 				case 'Wood':	typ = "Impact_Wood";		break;
+				case 'Blood':
 				case 'Water':	
 				case 'Slime':	
 				case 'PurpleWater': 
+				case 'Lava':
 				case 'Sky':	typ = "noDec";	break;
 			}
 			if(typ == "noDec")
@@ -453,6 +534,8 @@ class BW_impactpuff : actor
 				case 'Electric':
 				case 'Metal':	typ = "FlatDecal_Metal";	break;
 				case 'Wood':	typ = "FlatDecal_Wood";		break;
+				case 'Blood':
+				case 'Lava':
 				case 'Water':	
 				case 'Slime':	
 				case 'PurpleWater': 

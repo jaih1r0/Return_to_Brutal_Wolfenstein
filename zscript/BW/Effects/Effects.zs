@@ -23,26 +23,26 @@ Class GraySmoke : BWFxBase
 		Spawn:
 			TNT1 A 0 nodelay A_jump(256,"Smk1","Smk2");
 		Smk1:
-			X102 ABCDEFGHIJ 1 dosmokeroll();
+			//X102 ABCDEFGHIJ 1 dosmokeroll();
 			//SMK3 ABCDEFGHIJKLM 1 dosmokeroll();
-			//SM7C AAAAAAAAAA 1 dosmokeroll();
+			SM7C AAAAAAAAAA 1 dosmokeroll();
 			stop;
 		Smk2:
-			X102 KLMNOPQRSTUV 1 dosmokeroll();
+			//X102 KLMNOPQRSTUV 1 dosmokeroll();
 			//SMK3 ABCDEFGHIJKLM 1 dosmokeroll();
-			//SM7C CCCCCCCCC 1 dosmokeroll();
+			SM7C CCCCCCCCC 1 dosmokeroll();
 			stop;
 	}
 	uint rolldir;
 	void dosmokeroll()
 	{
-		A_setroll(rolldir);
+		A_setroll(roll + rolldir);
 		A_Fadeout(frandom(0.08,0.15));
-		A_setscale(scale.x + frandom(0.007,0.05));
+		A_setscale(scale.x + frandom(0.01,0.05));
 	}
 	override void beginplay()
 	{
-		rolldir = random(15,75);
+		rolldir = random(15,30);
 		A_setroll(random(0,360));
 		super.beginplay();
 	}
@@ -135,12 +135,15 @@ class BW_LavaSplash : BW_Splash
 {
 	default
 	{
-		
+		scale 0.3;
+		renderstyle "Add";
+		+bright;
 	}
 	states
 	{	
 		Spawn:
-			LVAS GGHIJK 1 {vel.z -= 0.5; }
+			FRPR ABCDEFG 1 {vel.z -= 0.5; }
+			//LVAS GHIJK 1 {vel.z -= 0.5; }
 			stop;
 	}
 }
@@ -227,6 +230,48 @@ Class FlatDecal_Wood : FlatDecal
 
 
 
+//
+//	gun smoke
+//
+
+Class BW_GunSmoke : BWFxBase
+{
+	default
+	{
+		renderstyle "Translucent";
+		+missile;
+		speed 12;
+		alpha 0.3;
+		scale 0.02;
+		+rollsprite;
+	}
+	states
+	{
+		Spawn:
+			SM7C A 1 dosmokeroll();
+			SM7C AAAAAAAA 1 {
+				dosmokeroll();
+			}
+			stop;
+	}
+	
+	uint rolldir;
+	double accfac;
+	void dosmokeroll()
+	{
+		A_setroll(roll + rolldir);
+		A_Fadeout(frandom(0.025,0.05));
+		A_setscale(scale.x + frandom(0.025,0.05));
+		vel -= vel*accfac;
+	}
+	override void beginplay()
+	{
+		rolldir = random(15,35);
+		accfac = frandom(0.1,0.15);
+		A_setroll(random(0,360));
+		super.beginplay();
+	}
+}
 
 
 

@@ -1,7 +1,7 @@
 Model GiantBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bigbloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7
@@ -11,7 +11,7 @@ Model GiantBloodSpot      // Name of actor in DECORATE
 Model PurpleGiantBloodSpot     // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bigbloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7
@@ -21,7 +21,7 @@ Model PurpleGiantBloodSpot     // Name of actor in DECORATE
 Model BigBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bigbloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7
@@ -31,7 +31,7 @@ Model BigBloodSpot      // Name of actor in DECORATE
 Model NashGore_BloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodstains.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 70.0 70.0 70.0            // Scale values
    ZOffset 0.7
@@ -41,7 +41,7 @@ Model NashGore_BloodSpot      // Name of actor in DECORATE
 Model PurpleBloodspot     // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodstains.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 70.0 70.0 70.0            // Scale values
    ZOffset 0.7
@@ -52,7 +52,7 @@ Model PurpleBloodspot     // Name of actor in DECORATE
 Model MinuscleBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 30.0 30.0 30.0            // Scale values
    ZOffset 0.7
@@ -62,7 +62,7 @@ Model MinuscleBloodSpot      // Name of actor in DECORATE
 Model PurpleMinuscleBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 30.0 30.0 30.0            // Scale values
    ZOffset 0.7
@@ -72,7 +72,7 @@ Model PurpleMinuscleBloodSpot      // Name of actor in DECORATE
 Model MinuscleBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 30.0 30.0 30.0            // Scale values
    ZOffset 0.7
@@ -82,7 +82,7 @@ Model MinuscleBloodSpot      // Name of actor in DECORATE
 Model PurpleMinuscleBloodSpot       // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 30.0 30.0 30.0            // Scale values
    ZOffset 0.7
@@ -93,7 +93,7 @@ Model PurpleMinuscleBloodSpot       // Name of actor in DECORATE
 Model NashGore_FlyingBlood      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 50.0 50.0 50.0            // Scale values
    ZOffset 0.7
@@ -105,7 +105,7 @@ Model NashGore_FlyingBlood      // Name of actor in DECORATE
 Model PurpleFlyingBlood     // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 50.0 50.0 50.0            // Scale values
    ZOffset 0.7
@@ -116,7 +116,7 @@ Model PurpleFlyingBlood     // Name of actor in DECORATE
 Model NashGore_BloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    //Skin 0 "bloodstains.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 76.0 76.0 76.0            // Scale values
    ZOffset 0.7
@@ -126,7 +126,7 @@ Model NashGore_BloodSpot      // Name of actor in DECORATE
 Model PurpleBloodspot     // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodstains.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 70.0 70.0 70.0            // Scale values
    ZOffset 0.7
@@ -136,7 +136,7 @@ Model PurpleBloodspot     // Name of actor in DECORATE
 Model NashGore_FlyingBlood      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 46.0 46.0 46.0            // Scale values
    ZOffset 0.7
@@ -146,7 +146,7 @@ Model NashGore_FlyingBlood      // Name of actor in DECORATE
 Model PurpleFlyingBlood     // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 50.0 50.0 50.0            // Scale values
    ZOffset 0.7
@@ -199,7 +199,7 @@ Model PurpleCeilBloodSpot     // Name of actor in DECORATE
 Model MediumBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7
@@ -209,7 +209,7 @@ Model MediumBloodSpot      // Name of actor in DECORATE
 Model PurpleMediumBloodSpot      // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7
@@ -220,7 +220,7 @@ Model PurpleMediumBloodSpot      // Name of actor in DECORATE
 Model PoolofBlood     // Name of actor in DECORATE
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7
@@ -230,7 +230,7 @@ Model PoolofBlood     // Name of actor in DECORATE
 Model BoneswithBlood
 {
    Path "models/bloodspot"    // Path to model in PK3
-   Model 0 "bloodspot.md3"    // Model index, model file
+   //Model 0 "bloodspot.md3"    // Model index, model file
    Skin 0 "bloodpool2.png"     // Model index, texture (can be in any format supported by GZDoom)
    Scale 80.0 80.0 80.0            // Scale values
    ZOffset 0.7

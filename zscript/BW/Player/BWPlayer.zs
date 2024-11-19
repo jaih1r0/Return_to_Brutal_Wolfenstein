@@ -1,6 +1,6 @@
 Class BWPlayer : PlayerPawn
 {
-	double StillRangeMulti;
+	double StillRangeMulti, slideAngle;
 	
 	override void tick()
 	{

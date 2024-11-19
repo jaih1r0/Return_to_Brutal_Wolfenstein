@@ -27,6 +27,7 @@ $random bullet_electric { beimp_1 beimp_2 beimp_3 bimp_1 }
 $random bullet_water { bimp_9 }
 $random bullet_metal { bimp_4 bimp_5 bimp_6 }
 $random bullet_crystal { bimp_12 bimp_1 }
+$random bullet_flesh { bimp_1 }
 
 //===========================================================================
 //

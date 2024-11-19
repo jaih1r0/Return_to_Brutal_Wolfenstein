@@ -141,7 +141,7 @@ GibHealth 10000
 Radius 7
 Height 18
 DamageType head
-BloodType "Brutal_Blood"
+BloodType "Blood"
 PainChance 255
 +NOGRAVITY
 +SHOOTABLE

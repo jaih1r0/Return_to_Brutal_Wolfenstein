@@ -183,7 +183,7 @@ Class BW_StaticHandler : StaticEventHandler
 		{
 			self.MaterialTypes.push("Lava");
 			self.MaterialStep.push("step/lava");
-			self.MaterialImpactSnd.push("bullet_water");
+			self.MaterialImpactSnd.push("world/lavasizzle");
 			self.MaterialTextures.push(self.LavaDef[i]);
 		}
 		
@@ -192,7 +192,7 @@ Class BW_StaticHandler : StaticEventHandler
 		{
 			self.MaterialTypes.push("Flesh");
 			self.MaterialStep.push("step/slimy");
-			self.MaterialImpactSnd.push("bullet_water");
+			self.MaterialImpactSnd.push("bullet_flesh");
 			self.MaterialTextures.push(self.FleshDef[i]);
 		}
 		
@@ -245,15 +245,24 @@ Class BW_StaticHandler : StaticEventHandler
 		"EP5T296","EP5T1128","EP5T2128","CEIL3_5","BRICK6","BRICK7","CFTX1128","CFTX164",
 		"CFTX264","EP6T196","CAZS3","BRICK11","CFTX196","CFTX364","CFTX1328","CFTX396",
 		"CFTX2428","CFTX2128","BWWALL27","CFTX464","CFTX364","SATANA","PANBLUE","ROCKRED1",
-		"REDWALL","FLAT1_1","RROCK12"
+		"REDWALL","FLAT1_1","RROCK12","BWSOD27","BWSOD26","BWSOD29","BWSOD38","BWSOD67","BWSOD76",
+		"BWSOD70","BWSOD73","BWSOD67","BWSOD68","BWSOD71","BWSOD74","BWSOD80","BRONZE3","MIDBRONZ",
+		"BWSOD75","BWSOD79","BWSOD44","BWSOD48","BWSOD41","BWSOD36","BWSOD46","SODVTALL",
+		"BWSOD81","BWSOD84","BWSOD87","BWSOD82","BWSOD91","BWSOD89","BWSOD92","BWSOD85","BWSOD94",
+		"BWSOD93","BWSOD67","BWSOD96","BWSOD95","E2M8A3","LAB5","E2M8A1","BWSOD97","BWSO100",
+		"BWSOD98","BWSOD88","RROCK13","BWFLOOR10","BWSOD99","LAB6","BWSOD45","BWSOD83","BWSO115",
+		"BWSO111","BWSO119","BWSO117","BWSO118","BRICK8","BWSO136","BWSO133","BWSO108","BWSO116",
+		"BWSO120","BWSO121","BWSO122","BWSOD77","BWSO131","BWSO132","PANEL7","SLIME13","RROCK20",
+		"RROCK15","BWSO129","BWSO134","BWSO135","BWSO106","BWSO114","BWSO110","BWSOD31","BWSO130"
 	};
 	
 	static const string MarbleDef[] = {
 		"DEM1_4","CEIL3_6","GRNLITE1","BWFLOOR18","FLAT1_3","BWWALL22","BWWALL23","FLAT5",
-		"BWFLOR18","FLAT9","FLAT23","FLAT4","FLOOR5_2","BW126_6","BW126_7","BW126_8",
+		"BWFLOR18","FLAT9","FLAT23","FLAT4","FLOOR5_2","BW126_6","BW126_7","BW126_8","GATE1",
 		"FLAT20","CEIL3_4","CEIL3_2","TLITE6_1","SFLR7_4","CEIL3_1","CEIL3_3","F9","TLITE6_4",
-		"LABFLA1","FLOOR4_1","DEM1_6","DEM1_5","BWFLOOR6","W8","FLAT17","CEIL4_1",
-		"FLOOR0_1","FLOOR1_7","BWFLOR17","BWFLOR15"	//fancy blue 
+		"LABFLA1","FLOOR4_1","DEM1_6","DEM1_5","BWFLOOR6","W8","FLAT17","CEIL4_1","FLOOR7_2",
+		"FLOOR0_1","FLOOR1_7","BWFLOR17","BWFLOR15","FLOOR5_3",	//fancy blue 
+		"SODRFL","FLOOR4_8"
 	};
 	
 	static const string WoodDef[] = {
@@ -264,14 +273,16 @@ Class BW_StaticHandler : StaticEventHandler
 		"BWSO104","B126_11","CEIL1_3","BWBIGDOR","BWBIGDO1","B126_12","BWFLOOR5",
 		"EP2VO6","EP2VO7","B126_10","BWFLOR16","BWFLOR12","BWLIB3","F14","BWFLOR19",
 		"W6","BW126_13","EP5F51","EP5F52","EP6TX196","EP6T196","EP6T296","EP5F53",
-		"EP2VO4","B126_13","W9","BIGBRIK1"
+		"EP2VO4","B126_13","W9","BIGBRIK1","BWLIB1","SODDOR"
 	};
 	
 	static const string MetalDef[] = {
 		"WOOD6","WOOD7","WOOD8","WOOD9",	//huh? why?
 		"SFLR6_4","FLOOR0_3","SW2SKULL","SFLR7_1","DOORTRAK",
 		"STUCCO","STUCCO1","STUCCO2","STUCCO3","BWLCDR","BLKDOOR","REDDOOR",
-		"MIDBARS3","MIDGRATE","METAL","CEMENT8","TANROCK3","BSTONE3","ASHWALL3"
+		"MIDBARS3","MIDGRATE","METAL","CEMENT8","TANROCK3","BSTONE3","ASHWALL3",
+		"BWWALL15","BWMOB6","SLIME14","SW1SKULL","SOD2","BWSO123","BWSO125","BWSO126",
+		"BWSO127","BWSO128","SOD1","SLIME15","STEP5"
 	};
 	
 	static const string CarpetDef[] = {
@@ -280,13 +291,13 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string PurpleStoneDef[] = {
-		"GAY1","GAY3","GAY4","GAY5","GAY6","GAY8"
+		"GAY1","GAY3","GAY4","GAY5","GAY6","GAY8","BWSOD3"
 	};
 	
 	static const string DirtDef[] = {
 		"FLOOR0_6","FLAT10","RROCK18","MFLR8_2","RROCK03","RROCK16",
 		"GRASS1","GRASS2","RROCK19",	//actually grass
-		"BROWNHUG"
+		"BROWNHUG","BWSOD19","BWFLOOR8"
 	};
 	
 	static const string GravelDef[] = {
@@ -298,7 +309,7 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string SlimeDef[] = {
-		"SLIME01","SLIME05"
+		"SLIME01","SLIME05","Nukage1"
 	};
 	
 	static const string PurpleLiqDef[] = {
@@ -326,7 +337,7 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string CrystalDef[] = {
-		"BWINDO2","BWMIRR2"
+		"BWINDO2","BWMIRR2","BWMIRROR"
 	};
 	
 }

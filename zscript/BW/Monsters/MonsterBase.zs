@@ -85,7 +85,7 @@ Class BW_MonsterBase : Actor
 			{
 				//hitinfo = hitinfo.." at \cdBody\c-";
 				if(LastHit != 'RightArm' && LastHit != "LeftArm" && LastHit != "Back")
-					LastHit = 'Body';
+					LastHit = 'Chest';
 			}
 			//hitinfo = hitinfo.." (angle: \cb"..aa.."\c-) damage dealt:	\cg"..damage.."\c-.";
 			
@@ -121,6 +121,8 @@ Class BW_MonsterBase : Actor
 	
 	Void PlayFootsteps()
 	{
+		if(health < 1)
+			return;
 		sound snd = BW_StaticHandler.getmaterialstep(texman.getname(floorpic));
 		A_Startsound(snd,CHAN_AUTO);
 		// 
@@ -129,6 +131,51 @@ Class BW_MonsterBase : Actor
 	name GetHitZone()
 	{
 		return LastHit;
+	}
+	
+	bool HitHead()
+	{
+		return (GetHitZone() == 'Head');
+	}
+	
+	bool HitChest()
+	{
+		return (GetHitZone() == 'Chest');
+	}
+	
+	bool HitBack()
+	{
+		return (GetHitZone() == 'Back');
+	}
+	
+	bool HitRightArm()
+	{
+		return (GetHitZone() == 'RightArm');
+	}
+	
+	bool HitLefttArm()
+	{
+		return (GetHitZone() == 'LeftArm');
+	}
+	
+	bool HitRightFoot()
+	{
+		return (GetHitZone() == 'RightFoot');
+	}
+	
+	bool HitLeftFoot()
+	{
+		return (GetHitZone() == 'LeftFoot');
+	}
+	
+	bool HitArms()
+	{
+		return (HitRightArm() || HitLefttArm());
+	}
+	
+	bool HitFeet()
+	{
+		return (HitRightFoot() || HitLeftFoot());
 	}
 	
 }
