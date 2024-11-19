@@ -193,7 +193,7 @@ Goto Fire3
 TNT1 A 0 A_JumpIfInventory("LUGER2AmmoAlt",1,2)
 Goto Reload
 TNT1 AAAA 0
-TNT1 A 0 A_PlaySound("weapons/luger2")
+TNT1 A 0 A_StartSound("weapons/luger2",18)
 TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
 2LGG B 1 BRIGHT CustomFireFunction (2, 2, -1, 25, "PistolPuff","ApistolaDamage")
@@ -220,7 +220,7 @@ TNT1 A 0 A_JumpIfInventory("Zoomed",1,"Fire2NORELOAD")
 TNT1 A 0 A_JumpIfInventory("WolfClip",2,2)
 Goto NOAMMO
 TNT1 AAAA 0
-TNT1 A 0 A_PlaySound("weapons/luger2")
+TNT1 A 0 A_StartSound("weapons/luger2",18)
 TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
 2LGG B 1 BRIGHT CustomFireFunction (2, 2, -1, 25, "PistolPuff","ApistolaDamage")
@@ -239,7 +239,7 @@ Fire2NORELOAD:
 TNT1 A 0 A_JumpIfInventory("WOLFCLIP",2,2)
 Goto NOAMMO
 TNT1 AAAA 0
-TNT1 A 0 A_PlaySound("weapons/luger2")
+TNT1 A 0 A_StartSound("weapons/luger2",18)
 TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
 ZL22 B 1 BRIGHT CustomFireFunction (0, 0, -1, 25, "PistolPuff","ApistolaDamage")
@@ -330,7 +330,7 @@ Goto Unzoom
 TNT1 A 0 A_JumpIfInventory("LUGER2AmmoAlt",1,2)
 Goto Reload
 TNT1 AAAA 0
-TNT1 A 0 A_PlaySound("weapons/luger2")
+TNT1 A 0 A_StartSound("weapons/luger2",18)
 TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
 TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",0,0,0,0)
 ZL22 B 1 BRIGHT CustomFireFunction (0, 0, -1, 25, "PistolPuff","ApistolaDamage")

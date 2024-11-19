@@ -160,14 +160,14 @@ Class BaseBWWeapon : DoomWeapon
 				string tx = texman.getname(t.HitTexture);
 				name mathit = BW_StaticHandler.getmaterialname(tx);
 	
-				string infomsg = "Fuck";
+				/*string infomsg = "Fuck";
 				if(mathit != 'null')
 					infomsg = "\cd"..mathit.." \c-(\ck"..tx.."\c-)";
 				else
 					infomsg = "\ca"..mathit.." \c-(\ck"..tx.."\c-)";
 				
-				console.printf(infomsg);
-				//console.printf("tx_: "..tx..", mt: "..mathit);
+				console.printf(infomsg);*/
+				
 				if(mathit != 'null')
 				{
 					vector3 hitx = t.hitlocation - t.hitdir - t.hitdir;
@@ -217,6 +217,7 @@ Class BaseBWWeapon : DoomWeapon
 				{
 					if(!tx)
 						continue;
+					console.printf("[\caBW Materials\c-]: texture \cd"..tx.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..t.hitlocation.."\c-");
 					let pf = spawn(puff,t.hitlocation - t.hitdir,ALLOW_REPLACE);
 					if(pf)
 						pf.A_Spraydecal("BulletChip",30,(0,0,0),t.HitDir);
@@ -335,14 +336,14 @@ Class BaseBWWeapon : DoomWeapon
 					string tx = texman.getname(tr.htx);
 					name mathit = BW_StaticHandler.getmaterialname(tx);
 		
-					string infomsg = "Fuck";
+					/*string infomsg = "Fuck";
 					if(mathit != 'null')
 						infomsg = "\cd"..mathit.." \c-(\ck"..tx.."\c-)";
 					else
 						infomsg = "\ca"..mathit.." \c-(\ck"..tx.."\c-)";
 					
-					console.printf(infomsg);
-					//console.printf("tx_: "..tx..", mt: "..mathit);
+					console.printf(infomsg);*/
+					
 					if(mathit != 'null')
 					{
 						vector3 hitx = tr.endpos - tr.dirh - tr.dirh;
@@ -390,6 +391,7 @@ Class BaseBWWeapon : DoomWeapon
 					{
 						if(!tx)
 							continue;
+						console.printf("[\caBW Materials\c-]: texture \cd"..tx.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..tr.endpos.."\c-");
 						let pf = spawn(puff,tr.endpos - tr.dirh,ALLOW_REPLACE);
 						if(pf)
 							pf.A_Spraydecal("BulletChip",30,(0,0,0),tr.dirh);
