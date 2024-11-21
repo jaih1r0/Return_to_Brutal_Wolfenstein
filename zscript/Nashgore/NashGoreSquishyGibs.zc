@@ -62,7 +62,7 @@ class NashGoreSquishyGibs : RealGibs
 		+FORCEYBILLBOARD
 	}
 
-	const SPRITE_HEIGHT = 49;
+	const SPRITE_HEIGHT = 80;//49;
 
 	//===========================================================================
 	//

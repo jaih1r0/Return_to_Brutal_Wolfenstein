@@ -57,6 +57,11 @@ Class BaseBWWeapon : DoomWeapon
 		A_Weaponready(BWRflags);
 		return resolvestate(null);
 	}
+
+	action void BW_WeaponRaise()
+	{
+		A_weaponoffset(0,32);
+	}
 	
 	action void KickDoors(int dist = 70)
 	{

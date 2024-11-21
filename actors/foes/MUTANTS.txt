@@ -1,7 +1,7 @@
 Actor PurpleMessBase
 {
 //BloodType "ZioPurpleBlood"
-bloodcolor "purple"
+bloodcolor "FF00FF" //Purple
 Radius 24
 Height 14
 +SHOOTABLE
@@ -139,7 +139,7 @@ Actor Ziomutant : BW_MonsterBase 7078
 	PainChance "head",255
 	DamageFactor "Apistoladamage",0.6
 	PainChance "minorhead",255
-	bloodcolor "Purple"
+	bloodcolor "FF00FF"
 	Game Doom
 	Health 75
 	Radius 20
@@ -1008,7 +1008,7 @@ Actor mutant:ziomutant
 ACTOR BrutalizedMutant1
 {
 +NOBLOODDECALS
-bloodcolor "purple"
+bloodcolor "FF00FF" //Purple
 Game Doom
 Radius 16
 Height 50
@@ -1058,7 +1058,7 @@ Radius 16
 Height 50
 Health 70
 //bloodtype "ZioPurpleBlood"
-bloodcolor "purple"
+bloodcolor "FF00FF" //Purple
 PainSound ""
 PainChance 255
 Mass 999999
@@ -1094,7 +1094,7 @@ Stop
 ACTOR BrutalizedMutant3
 {
 +NOBLOODDECALS
-bloodcolor "purple"
+bloodcolor "FF00FF" //Purple
 Game Doom
 Radius 16
 Height 50
@@ -1185,7 +1185,7 @@ Actor Mutanarmless : BW_MonsterBase
 	DamageFactor "Taunt",0 
 	PainChance "Taunt",0 
 	//BloodType "ZioPurpleBlood"
-	bloodcolor "purple"
+	bloodcolor "FF00FF" //Purple
 	damagefactor "Kick", 0.6
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	
@@ -2127,7 +2127,7 @@ Goto See
 Actor MUTANTESTECCHITO
 {
 //BloodType "ZioPurpleBlood"
-bloodcolor "purple"
+bloodcolor "FF00FF" //Purple
 Radius 24
 Height 14
 +SHOOTABLE

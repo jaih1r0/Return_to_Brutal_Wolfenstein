@@ -160,10 +160,25 @@ class NashGoreBlood : NashGoreBloodBase
 		}
 		TNT1 AAAAAAAAAA 1
 		{
-			A_SpawnItemEx("NashGoreBloodParticle2",
-				frandom(-8, 8), frandom(-8, 8), frandom(-8, 8),
-				frandom(-2.5, 2.5), frandom(-2.5, 2.5), frandom(1.0, 2.0),
-				frandom(0, 360), BLOOD_FLAGS, chanceMod);
+			int amt, cmul;
+			[amt, cmul] = NashGoreStatics.GetAmountMult(nashgore_bloodmult, chanceMod);
+			for (int i = 0; i < amt; i++)
+			{
+				if (random[rnd_SpawnBloodParticle2]() < 177)
+				{
+					A_SpawnItemEx("NashGoreBloodParticle2",
+						frandom[rnd_SpawnBloodParticle2](-8.0, 8.0), frandom[rnd_SpawnBloodParticle2](-8.0, 8.0), frandom[rnd_SpawnBloodParticle2](-8.0, 8.0),
+						frandom[rnd_SpawnBloodParticle2](-2.5, 2.5), frandom[rnd_SpawnBloodParticle2](-2.5, 2.5), frandom[rnd_SpawnBloodParticle2](1.0, 2.0),
+						frandom[rnd_SpawnBloodParticle2](0.0, 360.0), BLOOD_FLAGS | SXF_TRANSFERPOINTERS, cmul);
+				}
+				else
+				{
+					A_SpawnItemEx("NashGoreBloodParticle3",
+						frandom[rnd_SpawnBloodParticle3](-4.0, 4.0), frandom[rnd_SpawnBloodParticle3](-4.0, 4.0), frandom[rnd_SpawnBloodParticle3](-4.0, 4.0),
+						frandom[rnd_SpawnBloodParticle3](-5.0, 5.0), frandom[rnd_SpawnBloodParticle3](-5.0, 5.0), frandom[rnd_SpawnBloodParticle3](1.0, 4.0),
+						frandom[rnd_SpawnBloodParticle3](0.0, 360.0), BLOOD_FLAGS | SXF_TRANSFERPOINTERS, cmul);
+				}
+			}
 		}
 		TNT1 AAAAAAAAAA 1
 		{
@@ -297,6 +312,51 @@ class NashGoreBloodParticle2 : NashGoreBloodBase
 		Stop;
 	Crash:
 		TNT1 A 1;
+		Stop;
+	}
+}
+
+class NashGoreBloodParticle3 : NashGoreBloodBase
+{
+	Default
+	{
+		Gravity 0.22;
+		Projectile;
+		+THRUACTORS
+		+ROLLSPRITE
+		+ROLLCENTER
+	}
+
+	override void BeginPlay(void)
+	{
+		Super.BeginPlay();
+		Roll = NashGoreStatics.RandomAngle4();
+	}
+
+	//===========================================================================
+	//
+	//
+	//
+	//===========================================================================
+
+	States
+	{
+	Spawn:
+		NBL3 A 1
+		{
+			A_SetScale(Scale.X * 0.96);
+			Vel.Z -= 0.33;
+
+			if (Scale.X < 0.01)
+				Destroy();
+		}
+		Loop;
+	Death:
+		#### # 1
+		{
+			if (Target)
+				TraceBleedAngle(10, Angle, Pitch);
+		}
 		Stop;
 	}
 }

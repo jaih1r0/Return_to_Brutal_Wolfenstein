@@ -414,7 +414,25 @@ class NashGoreStatics play
 	//
 	//
 	//===========================================================================
+	
+	static int, int GetAmountMult(double cv, int chance = 0)
+	{
+		int amt = int(cv);
+		if (amt < 1)
+			amt = 1;
 
+		int cmul = int(chance + (256 - chance) * (1.0 - cv));
+		if (cmul > 256)
+			cmul = 256;
+
+		return amt, cmul;
+	}
+	
+	//===========================================================================
+	//
+	//
+	//
+	//===========================================================================
 	/*
 	static void TraceWallBleed(int damage, Vector3 pos, Actor mo, double angle, double pitch)
 	{

@@ -327,8 +327,8 @@ DecalGroup BloodSplat
 	NashGoreBloodSplat09 2
 	NashGoreBloodSplat10 1
 	
-	BDBloodSmear01 1
-	BDBloodSmear02 1
+	//BDBloodSmear01 1
+	//BDBloodSmear02 1
 
 	NashGoreBloodSplat01_NoDrip 2
 	NashGoreBloodSplat02_NoDrip 3
@@ -346,8 +346,8 @@ DecalGroup BloodSmear
 {
 	NashGoreBloodSmear01 1
 	NashGoreBloodSmear02 1
-	BDBloodSmear03 1
-	BDBloodSmear04 1
+	//BDBloodSmear03 1
+	//BDBloodSmear04 1
 }
 
 

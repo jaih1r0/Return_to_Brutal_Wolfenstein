@@ -18,3 +18,4 @@ server bool nashgore_splat = true;
 
 //next
 server bool nashgore_bloodtrail = true;
+server float nashgore_bloodmult = 1.0;

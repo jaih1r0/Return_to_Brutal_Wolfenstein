@@ -88,24 +88,25 @@ class NashGoreActor : NashGorePlugin
 					Actor footprint;
 
 					// find the last corpse blood that was stepped on
-					if (lastCorpseBlood && lastCorpseBlood.target)
+					if (lastCorpseBlood) //&& lastCorpseBlood.target)
 					{
-						int flags = SXF_USEBLOODCOLOR | SXF_NOCHECKPOSITION | SXF_ABSOLUTEANGLE;
-						//let bloodTranslation = lastCorpseBlood.Translation;
+						//int flags = SXF_USEBLOODCOLOR | SXF_NOCHECKPOSITION | SXF_ABSOLUTEANGLE;
+						let bloodTranslation = lastCorpseBlood.Translation;
 						double ang = Owner.Angle;
 
-						[result, footprint] =
-						lastCorpseBlood.target.A_SpawnItemEx("NashGoreFootprint", angle: ang, flags);
-						//footprint = Spawn("NashGoreFootprint", Owner.Pos, ALLOW_REPLACE);
+						//[result, footprint] =
+						//lastCorpseBlood.target.A_SpawnItemEx("NashGoreFootprint", angle: ang, flags);
+						footprint = Spawn("NashGoreFootprint", Owner.Pos, ALLOW_REPLACE);
 						//Console.Printf("%s", lastCorpseBlood.target.GetClassName());
 
 						if (footprint)
 						{
 							// calculate footprint spawn offset
-							//footprint.Angle = ang;
-							//footprint.Translation = bloodTranslation;
-							if (footprintFootSide == 0) footprintFootSide = 1;
-							else if (footprintFootside == 1) footprintFootSide = 0;
+							footprint.Angle = ang;
+							footprint.Translation = bloodTranslation;
+							/*if (footprintFootSide == 0) footprintFootSide = 1;
+							else if (footprintFootside == 1) footprintFootSide = 0;*/
+							footprintFootside = !footprintFootside;
 							double feetDistance = 5;
 							double angAdjust = 90 * ((footprintFootSide == 0) ? -1 : 1);
 							Vector3 sPos =

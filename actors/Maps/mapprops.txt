@@ -47,7 +47,8 @@ Stop
 
 Actor FantoccioTest:Zombie_man
 {
-BloodType "Blue_Blood"
+//BloodType "Blue_Blood"
+bloodcolor "Blue"
 }
 
 Actor BlueSS:Nazi 7001
@@ -2662,7 +2663,7 @@ Actor BWMutantTable1 7063
 	+LOOKALLAROUND
 	+NOBLOODDECALS
 	//BloodType "ZioPurpleBlood"
-	bloodcolor "Purple"
+	bloodcolor "FF00FF"
 	mass 99999
 	+SHOOTABLE
 	+SOLID
@@ -2890,7 +2891,7 @@ Actor Canisterwithmutants 7201
 	deathheight 38
 	+FORCEYBILLBOARD
 	Mass 900000
-	bloodcolor "Purple"
+	bloodcolor "FF00FF"
 	DAMAGEFACTOR "Head", 0.0
 	DAMAGEFACTOR "FriendBullet", 0.0
 	DAMAGEFACTOR "Taunt", 0.0
