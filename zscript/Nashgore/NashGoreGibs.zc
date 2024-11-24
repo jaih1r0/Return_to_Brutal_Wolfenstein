@@ -32,6 +32,8 @@
 
 class NashGoreGibs : Actor
 {
+	bool boingin;
+	property DoBoing:boingin;
 	Default
 	{
 		Radius 8;
@@ -53,9 +55,11 @@ class NashGoreGibs : Actor
 		+USEBOUNCESTATE
 		+ROLLSPRITE
 		+ROLLCENTER
+		NashGoreGibs.DoBoing true;
 	}
 	
 	int rollDir;
+	
 	
 	//===========================================================================
 	//
@@ -85,7 +89,7 @@ class NashGoreGibs : Actor
 		if (!bNoTimeFreeze && (isFrozen() || Level.isFrozen())) return;
 		if (NashGoreStatics.CheckSky(self)) { Destroy(); return; }
 		// unboing sprite scale
-		if (Scale.X > 1.0)
+		if (Scale.X > 1.0 && boingin)
 			Scale.X *= 0.935;
 
 		if (WaterLevel >= 3)
@@ -265,7 +269,7 @@ class NashGoreGibs : Actor
 			bouncefactor *= 0.73;
 			
 			// boing boing
-			if (WaterLevel == 0)
+			if (WaterLevel == 0 && boingin)
 				Scale.X = 2.224;
 
 			// spawn one large blood splash upon bounce impact

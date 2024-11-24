@@ -14,7 +14,7 @@ Class GraySmoke : BWFxBase
 	{
 		renderstyle "Translucent";
 		scale 0.05;
-		alpha 0.75;
+		alpha 0.80;
 		+rollsprite;
 		+rollcenter;
 	}
@@ -37,9 +37,11 @@ Class GraySmoke : BWFxBase
 	void dosmokeroll()
 	{
 		A_setroll(roll + rolldir);
-		A_Fadeout(frandom(0.08,0.15));
-		A_setscale(scale.x + frandom(0.01,0.05));
+		A_Fadeout(frandom(0.08,0.1));
+		A_setscale(scale.x + frandom(0.01,0.04));
+		vel *= 0.95;
 	}
+
 	override void beginplay()
 	{
 		rolldir = random(15,30);
@@ -52,6 +54,7 @@ class BrownSmoke : GraySmoke
 {
 	default
 	{
+			alpha 0.75;
 		//translation "0:255=#[120,81,66]";
 	}
 	states
@@ -177,6 +180,32 @@ Class BW_Flare : BWFxBase
 		spawn:
 			LENY AAAAA 1 A_Fadeout(0.1);
 			stop;
+	}
+}
+
+Class BW_PuffHit : BWFxBase
+{
+	default
+	{
+		renderstyle "Add";
+		+bright;
+		+rollsprite;
+		+rollcenter;
+		scale 0.12;
+	}
+	states
+	{
+		spawn:
+			FX33 ADFHIJK 1;	
+		//IPF2 AABB 1;
+			stop;
+	}
+	override void beginplay()
+	{
+		super.beginplay();
+		self.bxflip = random(0,1);
+		A_setscale(scale.x + frandom(-0.02,0.02));
+		A_setroll(random(0,360));
 	}
 }
 

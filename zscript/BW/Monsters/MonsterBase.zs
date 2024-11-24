@@ -89,7 +89,7 @@ Class BW_MonsterBase : Actor
 			}
 			//hitinfo = hitinfo.." (angle: \cb"..aa.."\c-) damage dealt:	\cg"..damage.."\c-.";
 			
-			console.printf("hit at: "..LastHit..", damage: "..damage.."( type: "..mod..") , Health now: "..(health - damage));
+			//console.printf("hit at: "..LastHit..", damage: "..damage.."( type: "..mod..") , Health now: "..(health - damage));
 			
 		}
 		return super.DamagemObj(inflictor,source,damage,mod,flags,angle);
@@ -179,3 +179,24 @@ Class BW_MonsterBase : Actor
 	}
 	
 }
+
+//
+//
+//
+//
+
+Class BW_DeathTokenBase : Inventory
+{
+	default
+	{
+		inventory.maxamount 1;
+	}
+	override void tick()
+	{}
+}
+
+Class BW_HeadDeath : BW_DeathTokenBase
+{}
+
+Class BW_ArmDeath : BW_DeathTokenBase
+{}

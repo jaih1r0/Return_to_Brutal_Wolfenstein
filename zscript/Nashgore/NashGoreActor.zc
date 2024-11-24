@@ -261,14 +261,16 @@ class NashGoreActor : NashGorePlugin
 				(Owner.FindState('XDeath', true) != NULL && Owner.InStateSequence(Owner.CurState, Owner.ResolveState('XDeath')))
 			);
 
-			if (!bGibbed && canGib && bCanBleed)
+			bool shouldntGib = owner.findinventory("BW_HeadDeath");
+
+			if (!bGibbed && canGib && bCanBleed && !shouldntGib)
 			{
 				NashGoreGibs.SpawnGibs(Owner);
 				bGibbed = true;
 			}
-
+			
 			// spawn ice gore stuff
-			if (Owner.bShattering && !bShattered && bCanBleed)
+			if (Owner.bShattering && !bShattered && bCanBleed && !shouldntGib)
 			{
 				bShattered = true;
 				for (int i = 0; i < 20; i++)

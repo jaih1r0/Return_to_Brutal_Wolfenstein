@@ -136,7 +136,7 @@ Class BaseBWWeapon : DoomWeapon
 			//console.printf("startpos: "..(pos.xy,pos.z + pz).."hitlocation: "..t.hitlocation..", dist: "..t.Distance);
 			if(t.hitactor != null)	//hit something
 			{
-				//console.printf("Hit a: "..t.hitactor.gettag().." (classname: \cd"..t.hitactor.getclassname().."\c-).");
+				console.printf("Hit a: "..t.hitactor.gettag().." (classname: \cd"..t.hitactor.getclassname().."\c-).");
 				if(t.hitactor.bsolid || t.hitactor.bshootable)
 				{
 					if(t.hitactor.bnoblood || t.hitactor.bdormant || t.hitactor.bINVULNERABLE || 
@@ -229,20 +229,6 @@ Class BaseBWWeapon : DoomWeapon
 				}
 			}
 			
-			/*continue;
-			if(t.HitTexture)
-			{
-				string msg = "Hit a ";
-				switch(t.HitType)
-				{
-					case TRACE_HitFloor:	msg = msg.."\cdFloor \c-";		break;
-					case TRACE_HitCeiling:	msg = msg.."\cdCeil \c-";		break;
-					case TRACE_HitWall:		msg = msg.."\cdWall \c-";		break;
-					default:	msg = msg.."idk man ";	break;
-				}
-				
-				console.printf(msg.." with a texture: \cg"..texman.getname(t.HitTexture).."\c-");
-			}*/
 		}
 	}
 	
@@ -281,6 +267,7 @@ Class BaseBWWeapon : DoomWeapon
 				for(int k = 0; k < tr.Ti.size(); k++)
 				{
 					//console.printf("hit num: "..k);
+					
 					//if(k == 0)
 					//	continue;
 					
@@ -291,7 +278,9 @@ Class BaseBWWeapon : DoomWeapon
 					}
 					
 					actor v = tr.Ti[k].who;
-					
+					//console.printf("Hit "..k..": "..v.gettag().."");
+					console.printf("Hit %d: %s (\cd %s \c-)",k,v.gettag(),v.getclassname());
+					//console.printf("Hit a: "..t.hitactor.gettag().." (classname: \cd"..t.hitactor.getclassname().."\c-).");
 					if(v.bsolid || v.bshootable)
 					{
 						if(v.bnoblood || v.bdormant || v.bINVULNERABLE || 
@@ -320,15 +309,7 @@ Class BaseBWWeapon : DoomWeapon
 						//console.printf("Hitn: "..k..", ".."pen: "..(tr.Ti.size())..", max: "..maxpen);
 						npn--;
 					}
-					/*if(npn > 0 && v && v.health > 0 && (v.bismonster || v.bshootable))
-					{
-						npn--;
-						actor puf = spawn("BW_dmgPuff",tr.Ti[k].location);
-						console.printf("Damaging: "..v.getclassname());
-						if(puf)
-							v.damagemobj(puf,self,dmg,dmgtype);
-						
-					}*/
+					
 				}
 			}
 			
@@ -453,9 +434,8 @@ class BW_impactpuff : actor
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0;// a_spawnimpact();
-			//TNT1 A 1;
 			TNT1 A 1 a_spawnimpact();
+			TNT1 A 0;
 			stop;
 	}
 	
@@ -478,21 +458,21 @@ class BW_impactpuff : actor
 		switch(tp)
 		{
 			case 'Crystal':
-			case 'Carpet':	SpawnImpact_Carpet();	break;
+			case 'Carpet':	SpawnImpact_Carpet();	spawnMainPuff();	break;
 			case 'PurpleStone':
 			case 'Gravel':
 			case 'BurnStone':
-			case 'Stone':	SpawnImpact_Stone(); spawnPx_Stone();	break;
+			case 'Stone':	SpawnImpact_Stone();	spawnMainPuff();	break;
 			case 'Electric':
-			case 'Metal':	SpawnImpact_Metal();	break;
-			case 'Wood':	SpawnImpact_Wood();		break;
-			case 'Dirt':	SpawnImpact_Dirt();		break;
-			case 'Water':	SpawnImpact_water(tp);	break;
-			case 'Slime':	SpawnImpact_water(tp);	break;
-			case 'PurpleWater': SpawnImpact_water(tp);	break;
-			case 'Blood': SpawnImpact_water(tp);	break;
-			case 'Flesh': SpawnImpact_water(tp);	break;
-			case 'Lava': SpawnImpact_water(tp);	break;
+			case 'Metal':	SpawnImpact_Metal();	spawnMainPuff();	break;
+			case 'Wood':	SpawnImpact_Wood();	spawnMainPuff();		break;
+			case 'Dirt':	SpawnImpact_Dirt();	spawnMainPuff();		break;
+			case 'Water':	SpawnImpact_water(tp);	spawnMainPuff();	break;
+			case 'Slime':	SpawnImpact_water(tp);	spawnMainPuff();	break;
+			case 'PurpleWater': SpawnImpact_water(tp);	spawnMainPuff();	break;
+			case 'Blood': SpawnImpact_water(tp);	spawnMainPuff();	break;
+			case 'Flesh': SpawnImpact_water(tp);	spawnMainPuff();	break;
+			case 'Lava': SpawnImpact_water(tp);	spawnMainPuff();	break;
 			case 'Sky':	break;
 		}
 	}
@@ -573,6 +553,12 @@ class BW_impactpuff : actor
 				fd.Angle = dang;
 			}
 		}
+	}
+
+	void spawnMainPuff()
+	{
+		if(random[PUFFX]() < 128)
+			spawn("BW_PuffHit",pos);
 	}
 	
 	void SpawnImpact_Stone()

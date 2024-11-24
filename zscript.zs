@@ -22,6 +22,9 @@ Version 4.3
 #include "zscript/Nashgore/NashGoreMenu.zc"
 //#include "zscript/Nashgore/NashGoreMath.zc"
 
+#include "zscript/BW/Gore/BWGibs.zs"
+#include "zscript/BW/Gore/BWHitBox.zs"
+
 // global constants
 const STAT_NashGore_Gore = Thinker.STAT_USER + 1;
 const STAT_CASING = thinker.STAT_USER + 2;

@@ -160,7 +160,7 @@ ACTOR RicoChet: BulletPuff
   +FORCEXYBILLBOARD
 	Obituary "%o ate bullet shrapnel."
   damagetype "Shrapnel"
-  Scale 0.09
+  Scale 0.2
   Speed 0
   states
   {
@@ -169,8 +169,9 @@ ACTOR RicoChet: BulletPuff
 	//TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	//TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	//TNT1 A 0 A_CustomMissile ("DetectCeilBullet", 0, 0, 90, 2, 90)
-    
-	TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
+    FX33 ADFHIJK 1
+    stop
+	//TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
     
 	Spawn1:
 	//TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0)

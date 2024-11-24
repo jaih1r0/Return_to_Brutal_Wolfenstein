@@ -299,7 +299,7 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string PurpleStoneDef[] = {
-		"GAY1","GAY3","GAY4","GAY5","GAY6","GAY8","BWSOD3","GAY7"
+		"GAY1","GAY2","GAY3","GAY4","GAY5","GAY6","GAY8","BWSOD3","GAY7"
 	};
 	
 	static const string DirtDef[] = {
