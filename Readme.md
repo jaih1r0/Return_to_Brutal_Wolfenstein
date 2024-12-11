@@ -7,7 +7,7 @@ A (WIP) rework of *ZioMcCall's Brutal Wolfenstein*. <br>
 Focused in giving it a more modern look and improve its gameplay
 
 > [!Note]
-> this mod requires Brutal Wolfenstein v7.0. <br>
+> this mod requires Brutal Wolfenstein v7.1. <br>
 > Load this mod _after_ BW. <br>
 
 ## Features
@@ -32,6 +32,6 @@ wont work in:
 ## Relevant links
 * [Gzdoom / Lzdoom](https://zdoom.org/downloads)
 
-* [Brutal wolfenstein 7.0](<https://www.moddb.com/mods/brutal-wolfenstein-3d/downloads/ziomccalls-brutal-wolfenstein-v70>)
+* [Brutal wolfenstein 7.1](<https://www.moddb.com/mods/brutal-wolfenstein-3d/downloads/brutal-wolfenstein-3d-v-71>)
 
 * Doom 2 iwad [Steam](https://store.steampowered.com/app/2280/DOOM__DOOM_II/) / [GOG](https://www.gog.com/en/game/doom_doom_ii) (or alternatively [Freedoom 2 iwad](https://github.com/freedoom/freedoom/releases/tag/v0.13.0) )

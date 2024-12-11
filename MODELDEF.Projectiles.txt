@@ -716,6 +716,7 @@ Model SparkX // Name of actor in DECORATE
    FrameIndex SPKO A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
+/*
 Model WaterSplashBase2
 {
    Path "Models\Decoration\Splash"
@@ -962,3 +963,4 @@ Model slimeSplashbase
    FrameIndex SLIM  J 0 5	   FrameIndex SLIM  J 1 4
    FrameIndex SLIM  K 0 999	   FrameIndex SLIM  K 1 999
 }
+*/

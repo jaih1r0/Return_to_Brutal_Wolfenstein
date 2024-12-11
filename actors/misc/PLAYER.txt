@@ -56,6 +56,10 @@ ACTOR Doomer : BWPlayer Replaces DoomPlayer
 	//Player.StartItem "RocketRounds", 4
 	//Player.StartItem "RailgunAmmo", 50
 	Player.StartItem "IsPlayer", 1
+	player.startitem "BWGrenadeX",1
+	player.startitem "BWKick",1
+	player.startitem "BWSlide",1
+	player.startitem "BWMelee",1
 	
 	//Player.JumpZ 6.5
 	

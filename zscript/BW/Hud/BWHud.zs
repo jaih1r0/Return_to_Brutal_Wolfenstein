@@ -3,6 +3,7 @@ Class BW_Hud : BaseStatusBar
 	HUDFont 		BWFont;	//Font: Tormentstein 3D - credits: Jimmy, Kinsie, id Software
 	int 			healthCol;
 	double 			alfadeofs;
+	bool 			NoHud;
 	override void Init()
 	{
 		Super.Init();
@@ -19,7 +20,7 @@ Class BW_Hud : BaseStatusBar
 			DrawHudStuff();
 		}
 	}
-	
+	//DisableHud
 	override void NewGame()
 	{
 		Super.NewGame();
@@ -34,6 +35,7 @@ Class BW_Hud : BaseStatusBar
 			healthcol = Font.CR_RED;
 		else
 			healthcol = Font.CR_YELLOW;
+		NoHud = cplayer.mo.findinventory("DisableHud");
 		if(cplayer.mo.findinventory("NoSliding"))
 		{
 			alfadeofs += 0.01;
@@ -45,6 +47,8 @@ Class BW_Hud : BaseStatusBar
 	
 	void DrawHudStuff()
 	{
+		if(NoHud)
+			return;
 		let pl = Cplayer.mo;
 		
 		//health
@@ -122,9 +126,12 @@ Class BW_Hud : BaseStatusBar
 		}
 		
 		//level info
-		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(20,5),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
-		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(20,20),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
-		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(20,35),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
+		bool Kcompl = level.killed_monsters >= Level.total_monsters;
+		bool Icompl = level.found_items >= Level.total_items;
+		bool Scompl = level.found_secrets >= Level.total_secrets;
+		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(20,5),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(20,20),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(20,35),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
 		drawstring(BWFont,"T: "..level.TimeFormatted(),(20,50),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
 		
 		//slide thing

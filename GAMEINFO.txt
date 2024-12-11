@@ -1,2 +1,3 @@
 STARTUPTITLE = "Return to Brutal Wolfenstein"
 STARTUPCOLORS = "FFFA2D", "8B0000"
+STARTUPTYPE = "Hexen"

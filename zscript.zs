@@ -33,5 +33,54 @@ const SLAUGHTERMAP_DIST = 1000.0;
 const MAP_EPSILON = 1 / 65536.;
 
 
+// fuck 
+Class CustomInventoryBW2 : CustomInventory 
+{
 
+	Action void A_CheckGrenade()
+	{
+		player.SetPSprite(PSP_WEAPON,player.ReadyWeapon.FindState('GrenadeFlash'));
+	}
+
+	Action void A_SlideCheck() 
+	{
+		player.SetPSprite(PSP_WEAPON,player.ReadyWeapon.FindState('SlideFlash'));
+	}
+
+	Action void A_CheckKnife()
+	{
+		player.SetPSprite(PSP_WEAPON,player.ReadyWeapon.FindState('KnifeFlash'));
+	}
+
+	Action void A_CheckAxe()
+	{
+		player.SetPSprite(PSP_WEAPON,player.ReadyWeapon.FindState('AxeFlash'));
+	}
+	
+	action void KickDoors(int dist = 70)
+	{
+		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
+		FLineTraceData t;
+		LineTrace(angle, dist, pitch, offsetz: pz, data: t);
+		if(t.hitline)
+			t.hitline.Activate(player.mo,t.lineside,SPAC_USE);
+	}
+	
+	const SlideSpeed = 17;
+	double slideAngle;
+	
+	action void BW_SlideThrust(double force = 2)
+	{
+		velfromangle(force,invoker.slideAngle);
+	}
+	
+	action void BW_SlideDirSet(bool reset = false)
+	{
+		if(reset)
+			invoker.slideAngle = 0.0;
+		else
+			invoker.slideAngle = Angle - VectorAngle(player.cmd.forwardmove, player.cmd.sidemove);
+	}
+	
+}
 

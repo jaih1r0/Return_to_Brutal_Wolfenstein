@@ -196,8 +196,9 @@ Class BW_PuffHit : BWFxBase
 	states
 	{
 		spawn:
-			FX33 ADFHIJK 1;	
-		//IPF2 AABB 1;
+			FX33 ADF 1 light("BPUFF1");	
+			FX33 HIJ 1 light("BPUFF2");
+			FX33 K 1;
 			stop;
 	}
 	override void beginplay()

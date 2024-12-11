@@ -204,6 +204,7 @@ FootClip 0
 terrain	PurpleBloodTerrain
 {
 //splash 	PurpleBlood
+liquid
 }
 
 Terrain BWWood

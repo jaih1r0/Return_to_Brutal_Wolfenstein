@@ -36,8 +36,11 @@ Class BW_MonsterBase : Actor
 		if(inflictor && canReceiveHead) //damaged by projectile or puff
 		{
 			vector3 hitpos = inflictor.pos;
-			//vector3 vd = levellocals.vec3diff(pos,hitpos);
 			
+			//if headheight/feetheight is negative, use it as a percentage instead
+			int Headh = headheight >= 0 ? headheight : height * abs(headheight);
+			int Feeth = feetheight >= 0 ? feetheight : height * abs(feetheight);
+
 			double aa = deltaangle(self.angle,angleto(inflictor));
 			
 			//string hitinfo = "Hit: ";
@@ -63,13 +66,13 @@ Class BW_MonsterBase : Actor
 				LastHit = 'Back';
 			}
 			//console.printf("hitposz: "..hitpos.z.."");
-			if(hitpos.z - floorz > headheight)		//head
+			if(hitpos.z - floorz > Headh)		//head
 			{
 				//hitinfo = hitinfo.." at \cdHead\c-";
 				damage *= HeadShotMult;
 				LastHit = 'Head';
 			}
-			else if(hitpos.z - floorz < feetheight)	//feet
+			else if(hitpos.z - floorz < Feeth)	//feet
 			{
 				//hitinfo = hitinfo.." at \cdFeet\c-";
 				if(LastHit == 'RightArm')

@@ -256,7 +256,7 @@ Class BW_StaticHandler : StaticEventHandler
 		"RROCK15","BWSO129","BWSO134","BWSO135","BWSO106","BWSO114","BWSO110","BWSOD31","BWSO130",
 		"CFTX296","FLOOR6_1","CFTX496","BWWALL13","PANEL1","PANEL2","BRICK12","EP3WALL7",
 		"E2M8A4","E2M8A5","E2M8A6","E2M9LAB","BWSO105","SO145","SP_HOT1","ROCKRED2","ROCKRED3",
-		"GSTONE2","BWWALL5"
+		"GSTONE2","BWWALL5","BWSOD23"
 	};
 	
 	static const string MarbleDef[] = {
@@ -295,7 +295,7 @@ Class BW_StaticHandler : StaticEventHandler
 	static const string CarpetDef[] = {
 		"FLOOR1_6","FLAT14","EP4TXT1","EP4TXT2","EP4TXT4","EP4TXT5","EP4TXT8","EP4TXT10","EP4TXT12",
 		"EP4TXT19","BWMQ2","EP4TXT11","EP4TXT13","EP4TXT9","EP4TXT18","EP4TXT3","EP4TXT6","EP4TXT14",
-		"EP4TXT7","EP4TXT20","EP439","BWSO137"
+		"EP4TXT7","EP4TXT20","EP439","BWSO137","BWMQ1"
 	};
 	
 	static const string PurpleStoneDef[] = {
@@ -354,7 +354,7 @@ Class BW_StaticHandler : StaticEventHandler
 
 Class FootStepsManager : thinker
 {
-	actor follow;
+	PlayerPawn follow;
 	int refresh;
 	override void tick()
 	{
@@ -371,7 +371,8 @@ Class FootStepsManager : thinker
 		if(vl > 0.5 && onground)
 		{
 			sound snd = BW_StaticHandler.getmaterialstep(texman.getname(follow.floorpic));
-			follow.A_Startsound(snd,CHAN_AUTO,pitch: frandom(0.95,1.05));
+			double vol = FootStepsManager.LinearMap(vl,3,14,0.5,1.0);
+			follow.A_Startsound(snd,CHAN_AUTO,volume:vol,pitch: frandom(0.95,1.05));
 			refresh = FootStepsManager.LinearMap(vl,3,14,24,10);
 		}
 		else
