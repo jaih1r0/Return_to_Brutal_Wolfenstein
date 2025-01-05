@@ -24,11 +24,11 @@ Class BaseBWWeapon : DoomWeapon
 	
 	Action State BW_WeaponReady(int BWRflags = 0)
 	{
-		if(findinventory("SlideExecute") && !(BWRflags & BWWF_NoSlide))
+		/*if(findinventory("SlideExecute") && !(BWRflags & BWWF_NoSlide))
 		{
 			A_setinventory("SlideExecute",0);
 			return resolvestate("SlideAttack");
-		}
+		}*/
 		if(findinventory("Kicking") && !(BWRflags & BWWF_NoKick))
 		{
 			A_setinventory("Kicking",0);
