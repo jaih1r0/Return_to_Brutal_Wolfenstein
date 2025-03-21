@@ -105,6 +105,11 @@ Class BW_Projectile : fastprojectile
 				return 1;
 			}
 		}
+		else
+		{
+			if(victim)
+				HitActor(victim);
+		}
 		Return -1;
 	}
 
