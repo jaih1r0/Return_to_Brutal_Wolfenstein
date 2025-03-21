@@ -29,7 +29,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		{
 			A_Light(2);
 			A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_OFFSETPITCH, (frandom(3,-3)));
-			A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP, attenuation: 0.7);
+			A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}
 		

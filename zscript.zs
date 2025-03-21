@@ -9,6 +9,10 @@ Version 4.3
 #include "zscript/BW/Hud/BWHud.zs"
 #include "zscript/BW/Player/BWPlayer.zs"
 
+//Weapons
+#include "zscript/BW/Weapons/Slot2/Luger.zs"
+
+//Monsters
 #include "zscript/BW/Monsters/BrownGuard/Pistol.zs"
 
 #include "zscript/Nashgore/NashGoreCommon.zc"

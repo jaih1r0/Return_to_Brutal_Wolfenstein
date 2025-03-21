@@ -22,6 +22,9 @@ Class BaseBWWeapon : DoomWeapon
 		BWWF_NoTaunt 	= 1<<29,
 	};
 	
+	protected int BraceTicker;
+	bool GunBraced;
+	
 	Action State BW_WeaponReady(int BWRflags = 0)
 	{
 		/*if(findinventory("SlideExecute") && !(BWRflags & BWWF_NoSlide))
@@ -85,6 +88,60 @@ Class BaseBWWeapon : DoomWeapon
 		}
 	}
 	
+	//[Pop] Putting this here since i dunno how BW_FireBullets works, and we are
+	//having jank with projectiles right now anyways.
+	action void BW_FireBullets2(string type,int amount,float angle,double offs,double height,float pitch)
+	{
+		for(int i=amount;i>0;i--)
+		{
+			A_FireProjectile(type,(frandom(angle,angle * -1)),0,offs,height,FPF_NOAUTOAIM,(frandom(pitch,pitch * -1)));
+		}
+	}
+	
+	//[Pop]This function is so we can replace all of the shitty A_Quake or QuakeEx
+	//whatever the fucks in the mod, ESPECIALLY on the weapon front
+	//no more of these SHAKEYOURASSMINOR and SHAKEYOURASSMAJOR actor spawning garbage
+	//its pretty bare bones but maybe we can extend it in the future if we need it
+	action void BW_QuakeCamera(int qDur, float camRoll)
+	{
+		A_QuakeEx(0, 0, 0, qDur, 0, 100, "", 0, 1, 0, 0, 0, 0, (camRoll / 2), 1, 0, 0, 0);
+		//also, camroll / 2, 2 should be made a scaling CVar at some point, or attach it to some other cvar
+		//DONT FORGET DIPSHIT
+	}
+	
+	action void BW_WeaponRecoilBasic(float pitchDelta, float angleDelta = 0)
+	{
+		double fac = 1.0;
+		if (invoker.GunBraced)
+		{
+			fac *= 0.33;
+		}
+		
+        A_SetPitch(self.pitch+(pitchDelta * fac));
+        A_SetAngle(self.angle+(angleDelta * fac));
+	}
+	
+	action void BW_HandleWeaponFeedback(int qDur, float camRoll, float pitchDelta, float angleDelta, double d1 = 0, double d2 = 0 , double d3 = 0)
+	{
+		BW_QuakeCamera(qDur, camRoll);
+		BW_WeaponRecoilBasic(pitchDelta, angleDelta);
+		BW_GunSmoke(d1, d2, d3);
+	}
+	
+	//A way to perform pretty much take all of the "Insertbullets" states and turn it into a function
+	//An example of this action: PB_AmmoIntoMag("RifleAmmo","PB_HighCalMag",30,1) 
+	action void BW_AmmoIntoMag(String AmmoMag_Action,String AmmoPool_Action,int MagazineMaxFill_Action, int takeReserve)
+	{
+		for(int i = 0; i < MagazineMaxFill_Action; i++)
+		{
+			if((CountInv(AmmoMag_Action) == MagazineMaxFill_Action) || (!CountInv(AmmoPool_Action)))
+				return;
+			
+			A_GiveInventory(AmmoMag_Action, 1);
+			A_TakeInventory(AmmoPool_Action, takeReserve);
+		}
+	}
+	
 	action void KickDoors(int dist = 70)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
@@ -109,11 +166,6 @@ Class BaseBWWeapon : DoomWeapon
 			pl.slideAngle = 0.0;
 		else
 			pl.slideAngle = Angle - VectorAngle(player.cmd.forwardmove, player.cmd.sidemove);
-	}
-	
-	action void BW_Quake(double qstr = 1,int duration = 5,double rol = 1)
-	{
-		A_QuakeEx(qstr,0,0,duration,0,60,"",QF_RELATIVE|QF_SCALEDOWN,1.0,1,1.0,0,0,rol / 2,1);
 	}
 	
 	Action void BW_GunSmoke(double xyofs = 0, double spawnheight = 0, double addangle = 0,string type = "BW_GunSmoke")
@@ -419,6 +471,63 @@ Class BaseBWWeapon : DoomWeapon
 		return lineNormal;
 	}
 	
+	override void Tick()
+	{
+		Super.Tick();
+		
+		let plr = BWPlayer(Owner);
+		if (!plr)
+		{
+			GunBraced = false;
+			return;
+		}
+		
+		if (plr.Player.ReadyWeapon != self)
+		{
+			GunBraced = false;
+			return;
+		}
+		/*
+		if (CountInv("ResetZoom") >= 1) {
+			A_TakeInventory("ResetZoom", 1);
+			A_ZoomFactor(1.0, ZOOM_INSTANT);
+		}*/
+		
+		FLineTraceData dt1, dt2, dt3, dt4, dt5, dt6;
+		plr.LineTrace(plr.Angle, plr.Radius * 3, plr.Pitch, TRF_NOSKY | TRF_THRUACTORS, plr.Height * 0.95, offsetside: -plr.Radius / 2, data: dt1);
+		plr.LineTrace(plr.Angle, plr.Radius * 3, plr.Pitch, TRF_NOSKY | TRF_THRUACTORS, plr.Height * 0.95 * 0.75, data: dt2);
+		plr.LineTrace(plr.Angle, plr.Radius * 3, plr.Pitch, TRF_NOSKY | TRF_THRUACTORS, plr.Height * 0.95, offsetside: plr.Radius / 2, data: dt3);
+		
+		plr.LineTrace(plr.Angle + 90, plr.Radius * 3, plr.Pitch, TRF_NOSKY | TRF_THRUACTORS, plr.Height * 0.95, data: dt4);
+		plr.LineTrace(plr.Angle + 180, plr.Radius * 3, plr.Pitch, TRF_NOSKY | TRF_THRUACTORS, plr.Height * 0.95 * 0.75, data: dt5);
+		plr.LineTrace(plr.Angle - 90, plr.Radius * 3, plr.Pitch, TRF_NOSKY | TRF_THRUACTORS, plr.Height * 0.95, data: dt6);
+		
+		bool geometryBrace = dt1.HitType == FLineTraceData.TRACE_HitWall || dt2.HitType == FLineTraceData.TRACE_HitWall || dt3.HitType == FLineTraceData.TRACE_HitWall || dt4.HitType == FLineTraceData.TRACE_HitWall || dt5.HitType == FLineTraceData.TRACE_HitWall || dt6.HitType == FLineTraceData.TRACE_HitWall;
+		
+		if (!bMELEEWEAPON && (plr.Player.crouchfactor == 0.5 || geometryBrace) && plr.Vel.Length() < 6)
+		{
+			BraceTicker++;
+			if (BraceTicker == 10)
+			{
+				GunBraced = true;
+				plr.A_SetPitch(plr.Pitch - 0.2);
+				Owner.A_StartSound("Weapon/Bracing", 19, 0, 0.30);
+			}
+			if (BraceTicker == 11)
+			{
+				plr.A_SetPitch(plr.Pitch + 0.2);
+			}
+		}
+		else
+		{
+			GunBraced = false;
+		}
+
+		if (!GunBraced && BraceTicker > 13)
+		{
+			BraceTicker = 0;
+		}
+	}
 }
 
 class BW_dmgpuff : actor
@@ -1118,5 +1227,24 @@ class AimingToken : Inventory
 	Default
 	{
 		Inventory.MaxAmount 1;
+	}
+}
+
+Class PlayerMuzzleFlash : Actor
+{
+	Default
+	{
+		Speed 0;
+		PROJECTILE;
+		+NOCLIP;
+		+NOGRAVITY;
+		+NOINTERACTION;
+	}
+	
+	States
+	{
+		Spawn:
+			TNT1 A 2 BRIGHT;
+			Stop;
 	}
 }
