@@ -35,14 +35,14 @@ Class BW_Hud : BaseStatusBar
 			healthcol = Font.CR_RED;
 		else
 			healthcol = Font.CR_YELLOW;
-		NoHud = cplayer.mo.findinventory("DisableHud");
-		if(cplayer.mo.findinventory("NoSliding"))
+		//NoHud = cplayer.mo.findinventory("DisableHud");
+		/*if(cplayer.mo.findinventory("NoSliding"))
 		{
 			alfadeofs += 0.01;
 			if(alfadeofs >= 0.5)
 				alfadeofs = 0.0;
 			//alfadeofs = frandom(0.1,0.5);
-		}
+		}*/
 	}
 	
 	void DrawHudStuff()
@@ -89,7 +89,7 @@ Class BW_Hud : BaseStatusBar
 				drawTexture(armi,(-150,-15),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
 			}
 			
-			if(Secondary && !pl.findinventory("BWAllowReloadCheck"))
+			if(Secondary) //&& !pl.findinventory("BWAllowReloadCheck"))
 			{
 				int am2 = Secondary.amount;
 				int max2 = Secondary.maxamount;
@@ -104,7 +104,8 @@ Class BW_Hud : BaseStatusBar
 				[armi,amivec] = GetIcon(Secondary,0);
 				drawTexture(armi,(-150,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
 			}
-		
+			
+			/*
 			//grenades
 			drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM);
 			int gam = pl.countinv("GrenadeAmmo");
@@ -114,7 +115,7 @@ Class BW_Hud : BaseStatusBar
 			drawimage("izras",(-160,-85),DI_SCREEN_RIGHT_BOTTOM);
 			int aam = pl.countinv("AxeAmmo");
 			drawstring(BWFont,""..aam,(-140,-95),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-			
+			*/
 			//weapon image
 			textureid wimg;	vector2 wimgsc;
 			[wimg,wimgsc] = geticon(cplayer.readyweapon,DI_SKIPICON|DI_SKIPALTICON);
@@ -135,8 +136,8 @@ Class BW_Hud : BaseStatusBar
 		drawstring(BWFont,"T: "..level.TimeFormatted(),(20,50),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
 		
 		//slide thing
-		if(pl.findinventory("NoSliding"))
-			DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
+		//if(pl.findinventory("NoSliding"))
+		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
 		
 		//oxigen
 		int ox = GetAirTime();
@@ -152,7 +153,7 @@ Class BW_Hud : BaseStatusBar
 	}
 	
 	static const string wolfkeys[] = {
-		"HasPickedUpBlackKey","HasPickedUpDiamondKey",
+		//"HasPickedUpBlackKey","HasPickedUpDiamondKey",
 		"BlueCard","RedCard","YellowCard",
 		"BlueSkull","YellowSkull"//,"RedSkull"
 	};
@@ -191,7 +192,7 @@ Class BW_Hud : BaseStatusBar
 				}
 			}
 			
-			if(i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
+			/*if(i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
 			{
 				textureid ktx = i.Icon;
 				vector2 ofs = (-60,20);
@@ -207,7 +208,7 @@ Class BW_Hud : BaseStatusBar
 				DrawTexture(ktx,ofs, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP,1.0,(20,20),(2.0,2.0));
 				
 			}
-			
+			*/
 			
 		}
 	}

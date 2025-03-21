@@ -1,0 +1,1464 @@
+
+Gameinfo
+{
+	Infopage = "PAGE1","PAGE2","PAGE3","PAGE4","Page13","PAGE5","PAGE6","PAGE7","PAGE8","PAGE9","PAGE10","PAGE11","PAGE12"
+	quitmessages = "Dost thou wish to\nleave with such hasty\nabandon?", "Chickening out...\nalready?", "Press N for more carnage.\nPress Y to be a weenie.", "So, you think you can\nquit this easily, huh?", "Press N to save the world.\nPress Y to abandon it in\nits hour of need.", "Heroes, press N.\nWimps, press Y.", "For guns and glory, press N.\nFor work and worry, press Y.","All ideals must be respected.Except Fascism.\nThat's not an ideal but the death of all ideals.","Don't play The New Colossus!\nGo play Doom Incarnate instead!","Did you know that at some point this\nwas supposed to be called Bermudal Wulfenduberg?","The Dog Pope won't forget\nthe genocide you commited here!","decino,play Bloodstain"
+	
+	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler"
+	StatusBarClass = "BW_Hud"
+}
+
+
+clearepisodes
+episode map01
+{
+	picname = "M_EPI1"
+	name = "Escape from Wolfenstein"
+	key = "e"
+}
+
+episode map11
+
+{
+	picname = "M_EPI2"
+	name = "Operation: Eisenfaust"
+	key = "o"
+}
+
+
+/////////////
+
+
+episode map21
+{
+	picname = "M_EPI3"
+	name = "Die, Fuhrer, Die!"
+	key = "d"
+}
+
+episode map31
+{
+	picname = "M_EPI4"
+	name = "A dark secret"
+	key = "f"
+}
+
+episode map41
+{
+	picname = "M_EPI5"
+	name = "The trail of the madman"
+	key = "b"
+}
+
+episode map51
+{
+	picname = "M_EPI6"
+	name = "Confrontation"
+	key = "n"
+}
+
+episode FLOR1
+{
+	picname = "M_EPI7"
+	name = "Spear of Destiny"
+	key = "n"
+}
+
+
+///////////
+
+map FLOR1 "Spear of Destiny-Wet Works"
+{
+	titlepatch = "SPEAR01"
+	next = "FLOR2"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Tiptoe
+        Interpic = Interpi2
+	//ReplaceActor = "LugerSpawner","P38Spawner" Yeah,would have been TOO FUCKING EASY if that worked on the map/episodes definition.FUCK YOU!
+	par = 180
+}
+
+map FLOR2 "Spear of Destiny-Curse of the Forbidden name"
+{
+	titlepatch = "SPEAR02"
+	next = "FLOR3"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+        Interpic = Interpi2
+	music = Funkie
+	par = 540
+}
+
+map FLOR3 "Spear of Destiny-Living Quarters"
+{
+	titlepatch = "SPEAR03"
+	next = "FLOR4"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+        Interpic = Interpi2
+	music = DETHNAZI
+	par = 420
+}
+
+
+map FLOR4 "Spear of Destiny-The SS gonna get you!"
+{
+	titlepatch = "SPEAR04"
+	next = "FLOR5"
+        secretnext = "Sec1"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+        Interpic = Interpi2
+	music = SSGETYOU
+	par = 600
+}
+
+map Sec1 "Spear of Destiny-Dead then Red"
+{
+	titlepatch = "SPEAR20"
+	next = "FLOR5"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+        Interpic = Interpi2
+	music = Nazi_Jaz
+	par = 600
+}
+
+map FLOR5 "Spear of Destiny-Metal Man"
+{
+	titlepatch = "SPEAR05"
+	next = "FLOR6"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+        Interpic = Interpi2
+	music = SUSPENS1
+	par = 300
+}
+
+
+
+map FLOR6 "Spear of Destiny-Halls of Agony"
+{
+	titlepatch = "SPEAR06"
+	next = "FLOR7"
+	sky1 = "SKY2"
+        Interpic = Interpi2
+	Grinding_Polyobj
+	music = Prey
+	par = 720
+}
+
+map FLOR7 "Spear of Destiny-Shock and Awe!"
+{
+	titlepatch = "SPEAR07"
+	next = "FLOR8"
+        secretnext = "Sec2"
+	sky1 = "SKY2"
+        Interpic = Interpi2
+	Grinding_Polyobj
+	music = GoingAFT
+	par = 720
+	
+}
+
+map Sec2 "Spear of Destiny-Bill digs it!"
+{
+	titlepatch = "SPEAR21"
+	next = "FLOR8"
+        Interpic = Interpi2
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Funkie
+	par = 960
+}
+
+map FLOR8 "Spear of Destiny-Marksman Trouble"
+{
+	titlepatch = "SPEAR08"
+	next = "FLOR9"
+        Interpic = Interpi2
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = NaziRap2
+	PAR = 480
+	
+}
+
+map FLOR9 "Spear of Destiny-Flooded Secrets"
+{
+	titlepatch = "SPEAR09"
+	next = "FLOr10"
+	sky1 = "SKY2"
+        Interpic = Interpi2
+	Grinding_Polyobj
+	music = Headache
+	PAR = 540
+	
+}
+
+map FLOR10 "Spear of Destiny-The Barnacle and the Grosse"
+{
+	titlepatch = "SPEAR10"
+	next = "FLOR11"
+	sky1 = "SKY2"
+        Interpic = Interpi2
+	Grinding_Polyobj
+	music = EE2
+	PAR = 540
+	
+}
+
+map FLOR11 "Spear of Destiny-Castle Hassle"
+{
+	titlepatch = "SPEAR11"
+	next = "FLOR12"
+	sky1 = "SODSKY"
+        Interpic = Interpi2
+	Grinding_Polyobj
+	music = Sandy
+	PAR = 960
+	
+}
+
+map FLOR12 "Spear of Destiny-Grand Nuremberg Hotel"
+{
+	titlepatch = "SPEAR12"
+	next = "FLOR13"
+        secretnext = "sec3"
+        Interpic = Interpi2
+	sky1 = "SODSKY"
+	Grinding_Polyobj
+	music = RAPT2
+	PAR = 600
+	
+}
+
+map SEC3 "Spear of Destiny-Theatre of oddities"
+{
+	titlepatch = "SPEAR22"
+	next = "FLOR13"
+        Interpic = Interpi2
+	sky1 = "SODSKY"
+	Grinding_Polyobj
+	music = STAIRS
+	PAR = 840
+	
+}
+
+map FLOR13 "Spear of Destiny-Window War"
+{
+	titlepatch = "SPEAR13"
+	next = "FLOR14"
+        Interpic = Interpi2
+	sky1 = "SODSKY"
+	Grinding_Polyobj
+	music = CULO
+	PAR = 600
+	
+}
+
+map FLOR14 "Spear of Destiny-Dead in no seconds"
+{
+	titlepatch = "SPEAR14"
+	next = "FLOR15"
+        Interpic = Interpi2
+	sky1 = "SODSKY"
+	Grinding_Polyobj
+	music = FAN
+	PAR = 540
+	
+}
+
+
+map FLOR15 "Spear of Destiny-The Fast Way"
+{
+	titlepatch = "SPEAR15"
+	next = Flor16
+        Interpic = Interpi2
+	sky1 = "SODSKY"
+	Grinding_Polyobj
+	music = PACMAN
+	PAR = 720
+	
+}
+
+map FLOR16 "Spear of Destiny-R.N.D."
+{
+	titlepatch = "SPEAR16"
+	next = Flor17
+        Interpic = Interpi2
+	sky1 = "SODSKY"
+	Grinding_Polyobj
+	music = FUNERAL
+	PAR = 900
+	
+}
+
+map FLOR17 "Spear of Destiny-Last Stand"
+{
+	titlepatch = "SPEAR17"
+	next = Flor18
+        Interpic = Interpi2
+	sky1 = "SODSK1"
+	Grinding_Polyobj
+	music = EE1
+	PAR = 900
+	
+}
+
+map FLOR18 "Spear of Destiny-Judgement"
+{
+	titlepatch = "SPEAR18"
+	next = Flor19
+        Interpic = Interpi2
+	sky1 = "SODSK1"
+        NoIntermission
+	Grinding_Polyobj
+	music = Warmarch
+	PAR = 180
+	
+}
+
+map FLOR19 "Spear of Destiny-Harbinger Of DOOM"
+{
+	titlepatch = "SPEAR19"
+	next = Flor18R
+        ResetInventory
+        Interpic = Interpi2
+		NOINTERMISSION
+	sky1 = "HellSky"
+	Grinding_Polyobj
+	music = Tense
+	PAR = 1800
+	
+}
+
+map FLOR18R "Spear of Destiny-Ending"
+{
+	next = Museum
+        Interpic = Interpi2
+	sky1 = "SODSK1"
+        NoIntermission
+	Grinding_Polyobj
+	music = SoDFN1
+	
+}
+///////////////
+
+map E1M1A "Escape from Wolfenstein-Floor 1"
+{
+	titlepatch = "CWILV00"
+	sky1 = "SKY2"
+	Next = "Endtitle"
+    SecretNext = "EndTitle"
+	music = Getthem
+	par = 240
+}
+
+map E1M2 "Escape from Wolfenstein-Floor 2"
+{
+	titlepatch = "CWILV01"
+	Next = "Endtitle"
+    SecretNext = "EndTitle"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Searchn
+	par = 540
+}
+
+
+
+map MAP01 "Escape from Wolfenstein-Floor 1"
+{
+	titlepatch = "CWILV00"
+	next = "MAP02"
+	secretnext = "MAP10"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Getthem
+	par = 240
+}
+
+map MAP02 "Escape from Wolfenstein-Floor 2"
+{
+	titlepatch = "CWILV01"
+	next = "MAP03"
+	secretnext = "MAP03"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Searchn
+	par = 540
+}
+
+map MAP03 "Escape from Wolfenstein-Floor 3"
+{
+	titlepatch = "CWILV02"
+	next = "MAP04"
+	secretnext = "MAP04"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = POW
+	par = 600
+}
+
+map MAP04 "Escape from Wolfenstein-Floor 4"
+{
+	titlepatch = "CWILV03"
+	next = "MAP05"
+	secretnext = "MAP05"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = Suspense
+	par = 420
+}
+
+map MAP05 "Escape from Wolfenstein-Floor 5"
+{
+	titlepatch = "CWILV04"
+	next = "MAP06"
+	secretnext = "MAP06"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	MUSIC = Getthem
+	par = 420
+}
+
+map MAP06 "Escape from Wolfenstein-Floor 6"
+{
+	titlepatch = "CWILV05"
+	next = "MAP07"
+	secretnext = "MAP07"
+	sky1 = "BWSKY1"
+	Grinding_Polyobj
+	music = Searchn
+	par = 360
+}
+
+map MAP07 "Escape from Wolfenstein-Floor 7"
+{
+	titlepatch = "CWILV06"
+	next = "MAP08"
+	secretnext = "MAP08"
+	sky1 = "BWSKY1"
+	Grinding_Polyobj
+	music = POW
+	par = 420
+}
+
+map MAP08 "Escape from Wolfenstein-Floor 8"
+{
+	titlepatch = "CWILV07"
+	next = "MAP09"
+	secretnext = "MAP09"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = Suspense
+	par = 360
+}
+
+map MAP09 "Escape from Wolfenstein-Floor 9"
+{
+	titlepatch = "CWILV08"
+	next = ENDTITLE
+	secretnext = ENDTITLE
+	sky1 = "SKY1"
+	Grinding_Polyobj
+        InterMusic = D_READ_M
+	music = WarMarch
+	par = 300
+}
+
+map MAP10 "Escape from Wolfenstein-Floor 10"
+{
+	titlepatch = "CWILV09"
+	next = "MAP02"
+	secretnext = "MAP02"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = Corner2
+	par = 480
+}
+
+
+//Episode 2 
+
+map MAP11 "Operation Eisenfaust-Floor 1"
+{
+	titlepatch = "CWILV10"
+	next = "MAP12"
+	secretnext = "MAP20"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Anthem
+	par = 150
+}
+
+map MAP12 "Operation Eisenfaust-Floor 2"
+{
+	titlepatch = "CWILV11"
+	next = "MAP13"
+	secretnext = "MAP13"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Pregnant
+	par = 330
+}
+
+map MAP13 "Operation Eisenfaust-Floor 3"
+{
+	titlepatch = "CWILV12"
+	next = "MAP14"
+	secretnext = "MAP14"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = GoingAft
+	par = 300 
+}
+
+map MAP14 "Operation Eisenfaust-Floor 4"
+{
+	titlepatch = "CWILV13"
+	next = "MAP15"
+	secretnext = "MAP15"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Headache
+	par = 390
+}
+
+map MAP15 "Operation Eisenfaust-Floor 5"
+{
+	titlepatch = "CWILV14"
+	next = "MAP16"
+	secretnext = "MAP16"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Anthem
+	par = 420
+}
+
+map MAP16 "Operation Eisenfaust-Floor 6"
+{
+	titlepatch = "CWILV15"
+	next = "MAP17"
+	secretnext = "MAP17"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Pregnant
+	par = 360
+}
+
+map MAP17 "Operation Eisenfaust-Floor 7"
+{
+	titlepatch = "CWILV16"
+	next = "MAP18"
+	secretnext = "MAP18"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = GoingAFT
+	par = 180
+}
+
+map MAP18 "Operation Eisenfaust-Floor 8"
+{
+	titlepatch = "CWILV17"
+	next = 	MAP19	
+	secretnext = MAP19
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = Headache
+	par = 360
+}
+
+map MAP19 "Operation Eisenfaust-Floor 9"
+{
+	titlepatch = "CWILV18"
+	next = ENDTITLE
+	secretnext = ENDTITLE
+	sky1 = "SKY2"
+	Grinding_Polyobj
+      InterMusic = D_READ_M
+	music = WarMarch
+	par = 180
+}
+
+map MAP20 "Operation Eisenfaust-Floor 10"
+{
+	titlepatch = "CWILV19"
+	next = "MAP12"
+	secretnext = "MAP12"
+	sky1 = "SKY2"
+	Grinding_Polyobj
+	music = DUNGEONS
+	par = 300
+}
+
+map MAP21 "Die Führer,DIE!-Floor 1"
+{
+	titlepatch = "CWILV20"
+	next = "MAP22"
+	secretnext = "MAP22"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = introcw3
+	par = 160
+}
+
+map MAP22 "Die Führer,DIE!-Floor 2"
+{
+	titlepatch = "CWILV21"
+	next = "MAP23"
+	secretnext = "MAP23"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = nazirap
+	par = 180
+}
+
+map MAP23 "Die Führer,DIE!-Floor 3"
+{
+	titlepatch = "CWILV22"
+	Next = "MAP24"
+	secretnext = "MAP24"
+	sky1 = "SKY1"
+	Grinding_Polyobj
+	music = Twelfth
+	par = 240
+}
+
+map MAP24 "Die Führer,DIE!-Floor 4"
+{
+	titlepatch = "CWILV23"
+	next = "MAP25"
+	secretnext = "MAP25"
+	sky1 = "SKY1"
+	music = Zerohour
+	par = 185
+}
+
+map MAP25 "Die Führer,DIE!-Floor 5"
+{
+	titlepatch = "CWILV24"
+	next = "MAP26"
+	secretnext = "MAP26"
+	sky1 = "SKY1"
+	music = introcw3
+	par = 325
+}
+
+map MAP26 "Die Führer,DIE!-Floor 6"
+{
+	titlepatch = "CWILV25"
+	next = "MAP27"
+	secretnext = "MAP27"
+	sky1 = "SKY1"
+	music = nazirap
+	par = 540
+}
+
+map MAP27 "Die Führer,DIE!-Floor 7"
+{
+	titlepatch = "CWILV26"
+	next = "MAP28"
+	secretnext = "Pacman"
+	sky1 = "SKY1"
+	music = dungeons
+	par = 330
+}
+
+map MAP28 "Die Führer,DIE!-Floor 8"
+{
+	titlepatch = "CWILV27"
+	next = "MAP29"
+	secretnext = "MAP29"
+	sky1 = "SKY1"
+	music = BODYBLOW
+	par = 450
+}
+
+map MAP29 "Die Führer,DIE!-Floor 9"
+{
+	titlepatch = "CWILV28"
+	next = ENDTITLE
+	secretnext = ENDTITLE
+	sky1 = "SKY3"
+        InterMusic = D_READ_M
+	music = HTL1
+	par = 420 
+}
+
+map PACMAN "Pacman!"
+{
+	titlepatch = "CWILV29"
+	next = "MAP28"
+	//secretnext = "MAP62"
+	sky1 = "SKY1"
+	music = PACMAN1
+	par = 300
+}
+
+
+map MAP30 "Spear Of Destiny-Floor 17"
+{
+	titlepatch = "RAMPA"
+	next = ENDTITLE
+	//secretnext = "MAP62"
+	sky1 = "SKY1"
+	music = BODYBLOW
+	par = 330
+}
+
+
+/////////////////////////////////////
+
+
+
+map MAP31 "A dark Secret-Floor 1"
+{
+	titlepatch = "CWILV30"
+	next = "MAP32"
+	secretnext = "MAP32"
+	sky1 = "EP4SKY"
+	music = GETTHE1
+	par = 270
+}
+
+map MAP32 "A dark Secret-Floor 2"
+{
+	titlepatch = "CWILV31"
+	next = "MAP33"
+	secretnext = "MAP33"
+	sky1 = "EP4SKY"
+	music = SEARCHN
+	par = 360
+}
+
+map MAP33 "A dark Secret-Floor 3"
+{
+	titlepatch = "CWILV32"
+	next = "MAP34"
+	secretnext = "SLEEPY"
+	sky1 = "SKY2"
+	music = POW1
+	par = 300
+}
+
+map MAP34 "A dark Secret-Floor 4"
+{
+	titlepatch = "CWILV33"
+	next = "MAP35"
+	secretnext = "MAP35"
+	sky1 = "SKY2"
+	music = Suspense
+	par = 300
+}
+
+map MAP35 "A dark Secret-Floor 5"
+{
+	titlepatch = "CWILV34"
+	next = "MAP36"
+	secretnext = "MAP40"
+	sky1 = "SKY2"
+	music = Corner
+	par = 480
+}
+
+map MAP36 "A dark Secret-Floor 6"
+{
+	titlepatch = "CWILV35"
+	next = "MAP37"
+	secretnext = "MAP37"
+	sky1 = "SKY2"
+	music = SEARCHN
+	par = 330
+}
+
+map MAP37 "A dark Secret-Floor 7"
+{
+	titlepatch = "CWILV36"
+	next = "MAP38"
+	secretnext = "MAP38"
+	sky1 = "SKY2"
+	music = POW1
+	par = 405
+}
+
+map MAP38 "A dark Secret-Floor 8"
+{
+	titlepatch = "CWILV37"
+	next = "MAP39"
+	secretnext = "MAP39"
+	sky1 = "SKY2"
+	music = Headache
+	par = 540
+}
+
+map MAP39 "A dark Secret-Floor 9"
+{
+	titlepatch = "CWILV38"
+	next = ENDTITLE
+	secretnext = ENDTITLE
+      InterMusic = D_READ_M
+	sky1 = "SKY2"
+	music = WarMarch
+	par = 240
+}
+
+map Sleepy "A dark Secret-Floor 10"
+{
+	titlepatch = "CWILV39"
+	next = "MAP34"
+	sky1 = "SKY2"
+	music = Nacht
+	par =  30
+}
+
+map MAP40 "Die ärgerliche Angelegenheit-ACT 1"
+{
+	titlepatch = "OPIRK1"
+	next = "MAP36"
+	secretnext = "MAP36"
+	sky1 = "SKY2"
+	music = EE1
+	par = 390
+}
+
+map MAP41 "Trail of Madman-Floor 1"
+{
+	titlepatch = "CWILV40"
+	next = "MAP42"
+	secretnext = "MAP42"
+	sky1 = "SKY1"
+	music = GRUNDGE
+	par = 300
+}
+
+map MAP42 "Trail of Madman-Floor 2"
+{
+	titlepatch = "CWILV41"
+	next = "MAP43"
+	secretnext = "E5M10"
+	sky1 = "SKY1"
+	music = ROCKED
+	par = 300
+}
+
+map MAP43 "Trail of Madman-Floor 3"
+{
+	titlepatch = "CWILV42"
+	next = "MAP44"
+	secretnext = "MAP44"
+	sky1 = "SKY1"
+	music = ORIGINAL
+	par = 180
+}
+
+map MAP44 "Trail of Madman-Floor 4"
+{
+	titlepatch = "CWILV43"
+	next = "MAP45"
+	secretnext = "MAP45"
+	sky1 = "SKY1"
+	music = DOOM
+	par = 360
+}
+
+map MAP45 "Trail of Madman-Floor 5"
+{
+	titlepatch = "CWILV44"
+	next = "MAP46"
+	secretnext = "MAP63"
+	sky1 = "SKY1"
+	music = GRUNDGE
+	par = 360
+}
+
+map MAP46 "Trail of Madman-Floor 6"
+{
+	titlepatch = "CWILV45"
+	next = "MAP47"
+	secretnext = "MAP47"
+	sky1 = "BWSKY1"
+	music = ROCKED
+	par = 390
+}
+
+map MAP47 "Trail of Madman-Floor 7"
+{
+	titlepatch = "CWILV46"
+	next = "MAP48"
+	secretnext = "MAP48"
+	sky1 = "BWSKY1"
+	music = ORIGINAL
+	par = 390
+}
+
+map MAP48 "Trail of Madman-Floor 8"
+{
+	titlepatch = "CWILV47"
+	next = "MAP49"
+	secretnext = "MAP49"
+	sky1 = "SKY2"
+	music = DOOM
+	par = 330
+}
+
+map MAP49 "Trail of Madman-Floor 9"
+{
+	titlepatch = "CWILV48"
+         NEXT = ENDTITLE
+	secretnext = ENDTITLE
+      InterMusic = D_READ_M
+	sky1 = "SKY2"
+	music = WarMarch
+	par = 240
+}
+
+map MAP63 "Die ärgerliche Angelegenheit-ACT 2"
+{
+	titlepatch = "OPIRK2"
+	next = "MAP46"
+	secretnext = "MAP46"
+	sky1 = "SKY2"
+	music = E6M9
+	par = 750
+}
+
+map E5M10 "Trail of Madman-Floor 10"
+{
+	titlepatch = "CWILV49"
+	next = "MAP43"
+	sky1 = "SKY2"
+	music = DUNGEON
+	par = 300
+}
+
+map MAP61 "Die ärgerliche Angelegenheit-ACT 3"
+{
+	titlepatch = "OPIRK3"
+	next = "MAP59"
+	sky1 = "SKY2"
+	music = INFIL
+	par = 900
+}
+
+map MAP51 "Confrontation-Floor 1"
+{
+	titlepatch = "CWILV50"
+	next = "MAP52"
+	secretnext = "MAP52"
+	sky1 = "SKY2"
+	music = introcw3
+	par = 660
+}
+
+map MAP52 "Confrontation-Floor 2"
+{
+	titlepatch = "CWILV51"
+	next = "MAP53"
+	secretnext = "MAP53"
+	sky1 = "SKY2"
+	music = NaziRap2
+	par = 600
+}
+
+map MAP53 "Confrontation-Floor 3"
+{
+	titlepatch = "CWILV52"
+	next = "MAP54"
+	sky1 = "SKY2"
+	music = Twelfth
+	par = 540
+}
+
+map MAP54 "Confrontation-Floor 4"
+{
+	titlepatch = "CWILV53"
+	next = "MAP55"
+	secretnext = "MAP55"
+	sky1 = "SKY2"
+	music = ZeroHour
+	par = 420
+}
+
+map MAP55 "Confrontation-Floor 5"
+{
+	titlepatch = "CWILV54"
+	next = "MAP56"
+	secretnext = "MAP60"
+	sky1 = "SKY2"
+	music = GoingAft
+	par = 420
+}
+
+map MAP56 "Confrontation-Floor 6"
+{
+	titlepatch = "CWILV55"
+	next = "MAP57"
+	secretnext = "MAP57"
+	sky1 = "SKY2"
+	music = Drums
+	par = 480
+}
+
+map MAP57 "Confrontation-Floor 7"
+{
+	titlepatch = "CWILV56"
+	next = "MAP58"
+	secretnext = "MAP58"
+	sky1 = "SKY2"
+	music = NaziRap2
+	par = 900
+}
+
+map MAP58 "Confrontation-Floor 8"
+{
+	titlepatch = "CWILV57"
+	next = "MAP59"
+	secretnext = "MAP61"
+	sky1 = "SKY2"
+	music =EE1
+	par = 900
+}
+
+map MAP59 "Confrontation-Floor 9"
+{
+	titlepatch = "CWILV58"
+         NEXT = ENDTITLE
+	secretnext = ENDTITLE
+      InterMusic = D_READ_M
+	sky1 = "SKY2"
+       // SpecialAction = "FatFace","Teleport_EndGame"  
+	music = E6M9
+	par = 720
+}
+
+map MAP60 "Confrontation-Floor 10"
+{
+	titlepatch = "CWILV59"
+	next = "MAP56"
+	secretnext = "MAP56"
+	sky1 = "SKY2" 
+	music = FUNKYOU
+	par = 600
+}
+
+////REMAKE MAP OF ONE OF THE LEVELS FROM "LEGO WOLFENSTEIN 3D"
+map MAP62 "Das Ubersoldat Dance"
+{
+	//titlepatch = "uberdance"
+	next = "EndTitle"
+	secretnext = "AntoLeve"
+	sky1 = "SKY3"
+	music = CMON
+	par = 240
+}
+
+map NOAH "Noah in trouble!"
+{
+	//titlepatch = "uberdance"
+	next = "EndTitle"
+	secretnext = "AntoLeve"
+	sky1 = "SKY3"
+	music = NOAH
+	par = 480
+}
+
+map DM1944 "Dreadful Terror"
+{
+	//titlepatch = "uberdance"
+	next = "EndTitle"
+	secretnext = "AntoLeve"
+	sky1 = "SODSKY"
+	music = E6M9
+	par = 300
+}
+
+map SLEND "The Dresden Column"
+{
+    next = "EndTitle"
+    sky1 = "RSKY2"
+    music = RAPT1
+    par = 3 // epic troll
+    Grinding_Polyobj
+    Interpic = Interpi2
+}
+
+map AntoLeve "The Courtyard"
+{
+	//titlepatch = "Courtyard"
+	next = "EndTitle"
+	secretnext = "map28"
+	sky1 = "SKY1"
+	music = Pacman
+	par = 600
+}
+
+
+
+
+////The test map has been turned into a museum where players can learn about the lore of the enemies and check out other things. 
+map Museum "Museum"
+{
+	//titlepatch = "testmap"
+	next = "EndTitle"
+	sky1 = "SKY1"
+        ResetHealth
+        ResetInventory
+	InterMusic = D_READ_M
+	music = Victory
+	par = 150
+}
+//"is one" non significa "è unica" ma "è uno/a"... potevi cambiare con "is unique", ma credo ROCKS sta bene
+map TITLEMAP "Wondering About My Love ROCKS!"
+{
+	titlepatch = "CWILV23" //che ti serve? //In effett....
+	next = "MAP01" //che ti serve? //Bho
+	secretnext = "MAP01" //che ti serve? //A un cazzo XD
+	sky1 = "SKY1"  //che ti serve?//Adesso mi serve
+	music = WONDER
+	par = 150  //che ti serve?
+	
+	//Ozy,non cagare il cazzo. 
+}
+
+
+
+map E7M18 "Spear of Destiny-Original Death Knight Boss Fight"
+{
+	next = E7M19
+        Interpic = Interpi2
+	sky1 = "SODSK1"
+        NoIntermission
+	Grinding_Polyobj
+	music = ULTIMATE
+	
+}
+
+
+map E7M19 "Spear of Destiny-Original Angel of Death Boss Fight"
+{
+	titlepatch = "SODB"
+	next = ENDTITLE
+        Interpic = Interpi2
+	sky1 = "HellSky"
+	Grinding_Polyobj
+	music = EEVIL
+	
+}
+
+map WolfDoom "Wolf 'En Doom"
+{
+	//titlepatch = "uberdance"
+	next = "EndTitle"
+	sky1 = "SODSKY"
+	music = E1M1
+	par = 70
+}
+
+
+
+clearskills
+
+skill baby
+{
+//DisableCheats be free. 
+DamageFactor = 0.25
+SpawnFilter = Baby
+Name = "Can I play, Daddy?"
+picname = "M_JKILL"
+mustconfirm = "All incoming damage is decreased by 75%. Enemies are less aggressive. Medkits and Armour pickups are extremely efficient!"
+ReplaceActor = "Medikit","Medikit2"
+ReplaceActor = "Demon","EasyDog"
+ReplaceActor = "cacodemon","BringemonFlameSoldier"
+ReplaceActor = "UnCoglioneEsplosivo1","UnCoglioneEsplosivo1EASY"
+ReplaceActor = "UnCoglioneEsplosivo2","UnCoglioneEsplosivo2EASY"
+/////MADONNA I POZZI!I POZZI!
+
+
+//ReplaceActor = "HealingBasin1",
+ReplaceActor = "HealingBasin2","HealingBasin1"
+ReplaceActor = "HealingBasin3","HealingBasin1"
+ReplaceActor = "SkullColumn","HealingBasin1"
+ReplaceActor = "HealingBasin4","HealingBasin1"
+
+/////New Replacements
+ReplaceActor = "HansTracer","STG44Tracer"
+ReplaceActor = "Ubersoldat","EasyUbersoldat"
+ReplaceActor = "DAMNSON","easydamnson"
+ReplaceActor = "DeathKnight","EasyDeathKnight"
+ReplaceActor = "DrSchabbs","EasyDrSchabbs"
+ReplaceActor = "Harbinger","EasyHarbinger"
+ReplaceActor = "GretelGrosse","EasyMEINPUZZA"
+ReplaceActor = "FatFace","EasyFatFace"
+ReplaceActor = "Giftmacher","EasyGiftmacher"
+ReplaceActor = "BWArchvile","EasyArchvile"
+ReplaceActor = "BWBaronOfHell","EasyBaron"
+ReplaceActor = "BWCaco","EasyCaco"
+ReplaceActor = "UbersoldatYellow","EasyUbersoldatYellow"
+ReplaceActor ="UberSoldatRed","EasyUberSoldatRed"
+ReplaceActor = "UbersoldatBlue","EasyUbersoldatBlue"
+/////Health
+ReplaceActor = "Stimpack","BabyFood"
+ReplaceActor = "Medikit","BabyMedikit"
+ReplaceActor = "Helmet","BabyHelmet"
+ReplaceActor = "MiniMediKit","BabyMiniMediKit"
+ReplaceActor = "DroppedHelmet","BabyDroppedHelmet"
+ReplaceActor = "SoulSphere","BabyMegaMedikit"
+ReplaceActor = "TheRealUberHealth","BabyTheRealUberHealth"
+ReplaceActor = "WoodenBarrelFood","BabyBarrelFood"
+ReplaceActor = "HealthBonus","BabyHealthPlus"
+////Glass with Mutant
+ReplaceActor = "glaswithmutant","easyglaswithmutant"
+}
+
+skill easy
+{
+DamageFactor = 0.50
+SpawnFilter = Easy
+//DisableCheats be free. 
+Name = "Don't Hurt Me"
+picname = "M_ROUGH"
+ReplaceActor = "Medikit","Medikit2"
+MustConfirm = "All incoming damage is decreased by 50%. Enemies are less aggressive"
+ReplaceActor = "Demon","EasyDog"
+ReplaceActor = "cacodemon","BringemonFlameSoldier"
+ReplaceActor = "UnCoglioneEsplosivo1","UnCoglioneEsplosivo1EASY"
+ReplaceActor = "UnCoglioneEsplosivo2","UnCoglioneEsplosivo2EASY"
+ReplaceActor = "HealingBasin1","HealingBasin2"
+//ReplaceActor = "HealingBasin2","HealingBasin1"
+ReplaceActor = "HealingBasin3","HealingBasin2"
+ReplaceActor = "SkullColumn","HealingBasin2"
+ReplaceActor = "HealingBasin4","HealingBasin2"
+/////New Replacements
+ReplaceActor = "HansTracer","STG44Tracer"
+ReplaceActor = "Ubersoldat","EasyUbersoldat"
+ReplaceActor = "DAMNSON","easydamnson"
+ReplaceActor = "DeathKnight","EasyDeathKnight"
+ReplaceActor = "DrSchabbs","EasyDrSchabbs"
+ReplaceActor = "Harbinger","EasyHarbinger"
+ReplaceActor = "GretelGrosse","EasyMEINPUZZA"
+ReplaceActor = "FatFace","EasyFatFace"
+ReplaceActor = "Giftmacher","EasyGiftmacher"
+ReplaceActor = "BWArchvile","EasyArchvile"
+ReplaceActor = "BWBaronOfHell","EasyBaron"
+ReplaceActor = "BWCaco","EasyCaco"
+ReplaceActor = "UbersoldatYellow","EasyUbersoldatYellow"
+ReplaceActor ="UberSoldatRed","EasyUberSoldatRed"
+ReplaceActor = "UbersoldatBlue","EasyUbersoldatBlue"
+////Glass with Mutant
+ReplaceActor = "glaswithmutant","easyglaswithmutant"
+
+}
+
+skill normal
+{
+SpawnFilter = Normal
+Name = "Bring 'Em On!"
+//DisableCheats be free. 
+ReplaceActor = "EasyFG42SS","FG42Nazi"
+ReplaceActor = "EasyNaziGirl", "NaziGirl"
+ReplaceActor = "EasySoldierMutant","SoldierMutant"
+ReplaceActor = "EasyScientist","Scientist"
+ReplaceActor = "easyMutant", "ZioMutant"
+ReplaceActor ="EasyRifleMan","Rifle_man"
+ReplaceActor ="EasyBrownguard","Zombie_Man"
+ReplaceActor = "cacodemon","BringemonFlameSoldier"
+ReplaceActor = "UnCoglioneEsplosivo1","UnCoglioneEsplosivo1EASY"
+ReplaceActor = "UnCoglioneEsplosivo2","UnCoglioneEsplosivo2EASY"
+ReplaceActor ="EasyNazi","Nazi"
+ReplaceActor ="EasyWaffenSS","Panzergrenadier"
+ReplaceActor ="EasyRegularOfficer","ShotGunGuy1"
+ReplaceActor ="EasyMP40Officer","NAZIOFFICER"
+MustConfirm = "Brutal Wolfenstein's balanced experience. Enemies are moderately aggressive."
+picname = "M_HURT"
+ReplaceActor = "Medikit","Medikit2"
+ReplaceActor = "Demon","Dog"
+ReplaceActor = "HealingBasin1","HealingBasin3"
+ReplaceActor = "HealingBasin2","HealingBasin3"
+//ReplaceActor = "HealingBasin3","HealingBasin2"
+ReplaceActor = "HealingBasin4","HealingBasin3"
+///MEINGOTTINHIMMEL
+ReplaceActor = "Easyp38Brownguard","P38GUARD"
+ReplaceActor = "P38EasyScientist","p38scientist"
+ReplaceActor = "EasyRegularOP38fficer","P38OFFICER"
+ReplaceActor = "BWArchvile","EasyArchvile" // I'm a generous god
+////Glass with Mutant
+ReplaceActor = "easyglaswithmutant","glaswithmutant"
+defaultskill
+}
+
+
+skill Hard
+{
+SpawnFilter = Hard
+//DisableCheats be free. 
+Name = "I'm a Death Incarnate"
+ReplaceActor ="MutantStg44","UberMutantStg44"
+ReplaceActor ="OfficerTracer","UberOfficerTracer"
+ReplaceActor ="Stg44Tracer","UberStg44Tracer"
+ReplaceActor ="UberSoldatTracer","UberSoldatTracerUber"
+ReplaceActor ="ZombieManTracer","UberNaziTracer"
+ReplaceActor ="RiflemanTracer","UberRiflemanTracer"
+ReplaceActor ="MutantTraCER","UberMutantTraCER"
+ReplaceActor ="MonsterTracer","UberNaziTracer"
+ReplaceActor ="IrkenTraCER","UberIrkenTraCER"
+ReplaceActor ="RIFLEMANTRACERHEADSHOT","UberRIFLEMANTRACERHEADSHOT"
+ReplaceActor = "GIUSEPPESIMONE","GIUSEPPESIMONEUbriaco"
+ReplaceActor = "RockettaroSeeker","RockettaroSeekerUber"
+ReplaceActor = "Rockettaro","RockettaroUber"
+ReplaceActor = "DogBite","UberDogBite"
+ReplaceActor = "FTFire","UberFire1"
+ReplaceActor = "FTFire3","UberFire2"
+ReplaceActor = "FTFire_2","FTFire_2UBER"
+ReplaceActor = "BurnParticles","UberBurnParticles"
+////
+ReplaceActor = "HealingBasin1","HealingBasin4"
+ReplaceActor = "HealingBasin2","HealingBasin4"
+ReplaceActor = "HealingBasin3","HealingBasin4"
+ReplaceActor = "SkullColumn","HealingBasin4"
+ReplaceActor = "Medikit","UberMedikit3"
+ReplaceActor = "Stimpack","UberStimpack3"
+ReplaceActor = "SoulSphere","UberMegaMedikit2"
+ReplaceActor = "WoodenBarrelFood","UberBarrelFood"
+/////
+ReplaceActor = "EasyFG42SS","FG42Nazi"
+ReplaceActor = "RIFLE_PATROL","UberRifleManPatrol"
+ReplaceActor = "Rifle_Man","UberRifleman"
+ReplaceActor = "EasyNaziGirl", "NaziGirl"
+ReplaceActor = "EasySoldierMutant","HardSoldierMutant"
+ReplaceActor = "EasyScientist","Hardscientist"
+ReplaceActor = "easyMutant", "HardMutant"
+ReplaceActor ="EasyRifleMan","UberRifleman"
+ReplaceActor ="EasyBrownguard","Zombie_Man"
+ReplaceActor ="EasyNazi","Nazi"
+ReplaceActor ="EasyWaffenSS","Panzergrenadier"
+ReplaceActor ="EasyRegularOfficer","UberOfficer"
+ReplaceActor = "Shotgunguy1","Uberofficer"
+ReplaceActor = "NaziOfficer","UberOfficerMP40"
+ReplaceActor ="EasyMP40Officer","UberOfficerMP40"
+ReplaceActor ="OFF_PATROL","UberOFF_PATROL"
+ReplaceActor ="NAZMP40_PATROL","UberMP40OfficerPatrol"
+ReplaceActor = "THENME","THENMEUBER"
+ReplaceActor = "Demon","Dog"
+//ReplaceActor = "HealingBasin4","HealingBasin3"
+///MEINGOTTINHIMMEL
+ReplaceActor = "Easyp38Brownguard","P38GUARD"
+ReplaceActor = "P38EasyScientist","P38HardScientist"
+ReplaceActor = "EasyRegularOP38fficer","UberP38Officer"
+ReplaceActor = "OFFP38_PATROL","UberP38OFF_PATROL"
+mustconfirm = "Enemies are more aggressive. Projectiles are faster and deadlier. Healing items are less efficient."
+picname = "M_ULTRA"
+/////New Replacements
+ReplaceActor = "HODFIREBALL","HardHodFireball"
+ReplaceActor = "HODFIREBALL2","HardHodFireball2"
+ReplaceActor = "Ubermutant","HardUbermutant"
+ReplaceActor = "TRANSTRACER","HardTRANSTRACER"
+ReplaceActor = "LOSPETTRODISOD","LOSPETTRODISODARDUO"
+////Glass with Mutant
+ReplaceActor = "easyglaswithmutant","hardglaswithmutant"
+ReplaceActor = "glaswithmutant","hardglaswithmutant"
+ReplaceActor = "HansGrosse","UberHans"
+ReplaceActor = "Cyberdemon","UberMechaHitler"
+ReplaceActor = "AdolfHitler","UberAdolfHitler"
+ReplaceActor = "GretelGrosse","HardMEINPUZZA"
+}
+
+
+skill Nightmare
+{
+SpawnFilter = Nightmare
+//DisableCheats be free. 
+Name = "UBER"
+/////////////////////
+ReplaceActor = "HealthBonus","UberHealthPlus"
+ReplaceActor = "Stimpack","UberStimpack2"
+ReplaceActor = "Medikit","UberMedikit3"
+ReplaceActor = "Helmet","UberHelmet"
+ReplaceActor = "MiniMediKit","UberMiniMediKit"
+ReplaceActor = "DroppedHelmet","UberDroppedHelmet"
+ReplaceActor = "SoulSphere","UberMegaMedikit"
+ReplaceActor = "TheRealUberHealth","UberTheRealUberHealth"
+ReplaceActor = "WoodenBarrelFood","DeathIncarnateBarrelFood"
+//////////////////////
+ReplaceActor = "HealingBasin1","HealingBasin4"
+ReplaceActor = "HealingBasin2","HealingBasin4" 
+ReplaceActor = "HealingBasin3","HealingBasin4"
+ReplaceActor = "SkullColumn","HealingBasin4"
+//ReplaceActor = "HealingBasin4","HealingBasin3"
+///MEINGOTTINHIMMEL
+ReplaceActor ="MutantStg44","2UberMutantStg44"
+ReplaceActor ="OfficerTracer","2UberOfficerTracer"
+ReplaceActor ="Stg44Tracer","2UberStg44Tracer"
+ReplaceActor ="UberSoldatTracer","UberSoldatTracerUber2"
+ReplaceActor ="ZombieManTracer","2UberNaziTracer"
+ReplaceActor ="RiflemanTracer","2UberRiflemanTracer"
+ReplaceActor ="MutantTraCER","2UberMutantTraCER"
+ReplaceActor ="MonsterTracer","2UberNaziTracer"
+ReplaceActor ="IrkenTraCER","UberIrkenTraCER"
+ReplaceActor ="RIFLEMANTRACERHEADSHOT","2UberRIFLEMANTRACERHEADSHOT"
+ReplaceActor = "GIUSEPPESIMONE","GIUSEPPESIMONEUbriaco"
+ReplaceActor = "RockettaroSeeker","RockettaroSeekerUber2"
+ReplaceActor = "Rockettaro","RockettaroUber2"
+ReplaceActor = "DogBite","UberDogBite"
+ReplaceActor = "FTFire","UberFire1"
+ReplaceActor = "FTFire3","UberFire2"
+ReplaceActor = "FTFire_2","FTFire_2UBER"
+ReplaceActor = "BurnParticles","UberBurnParticles"
+ReplaceActor = "EasyFG42SS","HardFG42NAZI"
+ReplaceActor = "Rifle_Man","HardRifleman" 
+ReplaceActor = "ZOMBIE_MAN","HardBrownGuard" 
+ReplaceActor = "EasyNaziGirl", "HardNaziGirl" 
+ReplaceActor = "EasySoldierMutant","UberSoldierMutant"
+ReplaceActor = "EasyScientist","Hardscientist"
+ReplaceActor = "easyMutant", "NOTSOUBERMUTANTE"
+ReplaceActor ="EasyRifleMan","HardRifleman"
+ReplaceActor ="EasyBrownguard","HardBrownGuard"
+ReplaceActor = "SA_PATROL","HARDSA_PATROL"
+ReplaceActor ="EasyNazi","HardNazi"    
+ReplaceActor ="Nazi","HardNazi" 
+ReplaceActor ="EasyWaffenSS","HardPanzergrenadier"
+ReplaceActor = "Panzergrenadier","HardPanzergrenadier"
+ReplaceActor ="EasyRegularOfficer","HardOfficer"
+ReplaceActor = "Shotgunguy1","HardOfficer"
+ReplaceActor = "NaziOfficer","UberOfficerMP40"
+ReplaceActor ="EasyMP40Officer","UberOfficerMP40"
+ReplaceActor ="OFF_PATROL","HardOFF_PATROL"
+ReplaceActor ="Nazi_PATROL","HARDNAZI_PATROL"
+ReplaceActor = "SAP38_Patrol","HardSAP38_Patrol"
+ReplaceActor ="Pan_PATROL","HARDPAN_PATROL"
+ReplaceActor ="NAZMP40_PATROL","UberMP40OfficerPatrol"
+ReplaceActor = "RIFLE_PATROL","HardRIFLE_PATROL"
+ReplaceActor = "THENME","THENMEUBER"
+ReplaceActor = "Demon","Dog"
+ReplaceActor = "Easyp38Brownguard","Hardp38BrownGuard"
+ReplaceActor = "P38EasyScientist","P38HardScientist"
+ReplaceActor = "EasyRegularOP38fficer","HardP38Officer"
+ReplaceActor = "OFFP38_PATROL","HardP38OFF_PATROL"
+mustconfirm = "Bist du Verrückt?!? Enemies are extremely aggressive and your healing supplies are even more limited! I'd think twice before pistol starting this one!"
+picname = "M_Hitlah"
+/////New Replacements
+ReplaceActor = "Ubersoldat","HardUbersoldat"
+ReplaceActor = "Harbinger","HardHarbinger"
+ReplaceActor = "HODFIREBALL","HardHodFireball"
+ReplaceActor = "HODFIREBALL2","HardHodFireball2"
+ReplaceActor = "Ubermutant","HardUbermutant"
+ReplaceActor = "TRANSTRACER","HardTRANSTRACER"
+ReplaceActor = "BWArchvile","HardArchvile"
+ReplaceActor = "GreenPlasmaBall","HardGreenPlasmaBall"
+ReplaceActor = "FireBall_","HardFireBall_"
+ReplaceActor = "DemonAttack","HardDemonAttack"
+ReplaceActor = "CacodemonBall_","HardCacodemonBall_"
+ReplaceActor = "LOSPETTRODISOD","LOSPETTRODISODARDUO"
+ReplaceActor = "UbersoldatYellow","HardUbersoldatYellow"
+ReplaceActor ="UberSoldatRed","HARDUberSoldatRed"
+ReplaceActor = "UbersoldatBlue","HARDUbersoldatBlue"
+ReplaceActor = "easyglaswithmutant","Uberglaswithmutant"
+ReplaceActor = "glaswithmutant","uberglaswithmutant"
+ReplaceActor = "Cacodemon","FlameSoldierBastardo"
+ReplaceActor = "HansGrosse","UberHans"
+ReplaceActor = "Cyberdemon","UberMechaHitler"
+ReplaceActor = "AdolfHitler","UberAdolfHitler"
+ReplaceActor = "GretelGrosse","HardMEINPUZZA"
+}

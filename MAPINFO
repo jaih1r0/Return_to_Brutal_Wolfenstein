@@ -1,5 +1,0 @@
-gameinfo
-{
-	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler"
-	StatusBarClass = "BW_Hud"
-}

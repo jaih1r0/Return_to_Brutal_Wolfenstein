@@ -203,8 +203,7 @@ FootClip 0
 
 terrain	PurpleBloodTerrain
 {
-//splash 	PurpleBlood
-liquid
+splash 	PurpleBlood
 }
 
 Terrain BWWood
@@ -228,26 +227,23 @@ liquid
 
 terrain	water
 {
-//splash 	water
-liquid
+splash 	water
 }
 
 terrain	lava
 {
 splash 	lava
-liquid
 }
 
 terrain	blood
 {
 liquid
-//splash 	blood
+splash 	blood
 }
 
 terrain Slime
 {
 splash Slime
-liquid
 }
 
 Terrain BWDirt

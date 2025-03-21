@@ -343,7 +343,7 @@ class TreasureFinder : inventory
 		actor mo;
 		while(mo = Actor(ti.next()))
 		{
-			if(mo is "ScoreItem" || mo is "Cross" || mo is "Radio")
+			if(mo is "ScoreItem") //|| mo is "Cross" || mo is "Radio")
 			{
 				console.printf("Found a \cd"..mo.gettag().." in the pos: "..mo.pos);
 				sx.push(mo);
