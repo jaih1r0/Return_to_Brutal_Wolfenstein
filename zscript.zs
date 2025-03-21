@@ -35,7 +35,7 @@ const MAP_EPSILON = 1 / 65536.;
 
 
 // fuck 
-Class CustomInventoryBW2 : CustomInventory 
+Class CustomInventoryBW2 : CustomInventory
 {
 
 	Action void A_CheckGrenade()

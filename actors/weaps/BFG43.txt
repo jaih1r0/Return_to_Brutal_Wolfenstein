@@ -1,0 +1,243 @@
+Actor GunHasNotSpinned:Inventory
+{
+Inventory.MaxAmount 1
+}
+
+Actor LeichenFaust1943 : DefaultBWgun 7600
+{
+//$Category BW Weapons
+//$Title LeichenFaust 1943
+Weapon.AmmoUse 0
+Weapon.AmmoGive 3
+Weapon.AmmoType "LeichenfaustAmmo"
+Weapon.BobRangeX 0.75
+Weapon.BobRangeY 0.5
+Weapon.BobSpeed 1.5
+Weapon.BobStyle "InverseAlpha" //Denis Belmondo's Bobstyle
+AttackSound "None"
+Inventory.PickUpSound "L43PCK"
+Inventory.PickUpMessage "Pikced up an experimental Leichenfaust 1943(SLOT 9)"
++WEAPON.NOAUTOAIM
++WEAPON.NOALERT
+scale 0.4
+tag "LeichenFaust 1943"
+Inventory.Icon "MPBACK"
++WEAPON.NOAUTOFIRE
+States
+{
+
+Ready:
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"UnDwarfthisBlazko")
+TNT1 A 0 A_JumpIfInventory("LeichenfaustAmmo",1,"Ready2")
+tnt1 a 0 a_playsound("LFRaise")
+L14S ABCDE 2
+Goto RealReadyNoAmmo
+
+Ready2:
+tnt1 a 0 a_playsound("LFRaise")
+LF4S ABCDE 2
+Goto RealReady
+
+RealReady:
+TNT1 A 0 A_JUMPIFINVENTORY("GunHasNotSpinned",1,"SPIIIN")
+TNT1 A 0 A_JumpIfInventory("LeichenfaustAmmo",1,1)
+Goto RealReadyNoAmmo
+TNT1 A 0 A_PLAYSOUND("LF1OOP",5,1,TRUE)
+LF43 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+TNT1 A 0 A_SetCrosshair(0) 
+//TNT1 A 0 A_JumpIfInventory("ChangeMelee",1,"NewMelee")
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+Loop
+
+RealReadyNoAmmo:
+TNT1 A 0 A_JumpIfInventory("LeichenfaustAmmo",1,"RealReady")
+TNT1 A 0 A_STOPSOUND(5)
+LF43 H 1 A_WeaponReady(WRF_ALLOWRELOAD)
+TNT1 A 0 A_SetCrosshair(0) 
+//TNT1 A 0 A_JumpIfInventory("ChangeMelee",1,"NewMelee")
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+Loop
+
+Deselect:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+TNT1 A 0 A_JumpIfInventory("LeichenfaustAmmo",1,"Deselect2")
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_TakeInventory("SlideExecute",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_stopSound(5)
+TNT1 A 0 A_ZoomFactor(1.0)
+L14S EDCBA 2
+TNT1 A 0 A_Lower
+Wait
+
+
+
+Deselect2:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_TakeInventory("SlideExecute",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_stopSound(5)
+TNT1 A 0 A_ZoomFactor(1.0)
+LF4S EDCBA 2
+TNT1 A 0 A_Lower
+Wait
+
+Select:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+TNT1 A 0 A_Raise
+Wait
+
+Fire:
+TNT1 A 0 A_JumpIfInventory("LeichenfaustAmmo",1,1)
+Goto NoAmmo
+TNT1 AAAA 0
+TNT1 A 0 A_TakeInventory("Meleeattack",1)
+TNT1 A 0 A_stopSound(5)
+TNT1 A 0 A_PlaySound("LCHFIRE")
+LF43 B 2 BRIGHT A_AlertMonsters
+TNT1 A 0 A_FireCustomMissile("LFBALL",0,0,0,0,0,0)
+//TNT1 A 0 A_FireBullets (5, 3, -1, 20, "HitPuff",FBF_NORANDOM)
+TNT1 A 0 A_TakeInventory("LeichenfaustAmmo",1)
+TNT1 A 0 A_SetPitch(pitch - 10)
+TNT1 A 0 A_Recoil(10)
+TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+LF43 CDE 2
+LF43 EEE 3
+LF43 EDF 2
+
+SPIIIN:
+TNT1 A 0 A_GIVEINVENTORY("GunHasNotSpinned",1)
+TNT1 A 0 A_JumpIfInventory("LeichenfaustAmmo",1,1)
+Goto RealReadyNoAmmo
+tnt1 a 0 
+TNT1 A 0 A_PLAYSOUND("VSPIN")
+LF43 GH 2
+LF43 GH 2
+LF43 GH 2
+LF43 GH 2
+LF43 GH 2
+LF43 GH 2
+LF43 GH 2
+LF43 GH 2
+TNT1 A 0 A_TAKEINVENTORY("GunHasNotSpinned",1)
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+LF43 A 4 A_WeaponReady(WRF_ALLOWRELOAD)
+Goto RealReady
+
+NoAmmo:
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+Goto RealReadyNOAmmo
+
+Spawn:
+LFPK A -1
+Stop
+
+}
+}
+
+
+Actor LFBall
+{
+Alpha 0.50
+Radius 20
+Height 20
+Projectile
+Speed 30
+Damage (20)
+DamageType LFGRip
+MeleeDamage 0
+Gravity 1
+Decal "Scorch"
++NOGRAVITY
++EXTREMEDEATH
++BLOODSPLATTER 
++RIPPER
+DeathSound "LeichenExplosion"
+Obituary "$OB_MPROCKET"
+States
+{
+Spawn:
+TNT1 A 0 A_PlaySoundEx("LFLoop",5,true)
+BFS1 AB 3 BRIGHT
+Loop
+
+Death:
+TNT1 A 0 A_Explode(800,300,0,true,true,0,0,"nothing","LFGSplash")
+TNT1 A 0 A_custommissile("LFSmoke",0,0,0,0,0,0)
+TNT1 A 0 A_Quake(4,140,0,800)
+TNT1 A 0 A_stopSound(5)
+BFGb AB 5 BRIGHT
+BFGB C 3
+BFGB DEFG 5
+Stop
+}
+}
+
+
+Actor LFSmoke 
+{
+Game Doom 
+Radius 1
+Height 1
++nogravity 
+ProjectilePassHeight -16
+States
+{
+Spawn:
+SHwK BCDEFG 2 BRIGHT
+SHwK HIJKLM 2 BRIGHT
+SHwK NPQR 2 BRIGHT
+STOP
+}
+}
+
+
+ACTOR LeichenfaustAmmo : Ammo 7599
+{
+//$Category Ammo
+//$Title Leichenfaust Ammo
+	Inventory.PickupSound "LCPK"
+	Inventory.PickupMessage "Picked up Plasma-Six cells!"
+	Inventory.Amount 3
+	Inventory.MaxAmount 6
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 12
+	Mass 10000
+        SCALE 0.75
+        //Inventory.Icon "LC1IC"
+	States
+	{
+	Spawn:
+		LFAM A -1 bright
+		Loop
+	}
+}

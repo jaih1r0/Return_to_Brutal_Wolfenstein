@@ -1,0 +1,232 @@
+ACTOR UberHealthPlus : Health 
+{
+Game Doom
+SpawnID 152
+Inventory.PickupSound "pickups/food"
+Inventory.Amount 2
+Inventory.MaxAmount 100
+Inventory.PickupMessage "Ate some Dog Food,WOOF!"
+States
+{
+
+Spawn:
+BON1 A 2 
+Loop
+HoldAndDestroy: 
+TNT1 A 0 
+TNT1 A 0 A_SpawnItem("DogFoodEmpty")
+Stop
+
+	}
+}
+
+ACTOR UberStimpack2 : Health 
+{
+	Game Doom
+        Inventory.PickupSound "pickups/food"
+	SpawnID 23
+	Inventory.Amount 5
+	Inventory.PickupMessage "Cold Plate of Food"
+	States
+	{
+	Spawn:
+		STIM A 2
+		Loop
+		
+				HoldAndDestroy: 
+TNT1 A 0 
+TNT1 A 0 A_SpawnItem("Eatenchicken")
+Stop
+
+	}
+}
+
+
+ACTOR UberStimpack3 : Health 
+{
+	Game Doom
+        Inventory.PickupSound "pickups/food"
+	SpawnID 23
+	Inventory.Amount 8
+	Inventory.PickupMessage "Cold Plate of Food"
+	States
+	{
+	Spawn:
+		STIM A 2
+		Loop
+		
+				HoldAndDestroy: 
+TNT1 A 0 
+TNT1 A 0 A_SpawnItem("Eatenchicken")
+Stop
+
+	}
+}
+
+ACTOR UberMegaMedikit : Health
+{
+Inventory.PickupMessage "First Aid Kit"
+Health.LowMessage 25, "Now i really feel better!"
+Inventory.Amount 50
+Inventory.MaxAmount 100
+Inventory.PickupSound "pickups/medkit"
+States
+	{
+	Spawn:
+	MGHL A 1 
+	Loop
+}
+}
+
+ACTOR UberMegaMedikit2 : Health
+{
+Inventory.PickupMessage "First Aid Kit"
+Health.LowMessage 25, "Now i really feel better!"
+Inventory.Amount 75
+Inventory.MaxAmount 100
+Inventory.PickupSound "pickups/medkit"
+States
+	{
+	Spawn:
+	MGHL A 1 
+	Loop
+}
+}
+
+ACTOR UberTheRealUberHealth : Health 
+{
+Inventory.PickupMessage "Uber-Health"
+Health.LowMessage 25, "Now i've got your ticket to hell"
+Inventory.Amount 100
+Inventory.MaxAmount 200
+Inventory.PickupSound "SAMUELE"
+States
+	{
+	Spawn:
+	MGH1 A 1 
+	Loop
+}
+}
+
+ACTOR UberMedikit2 : Health 
+{
+	Game Doom
+        Inventory.PickupSound "pickups/Nmedkit"
+	Inventory.Amount 15 //cristo badoglio
+	Inventory.PickupMessage "Medkit!"
+	Health.LowMessage 15, "Thanks God!A first-Aid Kit!"
+	States
+	{
+	Spawn:
+        MEDI A 2
+		Loop
+		
+						HoldAndDestroy: 
+TNT1 A 0 
+TNT1 A 0 A_SpawnItem("Emptymedikit")
+Stop
+	}
+}
+
+
+
+ACTOR UberMedikit3 : Health 
+{
+	Game Doom
+        Inventory.PickupSound "pickups/Nmedkit"
+	Inventory.Amount 20 //cristo badoglio
+	Inventory.PickupMessage "Medkit!"
+	Health.LowMessage 20, "Thanks God!A first-Aid Kit!"
+	States
+	{
+	Spawn:
+        MEDI A 2
+		Loop
+		
+						HoldAndDestroy: 
+TNT1 A 0 
+TNT1 A 0 A_SpawnItem("Emptymedikit")
+Stop
+	}
+}
+
+
+Actor UberHelmet: BasicArmorbonus 
+{
+Radius 20
+Height 8
+Inventory.PickUpSound "Stahlhelm"
+Inventory.PickupMessage "Picked up a stahlhelm."
+Armor.SavePercent 50
+Armor.SaveAmount 15
+Armor.maxSaveAmount 100
+Inventory.Icon "BON2A0"
+-INVENTORY.ALWAYSPICKUP
+States
+{
+Spawn:
+BON2 A -1
+Loop
+}
+}
+
+Actor DroppedHelmet:BasicArmorBonus
+{
+Radius 20
+Height 8
+Inventory.PickUpSound "Stahlhelm"
+Inventory.PickupMessage "Picked up a stahlhelm."
+Armor.SavePercent 50
+Armor.SaveAmount 5
+Armor.maxSaveAmount 125
+Inventory.Icon "BON2A0"
+-INVENTORY.ALWAYSPICKUP
+States
+{
+Spawn:
+BON2 A -1
+Loop
+}
+}
+
+Actor UberDroppedHelmet:BasicArmorBonus
+{
+Radius 20
+Height 8
+Inventory.PickUpSound "Stahlhelm"
+Inventory.PickupMessage "Picked up a stahlhelm."
+Armor.SavePercent 50
+Armor.SaveAmount 3
+Armor.maxSaveAmount 115
+Inventory.Icon "BON2A0"
+-INVENTORY.ALWAYSPICKUP
+States
+{
+Spawn:
+BON2 A -1
+Loop
+}
+}
+
+
+ACTOR BabyHealthPlus : Health 
+{
+Game Doom
+SpawnID 152
+Inventory.PickupSound "pickups/food"
+Inventory.Amount 10
+Inventory.MaxAmount 200
+Inventory.PickupMessage "Ate some Dog Food,WOOF!"
+States
+{
+
+Spawn:
+BON1 A 2 
+Loop
+HoldAndDestroy: 
+TNT1 A 0 
+TNT1 A 0 A_SpawnItem("DogFoodEmpty")
+Stop
+
+	}
+}

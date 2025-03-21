@@ -1,0 +1,284 @@
+//My god,you can tell i haven't touched decorate in ages when making this weapon
+//I had so many mental mental gymnastics for the most dumb reasons while making this.
+
+
+ACTOR PanzerFaustAmmo : Ammo
+{
+   Inventory.Amount 0
+   inventory.icon "pnz1ic"
+   Inventory.MaxAmount 5
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 10
+}
+
+
+Actor Panzerfaustisempty:inventory
+{
+Inventory.Amount 1
+}
+
+Actor PanzerfaustisFUCKINGempty:inventory
+{
+Inventory.Amount 1
+}
+
+Actor Panzerfaust: DefaultBWGun 1309
+{
+//$Category BW Weapons
+//$Title PanzerFaust
+Weapon.AmmoUse 0
+Weapon.AmmoGive 1
+Weapon.AmmoType "PanzerFaustAmmo"
+Weapon.BobRangeX 0.75
+Weapon.BobRangeY 0.5
+Weapon.BobSpeed 1.5
+Weapon.BobStyle "InverseAlpha" //Denis Belmondo's Bobstyle
+AttackSound "None"
+Inventory.PickUpSound "PNZPCK"
+Inventory.PickUpMessage "Picked up a PanzerFaust(SLOT 8)"
++WEAPON.NOAUTOAIM
++WEAPON.NOALERT
+scale 0.5
+tag "PanzerFaust"
++WEAPON.NOAUTOFIRE
+States
+{
+Ready:
+TNT1 A 0 
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"UnDwarfthisBlazko")
+tnt1 a 0 a_Jumpifinventory("Panzerfaustisfuckingempty",1,"checkifthereisammo")
+TNT1 A 0 A_JumpIfInventory("PanzerFaustAmmo",1,"continueSwitchAnimation")
+Goto SwitchAnimation2
+
+Checkifthereisammo:
+TNT1 A 0 A_JumpIfInventory("Panzerfaustammo",1,"Continueswitch2")
+SwitchANimation2:
+tnt1 a 0 a_playsound ("PZSEL")
+PNZ5 BBCCDDEE 1 
+Goto Ready2 
+
+
+continueSwitchAnimation:
+TNT1 A 0 A_PlaySound ("PZSEL")
+PNZ1 BBCCDDEE 1
+Goto RealReady
+
+RealReady:
+TNT1 A 0 A_JumpIfInventory("PanzerFaustAmmo",1,"continueready")
+Goto Ready2
+ContinueReady:
+PNZ1 A 1 A_WeaponReady 
+TNT1 A 0 A_SetCrosshair(0) 
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+Loop
+
+
+
+Ready2:
+PNZ5 A 1 A_WeaponReady 
+TNT1 A 0 A_SetCrosshair(0) 
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+TNT1 A 0 A_JumpIfInventory("PanzerFaustAmmo",1,"ContinueSwitch2")
+Loop
+
+Select:
+//PORCO DIO,PORCA MADONNA
+//STO PERDENDO LA TESTA
+//CRISTODIO,QUESTO E' DECORATE,UNO DEI LINGUAGGI DI PROGRAMMAZIONE PIU FACILI AL MONDO E STO PERDENDO LA TESTA
+//SONO RITARDATO DIO RUSPANTE CAVALCATO DA UN SALVINI VIOLENTO CHE SEMINA ODIO
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+TNT1 A 0 A_Raise
+Wait
+
+Deselect:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+TNT1 A 0 A_TakeInventory("Slideexecute",1)
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_TakeInventory("PanzerFaustIsEmpty",1)
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_JumpIfInventory("Panzerfaustisfuckingempty",1,"KEEPGOING")
+TNT1 A 0 A_JumpIfInventory("PanzerFaustAmmo",1,"FullLower")
+KeepGoing:
+PNZ5 EEDDCCBB 1
+TNT1 A 0
+TNT1 A 0 A_Lower
+Wait
+
+FullLower:
+PNZ1 EEDDCCBB 1
+TNT1 A 0
+TNT1 A 0 A_Lower
+Wait
+
+
+DeselectNumeroDos:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_TakeInventory("PanzerFaustIsEmpty",1)
+TNT1 A 0 A_Lower
+Wait
+
+DeselectNumeroTres:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_ZoomFactor(1.0)
+tnt1 a 0 a_playsound("PZSW")
+PNZ2 DDEEFFGGHHII 1
+TNT1 A 0 A_FireCustomMissile("EmptyPanzerFaustThingy",10,0,10,15)
+TNT1 A 0 A_TakeInventory("PanzerFaustIsEmpty",1)
+TNT1 A 0 A_Lower
+Wait
+
+
+
+Fire:
+TNT1 A 0 A_JumpIfInventory("PanzerFaustAmmo",1,"KeepFiring")
+Goto Ready2
+KeepFiring:
+TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
+TNT1 A 0 A_PlaySound ("PNZFIRE")
+tnt1 a 0 a_alertmonsters //oops
+PNZ2 A 1 BRIGHT A_FireCustomMissile("PanzerFaustGrenade", 0, 1, 0, -5)
+TNT1 A 0 A_TakeInventory("PanzerFaustAmmo",1)
+TNT1 A 0 A_FireCustomMissile("ShakeYourAssDouble", 0, 0, 0, 0)
+TNT1 A 0 A_GiveInventory("Panzerfaustisfuckingempty",1)
+PNZ2 BB 2 A_WEAPONREADY (WRF_NOBOB|WRF_NOFIRE)
+tnt1 aAAA 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+PNZ2 CCCCCCC 2 A_WEAPONREADY (WRF_NOBOB|WRF_NOFIRE)
+
+PanzerFaustSwitch:
+TNT1 A 0 A_JumpIfInventory("PanzerFaustAmmo",1,"continueswitch2")
+Goto Ready2
+
+
+ContinueSwitch2:
+TNT1 A 0 A_TakeInventory("Panzerfaustisfuckingempty",1)
+continueswitch:
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+tnt1 a 0 a_playsound("PZSW")
+PNZ2 DDEEFFGGHHII 1
+TNT1 A 0 A_FireCustomMissile("EmptyPanzerFaustThingy",10,0,10,15)
+TNT1 AAA 2
+TNT1 A 0 A_PlaySound ("PZSEL")
+PNZ1 BBCCDDEE 1
+Goto RealReady
+
+Spawn:
+PNZ3 A -1
+Stop
+
+}
+}
+
+
+
+ACTOR PanzerFaustGrenade
+{
+Radius 10
+Height 8
+Projectile
+Speed 30
+Damage (200)
+DamageType Explosive
+MeleeDamage 0
+Gravity 1
+Decal "Scorch"
++NOGRAVITY
++EXTREMEDEATH
++BLOODSPLATTER 
+Health 5
+DeathSound "Explosion"
+Obituary "$OB_MPROCKET"
+States
+{
+Spawn:
+PNZ4 AAAAAAA 1 Bright 
+TNT1 A 0 A_ChangeFlag(NoGravity,false)
+
+Spawn2:
+PNZ4 A 1
+Loop	
+	
+Death:
+EXPL A 0 Radius_Quake (2, 54, 0, 15, 0)
+TNT1 A 0 A_AlertMonsters
+TNT1 A 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+TNT1 A 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+TNT1 A 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+TNT1 A 0 
+//TNT1 A 0 A_SpawnItem("PanzerFaustExplosion") that was a very retarded way to do it and i guess the reason why mark had to rely on this system was because A_explode didn't allow you to customize explosion damagetypes back then i guess.
+TNT1 A 0 A_Explode(400,150,1,0,0,0,0,"BigNeoSmoke","RocketSplashDamage")  
+TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+TNT1 AAAAAAAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
+TNT1 AAAAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+EXPL AAA 0 A_CustomMissile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+TNT1 AAAAA 1 A_CustomMissile ("ExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+TNT1 A 3
+TNT1 A 0 A_PlaySound("FAREXPL", 3)
+TNT1 AAAAAAAAA 2 A_CustomMissile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+Stop
+}
+}
+
+Actor EmptyPanzerFaustThingy
+{
+Radius 5
+Height 2
+Scale 0.5
+-Solid
+-Nogravity
+gravity 1 
+States
+{
+Spawn:
+PNZ3 D 1 
+TNT1 A 0 A_CheckFloor("Landed")
+Loop
+
+Landed:
+TNT1 A 0 A_PLAYSOUND("AxeHitWall")
+TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+Goto Spawn2
+
+Spawn2:
+PNZ3 D -1
+Stop
+}
+}

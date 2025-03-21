@@ -261,6 +261,26 @@ Model Tracer // Name of actor in DECORATE
    FrameIndex TRAC A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
+model PlayerDecorativeTracer
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.5 1.5 1.5
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_Projectile
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.5 1.5 1.5
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
 Model HardTRANSTRACER // Name of actor in DECORATE
 { 
    Path "models/PROJECTILES" // Path to model in PK3
