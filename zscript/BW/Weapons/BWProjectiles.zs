@@ -471,6 +471,26 @@ Class BW_Projectile : fastprojectile
 
 }
 
+Class PlayerDecorativeTracer : fastprojectile	//no fancy behavior needed here
+{
+	default
+	{
+		speed 200;
+		radius 2;
+		height 2;
+		+bright;
+		renderstyle "Add";
+		damage 0;
+	}
+	states
+	{
+		spawn:
+			TNT1 A 1;
+			TRAC A -1;
+			stop;
+	}
+}
+
 Class BW_LugerBullets : BW_Projectile
 {
 	default
