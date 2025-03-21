@@ -1112,3 +1112,11 @@ Class TraceInfo
 		return null;
 	}
 }
+
+class AimingToken : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+}

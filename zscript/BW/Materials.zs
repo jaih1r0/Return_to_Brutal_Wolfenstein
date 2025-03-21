@@ -400,5 +400,33 @@ class BW_EventHandler : EventHandler
 		let pmo = players[e.playernumber].mo;
 		if(ft && pmo)
 			ft.init(pmo);
+		
+		players[e.PlayerNumber].mo.A_GiveInventory("Z_NashMove", 1);
+	}
+	
+	int kicktimer;
+	const kickcooldown = 18;
+	
+    override void WorldTick()
+    {
+        PlayerInfo plyr = players[consoleplayer];
+
+		if(kicktimer > 0)
+			kicktimer--;
+    }
+	
+    override void NetworkProcess(ConsoleEvent e)
+    {
+        let pl = players[e.Player].mo;
+        if(!pl)
+         return;
+
+		if (e.Name ~== "KickEm")
+		{	
+			if(kicktimer == 0)
+			{
+				//pl.player.A_GiveInventory("DoKick");
+			}
+		}
 	}
 }
