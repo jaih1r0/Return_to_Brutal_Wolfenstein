@@ -1,0 +1,314 @@
+//Before the Fuhrer's mighty fall,the wolfenstein spy made his first move to steal
+//Hitler's prized possession
+//The christian relique known as the Spear of Destiny
+//He who control the spear,controls the power of eternal life
+//Or eternal death
+
+Actor Vediamodinonfarestetroiate: inventory
+{
+inventory.maxamount 1 
+}
+
+
+Actor CantUseSpear:Inventory
+{
+Inventory.MaxAmount 1 
+}
+
+
+ACTOR SpearMelee: FastProjectile
+{
+Radius 8
+Height 8
+DamageType PokeyStick
+Projectile 
++FORCEXYBILLBOARD
++NOEXTREMEDEATH
+RenderStyle Add
+Alpha 0.6
+Damage (120)
+Speed 32
+SeeSound "none"
+DeathSound "none"
+Decal "none"
+States
+{
+Spawn:
+TNT1 A 3
+Stop
+Death:
+PUFF A 3 A_PlaySound("KNIFHIT")
+PUFF BCD 3
+Stop
+}
+}
+
+ACTOR SpearMelee2: FastProjectile
+{
+Radius 8
+Height 8
+DamageType PokeyStick
+Projectile 
++FORCEXYBILLBOARD
++NOEXTREMEDEATH
+RenderStyle Add
+Alpha 0.6
+Damage (30)
+Speed 32
+SeeSound "none"
+DeathSound "none"
+Decal "none"
+States
+{
+Spawn:
+TNT1 A 3
+Stop
+Death:
+PUFF A 3 A_PlaySound("KNIFHIT")
+PUFF BCD 3
+Stop
+}
+}
+
+
+Actor SpearOfDestiny:DefaultBWgun 1369
+{
+//$Category BW Weapons
+//$Title Spear of Destiny 
+Radius 8 
+Weapon.AmmoUse 0
+Weapon.AmmoGive 0
+Weapon.AmmoType "SpearAmmo"
+Weapon.BobRangeX 0.75
+Weapon.BobRangeY 0.5
+Weapon.BobSpeed 1.5
+Weapon.BobStyle "InverseAlpha" //Denis Belmondo's Bobstyle
+AttackSound "None"
+Inventory.PickUpSound "p_spear"
+Inventory.PickUpMessage "The Spear of Destiny!(SLOT 1)"
++WEAPON.NOAUTOAIM
++WEAPON.NOALERT
+tag "Spear of Destiny"
+Inventory.Icon "MPBACK"
++WEAPON.NOAUTOFIRE
+States
+{
+
+Select:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+TNT1 A 0 A_Raise
+Wait
+
+
+
+Ready:
+TNT1 A 0 A_JumpIfInventory("CantUseSpear",1,"CutsceneReady")
+tnt1 a 0 a_playsound("SPEARUP")
+13SH DCBA 2 
+Goto RealReady
+
+
+CutsceneReady:
+tnt1 a 0 a_playsound("SPEARUP")
+12SR ABCDE 2
+Goto Ready3
+
+
+Ready3:
+12SG A 1 A_WeaponReady(WRF_ALLOWRELOAD |WRF_NOFIRE)
+TNT1 A 0 A_SetCrosshair(0) 
+/*TNT1 A 0 A_JumpIfInventory("ChangeMelee",1,"NewMelee")
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack") Why did i left these?!?!?wtf
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+*/
+Loop
+
+RealReady:
+12Sh A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+TNT1 A 0 A_SetCrosshair(0) 
+//TNT1 A 0 A_JumpIfInventory("ChangeMelee",1,"NewMelee")
+TNT1 A 0 A_JumpIfInventory("SlideExecute",1,"SlideAttack")
+TNT1 A 0 A_JumpIfInventory("Meleeattack",1,"KnifeAttack")
+TNT1 A 0 A_JumpIfInventory("bwgrenade",1,"LaunchGrenade")
+TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+TNT1 A 0 A_JumpIfInventory("Reloading",1,"Reload")
+PISG A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+Loop
+
+Deselect:
+TNT1 A 0 A_TAKEINVENTORY("FlameThrowerEquipped",1)
+TNT1 A 0 A_TAKEINVENTORY("TeslaGunEquipped",1)
+tnt1 a 0 a_takeInventory("ChangeMelee",1)
+TNT1 A 0 A_Takeinventory("Zoomed",1)
+TNT1 A 0 A_Takeinventory("ADSmode",1)
+TNT1 A 0 A_Takeinventory("Meleeattack",1)
+TNT1 A 0 A_Takeinventory("BWgrenade",1)
+TNT1 A 0 A_TakeInventory("SlideExecute",1)
+TNT1 A 0 A_Takeinventory("Reloading",1)
+TNT1 A 0 A_stopSound(5)
+TNT1 A 0 A_ZoomFactor(1.0)
+TNT1 A 0 A_JumpIfInventory("CantUseSpear",1,"Des2")
+13SH ABCD 2
+TNT1 A 0 A_Lower
+Wait
+
+Des2:
+12SR EDCBA 2
+TNT1 A 0 A_Lower
+Wait
+
+
+Altfire:
+/*CaMaDonna2:
+TNT1 AAAA 0
+12SG BCDEG 2
+TNT1 A 0 A_TakeInventory("Vediamodinonfarestetroiate",1)
+*/
+
+AltHold:
+//TNT1 A 0 A_JumpIfInventory("Vediamodinonfarestetroiate",1,"CaMadonna2")
+12Sh BC 2 
+12Sh D 3
+TNT1 A 0 A_PlaySound("weapons/AxeFist")
+tnt1 a 0 A_firecustommissile("SpearMelee",0,0,0,0)
+12Sh D 3 
+12Sh CBA 2 
+12SH A 1 A_REFIRE
+Goto RealReady
+
+AltFinish:
+12SG GEDCB 2
+TNT1 A 0 A_GiveInventory("Vediamodinonfarestetroiate",1)
+Goto RealReady
+
+
+Fire:
+CaMaDonna:
+TNT1 A 0 A_JumpIfInventory("SpearAmmo",1,1)
+Goto Realready
+
+//TNT1 AAAA 0
+//12SG BCDEG 2
+//TNT1 A 0 A_TakeInventory("Vediamodinonfarestetroiate",1)
+
+Hold:
+//TNT1 A 0 A_JumpIfInventory("Vediamodinonfarestetroiate",1,"CaMadonna")
+TNT1 A 0 A_JumpIfInventory("SpearAmmo",1,1)
+Goto SpearFinishFire
+TNT1 AAAA 0
+12SG G 2
+TNT1 A 0 A_PLAYSOUND("UNMLOP",6,1,TRUE)
+TNT1 A 0 A_RAILATTACK(50,0,0,"","",RGF_SILENT|RGF_FULLBRIGHT,0,"SPEARPUFF",0,0,8192,35,20.0,1.0,"YellowShoque",-12,270,0)
+TNT1 A 0 A_TAKEINVENTORY("SpearAmmo",1)
+TNT1 A 0 A_SetPitch(pitch - 1.0)
+TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+12SG H 2 BRIGHT A_AlertMonsters
+TNT1 A 0 A_SetPitch(pitch - 1.0)
+TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+TNT1 A 0 A_RAILATTACK(50,0,0,"","",RGF_SILENT|RGF_FULLBRIGHT,0,"SPEARPUFF",0,0,8192,35,20.0,1.0,"YellowShoque",-12,270,0)
+TNT1 A 0 A_TAKEINVENTORY("SpearAmmo",1)
+12SG I 2 BRIGHT A_AlertMonsters
+TNT1 A 0 A_REFIRE
+
+SpearFinishFire:
+TNT1 A 0 A_STOPSOUND(6)
+TNT1 A 0 A_PLAYSOUND("UNMSTO")
+//TNT1 A 0 A_GiveInventory("Vediamodinonfarestetroiate",1)
+12SG GEDCB 3
+12SG B 16
+12SG BCDE 3
+Goto RealReady
+
+/*KnifeAttack:
+CaMaDonna3:
+TNT1 AAAA 0
+TNT1 A 0 A_TAKEINVENTORY("MeleeAttack",1)
+12SG BCDEG 2
+TNT1 A 0 A_TakeInventory("Vediamodinonfarestetroiate",1)
+13SH ABCD 2
+TNT1 A 3 A_TAKEINVENTORY("MELEEATTACK",1)
+
+StabbingTime:
+TNT1 A 0 A_PlaySound("weapons/AxeFist")
+13SH E 2
+tnt1 a 0 A_firecustommissile("SpearMelee2",30,0,0,0)
+13SH FGHI 2 
+tnt1 a 0 A_firecustommissile("SpearMelee2",15,0,0,0)
+13SH J 2
+tnt1 a 0 A_firecustommissile("SpearMelee2",-15,0,0,0)
+13SH JKL 2 
+tnt1 a 0 A_firecustommissile("SpearMelee2",-30,0,0,0)
+TNT1 A 1 A_TAKEINVENTORY("MELEEATTACK",1)
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+TNT1 A 1 A_JUMPIFINVENTORY("MELEEATTACK",1,"StabbingTime")
+Goto StabbingFinished
+
+StabbingFinished:
+12SG GEDCB 2
+TNT1 A 0 A_GiveInventory("Vediamodinonfarestetroiate",1)
+TNT1 A 0 A_TakeInventory("MELEEATTACK",1)
+Goto RealReady
+*/
+
+Spawn:
+SPAR A -1
+Loop 
+
+}
+}
+
+ACTOR SpearAmmo : Ammo 1370
+{
+//$Category Ammo
+//$Title Argent energy. 
+	Inventory.PickupSound "Soul/Pickup"
+	Inventory.PickupMessage "You picked up Argent energy!"
+	Inventory.Amount 5
+	Inventory.MaxAmount 100
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 100
+	Mass 10000
+        SCALE 0.35
+        //Inventory.Icon "LC1IC"
+	States
+	{
+	Spawn:
+		GDPW ABCDEF 3 BRIGHT
+		Loop
+	}
+}
+
+
+Actor SpearAmmo20: SpearAmmo 1371
+{
+//$Category Ammo
+//$Title Argent energy(20)
+Inventory.Amount 20
+Ammo.BackpackAmount 20 
+Scale 0.55
+}
+
+

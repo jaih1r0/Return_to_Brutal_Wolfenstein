@@ -2,6 +2,7 @@ Version 4.3
 
 #include "zscript/BW/Materials.zs"
 #include "zscript/BW/Weapons/WeaponBase.zs"
+#include "zscript/BW/Weapons/BWProjectiles.zs"
 #include "zscript/BW/Monsters/MonsterBase.zs"
 #include "zscript/BW/Effects/Effects.zs"
 #include "zscript/BW/Hud/BWHud.zs"
@@ -34,7 +35,7 @@ const MAP_EPSILON = 1 / 65536.;
 
 
 // fuck 
-Class CustomInventoryBW2 : CustomInventory 
+Class CustomInventoryBW2 : CustomInventory
 {
 
 	Action void A_CheckGrenade()

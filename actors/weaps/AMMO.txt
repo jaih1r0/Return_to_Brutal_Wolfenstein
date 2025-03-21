@@ -1,0 +1,16 @@
+// Backpack ---------------------------------------------------------------
+
+ACTOR AmmoSuply : BackpackItem Replaces Backpack
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	Inventory.PickupSound "BACKPACK"
+	Inventory.PickupMessage "Pickeup a backpack full of ammo!"
+	States
+	{
+	Spawn:
+		BWBK A -1
+		Stop
+	}
+}

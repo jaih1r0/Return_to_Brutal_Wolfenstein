@@ -1,0 +1,416 @@
+//C'E' IL NEMESIS!
+Actor STOCAZZO
+{
+Game Doom 
+Radius 1
+Height 1
+ProjectilePassHeight -16
+States
+{
+Spawn:
+TNT1 A 0
+STOP
+}
+}
+
+
+ACTOR ThompsonMag : Ammo //Hai cagato il cazzo
+{
+Inventory.PickupSound "MGAmmo/Pickup"
+Inventory.PickupMessage "Picked up .45ACP Ammunition"
+Inventory.Amount 8
+Inventory.MaxAmount 120
+Ammo.BackpackAmount 0
+Ammo.BackpackMaxAmount 240
+Mass 10000
+States
+{
+Spawn:
+45AM A -1
+Loop
+}
+}
+
+ACTOR ThompsonRefornement : ThompsonMag
+{
+Inventory.PickupSound "MGAmmo/Pickup"
+	Inventory.PickupMessage "Picked up .45ACP Ammunition"
+	Inventory.Amount 1
+	Ammo.BackpackAmount 1
+	States
+	{
+	Spawn:
+		45AM A -1
+		Loop
+	}
+}
+ 
+
+//Weapons used in Wolfenstein 3D
+ACTOR WolfClip : Ammo 7028
+{
+//$Category Ammo
+//$Title MP40 Mag
+	Inventory.PickupSound "Clip/Pickup"
+	Inventory.PickupMessage "Picked up a 9MM magazine!"
+	Inventory.Amount 8
+	Inventory.MaxAmount 128
+	Ammo.BackpackAmount 64
+	Ammo.BackpackMaxAmount 320
+	Mass 10000
+        Inventory.Icon "WCLIA0"
+	States
+	{
+	Spawn:
+		WCLI A -1
+		Loop
+	}
+}
+
+ACTOR PPSHReserve : Ammo 7512
+{
+//$Category Allied Ammo
+//$Title PPSH-41 Drum Mag
+	Inventory.PickupSound "PPSHPCK"
+	Inventory.PickupMessage "Picked up a 7,62×25mm drum magazine!"
+	Inventory.Amount 71
+	Inventory.MaxAmount 178
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 355
+	Scale 0.50
+	Mass 10000
+        Inventory.Icon "PPSHIC"
+	States
+	{
+	Spawn:
+		PPSZ B -1
+		Loop
+	}
+}
+
+ACTOR WolfClipDrop : WolfClip {Inventory.Amount 8}
+
+ACTOR WolfClipBox : WolfClip //21072
+{
+	Inventory.PickupMessage "Box of 9mm ammo"
+	Inventory.Amount 25
+	Ammo.BackpackAmount 25
+	States
+	{
+	Spawn:
+		WAMM A -1
+		Loop
+	}
+}
+
+//STG44,MG42 AND Gatling gun
+ACTOR KARClip : Ammo 7029
+{
+//$Category Ammo
+//$Title STG44 Mag
+Scale 0.65
+	Inventory.PickupSound "Clip/Pickup"
+	Inventory.PickupMessage "Picked up a 7.92x33mm magazine!"
+	Inventory.Amount 5
+	Inventory.MaxAmount 90
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 180
+	Mass 10000
+        Inventory.Icon "stg44ic"
+	States
+	{
+	Spawn:
+		KARM A -1
+		Loop
+	}
+}
+
+Actor MGAmmoReserve: Ammo 7030
+{
+//$Category Ammo
+//$Title Mg42 Mag
+Inventory.PickupSound "MGAmmo/Pickup"
+Inventory.PickupMessage "Picked up a MG42 ammo box!"
+Inventory.Amount 50
+Inventory.MaxAmount 200
+Ammo.BackpackAmount 100
+Ammo.BackpackMaxAmount 400
+Mass 10000
+Inventory.Icon "42MMA0"
+States
+{
+Spawn:
+42MM A -1
+Loop
+}
+}
+
+Actor MGAMMOReserveDrop: MgAmmoReserve
+{
+Inventory.Amount 20
+}
+
+
+
+ACTOR KARClipDrop : KARClip
+{
+	Inventory.Amount 8
+}
+
+ACTOR KarClipBox : KARClip 
+{
+	Inventory.PickupMessage "7,92X57 mm's Box"
+	Inventory.Amount 25
+	Ammo.BackpackAmount 25
+	States
+	{
+	Spawn:
+		KAMM A -1
+		Loop
+	}
+}
+
+//Rifle's Round
+ACTOR MauserClip : Ammo 7031
+{
+//$Category Ammo
+//$Title Kar98 Mag
+	Inventory.PickupSound "K98PICKUP"
+	Inventory.PickupMessage "Picked up a 7.92×57mm stripper clip!"
+	Inventory.Amount 5
+	Inventory.MaxAmount 20
+	Ammo.BackpackAmount 10
+	Ammo.BackpackMaxAmount 50
+	Mass 10000
+        Inventory.Icon "MAUSB0"
+	States
+	{
+	Spawn:
+		MAUS B -1
+		Loop
+	}
+}
+
+ACTOR MauserClipDrop : MauserClip
+{
+	Inventory.Amount 5
+}
+
+ACTOR MauserClipBox : MauserClip //21072
+{
+	Inventory.PickupMessage "Box of Mauser's round"
+	Inventory.Amount 25
+	Ammo.BackpackAmount 25
+	States
+	{
+	Spawn:
+		MAUS A -1
+		Loop
+	}
+}
+
+/////Rare Weapons Ammo
+ACTOR M1GarandRefornement : m1clip 7507
+{
+//$Category Allied Ammo
+//$Title M1 Garand/Bar Ammo
+Inventory.PickupSound "MGAmmo/Pickup"
+	Inventory.PickupMessage "Picked up .30-06 Springfield ammo box"
+	Inventory.Amount 40
+	Ammo.BackpackAmount 0
+	States
+	{
+	Spawn:
+		M1RE A -1
+		Loop
+	}
+}
+
+ACTOR M1GarandRefornementMag : m1clip 7535
+{
+//$Category Allied Ammo
+//$Title M1 Garand/Bar Ammo
+	Inventory.PickupSound "Clip/Pickup"
+	Inventory.PickupMessage "Picked up a .30-06 Springfield magazine"
+	Inventory.Amount 20
+	Ammo.BackpackAmount 0
+	States
+	{
+	Spawn:
+		BRMG A -1
+		Loop
+	}
+}
+
+Actor M1GarandDrop:M1GARANDREFORNEMENT
+{
+Inventory.Amount 20
+}
+
+
+
+Actor ThompsonAmmo: ThompsonRefornement 7508
+{
+//$Category Allied Ammo
+//$Title Thompson/1911 Ammo
+Inventory.PickupMessage "Picked up a .45 ACP ammo box"
+Inventory.Amount 40
+}
+
+Actor ThompsonAmmoMag: ThompsonRefornement 7511
+{
+//$Category Allied Ammo
+//$Title Thompson/1911 Mag
+Inventory.Amount 10
+Inventory.PickupSound "Clip/Pickup"
+Inventory.PickupMessage "Picked up a .45 ACP magazine"
+States
+{
+Spawn:
+TMMG A -1
+Loop
+}
+}
+
+ACTOR RojasRefornement : Ammo
+{
+	Inventory.PickupMessage "You take the rifornements for you're Rojas V3.0"
+	Inventory.Amount 150
+	Ammo.BackpackAmount 150
+	States
+	{
+	Spawn:
+		wohf A -1
+		Loop
+	}
+}
+
+ACTOR TGAMMO : Ammo 
+{
+Inventory.PickupSound "SHLPCK"
+	Inventory.PickupMessage "Picked up shotgun shells."
+	Inventory.Amount 40
+	Inventory.MaxAmount 40
+	Ammo.BackpackAmount 40
+	Ammo.BackpackMaxAmount 40
+	Mass 10000
+        Inventory.Icon "NSHEA0"
+	States
+	{
+	Spawn:
+		SBOX D -1
+		Loop
+	}
+}
+
+Actor BWShellsBW: TGAMMO 1776
+{
+//$Category Allied Ammo
+//$Title Shells
+Inventory.Amount 12
+}
+
+ACTOR AmmoSpawner Replaces InvulnerabilitySphere
+{
+	DropItem "M1GarandRefornement"
+	DropItem "ThompsonRefornement"
+	DropItem "TGAMMO"
+        DropItem "PPSHReserve"
+ DropItem "PPSHReserve"
+ DropItem "PPSHReserve"
+ DropItem "PPSHReserve"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_Fall
+		Stop
+	}
+}
+
+ACTOR Thommyandco  
+{
+	DropItem "Thompson"
+	DropItem "COLT"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_Fall
+		Stop
+	}
+}
+
+ACTOR WolfClip1 : WolfClip 
+{
+	Inventory.PickupSound "pickups/ammo"
+	Inventory.PickupMessage "9mm's Rounds"
+	Inventory.Amount 16
+	Inventory.MaxAmount 192
+	Ammo.BackpackAmount 24
+	Ammo.BackpackMaxAmount 192
+	Mass 10000
+        Inventory.Icon "WCLIA0"
+	States
+	{
+	Spawn:
+		WCLI A -1
+		Loop
+	}
+}
+
+//KAR98,STG44 AND COMPANY
+ACTOR KARClip1 : KARClip 
+{
+	Inventory.PickupSound "pickups/ammo"
+	Inventory.PickupMessage "7,92X57 mm's Clip"
+	Inventory.Amount 16
+	Inventory.MaxAmount 250
+	Ammo.BackpackAmount 16
+	Ammo.BackpackMaxAmount 250
+	Mass 10000
+        Inventory.Icon "KARMA0"
+	States
+	{
+	Spawn:
+		KARM A -1
+		Loop
+	}
+}
+
+ACTOR BARAMMO : AMMO
+{
+	Inventory.PickupSound "pickups/ammo"
+	Inventory.PickupMessage "Bar Assault Rifle's ammo"
+	Inventory.Amount 200
+	Inventory.MaxAmount 200
+	Ammo.BackpackAmount 200
+	Ammo.BackpackMaxAmount 200
+	Mass 10000
+        Inventory.Icon "BARAA0"
+	States
+	{
+	Spawn:
+		BARA A -1
+		Loop
+	}
+}
+
+//Rifle's Round
+ACTOR MauserClip1 : MauserClip 
+{
+	Inventory.PickupSound "pickups/ammo"
+	Inventory.PickupMessage "Mauser's round"
+	Inventory.Amount 5
+	Inventory.MaxAmount 50
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 50
+	Mass 10000
+        Inventory.Icon "MAUSB0"
+	States
+	{
+	Spawn:
+		MAUS B -1
+		Loop
+	}
+}

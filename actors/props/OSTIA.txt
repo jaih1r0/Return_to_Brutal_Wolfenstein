@@ -1,0 +1,16 @@
+
+// Column_1 ------------------------------------------------------------------
+
+ACTOR Column_1 Replaces Column
+{
+	Game Doom
+	Radius 16
+	Height 48
+	ProjectilePassHeight -16
+	States
+	{
+	Spawn:
+		COLU A -1 BRIGHT
+		Stop
+	}
+}

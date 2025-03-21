@@ -1,4 +1,5 @@
 
+server int BW_BulletType = 0;   //0 hitscan, 1 projectile
 
 //Nashgore Cvars
 

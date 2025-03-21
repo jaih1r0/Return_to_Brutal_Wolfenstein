@@ -9,7 +9,7 @@ Class BaseBWWeapon : DoomWeapon
 	{
 		Weapon.BobRangeX 0.4;
 		Weapon.BobRangeY 0.2;
-		Weapon.BobSpeed 2.0;
+		Weapon.BobSpeed 2.5;
 		Weapon.BobStyle "InverseSmooth"; //"Smooth";//"InverseAlpha";
 		+dontgib;
 	}
@@ -32,7 +32,7 @@ Class BaseBWWeapon : DoomWeapon
 		if(findinventory("Kicking") && !(BWRflags & BWWF_NoKick))
 		{
 			A_setinventory("Kicking",0);
-			return resolvestate("DoKick");
+			//return resolvestate("DoKick");
 		}
 		if(findinventory("Taunting") && !(BWRflags & BWWF_NoTaunt))
 		{
@@ -61,6 +61,28 @@ Class BaseBWWeapon : DoomWeapon
 	action void BW_WeaponRaise()
 	{
 		A_weaponoffset(0,32);
+	}
+
+	action void BW_FireBullets(string projectiletype = "BW_Projectile",double spreadx = 0,double spready = 0,int numbullets = 1,int dmg = 0, string puff = "Bulletpuff", name dmgtype = "Bullet",int maxpen = 0,int fwofs = 0, int sdofs = 0)
+	{
+		if(BW_BulletType == 0)
+		{
+			if(maxpen > 0)
+				CustomFireFunctionPenetrator(spreadx,spready,numbullets,dmg = 0,puff,dmgtype,maxpen,fwofs,sdofs);
+			else
+				CustomFireFunction(spreadx,spready,numbullets,dmg,puff,dmgtype,fwofs,sdofs);
+		}
+		else
+		{
+			
+			int nb = max(1,abs(numbullets));
+			for(int i = 0; i < nb; i++)
+			{
+				double ang = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spreadx,spreadx);
+				double ptc = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spready,spready);
+				A_fireprojectile(projectiletype,ang,0,0,0,0,ptc);
+			}
+		}
 	}
 	
 	action void KickDoors(int dist = 70)
@@ -131,7 +153,7 @@ Class BaseBWWeapon : DoomWeapon
 			
 			
 			self.LineTrace(angle + spx, 9000, pitch + spy, offsetz: pz, data: t);
-			
+			A_Fireprojectile("PlayerDecorativeTracer",spx,false,pitch:spy);
 			
 			//console.printf("startpos: "..(pos.xy,pos.z + pz).."hitlocation: "..t.hitlocation..", dist: "..t.Distance);
 			if(t.hitactor != null)	//hit something
@@ -256,7 +278,7 @@ Class BaseBWWeapon : DoomWeapon
 			let tr = new("BW_penetratortracer");
 			if(!tr)	
 				return;
-			
+			A_Fireprojectile("PlayerDecorativeTracer",spx,false,pitch:spy);
 			tr.shooter = self;
 			tr.Trace(start, CurSector, dir, 8000, TRACE_HitSky);
 			int npn = maxpen;

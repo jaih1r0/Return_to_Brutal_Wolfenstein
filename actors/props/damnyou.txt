@@ -1,0 +1,1566 @@
+Actor GABBIA Replaces Meat3 51
+{
+Game Doom
+Radius 16
+Height 54
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+health 15
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	SUIN E 2 //Che cazzo è successo al frame di prima?
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+	GAB1 AAAABBBBCCCCDDDD 1
+	GAB1 D -1 A_NoBlocking
+	stop
+	}
+}
+
+Actor GABBIACONSCHELETRO Replaces HangTLookingDown 
+{
+Game Doom
+Radius 16
+Height 54
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+health 15
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	HDB3 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+	TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",4,0,0,0,0,0)
+	TNT1 AAA 0 A_CustomMissile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))                
+	GAB1 AAAABBBBCCCCDDDD 1
+	GAB1 D -1 A_NoBlocking
+	stop
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//Here you can find a great number of item's script
+// chest --------------------------------------------------------------
+ACTOR TorchTree_1 Replaces TorchTree 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	TRE1 A -1
+	Stop
+	}
+}
+
+// SOMARO --------------------------------------------------------------
+ACTOR TorchTree_3 Replaces Archvile 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	TRE1 A -1
+	Stop
+	}
+}
+
+// TONTONINI --------------------------------------------------------------
+ACTOR TorchTree_4 Replaces Arachnotron 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	TRE1 A -1
+	Stop
+	}
+}
+
+// Panzer --------------------------------------------------------------
+ACTOR DECORATE_PANZER Replaces TechLamp 
+{
+Game Doom
+Radius 80
+Height 80
+ProjectilePassHeight -16
++SOLID
+States
+	{
+	Spawn:
+	TANK A -1
+	Stop
+	}
+}
+
+ACTOR PENTOLE_1 Replaces HangNoGuts
+{
+Game Doom
+Radius 16
+Height 88
++NOGRAVITY
++SPAWNCEILING
+States
+	{
+	Spawn:
+	HDB1 A -1
+	Stop
+	}
+}
+
+ACTOR PENTOLE_2 Replaces HangBNoBrain
+{
+Game Doom
+Radius 16
+Height 88
++NOGRAVITY
++SPAWNCEILING
+States
+	{
+	Spawn:
+	HDB2 A -1
+	Stop
+	}
+}
+
+Actor Lampadafiga Replaces Candlestick 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	CAND A 2 bright A_SpawnItem("lensflarealt",0,58)
+	Loop
+	}
+}
+
+
+Actor Lampadariocomune 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	COLU A 2 bright A_SpawnItem("YellowFlare22",0,56)
+	Loop
+	}
+}
+
+
+Actor Lampadarioaltissimo 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	FSKU A 2 bright A_SpawnItem("YellowFlare22",0,120)
+	Loop
+	}
+}
+
+
+Actor Lavandino Replaces HangTLookingUp 
+{
+Game Doom
+Radius 16
+Height 30
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++SOLID
++NOBLOOD
+health 15
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	HDB5 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	LAVA C 1
+	TNT1 A 0 A_SpawnItem("LavandinoRotto")
+	stop
+	}
+}
+
+Actor LavandinoRotto 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	LAVA C 1
+	TNT1 A 0 A_SpawnItem("piscio")
+	LAVA C -1 
+	stop
+	}
+}
+
+Actor piscio 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	TNT1 A 0 A_PLAYSOUND("WAT2",5,1,TRUE)
+	TRED AABBCCDD 2
+	Loop
+	}
+}
+
+Actor ACQUANOBILE REPLACES RedTorch 
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	TNT1 A 0 A_PLAYSOUND("WAT2",5,1,TRUE)
+	TRED AABBCCDD 2
+	Loop
+	}
+}
+
+Actor COLONNADEPIETRA Replaces TechPillar 
+{
+Game Doom
+Radius 16
+Height 64
+Monster
+DAMAGEFACTOR "Avoid", 0.0
+DAMAGEFACTOR "CUTLESS", 0.0
+PainChance "Kick", 0
+DAMAGEFACTOR "Head", 0
+DAMAGEFACTOR "Stomp", 0.0
+DAMAGEFACTOR "Bullet", 0
+DAMAGEFACTOR "MINORHead", 0
+DamageFactor "DoubleMP40",0
+DamagefACTOR "RifleNoExplode",0
+DamageFactor "APISTOLADAMAGE",0
+DamageFactor "STG44Damage",0
+DamageFactor "Shotgun",0
+DAMAGEFACTOR "Kick", 0
+DamageFactor "daaxe",0
+DamageFactor "TeslaDamage",0
+DamageFactor "Irkenlasers",0
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "Candelabroencapo",0
+DamageFactor "PunchInTheFace",0
+DAMAGEFACTOR "Fire", 0
+DamageFactor "Sliding",0.0
+DamageFactor "EnemyHeadShot",0
+DAMAGEFACTOR "Coltello", 0
+DamageFactor "flames", 0.0
+DamageFactor "taunt", 0.0
+DamageFactor "Uberburn", 0.0
+DamageFactor "PokeyStick",0.0
+DamageFactor "SpearDamage",0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
+mass 99999
+-CountKill
++SHOOTABLE
++NOBLOOD
++SOLID
+health 20
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+states
+	{
+	Spawn:
+	ELEC A 2 
+	Loop
+	
+
+	Death:
+	TNT1 A 0 A_QUAKE(4,98,0,128,"Tower/bam")
+	TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",16,0,0,0,0,0)
+	TNT1 A 0 A_NOBLOCKING
+TNT1 AAAAA 0 A_CustomMissile ("StoneParticle", 35, 0, random (0, 360), 2, random (0, 160))
+COLM B -1 
+	stop
+	}
+}
+
+
+Actor StoneWoodSmoke
+{
+Radius 1
+Height 1 
+Speed 0
++NoBlockMap
++NoTeleport
++DontSPlash
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
+RenderStyle Add
+Scale 0.3
+Gravity 0
+States
+{
+Spawn:
+TNT1 A 0
+SMO3 A 1 A_SetScale(ScaleX+0.03)
+TNT1 A 0 A_FadeOuT(0.03)
+Loop
+Death:
+TNT1 A 0
+Stop
+}
+}
+
+
+Actor COLONNADISTRUTTA
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	COLM F -1
+	stop
+	}
+}
+
+Actor POZZODEMERDA Replaces EvilEye 
+{
+Game Doom
+Radius 16
+Height 30
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+health 300
+deathheight 38
++FORCEYBILLBOARD
+
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+Mass 900000
+states
+	{
+	Spawn:
+	DIOC A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("StnDeth")
+	PITW C 4
+	TNT1 A 0 A_SpawnItem("pozzodistrutto")
+	stop
+	}
+}
+
+Actor pozzodistrutto
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	PITW C -1
+	stop
+	}
+}
+
+
+Actor Cespuglio Replaces TallRedColumn 
+{
+Game Doom
+Radius 16
+Height 54
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
+Projectilepassheight -16
++NOBLOOD
+-SOLID
+health 15
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+states
+	{
+	Spawn:
+	COL3 A -1
+Stop
+	}
+}
+
+Actor vaso1 Replaces HeadsOnAStick 
+{
+Game Doom
+Radius 16
+Height 30
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+health 15
+deathheight 38
++FORCEYBILLBOARD
+DamageFactor "LFGRip",100
+DamageFactor "LFGSplash",100
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+Mass 900000
+states
+	{
+	Spawn:
+	POL2 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	
+	BVAS C 1
+		 TNT1 AA 0 A_CustomMissile ("BlueVasePiece1", 35, 0, random (0, 360), 2, random (0, 160))
+	BVAS C -1 A_NoBlocking
+	stop
+
+Death.LFGRip:
+Death.LFGSplash:
+TNT1 A 0 A_SpawnItem ("ICAZZODIVASI")
+Stop
+	}
+}
+
+Actor ICAZZODIVASI
+{
++NoGravity
++Float
++solid
+height 38
+radius 16
+Mass 100 
+States
+{
+
+Spawn:
+TNT1 A 0 A_PlaySoundEx("LFLoop",5,true)
+TNT1 A 0 A_Jump(180,"spawn2")
+TNT1 A 0 ThrustThing(192,4,0,0)
+tnt1 a 0 ThrustThingZ(0,4,0,1)
+POL2 AAA 25
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+Spawn2:
+TNT1 A 0 ThrustThing(64,2,0,0)
+tnt1 a 0 ThrustThingZ(0,2,0,1)
+POL2 AAA 25
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+
+FallingDownwithMichaelDouglas:
+TNT1 A 0 A_StopSound(5)
+TNT1 A 0 A_SpawnItem("CandelabraDamage")
+POL2 A 1 A_CheckFloor("Death")
+Loop
+ 
+
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	BVAS C 1
+	BVAS C -1 A_NoBlocking
+	stop
+}
+}
+
+Actor vaso2 Replaces BigTree 
+{
+Game Doom
+Radius 16
+Height 54
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+DamageFactor "LFGRip",100
+DamageFactor "LFGSplash",100
+health 15
+deathheight 38
++FORCEYBILLBOARD
+damagefactor "taunt", 0.0 
+Mass 900000
+states
+	{
+	Spawn:
+	TRE2 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	YVAS c 1
+	TNT1 A 0 A_SpawnItem("BrownWoodSmoke")
+	 TNT1 AAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	YVAS c -1 A_NoBlocking
+	stop
+	
+	
+		Death.fire:
+	DEATH.BURN: DEATH.UBERBURN:
+	Death.flames:
+	Death.Flame:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	YVAS C 1 A_NoBlocking
+	TNT1 A 0 A_SpawnItem("BrownWoodSmoke")
+	TNT1 AAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	YVAS C -1 
+	stop
+
+Death.LFGRip:
+Death.LFGSplash:
+TNT1 A 0 A_SpawnItem ("IVASIIVASIIVASI")
+Stop
+	}
+}
+
+Actor IVASIIVASIIVASI
+{
++NoGravity
++Float
++solid
+height 38
+radius 16
+Mass 100 
+States
+{
+
+Spawn:
+TNT1 A 0 A_PlaySoundEx("LFLoop",5,true)
+TNT1 A 0 A_Jump(180,"spawn2")
+TNT1 A 0 ThrustThing(192,4,0,0)
+tnt1 a 0 ThrustThingZ(0,4,0,1)
+TRE2 AAA 25
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+Spawn2:
+TNT1 A 0 ThrustThing(64,2,0,0)
+tnt1 a 0 ThrustThingZ(0,2,0,1)
+TRE2 AAA 25
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+
+FallingDownwithMichaelDouglas:
+TNT1 A 0 A_StopSound(5)
+TNT1 A 0 A_SpawnItem("CandelabraDamage")
+TRE2 A 1 A_CheckFloor("Death")
+Loop
+ 
+
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	YVAS c 1
+	TNT1 A 0 A_SpawnItem("BrownWoodSmoke")
+	 TNT1 AAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	YVAS c -1 A_NoBlocking
+	stop
+}
+}
+
+Actor vaso3 Replaces Stalagtite 
+{
+Game Doom
+Radius 16
+Height 54
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
+
+DamageFactor "LFGRip",100
+DamageFactor "LFGSplash",100
++SOLID
+health 15
+deathheight 38
++FORCEYBILLBOARD
+DAMAGEFACTOR "TAUNT" , 0.0
+Mass 900000
+states
+	{
+	Spawn:
+	SMIT A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	BVA1 C 1 
+	TNT1 A 0 A_SpawnItem("BrownWoodSmoke")
+	 TNT1 AAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	BVA1 C -1 A_NoBlocking
+	stop
+	
+	
+			Death.fire:
+	DEATH.BURN: DEATH.UBERBURN:
+	Death.flames:
+	Death.Flame:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	BVA1 C 1 A_NoBlocking
+	TNT1 A 0 A_SpawnItem("BrownWoodSmoke")
+	TNT1 AAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 CCCC 3 Bright A_CustomMissile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+	BVA1 C -1 
+	stop
+
+Death.LFGRip:
+Death.LFGSplash:
+TNT1 A 0 A_SpawnItem ("LIAVETEVISTI")
+Stop
+	}
+}
+
+Actor LIAVETEVISTI
+{
++NoGravity
++Float
++solid
+height 38
+radius 16
+Mass 100 
+States
+{
+
+Spawn:
+TNT1 A 0 A_PlaySoundEx("LFLoop",5,true)
+TNT1 A 0 A_Jump(180,"spawn2")
+TNT1 A 0 ThrustThing(192,4,0,0)
+tnt1 a 0 ThrustThingZ(0,4,0,1)
+SMIT AAA 25
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+Spawn2:
+TNT1 A 0 ThrustThing(64,2,0,0)
+tnt1 a 0 ThrustThingZ(0,2,0,1)
+SMIT AAA 25
+TNT1 A 0 A_ChangeFlag(NOGRAVITY,FALSE)
+Goto FallingDownwithMichaelDouglas
+
+
+FallingDownwithMichaelDouglas:
+TNT1 A 0 A_StopSound(5)
+TNT1 A 0 A_SpawnItem("CandelabraDamage")
+SMIT A 1 A_CheckFloor("Death")
+Loop
+ 
+	Death:
+	TNT1 A 0 A_PlaySound("ceramica/morte")
+	BVA1 C 1 
+	TNT1 A 0 A_SpawnItem("BrownWoodSmoke")
+	 TNT1 AAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	BVA1 C -1 A_NoBlocking
+	stop
+}
+}
+
+ACTOR MACHEBELLALBERO Replaces LiveStick 
+{
+Game Doom
+Radius 16
+Height 80
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
+DamageFactor "Explosive",5
+Damagefactor "Explosiveresistance",2.0
+DamageFactor "GrenadeIntheFuckingFace", 1.0
+DamageFactor "ExplosiveImpact",2.0
+DamageFactor "Uberburn",1.0 
+DamageFactor "burn",1.0 
+DamageFactor "Fire",1.0 
+DamageFactor "Flames",1.0 
+DamageFactor "Flame",1.0
+DamageFactor "RocketSplashDamage",1.0
+DAMAGEFACTOR "Avoid", 0.0
+DAMAGEFACTOR "CUTLESS", 0.0
+PainChance "Kick", 0
+DAMAGEFACTOR "Head", 0
+DAMAGEFACTOR "Stomp", 0.0
+DAMAGEFACTOR "Bullet", 0
+DAMAGEFACTOR "MINORHead", 0
+DamageFactor "DoubleMP40",0
+DamagefACTOR "RifleNoExplode",0
+DamageFactor "APISTOLADAMAGE",0
+DamageFactor "STG44Damage",0
+DamageFactor "Shotgun",0
+DAMAGEFACTOR "Kick", 0
+DamageFactor "daaxe",0
+DamageFactor "TeslaDamage",0
+DamageFactor "Irkenlasers",0
+DamageFactor "NaziExplosion",0
+DamageFactor "NaziBullet",0
+DamageFactor "Nazicutless",0
+DamageFactor "Candelabroencapo",0
+DamageFactor "PunchInTheFace",0
+DamageFactor "Sliding",0.0
+DamageFactor "EnemyHeadShot",0
+DAMAGEFACTOR "Coltello", 0
+DamageFactor "taunt", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+health 400
+deathheight 40
++FORCEYBILLBOARD
+Mass 900000
+States
+	{
+	Spawn:
+	POL6 A 1
+	Loop
+	
+	Death:
+	tnt1 AAAAAAAAAAA 0 a_custommissile("BrownWoodSmoke",random(30,60),random(-60,60),random (0, 360), 2, random (0, 160))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle", 35, 0, random (0, 360), 2, random (0, 160))
+	EXPL A 0 Radius_Quake (2, 70, 0, 22, 0)
+TRE2 B -1
+	Stop
+	
+	Death.Plasma:
+	DEATH.BURN: DEATH.UBERBURN:
+	Death.Flames:
+	Death.Fire:
+	TRE1 B 1
+	TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionSmoke", 35, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_SpawnItem("BigTreeInFlames",0,1)
+	Stop
+	}
+}
+
+Actor BigTreeInFlames : MACHEBELLALBERO 1176
+{
++LOOKALLAROUND
++INVULNERABLE
++NOBLOOD
+mass 99999
+height 80
+scale 1.0
+states
+	{
+	Spawn:
+	TNT1 A 0 A_PLAYSOUND("props/redfire",5,1,TRUE)
+	TRE1 C 0 A_CustomMissile ("ExplosionSmoke", 80, 0, random (0, 180), 2, random (0, 180))
+	TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsMedium", 38, 0, random (0, 360), 2, random (0, 160))
+	TRE2 CC 1 bright A_SpawnItem("RedFlare",0,88)
+	TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsMedium", 28, 0, random (0, 360), 2, random (0, 160))
+	TRE2 CC 1 bright A_SpawnItem("RedFlare",0,88)
+	TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsMedium", 18, 0, random (0, 360), 2, random (0, 160))
+	TRE2 CC 1 bright A_SpawnItem("RedFlare",0,88)
+	Loop
+	}
+}
+
+ACTOR STUFA Replaces DeadStick 
+{
+Game Doom
+DAMAGEFACTOR "Trample", 0.0
+DAMAGEFACTOR "Kick", 0.1
+DAMAGEFACTOR "Melee", 0.1
+DAMAGEFACTOR "Fatality", 10.1
+DAMAGEFACTOR "SuperPunch", 10.1
+damagefactor "taunt", 0.0
+DAMAGEFACTOR "ExplosiveImpact", 0.2
+DAMAGEFACTOR "Blood", 0.0    DAMAGEFACTOR "GreenBlood", 0.0    DAMAGEFACTOR "BlueBlood", 0.0    DAMAGEFACTOR "Taunt", 0.0    DAMAGEFACTOR "KillMe", 0.0  DAMAGEFACTOR "Avoid", 0.0  DAMAGEFACTOR "Taunt", 0.0 DAMAGEFACTOR "Head", 0.0 DAMAGEFACTOR "minorhead", 0.0
+SpawnID 125
+Health 20
+Radius 16
+Height 80
+Mass 999999999
+DamageType ExplosiveImpact
++SOLID
++SHOOTABLE
++NOBLOOD
++ACTIVATEMCROSS
++NOICEDEATH
++SLIDESONWALLS
++WINDTHRUST
++TELESTOMP
++NOBLOCKMONST
+PainChance "Kick", 255
+DeathSound "Explosion"
+Obituary "$OB_BARREL"
+States
+	{
+	Spawn:
+	TNT1 A 0 A_CheckSight("Spawn2")
+	POL1 A 4  
+	TNT1 A 0 A_CheckSight("Spawn2")
+	POL1 A 4  
+	TNT1 A 0 A_CheckSight("Spawn2")
+	POL1 A 4  
+	TNT1 A 0 A_CheckSight("Spawn2")
+	POL1 A 4  
+	Loop
+	Spawn2:
+	POL1 A 2
+	Goto Spawn
+	Death:
+	POL1 A 1 BRIGHT
+	DAMN AB 2 BRIGHT
+	TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+	TNT1 AAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 180), 2, random (0, 180))
+	EXPL A 0 Radius_Quake (2, 24, 0, 15, 0)
+	DAMN B 0 BRIGHT A_Scream
+	TNT1 AA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 AA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+	TNT1 A 0 A_PlaySound("FAREXPL", 3)
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 8 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (50, 130))
+	BEXP Z 300 BRIGHT A_BarrelDestroy
+	BEXP Z 5 A_Respawn
+	Wait
+	Death.SuperPunch:	
+	Death.Fatality:
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_GiveToTarget("GoSpecial", 1)
+	TNT1 A 0 A_GiveToTarget("HasBarrel", 1)
+	Stop
+	}
+}
+
+Actor SCHELETROPORACCIO Replaces HangTSkull 
+{
+Game Doom
+Radius 16
+Height 64
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
++Nogravity
+health 50
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	HDB4 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+	TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",4,0,0,0,0,0)
+	TNT1 AAA 0 A_CustomMissile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))                
+	SKPO B -1 A_NoBlocking
+	stop
+	}
+}
+
+Actor MACHEOOOO_1 Replaces ColonGibs 
+{
+Game Doom
+Radius 16
+Height 20
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
+-SOLID
+health 150
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	POB1 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+	TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",4,0,0,0,0,0)
+	TNT1 AAA 0 A_CustomMissile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))                
+	stop
+	}
+}
+
+ACTOR PoolofBlood : Health Replaces HangTNoBrain 
+{
++AUTOACTIVATE
+Scale 0.50
+Inventory.Amount 1
+Inventory.MaxAmount 10
+Inventory.PickupSound "slurpie"
+Inventory.PickupMessage "Pool of Blood"
+States
+	{
+	Spawn:
+	TNT1 A 0
+	HDB6 A -1
+	STOP
+	}
+}
+
+ACTOR BoneswithBlood : Health Replaces Meat4 
+{
++AUTOACTIVATE
+Scale 0.50
+Inventory.Amount 1
+Inventory.MaxAmount 10
+Inventory.PickupSound "slurpie"
+Inventory.PickupMessage "Bloody Bones"
+States
+	{
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_SpawnItem("RandomAGITATION",0,0)
+	HDB6 A -1
+	STOP
+	}
+}
+
+Actor SCHELETROdemerda Replaces BrainStem 
+{
+Game Doom
+Radius 16
+Height 20
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
+health 50
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	BRS1 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+	TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",4,0,0,0,0,0)
+	TNT1 AAA 0 A_CustomMissile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAA 0 A_CustomMissile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_CustomMissile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_CustomMissile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150))
+	TNT1 AAA 0 A_CustomMissile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150))                
+	stop
+	}
+}
+
+ACTOR LETTO Replaces HeadCandles
+{
+Game Doom
+Radius 16
+Height 30
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++NOBLOOD
++SOLID
+health 50
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+DAMAGEFACTOR "Head", 0.0
+DAMAGEFACTOR "FriendBullet", 0.0
+DAMAGEFACTOR "Taunt", 0.0
+DAMAGEFACTOR "KillMe", 0.0
+DAMAGEFACTOR "SSG", 5.0
+DAMAGEFACTOR "Shrapnel", 0.5
+DAMAGEFACTOR "MinorHead", 0.0
+DAMAGEFACTOR "Decaptate", 0.0
+DAMAGEFACTOR "Cut", 4.0
+DAMAGEFACTOR "Kick", 3.0
+DAMAGEFACTOR "Fatality", 5.0
+DAMAGEFACTOR "SuperPunch", 5.0
+DAMAGEFACTOR "HelperMarineFatallity", 0.0
+DamageFactor "flames", 0.0
+DamageFactor "Burn", 0.0
+DamageFactor "flame", 0.0
+DAMAGEFACTOR "FIRE", 0.0
+states
+	{
+	Spawn:
+	POL3 A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_PlaySound("SCHELETRO/morte")
+	TNT1 A 0 A_CUSTOMMISSILE("STONEWOODSMOKE",16,0,0,0,0,0)
+    TNT1 AAAA 0 A_CustomMissile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160))
+    TNT1 AAAA 0 A_CustomMissile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160))
+    TNT1 AAAA 0 A_CustomMissile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160))
+	stop
+	}
+}
+
+/////script by sgt_mark_iv/////
+ACTOR RevenantPiece
+{
+Radius 2
+Height 2
+Speed 7
+Mass 3
+BounceFACTOR 0.4
+BounceCount 4
++DOOMBOUNCE
++NOBLOCKMAP
++MISSILE
++NOTELEPORT
++DONTSPLASH
++MOVEWITHSECTOR
++CLIENTSIDEONLY
++THRUACTORS
+Scale 0.4
+States
+	{
+	Spawn:
+	TNT1 A 0
+	TNT1 A 0 Thing_ChangeTID(0,394)
+	TNT1 A 0 A_Jump(128,9)
+	SPIC ABCDEFGH 2
+	wait
+	SPIC HGFEDCBA 2
+	wait
+	Death:
+	TNT1 A 0
+	TNT1 A 0 A_Jump(128,2)
+	SPIC A 401
+	Stop
+	SPIC E 1
+	SPIC E 401
+	Stop
+	}
+}
+
+ACTOR RevenantDust: RevenantPiece
+{
+Speed 10
+BounceFACTOR 0.3
+Scale 0.6
+States
+	{
+	Spawn:
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+	SPIC I 5
+	Loop
+	Death:
+	TNT1 A 0
+	SPIC I 401
+	Stop
+	}
+}
+
+ACTOR RevenantDust2: RevenantDust
+{
+Speed 8
+BounceFACTOR 0.2
+Scale 0.3
+}
+
+ACTOR RevenantBlood : Blood
+{
+Decal BrutalBloodSplat
+game Doom
++FORCEXYBILLBOARD
++GHOST
++NOBLOCKMAP
++NOGRAVITY
++NOCLIP
+-DONTSPLASH
+-ALLOWPARTICLES 
+Speed 0
+states
+	{
+	Spawn:
+	TNT1 A 0
+	TNT1 AAAAA 0 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAA 0 A_CustomMissile ("RevenantDust", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAA 0 A_CustomMissile ("RevenantDust2", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+	TNT1 A 0 A_CustomMissile ("Nashgore_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 150))
+	TNT1 A 0 A_CustomMissile ("RevenantPiece", 7, 0, random (0, 360), 2, random (30, 150))
+	TNT1 A 0 A_SpawnItem ("BloodHit")
+	BLOD BCD 0
+	stop
+	Splash:
+	BLOD A 0
+	TNT1 AAA 0 A_CustomMissile ("BloodTr255", 7, 0, random (0, 360), 2, random (30, 150)) //UnderBlood1 removed
+	stop
+	}
+}
+
+ACTOR RevenantBones: RevenantPiece
+{
+Speed 9
+BounceFACTOR 0.3
+Scale 1.0
+States
+	{
+	Spawn:
+	BNP1 ABCDEFGH 4
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+	Loop
+	Death:
+	TNT1 A 0
+	BNP1 A 4000
+	Stop
+	}
+}
+
+ACTOR RevenantBonesFast: RevenantPiece
+{
+Speed 14
+BounceFACTOR 0.3
+Scale 1.0
+States
+	{
+	Spawn:
+	BNP1 ABCDEFGH 4
+	TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+	Loop
+	Death:
+	TNT1 A 0
+	BNP1 A 4000
+	Stop
+	}
+}
+
+//Ozy,questo stronzo si pentirà di aver fatto perdere tempo a te e a ZioMcCall >:)
+Actor Bimbiok Replaces PainElemental
+{
+Game Doom
+Radius 16
+Height 50
+DAMAGEFACTOR "Blood", 0.0 DAMAGEFACTOR "BlueBlood", 0.0 DAMAGEFACTOR "GreenBlood", 0.0
++LOOKALLAROUND
+mass 99999
++SHOOTABLE
++SOLID
++NOBLOOD
+health 50
+deathheight 38
++FORCEYBILLBOARD
+Mass 900000
+states
+	{
+	Spawn:
+	Tard A 2 
+	Loop
+	Death:
+	TNT1 A 0 A_SPAWNITEM ("DesintegratedMutant")
+	TNT1 A 0 A_SPAWNITEM ("DesintegratedMutant")
+	TNT1 A 0 A_SPAWNITEM ("DesintegratedMutant")
+	TNT1 A 0 A_SPAWNITEM ("DesintegratedMutant")
+	stop
+	}
+}
+
+Actor Favigay : Bimbiok replaces AllMap
+{
+States
+	{
+	Spawn:
+	tard b 2
+	Loop
+	}
+}
+
+ACTOR Fallout3Disintigration
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
++SOLID
+States
+	{
+	Spawn:
+	TNT1 A 0 A_PLAYSOUND("HORRIBLE/DEATH")
+	LD1A A 20 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	LD1A A 20 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	LD1A A 20 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	LD1A A 20 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	LD1A A 20 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))                
+	LD1A BCDEF 2 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_NoBlocking
+	TNT1 A 0 A_SPawnItem("MAANDATEACAGARELEZZI")
+	Stop
+	}
+}
+
+ACTOR MAANDATEACAGARELEZZI
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	LD1A G -1 A_CustomMissile ("PlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160))
+	Stop
+	}
+}
+//Bestemmie rimosse. :P //PORCO DIO
+ACTOR COSENONINDENTIFICATE_1 Replaces ShortBlueTorch 55
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	SMBT B -1
+	Stop
+	}
+}
+
+ACTOR COSENONINDENTIFICATE_2 Replaces ShortRedTorch 57
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	SMRT B -1
+	Stop
+	}
+}
+
+ACTOR COSENONINDENTIFICATE_3 Replaces ShortGreenTorch 56
+{
+Game Doom
+Radius 16
+Height 56
+ProjectilePassHeight -16
+-SOLID
+States
+	{
+	Spawn:
+	SMGT B -1
+	Stop
+	}
+}
+
+
+Actor BrownWoodSmoke
+{
+Radius 1
+Height 1 
+Speed 0
++NoBlockMap
++NoTeleport
++DontSPlash
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
+RenderStyle Add
+Scale 0.2
+Gravity 0
+Alpha 0.9
+States
+{
+Spawn:
+TNT1 A 0
+SMO1 A 1 A_SetScale(ScaleX+0.03)
+TNT1 A 0 A_FadeOuT(0.03)
+Loop
+Death:
+TNT1 A 0
+Stop
+}
+}
+
+
+Actor WhiteWoodSmoke
+{
+Radius 1
+Height 1 
+Speed 0
++NoBlockMap
++NoTeleport
++DontSPlash
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
+RenderStyle Add
+Scale 0.2
+Gravity 0
+Alpha 0.9
+States
+{
+Spawn:
+TNT1 A 0
+SMO3 A 1 A_SetScale(ScaleX+0.03)
+TNT1 A 0 A_FadeOuT(0.03)
+Loop
+Death:
+TNT1 A 0
+Stop
+}
+}

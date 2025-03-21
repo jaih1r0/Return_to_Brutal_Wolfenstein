@@ -5,7 +5,7 @@ Class BWPlayer : PlayerPawn
 	override void tick()
 	{
 		super.tick();
-		player.damagecount = Clamp(player.damagecount, 0, 15);
+		player.damagecount = Clamp(player.damagecount, 0, 5);
 	}
 	
 	override Vector2 BobWeapon(double ticFrac)
