@@ -21,7 +21,19 @@ Class BW_MonsterBase : Actor
 		BW_MonsterBase.feetheight 15;
 		BW_MonsterBase.HeadShotMult 1.75;
 		BW_MonsterBase.HasHeadshot true;
-		health 9000;
+		
+		Monster;
+		+FLOORCLIP;
+		+SLIDESONWALLS;
+		+DOHARMSPECIES;
+		+HARMFRIENDS;
+		+ROLLSPRITE;
+		+ROLLCENTER;
+		+FORCEPAIN;
+		
+		health 100;
+		MaxStepHeight 24;
+		MaxDropOffHeight 32;
 		//height 56
 		//radius 20
 	}

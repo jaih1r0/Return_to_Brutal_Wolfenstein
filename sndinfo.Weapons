@@ -1,0 +1,18 @@
+//===========================================================================
+//
+// Weapons
+//
+//===========================================================================
+
+
+//-----SLOT 1-----//
+
+
+
+//-----SLOT 2-----//
+
+//Luger P08
+Luger/Fire	"Sounds/Weapons/Slot2/Luger/LugFire.ogg"
+Luger/Out	"Sounds/Weapons/Slot2/Luger/LugOut.wav"
+Luger/In	"Sounds/Weapons/Slot2/Luger/LugIn.wav"
+Luger/Charge	"Sounds/Weapons/Slot2/Luger/LugCharge.wav"
