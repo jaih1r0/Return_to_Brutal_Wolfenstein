@@ -175,7 +175,8 @@ Class BWPlayer : PlayerPawn
 	}
 }
 
-class Z_NashMove : CustomInventory
+//custominventory nomore
+class Z_NashMove : inventory
 {
 	Default
 	{
@@ -221,8 +222,9 @@ class Z_NashMove : CustomInventory
 	//
 	//===========================================================================
 
-	override void Tick(void)
+	override void DoEffect()
 	{
+		Super.DoEffect();
 		if (Owner && Owner is "PlayerPawn")
 		{
 			if (bIsOnFloor())
@@ -257,8 +259,7 @@ class Z_NashMove : CustomInventory
 				PlayerPawn(Owner).ViewBob = Owner.vel.length() / 16;//DECEL_MULT / 2;
 			}
 		}
-
-		Super.Tick();
+		
 	}
 
 	//===========================================================================
@@ -266,18 +267,6 @@ class Z_NashMove : CustomInventory
 	//
 	//
 	//===========================================================================
-	States
-	{
-	Use:
-		TNT1 A 0;
-		Fail;
-	Pickup:
-		TNT1 A 0
-		{
-			return true;
-		}
-		Stop;
-	}
 }
 
 class Kicking : Inventory
