@@ -11,6 +11,7 @@ Class BaseBWWeapon : DoomWeapon
 		Weapon.BobRangeY 0.2;
 		Weapon.BobSpeed 2.5;
 		Weapon.BobStyle "InverseSmooth"; //"Smooth";//"InverseAlpha";
+		BaseBWWeapon.FullMag 0;
 		+dontgib;
 	}
 
@@ -21,6 +22,9 @@ Class BaseBWWeapon : DoomWeapon
 		BWWF_NoSlide 	= 1<<28,
 		BWWF_NoTaunt 	= 1<<29,
 	};
+	
+	int FullMag;
+	property FullMag:FullMag;
 	
 	protected int BraceTicker;
 	bool GunBraced;
@@ -469,6 +473,13 @@ Class BaseBWWeapon : DoomWeapon
 			lineNormal *= -1;
 
 		return lineNormal;
+	}
+	
+	override void attachtoowner(actor other)
+	{
+		super.attachtoowner(other);
+		if(FullMag > 0 && ammotype2)
+			other.giveinventory(ammotype2,FullMag);
 	}
 	
 	override void Tick()
