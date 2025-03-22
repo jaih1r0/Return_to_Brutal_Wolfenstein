@@ -65,9 +65,11 @@ Class BaseBWWeapon : DoomWeapon
 		return resolvestate(null);
 	}
 
-	action void BW_WeaponRaise()
+	action void BW_WeaponRaise(string SelectSound = "")
 	{
 		A_weaponoffset(0,32);
+		if(SelectSound)
+			A_Startsound(sound(SelectSound),7);
 	}
 
 	//wrapper function for bullet firing guns
@@ -138,7 +140,7 @@ Class BaseBWWeapon : DoomWeapon
 	{
 		for(int i = 0; i < MagazineMaxFill_Action; i++)
 		{
-			if((CountInv(AmmoMag_Action) == MagazineMaxFill_Action) || (!CountInv(AmmoPool_Action)))
+			if((CountInv(AmmoMag_Action) >= MagazineMaxFill_Action) || (!CountInv(AmmoPool_Action)))
 				return;
 			
 			A_GiveInventory(AmmoMag_Action, 1);

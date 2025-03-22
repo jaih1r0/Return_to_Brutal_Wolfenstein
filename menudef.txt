@@ -1,33 +1,47 @@
 
-LISTMENU "MainMenu"
+/*LISTMENU "MainMenu"
 {
 		StaticPatch 99, 2, "M_DOOM"
 		Position 102, 42
 		PatchItem "M_NGAME",  "n", "PlayerclassMenu"
-		PatchItem "M_RDTHIS", "b", "ReadThisMenu"
+		//PatchItem "M_RDTHIS", "b", "ReadThisMenu"
 		PatchItem "M_BWOPT2", "c", "BWOPZION"
 		PatchItem "M_LOADG", "l", "LoadGameMenu"
 		PatchItem "M_SAVEG", "s", "SaveGameMenu"
 		PatchItem "M_OPTION", "o", "OptionsMenu"
 		//TextItem "READ THIS!",  "r", "ReadThisMenu"
 		patchitem "M_QUITG", "q", "QuitMenu"
+}*/
+
+addoptionmenu "optionsmenu"
+{
+	submenu "RTBW Options","BWOPZION"
 }
 
 
-	
+optionvalue "BWProjectileType"
+{
+	0,"Hitscan"
+	1,"Projectiles"
+}
 
 OptionMenu BWOPZION
 {
-Title "Brutal Wolfenstein's Sub-Menu"
-//Submenu	"Gore Settings","BologneseOptions"
-Submenu "$OPTMNU_NASHGORE", "NashGoreMenu"
-SubMenu "Bonus Levels","BWOPTIONS"
-STATICTEXT ""
-Option "Hud Aspect Ratio", "BWHUDTYPE", "Option8"
-Command "Force HUD to Restart",			"pukename BWRespawn"
-STATICTEXT ""
-Option "Disable Reloads", "AllowReload", "Option9"
-StaticText "Requires a level restart to work"
+	Title "Return to brutal wolfenstein menu"
+	//Submenu	"Gore Settings","BologneseOptions"
+	Submenu "$OPTMNU_NASHGORE", "NashGoreMenu"
+	statictext ""
+	option "player bullet type","BW_BulletType","BWProjectileType"
+	statictext ""
+	statictext "=== Unused ==="
+	statictext ""
+	SubMenu "Bonus Levels","BWOPTIONS"
+	STATICTEXT ""
+	Option "Hud Aspect Ratio", "BWHUDTYPE", "Option8"
+	Command "Force HUD to Restart",			"pukename BWRespawn"
+	STATICTEXT ""
+	Option "Disable Reloads", "AllowReload", "Option9"
+	StaticText "Requires a level restart to work"
 }
 
 

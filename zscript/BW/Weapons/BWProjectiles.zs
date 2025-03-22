@@ -502,6 +502,16 @@ Class BW_LugerBullets : BW_Projectile
 	{
 		BW_Projectile.projectiledmg 25;
 		BW_Projectile.ripAmount 0;
-		damagetype "ApistolaDamage";
+		damagetype "Pistol";
+	}
+}
+
+Class BW_MP40Bullets : BW_Projectile
+{
+	default
+	{
+		BW_Projectile.projectiledmg 25;
+		BW_Projectile.ripAmount 0;
+		damagetype "SMG";
 	}
 }

@@ -16,3 +16,11 @@ Luger/Fire	"Sounds/Weapons/Slot2/Luger/LugFire.ogg"
 Luger/Out	"Sounds/Weapons/Slot2/Luger/LugOut.wav"
 Luger/In	"Sounds/Weapons/Slot2/Luger/LugIn.wav"
 Luger/Charge	"Sounds/Weapons/Slot2/Luger/LugCharge.wav"
+
+//-----SLOT 3-----//
+MP40/Fire			"Sounds/Weapons/Slot3/MP40/MP40Fire.ogg"	//from Ravik
+MP40/Take			"Sounds/Weapons/Slot3/MP40/MP401.wav"		//from Doomerblazkowicz
+MP40/Insert			"Sounds/Weapons/Slot3/MP40/MP402.wav"
+MP40/Pull			"Sounds/Weapons/Slot3/MP40/COCKE1.wav"
+MP40/BoltBack		"Sounds/Weapons/Slot3/MP40/COCK22.wav"
+MP40/Equip			"Sounds/Weapons/Slot3/MP40/MPDEP.ogg"
