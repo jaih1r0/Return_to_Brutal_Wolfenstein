@@ -12,7 +12,39 @@
 //-----SLOT 2-----//
 
 //Luger P08
-Luger/Fire	"Sounds/Weapons/Slot2/Luger/LugFire.ogg"
+//Luger/Fire	"Sounds/Weapons/Slot2/Luger/LugFire.ogg"
+$RANDOM Luger/Fire
+{
+Luger/Fire1
+Luger/Fire2
+Luger/Fire3
+Luger/Fire4
+Luger/Fire5
+}
+
+Luger/Fire1	"Sounds/Weapons/Slot2/Luger/Fire/LugFire1.wav"
+Luger/Fire2	"Sounds/Weapons/Slot2/Luger/Fire/LugFire2.wav"
+Luger/Fire3	"Sounds/Weapons/Slot2/Luger/Fire/LugFire3.wav"
+Luger/Fire4	"Sounds/Weapons/Slot2/Luger/Fire/LugFire4.wav"
+Luger/Fire5	"Sounds/Weapons/Slot2/Luger/Fire/LugFire5.wav"
+
+$RANDOM Luger/FireAdd
+{
+Luger/FireAdd1
+Luger/FireAdd2
+Luger/FireAdd3
+Luger/FireAdd4
+Luger/FireAdd5
+}
+
+Luger/FireAdd1	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd1.wav"
+Luger/FireAdd2	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd2.wav"
+Luger/FireAdd3	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd3.wav"
+Luger/FireAdd4	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd4.wav"
+Luger/FireAdd5	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd5.wav"
+
 Luger/Out	"Sounds/Weapons/Slot2/Luger/LugOut.wav"
+Luger/OutEmpty	"Sounds/Weapons/Slot2/Luger/LugOutEmpty.wav"
 Luger/In	"Sounds/Weapons/Slot2/Luger/LugIn.wav"
+Luger/InEmpty	"Sounds/Weapons/Slot2/Luger/LugInEmpty.wav"
 Luger/Charge	"Sounds/Weapons/Slot2/Luger/LugCharge.wav"

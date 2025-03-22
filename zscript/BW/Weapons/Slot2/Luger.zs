@@ -40,6 +40,7 @@ class BW_Luger : BaseBWWeapon
 		//[Pop] BW doesnt need overlay flashes
 		
 		A_StartSound("Luger/Fire", 0, CHANF_OVERLAP, 1);
+		A_StartSound("Luger/Fireadd", 0, CHANF_OVERLAP, 0.8);
 		BW_FireBullets2("BW_LugerBullets", 1, frandom(-0.1, 0.1), 0, 0, frandom(-0.1, 0.1));
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
@@ -160,13 +161,13 @@ class BW_Luger : BaseBWWeapon
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 9 || CountInv("Clip") == 0, "WeaponReady");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "Reload2");
 		TNT1 A 0 A_TakeInventory("AimingToken");
-		ZLR2 ABCDEFGHIJL 1;
+		ZLR2 ABCDEFGHIJ 1;
 		TNT1 A 0 A_StartSound("Luger/Out", 0, CHANF_OVERLAP);
-		ZLR2 MNOPQ 1;
+		ZLR2 LMNNNNNOPQ 1;
 		TNT1 A 0 A_StartSound("uni/magfol", 0, CHANF_OVERLAP);
-		ZLR2 RSTUVW 1;
+		ZLR2 RSTUUUUU 1;
 		TNT1 A 0 A_StartSound("Luger/In", 0, CHANF_OVERLAP);
-		ZLR2 XYZ 1;
+		ZLR2 VWXYZZZZZ 1;
 		TNT1 A 0 BW_AmmoIntoMag("BW_Luger_Mag", "Clip", 9, 1);
 		ZL22 ABCDEFG 1;
 		ZLR2 HGFEDCBA 1;
@@ -174,9 +175,9 @@ class BW_Luger : BaseBWWeapon
 	Reload2:
 		TNT1 A 0 A_TakeInventory("AimingToken");
 		ZLR3 ABCDEFGH 1;
-		TNT1 A 0 A_StartSound("Luger/out", 0, CHANF_OVERLAP);
+		TNT1 A 0 A_StartSound("Luger/outempty", 0, CHANF_OVERLAP);
 		ZLR4 ABCDEFGHIJKLM 1;
-		TNT1 A 0 A_StartSound("Luger/in", 0, CHANF_OVERLAP);
+		TNT1 A 0 A_StartSound("Luger/inempty", 0, CHANF_OVERLAP);
 		ZLR4 NOPQ 1;
 		TNT1 A 0 BW_AmmoIntoMag("BW_Luger_Mag", "Clip", 8 , 1);
 		ZLR4 RS 1;
