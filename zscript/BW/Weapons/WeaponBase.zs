@@ -70,23 +70,23 @@ Class BaseBWWeapon : DoomWeapon
 		A_weaponoffset(0,32);
 	}
 
+	//wrapper function for bullet firing guns
 	action void BW_FireBullets(string projectiletype = "BW_Projectile",double spreadx = 0,double spready = 0,int numbullets = 1,int dmg = 0, string puff = "Bulletpuff", name dmgtype = "Bullet",int maxpen = 0,int fwofs = 0, int sdofs = 0)
 	{
-		if(BW_BulletType == 0)
+		if(BW_BulletType == 0)	//hitscan
 		{
-			if(maxpen > 0)
+			if(maxpen > 0)	//the attack is meant to work as a railgun
 				CustomFireFunctionPenetrator(spreadx,spready,numbullets,dmg = 0,puff,dmgtype,maxpen,fwofs,sdofs);
-			else
+			else			//normal hitscan
 				CustomFireFunction(spreadx,spready,numbullets,dmg,puff,dmgtype,fwofs,sdofs);
 		}
-		else
+		else	//projectiles
 		{
-			
 			int nb = max(1,abs(numbullets));
 			for(int i = 0; i < nb; i++)
 			{
-				double ang = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spreadx,spreadx);
-				double ptc = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spready,spready);
+				double ang = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spreadx,spreadx);	//preserve the vanilla first shoot accurate
+				double ptc = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spready,spready);	
 				A_fireprojectile(projectiletype,ang,0,0,0,0,ptc);
 			}
 		}
