@@ -19,7 +19,7 @@ class BW_Luger : BaseBWWeapon
 		*/
 		
 		Obituary "$OB_MPPISTOL";
-		Inventory.Pickupmessage "";
+		Inventory.Pickupmessage "[Slot 2] Pistole Parabellum";
 		Tag "Luger P-08";
 		Scale 1;
 		Inventory.PickupSound "weapons/pistol/pickup";
