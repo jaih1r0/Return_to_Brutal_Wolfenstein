@@ -72,12 +72,14 @@ Class BW_MP40 : BaseBWWeapon
 			goto ready;
 		SlideFlash:
 			MP4K ABCD 1;
-			MP4K EFG 1;
+			MP4K EFGG 1;
 			MP4K GGG 1;
 			MP4K GGG 1;
 			MP4K GGG 1;
 			MP4K GGG 1;
 			MP4K GGG 1;
+			MP4K GGG 1;
+		SlideFlashEnd:
 			MP4K FEDCBA 1;
 			goto ready;
 		Reload:

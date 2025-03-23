@@ -429,11 +429,12 @@ class BW_EventHandler : EventHandler
 				if(!wp)
 					return;
 				let psp = pl.player.findpsprite(-3);
-				if(!psp)
+				if(!psp)	//is already kicking
 				{
 					//pl.A_GiveInventory("DoKick");
 					let ks = wp.resolvestate("DoKick");
-					pl.player.SetPSprite(-3,ks);
+					if(ks)
+						pl.player.SetPSprite(-3,ks);
 					//let kf = wp.resolvestate("KickFlash");
 					//if(kf)
 					//	pl.player.SetPSprite(PSP_WEAPON,kf);

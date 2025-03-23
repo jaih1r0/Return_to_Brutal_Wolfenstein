@@ -47,11 +47,12 @@ Class BaseBWWeapon : DoomWeapon
 		SlideKick:
 			TNT1 A 0 velfromangle(30,angle);
 			TNT1 A 0 handlekickFlash(1);
+			//start sliding 8 frames
 			BWK2 ABC 1;
 			TNT1 A 0 A_QuakeEx(1,0,0,20,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
 			BWK2 DEF 1;
 			BWK2 GH 1;
-			//slidin
+			//slidin, 18 frames
 			BWK2 IJK 1 SlideHandle("EndSlideKick",20);
 			BWK2 IJK 1 SlideHandle("EndSlideKick",20);
 			BWK2 IJK 1 SlideHandle("EndSlideKick",20);
@@ -59,8 +60,19 @@ Class BaseBWWeapon : DoomWeapon
 			BWK2 IJK 1 SlideHandle("EndSlideKick",12);
 			BWK2 IJK 1 SlideHandle("EndSlideKick",10);
 		EndSlideKick:
-			BWK2 HG 1;
-			BWK2 FEDCBA 1;
+			TNT1 A 0 {
+				//keep the weapon synced with the kick overlay
+				State PSPState = player.GetPSprite(PSP_WEAPON).Curstate;
+				if(InStateSequence(PSPState,invoker.ResolveState("SlideFlash")))
+				{
+					state endslide = invoker.resolvestate("SlideFlashEnd");
+					if(endslide)
+						player.SetPSprite(PSP_WEAPON,endslide);
+				}
+			}
+			//end sliding 6 frames
+			BWK2 H 1;
+			BWK2 FDCBA 1;
 			stop;
 
 	}
