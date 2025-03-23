@@ -148,6 +148,38 @@ Class BaseBWWeapon : DoomWeapon
 		}
 	}
 	
+	action state BW_PrefireCheck(int min = 1,statelabel reloadstate = null, statelabel drystate = null,bool checkprimary = false)
+	{
+		int am_res = checkprimary ? invoker.ammo1.amount : invoker.ammo2.amount;	//just in case, ig
+		if(am_res < min)
+		{
+			//probably cvar to allow autoreload whem empty instead of dryfiring
+			/*if(BW_AutoReload)
+				return resolvestate(reloadstate);
+			else*/
+				return resolvestate(drystate);
+		}
+		return resolvestate(null);
+	}
+	
+	//this function assumes that ammo2 is the mag ammo and ammo1 is the reserve ammo
+	action state BW_CheckReload(statelabel emptystate = null, statelabel fullstate = null, statelabel noAmmostate = null, int full = 1, int min = 1)
+	{
+		if(!invoker.ammo2 || !invoker.ammo1)
+			return resolvestate(null);
+		int am_mag = invoker.ammo2.amount;
+		int am_res = invoker.ammo1.amount;
+		
+		if(am_mag >= full)	//is already full
+			return resolvestate(fullstate);
+		if(am_res < min)	//theres no ammo in reserve to reload
+			return resolvestate(noAmmostate);
+		if(am_mag < 1)		//the mag is empty, go to the empty reload if any, continue partial if not defined
+			return resolvestate(emptystate);
+		return resolvestate(null);	//continue normal
+		
+	}
+	
 	action void KickDoors(int dist = 70)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;

@@ -42,7 +42,7 @@ Class BW_MP40 : BaseBWWeapon
 			MP4U E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER2);
 			loop;
 		Fire:
-			TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"DryFire");
+			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
 			MP4F A 1 bright BW_MP40Fire();
 			MP4F B 1 bright;
 			MP4F C 1;
@@ -54,6 +54,9 @@ Class BW_MP40 : BaseBWWeapon
 		DryFire:
 			MP4U E 1;
 			goto ready;
+		NoAmmo:
+			MP4U E 1;
+			goto ready;
 		
 		User2:
 			MP4K ABC 1;
@@ -63,7 +66,7 @@ Class BW_MP40 : BaseBWWeapon
 			goto ready;
 		
 		Reload:
-			TNT1 A 0 A_jumpif(invoker.ammo2.amount >= invoker.FullMag||invoker.ammo1.amount < 1,"Ready");
+			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",32,1);
 			MP4R ABCD 1;
 			MP4R EFGH 1;
 			MP4R IJKL 1;

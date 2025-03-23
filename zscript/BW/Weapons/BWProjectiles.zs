@@ -402,7 +402,7 @@ Class BW_Projectile : fastprojectile
 
 		if(mat != 'null')
 		{
-			let puff =  BW_impactpuff(spawn("BW_impactpuff",pos - hitdir));
+			let puff =  BW_impactpuff(spawn("BW_impactpuff",t.hitlocation - hitdir));
 			if(puff)
 			{
 				puff.tp = mat;
@@ -411,9 +411,11 @@ Class BW_Projectile : fastprojectile
 				puff.wang = wallAng;
 				puff.impactType = impc;
 				//console.printf("spawned the fucking puff");
+				//if(!levellocals.ispointinlevel(puff.pos))
+				//	return;
 				let sd = BW_StaticHandler.getmaterialSound(tex);
 				if(sd)
-					puff.A_Startsound(sd);
+					A_Startsound(sd);	//looks like this kinda avoids the sound at (NAN) error
 			}
 		}
 		else
