@@ -52,7 +52,7 @@ Class BWPlayer : PlayerPawn
 		
 		Player.StartItem "QuickKick", 1;
 		
-		Player.AttackZOffset 16;
+		Player.AttackZOffset 10;
 		Player.ViewBobSpeed 15;
 		Player.ViewHeight 40;
 		Scale 0.8;
