@@ -85,7 +85,7 @@ Class BW_StaticHandler : StaticEventHandler
 		
 		for(int i = 0; i < self.MarbleDef.size(); i++)
 		{
-			self.MaterialTypes.push("Stone");	//marble is actually just stone heh
+			self.MaterialTypes.push("Marble");	//marble is actually just stone heh
 			self.MaterialStep.push("step/tile/b");
 			self.MaterialImpactSnd.push("bullet_Stone");
 			self.MaterialTextures.push(self.MarbleDef[i]);

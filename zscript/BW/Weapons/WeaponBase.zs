@@ -546,7 +546,25 @@ Class BaseBWWeapon : DoomWeapon
 	}
 }
 
-class BW_dmgpuff : actor
+Class BW_BulletPuff : Actor replaces bulletpuff
+{
+	default
+	{
+		height 1;
+		radius 1;
+		+noblockmap;
+		+nogravity;
+		scale 0.1;
+	}
+	states
+	{
+		spawn:
+			FX33 ABCDEFGHIJK 1 bright;
+			stop;
+	}
+}
+
+class BW_dmgpuff : BW_BulletPuff
 {
 	default
 	{
@@ -562,7 +580,9 @@ class BW_dmgpuff : actor
 	}
 }
 
-class BW_impactpuff : actor
+
+
+class BW_impactpuff : BW_BulletPuff
 {
 	vector3 norm;
 	name tp;
@@ -606,6 +626,7 @@ class BW_impactpuff : actor
 		{
 			case 'Crystal':
 			case 'Carpet':	SpawnImpact_Carpet();	spawnMainPuff();	break;
+			case 'Marble':
 			case 'PurpleStone':
 			case 'Gravel':
 			case 'BurnStone':
@@ -636,6 +657,7 @@ class BW_impactpuff : actor
 				case 'Dirt':
 				case 'PurpleStone':
 				case 'Gravel':
+				case 'Marble':
 				case 'Stone':	typ = "Impact_Stone";	break;
 				case 'Crystal':	typ = "Impact_Crystal";	break;
 				case 'Electric':

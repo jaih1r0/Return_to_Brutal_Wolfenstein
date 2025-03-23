@@ -22,6 +22,7 @@ Class BW_CeillingDecoration : BW_ShootableDecoration abstract
         +NoBlood
         -solid
         +dontfall;
+        health 20;
     }
     override void postbeginplay()
     {

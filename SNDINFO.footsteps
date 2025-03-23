@@ -145,3 +145,12 @@ step/grass2			grass2
 step/grass3			grass3
 step/grass4			grass4
 $random step/grass { step/grass1 step/grass2 step/grass3 step/grass4 }
+
+
+//Land sounds by ravik
+Land/concrete       "Sounds/Player/Land/land_concrete.wav"
+Land/dirt           "Sounds/Player/Land/land_dirt.wav"
+Land/metal          "Sounds/Player/Land/land_metal.wav"
+Land/water          "Sounds/Player/Land/land_water.wav"
+Land/tile           "Sounds/Player/Land/land_tile.wav"
+Land/wood           "Sounds/Player/Land/land_wood.wav"
