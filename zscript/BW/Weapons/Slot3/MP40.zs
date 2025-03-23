@@ -64,13 +64,22 @@ Class BW_MP40 : BaseBWWeapon
 			MP4U E 1;
 			goto ready;
 		
-		User2:
+		KickFlash:
 			MP4K ABC 1;
 			MP4K DEF 1;
 			MP4K GGG 1;
 			MP4K FEDCBA 1;
 			goto ready;
-		
+		SlideFlash:
+			MP4K ABCD 1;
+			MP4K EFG 1;
+			MP4K GGG 1;
+			MP4K GGG 1;
+			MP4K GGG 1;
+			MP4K GGG 1;
+			MP4K GGG 1;
+			MP4K FEDCBA 1;
+			goto ready;
 		Reload:
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",32,1);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);

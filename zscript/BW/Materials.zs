@@ -425,7 +425,21 @@ class BW_EventHandler : EventHandler
 		{	
 			if(kicktimer == 0)
 			{
-				//pl.player.A_GiveInventory("DoKick");
+				let wp = pl.player.readyweapon;
+				if(!wp)
+					return;
+				let psp = pl.player.findpsprite(-3);
+				if(!psp)
+				{
+					//pl.A_GiveInventory("DoKick");
+					let ks = wp.resolvestate("DoKick");
+					pl.player.SetPSprite(-3,ks);
+					//let kf = wp.resolvestate("KickFlash");
+					//if(kf)
+					//	pl.player.SetPSprite(PSP_WEAPON,kf);
+					kicktimer = 20;
+				}
+				
 			}
 		}
 	}

@@ -9,7 +9,8 @@ Class BW_ShootableDecoration : BW_Decoration abstract
         health 100;
         +shootable;
         +solid;
-        +dontthrust
+        +dontthrust;
+        +noblood;
     }
 }
 
@@ -156,3 +157,34 @@ Class BW_GreyLamp1 : BW_GreyLamp replaces candlestick
 
 Class BW_GreyLamp2 : BW_GreyLamp replaces nonsolidmeat2
 {}
+
+
+Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
+{
+    default
+    {
+        Radius 16;
+        Height 64;
+        +FORCEYBILLBOARD;
+        deathheight 38;
+        health 50;
+    }
+    states
+    {
+        Spawn:
+            ELEC A -1;
+            stop;
+        Death:
+            COLM B -1;
+            stop;
+    }
+    override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
+    {
+        console.printf("receiving damagetype: %s",mod);
+        if((flags & DMG_EXPLOSION) || mod == 'Explosive' || mod == 'Extreme')
+            damage *= 10;
+        else
+            damage = 0;
+        return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
+    }
+}
