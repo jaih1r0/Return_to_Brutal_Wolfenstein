@@ -4,11 +4,16 @@ Class BW_Hud : BaseStatusBar
 	int 			healthCol;
 	double 			alfadeofs;
 	bool 			NoHud;
+	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2;
 	override void Init()
 	{
 		Super.Init();
 		SetSize(0, 320, 240);
 		BWFont = HUDFont.Create("BWFONT");
+		DV_Health = dynamicvalueinterpolator.create(0,1,1,10);
+		DV_Armor = dynamicvalueinterpolator.create(0,1,1,10);
+		DV_Ammo1 = dynamicvalueinterpolator.create(0,1,1,10);
+		DV_Ammo2 = dynamicvalueinterpolator.create(0,1,1,10);
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -31,10 +36,23 @@ Class BW_Hud : BaseStatusBar
 	override void Tick()
 	{
 		Super.Tick();
-		if(cplayer.mo.health < 25)
+		let pl = cplayer.mo;
+		if(pl.health < 25)
 			healthcol = Font.CR_RED;
 		else
 			healthcol = Font.CR_YELLOW;
+		
+		DV_Health.update(pl.health);
+		DV_Armor.update(GetArmorAmount());
+		if(cplayer.readyweapon)
+		{
+			Ammo Primary, Secondary;
+			[Primary, Secondary] = GetCurrentAmmo();
+			if(primary)
+				DV_Ammo1.update(primary.amount);
+			if(Secondary)
+				DV_Ammo2.update(Secondary.amount);
+		}
 		//NoHud = cplayer.mo.findinventory("DisableHud");
 		/*if(cplayer.mo.findinventory("NoSliding"))
 		{
@@ -52,13 +70,13 @@ Class BW_Hud : BaseStatusBar
 		let pl = Cplayer.mo;
 		
 		//health
-		int hl = pl.health;
+		int hl = DV_Health.getvalue();//pl.health;
 		drawstring(BWFont,formatnumber(hl),(15,-25),DI_SCREEN_LEFT_BOTTOM ,healthcol);
 		let mg = getmugshot(5);
-		drawtexture(mg,(30,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_BOTTOM,1.0,(-1,-1),(2.0,2.0));//,DI_SCREEN_CENTER_BOTTOM|DI_ITEM_BOTTOM);
+		drawtexture(mg,(25,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_BOTTOM,1.0,(-1,-1),(2.0,2.0));//,DI_SCREEN_CENTER_BOTTOM|DI_ITEM_BOTTOM);
 		
 		//armor
-		int amm = GetArmorAmount();
+		int amm = DV_Armor.getvalue();//GetArmorAmount();
 		if(amm > 0)
 		{
 			drawstring(BWFont,formatnumber(amm),(70,-25),DI_SCREEN_LEFT_BOTTOM,Font.CR_YELLOW);
@@ -66,7 +84,7 @@ Class BW_Hud : BaseStatusBar
 			vector2 amivec;
 			let ba = pl.findinventory("BasicArmor");
 			[armi,amivec] = GetIcon(ba,0);
-			drawTexture(armi,(35,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,1.0,(90,90),(4.0,4.0));
+			drawTexture(armi,(50,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,1.0,(60,60),(4.0,4.0));
 		}
 		//weapons
 		if(cplayer.readyweapon != null)
@@ -75,7 +93,7 @@ Class BW_Hud : BaseStatusBar
 			[Primary, Secondary] = GetCurrentAmmo();
 			if(primary)
 			{
-				int am1 = primary.amount;
+				int am1 = DV_Ammo1.getvalue();	//primary.amount;
 				int max1 = primary.maxamount;
 				string stam = "\ck";
 				if(am1 < max1)
@@ -91,7 +109,7 @@ Class BW_Hud : BaseStatusBar
 			
 			if(Secondary) //&& !pl.findinventory("BWAllowReloadCheck"))
 			{
-				int am2 = Secondary.amount;
+				int am2 = DV_Ammo2.getvalue();	//Secondary.amount;
 				int max2 = Secondary.maxamount;
 				string stam = "\ck";
 				if(am2 < max2)

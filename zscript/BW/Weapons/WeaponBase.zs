@@ -11,6 +11,7 @@ Class BaseBWWeapon : DoomWeapon
 		Weapon.BobRangeY 0.2;
 		Weapon.BobSpeed 2.5;
 		Weapon.BobStyle "InverseSmooth"; //"Smooth";//"InverseAlpha";
+		BaseBWWeapon.FullMag 0;
 		+dontgib;
 	}
 
@@ -22,67 +23,42 @@ Class BaseBWWeapon : DoomWeapon
 		BWWF_NoTaunt 	= 1<<29,
 	};
 	
+	int FullMag;
+	property FullMag:FullMag;
+	
 	protected int BraceTicker;
 	bool GunBraced;
 	
 	Action State BW_WeaponReady(int BWRflags = 0)
 	{
-		/*if(findinventory("SlideExecute") && !(BWRflags & BWWF_NoSlide))
-		{
-			A_setinventory("SlideExecute",0);
-			return resolvestate("SlideAttack");
-		}*/
-		/*if(findinventory("Kicking") && !(BWRflags & BWWF_NoKick))
-		{
-			A_setinventory("Kicking",0);
-			//return resolvestate("DoKick");
-		}
-		if(findinventory("Taunting") && !(BWRflags & BWWF_NoTaunt))
-		{
-			A_setinventory("Taunting",0);
-			return resolvestate("Taunt");
-		}
-		if(findinventory("BWgrenade") && !(BWRflags & BWWF_NoGrenade))
-		{
-			A_setinventory("BWgrenade",0);
-			return resolvestate("LaunchGrenade");
-		}
-		if(findinventory("Meleeattack") && !(BWRflags & BWWF_NoAxe))
-		{
-			A_setinventory("Meleeattack",0);
-			return resolvestate("KnifeAttack");
-		}
-		if(findinventory("Reloading") && (BWRflags & WRF_ALLOWRELOAD))
-		{
-			A_setinventory("Reloading",0);
-			return resolvestate("Reload");
-		}*/
 		A_Weaponready(BWRflags);
 		return resolvestate(null);
 	}
 
-	action void BW_WeaponRaise()
+	action void BW_WeaponRaise(string SelectSound = "")
 	{
 		A_weaponoffset(0,32);
+		if(SelectSound)
+			A_Startsound(sound(SelectSound),7);
 	}
 
+	//wrapper function for bullet firing guns
 	action void BW_FireBullets(string projectiletype = "BW_Projectile",double spreadx = 0,double spready = 0,int numbullets = 1,int dmg = 0, string puff = "Bulletpuff", name dmgtype = "Bullet",int maxpen = 0,int fwofs = 0, int sdofs = 0)
 	{
-		if(BW_BulletType == 0)
+		if(BW_BulletType == 0)	//hitscan
 		{
-			if(maxpen > 0)
+			if(maxpen > 0)	//the attack is meant to work as a railgun
 				CustomFireFunctionPenetrator(spreadx,spready,numbullets,dmg = 0,puff,dmgtype,maxpen,fwofs,sdofs);
-			else
+			else			//normal hitscan
 				CustomFireFunction(spreadx,spready,numbullets,dmg,puff,dmgtype,fwofs,sdofs);
 		}
-		else
+		else	//projectiles
 		{
-			
 			int nb = max(1,abs(numbullets));
 			for(int i = 0; i < nb; i++)
 			{
-				double ang = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spreadx,spreadx);
-				double ptc = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spready,spready);
+				double ang = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spreadx,spreadx);	//preserve the vanilla first shoot accurate
+				double ptc = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spready,spready);	
 				A_fireprojectile(projectiletype,ang,0,0,0,0,ptc);
 			}
 		}
@@ -134,12 +110,44 @@ Class BaseBWWeapon : DoomWeapon
 	{
 		for(int i = 0; i < MagazineMaxFill_Action; i++)
 		{
-			if((CountInv(AmmoMag_Action) == MagazineMaxFill_Action) || (!CountInv(AmmoPool_Action)))
+			if((CountInv(AmmoMag_Action) >= MagazineMaxFill_Action) || (!CountInv(AmmoPool_Action)))
 				return;
 			
 			A_GiveInventory(AmmoMag_Action, 1);
 			A_TakeInventory(AmmoPool_Action, takeReserve);
 		}
+	}
+	
+	action state BW_PrefireCheck(int min = 1,statelabel reloadstate = null, statelabel drystate = null,bool checkprimary = false)
+	{
+		int am_res = checkprimary ? invoker.ammo1.amount : invoker.ammo2.amount;	//just in case, ig
+		if(am_res < min)
+		{
+			//probably cvar to allow autoreload whem empty instead of dryfiring
+			/*if(BW_AutoReload)
+				return resolvestate(reloadstate);
+			else*/
+				return resolvestate(drystate);
+		}
+		return resolvestate(null);
+	}
+	
+	//this function assumes that ammo2 is the mag ammo and ammo1 is the reserve ammo
+	action state BW_CheckReload(statelabel emptystate = null, statelabel fullstate = null, statelabel noAmmostate = null, int full = 1, int min = 1)
+	{
+		if(!invoker.ammo2 || !invoker.ammo1)
+			return resolvestate(null);
+		int am_mag = invoker.ammo2.amount;
+		int am_res = invoker.ammo1.amount;
+		
+		if(am_mag >= full)	//is already full
+			return resolvestate(fullstate);
+		if(am_res < min)	//theres no ammo in reserve to reload
+			return resolvestate(noAmmostate);
+		if(am_mag < 1)		//the mag is empty, go to the empty reload if any, continue partial if not defined
+			return resolvestate(emptystate);
+		return resolvestate(null);	//continue normal
+		
 	}
 	
 	action void KickDoors(int dist = 70)
@@ -469,6 +477,13 @@ Class BaseBWWeapon : DoomWeapon
 			lineNormal *= -1;
 
 		return lineNormal;
+	}
+	
+	override void attachtoowner(actor other)
+	{
+		super.attachtoowner(other);
+		if(FullMag > 0 && ammotype2)
+			other.giveinventory(ammotype2,FullMag);
 	}
 	
 	override void Tick()

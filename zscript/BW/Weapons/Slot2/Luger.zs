@@ -10,7 +10,7 @@ class BW_Luger : BaseBWWeapon
 		Weapon.AmmoGive2 0;
 		
 		Weapon.SlotNumber 2;
-		
+		BaseBWWeapon.FullMag 9;
 		/*
 		zoom 1.0
 		zoomaim 1.2
