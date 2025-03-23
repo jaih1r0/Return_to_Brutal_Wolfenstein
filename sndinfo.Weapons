@@ -267,10 +267,23 @@ Luger/Fire3
 Luger/Fire4
 }
 
-Luger/Fire1	"Sounds/Weapons/Slot2/Luger/Fire/LugFire1.wav"
-Luger/Fire2	"Sounds/Weapons/Slot2/Luger/Fire/LugFire2.wav"
-Luger/Fire3	"Sounds/Weapons/Slot2/Luger/Fire/LugFire3.wav"
-Luger/Fire4	"Sounds/Weapons/Slot2/Luger/Fire/LugFire4.wav"
+Luger/Fire1	"Sounds/Weapons/Slot2/Luger/Fire/LugFire1.ogg"
+Luger/Fire2	"Sounds/Weapons/Slot2/Luger/Fire/LugFire2.ogg"
+Luger/Fire3	"Sounds/Weapons/Slot2/Luger/Fire/LugFire3.ogg"
+Luger/Fire4	"Sounds/Weapons/Slot2/Luger/Fire/LugFire4.ogg"
+
+$RANDOM Luger/FireTail
+{
+Luger/FireTail1
+Luger/FireTail2
+Luger/FireTail3
+Luger/FireTail4
+}
+
+Luger/FireTail1	"Sounds/Weapons/Slot2/Luger/Fire/FireTail1.wav"
+Luger/FireTail2	"Sounds/Weapons/Slot2/Luger/Fire/FireTail2.wav"
+Luger/FireTail3	"Sounds/Weapons/Slot2/Luger/Fire/FireTail3.wav"
+Luger/FireTail4	"Sounds/Weapons/Slot2/Luger/Fire/FireTail4.wav"
 
 $RANDOM Luger/FireAdd
 {
@@ -304,11 +317,30 @@ $RANDOM MP40/Fire
 MP40/Fire1
 MP40/Fire2
 MP40/Fire3
+MP40/Fire4
 }
 
-MP40/Fire1	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire1.wav"
-MP40/Fire2	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire2.wav"
-MP40/Fire3	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire3.wav"
+MP40/Fire1	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire1.ogg"
+MP40/Fire2	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire2.ogg"
+MP40/Fire3	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire3.ogg"
+MP40/Fire4	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire4.ogg"
+
+$RANDOM MP40/FireMech
+{
+MP40/FireMech1
+MP40/FireMech2
+MP40/FireMech3
+MP40/FireMech4
+MP40/FireMech5
+MP40/FireMech6
+}
+
+MP40/FireMech1	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech1.ogg"
+MP40/FireMech2	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech2.ogg"
+MP40/FireMech3	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech3.ogg"
+MP40/FireMech4	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech4.ogg"
+MP40/FireMech5	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech5.ogg"
+MP40/FireMech6	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech6.ogg"
 
 $RANDOM MP40/FireAdd
 {
