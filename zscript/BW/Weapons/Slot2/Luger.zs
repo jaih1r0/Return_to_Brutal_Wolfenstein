@@ -19,9 +19,9 @@ class BW_Luger : BaseBWWeapon
 		*/
 		
 		Obituary "$OB_MPPISTOL";
-		Inventory.Pickupmessage "[1] Makarov";
-		Tag "Makarov";
-		Scale 0.16;
+		Inventory.Pickupmessage "";
+		Tag "Luger P-08";
+		Scale 1;
 		Inventory.PickupSound "weapons/pistol/pickup";
 		+WEAPON.NOALERT;
 		+WEAPON.AMMO_OPTIONAL;
@@ -41,7 +41,7 @@ class BW_Luger : BaseBWWeapon
 		
 		A_StartSound("Luger/Fire", 0, CHANF_OVERLAP, 1);
 		A_StartSound("Luger/Fireadd", 0, CHANF_OVERLAP, 0.8);
-		BW_FireBullets2("BW_LugerBullets", 1, frandom(-0.1, 0.1), 0, 0, frandom(-0.1, 0.1));
+		BW_FireBullets("BW_LugerBullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
 		//this handles placing the flash correctly
@@ -66,8 +66,10 @@ class BW_Luger : BaseBWWeapon
 	
 	Deselect:
 		TNT1 A 0 A_ZoomFactor(1);
-		TNT1 A 0 A_StartSound("pm/lower", 0, CHANF_OVERLAP, 1);
-		ZLUS EFGHI 1;
+		TNT1 A 0 A_StartSound("Lug/lower", 0, CHANF_OVERLAP, 1);
+		ZLUS FG 1;
+		TNT1 A 0 A_StartSound("Generic/Pistol/Holster", 0, CHANF_OVERLAP, 1);
+		ZLUS HI 1;
 		PSTG A 0 A_Lower(25);
 		Wait;
 	User3:
@@ -82,8 +84,10 @@ class BW_Luger : BaseBWWeapon
 		TNT1 A 0 A_Raise(25);
 		Wait;
 	Ready:
-		TNT1 A 0 A_StartSound("pm/raise", 0, CHANF_OVERLAP, 1);
-		ZLUS ABCDE 1;
+		TNT1 A 0 A_StartSound("Generic/Pistol/raise", 0, CHANF_OVERLAP, 1);
+		ZLUS AB 1;
+		TNT1 A 0 A_StartSound("Lug/raise", 0, CHANF_OVERLAP, 1);
+		ZLUS CD 1;
 	WeaponReady:
 		ZLUS E 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "WeaponReadyEmpty");
@@ -161,14 +165,16 @@ class BW_Luger : BaseBWWeapon
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 9 || CountInv("Clip") == 0, "WeaponReady");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "Reload2");
 		TNT1 A 0 A_TakeInventory("AimingToken");
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 		ZLR2 ABCDEFGHIJ 1;
 		TNT1 A 0 A_StartSound("Luger/Out", 0, CHANF_OVERLAP);
-		ZLR2 LMNNNNNOPQ 1;
-		TNT1 A 0 A_StartSound("uni/magfol", 0, CHANF_OVERLAP);
-		ZLR2 RSTUUUUU 1;
+		ZLR2 LMNNNNN 1;
+		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+		ZLR2 OPQRSTUUUUU 1;
 		TNT1 A 0 A_StartSound("Luger/In", 0, CHANF_OVERLAP);
 		ZLR2 VWXYZZZZZ 1;
 		TNT1 A 0 BW_AmmoIntoMag("BW_Luger_Mag", "Clip", 9, 1);
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 		ZL22 ABCDEFG 1;
 		ZLR2 HGFEDCBA 1;
 		Goto WeaponReady;

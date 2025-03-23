@@ -20,7 +20,8 @@ Class BW_MP40 : BaseBWWeapon
 	{
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		A_Startsound("MP40/Fire",5,CHANF_OVERLAP);
-		BW_FireBullets("BW_MP40Bullets",3,2,-1,25,"Bulletpuff","Bullet",0,0,0);
+		A_Startsound("MP40/FireAdd",5,CHANF_OVERLAP, 0.8);
+		BW_FireBullets("BW_MP40Bullets",0.5,0.5,-1,25,"Bulletpuff","Bullet",0,0,0);
 		BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
 		invoker.ammo2.amount--;
 	}
@@ -31,11 +32,16 @@ Class BW_MP40 : BaseBWWeapon
 			MP4W A -1;
 			stop;
 		Select:
-			TNT1 A 0 BW_WeaponRaise("MP40/Equip");
-			MP4U ABCD 1;
+			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
+			MP4U AB 1;
+			TNT1 A 0 A_StartSound("MP40/raise", 0, CHANF_OVERLAP, 1);
+			MP4U CD 1;
 			goto ready;
 		Deselect:
-			MP4U FGHI 1;
+			TNT1 A 0 A_Startsound("MP40/Lower",5,CHANF_OVERLAP);
+			MP4U FG 1;
+			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
+			MP4U HI 1;
 			TNT1 A 0 A_lower(120);
 			wait;
 		Ready:
@@ -67,22 +73,20 @@ Class BW_MP40 : BaseBWWeapon
 		
 		Reload:
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",32,1);
-			MP4R ABCD 1;
-			MP4R EFGH 1;
-			MP4R IJKL 1;
-			MP4R MNOP 1;
-			MP4R QRST 1;
-			MP4R UVWX 1;
-			TNT1 A 0 A_startsound("MP40/Take",17);
-			MP4R YZ 1;
-			MP4S ABCD 1;
-			MP4S EFGH 1;
-			MP4S IJ 1;
-			TNT1 A 0 A_startsound("MP40/Insert",18);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			MP4R ABCDEFGHIJKL 1;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			MP4R MNOPQRSTUV 1;
+			TNT1 A 0 A_startsound("MP40/Out",17);
+			MP4R WXYZ 1;
+			MP4S AB 1;
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			MP4S CDEFGHIJ 1;
+			TNT1 A 0 A_startsound("MP40/In",18);
 			MP4S KL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
-			MP4S MNOP 1;
-			MP4S QRST 1;
+			MP4S MNOPQRST 1;
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 			MP4S UV 1;
 			MP4R FEDCBA 1;
 			goto ready;

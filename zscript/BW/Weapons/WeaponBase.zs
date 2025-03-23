@@ -12,6 +12,7 @@ Class BaseBWWeapon : DoomWeapon
 		Weapon.BobSpeed 2.5;
 		Weapon.BobStyle "InverseSmooth"; //"Smooth";//"InverseAlpha";
 		BaseBWWeapon.FullMag 0;
+		Weapon.WeaponScaleX 1.2;
 		+dontgib;
 	}
 
