@@ -41,6 +41,7 @@ class BW_Luger : BaseBWWeapon
 		
 		A_StartSound("Luger/Fire", 0, CHANF_OVERLAP, 1);
 		A_StartSound("Luger/Fireadd", 0, CHANF_OVERLAP, 0.8);
+		A_StartSound("Luger/FireTail", 0, CHANF_OVERLAP, 0.7);
 		BW_FireBullets("BW_LugerBullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		

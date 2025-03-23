@@ -20,7 +20,7 @@ Class BW_MP40 : BaseBWWeapon
 	{
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		A_Startsound("MP40/Fire",5,CHANF_OVERLAP);
-		A_Startsound("MP40/FireAdd",5,CHANF_OVERLAP, 0.8);
+		A_Startsound("MP40/FireAdd",5,CHANF_OVERLAP, 0.70);
 		BW_FireBullets("BW_MP40Bullets",0.5,0.5,-1,25,"Bulletpuff","Bullet",0,0,0);
 		BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
 		invoker.ammo2.amount--;
@@ -51,7 +51,7 @@ Class BW_MP40 : BaseBWWeapon
 			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
 			MP4F A 1 bright BW_MP40Fire();
 			MP4F B 1 bright;
-			MP4F C 1;
+			MP4F C 1 A_Startsound("MP40/FireMech",5,CHANF_OVERLAP, 0.8);
 			MP4F D 1;
 			MP4U E 1 A_Refire();
 			MP4U E 1;
@@ -92,9 +92,9 @@ Class BW_MP40 : BaseBWWeapon
 			MP4R WXYZ 1;
 			MP4S AB 1;
 			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
-			MP4S CDEFGHIJ 1;
+			MP4S CDEFGH 1;
 			TNT1 A 0 A_startsound("MP40/In",18);
-			MP4S KL 1;
+			MP4S IJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
 			MP4S MNOPQRST 1;
 			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
