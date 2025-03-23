@@ -31,36 +31,6 @@ Class BaseBWWeapon : DoomWeapon
 	
 	Action State BW_WeaponReady(int BWRflags = 0)
 	{
-		/*if(findinventory("SlideExecute") && !(BWRflags & BWWF_NoSlide))
-		{
-			A_setinventory("SlideExecute",0);
-			return resolvestate("SlideAttack");
-		}*/
-		/*if(findinventory("Kicking") && !(BWRflags & BWWF_NoKick))
-		{
-			A_setinventory("Kicking",0);
-			//return resolvestate("DoKick");
-		}
-		if(findinventory("Taunting") && !(BWRflags & BWWF_NoTaunt))
-		{
-			A_setinventory("Taunting",0);
-			return resolvestate("Taunt");
-		}
-		if(findinventory("BWgrenade") && !(BWRflags & BWWF_NoGrenade))
-		{
-			A_setinventory("BWgrenade",0);
-			return resolvestate("LaunchGrenade");
-		}
-		if(findinventory("Meleeattack") && !(BWRflags & BWWF_NoAxe))
-		{
-			A_setinventory("Meleeattack",0);
-			return resolvestate("KnifeAttack");
-		}
-		if(findinventory("Reloading") && (BWRflags & WRF_ALLOWRELOAD))
-		{
-			A_setinventory("Reloading",0);
-			return resolvestate("Reload");
-		}*/
 		A_Weaponready(BWRflags);
 		return resolvestate(null);
 	}

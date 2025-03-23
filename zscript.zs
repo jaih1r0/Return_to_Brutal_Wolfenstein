@@ -16,6 +16,13 @@ Version 4.3
 //Monsters
 #include "zscript/BW/Monsters/BrownGuard/Pistol.zs"
 
+//Map props
+#include "zscript/BW/Maps/DecorationsBase.zs"
+
+//Items
+#include "zscript/BW/Items/Treasures.zs"
+
+//NashGore
 #include "zscript/Nashgore/NashGoreCommon.zc"
 #include "zscript/Nashgore/NashGoreStatics.zc"
 #include "zscript/Nashgore/NashGoreHandler.zc"

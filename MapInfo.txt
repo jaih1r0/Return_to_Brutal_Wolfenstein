@@ -8,6 +8,18 @@ Gameinfo
 	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler"
 	StatusBarClass = "BW_Hud"
 }
+DoomEdNums
+{
+	200 = "BW_Treasure_Cross"
+	300 = "BW_Treasure_Chalice"
+	400 = "BW_Treasure_Chest"
+	500 = "BW_Treasure_Crown"
+	3069 = "BW_Treasure_Chalice1"
+	7042 = "BW_Candleabra1"
+	7056 = "BW_Candelabra3"
+	7041 = "BW_GreyLamp"
+	7026 = "BW_KnightArmor1"
+}
 
 
 clearepisodes
