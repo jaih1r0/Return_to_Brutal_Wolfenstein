@@ -544,6 +544,22 @@ Class BaseBWWeapon : DoomWeapon
 			BraceTicker = 0;
 		}
 	}
+	
+	States
+	{
+		User1: //replaces BD Weapon Special
+			TNT1 A 1;
+			Goto WeaponReady;
+		
+		User2:
+		KnifeAttack:
+			TNT1 A 0 A_StartSound("melee/knife/slash", 0, CHANF_OVERLAP, 1);
+			KNI9 AB 1;
+			KNI9 CDEF 1 A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
+			KNI9 GHI 1;
+			TNT1 A 0 A_Jump(256, "Ready");
+			Goto Ready;
+	}
 }
 
 class BW_dmgpuff : actor
