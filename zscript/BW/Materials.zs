@@ -85,7 +85,7 @@ Class BW_StaticHandler : StaticEventHandler
 		
 		for(int i = 0; i < self.MarbleDef.size(); i++)
 		{
-			self.MaterialTypes.push("Stone");	//marble is actually just stone heh
+			self.MaterialTypes.push("Marble");	//marble is actually just stone heh
 			self.MaterialStep.push("step/tile/b");
 			self.MaterialImpactSnd.push("bullet_Stone");
 			self.MaterialTextures.push(self.MarbleDef[i]);
@@ -425,7 +425,22 @@ class BW_EventHandler : EventHandler
 		{	
 			if(kicktimer == 0)
 			{
-				//pl.player.A_GiveInventory("DoKick");
+				let wp = pl.player.readyweapon;
+				if(!wp)
+					return;
+				let psp = pl.player.findpsprite(-3);
+				if(!psp)	//is already kicking
+				{
+					//pl.A_GiveInventory("DoKick");
+					let ks = wp.resolvestate("DoKick");
+					if(ks)
+						pl.player.SetPSprite(-3,ks);
+					//let kf = wp.resolvestate("KickFlash");
+					//if(kf)
+					//	pl.player.SetPSprite(PSP_WEAPON,kf);
+					kicktimer = 20;
+				}
+				
 			}
 		}
 	}

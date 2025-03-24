@@ -29,7 +29,136 @@ Class BaseBWWeapon : DoomWeapon
 	
 	protected int BraceTicker;
 	bool GunBraced;
+
+	states
+	{
+		DoKick:
+			TNT1 A 0 A_jumpif(pos.z <= floorz + 2 && vel.xy.length() > 3 && (player.cmd.buttons & BT_CROUCH),"SlideKick");
+			TNT1 A 0 handlekickFlash();
+			BWK1 ABCDE 1;
+			BWK1 FGG 1;
+			TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+			BWK1 HIJ 1;
+			BWK1 K 3 HandleKick();
+			BWK1 LNO 1;
+			TNT1 A 2;
+			stop;
+
+		SlideKick:
+			TNT1 A 0 velfromangle(30,angle);
+			TNT1 A 0 handlekickFlash(1);
+			//start sliding 8 frames
+			BWK2 ABC 1;
+			TNT1 A 0 A_QuakeEx(1,0,0,20,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+			BWK2 DEF 1;
+			BWK2 GH 1;
+			//slidin, 18 frames
+			BWK2 IJK 1 SlideHandle("EndSlideKick",20);
+			BWK2 IJK 1 SlideHandle("EndSlideKick",20);
+			BWK2 IJK 1 SlideHandle("EndSlideKick",20);
+			BWK2 IJK 1 SlideHandle("EndSlideKick",15);
+			BWK2 IJK 1 SlideHandle("EndSlideKick",12);
+			BWK2 IJK 1 SlideHandle("EndSlideKick",10);
+		EndSlideKick:
+			TNT1 A 0 {
+				//keep the weapon synced with the kick overlay
+				State PSPState = player.GetPSprite(PSP_WEAPON).Curstate;
+				if(InStateSequence(PSPState,invoker.ResolveState("SlideFlash")))
+				{
+					state endslide = invoker.resolvestate("SlideFlashEnd");
+					if(endslide)
+						player.SetPSprite(PSP_WEAPON,endslide);
+				}
+			}
+			//end sliding 6 frames
+			BWK2 H 1;
+			BWK2 FDCBA 1;
+			stop;
+
+	}
+
+	action bool isInReadyState()
+	{
+		State PSPState = player.GetPSprite(PSP_WEAPON).Curstate;
+		return (
+			InStateSequence(PSPState,invoker.ResolveState("Ready"))	||
+			InStateSequence(PSPState,invoker.ResolveState("Ready2"))
+		);
+	}
+
+	action void handlekickFlash(int type = 0)	//0 kick, 1 slide, 2 air
+	{
+		if(!isInReadyState())	//only when in ready state
+			return;
+		statelabel pendkf = "KickFlash";
+		switch(type)
+		{
+			case 0:		pendkf = "KickFlash";	break;
+			case 1:		pendkf = "SlideFlash";	break;
+			case 2:		pendkf = "KickFlash";	break;
+		}
+		let kf = invoker.resolvestate(pendkf);
+		if(kf)
+			player.SetPSprite(PSP_WEAPON,kf);
+	}
 	
+	action state SlideHandle(statelabel cancel = null,int spd = 15, int dmg = 7)
+	{
+		if(!(player.cmd.buttons & BT_CROUCH))
+			return resolvestate(cancel);
+		
+		velfromangle(spd,angle);
+
+		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
+		FLineTraceData t;
+		LineTrace(angle, 60, pitch, offsetz: pz, data: t);
+		if(t.hitline)
+			t.hitline.Activate(player.mo,t.lineside,SPAC_USE);
+
+
+		if(t.hitactor != null)
+		{
+			actor victim = t.hitactor;
+			if(victim.bsolid || victim.bshootable)
+			{
+				actor puf;
+				puf = SpawnPuff("BW_KickPuff", t.hitlocation, angle, 0, 0, PF_HITTHING);
+				
+				if(puf)
+					victim.damagemobj(puf,self,dmg,"Kick");
+			}
+		}
+
+		if(t.hitType == TRACE_HitWall || t.hitType == TRACE_HitCeiling || t.hitType == TRACE_HitFloor)
+			spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+
+		return resolvestate(null);
+	}
+
+	action void HandleKick(int dist = 60,int dmg = 5)
+	{
+		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
+		FLineTraceData t;
+		LineTrace(angle, dist, pitch, offsetz: pz, data: t);
+		if(t.hitline)
+			t.hitline.Activate(player.mo,t.lineside,SPAC_USE);
+		
+		if(t.hitactor)
+		{
+			actor victim = t.hitactor;
+			if(victim.bsolid || victim.bshootable)
+			{
+				actor puf;
+				puf = SpawnPuff("BW_KickPuff", t.hitlocation, angle, 0, 0, PF_HITTHING);
+				if(puf)
+					victim.damagemobj(puf,self,dmg,"Kick");
+			}
+		}
+		if(t.hitType == TRACE_HitWall || t.hitType == TRACE_HitCeiling || t.hitType == TRACE_HitFloor)
+			spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+
+	}
+
 	Action State BW_WeaponReady(int BWRflags = 0)
 	{
 		A_Weaponready(BWRflags);
@@ -562,7 +691,25 @@ Class BaseBWWeapon : DoomWeapon
 	}
 }
 
-class BW_dmgpuff : actor
+Class BW_BulletPuff : Actor replaces bulletpuff
+{
+	default
+	{
+		height 1;
+		radius 1;
+		+noblockmap;
+		+nogravity;
+		scale 0.1;
+	}
+	states
+	{
+		spawn:
+			FX33 ABCDEFGHIJK 1 bright;
+			stop;
+	}
+}
+
+class BW_dmgpuff : BW_BulletPuff
 {
 	default
 	{
@@ -578,7 +725,9 @@ class BW_dmgpuff : actor
 	}
 }
 
-class BW_impactpuff : actor
+
+
+class BW_impactpuff : BW_BulletPuff
 {
 	vector3 norm;
 	name tp;
@@ -622,6 +771,7 @@ class BW_impactpuff : actor
 		{
 			case 'Crystal':
 			case 'Carpet':	SpawnImpact_Carpet();	spawnMainPuff();	break;
+			case 'Marble':
 			case 'PurpleStone':
 			case 'Gravel':
 			case 'BurnStone':
@@ -652,6 +802,7 @@ class BW_impactpuff : actor
 				case 'Dirt':
 				case 'PurpleStone':
 				case 'Gravel':
+				case 'Marble':
 				case 'Stone':	typ = "Impact_Stone";	break;
 				case 'Crystal':	typ = "Impact_Crystal";	break;
 				case 'Electric':
@@ -1129,6 +1280,18 @@ class BW_impactpuff : actor
 		}*/
 	}
 	
+}
+
+Class BW_KickPuff : BW_BulletPuff
+{
+	states
+	{
+		spawn:
+			TNT1 A 0; 
+			TNT1 AAA 0 A_SpawnItemEx("GraySmoke",0,0,0,frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5));
+			TNT1 A 1;
+			stop;
+	}
 }
 
 

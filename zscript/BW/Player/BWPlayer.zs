@@ -60,6 +60,35 @@ Class BWPlayer : PlayerPawn
 		Player.Face "STF";
 		Player.DisplayName "William J. Blazkowicz";
 	}
+
+	override void PlayerLandedMakeGruntSound(Actor onmobj)
+	{
+		if(onmobj || waterlevel > 1)
+		{
+			super.PlayerLandedMakeGruntSound(onmobj);	//ummmh
+			return;
+		}
+
+		name landtex = BW_StaticHandler.getmaterialname(texman.getname(floorpic));
+		sound landsnd = sound("land/concrete");
+		switch(landtex)
+		{
+			case 'carpet':
+			case 'Wood':	landsnd = sound("land/wood");		break;
+			case 'Stone':	landsnd = sound("land/concrete");	break;
+			case 'Marble':	landsnd = sound("land/tile");		break;
+
+			case 'grass':	case 'gravel':
+			case 'Dirt':	landsnd = sound("land/dirt");		break;
+			
+			case 'slime': case 'purplewater': case 'blood':	case 'lava':
+			case 'Water':	landsnd = sound("land/water");		break;
+			case 'Metal':	landsnd = sound("land/metal");		break;
+			case 'sky':		landsnd = sound("step/none");		break;
+		}
+		A_Startsound(landsnd,10,CHANF_OVERLAP,pitch:frandom[landng](0.9,1.1));
+		
+	}
 	
 	States
 	{

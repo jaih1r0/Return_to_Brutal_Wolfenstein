@@ -517,3 +517,13 @@ Class BW_MP40Bullets : BW_Projectile
 		damagetype "SMG";
 	}
 }
+
+Class BW_Kar98Bullets : BW_Projectile
+{
+	default
+	{
+		BW_Projectile.projectiledmg 80;
+		BW_Projectile.ripAmount 5;
+		damagetype "Rifle";
+	}
+}

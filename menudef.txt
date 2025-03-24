@@ -33,6 +33,8 @@ OptionMenu BWOPZION
 	statictext ""
 	option "player bullet type","BW_BulletType","BWProjectileType"
 	statictext ""
+	control "Kick/Slide","netevent KickEm"
+	/*
 	statictext "=== Unused ==="
 	statictext ""
 	SubMenu "Bonus Levels","BWOPTIONS"
@@ -41,7 +43,7 @@ OptionMenu BWOPZION
 	Command "Force HUD to Restart",			"pukename BWRespawn"
 	STATICTEXT ""
 	Option "Disable Reloads", "AllowReload", "Option9"
-	StaticText "Requires a level restart to work"
+	StaticText "Requires a level restart to work"*/
 }
 
 
