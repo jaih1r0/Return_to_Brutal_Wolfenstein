@@ -855,7 +855,7 @@ flat SLIME08
 //*******************//
 
 
-warp2 texture PBWFALL1
+/*warp2 texture PBWFALL1
 warp2 texture PBWFALL2
 warp2 texture PBWFALL3
 warp2 texture PBWFALL4
@@ -955,7 +955,7 @@ warp2 texture BFALL28
 warp2 texture BFALL29
 warp2 texture BFALL30
 warp2 texture BFALL31
-warp2 texture BFALL32
+warp2 texture BFALL32*/
 
 Texture PURPLEFA
 Pic PBWFALL1 tics 1
