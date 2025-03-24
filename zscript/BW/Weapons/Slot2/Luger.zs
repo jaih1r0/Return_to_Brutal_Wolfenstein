@@ -31,30 +31,21 @@ class BW_Luger : BaseBWWeapon
 	action void FireWeapon()
 	{
 		A_AlertMonsters();
-		/*
-		A_Overlay(-3, "MuzzleSmall");
-		A_OverlayFlags(-3, PSPF_ALPHA, true);
-		A_OverlayFlags(-3, PSPF_RENDERSTYLE, true);
-		A_OverlayRenderstyle(-3, STYLE_ADD);
-		*/
-		//[Pop] BW doesnt need overlay flashes
-		
+
 		A_StartSound("Luger/Fire", 0, CHANF_OVERLAP, 1);
 		A_StartSound("Luger/Fireadd", 0, CHANF_OVERLAP, 0.8);
 		A_StartSound("Luger/FireTail", 0, CHANF_OVERLAP, 0.7);
-		BW_FireBullets("BW_LugerBullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
-		//this handles placing the flash correctly
 		if(CountInv("AimingToken"))
 		{
-			A_OverlayOffset(-3, 0 - 18, 32 - 54);
+			BW_FireBullets("BW_LugerBullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(2, 3, -0.20, frandom(+0.15, -0.15), 0, 0, 0);
 			A_ZoomFactor(1.2-0.01);
 		}
 		else
 		{
-			A_OverlayOffset(-3, 0 + 24, 32 - 42);
+			BW_FireBullets("BW_LugerBullets",0.5,0.5,-1,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(2, 3, -0.40, frandom(+0.30, -0.30), -5, 0, 0);
 			A_ZoomFactor(1-0.01);
 		}

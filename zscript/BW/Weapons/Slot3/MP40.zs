@@ -18,12 +18,25 @@ Class BW_MP40 : BaseBWWeapon
 	
 	action void BW_MP40Fire()
 	{
+		A_AlertMonsters();
+		
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		A_Startsound("MP40/Fire",5,CHANF_OVERLAP);
 		A_Startsound("MP40/FireAdd",5,CHANF_OVERLAP, 0.70);
-		BW_FireBullets("BW_MP40Bullets",0.5,0.5,-1,25,"Bulletpuff","Bullet",0,0,0);
-		BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
 		invoker.ammo2.amount--;
+		
+		if(CountInv("AimingToken"))
+		{
+			BW_FireBullets("BW_MP40Bullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
+			BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
+			A_ZoomFactor(1.2-0.01);
+		}
+		else
+		{
+			BW_FireBullets("BW_MP40Bullets",1,1,-1,25,"Bulletpuff","Bullet",0,0,0);
+			BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
+			A_ZoomFactor(1.0-0.01);
+		}
 	}
 	
 	states
@@ -51,6 +64,7 @@ Class BW_MP40 : BaseBWWeapon
 			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
 			MP4F A 1 bright BW_MP40Fire();
 			MP4F B 1 bright;
+			TNT1 A 0 A_ZoomFactor(1);
 			MP4F C 1 A_Startsound("MP40/FireMech",5,CHANF_OVERLAP, 0.8);
 			MP4F D 1;
 			MP4U E 1 A_Refire();
