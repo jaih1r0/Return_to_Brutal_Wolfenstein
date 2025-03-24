@@ -20,6 +20,9 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 			DeathSound "Nazi/Generic/death";
 			ActiveSound "Nazi/Generic/sight";
 			
+			DropItem "Clip", 255, 8;
+			DropItem "BW_Luger", 100, 1;
+			
 			Obituary "$OB_ZOMBIE";
 		}
 		
@@ -28,7 +31,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		void FireProjBullets()
 		{
 			A_Light(2);
-			A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_OFFSETPITCH, (frandom(3,-3)));
+			A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION | CMF_OFFSETPITCH, (frandom(3,-3)));
 			A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}
@@ -175,7 +178,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 				
 				AttackDelay = AttackDelay + 20;
 				
-				return A_Jump(256, "Attack1", "Attack2", "Attack3");
+				return A_Jump(256, "Attack1");
 			}
 		
 		Attack1:

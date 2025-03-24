@@ -35,6 +35,7 @@ Class BaseBWWeapon : DoomWeapon
 		DoKick:
 			TNT1 A 0 A_jumpif(pos.z <= floorz + 2 && vel.xy.length() > 3 && (player.cmd.buttons & BT_CROUCH),"SlideKick");
 			TNT1 A 0 handlekickFlash();
+			TNT1 A 0 A_StartSound("Player/Kick", 0, CHANF_OVERLAP, 1);
 			BWK1 ABCDE 1;
 			BWK1 FGG 1;
 			TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
@@ -48,6 +49,7 @@ Class BaseBWWeapon : DoomWeapon
 			TNT1 A 0 velfromangle(30,angle);
 			TNT1 A 0 handlekickFlash(1);
 			//start sliding 8 frames
+			TNT1 A 0 A_StartSound("Player/Slide", 0, CHANF_OVERLAP, 1);
 			BWK2 ABC 1;
 			TNT1 A 0 A_QuakeEx(1,0,0,20,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
 			BWK2 DEF 1;
@@ -672,6 +674,22 @@ Class BaseBWWeapon : DoomWeapon
 		{
 			BraceTicker = 0;
 		}
+	}
+	
+	States
+	{
+		User1: //replaces BD Weapon Special
+			TNT1 A 1;
+			Goto WeaponReady;
+		
+		User2:
+		KnifeAttack:
+			TNT1 A 0 A_StartSound("melee/knife/slash", 0, CHANF_OVERLAP, 1);
+			KNI9 AB 1;
+			KNI9 CDEF 1 A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
+			KNI9 GHI 1;
+			TNT1 A 0 A_Jump(256, "Ready");
+			Goto Ready;
 	}
 }
 

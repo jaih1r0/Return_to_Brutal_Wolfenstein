@@ -253,7 +253,29 @@ Generic/Launcher/Holster3	"Sounds/Weapons/GenericFoley/Holster/Launcher/Launcher
 
 //-----SLOT 1-----//
 
+//"Kicks are Slot 1, right?"
+$RANDOM Player/Kick
+{
+Player/Kick1
+Player/Kick2
+Player/Kick3
+Player/Kick4
+}
+Player/Kick1	"Sounds/Weapons/Kicks/Kick1.wav"
+Player/Kick2	"Sounds/Weapons/Kicks/Kick2.wav"
+Player/Kick3	"Sounds/Weapons/Kicks/Kick3.wav"
+Player/Kick4	"Sounds/Weapons/Kicks/Kick4.wav"
 
+$RANDOM Player/Slide
+{
+Player/Slide1
+Player/Slide2
+Player/Slide3
+}
+Player/Slide1	"Sounds/Weapons/Kicks/Slide1.ogg"
+Player/Slide2	"Sounds/Weapons/Kicks/Slide2.ogg"
+Player/Slide3	"Sounds/Weapons/Kicks/Slide3.ogg"
+Player/Slide4	"Sounds/Weapons/Kicks/Slide4.ogg"
 
 //-----SLOT 2-----//
 
