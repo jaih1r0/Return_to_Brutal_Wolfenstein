@@ -23,6 +23,10 @@ DoomEdNums
 	7041 = "BW_GreyLamp"
 	7026 = "BW_KnightArmor1"
 	7036 = "BW_healingWell"
+	7022 = "BW_WoodenBarrel"
+	7023 = "BW_MP40Barrel"
+	7024 = "BW_FoodBarrel"
+	7025 = "BW_GrenadeBarrel"
 
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"

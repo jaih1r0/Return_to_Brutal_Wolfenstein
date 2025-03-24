@@ -104,7 +104,7 @@ Class BaseBWWeapon : DoomWeapon
 			player.SetPSprite(PSP_WEAPON,kf);
 	}
 	
-	action state SlideHandle(statelabel cancel = null,int spd = 15, int dmg = 7)
+	action state SlideHandle(statelabel cancel = null,int spd = 15, int dmg = 15)
 	{
 		if(!(player.cmd.buttons & BT_CROUCH))
 			return resolvestate(cancel);
@@ -137,7 +137,7 @@ Class BaseBWWeapon : DoomWeapon
 		return resolvestate(null);
 	}
 
-	action void HandleKick(int dist = 60,int dmg = 5)
+	action void HandleKick(int dist = 60,int dmg = 20)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData t;

@@ -17,6 +17,8 @@ Version 4.3
 //Monsters
 #include "zscript/BW/Monsters/BrownGuard/Pistol.zs"
 #include "zscript/BW/Monsters/BlueGuard/MP40.zs"
+#include "zscript/BW/Monsters/Dogs/Doggie.zs"
+
 
 //Map props
 #include "zscript/BW/Maps/DecorationsBase.zs"

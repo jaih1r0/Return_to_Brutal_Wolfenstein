@@ -443,3 +443,73 @@ Class BW_HealingWell : BW_Well1
 
 Class BW_HealingWell2 : BW_HealingWell replaces skullcolumn //no wonder it didnt fucking work at first
 {}
+
+
+//wooden barrels
+
+Class BW_WoodenBarrel : BW_ShootableDecoration  //7022
+{
+    default
+    {
+        Mass 200;
+        Height 30;
+        radius 16;
+        deathheight 38;
+        health 40;
+    }
+    states
+    {
+        spawn:
+            COL4 A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            WBDT A -1;
+            stop;
+    }
+}
+
+Class BW_FoodBarrel : BW_WoodenBarrel   //7024
+{
+    states
+    {
+        spawn:
+            WB1T C -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 A_Spawnitem("StimPack");
+            WBDT A -1;
+            stop;
+    }
+}
+
+Class BW_MP40Barrel : BW_WoodenBarrel   //7023
+{
+    states
+    {
+        spawn:
+            WB1T B -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 A_Spawnitem("BW_MP40");
+            WBDT A -1;
+            stop;
+    }
+}
+
+Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
+{
+    states
+    {
+        spawn:
+            WB1T A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 A_Explode();
+            WBDT A -1;
+            stop;
+    }
+}
