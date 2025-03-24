@@ -22,6 +22,7 @@ DoomEdNums
 	7056 = "BW_Candelabra3"
 	7041 = "BW_GreyLamp"
 	7026 = "BW_KnightArmor1"
+	7036 = "BW_healingWell"
 
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"
