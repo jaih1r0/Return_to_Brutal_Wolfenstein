@@ -65,14 +65,18 @@ Class BW_MP40 : BaseBWWeapon
 			goto ready;
 		
 		KickFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
 			MP4K ABC 1;
 			MP4K DEF 1;
+			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
 			MP4K GGG 1;
 			MP4K FEDCBA 1;
 			goto ready;
 		SlideFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 			MP4K ABCD 1;
 			MP4K EFGG 1;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
 			MP4K GGG 1;
 			MP4K GGG 1;
 			MP4K GGG 1;
@@ -80,6 +84,7 @@ Class BW_MP40 : BaseBWWeapon
 			MP4K GGG 1;
 			MP4K GGG 1;
 		SlideFlashEnd:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
 			MP4K FEDCBA 1;
 			goto ready;
 		Reload:
