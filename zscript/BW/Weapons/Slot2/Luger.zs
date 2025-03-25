@@ -174,13 +174,13 @@ class BW_Luger : BaseBWWeapon
 		TNT1 A 0 A_TakeInventory("AimingToken");
 		ZLR3 ABCDEFGH 1;
 		TNT1 A 0 A_StartSound("Luger/outempty", 0, CHANF_OVERLAP);
-		ZLR4 ABCDEFGHIJKLM 1;
+		ZLR4 ABCDEFGHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Luger/inempty", 0, CHANF_OVERLAP);
-		ZLR4 NOPQ 1;
+		ZLR4 NOPPPPPPQ 1;
 		TNT1 A 0 BW_AmmoIntoMag("BW_Luger_Mag", "Clip", 8 , 1);
-		ZLR4 RS 1;
+		ZLR4 RSSSSS 1;
 		TNT1 A 0 A_StartSound("Luger/Charge", 0, CHANF_OVERLAP);
-		ZLR4 TUVW 1;
+		ZLR4 TTUUVW 1;
 		ZLUR IHGFEDCBA 1;
 		Goto WeaponReady;
  	Spawn:

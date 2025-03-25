@@ -4,8 +4,8 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase replaces ShotgunGuy //[Pop] replace is 
 		{
 			Radius 16;
 			Height 56;
-			Speed 2;
-			FastSpeed 4;
+			Speed 4;
+			FastSpeed 6;
 			Mass 100;
 			Health 90;
 			GibHealth -40;

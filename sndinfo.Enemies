@@ -1,0 +1,35 @@
+//Dogs
+
+Dog/Pant	"Sounds/Enemies/Dogs/DogPanting.ogg"
+Dog/Active1	"Sounds/Enemies/Dogs/DogActive.ogg"
+
+$RANDOM Dog/Active
+{
+Dog/Pant
+Dog/Active1
+}
+
+Dog/Pain	"Sounds/Enemies/Dogs/DogPain.ogg"
+Dog/Attack	"Sounds/Enemies/Dogs/DogAttack.ogg"
+
+$RANDOM Dog/Die
+{
+Dog/Die1
+Dog/Die2
+Dog/Die3
+}
+
+Dog/Die1	"Sounds/Enemies/Dogs/DogDie1.ogg"
+Dog/Die2	"Sounds/Enemies/Dogs/DogDie2.ogg"
+Dog/Die3	"Sounds/Enemies/Dogs/DogDie3.ogg"
+
+$RANDOM Dog/Sight
+{
+Dog/Sight1
+Dog/Sight2
+Dog/Sight3
+}
+
+Dog/Sight1	"Sounds/Enemies/Dogs/DogSight1.ogg"
+Dog/Sight2	"Sounds/Enemies/Dogs/DogSight2.ogg"
+Dog/Sight3	"Sounds/Enemies/Dogs/DogSight3.ogg"
