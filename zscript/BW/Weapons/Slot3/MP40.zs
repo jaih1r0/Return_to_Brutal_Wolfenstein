@@ -55,7 +55,7 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			MP4U FG 1;
 			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
 			MP4U HI 1;
-			TNT1 A 0 A_lower(120);
+			TNT1 A 0 BW_WeaponLower();
 			wait;
 		Ready:
 			MP4U E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER2);

@@ -277,6 +277,31 @@ Player/Slide2	"Sounds/Weapons/Kicks/Slide2.ogg"
 Player/Slide3	"Sounds/Weapons/Kicks/Slide3.ogg"
 Player/Slide4	"Sounds/Weapons/Kicks/Slide4.ogg"
 
+Player/KickWall "Sounds/Weapons/Kicks/FOOTWALL.ogg"
+
+//
+// Fists
+
+Fists/Swing1 "Sounds/Weapons/Slot1/Fists/F1STWH1.ogg"
+Fists/Swing2 "Sounds/Weapons/Slot1/Fists/F1STWH2.ogg"
+Fists/Swing3 "Sounds/Weapons/Slot1/Fists/F1STWH3.ogg"
+$random Fists/Swing
+{
+    Fists/Swing1
+    Fists/Swing2
+    Fists/Swing3
+}
+
+Fists/Hit1  "Sounds/Weapons/Slot1/Fists/plspnch1.ogg"
+Fists/Hit2  "Sounds/Weapons/Slot1/Fists/plspnch2.ogg"
+Fists/Hit3  "Sounds/Weapons/Slot1/Fists/plspnch3.ogg"
+$random Fists/Hit   
+{
+    Fists/Hit1
+    Fists/Hit2
+    Fists/Hit3
+}
+
 //-----SLOT 2-----//
 
 //Luger P08

@@ -513,3 +513,25 @@ Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
             stop;
     }
 }
+
+
+//not really a shootable, not really a decoration
+Class BW_StairsHitBox : actor   
+{
+    //this thing is really spammed in some maps, needs to be replaces with one with a bigger radius
+    //so a smalled amount is needed
+    //also probably make it change its radius in postbeginplay based on its args[] setted in the map editor
+    default
+    {   Radius 4;
+        Height 32;
+        +SOLID;
+        +nogravity;
+        ProjectilePassHeight 1;
+    }
+    states
+    {
+        spawn:
+            TNT1 A -1;
+            stop;
+    }
+}

@@ -14,26 +14,30 @@ Class BW_Fists : BaseBWWeapon replaces fists
             goto ready;
         Deselect:
             MPFU DCBA 1;
-            TNT1 A 0 A_lower(120);
+            TNT1 A 0 BW_WeaponLower();
             wait;
         Ready:
             MPFI ABCDEFGHIJKLMNOPQRSTUVWX 1 BW_WeaponReady();
             loop;
         Fire:   //left jab
+            TNT1 A 0 A_Startsound("Fists/Swing",7);
             MPFL ABC 1;
             TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
             MPFL D 1 BW_Punch();
             MPFL DEFG 1;
+            TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
             MPFL HI 1 BW_QuickRefire("AltFire",BT_ALTATTACK,false);
             MPFI A 1 BW_QuickRefire("AltFire",BT_ALTATTACK,false);
             MPFI A 1;
             TNT1 A 0 A_Refire();
             goto ready;
         AltFire:    //right jab
+            TNT1 A 0 A_Startsound("Fists/Swing",8);
             MPFR ABC 1;
             TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
             MPFR D 1 BW_Punch();
             MPFR DEFG 1;
+            TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
             MPFR HI 1 BW_QuickRefire("Fire",BT_ATTACK,false);
             MPFI A 1 BW_QuickRefire("Fire",BT_ATTACK,false);
             MPFI A 1;
@@ -74,11 +78,17 @@ Class BW_Fists : BaseBWWeapon replaces fists
 			{
 				actor puf = SpawnPuff("BW_KickPuff", t.hitlocation, angle, 0, 0, PF_HITTHING);
 				if(puf)
+                {
 					victim.damagemobj(puf,self,dmg,"Melee");
-			}
+                    puf.A_Startsound("Fists/Hit");  //impacted enemy
+                }
+            }
 		}
 		if(t.hitType == TRACE_HitWall || t.hitType == TRACE_HitCeiling || t.hitType == TRACE_HitFloor)
-			spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
-
+        {
+			actor pf = spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+            if(pf)
+                pf.A_Startsound("Fists/Hit");   //impacted wall,floor,etc, may need a different sound here
+        }
 	}
 }

@@ -127,12 +127,19 @@ Class BaseBWWeapon : DoomWeapon
 				puf = SpawnPuff("BW_KickPuff", t.hitlocation, angle, 0, 0, PF_HITTHING);
 				
 				if(puf)
+				{
 					victim.damagemobj(puf,self,dmg,"Kick");
+					puf.A_Startsound("Fists/Hit");	//impacted enemy
+				}
 			}
 		}
 
 		if(t.hitType == TRACE_HitWall || t.hitType == TRACE_HitCeiling || t.hitType == TRACE_HitFloor)
-			spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+		{
+			actor pf = spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+            if(pf)
+                pf.A_Startsound("Player/KickWall");	//impacted wall,floor,etc
+		}
 
 		return resolvestate(null);
 	}
@@ -153,11 +160,18 @@ Class BaseBWWeapon : DoomWeapon
 				actor puf;
 				puf = SpawnPuff("BW_KickPuff", t.hitlocation, angle, 0, 0, PF_HITTHING);
 				if(puf)
+				{
 					victim.damagemobj(puf,self,dmg,"Kick");
+					puf.A_Startsound("Fists/Hit");	//impacted enemy
+				}
 			}
 		}
 		if(t.hitType == TRACE_HitWall || t.hitType == TRACE_HitCeiling || t.hitType == TRACE_HitFloor)
-			spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+		{
+			actor pf = spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+            if(pf)
+                pf.A_Startsound("Player/KickWall");	//impacted wall,floor,etc
+		}
 
 	}
 
@@ -167,11 +181,18 @@ Class BaseBWWeapon : DoomWeapon
 		return resolvestate(null);
 	}
 
+	//BW default A_Raise function
 	action void BW_WeaponRaise(string SelectSound = "")
 	{
 		A_weaponoffset(0,32);
 		if(SelectSound)
 			A_Startsound(sound(SelectSound),7);
+	}
+
+	//BW default A_Lower function
+	action void BW_WeaponLower()
+	{
+		A_Lower(120);
 	}
 
 	//wrapper function for bullet firing guns

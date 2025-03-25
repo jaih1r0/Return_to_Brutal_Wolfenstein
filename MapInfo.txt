@@ -34,6 +34,9 @@ DoomEdNums
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"
 	7008 = "BW_BlueGuard_MP40"
+
+	//misc
+	1171 = "BW_StairsHitBox"
 }
 
 
