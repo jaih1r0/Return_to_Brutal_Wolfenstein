@@ -1,0 +1,57 @@
+:MetalDoorOpen
+Play MDOPN
+Nostopcutoff
+End
+
+:MetalDoorOpenLocked
+Play MOPUN
+Nostopcutoff
+End
+
+:MetalDoorClose
+Play MDCLO
+NostopCutoff
+End
+
+[MetalDoor
+Door 10
+Platform 10
+0 MetalDoorOpen
+1 MetalDoorClose
+3 MetalDoorOpen
+4 MetalDoorClose
+]
+
+:Secretwall
+  DOOR       11
+  play      SWMV
+  nostopcutoff
+end
+
+[MetalDoor2
+Door 12
+Platform 10
+0 MetalDoorOpenLocked
+1 MetalDoorClose
+3 MetalDoorOpenLocked
+4 MetalDoorClose
+]
+
+:WoodDoorOpen
+Play     WDOPN
+Nostopcutoff
+End
+
+:WoodDoorClose
+Play WDCLO
+NostopCutoff
+End
+
+[WoodDoor
+Door 13
+Platform 10
+0 WoodDoorOpen
+1 WoodDoorClose
+3 WoodDoorOpen
+4 WoodDoorClose
+]

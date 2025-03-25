@@ -150,3 +150,17 @@ nashgore/bodydrop "sounds/nashgore/body drop 01.ogg"
 
 nashgore/bullethitflesh "nashgore/sounds/bullet hit flesh.ogg"
 $volume nashgore/bullethitflesh 0.23
+
+
+//================================================
+//
+//	world sounds
+//
+//=============================================
+MDCLO MDCLO	//metal door close
+MDOPN MDOPN //metal door open
+WDOPN WDOPN	//wooden door open
+WDCLO WDCLO	//wooden door close
+MLOCK MLOCK	//door locked
+MOPUN MOPUN	//
+SWMV SWMV 	//secret wall move
