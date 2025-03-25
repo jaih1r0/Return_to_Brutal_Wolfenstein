@@ -10,10 +10,14 @@ Class BW_Fists : BaseBWWeapon replaces fists
     {
         select:
             TNT1 A 0 BW_WeaponRaise();
-            MPFU ABCD 1;
+            MPFU AB 1;
+			TNT1 A 0 A_Startsound("Generic/Melee/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
+			MPFU CD 1;
             goto ready;
         Deselect:
-            MPFU DCBA 1;
+            MPFU DC 1;
+			TNT1 A 0 A_Startsound("Generic/Melee/Lower", CHAN_AUTO, CHANF_OVERLAP, 1);
+			MPFU BA 1;
             TNT1 A 0 BW_WeaponLower();
             wait;
         Ready:
@@ -44,16 +48,20 @@ Class BW_Fists : BaseBWWeapon replaces fists
             TNT1 A 0 A_Refire();
             goto ready;
         KickFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
             MPFK ABC 1;
             MPFK DEF 1;
             MPFK GHHH 1;
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
             MPFK GFEDCBA 1;
             goto ready;
 
         SlideFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
             MPFK ABCD 1;
             MPFK EFGH 1;
         //sliding
+			TNT1 A 0 A_StartSound("Generic/Rattle/medium", 0, CHANF_OVERLAP, 1);
             MPFK FGH 1;
             MPFK FGH 1;
             MPFK FGH 1;
@@ -61,6 +69,7 @@ Class BW_Fists : BaseBWWeapon replaces fists
             MPFK FGH 1;
             MPFK FGH 1;
         SlideFlashEnd:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
             MPFK FEDCBA 1;
             goto ready;
     }
@@ -80,7 +89,7 @@ Class BW_Fists : BaseBWWeapon replaces fists
 				if(puf)
                 {
 					victim.damagemobj(puf,self,dmg,"Melee");
-                    puf.A_Startsound("Fists/Hit");  //impacted enemy
+                    puf.A_Startsound("Fists/Hit", CHAN_AUTO, CHANF_OVERLAP, 0.75);  //impacted enemy
                 }
             }
 		}
@@ -88,7 +97,7 @@ Class BW_Fists : BaseBWWeapon replaces fists
         {
 			actor pf = spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
             if(pf)
-                pf.A_Startsound("Fists/Hit");   //impacted wall,floor,etc, may need a different sound here
+                pf.A_Startsound("Fists/Hit", CHAN_AUTO, CHANF_OVERLAP, 0.75);   //impacted wall,floor,etc, may need a different sound here
         }
 	}
 }
