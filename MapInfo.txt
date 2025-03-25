@@ -17,6 +17,9 @@ DoomEdNums
 	500 = "BW_Treasure_Crown"
 	3069 = "BW_Treasure_Chalice1"
 	
+	//weapons
+	7032 = "BW_MP40"
+
 	//map things
 	7042 = "BW_Candleabra1"
 	7056 = "BW_Candelabra3"
