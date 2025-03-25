@@ -99,7 +99,7 @@ Class BWPlayer : PlayerPawn
 		Spawn:
 			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Spawn2");
 			BLAS A 5;
-			TNT1 A 0 A_Jump(64, "Spawn3");
+			TNT1 A 0 A_Jump(32, "Spawn3");
 			Loop;	
 		Spawn2:
 			TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 0, "Spawn");
