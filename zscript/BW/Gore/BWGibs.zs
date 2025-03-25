@@ -39,7 +39,7 @@ Class BW_BGLeg : BWGib
 				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 					0, 0, 0,
 					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
-					frandom(0, 360), NashGoreBlood.BLOOD_FLAGS, 175);
+					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
 			}
 			"####" K -1;
 			Stop;
@@ -80,7 +80,7 @@ Class BW_BGArm : BWGib
 				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 					0, 0, 0,
 					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
-					frandom(0, 360), NashGoreBlood.BLOOD_FLAGS, 175);
+					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
 			}
 			"####" A -1;
 			Stop;
@@ -120,7 +120,7 @@ Class BW_BGHead : BWGib
 				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 					0, 0, 0,
 					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
-					frandom(0, 360), NashGoreBlood.BLOOD_FLAGS, 175);
+					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
 			}
 			"####" E -1;
 			Stop;

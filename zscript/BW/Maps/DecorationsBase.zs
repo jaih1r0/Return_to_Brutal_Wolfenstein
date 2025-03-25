@@ -363,7 +363,8 @@ Class BW_TechLamp1 : BW_ShootableDecoration Replaces Candelabra //35
     }
 }
 
-
+Class BW_TechLamp2 : BW_TechLamp1 Replaces BlueTorch
+{}
 
 
 Class BW_Well1 : BW_ShootableDecoration replaces evileye
@@ -514,6 +515,138 @@ Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
     }
 }
 
+//skeletons
+Class BW_Skeleton1 : BW_ShootableDecoration replaces HangTSkull
+{
+    default
+    {
+        Radius 16;
+        Height 64;
+        health 50;
+        deathheight 38;
+    }
+    states
+    {
+        spawn:
+            HDB4 A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            SKPO B -1;
+            stop;
+    }
+}
+
+
+//
+Class BW_WashBasin : BW_ShootableDecoration Replaces HangTLookingUp 
+{
+    default
+    {
+        Radius 16;
+        Height 30;
+        health 50;
+        deathheight 38;
+    }
+    states
+    {
+        spawn:
+            HDB5 A -1;
+            stop;
+        death:
+            TNT1 A 0 A_NoBlocking();
+            LAVA C -1;
+            stop;
+    }
+}
+
+Class BW_Lampf : BW_GreyLamp2 Replaces Candlestick 
+{
+    /*default
+    {
+        Radius 16;
+        Height 56;
+        health 50;
+        deathheight 38;
+        ProjectilePassHeight -16;
+        -solid;
+    }
+    states
+    {
+        spawn:
+            CAND A -1;
+            stop;
+    }*/
+}
+
+Class BW_WaterLeakage : BW_Decoration replaces RedTorch
+{
+    default
+    {
+        Radius 16;
+        Height 56;
+        health 50;
+        deathheight 38;
+        ProjectilePassHeight -16;
+        -solid;
+    }
+    states
+    {
+        spawn:
+            TRED ABCD 4;
+            loop;
+    }
+}
+
+Class BW_TorchTree1 : BW_Decoration replaces TorchTree
+{
+    default
+    {
+        Radius 16;
+        Height 56;
+        health 50;
+        deathheight 38;
+        ProjectilePassHeight -16;
+        -solid;
+    }
+    states
+    {
+        spawn:
+            TRE1 A -1;
+            stop;
+    }
+}
+
+Class BW_Pots1 : BW_Decoration replaces HangNoGuts
+{
+    default
+    {
+        Radius 16;
+        Height 88;
+        health 50;
+        deathheight 38;
+        ProjectilePassHeight -16;
+        -solid;
+        +NOGRAVITY
+        +SPAWNCEILING
+    }
+    states
+    {
+        spawn:
+            HDB1 A -1;
+            stop;
+    }
+}
+
+Class BW_Pots2 : BW_Pots1 replaces HangBNoBrain
+{
+    states
+    {
+        spawn:
+            HDB2 A -1;
+            stop;
+    }
+}
 
 //not really a shootable, not really a decoration
 Class BW_StairsHitBox : actor   
