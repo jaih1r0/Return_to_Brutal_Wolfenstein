@@ -290,6 +290,17 @@ Class BaseBWWeapon : DoomWeapon
 		if(t.hitline)
 			t.hitline.Activate(player.mo,t.lineside,SPAC_USE);
 	}
+
+	//Like A_Refire, but you can choose wich button to check and set it to only work when not holding the button
+	action state BW_QuickRefire(statelabel refireTo = null, int firedButton = BT_ATTACK,bool noHold = true)
+	{
+		int bt = player.cmd.buttons, oldbt = player.oldbuttons;
+		bool canrefire = noHold ? ((bt & firedButton) && !(oldbt & firedButton)) :
+		(bt & firedButton);
+		if(canrefire)
+			return resolvestate(refireTo);
+		return resolvestate(null);
+	}
 	
 	const SlideSpeed = 17;
 	

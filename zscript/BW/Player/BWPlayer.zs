@@ -49,6 +49,7 @@ Class BWPlayer : PlayerPawn
 	{
 		Player.StartItem "BW_Luger", 1;
 		Player.StartItem "Clip", 8;
+		Player.startItem "BW_Fists";
 		
 		Player.StartItem "QuickKick", 1;
 		

@@ -13,6 +13,7 @@ Version 4.3
 #include "zscript/BW/Weapons/Slot2/Luger.zs"
 #include "zscript/BW/Weapons/Slot3/MP40.zs"
 #include "zscript/BW/Weapons/Throwables/grenades.zs"
+#include "zscript/BW/Weapons/Slot1/Fists.zs"
 
 //Monsters
 #include "zscript/BW/Monsters/BrownGuard/Pistol.zs"
