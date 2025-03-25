@@ -279,9 +279,8 @@ Player/Slide4	"Sounds/Weapons/Kicks/Slide4.ogg"
 
 Player/KickWall "Sounds/Weapons/Kicks/FOOTWALL.ogg"
 
-//
 // Fists
-
+Fists/Swap "Sounds/Weapons/Slot1/Fists/FistSwap.ogg"
 Fists/Swing1 "Sounds/Weapons/Slot1/Fists/F1STWH1.ogg"
 Fists/Swing2 "Sounds/Weapons/Slot1/Fists/F1STWH2.ogg"
 Fists/Swing3 "Sounds/Weapons/Slot1/Fists/F1STWH3.ogg"

@@ -10,11 +10,13 @@ Class BW_Fists : BaseBWWeapon replaces fists
     {
         select:
             TNT1 A 0 BW_WeaponRaise();
+			TNT1 A 0 A_StartSound("Fists/Swap", 0, CHANF_OVERLAP, 1);
             MPFU AB 1;
 			TNT1 A 0 A_Startsound("Generic/Melee/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MPFU CD 1;
             goto ready;
         Deselect:
+			TNT1 A 0 A_StartSound("Fists/Swap", 0, CHANF_OVERLAP, 1);
             MPFU DC 1;
 			TNT1 A 0 A_Startsound("Generic/Melee/Lower", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MPFU BA 1;
