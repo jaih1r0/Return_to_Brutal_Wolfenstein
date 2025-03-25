@@ -93,11 +93,14 @@ Class BWPlayer : PlayerPawn
 	
 	States
 	{
+		Spawn3:
+			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Spawn2");
+			BLAS ABACA 10;
 		Spawn:
 			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Spawn2");
-			TNT1 A 0 A_Overlay(-50, "StunnerCheck", true);
-			BLAS AABACA 5;
-			Loop;
+			BLAS A 5;
+			TNT1 A 0 A_Jump(32, "Spawn3");
+			Loop;	
 		Spawn2:
 			TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 0, "Spawn");
 			BLAZ E 10;

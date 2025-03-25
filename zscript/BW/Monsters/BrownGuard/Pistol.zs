@@ -4,8 +4,8 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		{
 			Radius 16;
 			Height 56;
-			Speed 2;
-			FastSpeed 4;
+			Speed 4;
+			FastSpeed 6;
 			Mass 100;
 			Health 60;
 			GibHealth -40;

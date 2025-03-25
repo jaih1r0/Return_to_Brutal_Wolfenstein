@@ -3,15 +3,17 @@ Class BW_Dog : BW_MonsterBase replaces demon
     default
     {
         Health 50;
-        Radius 28;
-        Height 30;
-        speed 7;
+        Radius 14;
+        Height 32;
+        speed 6;
         Painchance 255;
         mass 50;
         BW_MonsterBase.AttackRange 100;
         BW_MonsterBase.CanIReload false;
         SeeSound "dog/sight";
         DeathSound "dog/death";
+		PainSound "Dog/Pain";
+		Scale 0.75;
     }
     states
     {
@@ -19,24 +21,51 @@ Class BW_Dog : BW_MonsterBase replaces demon
             TNT1 A 0;
             TNT1 A 0 A_jump(100,"IdleRest","IdleSit");
         Idle_guard:
-            WDOG AAA 1 A_Wander();
-            WDOG BBB 1 A_LookEx();
-            WDOG CCC 1 A_Wander();
-            WDOG DDD 1 A_LookEx();
+            WDOG AAA 1 {A_Wander(); A_LookEx();}
+            WDOG BBB 1 {A_Wander(); A_LookEx();}
+            WDOG CCC 1 {A_Wander(); A_LookEx();}
+            WDOG DDD 1 {A_Wander(); A_LookEx();}
+			TNT1 A 0
+			{
+				int chance = random(1,50);
+				
+				if(chance == 25)
+				{
+					A_Startsound("dog/Pant", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+				}
+			}
             loop;
 
         IdleRest:
             NDOI AAA 2 {A_LookEx();A_SetScale(scale.X,Scale.Y+0.01);}
             NDOI AAA 2 {A_LookEx();A_SetScale(scale.X,Scale.Y-0.01);}
+			TNT1 A 0
+			{
+				int chance = random(1,50);
+				
+				if(chance == 25)
+				{
+					A_Startsound("dog/Pant", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+				}
+			}
             loop;
         IdleSit:
             NDO2 AAA 2 {A_LookEx();A_SetScale(scale.X,Scale.Y+0.01);}
             NDO2 AAA 2 {A_LookEx();A_SetScale(scale.X,Scale.Y-0.01);}
+			TNT1 A 0
+			{
+				int chance = random(1,50);
+				
+				if(chance == 25)
+				{
+					A_Startsound("dog/Pant", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+				}
+			}
             loop;
         Reload:
         SeeContinue:
         See:
-            TNT1 A 0 A_Setscale(1,1);
+            TNT1 A 0 A_Setscale(0.75,0.75);
             WDOG AAABBBB 1 A_Chase(); //AI_SmartChase();
             TNT1  A 0 A_JumpIfCloser(100,"Melee");
             WDOG CCCCDDDD 1 A_Chase(); //AI_SmartChase();
@@ -50,7 +79,7 @@ Class BW_Dog : BW_MonsterBase replaces demon
             WDG6 A 6 A_FaceTarget();
             TNT1 A 0 A_JumpIfCloser(60, "CloseBite");
             TNT1 A 0 A_Startsound("dog/attack");
-            TNT1 A 0 {vel.z += 1;}
+            TNT1 A 0 {vel.z += 2;}
             TNT1 A 0 A_FaceTarget();
             TNT1 A 0 A_Recoil(-10);
             WDG6 B 6;
