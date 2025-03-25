@@ -621,6 +621,8 @@ class NashGoreBloodTrail : NashGoreBloodPlane
 		if (mo)
 		{
 			// fix overly-stretched trail if teleporting too far
+			if(stopSliding)
+				return;
 			bool isTooFar = false;
 			if (Distance2D(mo) > TOO_FAR)
 				isTooFar = true;
@@ -642,7 +644,7 @@ class NashGoreBloodTrail : NashGoreBloodPlane
 			}
 		}
 
-		if (!mo || stopSliding)
+		if (!mo) //|| stopSliding)
 		{
 			fadeTics++;
 			if (fadeTics > (Thinker.TICRATE * 5))
