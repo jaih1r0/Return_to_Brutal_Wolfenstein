@@ -1286,6 +1286,10 @@ class BW_impactpuff : BW_BulletPuff
 
 Class BW_KickPuff : BW_BulletPuff
 {
+	default
+	{
+		projectilekickback 200;
+	}
 	states
 	{
 		spawn:

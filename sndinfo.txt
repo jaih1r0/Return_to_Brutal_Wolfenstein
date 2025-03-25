@@ -29,6 +29,16 @@ $random bullet_metal { bimp_4 bimp_5 bimp_6 }
 $random bullet_crystal { bimp_12 bimp_1 }
 $random bullet_flesh { bimp_1 }
 
+$rolloff bullet_Stone 200 700
+$rolloff bullet_Wood 200 700
+$rolloff bullet_Dirt 200 700
+$rolloff bullet_generic 200 700
+$rolloff bullet_electric 200 700
+$rolloff bullet_water 200 700
+$rolloff bullet_metal 200 700
+$rolloff bullet_crystal 200 700
+$rolloff bullet_flesh 200 700
+
 //===========================================================================
 //
 // Blood Splash
