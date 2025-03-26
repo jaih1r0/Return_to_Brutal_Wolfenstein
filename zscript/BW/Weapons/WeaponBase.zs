@@ -78,6 +78,36 @@ Class BaseBWWeapon : DoomWeapon
 			BWK2 H 1;
 			BWK2 FDCBA 1;
 			stop;
+		
+		//there was already an states block here lol
+		User1: //replaces BD Weapon Special
+			TNT1 A 1;
+			Goto WeaponReady;
+		
+		User2:
+		KnifeAttack:
+			TNT1 A 0 handleKnifeFlash();
+			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
+			BWKF ABC 1;
+			BWKF DE 1;
+			TNT1 A 0 A_QuakeEx(0,0.5,0,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
+			BWKF F 2 BW_HandleKnife(); //A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
+			BWKF GGHIJ 1;
+			TNT1 A 0 A_Jump(256, "Ready");
+			goto ready;
+			
+			TNT1 A 0 A_StartSound("melee/knife/slash", 0, CHANF_OVERLAP, 1);
+			KNI9 AB 1;
+			KNI9 CDEF 1 A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
+			KNI9 GHI 1;
+			TNT1 A 0 A_Jump(256, "Ready");
+			Goto Ready;
+		
+		KnifeGunFlash:
+			TNT1 A 12;
+			//TNT1 A 0 A_
+			stop;
+			//TNT1 A 0 A_jump(256,"ready");
 
 	}
 
@@ -100,10 +130,20 @@ Class BaseBWWeapon : DoomWeapon
 			case 0:		pendkf = "KickFlash";	break;
 			case 1:		pendkf = "SlideFlash";	break;
 			case 2:		pendkf = "KickFlash";	break;
+			//case 3:		pendkf = "KnifeFlash";	break;
 		}
 		let kf = invoker.resolvestate(pendkf);
 		if(kf)
 			player.SetPSprite(PSP_WEAPON,kf);
+	}
+
+	action void handleKnifeFlash()
+	{
+		statelabel pendkf = "KnifeGunFlash";
+		A_Overlay(-4,pendkf);
+		//let kf = invoker.resolvestate(pendkf);
+		//if(kf)
+		//	player.SetPSprite(-4,kf);
 	}
 	
 	action state SlideHandle(statelabel cancel = null,int spd = 15, int dmg = 15)
@@ -177,6 +217,43 @@ Class BaseBWWeapon : DoomWeapon
                 pf.A_Startsound("Player/KickWall");	//impacted wall,floor,etc
 		}
 
+	}
+
+	action state BW_HandleKnife(int dist = 50, int dmg = 30)
+	{
+		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
+		FLineTraceData t;
+		LineTrace(angle, dist, pitch, offsetz: pz, data: t);
+		if(t.hitactor)
+		{
+			actor victim = t.hitactor;
+			if(victim.bsolid || victim.bshootable)
+			{
+				actor puf = SpawnPuff("BW_KickPuff", t.hitlocation, angle, 0, 0, PF_HITTHING);
+				if(puf)
+                {
+					if(!victim.target)	//wasnt alerted yet
+						dmg *= 2;
+					victim.damagemobj(puf,self,dmg,"Melee");
+                    if(victim.bNOBLOOD || victim.bINVULNERABLE || victim.bDORMANT || 
+						victim.bREFLECTIVE || (victim.bsolid && ! victim.bShootable))
+						puf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);	//non bleeding enemy
+					else
+					{
+						puf.A_Startsound("Knife/Body", CHAN_AUTO, CHANF_OVERLAP, 0.75);  //impacted enemy
+						victim.SpawnBlood(victim.pos,angle,ceil(dmg));
+					}
+				}
+				return resolvestate(null);
+            }
+		}
+		if(t.hitType == TRACE_HitWall || t.hitType == TRACE_HitCeiling || t.hitType == TRACE_HitFloor)
+        {
+			actor pf = spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
+            if(pf)
+                pf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);   //impacted wall,floor,etc
+        }
+		return resolvestate(null);
 	}
 
 	Action State BW_WeaponReady(int BWRflags = 0)
@@ -386,7 +463,7 @@ Class BaseBWWeapon : DoomWeapon
 			//console.printf("startpos: "..(pos.xy,pos.z + pz).."hitlocation: "..t.hitlocation..", dist: "..t.Distance);
 			if(t.hitactor != null)	//hit something
 			{
-				console.printf("Hit a: "..t.hitactor.gettag().." (classname: \cd"..t.hitactor.getclassname().."\c-).");
+				//console.printf("Hit a: "..t.hitactor.gettag().." (classname: \cd"..t.hitactor.getclassname().."\c-).");
 				if(t.hitactor.bsolid || t.hitactor.bshootable)
 				{
 					if(t.hitactor.bnoblood || t.hitactor.bdormant || t.hitactor.bINVULNERABLE || 
@@ -472,7 +549,7 @@ Class BaseBWWeapon : DoomWeapon
 				{
 					if(!tx)
 						continue;
-					console.printf("[\caBW Materials\c-]: texture \cd"..tx.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..t.hitlocation.."\c-");
+					//console.printf("[\caBW Materials\c-]: texture \cd"..tx.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..t.hitlocation.."\c-");
 					let pf = spawn(puff,t.hitlocation - t.hitdir,ALLOW_REPLACE);
 					if(pf)
 						pf.A_Spraydecal("BulletChip",30,(0,0,0),t.HitDir);
@@ -529,7 +606,7 @@ Class BaseBWWeapon : DoomWeapon
 					
 					actor v = tr.Ti[k].who;
 					//console.printf("Hit "..k..": "..v.gettag().."");
-					console.printf("Hit %d: %s (\cd %s \c-)",k,v.gettag(),v.getclassname());
+					//console.printf("Hit %d: %s (\cd %s \c-)",k,v.gettag(),v.getclassname());
 					//console.printf("Hit a: "..t.hitactor.gettag().." (classname: \cd"..t.hitactor.getclassname().."\c-).");
 					if(v.bsolid || v.bshootable)
 					{
@@ -627,7 +704,7 @@ Class BaseBWWeapon : DoomWeapon
 					{
 						if(!tx)
 							continue;
-						console.printf("[\caBW Materials\c-]: texture \cd"..tx.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..tr.endpos.."\c-");
+						//console.printf("[\caBW Materials\c-]: texture \cd"..tx.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..tr.endpos.."\c-");
 						let pf = spawn(puff,tr.endpos - tr.dirh,ALLOW_REPLACE);
 						if(pf)
 							pf.A_Spraydecal("BulletChip",30,(0,0,0),tr.dirh);
@@ -712,21 +789,6 @@ Class BaseBWWeapon : DoomWeapon
 		}
 	}
 	
-	States
-	{
-		User1: //replaces BD Weapon Special
-			TNT1 A 1;
-			Goto WeaponReady;
-		
-		User2:
-		KnifeAttack:
-			TNT1 A 0 A_StartSound("melee/knife/slash", 0, CHANF_OVERLAP, 1);
-			KNI9 AB 1;
-			KNI9 CDEF 1 A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
-			KNI9 GHI 1;
-			TNT1 A 0 A_Jump(256, "Ready");
-			Goto Ready;
-	}
 }
 
 Class BW_BulletPuff : Actor replaces bulletpuff

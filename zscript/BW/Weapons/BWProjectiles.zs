@@ -425,7 +425,7 @@ Class BW_Projectile : fastprojectile
 		{
 			if(!tex)
 				return;
-			console.printf("[\caBW Materials\c-]: texture \cd"..tex.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..pos.."\c-");
+			//console.printf("[\caBW Materials\c-]: texture \cd"..tex.."\c- not found in level \cd"..level.Mapname.."\c- at pos \cd"..pos.."\c-");
 			let pf = spawn("BulletPuff",pos - hitdir,ALLOW_REPLACE);
 			if(pf)
 				pf.A_Spraydecal("BulletChip",30,(0,0,0),hitdir);
@@ -535,7 +535,7 @@ Class BW_12GABullets : BW_Projectile
 {
 	default
 	{
-		BW_Projectile.projectiledmg 3;
+		BW_Projectile.projectiledmg 25;	//why was this weaker than the luger?
 		BW_Projectile.ripAmount 0;
 		damagetype "Shotgun";
 	}
