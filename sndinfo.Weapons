@@ -409,3 +409,65 @@ MP40/BoltBack	"Sounds/Weapons/Slot3/MP40/MP40BoltBack.wav"	//Bolts are from Doom
 MP40/BoltRelease	"Sounds/Weapons/Slot3/MP40/MP40BoltForward.wav"
 MP40/Raise	"Sounds/Weapons/Slot3/MP40/MP40Raise.wav"
 MP40/Lower	"Sounds/Weapons/Slot3/MP40/MP40Drop.wav"
+
+//-----SLOT 4-----//
+
+//Trenchgun
+$RANDOM Trench/Fire
+{
+Trench/Fire1
+Trench/Fire2
+Trench/Fire3
+Trench/Fire4
+Trench/Fire5
+Trench/Fire6
+}
+
+Trench/Fire1	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire1.wav"
+Trench/Fire2	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire2.wav"
+Trench/Fire3	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire3.wav"
+Trench/Fire4	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire4.wav"
+Trench/Fire5	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire5.wav"
+Trench/Fire6	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire6.wav"
+
+$RANDOM Trench/FireAdd
+{
+Trench/FireAdd1
+Trench/FireAdd2
+}
+
+Trench/FireAdd1	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAdd1.wav"
+Trench/FireAdd2	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAdd1.wav"
+
+$RANDOM Trench/FireMech
+{
+Trench/FireMech1
+Trench/FireMech2
+Trench/FireMech3
+Trench/FireMech4
+}
+
+Trench/FireMech1	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech1.wav"
+Trench/FireMech2	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech2.wav"
+Trench/FireMech3	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech3.wav"
+Trench/FireMech4	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech4.wav"
+
+Trench/Back	"Sounds/Weapons/Slot4/Trenchgun/TrenchBack.ogg"
+Trench/Forward	"Sounds/Weapons/Slot4/Trenchgun/TrenchForward.ogg"
+Trench/Raise	"Sounds/Weapons/Slot4/Trenchgun/TrenchRaise.wav"
+Trench/Drop	"Sounds/Weapons/Slot4/Trenchgun/TrenchDrop.wav"
+
+$RANDOM Trench/Shell
+{
+Trench/Shell1
+Trench/Shell2
+Trench/Shell3
+Trench/Shell4
+Trench/Shell5
+}
+
+Trench/Shell1	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell1.wav"
+Trench/Shell2	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell2.wav"
+Trench/Shell3	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell3.wav"
+Trench/Shell4	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell4.wav"
+Trench/Shell5	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell5.wav"
