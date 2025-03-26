@@ -1,5 +1,17 @@
 Class BW_Decoration : Actor abstract
 {
+    bool dorandomflipX;
+    property randomflipX:dorandomflipX;
+    default
+    {
+        BW_Decoration.randomflipX true;
+    }
+    override void postbeginplay()
+    {
+        super.postbeginplay();
+        if(self.dorandomflipX)
+            self.bXFLIP = random(0,1);
+    }
 }
 
 Class BW_ShootableDecoration : BW_Decoration abstract
@@ -11,6 +23,45 @@ Class BW_ShootableDecoration : BW_Decoration abstract
         +solid;
         +dontthrust;
         +noblood;
+    }
+
+    Void BW_SpawnSmokeFx(int zofs = 10,int life = 10,int size = 30, double initialAlpha = 0.5,string gfx = "SM7CA0")
+	{
+		FSpawnParticleParams Smkfx;
+		Smkfx.Texture = TexMan.CheckForTexture (gfx);
+		Smkfx.Color1 = "FFFFFF";
+		Smkfx.Style = STYLE_Translucent;
+		Smkfx.Flags = SPF_ROLL;
+		Smkfx.Vel = (frandom[BWSDEC](0.3,-0.3),frandom[BWSDEC](0.3,-0.3),frandom[BWSDEC](0.5,0.5)); 
+		Smkfx.Startroll = random(0,360);
+		Smkfx.RollVel = random(3,3);
+		Smkfx.StartAlpha = initialAlpha;
+        Smkfx.Lifetime = life;
+		Smkfx.FadeStep = initialAlpha/life;
+		Smkfx.Size = size;
+		Smkfx.SizeStep = 1.5;
+		Smkfx.Pos = vec3offset(0,0,zofs);
+		Level.SpawnParticle (Smkfx);
+	}
+
+    void BW_SpawnStickFx(int zoffset = 10,int size = 20)
+    {
+        FSpawnParticleParams StickFX;
+		StickFX.Texture = TexMan.CheckForTexture ("WOODB0");
+		StickFX.Color1 = "FFFFFF";
+		StickFX.Style = STYLE_Translucent;
+		StickFX.Flags = SPF_ROLL;
+		StickFX.Vel = (FRandom (-5.1,5.1),FRandom (-5.1,5.1),FRandom (2.5,5.2)); 
+		StickFX.accel = (0,0,frandom(-0.5,-1.0));
+		StickFX.Startroll = random(0,360);
+        StickFX.RollVel = (random(-20,20));
+        StickFX.StartAlpha = 1.0;
+		StickFX.FadeStep = 0.1;
+		StickFX.Size = size;
+		StickFX.SizeStep = 0;
+		StickFX.Lifetime = random(10,15); 
+		StickFX.Pos = vec3offset(random(-radius,radius),random(-radius,radius),zoffset);
+		Level.SpawnParticle (StickFX);
     }
 }
 
@@ -48,6 +99,7 @@ Class BW_KnightArmor : BW_ShootableDecoration Replaces ShortGreenColumn
             COL2 A -1;
             stop;
         Death:
+            TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),25,45);
             TNT1 A 0 A_NoBlocking();
             CAD1 ABC 2;
             CAD1 C -1;
@@ -186,6 +238,12 @@ Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
             ELEC A -1;
             stop;
         Death:
+            TNT1 A 0 {
+                BW_SpawnSmokeFx(10,20,80);
+                BW_SpawnSmokeFx(20,20,50);
+                BW_SpawnSmokeFx(35,20,40);
+                BW_SpawnSmokeFx(50,20,40);
+            }
             TNT1 A 0 A_NoBlocking();
             COLM B -1;
             stop;
@@ -464,9 +522,27 @@ Class BW_WoodenBarrel : BW_ShootableDecoration  //7022
             COL4 A -1;
             stop;
         Death:
+            TNT1 A 0 bw_woodenbarrelDiefx();
             TNT1 A 0 A_NoBlocking();
             WBDT A -1;
             stop;
+    }
+    void bw_woodenbarrelDiefx()
+    {
+        BW_SpawnSmokeFx(10,20,80,gfx:"DIRPD0");
+        BW_SpawnSmokeFx(25,20,80,gfx:"DIRPD0");
+    }
+
+    override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
+    {
+        int pz= 0;
+        if(inflictor)
+            pz = inflictor.pos.z;
+        else
+            pz = random(5,height); 
+        for(int i = 0; i < random(3,7); i++)  
+            BW_SpawnStickFx(pz,7); //doesnt look really good, but works for now
+        return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
     }
 }
 
@@ -478,6 +554,7 @@ Class BW_FoodBarrel : BW_WoodenBarrel   //7024
             WB1T C -1;
             stop;
         Death:
+            TNT1 A 0 bw_woodenbarrelDiefx();
             TNT1 A 0 A_NoBlocking();
             TNT1 A 0 A_Spawnitem("StimPack");
             WBDT A -1;
@@ -493,6 +570,7 @@ Class BW_MP40Barrel : BW_WoodenBarrel   //7023
             WB1T B -1;
             stop;
         Death:
+            TNT1 A 0 bw_woodenbarrelDiefx();
             TNT1 A 0 A_NoBlocking();
             TNT1 A 0 A_Spawnitem("BW_MP40");
             WBDT A -1;

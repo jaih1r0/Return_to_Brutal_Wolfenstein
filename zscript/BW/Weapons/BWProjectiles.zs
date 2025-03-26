@@ -108,7 +108,10 @@ Class BW_Projectile : fastprojectile
 		else
 		{
 			if(victim)
+			{
 				HitActor(victim);
+				return 0;	//idk why it keeps ripping if is not ripper
+			}
 		}
 		Return -1;
 	}
