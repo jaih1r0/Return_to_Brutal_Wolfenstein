@@ -31,8 +31,9 @@ class BW_Trenchgun : BaseBWWeapon
 	action void FireWeapon()
 	{
 		A_AlertMonsters();
-
+		
 		A_StartSound("Trench/Fire", 0, CHANF_OVERLAP, 1);
+		A_StartSound("Trench/FireAlt", 0, CHANF_OVERLAP, 0.7);
 		A_StartSound("Trench/Fireadd", 0, CHANF_OVERLAP, 0.8);
 		A_StartSound("Trench/FireMech", 0, CHANF_OVERLAP, 1);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
@@ -178,6 +179,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 		SHTE FGHAAA 1;
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 7, "ReloadEnd");
+		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
 		Loop;
 	ReloadEnd:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
@@ -204,7 +206,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 		SHTD CB 1;
 		SHTE IA 1;
-		TNT1 A 0 A_JumpIf(CountInv("Clip") == 0, "ReloadEnd");
+		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
 		Goto ReloadLoop;
  	Spawn:
 		SHTA G -1;

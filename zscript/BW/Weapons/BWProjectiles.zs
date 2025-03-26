@@ -535,7 +535,7 @@ Class BW_12GABullets : BW_Projectile
 {
 	default
 	{
-		BW_Projectile.projectiledmg 3;
+		BW_Projectile.projectiledmg 8;
 		BW_Projectile.ripAmount 0;
 		damagetype "Shotgun";
 	}
