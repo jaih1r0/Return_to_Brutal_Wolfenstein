@@ -148,7 +148,7 @@ nashgore/bodydrop "sounds/nashgore/body drop 01.ogg"
 //
 //===========================================================================
 
-nashgore/bullethitflesh "nashgore/sounds/bullet hit flesh.ogg"
+nashgore/bullethitflesh "sounds/nashgore/bullet hit flesh.ogg"
 $volume nashgore/bullethitflesh 0.23
 
 
@@ -164,3 +164,16 @@ WDCLO WDCLO	//wooden door close
 MLOCK MLOCK	//door locked
 MOPUN MOPUN	//
 SWMV SWMV 	//secret wall move
+
+Barrel/Explosion1	"Sounds/World/Explosions/MediumExplosion-1.ogg"
+Barrel/Explosion2	"Sounds/World/Explosions/MediumExplosion-2.ogg"
+Barrel/Explosion3	"Sounds/World/Explosions/MediumExplosion-3.ogg"
+$random Barrel/Explosion
+{
+	Barrel/Explosion1
+	Barrel/Explosion2
+	Barrel/Explosion3
+}
+$rolloff Barrel/Explosion1 200 700
+$rolloff Barrel/Explosion2 200 700
+$rolloff Barrel/Explosion3 200 700

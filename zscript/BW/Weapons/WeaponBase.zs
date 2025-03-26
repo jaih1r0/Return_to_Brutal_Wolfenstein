@@ -46,7 +46,8 @@ Class BaseBWWeapon : DoomWeapon
 			stop;
 
 		SlideKick:
-			TNT1 A 0 velfromangle(30,angle);
+			TNT1 A 0 BW_SlideDirSet();
+			TNT1 A 0 BW_SlideThrust(30);	//thrust relative to angle and input, aka slide in any direction, not just forward
 			TNT1 A 0 handlekickFlash(1);
 			//start sliding 8 frames
 			TNT1 A 0 A_StartSound("Player/Slide", 0, CHANF_OVERLAP, 1);
@@ -63,6 +64,7 @@ Class BaseBWWeapon : DoomWeapon
 			BWK2 IJK 1 SlideHandle("EndSlideKick",10);
 		EndSlideKick:
 			TNT1 A 0 {
+				BW_SlideDirSet(true);	//reset direction
 				//keep the weapon synced with the kick overlay
 				State PSPState = player.GetPSprite(PSP_WEAPON).Curstate;
 				if(InStateSequence(PSPState,invoker.ResolveState("SlideFlash")))
@@ -109,7 +111,9 @@ Class BaseBWWeapon : DoomWeapon
 		if(!(player.cmd.buttons & BT_CROUCH))
 			return resolvestate(cancel);
 		
-		velfromangle(spd,angle);
+		//velfromangle(spd,angle);
+
+		BW_SlideThrust(spd);
 
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData t;

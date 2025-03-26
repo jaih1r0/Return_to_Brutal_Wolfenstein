@@ -303,6 +303,20 @@ Class BW_GunSmoke : BWFxBase
 	}
 }
 
+Class BW_BarrelExplosionFx : BWFxBase
+{
+	default
+	{
+		//scale 1.2;
+	}
+	states
+	{
+		spawn:
+			DB27 ABCDEFGHIJKLMNOPQRS 1 bright;
+			DB27 TUVWXYZ 1;
+			stop;
+	}
+}
 
 
 class TreasureFinder : inventory

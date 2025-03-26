@@ -580,6 +580,10 @@ Class BW_MP40Barrel : BW_WoodenBarrel   //7023
 
 Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
 {
+    default
+    {
+        DamageType "Explosive";
+    }
     states
     {
         spawn:
@@ -587,7 +591,10 @@ Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
-            TNT1 A 0 A_Explode();
+            TNT1 A 0 A_Startsound("Barrel/Explosion");
+            TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
+            TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");
+            TNT1 A 0 A_Explode(400,200);
             WBDT A -1;
             stop;
     }
@@ -722,6 +729,70 @@ Class BW_Pots2 : BW_Pots1 replaces HangBNoBrain
     {
         spawn:
             HDB2 A -1;
+            stop;
+    }
+}
+
+Class BW_ExplosiveBarrel : BW_ShootableDecoration replaces explosiveBarrel
+{
+    default
+    {
+        DamageType "Explosive";
+        Health 20;
+        Radius 10;
+        Height 34;
+        Mass 200;
+    }
+    states
+    {
+        spawn:
+            GEBL ABCD 4;
+            loop;
+        Death:
+            GEBL AB 1;
+            BEXP CD 2;
+            TNT1 A 0 A_Startsound("Barrel/Explosion");
+            TNT1 A 0 A_NoBlocking();
+            TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
+            TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
+            TNT1 A 0 A_Explode(400,200);
+            MP1C A -1;
+            stop;
+    }
+}
+
+Class BW_BloodPool : BW_Decoration Replaces HangTNoBrain
+{
+    default
+    {
+        scale 0.5;
+    }
+    states
+    {
+        spawn:
+            HDB6 A -1;
+            stop;
+    }
+} 
+
+Class BW_Tree1 : BW_ShootableDecoration replaces LiveStick
+{
+    default
+    {
+        Radius 16;
+        Height 80;
+        health 400;
+        deathheight 40;
+        +solid;
+    }
+    states
+    {
+        spawn:
+            POL6 A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            TRE2 B -1;
             stop;
     }
 }
