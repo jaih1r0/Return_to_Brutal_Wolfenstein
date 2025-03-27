@@ -124,7 +124,7 @@ class BW_Luger : BaseBWWeapon
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "AltFire2");
 		TNT1 A 0 A_GiveInventory("AimingToken");
-		TNT1 A 0 A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
+		TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
 		ZLUX AB 1;
 		TNT1 A 0 A_ZoomFactor(1.2);
 		ZLUX CD 1;
@@ -132,7 +132,7 @@ class BW_Luger : BaseBWWeapon
 		Goto WeaponReady2;
 	AltFire2:
 		TNT1 A 0 A_TakeInventory("AimingToken");
-		TNT1 A 0 A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
+		TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
 		ZLUX DC 1;
 		TNT1 A 0 A_ZoomFactor(1);
 		ZLUX BA 1;

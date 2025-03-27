@@ -457,6 +457,27 @@ Trench/Fire4	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire4.wav"
 Trench/Fire5	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire5.wav"
 Trench/Fire6	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire6.wav"
 
+$RANDOM Trench/FireAlt
+{
+Trench/FireAlt1
+Trench/FireAlt2
+Trench/FireAlt3
+Trench/FireAlt4
+Trench/FireAlt5
+Trench/FireAlt6
+Trench/FireAlt7
+Trench/FireAlt8
+}
+
+Trench/FireAlt1	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt1.wav"
+Trench/FireAlt2	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt2.wav"
+Trench/FireAlt3	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt3.wav"
+Trench/FireAlt4	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt4.wav"
+Trench/FireAlt5	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt5.wav"
+Trench/FireAlt6	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt6.wav"
+Trench/FireAlt7	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt7.wav"
+Trench/FireAlt8	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt8.wav"
+
 $RANDOM Trench/FireAdd
 {
 Trench/FireAdd1

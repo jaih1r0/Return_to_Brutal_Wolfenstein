@@ -8,6 +8,10 @@ Class BW_Dog : BW_MonsterBase replaces demon
         speed 6;
         Painchance 255;
         mass 50;
+		
+		BW_MonsterBase.headheight 16;
+		BW_MonsterBase.feetheight 8;
+		
         BW_MonsterBase.AttackRange 100;
         BW_MonsterBase.CanIReload false;
         SeeSound "dog/sight";
