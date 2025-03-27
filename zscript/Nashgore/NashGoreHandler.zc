@@ -257,7 +257,11 @@ class NashGoreHandler : EventHandler
 		}
 
 		if (e.Name == 'EV_ClearGore')
+		{
 			NashGoreGameplayStatics.ClearGore();
+			NashGoreGameplayStatics.ClearCasings();
+			NashGoreGameplayStatics.ClearFloorDecals();
+		}
 		else if (e.Name == 'EV_NashGore_Uninstall')
 			NashGoreGameplayStatics.Uninstall();
 		else if (e.Name == 'EV_NashGore_ResetToDefault')

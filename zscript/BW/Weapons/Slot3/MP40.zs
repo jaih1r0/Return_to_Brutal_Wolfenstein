@@ -101,6 +101,13 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
 			MP4K FEDCBA 1;
 			goto ready;
+		KnifeGunFlash:
+			MP4U FGHI 1;	//temporary
+			TNT1 A 5;
+			//TNT1 A 4;
+			MP4U ABCD 1;
+			stop;
+			//goto ready;
 		Reload:
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",32,1);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);

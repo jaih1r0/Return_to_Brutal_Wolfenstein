@@ -405,6 +405,7 @@ class BW_EventHandler : EventHandler
 	}
 	
 	int kicktimer;
+	int KnifeTimer;
 	const kickcooldown = 18;
 	
     override void WorldTick()
@@ -413,6 +414,8 @@ class BW_EventHandler : EventHandler
 
 		if(kicktimer > 0)
 			kicktimer--;
+		if(KnifeTimer > 0)
+			KnifeTimer--;
     }
 	
     override void NetworkProcess(ConsoleEvent e)
@@ -423,7 +426,7 @@ class BW_EventHandler : EventHandler
 
 		if (e.Name ~== "KickEm")
 		{	
-			if(kicktimer == 0)
+			if(kicktimer <= 0)
 			{
 				let wp = pl.player.readyweapon;
 				if(!wp)
@@ -438,10 +441,34 @@ class BW_EventHandler : EventHandler
 					//let kf = wp.resolvestate("KickFlash");
 					//if(kf)
 					//	pl.player.SetPSprite(PSP_WEAPON,kf);
-					kicktimer = 20;
+					kicktimer = 18;
 				}
 				
 			}
 		}
+
+		if (e.Name ~== "SlashEm")
+		{	
+			if(KnifeTimer <= 0)
+			{
+				let wp = pl.player.readyweapon;
+				if(!wp)
+					return;
+
+				if(pl.findinventory("AimingToken"))	//currently aiming, abort mission
+					return;
+
+				let psp = pl.player.findpsprite(-4);
+				if(psp)	//is already knifing
+					return;
+				
+				let ks = wp.resolvestate("KnifeAttack");
+				if(ks)
+					pl.player.SetPSprite(PSP_WEAPON,ks);
+				KnifeTimer = 12;
+				
+			}
+		}
+
 	}
 }

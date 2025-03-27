@@ -81,3 +81,23 @@ model BW_MP40Bullets
    PITCHFROMMOMENTUM
    FrameIndex TRAC A 0 0
 }
+
+model BW_Kar98Bullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_12GABullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}

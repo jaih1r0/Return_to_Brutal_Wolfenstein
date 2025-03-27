@@ -34,6 +34,8 @@ OptionMenu BWOPZION
 	option "player bullet type","BW_BulletType","BWProjectileType"
 	statictext ""
 	control "Kick/Slide","netevent KickEm"
+	statictext ""
+	control "Knife","netevent SlashEm"
 	/*
 	statictext "=== Unused ==="
 	statictext ""

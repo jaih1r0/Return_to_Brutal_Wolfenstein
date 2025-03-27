@@ -301,6 +301,33 @@ $random Fists/Hit
     Fists/Hit3
 }
 
+//Knife
+
+Knife/Swing "Sounds/Weapons/Slot1/Knife/KNIFSWNG.ogg"
+Knife/Wall1 "Sounds/Weapons/Slot1/Knife/DSSAWAL1.ogg"
+Knife/Wall2 "Sounds/Weapons/Slot1/Knife/DSSAWAL2.ogg"
+Knife/Wall3 "Sounds/Weapons/Slot1/Knife/DSSAWAL3.ogg"
+Knife/Wall4 "Sounds/Weapons/Slot1/Knife/DSSAWAL4.ogg"
+Knife/Wall5 "Sounds/Weapons/Slot1/Knife/DSSAWAL5.ogg"
+$random Knife/Wall
+{
+    Knife/Wall1
+    Knife/Wall2
+    Knife/Wall3
+    Knife/Wall4
+    Knife/Wall5
+}
+
+Knife/Body1 "Sounds/Weapons/Slot1/Knife/BladeStab-1.ogg"
+Knife/Body2 "Sounds/Weapons/Slot1/Knife/BladeStab-2.ogg"
+Knife/Body3 "Sounds/Weapons/Slot1/Knife/BladeStab-3.ogg"
+$random Knife/Body
+{
+    Knife/Body1
+    Knife/Body2
+    Knife/Body3
+}
+
 //-----SLOT 2-----//
 
 //Luger P08
