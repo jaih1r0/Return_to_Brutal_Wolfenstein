@@ -176,6 +176,7 @@ extend class BW_MonsterBase
 		{
 			AttackDelay = 0;
 		}
+		//testhitzones();
 	}
 
 	override void PostBeginPlay()
