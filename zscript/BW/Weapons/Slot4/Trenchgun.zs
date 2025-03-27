@@ -20,8 +20,8 @@ class BW_Trenchgun : BaseBWWeapon
 		
 		Obituary "$OB_MPPISTOL";
 		Inventory.Pickupmessage "[Slot 4] Winchester Model 1897";
-		Tag "Luger P-08";
-		Scale 1;
+		Tag "Trenchgun";
+		Scale 0.5;
 		Inventory.PickupSound "weapons/pistol/pickup";
 		+WEAPON.NOALERT;
 		+WEAPON.AMMO_OPTIONAL;
@@ -60,6 +60,12 @@ class BW_Trenchgun : BaseBWWeapon
 	Deselect:
 		TNT1 A 0 A_ZoomFactor(1);
 		TNT1 A 0 A_StartSound("Trench/Drop", 0, CHANF_OVERLAP, 1);
+		BTGU FG 1;
+		TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
+		BTGU HI 1;
+		TNT1 A 0 BW_WeaponLower();
+		wait;
+
 		SHTA DC 1;
 		TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
 		SHTA BA 1;
@@ -70,18 +76,52 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_TakeInventory("AimingToken");
 		Goto KnifeAttack;
 	Select:
-		TNT1 A 0
-		{
-			A_TakeInventory("AimingToken");
-		}
-		TNT1 A 0 A_Raise(25);
-		Wait;
-	Ready:
 		TNT1 A 0 A_StartSound("Generic/Rifle/raise", 0, CHANF_OVERLAP, 1);
-		SHTA AB 1;
-		TNT1 A 0 A_StartSound("Trench/raise", 0, CHANF_OVERLAP, 1);
-		SHTA CD 1;
-	WeaponReady:
+		TNT1 A 0 BW_WeaponRaise("Trench/raise");
+		BTGU ABCD 1;
+		goto ready;
+	Ready:	//keeping ready as the actual ready state
+		TNT1 A 0 BW_JumpifAiming("Ready_ADS");
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
+		BTGU E 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		loop;
+	
+	Ready_NoAmmo:
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 0,"Ready");
+		BTGF H 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		loop;
+
+	Fire:
+		TNT1 A 0 BW_JumpifAiming("Fire_ADS");
+		TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
+		BTGF A 1 bright FireWeapon();
+		BTGF B 1 bright;
+		BTGF C 1;
+		TNT1 A 0 A_ZoomFactor(1.0);
+		BTGF DE 1;
+		BTGF FG 1;
+		BTGF H 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
+	Pump:
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+		BTGP ABC 1;
+		BTGP DEF 1;
+		BTGP GHIJ 1;
+		BTGP K 1 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
+		BTGP LMNOP 1;
+		BTGP Q 1 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
+		BTGP RS 1;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+		BTGP T 1;
+		BTGP JIHG 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"EndPumpNoAmmo");
+		BTGR FEDCBA 1;
+		goto ready;
+	EndPumpNoAmmo:
+		BTGP FEDCBA 1;
+		goto ready;
+
+	/*WeaponReady:
 		SHTA E 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReadyEmpty");
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
@@ -90,7 +130,7 @@ class BW_Trenchgun : BaseBWWeapon
 		SHTA F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReady2Empty");
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
-		Loop;
+		Loop;*/
 	WeaponReadyEmpty:
 		SHTC F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
@@ -99,7 +139,7 @@ class BW_Trenchgun : BaseBWWeapon
 		SHTC L 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
 		Loop;
-	Fire:
+	//Fire:
 		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Fire2");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "DryFire");
 		TNT1 A 0 FireWeapon();
@@ -131,7 +171,134 @@ class BW_Trenchgun : BaseBWWeapon
 		SHTD PQR 1;
 		TNT1 A 0 A_ReFire("Fire2");
 		Goto WeaponReady2;
+
+
 	AltFire:
+		TNT1 A 0 {
+			A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
+			if(findinventory("AimingToken"))
+			{
+				A_setinventory("AimingToken",0);
+				return resolvestate("StopAim");
+			}
+			A_setinventory("AimingToken",1);
+			return resolvestate(null);
+		}
+	StartAim:
+		TNT1 A 0 A_ZoomFactor(1.2);
+		BTGT ABCD 1;
+		goto Ready_ADS;
+	StopAim:
+		TNT1 A 0 A_ZoomFactor(1.0);
+		BTGT DCBA 1;
+		goto ready;
+	
+	Ready_ADS:
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo_ADS");
+		BTGT E 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		loop;
+	Ready_NoAmmo_ADS:
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 0,"Ready_ADS");
+		BTGA H 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		loop;
+	
+	Fire_ADS:
+		TNT1 A 0 BW_PrefireCheck(1,"ReloadADS","DryFire_ADS");
+		BTGA A 1 bright FireWeapon();
+		BTGA B 1 bright;
+		BTGA C 1;
+		TNT1 A 0 A_ZoomFactor(1.2);
+		BTGA D 1;
+		BTGA EF 1;
+		BTGA GH 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo_ADS");
+	ADS_Slam:
+		BTGS ABC 1;
+		TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
+		BTGS DDE 1;
+		TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
+		BTGS FGHI 1;
+		BTGT E 2;
+		TNT1 A 0 A_refire("Fire_ADS");
+		goto Ready_ADS;
+	
+	DryFire:
+		BTGF H 1;
+		goto ready;
+	DryFire_ADS:
+		BTGA H 1;
+		goto ready_ADS;
+
+
+	NoAmmo:
+		TNT1 A 0 BW_JumpifAiming("NoAmmo_ADS");
+		BTGU E 1;
+		goto ready;
+	NoAmmo_ADS:
+		BTGT E 1;
+		goto Ready_ADS;
+
+	ReloadADS:
+		BTGT DCBA 1;
+		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
+	Reload:
+		TNT1 A 0 BW_CheckReload(null,"Ready","ready",7);
+		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+		BTGR ABC 1;
+		BTGR DEF 1;
+		BTGR GHI 1;
+		BTGR JK 1;
+	ReloadLoop:
+		BTGR K 2;
+		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
+		BTGR LM 1;
+		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
+		BTGR N 1 BW_AmmointoMagSingle(7,1);
+		BTGR OPQ 1;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+		BTGR RS 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");
+		loop;
+	ReloadEnd:
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+		BTGR JIHG 1;
+		BTGR FEDCBA 1;
+		goto ready;
+	
+	
+	
+	
+	KickFlash:
+		TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+		BTGR ABC 1;
+		BTGR DEF 1;
+		TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+		BTGP GHIJK 1;
+		BTGP IHG 1;
+		BTGR FEDCBA 1;
+		goto ready;
+	
+	SlideFlash:
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+		BTGR ABCD 1;
+		BTGR EFGH 1;
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+		BTGR IJK 1;
+		BTGR KKK 1;
+		BTGR KKK 1;
+		BTGR KKK 1;
+		BTGR KKK 1;
+		BTGR KKK 1;
+	SlideFlashEnd:
+		TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+		BTGR FEDCBA 1;
+		goto ready;
+	
+	
+	
+	
+	//AltFire:
 		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "AltFire2");
 		TNT1 A 0 A_GiveInventory("AimingToken");
 		TNT1 A 0 A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
@@ -149,7 +316,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReadyEmpty");
 		Goto WeaponReady;
 	
-	DryFire:
+	//DryFire:
 		SHTC F 1;
 		Goto WeaponReadyEmpty;
 	DryFire2:
@@ -161,7 +328,7 @@ class BW_Trenchgun : BaseBWWeapon
 		SHTB DC 1;
 		TNT1 A 0 A_ZoomFactor(1);
 		SHTB BA 1;
-	Reload:
+	//Reload:
 		TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 1, "UnAimReload");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0 && CountInv("Clip") == 0, "WeaponReadyEmpty");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 7 || CountInv("Clip") == 0, "WeaponReady");
@@ -170,7 +337,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 		SHTD ABCD 1;
 		SHTE IA 1;
-	ReloadLoop:
+	//ReloadLoop:
 		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
 		SHTE AAA 1;
 		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
@@ -181,7 +348,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 7, "ReloadEnd");
 		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
 		Loop;
-	ReloadEnd:
+	//ReloadEnd:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 		SHTE AI 1;
 		SHTD DCBA 1;

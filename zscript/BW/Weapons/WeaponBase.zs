@@ -277,6 +277,8 @@ Class BaseBWWeapon : DoomWeapon
 	action void BW_WeaponRaise(string SelectSound = "")
 	{
 		A_weaponoffset(0,32);
+		A_ZoomFactor(1.0);
+		A_setinventory("AimingToken",0);
 		if(SelectSound)
 			A_Startsound(sound(SelectSound),7);
 	}
@@ -284,6 +286,8 @@ Class BaseBWWeapon : DoomWeapon
 	//BW default A_Lower function
 	action void BW_WeaponLower()
 	{
+		A_ZoomFactor(1.0);
+		A_setinventory("AimingToken",0);
 		A_Lower(120);
 	}
 
@@ -362,6 +366,18 @@ Class BaseBWWeapon : DoomWeapon
 			A_TakeInventory(AmmoPool_Action, takeReserve);
 		}
 	}
+
+	action void BW_AmmointoMagSingle(int max = 1,int eq = 1,bool tosecundary = false)
+	{
+		let res = tosecundary ? invoker.ammo2 : invoker.ammo1;	//reserve
+		let cham = tosecundary ? invoker.ammo1 : invoker.ammo2;	//in chamber
+		if(cham.amount >= max)
+			return;
+		if(res.amount < eq)
+			return;
+		res.amount -= eq;
+		cham.amount += 1;
+	}
 	
 	action state BW_PrefireCheck(int min = 1,statelabel reloadstate = null, statelabel drystate = null,bool checkprimary = false)
 	{
@@ -393,6 +409,20 @@ Class BaseBWWeapon : DoomWeapon
 			return resolvestate(emptystate);
 		return resolvestate(null);	//continue normal
 		
+	}
+
+	action state BW_JumpifAiming(statelabel jump)
+	{
+		if(findinventory("AimingToken"))
+			return resolvestate(jump);
+		return resolvestate(null);
+	}
+
+	Action Void BW_ChangePsprite(name spt, int layer = PSP_WEAPON)
+	{
+		let ps = player.findPSprite(layer);
+		if(ps)
+			ps.sprite = GetSpriteIndex(spt);
 	}
 	
 	action void KickDoors(int dist = 70)

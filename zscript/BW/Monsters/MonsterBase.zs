@@ -17,7 +17,7 @@ Class BW_MonsterBase : Actor
 	
 	default
 	{
-		BW_MonsterBase.headheight 48;
+		BW_MonsterBase.headheight 38;
 		BW_MonsterBase.feetheight 15;
 		BW_MonsterBase.HeadShotMult 1.75;
 		BW_MonsterBase.HasHeadshot true;
@@ -120,7 +120,7 @@ Class BW_MonsterBase : Actor
 	int dx;
 	void testhitzones(int tc = 35)
 	{
-		return;
+		//return;
 		int rd = radius; /// 2;
 		for(int i = -radius; i <= radius; i+=rd)
 		{
