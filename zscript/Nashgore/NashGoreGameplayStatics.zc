@@ -473,4 +473,31 @@ class NashGoreGameplayStatics play
 
 		return amt, cmul;
 	}
+
+	//===========================================================================
+	//
+	//
+	//
+	//===========================================================================
+
+	static void ClearCasings()
+	{
+		ThinkerIterator it = ThinkerIterator.Create("Actor", STAT_CASING);
+		Actor mo;
+		while (mo = Actor(it.Next()))
+		{
+			mo.Destroy();
+		}
+	}
+
+	static void ClearFloorDecals()
+	{
+		ThinkerIterator it = ThinkerIterator.Create("Actor", STAT_FLATDECAL);
+		Actor mo;
+		while (mo = Actor(it.Next()))
+		{
+			mo.Destroy();
+		}
+	}
+
 }

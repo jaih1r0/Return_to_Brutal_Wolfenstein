@@ -103,9 +103,9 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			goto ready;
 		KnifeGunFlash:
 			MP4U FGHI 1;	//temporary
-			TNT1 A 6;
-			TNT1 A 4;
-			//MP4U ABCD 1;
+			TNT1 A 5;
+			//TNT1 A 4;
+			MP4U ABCD 1;
 			stop;
 			//goto ready;
 		Reload:

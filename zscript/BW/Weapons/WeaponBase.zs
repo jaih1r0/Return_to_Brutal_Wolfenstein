@@ -88,6 +88,18 @@ Class BaseBWWeapon : DoomWeapon
 		KnifeAttack:
 			TNT1 A 0 handleKnifeFlash();
 			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
+			TNT1 A 1;
+			BWKF JIH 1;
+			BWKF G 1;
+			TNT1 A 0 A_QuakeEx(0,0.5,0,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
+			BWKF G 2 BW_HandleKnife(); //A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
+			BWKF FEDCBA 1;
+			TNT1 A 0 A_Jump(256, "Ready");
+			goto ready;
+		
+		//old
+			TNT1 A 0 handleKnifeFlash();
+			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
 			BWKF ABC 1;
 			BWKF DE 1;
 			TNT1 A 0 A_QuakeEx(0,0.5,0,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
@@ -105,9 +117,8 @@ Class BaseBWWeapon : DoomWeapon
 		
 		KnifeGunFlash:
 			TNT1 A 12;
-			//TNT1 A 0 A_
 			stop;
-			//TNT1 A 0 A_jump(256,"ready");
+			
 
 	}
 
