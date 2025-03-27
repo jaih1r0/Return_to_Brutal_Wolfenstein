@@ -96,6 +96,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGF A 1 bright FireWeapon();
 		BTGF B 1 bright;
 		BTGF C 1;
+		TNT1 A 0 A_ZoomFactor(1.0);
 		BTGF DE 1;
 		BTGF FG 1;
 		BTGF H 1;
