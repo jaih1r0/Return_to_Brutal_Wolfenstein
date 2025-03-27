@@ -65,20 +65,15 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGU HI 1;
 		TNT1 A 0 BW_WeaponLower();
 		wait;
-
-		SHTA DC 1;
-		TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
-		SHTA BA 1;
-		PSTG A 0 A_Lower(25);
-		Wait;
 	User3:
 		TNT1 A 0 A_ZoomFactor(1);
 		TNT1 A 0 A_TakeInventory("AimingToken");
 		Goto KnifeAttack;
 	Select:
 		TNT1 A 0 A_StartSound("Generic/Rifle/raise", 0, CHANF_OVERLAP, 1);
+		BTGU AB 1;
 		TNT1 A 0 BW_WeaponRaise("Trench/raise");
-		BTGU ABCD 1;
+		BTGU CD 1;
 		goto ready;
 	Ready:	//keeping ready as the actual ready state
 		TNT1 A 0 BW_JumpifAiming("Ready_ADS");
@@ -112,7 +107,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGP Q 1 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
 		BTGP RS 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-		BTGP T 1;
+		BTGP TU 1;
 		BTGP JIHG 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"EndPumpNoAmmo");
 		BTGR FEDCBA 1;
@@ -121,16 +116,6 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGP FEDCBA 1;
 		goto ready;
 
-	/*WeaponReady:
-		SHTA E 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReadyEmpty");
-		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
-		Loop;
-	WeaponReady2:
-		SHTA F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReady2Empty");
-		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
-		Loop;*/
 	WeaponReadyEmpty:
 		SHTC F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
@@ -139,39 +124,6 @@ class BW_Trenchgun : BaseBWWeapon
 		SHTC L 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
 		Loop;
-	//Fire:
-		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Fire2");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "DryFire");
-		TNT1 A 0 FireWeapon();
-		SHTC AB 1 BRIGHT;
-		SHTC C 1;
-		TNT1 A 0 A_ZoomFactor(1);
-		SHTC DEF 1;
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReadyEmpty");
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
-		SHTD ABCDDD 1;
-		TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-		SHTD EFGHHHHH 1;
-		TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
-		SHTD IJK 1;
-		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-		SHTD DCBA 1;
-		Goto WeaponReady;
-	Fire2:
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "DryFire2");
-		TNT1 A 0 FireWeapon();
-		SHTC GH 1 BRIGHT;
-		SHTC I 1;
-		TNT1 A 0 A_ZoomFactor(1.2);
-		SHTC JKL 1;
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReady2Empty");
-		TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-		SHTD LMNOOO 1;
-		TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
-		SHTD PQR 1;
-		TNT1 A 0 A_ReFire("Fire2");
-		Goto WeaponReady2;
-
 
 	AltFire:
 		TNT1 A 0 {
@@ -213,11 +165,10 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGA GH 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo_ADS");
 	ADS_Slam:
-		BTGS ABC 1;
 		TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-		BTGS DDE 1;
+		BTGS ABCDD 1;
 		TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
-		BTGS FGHI 1;
+		BTGS EFGHI 1;
 		BTGT E 2;
 		TNT1 A 0 A_refire("Fire_ADS");
 		goto Ready_ADS;
@@ -228,7 +179,6 @@ class BW_Trenchgun : BaseBWWeapon
 	DryFire_ADS:
 		BTGA H 1;
 		goto ready_ADS;
-
 
 	NoAmmo:
 		TNT1 A 0 BW_JumpifAiming("NoAmmo_ADS");
@@ -242,7 +192,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGT DCBA 1;
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 	Reload:
-		TNT1 A 0 BW_CheckReload(null,"Ready","ready",7);
+		TNT1 A 0 BW_CheckReload("Reload2","Ready","ready",7);
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 		BTGR ABC 1;
@@ -255,7 +205,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGR LM 1;
 		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
 		BTGR N 1 BW_AmmointoMagSingle(7,1);
-		BTGR OPQ 1;
+		BTGR OPQQQ 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 		BTGR RS 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");
@@ -265,9 +215,30 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGR JIHG 1;
 		BTGR FEDCBA 1;
 		goto ready;
-	
-	
-	
+	Reload2:
+		TNT1 A 0 A_TakeInventory("AimingToken");
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+		BTGR ABC 1;
+		BTGR DEF 1;
+		BTGR GHI 1;
+		BTGR JKKK 1;
+		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
+		BTGR LM 1;
+		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
+		BTGR N 1 BW_AmmointoMagSingle(7,1);
+		BTGR OPQQQ 1;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+		BTGR RSKKJIH 1;
+		BTGP IJ 1;
+		BTGP K 1 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
+		BTGP LMNOP 1;
+		BTGP Q 1 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
+		BTGP RS 1;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+		BTGP TU 1;
+		BTGR HIJKK 1;
+		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
+		Goto ReloadLoop;
 	
 	KickFlash:
 		TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
@@ -294,87 +265,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
 		BTGR FEDCBA 1;
 		goto ready;
-	
-	
-	
-	
-	//AltFire:
-		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "AltFire2");
-		TNT1 A 0 A_GiveInventory("AimingToken");
-		TNT1 A 0 A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
-		SHTB AB 1;
-		TNT1 A 0 A_ZoomFactor(1.2);
-		SHTB CD 1;
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReady2Empty");
-		Goto WeaponReady2;
-	AltFire2:
-		TNT1 A 0 A_TakeInventory("AimingToken");
-		TNT1 A 0 A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
-		SHTB DC 1;
-		TNT1 A 0 A_ZoomFactor(1);
-		SHTB BA 1;
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "WeaponReadyEmpty");
-		Goto WeaponReady;
-	
-	//DryFire:
-		SHTC F 1;
-		Goto WeaponReadyEmpty;
-	DryFire2:
-		SHTC L 1;
-		Goto WeaponReady2Empty;
-	
-	UnAimReload:
-		TNT1 A 0 A_TakeInventory("AimingToken");
-		SHTB DC 1;
-		TNT1 A 0 A_ZoomFactor(1);
-		SHTB BA 1;
-	//Reload:
-		TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 1, "UnAimReload");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0 && CountInv("Clip") == 0, "WeaponReadyEmpty");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 7 || CountInv("Clip") == 0, "WeaponReady");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 0, "Reload2");
-		TNT1 A 0 A_TakeInventory("AimingToken");
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
-		SHTD ABCD 1;
-		SHTE IA 1;
-	//ReloadLoop:
-		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
-		SHTE AAA 1;
-		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
-		SHTE BCDEEE 1;
-		TNT1 A 0 BW_AmmoIntoMag("BW_Trenchgun_Mag", "Shell", CountInv("BW_Trenchgun_Mag") + 1, 1);
-		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-		SHTE FGHAAA 1;
-		TNT1 A 0 A_JumpIf(CountInv("BW_Trenchgun_Mag") == 7, "ReloadEnd");
-		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
-		Loop;
-	//ReloadEnd:
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
-		SHTE AI 1;
-		SHTD DCBA 1;
-		Goto WeaponReady;
-	Reload2:
-		TNT1 A 0 A_TakeInventory("AimingToken");
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
-		SHTD ABCD 1;
-		SHTE IA 1;
-		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
-		SHTE AAABCDEEE 1;
-		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
-		SHTE FGHAAA 1;
-		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-		TNT1 A 0 BW_AmmoIntoMag("BW_Trenchgun_Mag", "Shell", 1, 1);
-		SHTE AI 1;
-		SHTD BCD 1;
-		TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-		SHTD EFGHHHHH 1;
-		TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
-		SHTD IJK 1;
-		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-		SHTD CB 1;
-		SHTE IA 1;
-		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
-		Goto ReloadLoop;
+
  	Spawn:
 		SHTA G -1;
 		Stop;
