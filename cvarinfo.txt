@@ -1,5 +1,6 @@
 
 server int BW_BulletType = 0;   //0 hitscan, 1 projectile
+nosave server bool BW_Debug = false;
 
 //Nashgore Cvars
 

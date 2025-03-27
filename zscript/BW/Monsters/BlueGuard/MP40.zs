@@ -13,6 +13,9 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase replaces ShotgunGuy //[Pop] replace is 
 			Scale 1; //Make sure to adjust the values in the See state to match these
 			BloodColor "Red";
 			
+			BW_MonsterBase.headheight 42; //Taller, so zones are different
+			BW_MonsterBase.feetheight 22;
+			
 			BW_MonsterBase.AttackRange 6400; //32 Dmu (1 meter) * 200 (20 yards effective range of MP40)
 			BW_MonsterBase.CanIRoll true;
 			SeeSound "Nazi/Generic/sight";

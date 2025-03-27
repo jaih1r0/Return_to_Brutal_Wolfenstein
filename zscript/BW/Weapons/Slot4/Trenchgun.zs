@@ -116,18 +116,9 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGP FEDCBA 1;
 		goto ready;
 
-	WeaponReadyEmpty:
-		SHTC F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
-		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
-		Loop;
-	WeaponReady2Empty:
-		SHTC L 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
-		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
-		Loop;
-
 	AltFire:
 		TNT1 A 0 {
-			A_StartSound("uni/clothfoleys", 0, CHANF_OVERLAP);
+			A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
 			if(findinventory("AimingToken"))
 			{
 				A_setinventory("AimingToken",0);
@@ -189,9 +180,11 @@ class BW_Trenchgun : BaseBWWeapon
 		goto Ready_ADS;
 
 	ReloadADS:
-		BTGT DCBA 1;
+		TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
+		BTGT DCBA 1;
 	Reload:
+		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
 		TNT1 A 0 BW_CheckReload("Reload2","Ready","ready",7);
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);

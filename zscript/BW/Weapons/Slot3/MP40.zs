@@ -60,7 +60,11 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 		Ready:
 			MP4U E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER2);
 			loop;
+		Ready_ADS:
+			MP4C A 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER2);
+			loop;
 		Fire:
+			TNT1 A 0 BW_JumpifAiming("Fire_ADS");
 			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
 			MP4F A 1 bright BW_MP40Fire();
 			MP4F B 1 bright;
@@ -68,15 +72,52 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			MP4F C 1 A_Startsound("MP40/FireMech",5,CHANF_OVERLAP, 0.8);
 			MP4F D 1;
 			MP4U E 1 A_Refire();
-			MP4U E 1;
 			goto ready;
+		Fire_ADS:
+			TNT1 A 0 BW_PrefireCheck(1,"Reload_ADS","DryFire_ADS");
+			MP4C B 1 bright BW_MP40Fire();
+			MP4C C 1;
+			TNT1 A 0 A_ZoomFactor(1.2);
+			MP4C D 1 A_Startsound("MP40/FireMech",5,CHANF_OVERLAP, 0.8);
+			MP4C C 1;
+			MP4C A 1 A_Refire();
+			Goto Ready_ADS;
 		
 		DryFire:
 			MP4U E 1;
 			goto ready;
+		DryFire_ADS:
+			MP4C A 1;
+			goto ready_ADS;
+		
 		NoAmmo:
+			TNT1 A 0 BW_JumpifAiming("NoAmmo_ADS");
 			MP4U E 1;
 			goto ready;
+		NoAmmo_ADS:
+			MP4C A 1;
+			goto ready_ADS;
+		
+		AltFire:
+			TNT1 A 0
+			{
+				A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
+				if(findinventory("AimingToken"))
+				{
+					A_setinventory("AimingToken",0);
+					return resolvestate("StopAim");
+				}
+				A_setinventory("AimingToken",1);
+				return resolvestate(null);
+			}
+		StartAim:
+			TNT1 A 0 A_ZoomFactor(1.2);
+			MP4B ABCD 1;
+			goto Ready_ADS;
+		StopAim:
+			TNT1 A 0 A_ZoomFactor(1.0);
+			MP4B DCBA 1;
+			goto Ready;
 		
 		KickFlash:
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
@@ -108,7 +149,13 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			MP4U ABCD 1;
 			stop;
 			//goto ready;
+			
+		ReloadADS:
+			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
+			TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
+			MP4B DCBA 1;
 		Reload:
+			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",32,1);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;

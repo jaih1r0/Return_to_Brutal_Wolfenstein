@@ -13,6 +13,9 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 			Scale 1; //Make sure to adjust the values in the See state to match these
 			BloodColor "Red";
 			
+			BW_MonsterBase.headheight 38;
+			BW_MonsterBase.feetheight 19;
+			
 			BW_MonsterBase.AttackRange 1600; //32 Dmu (1 meter) * 50 (55 yards effective range of Luger)
 			BW_MonsterBase.CanIRoll true;
 			SeeSound "Nazi/Generic/sight";

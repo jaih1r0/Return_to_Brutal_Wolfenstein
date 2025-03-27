@@ -18,7 +18,8 @@ Class BW_MonsterBase : Actor
 	default
 	{
 		BW_MonsterBase.headheight 38;
-		BW_MonsterBase.feetheight 15;
+		BW_MonsterBase.feetheight 18;
+		//thisll need to be adjusted on a monster per monster basis still.
 		BW_MonsterBase.HeadShotMult 1.75;
 		BW_MonsterBase.HasHeadshot true;
 		
@@ -30,6 +31,7 @@ Class BW_MonsterBase : Actor
 		+ROLLSPRITE;
 		+ROLLCENTER;
 		+FORCEPAIN;
+		+STRETCHPIXELS;
 		
 		health 100;
 		MaxStepHeight 24;
