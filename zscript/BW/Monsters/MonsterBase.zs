@@ -31,7 +31,7 @@ Class BW_MonsterBase : Actor
 		+ROLLSPRITE;
 		+ROLLCENTER;
 		+FORCEPAIN;
-		//+STRETCHPIXELS;
+		+STRETCHPIXELS;
 		
 		health 100;
 		MaxStepHeight 24;
