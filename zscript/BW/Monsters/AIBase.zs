@@ -167,6 +167,7 @@ extend class BW_MonsterBase
 		}
 	}
 	
+	int footstepWait;
 	//Tick and PostBeginPlay stuff
 	override void Tick()
 	{
@@ -176,6 +177,16 @@ extend class BW_MonsterBase
 		{
 			AttackDelay = 0;
 		}
+		
+		//if(vel.xy.length() > 1)	//monster do not get vel when walking
+		//	PlayFootsteps();
+		//this would be more accurate if done in the states, but its easier to do it from here
+		if(footstepWait-- <= 0 && pos.z <= floorz + 1 && levellocals.Vec2Diff(prev.xy,pos.xy).length() > 3)
+		{
+			PlayFootsteps();
+			footstepWait = 9;
+		}
+
 		if(BW_Debug)
 		{
 			testhitzones();
