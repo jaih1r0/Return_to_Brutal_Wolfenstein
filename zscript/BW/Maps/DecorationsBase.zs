@@ -797,6 +797,145 @@ Class BW_Tree1 : BW_ShootableDecoration replaces LiveStick
     }
 }
 
+Class BW_CagedSkelly : BW_ShootableDecoration replaces HangTLookingDown
+{
+    default
+    {
+        Radius 16;
+        Height 54;
+        health 15;
+        deathheight 38;
+    }
+    states
+    {
+        spawn:
+            HDB3 A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            GAB1 ABC 3;
+            GAB1 D -1;
+            stop;
+    }
+}
+
+Class BW_Cage : BW_CagedSkelly replaces meat3
+{
+    states
+    {
+        spawn:
+            SUIN E -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            GAB1 ABC 3;
+            GAB1 D -1;
+            stop;
+    }
+}
+
+Class BW_Bush : BW_Decoration replaces TallRedColumn
+{
+    default
+    {
+        Radius 16;
+        Height 54;
+        Projectilepassheight -16;
+        -SOLID;
+    }
+    states
+    {
+        spawn:
+            COL3 A -1;
+            stop;
+    }
+}
+
+Class BW_Stove : BW_ShootableDecoration replaces DeadStick
+{
+    default
+    {
+        Health 20;
+        Radius 16;
+        Height 80;
+        damagetype "Explosive";
+    }
+    states
+    {
+        spawn:
+            POL1 A -1;
+            stop;
+        Death:
+            DAMN AB 2;
+            TNT1 A 0 A_Scream();
+            TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
+            TNT1 A 0 A_Explode(400,200);
+            BEXP Z 1;
+            stop;
+    }
+}
+
+Class BW_BoneStack : BW_ShootableDecoration replaces ColonGibs
+{
+    default
+    {
+        Radius 16;
+        Height 20;
+        health 150;
+        deathheight 38;
+    }
+    states
+    {
+        spawn:
+            POB1 A -1;
+            stop;
+        Death:
+            TNT1 A 1;
+            stop;
+    }
+}
+
+Class BW_BloodyBoneStack : BW_BoneStack replaces Meat4
+{
+    states
+    {
+        spawn:
+            HDB6 A -1;
+            stop;
+    }
+    
+}
+
+Class BW_Skelly : BW_BoneStack replaces BrainStem
+{
+    states
+    {
+        spawn:
+            BRS1 A -1;
+            stop;
+    }
+}
+
+Class BW_Bed : BW_ShootableDecoration replaces HeadCandles
+{
+    default
+    {
+        Radius 16;
+        Height 30;
+        health 50;
+        deathheight 38;
+    }
+    states
+    {
+        spawn:
+            POL3 A -1;
+            stop;
+        Death:
+            TNT1 A 1;
+            stop;
+    }
+}
+
 //not really a shootable, not really a decoration
 Class BW_StairsHitBox : actor   
 {
