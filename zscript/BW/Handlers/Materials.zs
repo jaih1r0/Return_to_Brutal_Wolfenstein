@@ -154,6 +154,14 @@ Class BW_StaticHandler : StaticEventHandler
 			self.MaterialImpactSnd.push("bullet_water");
 			self.MaterialTextures.push(self.SlimeDef[i]);
 		}
+
+		for(int i = 0; i < self.acidDef.size(); i++)
+		{
+			self.MaterialTypes.push("Acid");	//brown watha
+			self.MaterialStep.push("step/slime");
+			self.MaterialImpactSnd.push("bullet_water");
+			self.MaterialTextures.push(self.acidDef[i]);
+		}
 		
 		for(int i = 0; i < self.PurpleLiqDef.size(); i++)
 		{
@@ -317,7 +325,11 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string SlimeDef[] = {
-		"SLIME01","SLIME05","Nukage1"
+		"SLIME01","SLIME05"//,"Nukage1"
+	};
+
+	static const string acidDef[] = {
+		"Nukage1"
 	};
 	
 	static const string PurpleLiqDef[] = {
@@ -352,133 +364,4 @@ Class BW_StaticHandler : StaticEventHandler
 }
 
 
-Class FootStepsManager : thinker
-{
-	PlayerPawn follow;
-	int refresh;
-	bool enabled;
-	int cvarsavetics;
-	override void tick()
-	{
-		if(!follow)
-			return;
-		if(cvarsavetics++ >= 35)
-		{
-			enabled = !cvar.getcvar("BW_DisablePlayerFootsteps",follow.player).getbool();
-			cvarsavetics = 0;
-		}
-		if(refresh > 0)
-		{
-			refresh--;
-			return;
-		}
-		if(!enabled)
-			return;
-		double vl = follow.vel.xy.length();
-		bool onground = (follow.pos.z <= follow.floorz + 1);
-		//console.printf(""..vl);
-		if(vl > 0.5 && onground)
-		{
-			sound snd = BW_StaticHandler.getmaterialstep(texman.getname(follow.floorpic));
-			double vol = FootStepsManager.LinearMap(vl,3,14,0.5,1.0);
-			follow.A_Startsound(snd,CHAN_AUTO,volume:(BW_FootstepsVol * vol),pitch: frandom(0.95,1.05));
-			refresh = FootStepsManager.LinearMap(vl,3,14,24,10);
-		}
-		else
-			refresh = 3;
-	}
-	
-	void Init(PlayerPawn toAttach)
-    {
-        follow = toAttach;
-        refresh = 2;
-		enabled = !cvar.getcvar("BW_DisablePlayerFootsteps",toAttach.player).getbool();
-	}
-	
-	clearScope Static Double LinearMap(Double Val, Double O_Min, Double O_Max, Double N_Min, Double N_Max) 
-	{
-		Return (Val - O_Min) * (N_Max - N_Min) / (O_Max - O_Min) + N_Min;
-	}
-	
-}
 
-class BW_EventHandler : EventHandler
-{
-	override void playerentered(playerevent e)
-	{
-		let ft = FootStepsManager(new("FootStepsManager"));
-		let pmo = players[e.playernumber].mo;
-		if(ft && pmo)
-			ft.init(pmo);
-		
-		players[e.PlayerNumber].mo.A_GiveInventory("Z_NashMove", 1);
-	}
-	
-	int kicktimer;
-	int KnifeTimer;
-	const kickcooldown = 18;
-	
-    override void WorldTick()
-    {
-        PlayerInfo plyr = players[consoleplayer];
-
-		if(kicktimer > 0)
-			kicktimer--;
-		if(KnifeTimer > 0)
-			KnifeTimer--;
-    }
-	
-    override void NetworkProcess(ConsoleEvent e)
-    {
-        let pl = players[e.Player].mo;
-        if(!pl)
-         return;
-
-		if (e.Name ~== "KickEm")
-		{	
-			if(kicktimer <= 0)
-			{
-				let wp = pl.player.readyweapon;
-				if(!wp)
-					return;
-				let psp = pl.player.findpsprite(-3);
-				if(!psp)	//is already kicking
-				{
-					//pl.A_GiveInventory("DoKick");
-					let ks = wp.resolvestate("DoKick");
-					if(ks)
-						pl.player.SetPSprite(-3,ks);
-					//let kf = wp.resolvestate("KickFlash");
-					//if(kf)
-					//	pl.player.SetPSprite(PSP_WEAPON,kf);
-					kicktimer = 18;
-				}
-				
-			}
-		}
-
-		if (e.Name ~== "SlashEm")
-		{	
-			if(KnifeTimer <= 0)
-			{
-				let wp = pl.player.readyweapon;
-				if(!wp)
-					return;
-
-				if(pl.findinventory("AimingToken"))	//currently aiming, abort mission
-					return;
-
-				let psp = pl.player.findpsprite(-4);
-				if(psp)	//is already knifing
-					return;
-				
-				let ks = wp.resolvestate("KnifeAttack");
-				if(ks)
-					pl.player.SetPSprite(PSP_WEAPON,ks);
-				KnifeTimer = 12;
-				
-			}
-		}
-
-	}
-}

@@ -416,6 +416,41 @@ Class BW_vase3 : BW_ShootableDecoration Replaces Stalagtite
     }
 }
 
+Class BW_vasePlant1 : BW_ShootableDecoration    //7059
+{
+    default
+    {
+        health 20;
+        deathheight 38;
+        Radius 16;
+        Height 54;
+    }
+    states
+    {
+        spawn:
+            PLNT A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            PLNT C -1;
+            stop;
+    }
+}
+
+Class BW_vasePlant2 : BW_vasePlant1 //7060
+{
+    states
+    {
+        spawn:
+            PLMT A -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            PLMT C -1;
+            stop;
+    }
+}
+
 //flags
 
 Class BW_ThirdReachFlag : BW_ShootableDecoration replaces HeadOnAStick
@@ -534,6 +569,8 @@ Class BW_HealingWell : BW_Well1
             }
             toucher.givebody(giveamt); 
             setstatelabel("Used");
+            toucher.A_Setblend(0x98F5F9,0.1,7);
+            A_Startsound("misc/health_pkup");
             toucher.A_log(string.format("You drank from a pit! (+%d health)",giveamt));
             //A_Startsound();
         }

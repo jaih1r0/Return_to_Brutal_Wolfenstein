@@ -462,3 +462,14 @@ DecalGroup Impact_Wood
 	Impact_Wood2 1
 	Impact_Wood3 1
 }
+
+decal KnifeChip
+{
+	pic CHIP1
+	translucent 0.8
+	shade "00 00 00"
+	x-scale 0.45
+	y-scale 0.1
+	randomflipx
+	randomflipy
+}

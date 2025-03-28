@@ -1,4 +1,4 @@
-Class BW_Fists : BaseBWWeapon replaces fists
+Class BW_Fists : BaseBWWeapon replaces fist
 {
     default
     {

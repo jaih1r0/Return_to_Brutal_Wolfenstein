@@ -31,6 +31,8 @@ DoomEdNums
 	7024 = "BW_FoodBarrel"
 	7025 = "BW_GrenadeBarrel"
 	7055 = "BW_BJYeah"
+	7059 = "BW_vasePlant1"
+	7060 = "BW_vasePlant2"
 
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"

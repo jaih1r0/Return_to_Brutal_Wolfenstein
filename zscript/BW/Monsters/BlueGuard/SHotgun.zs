@@ -12,6 +12,7 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			PainChance 256;
 			Scale 1; //Make sure to adjust the values in the See state to match these
 			BloodColor "Red";
+			translation "197:207=5:8", "240:247=6:8";	//"197:207=16:47", "240:247=187:191";//just to avoid them looking exactly the same
 			
 			BW_MonsterBase.headheight 42; //Taller, so zones are different
 			BW_MonsterBase.feetheight 22;

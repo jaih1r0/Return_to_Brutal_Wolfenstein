@@ -1,21 +1,43 @@
 
-/*LISTMENU "MainMenu"
+LISTMENU "MainMenu"
 {
-		StaticPatch 99, 2, "M_DOOM"
+		//StaticPatch 99, 2, "M_DOOM"
+		StaticPatch 90, -2, "M_DOOM"
+		
 		Position 102, 42
-		PatchItem "M_NGAME",  "n", "PlayerclassMenu"
+		TextItem "New Game", "n", "PlayerclassMenu"
+		ifOption(SwapMenu)
+		{
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "RTBW Options", "p", "RTBW_OptionsMenu"
+		}
+		else
+		{
+			TextItem "Options", "o", "OptionsMenu"
+			TextItem "RTBW Options", "p", "RTBW_OptionsMenu"
+			TextItem "Load Game", "l", "LoadGameMenu"
+			TextItem "Save Game", "s", "SaveGameMenu"
+		}
+		ifOption(ReadThis)
+		{
+			TextItem "Read This!","r", "ReadThisMenu"
+		}
+		TextItem "Quit Game", "q", "QuitMenu"
+		/*PatchItem "M_NGAME",  "n", "PlayerclassMenu"
 		//PatchItem "M_RDTHIS", "b", "ReadThisMenu"
-		PatchItem "M_BWOPT2", "c", "BWOPZION"
+		PatchItem "M_BWOPT2", "c", "RTBW_OptionsMenu"
 		PatchItem "M_LOADG", "l", "LoadGameMenu"
 		PatchItem "M_SAVEG", "s", "SaveGameMenu"
 		PatchItem "M_OPTION", "o", "OptionsMenu"
 		//TextItem "READ THIS!",  "r", "ReadThisMenu"
-		patchitem "M_QUITG", "q", "QuitMenu"
-}*/
+		patchitem "M_QUITG", "q", "QuitMenu"*/
+}
 
 addoptionmenu "optionsmenu"
 {
-	submenu "RTBW Options","BWOPZION"
+	submenu "RTBW Options","RTBW_OptionsMenu"
 }
 
 
@@ -25,7 +47,7 @@ optionvalue "BWProjectileType"
 	1,"Projectiles"
 }
 
-OptionMenu BWOPZION
+OptionMenu RTBW_OptionsMenu
 {
 	Title "Return to brutal wolfenstein menu"
 	//Submenu	"Gore Settings","BologneseOptions"
@@ -36,6 +58,12 @@ OptionMenu BWOPZION
 	control "Kick/Slide","netevent KickEm"
 	statictext ""
 	control "Knife","netevent SlashEm"
+	statictext ""
+	option "Disable footsteps","BW_DisablePlayerFootsteps","OnOff"
+	statictext ""
+	slider "Footsteps volume","BW_FootstepsVol",0.0,1.0,0.1
+	statictext ""
+	slider "Enemy footsteps volume","BW_enemyFootstepsVol",0.0,1.0,0.1
 	/*
 	statictext "=== Unused ==="
 	statictext ""
@@ -182,178 +210,6 @@ Command "I'm a death incarnate!","9ANKSTEIN4"
 Command "UBER","9ANKSTEIN5"
 }
 
-OptionMenu "bwqui"
-{
- Title "Brutal Wolfenstein Arsenal Slot 1 2 3 4 5 6 7 8 "
-}
-OptionMenu "GAMEMODEOP"
-{
-Title "GameModes options"
-Option "GameMode","explodey_coopera","Option7"
-StaticText "This option need to be consider about the gamemode you're playing"
-StaticText "If you want to open a online cooperative server"
-StaticText "write in the commands tab '+explodey_coopera 1' before to start it"
-}
-
-OptionMenu "EnemyMenu"
-{
-  Title "Enemies Options"
-  StaticText "The following options needs the restart of the map for work"
-  StaticText "For live the intended experience of Brutal Wolfenstein,don't change anything."
-  StaticText ""
-  Option "Enemy Spawns", "explodey_zombies", "Option1"
-  StaticText ""
-  StaticText "Select the way enemies should spawn "
-  Statictext ""
-  StaticText ""
-  Option "Animal person","explodey_kamikas","option6"
-  StaticText ""
-  StaticText "Replace the dogs with something else...."
-}
-
-OptionMenu "PropMenu"
-{
-Title "Props. Options"
-StaticText "The following options needs the restart of the map for work"
-StaticText "For live the intended experience of Brutal Wolfenstein,don't change anything."
-StaticText ""
-StaticText "" 
-Option "Wooden Barrels spawns","explodey_barrels","Option2"
-StaticText ""
-StaticText "Select the way Wooden barrels should spawn                 "
-StaticText ""
-StaticText ""
-Option "Knights spawns","explodey_knights","Option3"
-StaticText ""
-StaticText "Select the way Knights should spawn  "
-}
-
-OptionMenu "WeaponMenu"
-{
-Title "Weapons options"
-StaticText "The following options needs the restart of the map for work"
-StaticText "For live the intended experience of Brutal Wolfenstein,don't change anything."
-StaticText ""
-StaticText ""
-Option "Ammo spawns","explodey_Ammohts","Option4"
-StaticText ""
-StaticText "Select the way ammo should spawn"
-StaticText ""
-StaticText ""
-Option "Weapons spawns","explodey_weapons","Option5"
-StaticText ""
-StaticText "Select the way weapons should spawn"
-}
-
-
-
-  
-  OptionValue "Option1"
-{
-	0, "Default"
-	1, "Normal random"
-	2, "Insane random"
-}
-
-  OptionValue "Option2"
-{
-	0, "Default"
-	1, "random"
-}
-
-  OptionValue "Option3"
-{
-	0, "Default"
-	1, "random"
-}
-
-  OptionValue "Option4"
-{
-	0, "Default"
-	1, "Random(Germans weapons)"
-	2, "Random(Germans and Allied ammo)"
-}
-
-  OptionValue "Option5"
-{
-	0, "Default"
-	1, "Random(Germans weapons)"
-	2, "Random(Germans and Allied weapons)"
-}
-
-  OptionValue "Option6"
-{
-	0, "Disabled"
-	1, "Enabled"
-}
-
-  OptionValue "Option7"
-{
-	0, "SinglePlayer"
-	1, "Cooperative"
-}
-
-  OptionValue "Option8"
-{
-	0, "16:9"
-	1, "4:3"
-}
-
-OptionValue "Option9"
-{
-	0, "No"
-	1, "Yes"
-}
-
-
-
-OptionValue "YesOrNo"
-{
-	0, "No"
-	1, "Yes"
-}
-
-
-OptionValue "YesOrNoFalse"
-{
-	1, "No"
-	0, "Yes"
-}
-
-
-OptionValue "SelectEngineType"
-{
-	1, "Multiplayer"
-	0, "Singleplayer"
-}
-
-
-
-OptionValue "maxdecals"
-{
-	1, "0"
-	128, "128"
-	512, "512"
-	1024, "1024"
-	2056, "2056"
-	5102, "5102"
-	9999, "9999"
-}
-
-
-OptionValue "maxgibs"
-{
-	1, "0"
-	64, "64"
-	100, "100"
-	500, "500"
-	1000, "1000"
-	2000, "2000"
-	5000, "5000"
-	10000, "10000"
-	25000, "25000"
-	50000, "50000"
-}
 
 //
 //

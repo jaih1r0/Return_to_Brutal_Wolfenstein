@@ -1,11 +1,14 @@
 Version 4.3
 
-#include "zscript/BW/Materials.zs"
+#include "zscript/BW/Handlers/Materials.zs"
+#include "zscript/BW/Handlers/BWHandler.zs"
 #include "zscript/BW/Weapons/WeaponBase.zs"
 #include "zscript/BW/Weapons/BWProjectiles.zs"
 #include "zscript/BW/Monsters/MonsterBase.zs"
 #include "zscript/BW/Monsters/AIBase.zs"
 #include "zscript/BW/Effects/Effects.zs"
+#include "zscript/BW/Effects/Puffs.zs"
+#include "zscript/BW/Effects/Footsteps.zs"
 #include "zscript/BW/Hud/BWHud.zs"
 #include "zscript/BW/Player/BWPlayer.zs"
 
