@@ -198,7 +198,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGR LM 1;
 		TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
 		BTGR N 1 BW_AmmointoMagSingle(7,1);
-		BTGR OPQQQ 1;
+		BTGR OPQQQ 1 A_WeaponReady(WRF_NOSWITCH);
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 		BTGR RS 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");

@@ -14,6 +14,8 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 		Inventory.PickupSound "weapons/pistol/pickup";
 		Obituary "$OB_MPPISTOL";
 		Inventory.Pickupmessage "[Slot 3] Maschinenpistole 40";
+		+weapon.noautofire;
+		+weapon.noalert;
 	}
 	
 	action void BW_MP40Fire()

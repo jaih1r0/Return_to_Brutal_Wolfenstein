@@ -20,7 +20,7 @@ Class BW_MonsterBase : Actor
 		BW_MonsterBase.headheight 38;
 		BW_MonsterBase.feetheight 18;
 		//thisll need to be adjusted on a monster per monster basis still.
-		BW_MonsterBase.HeadShotMult 1.75;
+		BW_MonsterBase.HeadShotMult 2.0;	//1.75
 		BW_MonsterBase.HasHeadshot true;
 		
 		Monster;
