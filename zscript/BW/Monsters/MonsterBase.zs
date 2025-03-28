@@ -136,12 +136,12 @@ Class BW_MonsterBase : Actor
 		
 	}
 	
-	Void PlayFootsteps()
+	virtual void PlayFootsteps()
 	{
 		if(health < 1)
 			return;
 		sound snd = BW_StaticHandler.getmaterialstep(texman.getname(floorpic));
-		A_Startsound(snd,CHAN_AUTO);
+		A_Startsound(snd,CHAN_AUTO,volume:BW_enemyFootstepsVol,attenuation:(1200/700));
 		// 
 	}
 	
