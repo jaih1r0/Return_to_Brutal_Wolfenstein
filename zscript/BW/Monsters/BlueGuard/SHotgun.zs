@@ -24,7 +24,7 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			ActiveSound "Nazi/Generic/sight";
 			
 			DropItem "Shell", 255, 6;
-			DropItem "BW_Trechgun", 100, 1;
+			DropItem "BW_Trenchgun", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";
 		}
@@ -241,19 +241,19 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			NAZI F 2 BRIGHT FireProjBullets;
 			NAZI E 2 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-			NAZI E 5 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			NAZI E 8 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
-			NAZI E 5 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			NAZI E 8 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			NAZI F 2 BRIGHT FireProjBullets;
 			NAZI E 2 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-			NAZI E 5 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			NAZI E 8 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
-			NAZI E 5 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			NAZI E 8 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			NAZI F 2 BRIGHT FireProjBullets;
 			NAZI E 2 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
-			NAZI E 5 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			NAZI E 8 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
 			NAZI E 5 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			NAZI E 8;
@@ -279,19 +279,30 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			NAZI E 6;
 			Goto See;
 		Reload:
-			NAZI A 6;
-			TNT1 A 0 A_StartSound("MP40/BoltBack", 8, CHANF_OVERLAP, attenuation: 2);
-			NAZR AB 6;
-			NAZR B 12 A_StartSound("MP40/OutEmpty", 8, CHANF_OVERLAP, attenuation: 2);
-			NAZR CDE 6;
-			NAZR B 12 A_StartSound("MP40/InEmpty", 8, CHANF_OVERLAP, attenuation: 2);
+			TNT1 A 0 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_JumpIf(AmmoInMag > 0, "ReloadLoop");
+			NAZR A 6;
+			TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, attenuation: 2);
+			NAZR ADE 4;
+			NAZR B 12 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
+			NAZR A 4 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, attenuation: 2);
 			TNT1 A 0
 			{
-				A_StartSound("MP40/BoltRelease", 8, CHANF_OVERLAP, attenuation: 1.5);
-				AmmoInMag = 7;
+				AmmoInMag++;
 			}
+		ReloadLoop:
 			NAZR A 6;
-			NAZI A 4;
+			NAZR DE 4;
+			NAZR B 4 A_StartSound("Trench/Shell", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0
+			{
+				AmmoInMag++;
+			}
+			TNT1 A 0 A_JumpIf(AmmoInMag == 7, "ReloadEnd");
+			Loop;
+		ReloadEnd:
+			NAZR BA 4;
+			NAZS A 4;
 			Goto See;
 
 		////////////////

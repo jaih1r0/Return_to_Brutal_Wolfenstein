@@ -14,6 +14,47 @@ Class BW_Decoration : Actor abstract
     }
 }
 
+Class BW_BJYeah : BW_Decoration
+{
+	Default
+	{
+	Monster;
+	+FRIENDLY;
+	-COUNTKILL;
+	Radius 8;
+	Height 8;
+	-Solid;
+	ProjectilePassHeight 0.16;
+	}
+	
+	States
+	{
+		Spawn:
+			BJVT A 1;
+			Goto Move;
+		Move:
+			TNT1 A 0 A_Recoil(-5);
+			BJVT AB 4;
+			TNT1 A 0 A_Recoil(-5);
+			BJVT CD 4;
+			TNT1 A 0 A_Recoil(-5);
+			BJVT AB 4;
+			TNT1 A 0 A_Recoil(-5);
+			BJVT CD 4;
+			TNT1 A 0 A_Recoil(-5);
+			BJVT AB 4;
+			TNT1 A 0 A_Recoil(-5);
+			BJVT CD 4;
+			Goto Yeah;
+		Yeah:
+			BJVT EF 5;
+			TNT1 A 0 A_PlaySound("ohyeah");
+			BJVT GH 6;
+			BJVT HHHHHHHHHHHHHHH 600;
+			Stop;
+	}
+}
+
 Class BW_ShootableDecoration : BW_Decoration abstract
 {
     default

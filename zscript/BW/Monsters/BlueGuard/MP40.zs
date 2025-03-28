@@ -1,4 +1,4 @@
-Class BW_BlueGuard_MP40 : BW_MonsterBase replaces ShotgunGuy //[Pop] replace is temporary until spawners are implemented. Do we want to do spawner injection?
+Class BW_BlueGuard_MP40 : BW_MonsterBase 
 {
 		Default
 		{

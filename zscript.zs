@@ -22,6 +22,8 @@ Version 4.3
 #include "zscript/BW/Monsters/BlueGuard/Shotgun.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 
+#include "zscript/BW/Monsters/Spawners.zs"
+
 
 //Map props
 #include "zscript/BW/Maps/DecorationsBase.zs"

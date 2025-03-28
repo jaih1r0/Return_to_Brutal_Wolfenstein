@@ -30,10 +30,11 @@ DoomEdNums
 	7023 = "BW_MP40Barrel"
 	7024 = "BW_FoodBarrel"
 	7025 = "BW_GrenadeBarrel"
+	7055 = "BW_BJYeah"
 
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"
-	7008 = "BW_BlueGuard_MP40"
+	7008 = "BW_ShotgunguySpawner"
 
 	//misc
 	1171 = "BW_StairsHitBox"
