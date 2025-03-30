@@ -18,6 +18,7 @@ Class BW_BulletPuff : Actor replaces bulletpuff
             TNT1 A 0 {
                 for(int i = 0; i < random(2,5); i++)
                     SpawnPuffSpark(pos);
+					spawnFxSmokeBasic();
             }
             FX33 BCDEFGHIJK 1 bright;
 			stop;
@@ -58,6 +59,27 @@ Class BW_BulletPuff : Actor replaces bulletpuff
 		FLARPUF.Lifetime = 4; 
 		FLARPUF.Pos = position;
 		Level.SpawnParticle(FLARPUF);
+	}
+
+	void spawnFxSmokeBasic(string gfx = "PUF2U0", color col = 0xFFFFFF)
+	{
+		FSpawnParticleParams WTFSMK;
+		WTFSMK.Pos = pos;
+        WTFSMK.Texture = TexMan.CheckForTexture(gfx);
+		WTFSMK.Color1 = col;
+		WTFSMK.Style = STYLE_Translucent;
+		WTFSMK.Flags = SPF_ROLL;
+		WTFSMK.Startroll = random(0,360);
+		WTFSMK.RollVel = random(-5,5);
+		WTFSMK.StartAlpha = 0.4;
+		WTFSMK.Size = random(20,30);
+		WTFSMK.SizeStep = 2;
+		WTFSMK.Lifetime = Random(10,18); 
+		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
+		WTFSMK.Vel = (frandom[bscsmk](-0.5,0.5),frandom[bscsmk](-0.5,0.5),frandom[bscsmk](-0.5,0.5));
+		if(CeilingPic == SkyFlatNum)
+			WTFSMK.accel = getwinddir();
+		Level.SpawnParticle (WTFSMK);
 	}
 
     vector3 getwinddir()
@@ -762,7 +784,7 @@ Class BW_KickPuff : BW_BulletPuff
 	{
 		spawn:
 			TNT1 A 0; 
-			TNT1 AAA 0 A_SpawnItemEx("GraySmoke",0,0,0,frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5));
+			TNT1 AAA 0 spawnFxSmokeBasic();//A_SpawnItemEx("GraySmoke",0,0,0,frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5));
 			TNT1 A 1;
 			stop;
 	}

@@ -4,7 +4,8 @@ Class BW_Hud : BaseStatusBar
 	int 			healthCol;
 	double 			alfadeofs;
 	bool 			NoHud;
-	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2;
+	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2,DV_Score;
+	int oldScore, scoreTics;
 	override void Init()
 	{
 		Super.Init();
@@ -14,6 +15,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Armor = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Ammo1 = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Ammo2 = dynamicvalueinterpolator.create(0,1,1,10);
+		DV_Score = dynamicvalueinterpolator.create(0,1,1,10);
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -44,6 +46,8 @@ Class BW_Hud : BaseStatusBar
 		
 		DV_Health.update(pl.health);
 		DV_Armor.update(GetArmorAmount());
+		oldScore = DV_Score.getvalue();
+		DV_Score.update(pl.score);
 		if(cplayer.readyweapon)
 		{
 			Ammo Primary, Secondary;
@@ -53,6 +57,10 @@ Class BW_Hud : BaseStatusBar
 			if(Secondary)
 				DV_Ammo2.update(Secondary.amount);
 		}
+		if(oldScore != DV_Score.getvalue())
+			scoreTics = 70;
+		if(scoreTics)
+			scoreTics--;
 		//NoHud = cplayer.mo.findinventory("DisableHud");
 		/*if(cplayer.mo.findinventory("NoSliding"))
 		{
@@ -153,6 +161,17 @@ Class BW_Hud : BaseStatusBar
 		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(20,35),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
 		drawstring(BWFont,"T: "..level.TimeFormatted(),(20,50),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
 		
+		//score
+		if(scoreTics)
+		{
+			double scalpha = 1.0;
+			double scltx = 1.0;
+			if(scoreTics <= 30)
+				scalpha = BW_Statics.LinearMap(scoreTics,0,30,0.0,1.0);
+			if(scoreTics >= 63)
+				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
+			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-180,20),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
+		}
 		//slide thing
 		//if(pl.findinventory("NoSliding"))
 		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));

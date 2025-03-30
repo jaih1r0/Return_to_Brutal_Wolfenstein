@@ -187,6 +187,32 @@ class BW_Luger : BaseBWWeapon
 		B003 S -1;
 		Stop;
 	
+		KickFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			LUGK ABC 1;
+			LUGK DEF 1;
+			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			LUGK GGG 1;
+			LUGK FEDCBA 1;
+			goto WeaponReady;	//this needs to go to ready instead
+			//goto ready;
+		SlideFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			LUGK ABCD 1;
+			LUGK EFGG 1;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			LUGK GGG 1;
+			LUGK GGG 1;
+			LUGK GGG 1;
+			LUGK GGG 1;
+			LUGK GGG 1;
+			LUGK GGG 1;
+		SlideFlashEnd:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			LUGK FEDCBA 1;
+			goto WeaponReady;
+			//goto ready;
+
 	}
 }
 

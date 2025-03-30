@@ -7,6 +7,8 @@ Gameinfo
 	PlayerClasses = "BWPlayer"
 	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler"
 	StatusBarClass = "BW_Hud"
+	//NormForwardMove = 0x32, 0x32	//Walk speed is modulated through
+	//NormSideMove = 0x32, 0x32		//CVar in the menu options
 }
 DoomEdNums
 {

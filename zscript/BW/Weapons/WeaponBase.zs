@@ -33,6 +33,7 @@ Class BaseBWWeapon : DoomWeapon
 	states
 	{
 		DoKick:
+			//TNT1 A 0 A_OverlayOffset(overlayID(),0,32,WOF_INTERPOLATE);
 			TNT1 A 0 A_jumpif(pos.z <= floorz + 2 && vel.xy.length() > 3 && (player.cmd.buttons & BT_CROUCH),"SlideKick");
 			TNT1 A 0 handlekickFlash();
 			TNT1 A 0 A_StartSound("Player/Kick", 0, CHANF_OVERLAP, 1);
@@ -118,6 +119,32 @@ Class BaseBWWeapon : DoomWeapon
 		KnifeGunFlash:
 			TNT1 A 12;
 			stop;
+		
+		//dummy kick flashes 
+		KickFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 ABC 1;
+			TNT1 DEF 1;
+			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 GGG 1;
+			TNT1 FEDCBA 1;
+			goto WeaponReady;	//this needs to go to ready instead
+			//goto ready;
+		SlideFlash:
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 ABCD 1;
+			TNT1 EFGG 1;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 GGG 1;
+			TNT1 GGG 1;
+			TNT1 GGG 1;
+			TNT1 GGG 1;
+			TNT1 GGG 1;
+			TNT1 GGG 1;
+		SlideFlashEnd:
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 FEDCBA 1;
+			goto WeaponReady;
 			
 
 	}
@@ -491,7 +518,7 @@ Class BaseBWWeapon : DoomWeapon
 	action void CustomFireFunction(double spreadx = 0,double spready = 0,int numbullets = 1,int dmg = 0, string puff = "Bulletpuff", name dmgtype = "Bullet",int fwofs = 0, int sdofs = 0)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset * player.crouchFactor;
-		pz -= 7;	//not sure why the height difference
+		//pz -= 7;	//not sure why the height difference
 		FLineTraceData t;
 		int fb = numbullets == 0 ? 1 : abs(numbullets);
 		for(int i = 0; i < fb; i++)
@@ -610,7 +637,7 @@ Class BaseBWWeapon : DoomWeapon
 		
 		int dmgredc = dmg / max(maxpen,1);
 		double vz = height * 0.5 - floorclip + player.mo.AttackZOffset * player.crouchFactor;
-		vz -= 5;
+		//vz -= 5;
 		Vector3 start = pos + (0,0,vz);
 		//console.printf("dir: "..dir);
 		

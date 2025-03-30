@@ -1,4 +1,4 @@
-Class BWPlayer : PlayerPawn
+Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 {
 	double StillRangeMulti, slideAngle;
 	
@@ -54,13 +54,14 @@ Class BWPlayer : PlayerPawn
 		
 		Player.StartItem "QuickKick", 1;
 		
-		Player.AttackZOffset 10;
+		Player.AttackZOffset 18;//10;
 		Player.ViewBobSpeed 15;
 		Player.ViewHeight 40;
 		Scale 0.8;
 		Player.SoundClass "BWPlayer";
 		Player.Face "STF";
 		Player.DisplayName "William J. Blazkowicz";
+		height 48; //to avoid getting stuck in random stairs
 	}
 
 	override void PlayerLandedMakeGruntSound(Actor onmobj)
@@ -263,6 +264,7 @@ class Z_NashMove : inventory
 		{
 			if (bIsOnFloor())
 			{
+				
 				// bump up the player's speed to compensate for the deceleration
 				// TO DO: math here is shit and wrong, please fix
 				double s = 0.7 + (1.1 - DECEL_MULT); //1.0

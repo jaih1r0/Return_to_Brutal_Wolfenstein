@@ -961,6 +961,7 @@ Class BW_BoneStack : BW_ShootableDecoration replaces ColonGibs
         Height 20;
         health 150;
         deathheight 38;
+        -solid;
     }
     states
     {
