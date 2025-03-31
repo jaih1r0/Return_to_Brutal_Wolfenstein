@@ -238,6 +238,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		//Pain Logic// 
 		////////////////
 		Pain:
+			TNT1 A 0 A_JumpIf(kickeddown, "KickedPain");
 			WBPN G 6 A_Pain();
 			Goto See;
 		Death:
@@ -261,6 +262,32 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		Raise:
 			WBPN MLKJIG 3;
 			Goto Spawn;
+		Pain.Kick:
+			TNT1 A 0
+			{
+				kickeddown = true;
+				A_Pain();
+				A_ChangeVelocity(0, 0, 5, CVF_RELATIVE);
+			}
+			WBNK A 3;
+		KickedLoop:
+			WBNK A 1 A_CheckFloor("Kicked");
+			Loop;
+		KickedPain:
+			WBNK B 10 A_Pain();
+		Kicked:
+			TNT1 A 0 A_CheckFloor(1);
+			Goto KickedLoop;
+			TNT1 A 0;
+			WBNK BC 10;
+			WBNK C random(25,50);
+			WBNK D 10;
+			TNT1 A 0
+			{
+				kickeddown = false;
+				A_ActiveSound();
+			}
+			Goto See;
 		
 		////////////////////
 		//Generic By Actor//
