@@ -278,6 +278,7 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 		//Pain Logic// 
 		////////////////
 		Pain:
+			TNT1 A 0 A_JumpIf(kickeddown, "KickedPain");
 			NAZI G 6 A_Pain();
 			Goto See;
 		Death:
@@ -301,6 +302,33 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 		Raise:
 			NAZI LKJIHG 3;
 			Goto Spawn;
+		Pain.Kick:
+			TNT1 A 0
+			{
+				kickeddown = true;
+				A_Pain();
+				A_ChangeVelocity(0, 0, 5, CVF_RELATIVE);
+			}
+			NAZL A 3;
+		KickedLoop:
+			NAZL A 1 A_CheckFloor("Kicked");
+			Loop;
+		KickedPain:
+			NAZL B 10 A_Pain();
+		Kicked:
+			TNT1 A 0 A_CheckFloor(1);
+			Goto KickedLoop;
+			TNT1 A 0;
+			NAZL BC 10;
+			NAZL C random(25,50);
+			NAZL D 10;
+			TNT1 A 0
+			{
+				kickeddown = false;
+				A_ActiveSound();
+			}
+			Goto See;
+		
 		
 		////////////////////
 		//Generic By Actor//

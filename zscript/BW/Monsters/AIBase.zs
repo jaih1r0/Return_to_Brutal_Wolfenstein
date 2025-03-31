@@ -5,6 +5,8 @@ extend class BW_MonsterBase
 	bool willBeLooking;
 	int heardOpponent;
 	
+	bool kickeddown;
+	
 	int ActiveSoundPlayChance;
 	int MissileChance;
 	int FallbackChance;
@@ -198,6 +200,7 @@ extend class BW_MonsterBase
 		Super.PostBeginPlay();
 		heardOpponent = 0;
 		AttackDelay = 25;
+		kickeddown = false;
 	}
 	
 	default
