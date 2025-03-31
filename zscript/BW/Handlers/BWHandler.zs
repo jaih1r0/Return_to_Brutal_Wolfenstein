@@ -13,16 +13,37 @@ class BW_EventHandler : EventHandler
 	int kicktimer;
 	int KnifeTimer;
 	const kickcooldown = 18;
-	
+
+	//this only works for singleplayer, for mp these would need to be an array and acount for all players
+	int ComboTimer;
+	int ComboCounter;
+	const ComboSpace = TICRATE * 5;	//5 secs, probably would be better to turn this into a cvar
+	string lastWeap;
+
+	clearscope int, int getcomboinfo() const	//this is used only to retrieve info to the hud
+	{
+		return ComboTimer,ComboCounter;
+	}
+
     override void WorldTick()
     {
-        PlayerInfo plyr = players[consoleplayer];
+        //PlayerInfo plyr = players[consoleplayer];
 
 		if(kicktimer > 0)
 			kicktimer--;
 		if(KnifeTimer > 0)
 			KnifeTimer--;
+		if(ComboTimer > 0)
+			ComboTimer--;
+		else
+			ComboCounter = 0;
     }
+
+	override void WorldThingDied(WorldEvent e)
+	{
+		if(e.thing && e.thing.bismonster)
+			HandleKillCombos(e.thing);
+	}
 	
     override void NetworkProcess(ConsoleEvent e)
     {
@@ -76,5 +97,30 @@ class BW_EventHandler : EventHandler
 			}
 		}
 
+	}
+
+	//basic version of a combo system
+	void HandleKillCombos(actor victim)
+	{
+		if(!victim)	//no monster killed
+			return;
+		if(!victim.target || !victim.target.player)	//monster was not killed by player
+			return;
+		let plr = victim.target.player.mo;
+		int givescore = clamp(victim.spawnhealth(),1,100);
+		
+		if(ComboCounter > 0)
+			givescore *= ComboCounter;
+		//incentivize weapon combos
+		/*if(plr.player.readyweapon && plr.player.readyweapon.getclassname() != lastWeap)
+		{
+			lastWeap = plr.player.readyweapon.getclassname();
+			givescore *= 2;
+		}*/
+		int sc = plr.score;
+		plr.score += givescore;
+		
+		ComboTimer = ComboSpace;
+		ComboCounter++;
 	}
 }

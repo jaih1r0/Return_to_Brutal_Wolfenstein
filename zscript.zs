@@ -10,6 +10,7 @@ Version 4.3
 #include "zscript/BW/Effects/Effects.zs"
 #include "zscript/BW/Effects/Puffs.zs"
 #include "zscript/BW/Effects/Footsteps.zs"
+#include "zscript/BW/Effects/Debris.zs"
 #include "zscript/BW/Hud/BWHud.zs"
 #include "zscript/BW/Player/BWPlayer.zs"
 
@@ -34,6 +35,7 @@ Version 4.3
 
 //Items
 #include "zscript/BW/Items/Treasures.zs"
+#include "zscript/BW/Items/Armor.zs"
 
 //NashGore
 #include "zscript/NashGore/NashGoreMath.zc"
