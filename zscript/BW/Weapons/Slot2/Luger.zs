@@ -21,7 +21,7 @@ class BW_Luger : BaseBWWeapon
 		Obituary "$OB_MPPISTOL";
 		Inventory.Pickupmessage "[Slot 2] Pistole Parabellum";
 		Tag "Luger P-08";
-		Scale 1;
+		Scale 0.35;
 		Inventory.PickupSound "weapons/pistol/pickup";
 		+WEAPON.NOALERT;
 		+WEAPON.AMMO_OPTIONAL;
@@ -184,7 +184,7 @@ class BW_Luger : BaseBWWeapon
 		ZLUR IHGFEDCBA 1;
 		Goto WeaponReady;
  	Spawn:
-		B003 S -1;
+		BLGW A -1;
 		Stop;
 	
 		KickFlash:

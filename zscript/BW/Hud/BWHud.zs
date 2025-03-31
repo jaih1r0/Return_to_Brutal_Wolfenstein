@@ -6,6 +6,8 @@ Class BW_Hud : BaseStatusBar
 	bool 			NoHud;
 	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2,DV_Score;
 	int oldScore, scoreTics;
+	BW_EventHandler scorehandler;
+	int combo_timer,combo_counter;
 	override void Init()
 	{
 		Super.Init();
@@ -44,6 +46,9 @@ Class BW_Hud : BaseStatusBar
 		else
 			healthcol = Font.CR_YELLOW;
 		
+		if(!scorehandler)
+			scorehandler = BW_EventHandler(EventHandler.find("BW_EventHandler"));
+
 		DV_Health.update(pl.health);
 		DV_Armor.update(GetArmorAmount());
 		oldScore = DV_Score.getvalue();
@@ -61,7 +66,9 @@ Class BW_Hud : BaseStatusBar
 			scoreTics = 70;
 		if(scoreTics)
 			scoreTics--;
-		//NoHud = cplayer.mo.findinventory("DisableHud");
+		if(scorehandler)
+			[combo_timer,combo_counter] = scorehandler.getcomboinfo();
+		NoHud = cplayer.mo.findinventory("DisableHud");
 		/*if(cplayer.mo.findinventory("NoSliding"))
 		{
 			alfadeofs += 0.01;
@@ -172,6 +179,8 @@ Class BW_Hud : BaseStatusBar
 				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
 			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-180,20),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
 		}
+		drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
+		drawstring(BWFont,string.format("Counter %d",combo_counter),(-180,40),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
 		//slide thing
 		//if(pl.findinventory("NoSliding"))
 		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
@@ -250,4 +259,13 @@ Class BW_Hud : BaseStatusBar
 		}
 	}
 	
+}
+
+
+Class DisableHud : inventory
+{
+	default
+	{
+		inventory.maxamount 1;
+	}
 }

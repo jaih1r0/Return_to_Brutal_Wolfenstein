@@ -13,6 +13,7 @@ Gameinfo
 DoomEdNums
 {
 	//items
+	132 = "BW_Helmet"
 	200 = "BW_Treasure_Cross"
 	300 = "BW_Treasure_Chalice"
 	400 = "BW_Treasure_Chest"
