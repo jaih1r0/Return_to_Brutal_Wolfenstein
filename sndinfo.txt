@@ -177,3 +177,17 @@ $random Barrel/Explosion
 $rolloff Barrel/Explosion1 200 700
 $rolloff Barrel/Explosion2 200 700
 $rolloff Barrel/Explosion3 200 700
+
+Casing/Brass1		"Sounds/Weapons/Casings/DSCASIN1.ogg"
+Casing/Brass2		"Sounds/Weapons/Casings/DSCASIN2.ogg"
+Casing/Brass3		"Sounds/Weapons/Casings/DSCASIN3.ogg"
+Casing/Brass4		"Sounds/Weapons/Casings/DSCASIN4.ogg"
+Casing/Brass5		"Sounds/Weapons/Casings/DSCASIN5.ogg"
+$random Casing/Brass
+{
+	Casing/Brass1
+	Casing/Brass2
+	Casing/Brass3
+	Casing/Brass4
+	Casing/Brass5
+}

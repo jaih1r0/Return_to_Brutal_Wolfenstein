@@ -6,7 +6,7 @@ Class BW_Treasure : scoreitem
         +INVENTORY.ALWAYSPICKUP;
         +Inventory.Neverrespawn;
         Inventory.MaxAmount 0;
-        Inventory.PickupSound "pickups/cup";
+        Inventory.PickupSound "pickup/treasure";
         Inventory.PickupMessage "treasure";
     }
 }

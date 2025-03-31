@@ -1,0 +1,28 @@
+pickup/armorbonus1            "Sounds/Items/Armor/DSTLPIC1.ogg"
+pickup/armorbonus2            "Sounds/Items/Armor/DSTLPIC2.ogg"
+pickup/armorbonus3            "Sounds/Items/Armor/DSTLPIC3.ogg"
+$random pickup/armorbonus
+{
+    pickup/armorbonus1
+    pickup/armorbonus2
+    pickup/armorbonus3
+}
+
+pickup/key1             "Sounds/Items/Key/RE4KEY1.ogg"
+pickup/key2             "Sounds/Items/Key/RE4KEY2.ogg"
+$random pickup/key
+{
+    pickup/key1
+    pickup/key2
+}
+$alias misc/k_pkup pickup/key
+$volume misc/k_pkup 0.8
+
+pickup/treasure1         "Sounds/Items/Treasure/RE4GET1.ogg"
+pickup/treasure2         "Sounds/Items/Treasure/RE4GET2.ogg"
+$random pickup/treasure
+{
+    pickup/treasure1
+    pickup/treasure2
+}
+$volume pickup/treasure 0.8

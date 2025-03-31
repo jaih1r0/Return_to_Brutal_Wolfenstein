@@ -226,7 +226,7 @@ Class BaseBWWeapon : DoomWeapon
 		return resolvestate(null);
 	}
 
-	action void HandleKick(int dist = 60,int dmg = 20)
+	action void HandleKick(int dist = 70,int dmg = 20)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData t;
@@ -257,7 +257,7 @@ Class BaseBWWeapon : DoomWeapon
 
 	}
 
-	action state BW_HandleKnife(int dist = 50, int dmg = 30)
+	action state BW_HandleKnife(int dist = 70, int dmg = 50)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData t;
@@ -272,7 +272,7 @@ Class BaseBWWeapon : DoomWeapon
                 {
 					if(!victim.target)	//wasnt alerted yet
 						dmg *= 2;
-					victim.damagemobj(puf,self,dmg,"Melee");
+					
                     if(victim.bNOBLOOD || victim.bINVULNERABLE || victim.bDORMANT || 
 						victim.bREFLECTIVE || (victim.bsolid && ! victim.bShootable))
 						puf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);	//non bleeding enemy
@@ -281,6 +281,7 @@ Class BaseBWWeapon : DoomWeapon
 						puf.A_Startsound("Knife/Body", CHAN_AUTO, CHANF_OVERLAP, 0.75);  //impacted enemy
 						victim.SpawnBlood(victim.pos,angle,ceil(dmg));
 					}
+					victim.damagemobj(puf,self,dmg,"Melee");
 				}
 				return resolvestate(null);
             }

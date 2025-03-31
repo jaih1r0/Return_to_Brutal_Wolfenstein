@@ -1,6 +1,8 @@
 Class BW_CasingBase : Actor abstract
 {
-	default
+	string BounceSound;
+    property BounceSound:BounceSound;
+    default
     {
         +missile;
 		projectile;
@@ -24,7 +26,8 @@ Class BW_CasingBase : Actor abstract
 		+rollsprite;
 		+rollcenter;
         scale 0.2;
-		//+usebouncestate;
+		+usebouncestate;
+        BW_CasingBase.BounceSound "Casing/Brass";
     }
     int RollDir;
     override void beginplay()
@@ -42,6 +45,20 @@ Class BW_CasingBase : Actor abstract
     void FinishRoll()
     {
         A_SetRoll(randompick(-90,90),SPF_INTERPOLATE);
+    }
+
+    void playbouncesound()
+    {
+        if(BounceSound)
+            A_Startsound(sound(bouncesound),8,attenuation:ATTN_STATIC);
+    }
+
+    states
+    {
+        Bounce:
+            TNT1 A 0 playbouncesound();
+            TNT1 A 0 A_jump(256,"Spawn");
+            stop;
     }
     
 }

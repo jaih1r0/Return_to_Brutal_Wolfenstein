@@ -6,7 +6,7 @@ Class BW_Helmet : BasicArmorbonus //132
     {
         Radius 20;
         Height 8;
-        Inventory.PickUpSound "Stahlhelm";
+        Inventory.PickUpSound "pickup/armorbonus";
         Inventory.PickupMessage "Picked up a stahlhelm.";
         Armor.SavePercent 50;
         Armor.SaveAmount 25;

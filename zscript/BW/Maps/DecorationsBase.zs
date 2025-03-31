@@ -232,13 +232,14 @@ Class BW_GreyLamp : BW_CeillingDecoration
 {
     default
     {
-
+        Radius 19;
+        Height 10;
     }
     states
     {
         spawn:
-            GLOC Z 2 bright;
-            loop;
+            GLOC Z -1 bright;
+            stop;
         death:
             EHI2 A -1;
             stop;
@@ -253,10 +254,36 @@ Class BW_GreyLamp2 : BW_GreyLamp replaces nonsolidmeat2
     states
     {
         spawn:
-            GLOC Z 2; //bright;
-            loop;
+            GLOC Z -1; //bright;
+            stop;
         death:
             EHI2 A -1;
+            stop;
+    }
+}
+
+Class BW_BlueLamp : BW_GreyLamp2
+{
+    states
+    {
+        spawn:
+            BLOC A -1 bright;
+            stop;
+        Death:
+            BLOC B -1;
+            stop;
+    }
+}
+
+Class BW_RedLamp : BW_GreyLamp2
+{
+    states
+    {
+        spawn:
+            RLOC A -1 bright;
+            stop;
+        Death:
+            RLOC B -1;
             stop;
     }
 }

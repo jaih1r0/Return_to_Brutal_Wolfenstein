@@ -20,6 +20,9 @@ DoomEdNums
 	500 = "BW_Treasure_Crown"
 	3069 = "BW_Treasure_Chalice1"
 
+	1317 = "BW_BlackKey"
+	1395 = "BW_DiamondKey"
+
 	//ammo
 	7028 = "Clip"	//wolfclip, luger/mp40 ammo
 	7512 = "clip"	//PPSH ammo
@@ -31,6 +34,7 @@ DoomEdNums
 	7508 = "clip"	//thompson ammo
 	7511 = "clip"	//thompson ammo
 	1776 = "shell"	//actual shells
+	7692 = "Cell"	//teslaAmmo
 
 	
 	//weapons
@@ -47,13 +51,22 @@ DoomEdNums
 	7023 = "BW_MP40Barrel"
 	7024 = "BW_FoodBarrel"
 	7025 = "BW_GrenadeBarrel"
+	7040 = "BW_Well1"
 	7055 = "BW_BJYeah"
+	7057 = "BW_BlueLamp"
+	7058 = "BW_RedLamp"
 	7059 = "BW_vasePlant1"
 	7060 = "BW_vasePlant2"
 
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"
+	7007 = "BW_BrownGuard_Pistol"	//patroling brown guard
 	7008 = "BW_ShotgunguySpawner"
+
+	7019 = "BW_ShotgunguySpawner"	//easy version
+	7045 = "BW_BrownGuard_Pistol"	//easy
+
+	7079 = "BW_Mutant"
 
 	//misc
 	1171 = "BW_StairsHitBox"

@@ -541,6 +541,15 @@ Class BW_12GABullets : BW_Projectile
 	}
 }
 
+Class BW_MutantSuperBullet : BW_LugerBullets
+{
+	default
+	{
+		BW_Projectile.projectiledmg 50;
+		speed 150;
+	}
+}
+
 
 Class BW_FlameProjectile : Actor
 {

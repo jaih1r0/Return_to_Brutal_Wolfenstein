@@ -27,6 +27,7 @@ Version 4.3
 #include "zscript/BW/Monsters/BlueGuard/MP40.zs"
 #include "zscript/BW/Monsters/BlueGuard/Shotgun.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
+#include "zscript/BW/Monsters/Mutants/Mutant.zs"
 
 #include "zscript/BW/Monsters/Spawners.zs"
 
@@ -37,6 +38,7 @@ Version 4.3
 //Items
 #include "zscript/BW/Items/Treasures.zs"
 #include "zscript/BW/Items/Armor.zs"
+#include "zscript/BW/Items/Keys.zs"
 
 //NashGore
 #include "zscript/NashGore/NashGoreMath.zc"
@@ -139,7 +141,7 @@ class BW_Unknown : Actor replaces Unknown
 	override void Tick()
 	{
 		Super.Tick();
-		A_SpawnParticle("Black", 0, 100, 4, 0, 0, 0, 10, frandom(-0.2,0.2), frandom(-0.2,0.2), frandom(-0.2,0.2), 0, 0, 0, 0.9, 0.01);
+		//A_SpawnParticle("Black", 0, 100, 4, 0, 0, 0, 10, frandom(-0.2,0.2), frandom(-0.2,0.2), frandom(-0.2,0.2), 0, 0, 0, 0.9, 0.01);
 	}
 	
 	States
