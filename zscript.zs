@@ -11,6 +11,7 @@ Version 4.3
 #include "zscript/BW/Effects/Puffs.zs"
 #include "zscript/BW/Effects/Footsteps.zs"
 #include "zscript/BW/Effects/Debris.zs"
+#include "zscript/BW/Effects/Casings.zs"
 #include "zscript/BW/Hud/BWHud.zs"
 #include "zscript/BW/Player/BWPlayer.zs"
 

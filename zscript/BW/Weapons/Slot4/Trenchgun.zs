@@ -43,14 +43,16 @@ class BW_Trenchgun : BaseBWWeapon
 			BW_FireBullets("BW_12GABullets",1,1,8,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(3, 4, -0.40, frandom(+0.35, -0.35), 0, 0, 0);
 			A_ZoomFactor(1.2-0.04);
+			//BW_SpawnCasing("BW_ShellCasing",20,3,-5,random(2,5),random(2,5),random(1,3));
 		}
 		else
 		{
 			BW_FireBullets("BW_12GABullets",1.5,1.5,8,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(3, 4, -0.60, frandom(+0.45, -0.45), -5, 0, 0);
 			A_ZoomFactor(1-0.04);
+			//BW_SpawnCasing("BW_ShellCasing",24,-1,-6,random(3,6),random(2,5),random(3,6));
 		}
-		//gunsmoke
+		//gunsmoke 
 		A_TakeInventory("BW_Trenchgun_Mag", 1);
 	}
 	
@@ -103,6 +105,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGP DEF 1;
 		BTGP GHIJ 1;
 		BTGP K 1 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
+		TNT1 A 0 BW_SpawnCasing("BW_ShellCasing",24,-1,-10,random(3,6),random(2,5),random(3,6));
 		BTGP LMNOP 1;
 		BTGP Q 1 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
 		BTGP RS 1;
@@ -159,6 +162,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Trench/Back", 0, CHANF_OVERLAP, 1);
 		BTGS ABCDD 1;
 		TNT1 A 0 A_StartSound("Trench/Forward", 0, CHANF_OVERLAP, 1);
+		TNT1 A 0 BW_SpawnCasing("BW_ShellCasing",20,3,-5,random(2,5),random(2,5),random(1,3));
 		BTGS EFGHI 1;
 		BTGT E 2;
 		TNT1 A 0 A_refire("Fire_ADS");

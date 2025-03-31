@@ -32,13 +32,16 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			BW_FireBullets("BW_MP40Bullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
 			A_ZoomFactor(1.2-0.01);
+			BW_SpawnCasing("BW_9MMCasing",20,3,-5,random(2,5),random(2,5),random(1,3));
 		}
 		else
 		{
 			BW_FireBullets("BW_MP40Bullets",1,1,-1,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(2, 3, -0.5, frandom(+0.30, -0.30), -5, 0, 0);
 			A_ZoomFactor(1.0-0.01);
+			BW_SpawnCasing("BW_9MMCasing",29,3,-10,random(2,5),random(2,5),random(1,3));
 		}
+		
 	}
 	
 	states

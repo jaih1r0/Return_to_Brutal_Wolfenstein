@@ -210,14 +210,7 @@ Class BW_PuffHit : BWFxBase
 	}
 }
 
-Class BW_CasingBase : Actor
-{
-	override void beginplay()
-	{
-		changestatnum(STAT_CASING);
-		super.beginplay();
-	}
-}
+
 
 Class FlatDecal : BWFxBase
 {

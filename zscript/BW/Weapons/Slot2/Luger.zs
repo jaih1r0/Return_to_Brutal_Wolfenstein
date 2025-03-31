@@ -42,14 +42,17 @@ class BW_Luger : BaseBWWeapon
 			BW_FireBullets("BW_LugerBullets",0.1,0.1,-1,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(2, 3, -0.20, frandom(+0.15, -0.15), 0, 0, 0);
 			A_ZoomFactor(1.2-0.01);
+			BW_SpawnCasing("BW_9MMCasing",20,2,-3,random(2,5),random(2,5),random(3,6));
 		}
 		else
 		{
 			BW_FireBullets("BW_LugerBullets",0.5,0.5,-1,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(2, 3, -0.40, frandom(+0.30, -0.30), -5, 0, 0);
 			A_ZoomFactor(1-0.01);
+			BW_SpawnCasing("BW_9MMCasing",27,2,-7,random(2,5),random(2,5),random(3,6));
 		}
 		//gunsmoke
+		
 		A_TakeInventory("BW_Luger_Mag", 1);
 	}
 	

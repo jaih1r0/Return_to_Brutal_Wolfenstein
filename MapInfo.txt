@@ -19,9 +19,23 @@ DoomEdNums
 	400 = "BW_Treasure_Chest"
 	500 = "BW_Treasure_Crown"
 	3069 = "BW_Treasure_Chalice1"
+
+	//ammo
+	7028 = "Clip"	//wolfclip, luger/mp40 ammo
+	7512 = "clip"	//PPSH ammo
+	7029 = "Cell"	//STG44 ammo
+	7030 = "clip"	//chaingun/mg42 ammo
+	7031 = "Shell"	//kar98k ammo
+	7507 = "shell"	//m1 garand ammo
+	7535 = "shell"	//m1 garand ammo
+	7508 = "clip"	//thompson ammo
+	7511 = "clip"	//thompson ammo
+	1776 = "shell"	//actual shells
+
 	
 	//weapons
 	7032 = "BW_MP40"
+	7501 = "BW_Luger"
 
 	//map things
 	7042 = "BW_Candleabra1"

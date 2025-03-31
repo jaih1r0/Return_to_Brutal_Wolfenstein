@@ -321,6 +321,18 @@ Class BaseBWWeapon : DoomWeapon
 		A_Lower(120);
 	}
 
+	//spawn casings relative to the player view, also adds the current player velocity to them
+	Action void BW_SpawnCasing(string casingtype,double fwofs = 3,double sdofs = -8.5, double zoff = 7, double xvel = 3,double yvel = 2,double zvel = 1)
+	{
+		Quat dir = Quat.FromAngles(angle,pitch,roll);
+		vector3 ofs = dir * (fwofs, -sdofs,zoff);
+		vector3 spawnpos = Level.vec3offset((pos.xy,player.viewz), ofs);
+		vector3 vl = dir * (xvel,-yvel,zvel);
+		let c = spawn(casingtype,spawnpos);
+		if(c)
+			c.vel = vl + vel;
+	}
+
 	//wrapper function for bullet firing guns
 	action void BW_FireBullets(string projectiletype = "BW_Projectile",double spreadx = 0,double spready = 0,int numbullets = 1,int dmg = 0, string puff = "Bulletpuff", name dmgtype = "Bullet",int maxpen = 0,int fwofs = 0, int sdofs = 0)
 	{
