@@ -116,3 +116,78 @@ Class CustomInventoryBW2 : CustomInventory
 	
 }
 
+class BW_Unknown : Actor replaces Unknown
+{
+	Default
+	{
+		Radius 32;
+		Height 56;
+		Scale 0.05;
+		+FLOATBOB;
+		FloatBobStrength 0.5;
+		FloatBobFactor 0.5;
+		+NOGRAVITY;
+		+NOBLOCKMAP;
+		+DONTSPLASH;
+		+ROLLSPRITE;
+		+ROLLCENTER;
+	}
+	
+	override void Tick()
+	{
+		Super.Tick();
+		A_SpawnParticle("Black", 0, 100, 4, 0, 0, 0, 10, frandom(-0.2,0.2), frandom(-0.2,0.2), frandom(-0.2,0.2), 0, 0, 0, 0.9, 0.01);
+	}
+	
+	States
+	{
+		Spawn:
+			S0SG A 1
+			{
+				A_SetRoll(0+random(-10,10), SPF_INTERPOLATE);
+			}
+			TNT1 A 0
+			{
+				int chance = random(1,5);
+				if(chance == 3)
+				{
+					A_SpawnItemEx("BW_UnknownEye", 0, 0, 10, frandom(-0.5,0.5), frandom(-0.5,0.5), frandom(-0.5,0.5));
+				}
+			}
+			S0SG A 1
+			{
+				A_SetRoll(0+random(-10,10), SPF_INTERPOLATE);
+			}
+			Loop;
+	}
+}
+
+class BW_UnknownEye : Actor
+{
+	Default
+	{
+		Radius 2;
+		Height 2;
+		Scale 0.05;
+		+FLOATBOB;
+		FloatBobStrength 0.5;
+		FloatBobFactor 0.5;
+		+NOGRAVITY;
+		+NOBLOCKMAP;
+		+DONTSPLASH;
+		+ROLLSPRITE;
+		+ROLLCENTER;
+	}
+	
+	States
+	{
+		Spawn:
+			S0SG BBBBB random(1,3) A_SetRoll(0+random(-10,10), SPF_INTERPOLATE);
+			S0SG BBBBB random(1,3)
+			{
+				A_FadeOut(0.1);
+				A_SetRoll(0+random(-10,10), SPF_INTERPOLATE);
+			}
+			Wait;
+	}
+}
