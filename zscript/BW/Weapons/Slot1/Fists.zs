@@ -23,7 +23,7 @@ Class BW_Fists : BaseBWWeapon replaces fist
             TNT1 A 0 BW_WeaponLower();
             wait;
         Ready:
-            MPFI ABCDEFGHIJKLMNOPQRSTUVWX 1 BW_WeaponReady();
+            MPFI ABCDEFGHIJKLMNOPQRSTUVWX 1 BW_WeaponReady(WRF_ALLOWUSER3);
             loop;
         Fire:   //left jab
             TNT1 A 0 A_Startsound("Fists/Swing",7);

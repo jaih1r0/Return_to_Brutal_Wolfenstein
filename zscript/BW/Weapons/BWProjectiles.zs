@@ -541,6 +541,16 @@ Class BW_12GABullets : BW_Projectile
 	}
 }
 
+Class BW_MGBullets : BW_Projectile
+{
+	default
+	{
+		BW_Projectile.projectiledmg 35;
+		BW_Projectile.ripAmount 1;
+		damagetype "MachineGun";
+	}
+}
+
 Class BW_MutantSuperBullet : BW_LugerBullets
 {
 	default
@@ -551,86 +561,3 @@ Class BW_MutantSuperBullet : BW_LugerBullets
 }
 
 
-Class BW_FlameProjectile : Actor
-{
-	default
-	{
-		+missile;
-		projectile;
-		speed 25;
-		radius 5;
-		height 5;
-		renderstyle "add";
-		damagetype "Fire";
-		scale 0.3;
-		damage 2;
-		decal "Scorch";
-		+ripper;
-		+bright;
-		+rollsprite;
-		+rollcenter;
-		+BLOODLESSIMPACT;
-		-nogravity;
-	}
-	states
-	{
-		Spawn:
-			FRPR CCCCCCCCC 1;
-			//stop;
-		Death:
-			TNT1 A 0 {A_Stop(); bnogravity = true;}
-			TNT1 A 0 A_Explode(5,60,0);
-			DB54 ABCDEFGHIJKLMNOPQR 1;
-			stop;
-	}
-	override void postbeginplay()
-	{
-		super.postbeginplay();
-		A_SetRoll(random(0,360));
-		A_Attachlightdef('FlameLight','GunMuzzleFlash');
-	}
-	bool ticked;
-	override void tick()
-	{
-		super.tick();
-		if(isfrozen())
-			return;
-		if(!ticked)
-		{
-			ticked = true;
-			return;
-		}
-		vector3 dif = levellocals.vec3diff(pos,prev);
-		vector3 dir = dif.unit();
-		double lng = dif.length();
-		int stp = max(1,int(lng / 10));
-		vector3 actpos = pos;
-		for(int i = stp; i > 0; i--)
-		{
-			spawnFlameTrail(actpos);
-			actpos += (dir * 10);
-		}
-		
-	}
-
-	void spawnFlameTrail(vector3 position)
-	{
-		FSpawnParticleParams FTrail;
-		//string f = String.Format("%c", int("G") + random(0,5));
-		FTrail.Texture = TexMan.CheckForTexture("FRPRC0");
-		FTrail.Color1 = "FFFFFF";
-		FTrail.Style = STYLE_ADD;
-		FTrail.Flags = SPF_ROLL|SPF_FULLBRIGHT;
-		FTrail.Vel = (frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5)); 
-		FTrail.Startroll = random(0,360);
-		FTrail.RollVel = frandom(-3,3);
-		FTrail.StartAlpha = 1.0;
-		FTrail.FadeStep = 0.18;
-		FTrail.Size = random(25,30);
-		FTrail.SizeStep = random(-1,-4);
-		FTrail.Lifetime = random(6,8); 
-		FTrail.Pos = position;
-		Level.SpawnParticle(FTrail);
-	}
-
-}

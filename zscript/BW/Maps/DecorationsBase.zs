@@ -12,6 +12,12 @@ Class BW_Decoration : Actor abstract
         if(self.dorandomflipX)
             self.bXFLIP = random(0,1);
     }
+    BW_Flare flare;
+    void killFlare()
+    {
+        if(flare)
+            flare.destroy();
+    }
 }
 
 Class BW_BJYeah : BW_Decoration
@@ -166,9 +172,13 @@ Class BW_Candleabra1 : BW_CeillingDecoration
     states
     {
         spawn:
+            TNT1 A 0 nodelay {
+                flare = BW_Flare.NewFlare(self,3,(0.4,0.2),'Yellow',0.75);
+            }
             YCAN A -1 bright;
             stop;
         Death:
+            TNT1 A 0 killFlare();
             YCAN B 1;
             TNT1 A 0 A_Spawnitem("FallingCandelabra");
             YCAN D -1;
@@ -238,9 +248,13 @@ Class BW_GreyLamp : BW_CeillingDecoration
     states
     {
         spawn:
+            TNT1 A 0 nodelay {
+                flare = BW_Flare.NewFlare(self,3,(0.7,0.35),'white');
+            }
             GLOC Z -1 bright;
             stop;
         death:
+            TNT1 A 0 killFlare();
             EHI2 A -1;
             stop;
     }
@@ -267,9 +281,13 @@ Class BW_BlueLamp : BW_GreyLamp2
     states
     {
         spawn:
+            TNT1 A 0 nodelay {
+                flare = BW_Flare.NewFlare(self,2,(0.2,0.075),'Blue');
+            }
             BLOC A -1 bright;
             stop;
         Death:
+            TNT1 A 0 killFlare();
             BLOC B -1;
             stop;
     }
@@ -280,9 +298,13 @@ Class BW_RedLamp : BW_GreyLamp2
     states
     {
         spawn:
+            TNT1 A 0 nodelay {
+                flare = BW_Flare.NewFlare(self,3,(0.5,0.20),'Red');
+            }
             RLOC A -1 bright;
             stop;
         Death:
+            TNT1 A 0 killFlare();
             RLOC B -1;
             stop;
     }
@@ -514,9 +536,13 @@ Class BW_TechLamp1 : BW_ShootableDecoration Replaces Candelabra //35
     states
     {
         spawn:
+            TNT1 A 0 nodelay {
+                flare = BW_Flare.NewFlare(self,38,(0.7,0.35),'white');
+            }
             DLMP A -1 bright;
             stop;
         Death:
+            TNT1 A 0 killFlare();
             TNT1 A 0 A_NoBlocking();
             YVAS C 1;
             DLMP E -1;

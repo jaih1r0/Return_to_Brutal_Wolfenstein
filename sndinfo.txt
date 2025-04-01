@@ -178,6 +178,29 @@ $rolloff Barrel/Explosion1 200 700
 $rolloff Barrel/Explosion2 200 700
 $rolloff Barrel/Explosion3 200 700
 
+Grenade/Explosion1	"Sounds/World/Explosions/SmallExplode-1.wav"
+Grenade/Explosion2	"Sounds/World/Explosions/SmallExplode-2.wav"
+Grenade/Explosion3	"Sounds/World/Explosions/SmallExplode-3.wav"
+$random Grenade/Explosion
+{
+	Grenade/Explosion1
+	Grenade/Explosion2
+	Grenade/Explosion3
+}
+$rolloff Grenade/Explosion1 200 700
+$rolloff Grenade/Explosion2 200 700
+$rolloff Grenade/Explosion3 200 700
+
+Grenade/Explosion/Water1 "Sounds/World/Explosions/underwater_explode3.wav"
+Grenade/Explosion/Water2 "Sounds/World/Explosions/underwater_explode3.wav"
+$random Grenade/Explosion/Water
+{
+	Grenade/Explosion/Water1
+	Grenade/Explosion/Water2
+}
+$rolloff Grenade/Explosion/Water1 200 600
+$rolloff Grenade/Explosion/Water2 200 600
+
 Casing/Brass1		"Sounds/Weapons/Casings/DSCASIN1.ogg"
 Casing/Brass2		"Sounds/Weapons/Casings/DSCASIN2.ogg"
 Casing/Brass3		"Sounds/Weapons/Casings/DSCASIN3.ogg"
@@ -191,3 +214,16 @@ $random Casing/Brass
 	Casing/Brass4
 	Casing/Brass5
 }
+
+Player/Jump1		"Sounds/Player/Jump/DSJUMP1.ogg"
+Player/Jump2		"Sounds/Player/Jump/DSJUMP2.ogg"
+Player/Jump3		"Sounds/Player/Jump/DSJUMP3.ogg"
+Player/Jump4		"Sounds/Player/Jump/DSJUMP4.ogg"
+$random Player/Jump
+{
+	Player/Jump1
+	Player/Jump2
+	Player/Jump3
+	Player/Jump4
+}
+$playeralias	player		male	*jump  Player/Jump

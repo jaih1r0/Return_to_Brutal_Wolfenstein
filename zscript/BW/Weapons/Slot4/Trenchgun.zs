@@ -67,10 +67,10 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGU HI 1;
 		TNT1 A 0 BW_WeaponLower();
 		wait;
-	User3:
-		TNT1 A 0 A_ZoomFactor(1);
-		TNT1 A 0 A_TakeInventory("AimingToken");
-		Goto KnifeAttack;
+	//User3:
+	//	TNT1 A 0 A_ZoomFactor(1);
+	//	TNT1 A 0 A_TakeInventory("AimingToken");
+	//	Goto KnifeAttack;
 	Select:
 		TNT1 A 0 A_StartSound("Generic/Rifle/raise", 0, CHANF_OVERLAP, 1);
 		BTGU AB 1;
@@ -80,12 +80,12 @@ class BW_Trenchgun : BaseBWWeapon
 	Ready:	//keeping ready as the actual ready state
 		TNT1 A 0 BW_JumpifAiming("Ready_ADS");
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
-		BTGU E 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		BTGU E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
 		loop;
 	
 	Ready_NoAmmo:
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 0,"Ready");
-		BTGF H 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		BTGF H 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
 		loop;
 
 	Fire:

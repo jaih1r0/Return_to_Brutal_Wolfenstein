@@ -59,6 +59,8 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	control "Knife","netevent SlashEm"
 	statictext ""
+	control "Grenade","+User3"
+	statictext ""
 	option "Disable footsteps","BW_DisablePlayerFootsteps","OnOff"
 	statictext ""
 	slider "Footsteps volume","BW_FootstepsVol",0.0,1.0,0.1

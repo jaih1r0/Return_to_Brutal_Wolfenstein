@@ -138,12 +138,12 @@ Class BW_Hud : BaseStatusBar
 				drawTexture(armi,(-150,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
 			}
 			
-			/*
+			
 			//grenades
 			drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM);
-			int gam = pl.countinv("GrenadeAmmo");
+			int gam = pl.countinv("BW_GrenadeAmmo");
 			drawstring(BWFont,""..gam,(-140,-75),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-			
+			/*
 			//axes
 			drawimage("izras",(-160,-85),DI_SCREEN_RIGHT_BOTTOM);
 			int aam = pl.countinv("AxeAmmo");

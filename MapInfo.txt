@@ -35,7 +35,8 @@ DoomEdNums
 	7511 = "clip"	//thompson ammo
 	1776 = "shell"	//actual shells
 	7692 = "Cell"	//teslaAmmo
-
+	7081 = "BW_Threenades"
+	7082 = "BW_GrenadeAmmo"
 	
 	//weapons
 	7032 = "BW_MP40"
@@ -57,7 +58,7 @@ DoomEdNums
 	7058 = "BW_RedLamp"
 	7059 = "BW_vasePlant1"
 	7060 = "BW_vasePlant2"
-
+	
 	//enemies
 	7006 = "BW_BrownGuard_Pistol"
 	7007 = "BW_BrownGuard_Pistol"	//patroling brown guard

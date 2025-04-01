@@ -63,10 +63,10 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			TNT1 A 0 BW_WeaponLower();
 			wait;
 		Ready:
-			MP4U E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER2);
+			MP4U E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
 			loop;
 		Ready_ADS:
-			MP4C A 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER2);
+			MP4C A 1 BW_WeaponReady(WRF_ALLOWRELOAD);
 			loop;
 		Fire:
 			TNT1 A 0 BW_JumpifAiming("Fire_ADS");

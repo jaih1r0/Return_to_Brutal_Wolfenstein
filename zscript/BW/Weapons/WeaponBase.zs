@@ -120,6 +120,33 @@ Class BaseBWWeapon : DoomWeapon
 			TNT1 A 12;
 			stop;
 		
+		User3:
+		GrenadeThrow:
+			TNT1 A 1;
+			//raise
+			TNT1 A 0 A_startsound("Grenade/Draw",6,CHANF_OVERLAP);
+			BGTR ABCDE 1;
+			BGTR FF 1;
+			BGTR GHIJ 1;
+			//hold pin
+			BGTR KK 1;
+			//remove pin
+			TNT1 A 0 A_Startsound("Grenade/Pin",6,CHANF_OVERLAP);
+			BGTR LMN 1;
+			//lower
+			BGTR OPQ 1;
+			TNT1 A 2;	//
+			//throw
+			TNT1 A 0 A_startsound("Grenade/Throw",7,CHANF_OVERLAP);
+			BGTR RST 1;
+			BGTR U 1 
+			{
+				A_fireprojectile("BW_Grenade",0,0,5);
+				Takeinventory("BW_grenadeAmmo",1);
+			}
+			BGTR VWXY 1;
+			TNT1 A 0 A_jump(256,"Ready");
+			wait;
 		//dummy kick flashes 
 		KickFlash:
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
@@ -300,6 +327,9 @@ Class BaseBWWeapon : DoomWeapon
 
 	Action State BW_WeaponReady(int BWRflags = 0)
 	{
+		if(countinv("BW_grenadeAmmo") < 1)
+			BWRflags &= ~(WRF_ALLOWUSER3);	//disable the grenade button if no grenades
+		
 		A_Weaponready(BWRflags);
 		return resolvestate(null);
 	}
@@ -1022,5 +1052,38 @@ Class PlayerMuzzleFlash : Actor
 		Spawn:
 			TNT1 A 2 BRIGHT;
 			Stop;
+	}
+}
+
+Class BW_GrenadeAmmo : Ammo	//7082
+{
+	Default
+	{
+		Inventory.Amount 0;
+		Inventory.MaxAmount 5;
+		Ammo.BackpackAmount 2;
+		Ammo.BackpackMaxAmount 5;
+		Inventory.PickupMessage "Picked up a Stielhandgranate!";
+	}
+	states
+	{
+		spawn:
+			GRN1 H -1;
+			stop;
+	}
+}
+
+Class BW_Threenades : BW_GrenadeAmmo	//7081
+{
+	default
+	{
+		Inventory.Amount 3;
+		Inventory.PickupMessage "Picked up a Stielhandgranate bundle!";
+	}
+	states
+	{
+		spawn:
+			GRN3 A -1;
+			stop;
 	}
 }

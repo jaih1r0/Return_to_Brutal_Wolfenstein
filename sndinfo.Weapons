@@ -519,3 +519,8 @@ Trench/Shell2	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell2.wav"
 Trench/Shell3	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell3.wav"
 Trench/Shell4	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell4.wav"
 Trench/Shell5	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell5.wav"
+
+Grenade/Pin     "Sounds/Weapons/Grenades/GRENPIC2.ogg"
+Grenade/Draw     "Sounds/Weapons/Grenades/grenade_draw.wav"
+Grenade/Throw     "Sounds/Weapons/Grenades/grenade_throw.wav"
+Grenade/Bounce     "Sounds/Weapons/Grenades/GRBOUNC1.wav"

@@ -6,7 +6,7 @@ class BW_EventHandler : EventHandler
 		let pmo = players[e.playernumber].mo;
 		if(ft && pmo)
 			ft.init(pmo);
-		
+		pmo.A_SetBlend(0x000000,1.0,35);
 		players[e.PlayerNumber].mo.A_GiveInventory("Z_NashMove", 1);
 	}
 	

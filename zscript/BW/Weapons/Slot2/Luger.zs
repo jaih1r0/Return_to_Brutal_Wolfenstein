@@ -67,10 +67,10 @@ class BW_Luger : BaseBWWeapon
 		ZLUS HI 1;
 		PSTG A 0 A_Lower(25);
 		Wait;
-	User3:
-		TNT1 A 0 A_ZoomFactor(1);
-		TNT1 A 0 A_TakeInventory("AimingToken");
-		Goto KnifeAttack;
+	//User3:
+	//	TNT1 A 0 A_ZoomFactor(1);
+	//	TNT1 A 0 A_TakeInventory("AimingToken");
+	//	Goto KnifeAttack;
 	Select:
 		TNT1 A 0
 		{

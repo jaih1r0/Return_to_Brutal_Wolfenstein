@@ -102,6 +102,16 @@ model BW_12GABullets
    FrameIndex TRAC A 0 0
 }
 
+model BW_MGBullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
 model BW_MutantSuperBullet
 {
    Path "models/PROJECTILES"

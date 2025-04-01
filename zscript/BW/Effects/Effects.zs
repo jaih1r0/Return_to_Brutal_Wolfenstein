@@ -165,7 +165,7 @@ class BW_Bubble : BWFxBase
 	}
 }
 
-Class BW_Flare : BWFxBase
+Class BW_Flare2 : BWFxBase
 {
 	default
 	{
@@ -356,5 +356,78 @@ class TreasureFinder : inventory
 				sx.push(mo);
 			}
 		}
+	}
+}
+
+
+Class BW_Flare : BWFxBase
+{
+	default
+	{
+		renderstyle "Add";
+		+bright;
+	}
+	int zofs;
+	vector3 oldpos;
+	name col;
+	static BW_Flare NewFlare(actor spawner,int zofs = 0,vector2 size = (1.0,1.0),name col = 'White',double alfa = 0.9)
+	{
+		if(!spawner)
+			return null;
+		let sp = BW_Flare(spawn("BW_Flare",spawner.pos + (0,0,zofs)));
+		if(sp)
+		{
+			sp.zofs = zofs;
+			sp.target = spawner;
+			sp.scale = size;
+			sp.bxflip = random(0,1);
+			sp.col = col;
+			sp.alpha = alfa;
+		}
+		return sp;
+	}
+	override void tick()
+	{
+		super.tick();
+		if(!target)
+		{
+			destroy();
+			return;
+		}
+		if(oldpos != target.pos)
+			setxyz(target.pos + (0,0,zofs));
+		
+	}
+
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 {
+				switch(col)
+				{
+					case 'Blue':		setstatelabel("Blue");		break;
+					case 'Red':			setstatelabel("Red");		break;
+					case 'Yellow':		setstatelabel("Yellow");	break;
+					case 'LightBlue':	setstatelabel("LightBlue");	break;
+					case 'White':		setstatelabel("White");		break; //yo, mister white
+				}
+			}
+			stop;
+		White:
+			LENS A -1;
+			stop;
+		Blue:
+			L2NB A -1;
+			stop;
+		Red:
+			LEYS R -1;
+			stop;
+		Yellow:
+			LEYS A -1;
+			stop;
+		LightBlue:
+			LEYS B -1;
+			stop;
 	}
 }
