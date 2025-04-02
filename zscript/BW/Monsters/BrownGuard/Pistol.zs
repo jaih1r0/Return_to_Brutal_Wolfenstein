@@ -41,7 +41,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		
 		void FireProjGren()
 		{
-			//Grenade
+			A_Spawnprojectile("BW_Grenade", 32, 0, 0, CMF_ABSOLUTEPITCH, self.pitch-5);
 			HowManyGrenadesHaveIThrown++;
 		}
 		
