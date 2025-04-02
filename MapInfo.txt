@@ -53,6 +53,8 @@ DoomEdNums
 	7024 = "BW_FoodBarrel"
 	7025 = "BW_GrenadeBarrel"
 	7040 = "BW_Well1"
+	7050 = "BW_Cage2"
+	7051 = "BW_CagedSkelly2"
 	7055 = "BW_BJYeah"
 	7057 = "BW_BlueLamp"
 	7058 = "BW_RedLamp"

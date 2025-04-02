@@ -1068,7 +1068,7 @@ Class BW_GrenadeAmmo : Ammo	//7082
 	states
 	{
 		spawn:
-			GRN1 H -1;
+			GRND H -1;
 			stop;
 	}
 }

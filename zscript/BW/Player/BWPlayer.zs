@@ -1,10 +1,27 @@
 Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 {
 	double StillRangeMulti, slideAngle;
-	
+	double 	ssup;
+
 	override void tick()
 	{
 		super.tick();
+	}
+
+	override void playerthink()
+	{
+		super.playerthink();
+		bool wasOnGround = player.onGround;
+		//stick player to the frond when going downstairs
+		if (wasOnGround && !player.onGround && pos.z - GetZAt() < maxDropOffHeight && vel.z <= 0)
+         {
+ 			ssup = max(0,(pos.z-floorz));
+ 			SetOrigin(Vec2OffsetZ(0,0,floorz),true);
+            player.onGround = true;
+			player.viewz += ssup;
+ 			ssup = max(0,(ssup*0.7)-0.25);
+         }
+
 	}
 	
 	override Vector2 BobWeapon(double ticFrac)

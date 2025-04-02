@@ -7,7 +7,7 @@ Class BW_Hud : BaseStatusBar
 	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2,DV_Score;
 	int oldScore, scoreTics;
 	BW_EventHandler scorehandler;
-	int combo_timer,combo_counter;
+	int combo_timer,combo_counter, oldcounter, counterTics;
 	override void Init()
 	{
 		Super.Init();
@@ -66,8 +66,15 @@ Class BW_Hud : BaseStatusBar
 			scoreTics = 70;
 		if(scoreTics)
 			scoreTics--;
+		if(counterTics)
+			counterTics--;
 		if(scorehandler)
+		{
+			oldcounter = combo_counter;
 			[combo_timer,combo_counter] = scorehandler.getcomboinfo();
+		}
+		if(oldcounter != combo_counter)
+			counterTics = 8;
 		NoHud = cplayer.mo.findinventory("DisableHud");
 		/*if(cplayer.mo.findinventory("NoSliding"))
 		{
@@ -179,8 +186,23 @@ Class BW_Hud : BaseStatusBar
 				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
 			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-180,20),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
 		}
-		drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
-		drawstring(BWFont,string.format("Counter %d",combo_counter),(-180,40),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
+		//drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
+		
+		if(combo_timer > 0)
+		{
+			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,100);
+			int baralfa = clamp(prog * 255 / 100,0,128);
+			color barcol = color(baralfa,32,255,12);
+			fill(barcol,-180,40,prog,7,DI_SCREEN_RIGHT_TOP);
+		}
+		if(combo_counter > 0)
+		{
+			double ccsc = 1.0;
+			if(counterTics)
+				ccsc = BW_Statics.LinearMap(counterTics,0,8,1.0,1.2);
+			drawstring(BWFont,string.format("x%d",combo_counter),(-180,40),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
+		}
+		
 		//slide thing
 		//if(pl.findinventory("NoSliding"))
 		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
@@ -199,14 +221,14 @@ Class BW_Hud : BaseStatusBar
 	}
 	
 	static const string wolfkeys[] = {
-		//"HasPickedUpBlackKey","HasPickedUpDiamondKey",
+		"HasPickedUpBlackKey","HasPickedUpDiamondKey",
 		"BlueCard","RedCard","YellowCard",
 		"BlueSkull","YellowSkull"//,"RedSkull"
 	};
 	
 	protected virtual void DrawHudKeys()
 	{
-		Vector2 keypos = (-25 - 10, 2 + 20);
+		Vector2 keypos = (-25 - 10, 2 + 25);
 		int rowc = 0;
 		double roww = 0;
 		for(let i = CPlayer.mo.Inv; i != null; i = i.Inv)
@@ -238,7 +260,7 @@ Class BW_Hud : BaseStatusBar
 				}
 			}
 			
-			/*if(i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
+			if(i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
 			{
 				textureid ktx = i.Icon;
 				vector2 ofs = (-60,20);
@@ -254,7 +276,6 @@ Class BW_Hud : BaseStatusBar
 				DrawTexture(ktx,ofs, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP,1.0,(20,20),(2.0,2.0));
 				
 			}
-			*/
 			
 		}
 	}
