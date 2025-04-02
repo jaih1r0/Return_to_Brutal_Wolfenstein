@@ -5,8 +5,8 @@ Class BW_Projectile : fastprojectile
     {
         speed 200;
         +missile;
-        radius 2;
-        height 2;
+        radius 1;
+        height 1;
 		renderstyle "Add";
 		//damage 5;
 		damage 0;
@@ -56,7 +56,8 @@ Class BW_Projectile : fastprojectile
 	}
     override void tick()
     {
-        BW_PJTick();
+        LightProjectileTick();
+		//BW_PJTick();
     }
 	
 	void HitActor(actor victim)
@@ -430,7 +431,6 @@ Class BW_Projectile : fastprojectile
 			if(pf)
 				pf.A_Spraydecal("BulletChip",30,(0,0,0),hitdir);
 		}
-		
 
     }
 
@@ -478,8 +478,193 @@ Class BW_Projectile : fastprojectile
 		return lineNormal;
 	}
 
+	//projectile moving with linetracers instead of fastprojectile steps
+	//similar to generic's implementation in pb projectiles
+	void LightProjectileTick()
+	{
+		if(isfrozen())
+			return;
+		if(!target)
+			return;
+		
+		Vector3 dir = (AngleToVector(lastview.x, cos(lastview.y)), -sin(lastview.y));
+		let tr = BW_ProjectileTraveler.dotrace(pos,vel.unit(),target,speed,self);
+		vector3 endpos = tr.results.hitPos - dir;
+		if(!tr)
+			return;
+		
+		bool stopped;
+		vector3 lastpos = pos;
+		if(tr.ti.size() > 0)
+		{
+			if(bRipper)
+			{
+				for(int i = 0; i < tr.ti.size(); i++)
+				{
+					if(ripAmount >= 0)
+					{
+						if(!tr.ti[i].who)
+							continue;
+						setorigin(tr.ti[i].location,false);
+						HitActor(tr.ti[i].who);
+						ripAmount--;
+					}
+					else
+					{
+						stopped = true;	
+						break;
+					}
+				}
+			}
+			else
+			{
+				setorigin(tr.ti[0].location,false);
+				hitactor(tr.ti[0].who);
+				stopped = true;
+			}
+		}
+		
+		setorigin(endpos,true);
+		
+		if(stopped || tr.results.HitType == TRACE_HasHitSky)
+		{
+			destroy();
+			return;
+		}
+        
+		if(tr.results.HitType == TRACE_HitWall || tr.results.HitType == TRACE_HitCeiling || tr.results.HitType == TRACE_HitFloor)
+		{
+			string tex = texman.getname(tr.results.HitTexture);
+			name mat = BW_StaticHandler.getmaterialname(tex);
+			
+			if(mat == 'null')
+			{
+				spawn("BW_BulletPuff",endpos);
+				destroy();
+				return;
+			}
+			let puf = BW_impactpuff(spawn("BW_ImpactPuff",endpos));
+			if(!puf)
+				return;
+			puf.tp = mat;
+			let sd = BW_StaticHandler.getmaterialSound(tex);
+			if(sd)
+				puf.A_Startsound(sd);
+			switch(tr.results.HitType)
+			{
+				case TRACE_HitWall:
+					vector2 nrm = GetLineNormal(tr.results.Side,tr.results.HitLine);
+					double wn = -atan2(nrm.x, nrm.y);
+					puf.norm = (RotateVector((0, 1),wn), 0);
+					puf.impctDir = tr.results.HitVector;
+					puf.wang = wn;
+					puf.impactType = BW_impactpuff.IMP_WALL;
+					break;
+				case TRACE_HitFloor:
+					puf.norm = tr.results.HitSector.floorplane.normal;
+					puf.impctDir = tr.results.HitVector;
+					puf.impactType = BW_impactpuff.IMP_FLOOR;
+					break;
+				case TRACE_HitCeiling:
+					puf.norm = tr.results.HitSector.ceilingplane.normal;
+					puf.impctDir = tr.results.HitVector;
+					puf.impactType = BW_impactpuff.IMP_CEIL;
+					break;
+			}
+			destroy();
+		}
+
+		if (!CheckNoDelay())
+			return;
+
+		// Advance the state
+		if (tics != -1)
+		{
+			if (tics > 0) tics--;
+			while (!tics)
+			{
+				if (!SetState (CurState.NextState))
+				{ // mobj was removed
+					return;
+				}
+			}
+		}
+	}
 
 }
+
+Class BW_ProjectileTraveler : linetracer
+{
+	actor shooter;
+	array <TraceInfo> Ti;
+	bool hitsky;
+	//vector3 dirh;
+
+	static BW_ProjectileTraveler DoTrace(vector3 start,vector3 dir, actor shooter, int dist, actor miss)
+	{
+		let tr = new("BW_ProjectileTraveler");
+		if(!tr)
+			return null;
+		dir.z = clamp(dir.z,-0.995,0.995);
+		tr.shooter = shooter;
+		tr.Trace(start, miss.CurSector, dir, dist, TRACE_HitSky);
+		return tr;
+	}
+	
+	override ETraceStatus TraceCallback()
+	{
+		//dirh = Results.HitVector;
+		if(Results.HitType == TRACE_HasHitSky)
+		{
+			hitsky = true;
+			return TRACE_Stop;
+		}
+		
+		if(Results.hittype == TRACE_HitWall)
+		{
+			if (Results.Tier == TIER_Middle)
+			{
+				// Stop on one-sided or hitscan-blocking linedefs.
+				if (Results.HitLine.Flags & Line.ML_TWOSIDED == 0 ||Results.HitLine.Flags & Line.ML_BLOCKHITSCAN > 0)
+				{
+					return TRACE_Stop;
+				}
+				return TRACE_Skip; // Pass through two-sided linedefs that don't block hitscans.
+			}
+			
+			if(Results.tier == TIER_FFloor)
+			{
+				if(Results.ffloor.flags & F3DFloor.FF_SWIMMABLE)
+					return TRACE_Skip;
+			}
+			
+			return TRACE_Stop; // Don't pass through upper, lower, or 3D floors.
+		}
+		
+		if(Results.hittype == TRACE_HitFloor || Results.hittype == TRACE_HitCeiling)
+		{
+			return TRACE_Stop;
+		}
+		
+		if (Results.HitType == TRACE_HitActor)
+		{
+			// Ignore source
+			if(Results.HitActor && Results.hitactor.bshootable)
+			{
+				if(shooter && results.hitactor == shooter)
+					return TRACE_Skip;
+				let inf = TraceInfo.create(Results.HitActor,Results.HitPos);
+				if(inf)
+					Ti.push(inf);
+				return TRACE_Skip;
+			}
+			
+			return TRACE_Skip;
+		}
+		
+		return TRACE_Stop;
+	}
+} 
 
 Class PlayerDecorativeTracer : fastprojectile	//no fancy behavior needed here
 {

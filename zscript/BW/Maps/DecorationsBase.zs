@@ -116,11 +116,11 @@ Class BW_CeillingDecoration : BW_ShootableDecoration abstract
 {
     default
     {
-        +SpawnCeiling
         +NOGRAVITY
         +NoBlood
         -solid
         +dontfall;
+        +SpawnCeiling;
         health 20;
     }
     override void postbeginplay()
@@ -161,13 +161,13 @@ Class BW_Candleabra1 : BW_CeillingDecoration
 {
     default
     {
-        +SpawnCeiling
         +NOGRAVITY
         +NoBlood
         -solid
         +dontfall;
         Radius 26;
         Height 19;
+        +SpawnCeiling
     }
     states
     {
@@ -873,6 +873,8 @@ Class BW_ExplosiveBarrel : BW_ShootableDecoration replaces explosiveBarrel
         Radius 10;
         Height 34;
         Mass 200;
+        -dontthrust;
+        +pushable;
     }
     states
     {
@@ -965,6 +967,35 @@ Class BW_Cage : BW_CagedSkelly replaces meat3
     }
 }
 
+//the same as the two above, but spawn in ceilling
+Class BW_Cage2 : BW_Cage //7050
+{
+    default
+    {
+        +nogravity;
+        +SpawnCeiling;
+    }
+    /*override void postbeginplay()
+    {
+        super.postbeginplay();
+        setz(ceilingz - height);
+    }*/
+}
+
+Class BW_CagedSkelly2 : BW_CagedSkelly //7051
+{
+    default
+    {
+        +nogravity;
+        +SpawnCeiling;
+    }
+    /*override void postbeginplay()
+    {
+        super.postbeginplay();
+        setz(ceilingz - height);
+    }*/
+}
+
 Class BW_Bush : BW_Decoration replaces TallRedColumn
 {
     default
@@ -1038,6 +1069,9 @@ Class BW_BloodyBoneStack : BW_BoneStack replaces Meat4
     
 }
 
+Class BW_BloodyBoneStack2 : BW_BloodyBoneStack replaces nonsolidmeat4
+{}
+
 Class BW_Skelly : BW_BoneStack replaces BrainStem
 {
     states
@@ -1065,6 +1099,44 @@ Class BW_Bed : BW_ShootableDecoration replaces HeadCandles
         Death:
             TNT1 A 1;
             stop;
+    }
+}
+
+
+Class BW_DustPile1 : BW_Decoration Replaces ShortBlueTorch   //55
+{
+    default
+    {
+        Radius 16;
+        Height 56;
+        ProjectilePassHeight -16;
+        -SOLID;
+    }
+    States
+    {
+        Spawn:
+            SMBT B -1;
+            Stop;
+    }
+}
+
+Class BW_DustPile2 : BW_DustPile1 replaces ShortRedTorch //57
+{
+    States
+    {
+        Spawn:
+            SMRT B -1;
+            Stop;
+    }
+}
+
+Class BW_DustPile3 : BW_DustPile1 replaces ShortGreenTorch //56
+{
+    States
+    {
+        Spawn:
+            SMGT B -1;
+            Stop;
     }
 }
 

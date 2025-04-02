@@ -150,10 +150,11 @@ class NashGoreCorpseHitbox : Actor
 				Angle = corpseOwner.Angle;
 
 				// update the hitbox height based on the current sprite
-				let st = corpseOwner.CurState;
+				/*let st = corpseOwner.CurState;
 				let tex = st.GetSpriteTexture(0);
 				Vector2 texSize = TexMan.GetScaledSize(tex);
-				Height = texSize.Y * 0.833;
+				Height = texSize.Y * 0.833;*/
+				height = max(corpseOwner.height * 0.5,25);
 			}
 
 			// advance states

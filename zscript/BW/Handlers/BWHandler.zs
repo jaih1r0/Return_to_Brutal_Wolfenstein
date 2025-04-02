@@ -122,5 +122,12 @@ class BW_EventHandler : EventHandler
 		
 		ComboTimer = ComboSpace;
 		ComboCounter++;
+
+		/*if(plr.score > 9999)	//every 10000 points
+		{
+			console.printf("you got %d score points. %s earned.",plr.score,"soulsphere");
+			plr.A_GiveInventory("Soulsphere",1);
+			plr.score = 0;
+		}*/
 	}
 }

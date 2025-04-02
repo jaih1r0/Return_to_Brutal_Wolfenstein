@@ -3,13 +3,13 @@ Class BW_Grenade : Actor
     const FuseDuration = thinker.TICRATE * 2;   //2 seconds
     default
     {
-        bouncecount 4;
+        bouncecount 3;
         +bounceonceilings;
 		+bounceonfloors;
 		+bounceonwalls;
-        +CANBOUNCEWATER;
-        +ALLOWBOUNCEONACTORS;
-        +BOUNCEONACTORS;
+        +EXPLODEONWATER;
+        //+ALLOWBOUNCEONACTORS;
+        //+BOUNCEONACTORS;
         bouncefactor 0.4;
 		wallbouncefactor 0.35;
         +missile;
@@ -19,6 +19,7 @@ Class BW_Grenade : Actor
 		radius 2;
 		speed 20;
         damagetype "Explosive";
+        +extremedeath;
         +dropoff;
 		+movewithsector;
 		+forcexybillboard;
@@ -41,9 +42,16 @@ Class BW_Grenade : Actor
         SpawnStop:
             GRND H 3 A_SetRoll(endroll,SPF_INTERPOLATE);
         WaitLoop:
-            GRND H 1;
+            GRND H 1 A_jumpif(!fuse,"Explode");
             loop;
         Death:
+            TNT1 A 0 {
+                A_Stop();
+                A_SetRoll(endroll,SPF_INTERPOLATE);
+                bBOUNCEONWALLS = bBOUNCEONFLOORS = bBOUNCEONCEILINGS = false;
+            }
+            TNT1 A 0 A_jumpif(fuse,"WaitLoop");
+        Explode:
             TNT1 A 0 
             {
                 A_SetRoll(endroll,SPF_INTERPOLATE);
@@ -84,7 +92,7 @@ Class BW_Grenade : Actor
         if(fuse-- < 1 && !exploded)
         {
             exploded = true;
-            setstatelabel("Death");
+            setstatelabel("Explode");
         }
     }
 
