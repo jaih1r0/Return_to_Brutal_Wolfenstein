@@ -3,7 +3,7 @@ Class BW_Projectile : fastprojectile
 {
     default
     {
-        speed 200;
+        speed 300;
         +missile;
         radius 1;
         height 1;
@@ -488,7 +488,7 @@ Class BW_Projectile : fastprojectile
 			return;
 		
 		Vector3 dir = (AngleToVector(lastview.x, cos(lastview.y)), -sin(lastview.y));
-		let tr = BW_ProjectileTraveler.dotrace(pos,vel.unit(),target,speed,self);
+		let tr = BW_ProjectileTraveler.dotrace(pos,vel.unit(),target,vel.length(),self);
 		vector3 endpos = tr.results.hitPos - dir;
 		if(!tr)
 			return;
@@ -753,13 +753,5 @@ Class BW_MGBullets : BW_Projectile
 	}
 }
 
-Class BW_MutantSuperBullet : BW_LugerBullets
-{
-	default
-	{
-		BW_Projectile.projectiledmg 50;
-		speed 150;
-	}
-}
 
 

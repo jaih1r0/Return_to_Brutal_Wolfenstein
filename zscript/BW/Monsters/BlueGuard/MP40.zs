@@ -34,7 +34,8 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 		void FireProjBullets()
 		{
 			A_Light(2);
-			A_SpawnProjectile("BW_MP40Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+			//A_SpawnProjectile("BW_MP40Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+			BW_FireMonsterBullet("BW_EnemyMP40Bullets");
 			A_StartSound("MP40/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}

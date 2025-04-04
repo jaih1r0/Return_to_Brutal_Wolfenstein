@@ -112,6 +112,59 @@ model BW_MGBullets
    FrameIndex TRAC A 0 0
 }
 
+
+
+//enemy projectiles
+model BW_EnemyLugerBullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_EnemyMP40Bullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_EnemyKar98Bullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_Enemy12GABullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_EnemyMGBullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
 model BW_MutantSuperBullet
 {
    Path "models/PROJECTILES"

@@ -194,6 +194,39 @@ Class BW_MonsterBase : Actor
 	{
 		return (HitRightFoot() || HitLeftFoot());
 	}
+
+	//
+	//
+	//
+
+	int getSkill()
+    {
+        return G_SkillPropertyInt(SKILLP_SpawnFilter);
+    }
+
+	void BW_FireMonsterBullet(string missile,int numbullets = 1,double angleOfs = 3, double pitchOfs = 3,int zofs = 32, int xyofs = 0)
+	{
+		int bul = max(1,abs(numbullets));
+		int skil = getSkill();
+		for(int i = 0; i < bul; i++)
+		{
+			actor bullet = A_SpawnProjectile(missile, zofs, xyofs, (frandom(angleOfs,-angleOfs)), CMF_AIMDIRECTION, self.pitch + (frandom(pitchOfs,-pitchOfs)));
+			if(bullet)
+			{
+				//maybe turning this into an option instead of a skill thing would work better
+				switch(skil)
+				{
+					case BW_Spawner.Skill_Baby:
+					case BW_Spawner.Skill_Easy:						break;	//50
+
+					case BW_Spawner.Skill_Normal:
+					case BW_Spawner.Skill_Hard:	bullet.vel *= 2;	break;	//100
+
+					case BW_Spawner.Skill_Uber:	bullet.vel *= 6;	break;	//300, same as player ones
+				}
+			}
+		}
+	}
 	
 }
 

@@ -35,10 +35,7 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 		void FireProjBullets()
 		{
 			A_Light(2);
-			for(int i = 0; i < 8; i++)
-			{
-				A_SpawnProjectile("BW_MP40Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-			}
+			BW_FireMonsterBullet("BW_EnemyMP40Bullets",8);
 			A_StartSound("Trench/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
 			A_StartSound("Trench/FireAlt", CHAN_AUTO, CHANF_OVERLAP, 0.7);
 			AmmoInMag--;

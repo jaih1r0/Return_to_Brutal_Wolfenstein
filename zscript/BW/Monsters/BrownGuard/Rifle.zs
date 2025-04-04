@@ -34,7 +34,8 @@ Class BW_BrownGuard_Rifle : BW_MonsterBase
 		void FireProjBullets()
 		{
 			A_Light(2);
-			A_SpawnProjectile("BW_Kar98Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+			//A_SpawnProjectile("BW_Kar98Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+			BW_FireMonsterBullet("BW_EnemyKar98Bullets");
 			A_StartSound("Kar98/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}

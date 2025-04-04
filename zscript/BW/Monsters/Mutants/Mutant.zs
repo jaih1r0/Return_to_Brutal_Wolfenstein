@@ -25,13 +25,15 @@ Class BW_Mutant : BW_MonsterBase //7078
 
     void MutantFire()
     {
-        A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-        A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
+       // A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+       BW_FireMonsterBullet("BW_EnemyLugerBullets"); 
+       A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
     }
 
     void MutantSuperFire()
     {
-        A_SpawnProjectile("BW_MutantSuperBullet", 32, 0, (frandom(5,-5)), CMF_AIMDIRECTION, self.pitch + (frandom(2,-2)));
+        //A_SpawnProjectile("BW_MutantSuperBullet", 32, 0, (frandom(5,-5)), CMF_AIMDIRECTION, self.pitch + (frandom(2,-2)));
+        BW_FireMonsterBullet("BW_MutantSuperBullet",1,5,5);
         A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
         A_StartSound("Trench/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
     }

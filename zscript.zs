@@ -8,6 +8,7 @@ Version 4.3
 
 #include "zscript/BW/Weapons/WeaponBase.zs"
 #include "zscript/BW/Weapons/BWProjectiles.zs"
+#include "zscript/BW/Weapons/EnemyProjectiles.zs"
 #include "zscript/BW/Monsters/MonsterBase.zs"
 #include "zscript/BW/Monsters/AIBase.zs"
 #include "zscript/BW/Effects/Effects.zs"
