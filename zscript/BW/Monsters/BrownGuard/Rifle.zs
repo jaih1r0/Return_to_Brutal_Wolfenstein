@@ -1,4 +1,4 @@
-Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace is temporary until spawners are implemented. Do we want to do spawner injection?
+Class BW_BrownGuard_Rifle : BW_MonsterBase
 {
 		Default
 		{
@@ -34,8 +34,8 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		void FireProjBullets()
 		{
 			A_Light(2);
-			A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-			A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
+			A_SpawnProjectile("BW_Kar98Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+			A_StartSound("Kar98/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}
 		
@@ -53,7 +53,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		override void BeginPlay()
 		{
 			super.BeginPlay();
-			AmmoInMag = random(4,8); //Luger P08
+			AmmoInMag = random(3,5); //Luger P08
 		}
 		
 		override void Tick()
@@ -65,15 +65,15 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		{
 		
 		Spawn:
-			WBPN H 1;
+			WBRN G 1;
 			TNT1 A 0;
 		Stand:
-			WBPN HHHH 5
+			WBRN GGGG 5
 			{
 				A_LookEx();
 				A_SetScale(scale.X,Scale.Y+0.01);
 			}
-			WBPN HHHH 5
+			WBRN GGGG 5
 			{
 				A_LookEx();
 				A_SetScale(scale.X,Scale.Y-0.01);
@@ -94,50 +94,50 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 				}
 			}
 		SeeContinue:
-			WBPN AAAABBBB 1 AI_SmartChase();
+			WBRN AAAABBBB 1 AI_SmartChase();
 			TNT1 A 0 A_Fallback();
-			WBPN CCCCDDDD 1 AI_SmartChase();
+			WBRN CCCCDDDD 1 AI_SmartChase();
 			TNT1 A 0 A_Fallback();
 			Loop;
 		FallBack:
 			TNT1 A 0 A_Jump(255, "Fallback1", "Roll", "See");
 		FallBack1:
-			WBPN D 3 {
+			WBRN D 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN C 3 {
+			WBRN C 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN B 3 {
+			WBRN B 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN A 3 {
+			WBRN A 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN D 3 {
+			WBRN D 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN C 3 {
+			WBRN C 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN B 3 {
+			WBRN B 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 				return A_Jump(64,"Missile");
 			}
-			WBPN A 3 {
+			WBRN A 3 {
 				A_FaceTarget(10);
 				A_Recoil(2);
 			}
@@ -147,22 +147,22 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		//Attack Logic// 
 		////////////////
 		Melee:
-			WBPN A 1 A_CheckLOF(1);
+			WBRN A 1 A_CheckLOF(1);
 			Goto See;
-			WBPN A 1 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			WBPN C random(10,20);
-			WBPN C 3
+			WBRN A 1 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN C random(10,20);
+			WBRN C 3
 			{
 				//Melee attack
 				A_StartSound("Fists/Swing");
 				A_CustomMeleeAttack(random(10, 30), "Fists/HitFlesh");
 			}
 			WBPN G 3;
-			WBPN E 6;
+			WBRN E 6;
 			Goto See;
 		Missile:
 			TNT1 A 0 A_JumpIf(AttackDelay > 3, "See");
-			WBPN E 1 A_CheckLOFRanged("AttackHandler", "Roll");
+			WBRN E 1 A_CheckLOFRanged("AttackHandler", "Roll");
 			Goto See;
 		AttackHandler:
 			TNT1 A 0
@@ -181,7 +181,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 				
 				AttackDelay = AttackDelay + 20;
 				
-				return A_Jump(256, "Attack1");
+				return A_Jump(256, "Attack1", "Attack2");
 			}
 		
 		Attack1:
@@ -192,12 +192,37 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 					A_Jump(256,"Reload");
 				}
 			}
-			WBPN E 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			WBPN E random(5,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			WBPN F 1 BRIGHT FireProjBullets;
-			WBPN E 4;
+			WBRN E 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN E random(5,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN F 2 BRIGHT FireProjBullets;
+			WBRN E 4;
+			WBRN G 4;
+			WBRN G 24 A_StartSound("Kar98/BoltOpen", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN G 24 A_StartSound("Kar98/BoltClose", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN E 4;
 			TNT1 A 0 A_Jump(90, "Attack1");
-			WBPN E 8;
+			WBRN E 8;
+			Goto See;
+			
+		Attack2:
+			TNT1 A 0
+			{
+				if(AmmoInMag <= 0)
+				{
+					A_Jump(256,"Reload");
+				}
+			}
+			WBRN G 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN JJ random(5,10) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN KK random(5,10) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN L 2 BRIGHT FireProjBullets;
+			WBRN K 4;
+			WBRN J 4;
+			WBRN J 24 A_StartSound("Kar98/BoltOpen", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN J 24 A_StartSound("Kar98/BoltClose", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN J 4;
+			TNT1 A 0 A_Jump(90, "Attack2");
+			WBRN G 8;
 			Goto See;
 			
 		Grenade:
@@ -206,32 +231,32 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 			TNT1 A 0 A_JumpIfCloser(90, "Attack1");
 		ThrowGrenade:
 			TNT1 A 0; //Grenade sound
-			WBPN E 6
+			WBRN G 6
 			{
 				A_ActiveSound();
 				A_FaceTarget(90,45);
 			}
-			WBPN E 6;
-			WBPN E 6
+			WBRN H 6;
+			WBRN I 6
 			{
 				A_FaceTarget(90,45);
 				FireProjGren();
 			}
-			WBPN E 6;
+			WBRN G 6;
 			Goto See;
 		Reload:
-			WBPR A 6;
-			WBPR B 6 A_StartSound("Luger/Out", 8, CHANF_OVERLAP, attenuation: 2);
-			WBPR C 12;
-			WBPR B 6;
-			WBPR A 6 A_StartSound("Luger/In", 8, CHANF_OVERLAP, attenuation: 2);
-			WBPR C 2;
+			WBRN G 6;
+			WBRN O 24 A_StartSound("Kar98/BoltOpen", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN M 16;
 			TNT1 A 0
 			{
-				A_StartSound("Luger/Charge", 8, CHANF_OVERLAP, attenuation: 1.5);
-				AmmoInMag = 9;
+				A_StartSound("Kar98/ClipLoad", 8, CHANF_OVERLAP, attenuation: 2);
+				AmmoInMag = 5;
 			}
-			WBPR A 2;
+			WBRN NO 12;
+			WBRN O 6;
+			WBRN G 24 A_StartSound("Kar98/BoltClose", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN E 2;
 			Goto See;
 
 		////////////////
@@ -296,36 +321,36 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace i
 		Roll:
 			TNT1 A 0 A_Jump(256, "SHR", "SHL", "See");
 		SHR:
-			WBPN A 3 A_FaceTarget;
-			WBPN E 3
+			WBRN A 3 A_FaceTarget;
+			WBRN E 3
 			{
 				A_FaceTarget();
 				A_ChangeVelocity(frandom(5,-5), -8, 0, CVF_RELATIVE);
 			}
-			WBPN E 24;
+			WBRN E 24;
 		SHRL:
-			WBPN E 1 A_CheckFloor("SHRE");
-			WBPN E 1;
+			WBRN E 1 A_CheckFloor("SHRE");
+			WBRN E 1;
 			Loop;
 		SHRE:
-			WBPN E 1 A_FaceTarget;
+			WBRN E 1 A_FaceTarget;
 			TNT1 A 0 A_Stop();
 			TNT1 A 0 A_Jump(256, "See", "Missile");
 			Goto See;
 		SHL:
-			WBPN A 3 A_FaceTarget;
-			WBPN E 3
+			WBRN A 3 A_FaceTarget;
+			WBRN E 3
 			{
 				A_FaceTarget();
 				A_ChangeVelocity(frandom(5,-5), 8, 0, CVF_RELATIVE);
 			}
-			WBPN E 24;
+			WBRN E 24;
 		SHLL:
-			WBPN E 1 A_CheckFloor("SHLE");
-			WBPN E 1 A_CheckCeiling("SHLE");
+			WBRN E 1 A_CheckFloor("SHLE");
+			WBRN E 1 A_CheckCeiling("SHLE");
 			Loop;
 		SHLE:
-			WBPN E 1 A_FaceTarget;
+			WBRN E 1 A_FaceTarget;
 			TNT1 A 0 A_Stop();
 			TNT1 A 0 A_Jump(256, "Roll", "See", "Missile");
 			Goto See;

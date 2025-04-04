@@ -520,6 +520,49 @@ Trench/Shell3	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell3.wav"
 Trench/Shell4	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell4.wav"
 Trench/Shell5	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell5.wav"
 
+//Kar98K
+
+$RANDOM Kar98/Fire
+{
+Kar98/Fire1
+Kar98/Fire2
+Kar98/Fire3
+}
+
+Kar98/Fire1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Fire1.wav"
+Kar98/Fire2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Fire2.wav"
+Kar98/Fire3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Fire3.wav"
+
+$RANDOM Kar98/FireMech
+{
+Kar98/FireMech1
+Kar98/FireMech2
+Kar98/FireMech3
+Kar98/FireMech4
+Kar98/FireMech5
+Kar98/FireMech6
+}
+
+Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech1.wav"
+Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech2.wav"
+Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech3.wav"
+Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech4.wav"
+Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech5.wav"
+Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech6.wav"
+
+Kar98/FireAdd	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireAdd.wav"
+
+Kar98/BoltOpen	"Sounds/Weapons/Slot4/Kar98k/Kar98BoltOpen.wav"
+Kar98/BoltClose	"Sounds/Weapons/Slot4/Kar98k/Kar98BoltClose.wav"
+
+Kar98/CartLoad	"Sounds/Weapons/Slot4/Kar98k/Kar98CartLoad.wav"
+Kar98/ClipLoad	"Sounds/Weapons/Slot4/Kar98k/Kar98ClipLoad.wav"
+
+Kar98/Drop	"Sounds/Weapons/Slot4/Kar98k/Kar98Drop.wav"
+Kar98/Raise	"Sounds/Weapons/Slot4/Kar98k/Kar98Raise.wav"
+
+//-----MISC-----
+
 Grenade/Pin     "Sounds/Weapons/Grenades/GRENPIC2.ogg"
 Grenade/Draw     "Sounds/Weapons/Grenades/grenade_draw.wav"
 Grenade/Throw     "Sounds/Weapons/Grenades/grenade_throw.wav"
