@@ -271,8 +271,8 @@ Class BW_GunSmoke : BWFxBase
 	states
 	{
 		Spawn:
-			SM7C A 1 dosmokeroll();
-			SM7C AAAAAAAA 1 {
+			PUF2 U 1 dosmokeroll();
+			PUF2 UUUUUUUU 1 {
 				dosmokeroll();
 			}
 			stop;

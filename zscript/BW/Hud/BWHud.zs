@@ -263,14 +263,14 @@ Class BW_Hud : BaseStatusBar
 			if(i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
 			{
 				textureid ktx = i.Icon;
-				vector2 ofs = (-60,20);
+				vector2 ofs = (-50,20);
 				if(i is "HasPickedUpBlackKey")
 				{
 					ktx = texman.checkfortexture("NK1CON");
 				}
 				else
 				{
-					ofs =( -70,20);
+					ofs =( -50,30);
 					ktx = texman.checkfortexture("DK1CON");
 				}
 				DrawTexture(ktx,ofs, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP,1.0,(20,20),(2.0,2.0));

@@ -88,8 +88,9 @@ Class BaseBWWeapon : DoomWeapon
 		User2:
 		KnifeAttack:
 			TNT1 A 0 handleKnifeFlash();
-			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_Startsound("Fists/Swing",16);
 			TNT1 A 1;
+			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
 			BWKF JIH 1;
 			BWKF G 1;
 			TNT1 A 0 A_QuakeEx(0,0.5,0,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
@@ -146,6 +147,19 @@ Class BaseBWWeapon : DoomWeapon
 			}
 			BGTR VWXY 1;
 			TNT1 A 0 A_jump(256,"Ready");
+			wait;
+
+		LedgeGrabbing:
+			BWLG ABC 1;
+			BWLG DEF 1;
+			BWLG GHI 1;
+			BWLG J 1;
+			TNT1 AA 0 A_jump(256,"Ready");
+			wait;
+		FinishClimb:
+			BWLG G 1;
+			BWLG HIJ 1;
+			TNT1 AA 0 A_jump(256,"Ready");
 			wait;
 		//dummy kick flashes 
 		KickFlash:
@@ -419,11 +433,11 @@ Class BaseBWWeapon : DoomWeapon
         A_SetAngle(self.angle+(angleDelta * fac));
 	}
 	
-	action void BW_HandleWeaponFeedback(int qDur, float camRoll, float pitchDelta, float angleDelta, double d1 = 0, double d2 = 0 , double d3 = 0)
+	action void BW_HandleWeaponFeedback(int qDur, float camRoll, float pitchDelta, float angleDelta, double d1 = 12, double d2 = 0 , double d3 = -3)
 	{
 		BW_QuakeCamera(qDur, camRoll);
 		BW_WeaponRecoilBasic(pitchDelta, angleDelta);
-		BW_GunSmoke(d1, d2, d3);
+		BW_GunSmoke("PUF2U0",d1, d2, d3);
 	}
 	
 	//A way to perform pretty much take all of the "Insertbullets" states and turn it into a function
@@ -535,19 +549,31 @@ Class BaseBWWeapon : DoomWeapon
 			pl.slideAngle = Angle - VectorAngle(player.cmd.forwardmove, player.cmd.sidemove);
 	}
 	
-	Action void BW_GunSmoke(double xyofs = 0, double spawnheight = 0, double addangle = 0,string type = "BW_GunSmoke")
+	Action void BW_GunSmoke(string gfx = "PUF2U0",double fwofs = 12,double sdofs = 0, double zoff = -2, double xvel = 4,double yvel = 0,double zvel = 0,int startsize = 9, color col = 0xFFFFFF)
 	{
-		if(type)
-		{
-			FTranslatedLineTarget t;
-			vector2 ofs = angletovector(angle,xyofs);
-			double shootangle = self.angle + addangle;
-			Actor misl, realmisl;
-			[misl, realmisl] = SpawnPlayerMissile(type, shootangle, ofs.X, ofs.Y, spawnheight, t, false, 1);
-			if(realmisl)
-				realmisl.vel += vel;
-			
-		}
+		if(!gfx)
+			return;
+		Quat dir = Quat.FromAngles(angle,pitch,roll);
+		vector3 ofs = dir * (fwofs, -sdofs,zoff);
+		vector3 spawnpos = Level.vec3offset((pos.xy,player.viewz), ofs);
+		vector3 vl = dir * (xvel,-yvel,zvel);
+		vl += (vel * 0.5);
+		FSpawnParticleParams WepSmk;
+		WepSmk.Texture = TexMan.CheckForTexture(gfx);
+		WepSmk.Color1 = col;
+		WepSmk.Style = style_translucent;
+		WepSmk.Flags = SPF_ROLL;
+		WepSmk.vel = vl;
+		WepSmk.Startroll = random(0,360);
+		WepSmk.RollVel = frandom(-6.0,6.0);
+		WepSmk.StartAlpha = 0.4;
+		WepSmk.Lifetime = random(10,14);
+		WepSmk.FadeStep = WepSmk.StartAlpha / WepSmk.Lifetime;
+		WepSmk.accel = -(vl * frandom(0.02,0.05));
+		WepSmk.Size = startsize;
+		WepSmk.SizeStep = frandom(1.0,4.0);
+		WepSmk.Pos = spawnpos;
+		Level.SpawnParticle (WepSmk);
 	}
 	
 	override void DoEffect()
@@ -1059,7 +1085,7 @@ Class BW_GrenadeAmmo : Ammo	//7082
 {
 	Default
 	{
-		Inventory.Amount 0;
+		Inventory.Amount 1;
 		Inventory.MaxAmount 5;
 		Ammo.BackpackAmount 2;
 		Ammo.BackpackMaxAmount 5;

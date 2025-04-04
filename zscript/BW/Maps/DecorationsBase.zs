@@ -24,13 +24,13 @@ Class BW_BJYeah : BW_Decoration
 {
 	Default
 	{
-	Monster;
-	+FRIENDLY;
-	-COUNTKILL;
-	Radius 8;
-	Height 8;
-	-Solid;
-	ProjectilePassHeight 0.16;
+        //Monster;
+        //+FRIENDLY;
+        //-COUNTKILL;
+        Radius 8;
+        Height 8;
+        -Solid;
+        //ProjectilePassHeight 0.16;
 	}
 	
 	States
@@ -54,7 +54,7 @@ Class BW_BJYeah : BW_Decoration
 			Goto Yeah;
 		Yeah:
 			BJVT EF 5;
-			TNT1 A 0 A_PlaySound("ohyeah");
+			TNT1 A 0 A_StartSound("ohyeah");
 			BJVT GH 6;
 			BJVT HHHHHHHHHHHHHHH 600;
 			Stop;
@@ -110,6 +110,43 @@ Class BW_ShootableDecoration : BW_Decoration abstract
 		StickFX.Pos = vec3offset(random(-radius,radius),random(-radius,radius),zoffset);
 		Level.SpawnParticle (StickFX);
     }
+
+    void SpawnDieSpark(int zofs = 0,int sidethrust = 3)
+	{
+		FSpawnParticleParams PUFSPRK;
+		PUFSPRK.Texture = TexMan.CheckForTexture("SPKOA0");
+		PUFSPRK.Color1 = "FFFFFF";
+		PUFSPRK.Style = STYLE_Add;
+		PUFSPRK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
+		PUFSPRK.Vel = (random(-sidethrust,sidethrust),random(-sidethrust,sidethrust),random(-2,3));
+		PUFSPRK.accel = (0,0,frandom(-1.75,-0.75));
+		PUFSPRK.Startroll = randompick(0,90,180,270,360);
+		PUFSPRK.RollVel = 0;
+		PUFSPRK.StartAlpha = 1.0;
+		PUFSPRK.FadeStep = 0.075;
+		PUFSPRK.Size = random(8,14);
+		PUFSPRK.SizeStep = -0.5;
+		PUFSPRK.Lifetime = random(12,18); 
+		PUFSPRK.Pos = pos + (0,0,zofs);
+		Level.SpawnParticle(PUFSPRK);
+	}
+
+    void SpawnDyingFlare(int zofs = 0,int startsize = 28, int life = 35, double startalpha = 0.7, string gfx = "LENYA0")
+	{
+		FSpawnParticleParams FLARPUF;
+		FLARPUF.Texture = TexMan.CheckForTexture(gfx);
+		FLARPUF.Style = STYLE_ADD;
+		FLARPUF.Color1 = "FFFFFF";
+		FLARPUF.Flags =SPF_FULLBRIGHT;
+		FLARPUF.StartRoll = 0;
+		FLARPUF.StartAlpha = startalpha;
+		FLARPUF.Size = startsize;
+		FLARPUF.Lifetime = life; 
+        FLARPUF.SizeStep = -startsize / life + 1;
+        FLARPUF.FadeStep = startalpha/life;
+		FLARPUF.Pos = pos + (0,0,zofs);
+		Level.SpawnParticle(FLARPUF);
+	}
 }
 
 Class BW_CeillingDecoration : BW_ShootableDecoration abstract
@@ -255,6 +292,8 @@ Class BW_GreyLamp : BW_CeillingDecoration
             stop;
         death:
             TNT1 A 0 killFlare();
+            TNT1 A 0 SpawnDyingFlare(gfx:"LENSA0");
+            TNT1 AAAAA 0 SpawnDieSpark(0,1);
             EHI2 A -1;
             stop;
     }
@@ -367,6 +406,7 @@ Class  BW_Table1 : BW_ShootableDecoration Replaces TallGreenColumn
         
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(5,22),25,45,gfx:"DIRPD0");
             TABL D -1;
             stop;
         Death.fire:
@@ -382,6 +422,7 @@ Class BW_Table2 : BW_ShootableDecoration Replaces HeartColumn //36 translator do
     {
         health 75;
         deathheight 38;
+        
         Radius 16;
         Height 30;
     }
@@ -392,6 +433,7 @@ Class BW_Table2 : BW_ShootableDecoration Replaces HeartColumn //36 translator do
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(10,30),25,45,gfx:"DIRPD0");
             TABL B -1;
             stop;
         Death.fire:
@@ -418,6 +460,7 @@ Class BW_vase1 : BW_ShootableDecoration Replaces HeadsOnAStick
             stop;
         death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(15,30),25,30);
             BVAS C -1;
             stop;
     }
@@ -439,6 +482,8 @@ Class BW_vase2 : BW_ShootableDecoration Replaces BigTree
             stop;
         death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(5,22),25,45,gfx:"DIRPC0");
+            TNT1 AA 0 BW_SpawnSmokeFx(random(15,40),25,45,gfx:"DIRPD0");
             YVAS C -1;
             stop;
     }
@@ -460,6 +505,7 @@ Class BW_vase3 : BW_ShootableDecoration Replaces Stalagtite
             stop;
         death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(5,22),25,45,gfx:"DIRPC0");
             BVA1 C -1;
             stop;
     }
@@ -481,6 +527,7 @@ Class BW_vasePlant1 : BW_ShootableDecoration    //7059
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(5,30),25,45,gfx:"DIRPC0");
             PLNT C -1;
             stop;
     }
@@ -495,6 +542,7 @@ Class BW_vasePlant2 : BW_vasePlant1 //7060
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(5,30),25,45,gfx:"DIRPC0");
             PLMT C -1;
             stop;
     }
@@ -518,6 +566,7 @@ Class BW_ThirdReachFlag : BW_ShootableDecoration replaces HeadOnAStick
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AAA 0 BW_SpawnSmokeFx(random(10,40),25,45,gfx:"DIRPD0");
             1OL4 A -1;
             stop;
     }
@@ -543,6 +592,9 @@ Class BW_TechLamp1 : BW_ShootableDecoration Replaces Candelabra //35
             stop;
         Death:
             TNT1 A 0 killFlare();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(20,40),25,45,gfx:"DIRPD0");
+            TNT1 A 0 SpawnDyingFlare(38,35,10,gfx:"LENSA0");
+            TNT1 AAAAAA 0 SpawnDieSpark(0,2);
             TNT1 A 0 A_NoBlocking();
             YVAS C 1;
             DLMP E -1;
@@ -748,6 +800,7 @@ Class BW_Skeleton1 : BW_ShootableDecoration replaces HangTSkull
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),35,45);
             SKPO B -1;
             stop;
     }
@@ -771,6 +824,7 @@ Class BW_WashBasin : BW_ShootableDecoration Replaces HangTLookingUp
             stop;
         death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(10,40),35,45);
             LAVA C -1;
             stop;
     }
@@ -903,7 +957,11 @@ Class BW_BloodPool : BW_Decoration Replaces HangTNoBrain
     states
     {
         spawn:
-            HDB6 A -1;
+            TNT1 A 0 nodelay {
+                frame = random(0,7);
+                scale *= frandom(0.9,1.5);
+            }
+            NGMV # -1;
             stop;
     }
 } 
@@ -925,6 +983,8 @@ Class BW_Tree1 : BW_ShootableDecoration replaces LiveStick
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AA 0 BW_SpawnSmokeFx(random(5,22),45,45,gfx:"DIRPC0");
+            TNT1 AA 0 BW_SpawnSmokeFx(random(15,40),45,45,gfx:"DIRPD0");
             TRE2 B -1;
             stop;
     }
@@ -946,6 +1006,7 @@ Class BW_CagedSkelly : BW_ShootableDecoration replaces HangTLookingDown
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),35,45);
             GAB1 ABC 3;
             GAB1 D -1;
             stop;
@@ -961,6 +1022,7 @@ Class BW_Cage : BW_CagedSkelly replaces meat3
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),35,45);
             GAB1 ABC 3;
             GAB1 D -1;
             stop;
@@ -1053,6 +1115,7 @@ Class BW_BoneStack : BW_ShootableDecoration replaces ColonGibs
             POB1 A -1;
             stop;
         Death:
+            TNT1 AA 0 BW_SpawnSmokeFx(5,35,30);
             TNT1 A 1;
             stop;
     }

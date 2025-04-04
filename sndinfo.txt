@@ -215,6 +215,7 @@ $random Casing/Brass
 	Casing/Brass5
 }
 
+//player things
 Player/Jump1		"Sounds/Player/Jump/DSJUMP1.ogg"
 Player/Jump2		"Sounds/Player/Jump/DSJUMP2.ogg"
 Player/Jump3		"Sounds/Player/Jump/DSJUMP3.ogg"
@@ -227,3 +228,20 @@ $random Player/Jump
 	Player/Jump4
 }
 $playeralias	player		male	*jump  Player/Jump
+
+
+Player/land1	"Sounds/Player/Land/jmpland1.ogg"
+Player/land2	"Sounds/Player/Land/jmpland2.ogg"
+Player/land3	"Sounds/Player/Land/jmpland3.ogg"
+Player/land4	"Sounds/Player/Land/jmpland4.ogg"
+Player/land5	"Sounds/Player/Land/jmpland5.ogg"
+
+$random Player/Land 
+{ 
+	Player/land1 
+	Player/land2 
+	Player/land3 
+	Player/land4 
+	Player/land5 
+}
+$playeralias player	male *land Player/Land

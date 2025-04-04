@@ -523,10 +523,22 @@ Class BW_Projectile : fastprojectile
 				stopped = true;
 			}
 		}
-		
+		string ty;
+		switch(tr.results.hittype)
+		{
+			case TRACE_HasHitSky:
+				ty = "Sky";	break;
+			case TRACE_HitWall:
+				ty = "Wall";	break;
+			case TRACE_HitCeiling:
+				ty = "Ceil";	break;
+			case TRACE_HitFloor:
+				ty = "Floor";	break;
+		}
+
 		setorigin(endpos,true);
 		
-		if(stopped || tr.results.HitType == TRACE_HasHitSky)
+		if(stopped || tr.results.HitType == TRACE_HasHitSky || tr.hitsky || tr.results.hittexture == skyflatnum)
 		{
 			destroy();
 			return;
@@ -535,6 +547,11 @@ Class BW_Projectile : fastprojectile
 		if(tr.results.HitType == TRACE_HitWall || tr.results.HitType == TRACE_HitCeiling || tr.results.HitType == TRACE_HitFloor)
 		{
 			string tex = texman.getname(tr.results.HitTexture);
+			if(!tex)	//probably hit sky
+			{
+				destroy();
+				return;
+			}
 			name mat = BW_StaticHandler.getmaterialname(tex);
 			
 			if(mat == 'null')

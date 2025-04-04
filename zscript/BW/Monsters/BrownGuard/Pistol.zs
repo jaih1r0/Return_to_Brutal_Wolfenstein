@@ -1,4 +1,4 @@
-Class BW_BrownGuard_Pistol : BW_MonsterBase replaces Zombieman //[Pop] replace is temporary until spawners are implemented. Do we want to do spawner injection?
+Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace is temporary until spawners are implemented. Do we want to do spawner injection?
 {
 		Default
 		{

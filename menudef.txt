@@ -1,9 +1,8 @@
 
 LISTMENU "MainMenu"
 {
-		//StaticPatch 99, 2, "M_DOOM"
 		StaticPatch 90, -2, "M_DOOM"
-		
+		//font "BWBGFNT",white,red
 		Position 102, 42
 		TextItem "New Game", "n", "PlayerclassMenu"
 		ifOption(SwapMenu)
@@ -50,8 +49,8 @@ optionvalue "BWProjectileType"
 OptionMenu RTBW_OptionsMenu
 {
 	Title "Return to brutal wolfenstein menu"
-	//Submenu	"Gore Settings","BologneseOptions"
-	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
+	statictext ""
+	command "go to test map","map BWTEST"
 	statictext ""
 	option "player bullet type","BW_BulletType","BWProjectileType"
 	statictext ""
@@ -66,16 +65,9 @@ OptionMenu RTBW_OptionsMenu
 	slider "Footsteps volume","BW_FootstepsVol",0.0,1.0,0.1
 	statictext ""
 	slider "Enemy footsteps volume","BW_enemyFootstepsVol",0.0,1.0,0.1
-	/*
-	statictext "=== Unused ==="
 	statictext ""
-	SubMenu "Bonus Levels","BWOPTIONS"
-	STATICTEXT ""
-	Option "Hud Aspect Ratio", "BWHUDTYPE", "Option8"
-	Command "Force HUD to Restart",			"pukename BWRespawn"
-	STATICTEXT ""
-	Option "Disable Reloads", "AllowReload", "Option9"
-	StaticText "Requires a level restart to work"*/
+	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
+	
 }
 
 

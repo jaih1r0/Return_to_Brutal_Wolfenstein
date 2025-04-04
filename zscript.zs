@@ -3,6 +3,9 @@ Version 4.3
 #include "zscript/BW/Handlers/Materials.zs"
 #include "zscript/BW/Handlers/BWHandler.zs"
 #include "zscript/BW/BW_Statics.zs"
+
+#include "zscript/BW/Spawners/SpawnerBase.zs"
+
 #include "zscript/BW/Weapons/WeaponBase.zs"
 #include "zscript/BW/Weapons/BWProjectiles.zs"
 #include "zscript/BW/Monsters/MonsterBase.zs"

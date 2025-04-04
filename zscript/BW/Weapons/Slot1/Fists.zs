@@ -29,8 +29,9 @@ Class BW_Fists : BaseBWWeapon replaces fist
             TNT1 A 0 A_Startsound("Fists/Swing",7);
             MPFL ABC 1;
             TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
-            MPFL D 1 BW_Punch();
-            MPFL DEFG 1;
+            MPFL D 1;
+            MPFL E 1 BW_Punch();
+            MPFL EFG 1;
             TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
             MPFL HI 1 BW_QuickRefire("AltFire",BT_ALTATTACK,false);
             MPFI A 1 BW_QuickRefire("AltFire",BT_ALTATTACK,false);
@@ -41,8 +42,9 @@ Class BW_Fists : BaseBWWeapon replaces fist
             TNT1 A 0 A_Startsound("Fists/Swing",8);
             MPFR ABC 1;
             TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
-            MPFR D 1 BW_Punch();
-            MPFR DEFG 1;
+            MPFR D 1;
+            MPFR E 1 BW_Punch();
+            MPFR EFG 1;
             TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
             MPFR HI 1 BW_QuickRefire("Fire",BT_ATTACK,false);
             MPFI A 1 BW_QuickRefire("Fire",BT_ATTACK,false);

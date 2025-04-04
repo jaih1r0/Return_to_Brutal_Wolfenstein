@@ -92,6 +92,7 @@ Class BW_Grenade : Actor
         if(fuse-- < 1 && !exploded)
         {
             exploded = true;
+            bBOUNCEONWALLS = bBOUNCEONFLOORS = bBOUNCEONCEILINGS = false;
             setstatelabel("Explode");
         }
     }

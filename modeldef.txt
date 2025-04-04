@@ -121,3 +121,44 @@ model BW_MutantSuperBullet
    PITCHFROMMOMENTUM
    FrameIndex TRAC A 0 0
 }
+
+
+//
+model BW_BloodPool
+{
+	UseActorPitch
+	UseActorRoll
+	ZOffset 0.0001
+	Scale 1.0 1.0 1.0
+
+	// mesh
+	Path "models/nashgore/BloodSpot"
+	Model 0 "BloodSpot.md3"
+
+   Skin 0 "bsplat1.png"
+	FrameIndex HDB6 A 0 0
+	// textures
+	Skin 0 "bsplat1.png"
+	FrameIndex NGMV A 0 0
+
+	Skin 0 "bsplat2.png"
+	FrameIndex NGMV B 0 0
+
+	Skin 0 "bsplat3.png"
+	FrameIndex NGMV C 0 0
+
+	Skin 0 "bsplat4.png"
+	FrameIndex NGMV D 0 0
+
+	Skin 0 "bsplat5.png"
+	FrameIndex NGMV E 0 0
+
+	Skin 0 "bsplat6.png"
+	FrameIndex NGMV F 0 0
+
+	Skin 0 "bsplat7.png"
+	FrameIndex NGMV G 0 0
+
+	Skin 0 "bsplat8.png"
+	FrameIndex NGMV H 0 0
+}

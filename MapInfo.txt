@@ -62,12 +62,12 @@ DoomEdNums
 	7060 = "BW_vasePlant2"
 	
 	//enemies
-	7006 = "BW_BrownGuard_Pistol"
+	7006 = "BW_ZombiemanSpawner"
 	7007 = "BW_BrownGuard_Pistol"	//patroling brown guard
 	7008 = "BW_ShotgunguySpawner"
-
+	7018 = "BW_RiflemanSpawner"		//rifol
 	7019 = "BW_ShotgunguySpawner"	//easy version
-	7045 = "BW_BrownGuard_Pistol"	//easy
+	7045 = "BW_ZombiemanSpawner"	//easy
 
 	7079 = "BW_Mutant"
 
@@ -75,6 +75,13 @@ DoomEdNums
 	1171 = "BW_StairsHitBox"
 }
 
+map BWTEST "RTBW Test Map"
+{
+	next = "BWTEST"
+	secretnext = "BWTEST"
+	//name = "RTBW Test Map"
+	sky1 = "SODSKY"
+}
 
 clearepisodes
 episode map01
@@ -1178,7 +1185,7 @@ map Museum "Museum"
 	par = 150
 }
 //"is one" non significa "è unica" ma "è uno/a"... potevi cambiare con "is unique", ma credo ROCKS sta bene
-map TITLEMAP "Wondering About My Love ROCKS!"
+map TITLEMAP "RTBW"
 {
 	titlepatch = "CWILV23" //che ti serve? //In effett....
 	next = "MAP01" //che ti serve? //Bho

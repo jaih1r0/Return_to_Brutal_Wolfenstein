@@ -41,14 +41,14 @@ class BW_Trenchgun : BaseBWWeapon
 		if(CountInv("AimingToken"))
 		{
 			BW_FireBullets("BW_12GABullets",1,1,8,25,"Bulletpuff","Bullet",0,0,0);
-			BW_HandleWeaponFeedback(3, 4, -0.40, frandom(+0.35, -0.35), 0, 0, 0);
+			BW_HandleWeaponFeedback(3, 4, -0.40, frandom(+0.35, -0.35));//, 0, 0, 0);
 			A_ZoomFactor(1.2-0.04);
 			//BW_SpawnCasing("BW_ShellCasing",20,3,-5,random(2,5),random(2,5),random(1,3));
 		}
 		else
 		{
 			BW_FireBullets("BW_12GABullets",1.5,1.5,8,25,"Bulletpuff","Bullet",0,0,0);
-			BW_HandleWeaponFeedback(3, 4, -0.60, frandom(+0.45, -0.45), -5, 0, 0);
+			BW_HandleWeaponFeedback(3, 4, -0.60, frandom(+0.45, -0.45));//, -5, 0, 0);
 			A_ZoomFactor(1-0.04);
 			//BW_SpawnCasing("BW_ShellCasing",24,-1,-6,random(3,6),random(2,5),random(3,6));
 		}

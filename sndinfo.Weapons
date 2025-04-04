@@ -303,7 +303,7 @@ $random Fists/Hit
 
 //Knife
 
-Knife/Swing "Sounds/Weapons/Slot1/Knife/KNIFSWNG.ogg"
+//Knife/Swing "Sounds/Weapons/Slot1/Knife/KNIFSWNG.ogg"
 Knife/Wall1 "Sounds/Weapons/Slot1/Knife/DSSAWAL1.ogg"
 Knife/Wall2 "Sounds/Weapons/Slot1/Knife/DSSAWAL2.ogg"
 Knife/Wall3 "Sounds/Weapons/Slot1/Knife/DSSAWAL3.ogg"
@@ -317,6 +317,16 @@ $random Knife/Wall
     Knife/Wall4
     Knife/Wall5
 }
+Knife/Swing1 "Sounds/Weapons/Slot1/Knife/bowie_swing_00.wav"
+Knife/Swing2 "Sounds/Weapons/Slot1/Knife/bowie_swing_01.wav"
+Knife/Swing3 "Sounds/Weapons/Slot1/Knife/bowie_swing_02.wav"
+$random Knife/Swing
+{
+    Knife/Swing1
+    Knife/Swing2
+    Knife/Swing3
+}
+
 
 Knife/Body1 "Sounds/Weapons/Slot1/Knife/BladeStab-1.ogg"
 Knife/Body2 "Sounds/Weapons/Slot1/Knife/BladeStab-2.ogg"
