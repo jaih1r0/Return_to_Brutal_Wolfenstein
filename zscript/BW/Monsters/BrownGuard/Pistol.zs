@@ -242,24 +242,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 			TNT1 A 0 A_JumpIf(kickeddown, "KickedPain");
 			WBPN G 6 A_Pain();
 			Goto See;
-		Death:
-			TNT1 A 0
-			{
-				A_Scream();
-				A_NoBlocking();
-			}
-			WBPN IJKL 3;
-			WBPN M -1;
-			Stop;
-		XDeath:
-			TNT1 A 0
-			{
-				A_XScream();
-				A_NoBlocking();
-			}
-			WBPN IJKL 3;
-			WBPN M -1;
-			Stop;
+		
 		Raise:
 			WBPN MLKJIG 3;
 			Goto Spawn;
@@ -330,5 +313,127 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 			TNT1 A 0 A_Stop();
 			TNT1 A 0 A_Jump(256, "Roll", "See", "Missile");
 			Goto See;
+		
+		///////////////////////////////////////////////////////////////
+		//
+		//	Deaths
+		//
+		//////////////////////////////////////////////////////////////
+		Death:
+			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShot");
+			TNT1 A 0 A_jumpif(HitRightArm(),"Death_RightArm");
+			TNT1 A 0 A_jumpif(HitRightFoot(),"Death_RightFoot");
+			TNT1 A 0
+			{
+				A_Scream();
+				A_NoBlocking();
+			}
+			WBPN IJKL 3;
+			WBPN M -1;
+			Stop;
+		XDeath:
+			TNT1 A 0
+			{
+				A_XScream();
+				A_NoBlocking();
+			}
+			WBPN IJKL 3;
+			WBPN M -1;
+			Stop;
+		Death.Knife:
+			TNT1 A 0
+			{
+				A_Scream();
+				A_NoBlocking();
+			}
+			GUCC A 3;
+			GUCC B 3;
+			GUCC CD 3;
+			GUCC E -1;
+			stop;
+		Death.Melee:
+		Death.pistol:
+			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShotMinor");
+			goto death;
+		Death.Rifle:
+			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShot");
+			goto death;
+
+		Death_RightArm:
+			TNT1 A 0
+			{
+				A_Scream();
+				A_NoBlocking();
+				//A_SpawnitemEx("BW_BGArm",0,0,30,frandom(-3,3),frandom(-3,3),frandom(-1,3.5));
+				A_Startsound("Gore/LimbGib");
+				BW_SpawnGib("BW_BGArm",(pos + (0,0,30)),frandom(-2.5,2.5),frandom(1.5,3.0),2);
+				spawnBloodSpurt(zofs:25);
+				A_giveinventory("BW_ArmDeath",1);	//dont random flip
+			}
+			GSUB A 3;
+			GSUB B 3;
+			GSUB CD 3;
+			GSUB E -1;
+			stop;
+
+		Death_RightFoot:
+			TNT1 A 0
+			{
+				A_Scream();
+				A_NoBlocking();
+				//A_SpawnitemEx("BW_BGLeg",0,0,12,frandom(-3,3),frandom(-3,3),frandom(-1,3.5));
+				A_Startsound("Gore/LimbGib");
+				BW_SpawnGib("BW_BGLEG",(pos + (0,0,12)),frandom(-5.0,5.0),frandom(2.0,4.0),4.5);
+				spawnBloodSpurt(zofs:10);
+				A_giveinventory("BW_LegDeath",1); //dont random flip
+			}
+			SALE A 3;
+			SALE B 3;
+			SALE CD 3;
+			SALE E -1;
+			stop;
+
+		Death_HeadShotMinor:
+			TNT1 A 0 
+			{
+				A_giveinventory("BW_HeadDeath",1);
+				//A_Scream();
+				A_NoBlocking(); //
+				A_Startsound("Gore/HeadShotMin");
+				if(!random(0,1)) //50%
+					BW_SpawnGib("BW_EnemyHelmethDrop",(pos + (0,0,headheight)),frandom(-3.0,3.0),frandom(-3.0,3.0),frandom(-1.0,4.0));
+					//A_SpawnitemEx("BW_EnemyHelmethDrop",0,0,headheight,frandom(-3,3),frandom(-3,3),frandom(-1,4));
+			}
+			ZMA1 A 3 spawnBloodSpurt();
+			ZMA1 B 3;
+			ZMA1 C 3;
+			ZMA1 D 3;
+			ZMA1 E -1;
+			stop;
+
+		Death_HeadShot:
+			TNT1 A 0 
+			{
+				//A_Scream();
+				A_NoBlocking();
+				A_Startsound("Gore/HeadShot");
+				A_SpawnitemEx("BW_BGHead",0,0,headheight,frandom(-3,3),frandom(-3,3),frandom(-1,4));
+			}
+			TNT1 A 0 A_jump(128,"Death_HeadShotEnd");
+			TNT1 A 0 A_giveinventory("BW_HeadDeath",1);
+			ZMAD F 4 spawnBloodSpurt();
+			ZMAD GH 4;
+			ZMAD F 4 spawnBloodSpurt();
+			ZMAD GH 4;
+			ZMAD F 4 spawnBloodSpurt();
+			ZMAD GH 4;
+			ZMAD F 4 spawnBloodSpurt();
+			ZMAD GH 4;
+		Death_HeadShotEnd:
+			TNT1 A 0 spawnBloodSpurt(10);
+			ZMAD ACCCD 3;
+			ZMAD E -1;
+			stop;
+		
 	}
 }

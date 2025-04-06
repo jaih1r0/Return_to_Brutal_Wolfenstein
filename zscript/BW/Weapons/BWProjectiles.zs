@@ -556,10 +556,14 @@ Class BW_Projectile : fastprojectile
 			
 			if(mat == 'null')
 			{
+				if(BW_texturesChecker)
+					console.printf("\caTexture unknown\c-: \cy%s\c-, at map: \cy%s\c- at pos(%d,%d,%d)",tex,level.Mapname,endpos.x,endpos.y,endpos.z);
 				spawn("BW_BulletPuff",endpos);
 				destroy();
 				return;
 			}
+			if(BW_texturesChecker)
+				console.printf("\cdTexture\c-: \cy%s\c-, Material: \cy%s\c-",tex,mat);
 			let puf = BW_impactpuff(spawn("BW_ImpactPuff",endpos));
 			if(!puf)
 				return;
@@ -730,6 +734,7 @@ Class BW_Kar98Bullets : BW_Projectile
 		BW_Projectile.projectiledmg 80;
 		BW_Projectile.ripAmount 5;
 		damagetype "Rifle";
+		+ripper;
 	}
 }
 

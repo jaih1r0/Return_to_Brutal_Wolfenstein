@@ -553,14 +553,14 @@ Kar98/FireMech5
 Kar98/FireMech6
 }
 
-Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech1.wav"
-Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech2.wav"
-Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech3.wav"
-Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech4.wav"
-Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech5.wav"
-Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireMech6.wav"
+Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech1.wav"
+Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech2.wav"
+Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech3.wav"
+Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech4.wav"
+Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech5.wav"
+Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech6.wav"
 
-Kar98/FireAdd	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98FireAdd.wav"
+Kar98/FireAdd	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Add.wav"
 
 Kar98/BoltOpen	"Sounds/Weapons/Slot4/Kar98k/Kar98BoltOpen.wav"
 Kar98/BoltClose	"Sounds/Weapons/Slot4/Kar98k/Kar98BoltClose.wav"

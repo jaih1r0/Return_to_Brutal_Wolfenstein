@@ -67,10 +67,24 @@ OptionMenu RTBW_OptionsMenu
 	slider "Enemy footsteps volume","BW_enemyFootstepsVol",0.0,1.0,0.1
 	statictext ""
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
+
+	statictext ""
+	statictext ""
+	statictext "=== Development ==="
+	statictext ""
+	option "debug texture impacts","BW_texturesChecker","yesno"
+	statictext ""
+	option "Monsters Debug","BW_Debug","monsterdebugval"
+	statictext ""
 	
 }
 
-
+optionvalue monsterdebugval
+{
+	0,"None"
+	1,"head heights"
+	2,"damage inflicted"
+}
 
 
 OptionMenu "BWOptions"

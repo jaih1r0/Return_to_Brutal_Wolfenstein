@@ -235,7 +235,8 @@ class NashGoreActor : NashGorePlugin
 			}
 
 			// randomly mirror death sprite
-			if (nashgore_deathflip && !Owner.bIceCorpse && !isDeathSpriteFlipped)
+			if (nashgore_deathflip && !Owner.bIceCorpse && !isDeathSpriteFlipped
+			&& !(owner.findinventory("BW_ArmDeath")) && !(owner.findinventory("BW_LegDeath"))) //those animations have an specific side, do not flip them
 			{
 				NashGoreGameplayStatics.RandomXFlip(Owner);
 				isDeathSpriteFlipped = true;
@@ -288,7 +289,7 @@ class NashGoreActor : NashGorePlugin
 				}
 
 				// spawn blood spurts
-				if (nashgore_bloodspurt)
+				if (nashgore_bloodspurt && !owner.findinventory("BW_HeadDeath"))
 				{
 					bool result;
 					Actor mo;

@@ -147,9 +147,17 @@ Class BW_Hud : BaseStatusBar
 			
 			
 			//grenades
-			drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM);
 			int gam = pl.countinv("BW_GrenadeAmmo");
-			drawstring(BWFont,""..gam,(-140,-75),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+			if(gam > 0)
+			{
+				drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM);
+				drawstring(BWFont,""..gam,(-140,-75),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+			}	
+			else
+			{
+				drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
+				drawstring(BWFont,""..gam,(-140,-75),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
+			}
 			/*
 			//axes
 			drawimage("izras",(-160,-85),DI_SCREEN_RIGHT_BOTTOM);

@@ -1,0 +1,47 @@
+Gore/HeadShot1                   "Sounds/Enemies/Gore/Headgib-3.wav"
+Gore/HeadShot2                   "Sounds/Enemies/Gore/Headgib-4.wav"
+Gore/HeadShot3                   "Sounds/Enemies/Gore/Headgib-5.wav"
+$random Gore/HeadShot
+{
+    Gore/HeadShot1
+    Gore/HeadShot2
+    Gore/HeadShot3
+}
+$volume     Gore/HeadShot1 0.2
+$limit      Gore/HeadShot1 3
+$volume     Gore/HeadShot2 0.2
+$limit      Gore/HeadShot2 3
+$volume     Gore/HeadShot3 0.2
+$limit      Gore/HeadShot3 3
+
+Gore/HeadShotMin1                   "Sounds/Enemies/Gore/Headgib-10.wav"
+Gore/HeadShotMin2                   "Sounds/Enemies/Gore/HeadshotDevestate6.wav"
+Gore/HeadShotMin3                   "Sounds/Enemies/Gore/HeadshotDevestate11.wav"
+$random Gore/HeadShotMin
+{
+    Gore/HeadShotMin1
+    Gore/HeadShotMin2
+    Gore/HeadShotMin3
+}
+$volume     Gore/HeaHeadShotMindShot1 0.2
+$limit      Gore/HeadShotMin1 3
+$volume     Gore/HeaHeadShotMindShot2 0.2
+$limit      Gore/HeadShotMin2 3
+$volume     Gore/HeaHeadShotMindShot3 0.2
+$limit      Gore/HeadShotMin3 3
+
+Gore/LimbGib1                      "Sounds/Enemies/Gore/Limbgib-3.wav"
+Gore/LimbGib2                      "Sounds/Enemies/Gore/Limbgib-4.wav"
+Gore/LimbGib3                      "Sounds/Enemies/Gore/Limbgib-5.wav"
+$random Gore/LimbGib
+{
+    Gore/LimbGib1
+    Gore/LimbGib2
+    Gore/LimbGib3
+}
+$volume     Gore/LimbGib1 0.2
+$limit      Gore/LimbGib1 3
+$volume     Gore/LimbGib2 0.2
+$limit      Gore/LimbGib2 3
+$volume     Gore/LimbGib3 0.2
+$limit      Gore/LimbGib3 3

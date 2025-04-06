@@ -342,7 +342,7 @@ class NashGoreGibs : Actor
 			bouncefactor *= 0.73;
 
 			// boing boing
-			if (WaterLevel == 0)
+			if (WaterLevel == 0 && boingin)
 				Scale.X = 2.224;
 
 			// spawn one large blood splash upon bounce impact

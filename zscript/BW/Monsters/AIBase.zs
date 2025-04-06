@@ -189,7 +189,7 @@ extend class BW_MonsterBase
 			footstepWait = 9;
 		}
 
-		if(BW_Debug)
+		if(BW_Debug == 1)
 		{
 			testhitzones();
 		}

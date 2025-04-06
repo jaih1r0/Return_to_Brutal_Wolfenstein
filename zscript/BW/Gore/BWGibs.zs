@@ -14,10 +14,20 @@ Class BW_BGLeg : BWGib
 		spawn:
 			LEG1 K 0;
 		SpawnLoop:
-			"####" K 1 A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
+			#### K 1 //A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
+			{
+				A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
+	
+				// spawn some blood particles
+				bool res;
+				Actor mo;
+				[res, mo] = A_SpawnItemEx("NashGoreBloodParticle1", flags: NashGoreBloodBase.BLOOD_FLAGS, 222);
+				if (mo)
+					mo.A_SetScale(frandom[rnd_GibParticleScale](0.14, 0.4));
+			}
 			Loop;
 		Death:
-			"####" K 0
+			#### K 0
 			{
 				A_SetRoll(0);
 				
@@ -33,15 +43,16 @@ Class BW_BGLeg : BWGib
 				else if (nashgore_bloodtype == 1)	cls = "NashGoreBloodSpotClassic";
 				A_SpawnItemEx(cls, flags: (NashGoreBloodBase.BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, 150);
 				BW_GibHitBox.BW_CreateGibHitBox(self);
+				NashGoreGameplayStatics.FixZFighting(self);
 			}
-			"####" KKKKKKKKKK 1
+			#### KKKKKKKKKK 1
 			{
 				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 					0, 0, 0,
 					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
 					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
 			}
-			"####" K -1;
+			#### K -1;
 			Stop;
 	}
 }
@@ -73,7 +84,7 @@ Class BW_BGArm : BWGib
 				A_SpawnItemEx(cls, flags: (NashGoreBloodBase.BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, 150);
 			
 				BW_GibHitBox.BW_CreateGibHitBox(self);
-			
+				NashGoreGameplayStatics.FixZFighting(self);
 			}
 			"####" AAAAAAAAAA 1
 			{
@@ -86,19 +97,18 @@ Class BW_BGArm : BWGib
 			Stop;
 	}
 }
-//SAHDe0.png
 
 Class BW_BGHead : BWGib
 {
 	states
 	{
 		spawn:
-			SAHD E 0;
+			SAHD A 0;
 		SpawnLoop:
-			"####" E 1 A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
+			"####" A 1 A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
 			Loop;
 		Death:
-			"####" E 0
+			"####" A 0
 			{
 				A_SetRoll(0);
 				
@@ -114,15 +124,16 @@ Class BW_BGHead : BWGib
 				else if (nashgore_bloodtype == 1)	cls = "NashGoreBloodSpotClassic";
 				A_SpawnItemEx(cls, flags: (NashGoreBloodBase.BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, 150);
 				BW_GibHitBox.BW_CreateGibHitBox(self);
+				NashGoreGameplayStatics.FixZFighting(self);
 			}
-			"####" EEEEEEEEEE 1
+			"####" AAAAAAAAAA 1
 			{
 				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 					0, 0, 0,
 					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
 					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
 			}
-			"####" E -1;
+			"####" A -1;
 			Stop;
 	}
 }

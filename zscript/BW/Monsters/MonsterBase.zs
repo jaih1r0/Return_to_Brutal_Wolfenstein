@@ -56,57 +56,39 @@ Class BW_MonsterBase : Actor
 			int Feeth = feetheight >= 0 ? feetheight : height * abs(feetheight);
 
 			double aa = deltaangle(self.angle,angleto(inflictor));
+			//console.printf("deltaAngle: %f",aa);
 			
-			//string hitinfo = "Hit: ";
-			
-			if(aa > -60 && aa < 60)				//hit front
+			//this should be cleaner now
+			if(hitpos.z - floorz > Headh)			// = hit head
 			{
-				//hitinfo = hitinfo.."\cvFront\c-";
-				LastHit = 'Front';
-			}
-			else if(aa >= 60 && aa < 135)		//hit left
-			{
-				//hitinfo = hitinfo.."\cvLeft Arm\c-";
-				LastHit = 'LeftArm';
-			}
-			else if(aa > -135 && aa <= -60)		//hit right
-			{
-				//hitinfo = hitinfo.."\cvRight Arm\c-";
-				LastHit = 'RightArm';
-			}
-			else if((aa <= 180 && aa >= 135) || (aa >= -180 && aa <= -135))	//hit back
-			{
-				//hitinfo = hitinfo.."\cvBack\c-";
-				LastHit = 'Back';
-			}
-			//console.printf("hitposz: "..hitpos.z.."");
-			if(hitpos.z - floorz > Headh)		//head
-			{
-				//hitinfo = hitinfo.." at \cdHead\c-";
 				damage *= HeadShotMult;
 				LastHit = 'Head';
 			}
-			else if(hitpos.z - floorz < Feeth)	//feet
+			else if(hitpos.z - floorz < Feeth)		// = hit feet
 			{
-				//hitinfo = hitinfo.." at \cdFeet\c-";
-				if(LastHit == 'RightArm')
-				{
-					LastHit = 'RightFoot';
-				}
-				else
-				{
+				//i have only two sides
+				if(aa >= 0)							//hit left
 					LastHit = 'LeftFoot';
-				}
+				
+				else								//hit right
+					LastHit = 'RightFoot';
 			}
-			else
+			else									// = hit body
 			{
-				//hitinfo = hitinfo.." at \cdBody\c-";
-				if(LastHit != 'RightArm' && LastHit != "LeftArm" && LastHit != "Back")
+				if(aa > -30 && aa < 30)				//hit front
+					LastHit = 'Front';
+				else if(aa >= 30 && aa < 150)		//hit left
+					LastHit = 'LeftArm';
+				else if(aa > -150 && aa <= -30)		//hit right
+					LastHit = 'RightArm';
+				else if((aa <= 180 && aa >= 150) || (aa >= -180 && aa <= -150))	//hit back
+					LastHit = 'Back';
+				else
 					LastHit = 'Chest';
 			}
-			//hitinfo = hitinfo.." (angle: \cb"..aa.."\c-) damage dealt:	\cg"..damage.."\c-.";
-			
-			//console.printf("hit at: "..LastHit..", damage: "..damage.."( type: "..mod..") , Health now: "..(health - damage));
+
+			if(BW_Debug == 2)
+				console.printf("hit: \cd%s\c-'s \cy%s\c-, inflict: \ca%d\c- damage of type: \cy%s\cy",gettag(),lasthit,damage,mod);
 			
 		}
 		return super.DamagemObj(inflictor,source,damage,mod,flags,angle);
@@ -122,7 +104,8 @@ Class BW_MonsterBase : Actor
 	int dx;
 	void testhitzones(int tc = 35)
 	{
-		//return;
+		if(health < 1)
+			return;
 		int rd = radius; /// 2;
 		for(int i = -radius; i <= radius; i+=rd)
 		{
@@ -227,6 +210,45 @@ Class BW_MonsterBase : Actor
 			}
 		}
 	}
+
+	//
+	//	death related fx
+	//
+	void spawnBloodSpurt(int amnt = 5,int zofs = -1)
+	{
+		if(zofs == -1)
+			zofs = headheight;
+		for(int i = 0; i < amnt; i++)
+			A_SpawnItemEx("NashGoreBloodSpurt",
+			frandom[rnd_SpawnBloodSpurt](-5.0, 5.0), frandom[rnd_SpawnBloodSpurt](-5.0, 5.0), zofs,
+			frandom[rnd_SpawnBloodSpurt](-2.0, 2.0), frandom[rnd_SpawnBloodSpurt](-2.0, 2.0), frandom[rnd_SpawnBloodSpurt](4.0, 8.0),
+			frandom[rnd_SpawnBloodSpurt](0.0, 360.0),
+			NashGoreBloodBase.BLOOD_FLAGS);
+	}
+
+	void BW_SpawnGib(string type,vector3 spawnpos,double frontspeed = 1, double sidespeed = 1, double zpeed = 0)
+	{
+		if(!type)
+			return;
+		vector3 desVel = (0,0,0);
+		if(frontspeed != 0)
+		{
+			vector3 fw = (cos(angle),sin(angle),0);
+			desVel += (fw * frontspeed);
+		}
+		if(sidespeed != 0)
+		{
+			vector3 sd = (cos(angle-90),sin(angle-90),0);
+			desVel += (sd * sidespeed);
+		}
+		if(zpeed != 0)
+			desvel.z += zpeed;
+		actor gibbie = spawn(type,spawnpos);
+		if(gibbie)
+		{
+			gibbie.vel = desvel;
+		}
+	}
 	
 }
 
@@ -249,4 +271,7 @@ Class BW_HeadDeath : BW_DeathTokenBase
 {}
 
 Class BW_ArmDeath : BW_DeathTokenBase
+{}
+
+Class BW_LegDeath : BW_DeathTokenBase
 {}

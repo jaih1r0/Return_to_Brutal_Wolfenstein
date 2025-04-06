@@ -282,24 +282,7 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 			TNT1 A 0 A_JumpIf(kickeddown, "KickedPain");
 			NAZI G 6 A_Pain();
 			Goto See;
-		Death:
-			TNT1 A 0
-			{
-				A_Scream();
-				A_NoBlocking();
-			}
-			NAZI HIJK 3;
-			NAZI L -1;
-			Stop;
-		XDeath:
-			TNT1 A 0
-			{
-				A_XScream();
-				A_NoBlocking();
-			}
-			NAZI HIJK 3;
-			NAZI L -1;
-			Stop;
+		
 		Raise:
 			NAZI LKJIHG 3;
 			Goto Spawn;
@@ -371,5 +354,62 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 			TNT1 A 0 A_Stop();
 			TNT1 A 0 A_Jump(256, "Roll", "See", "Missile");
 			Goto See;
+		
+
+		//////////////////////////////////////////////////////////////
+		//deaths
+		///////////////////////////////////////////////////////////////
+		Death:
+			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShot");
+			TNT1 A 0
+			{
+				A_Scream();
+				A_NoBlocking();
+			}
+			NAZI HIJK 3;
+			NAZI L -1;
+			Stop;
+		XDeath:
+			TNT1 A 0
+			{
+				A_XScream();
+				A_NoBlocking();
+			}
+			NAZI HIJK 3;
+			NAZI L -1;
+			Stop;
+
+		Death.pistol:
+			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShotMinor");
+			goto Death;
+
+		Death_HeadShotMinor:
+			TNT1 A 0 
+			{
+				A_giveinventory("BW_HeadDeath",1);
+				//A_Scream();
+				A_NoBlocking();
+				A_Startsound("Gore/HeadShotMin");
+			}
+			1AZH A 3 spawnBloodSpurt();
+			1AZH B 3;
+			1AZH C 3;
+			1AZH D 3;
+			1AZH E -1;
+			stop;
+
+		Death_HeadShot:
+			TNT1 A 0 
+			{
+				//A_Scream();
+				A_NoBlocking();
+				A_Startsound("Gore/HeadShot");
+			}
+			TNT1 A 0 A_giveinventory("BW_HeadDeath",1);
+		Death_HeadShotEnd:
+			NAZH AAB 2 spawnBloodSpurt();
+			NAZH BCD 3;
+			NAZH E -1;
+			stop;
 	}
 }

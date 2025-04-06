@@ -322,7 +322,7 @@ Class BaseBWWeapon : DoomWeapon
 						puf.A_Startsound("Knife/Body", CHAN_AUTO, CHANF_OVERLAP, 0.75);  //impacted enemy
 						victim.SpawnBlood(victim.pos,angle,ceil(dmg));
 					}
-					victim.damagemobj(puf,self,dmg,"Melee");
+					victim.damagemobj(puf,self,dmg,"Knife");
 				}
 				return resolvestate(null);
             }
