@@ -30,6 +30,8 @@ Class BaseBWWeapon : DoomWeapon
 	protected int BraceTicker;
 	bool GunBraced;
 
+	protected uint barrelHeat;
+
 	states
 	{
 		DoKick:
@@ -500,9 +502,14 @@ Class BaseBWWeapon : DoomWeapon
 
 	action state BW_JumpifAiming(statelabel jump)
 	{
-		if(findinventory("AimingToken"))
+		if(BW_IsAiming())
 			return resolvestate(jump);
 		return resolvestate(null);
+	}
+
+	action bool BW_IsAiming()
+	{
+		return (findinventory("AimingToken"));
 	}
 
 	Action Void BW_ChangePsprite(name spt, int layer = PSP_WEAPON)
@@ -549,8 +556,10 @@ Class BaseBWWeapon : DoomWeapon
 			pl.slideAngle = Angle - VectorAngle(player.cmd.forwardmove, player.cmd.sidemove);
 	}
 	
-	Action void BW_GunSmoke(string gfx = "PUF2U0",double fwofs = 12,double sdofs = 0, double zoff = -2, double xvel = 4,double yvel = 0,double zvel = 0,int startsize = 9, color col = 0xFFFFFF)
+	Action void BW_GunSmoke(string gfx = "PUF2U0",double fwofs = 12,double sdofs = 0, double zoff = -2, double xvel = 4,double yvel = 0,double zvel = 0,int startsize = 9,double startalpha = 0.4, color col = 0xFFFFFF)
 	{
+		if(BW_disableGunSmoke)
+			return;
 		if(!gfx)
 			return;
 		Quat dir = Quat.FromAngles(angle,pitch,roll);
@@ -566,7 +575,7 @@ Class BaseBWWeapon : DoomWeapon
 		WepSmk.vel = vl;
 		WepSmk.Startroll = random(0,360);
 		WepSmk.RollVel = frandom(-6.0,6.0);
-		WepSmk.StartAlpha = 0.4;
+		WepSmk.StartAlpha = startalpha;//0.4;
 		WepSmk.Lifetime = random(10,14);
 		WepSmk.FadeStep = WepSmk.StartAlpha / WepSmk.Lifetime;
 		WepSmk.accel = -(vl * frandom(0.02,0.05));
@@ -574,6 +583,57 @@ Class BaseBWWeapon : DoomWeapon
 		WepSmk.SizeStep = frandom(1.0,4.0);
 		WepSmk.Pos = spawnpos;
 		Level.SpawnParticle (WepSmk);
+	}
+
+	action void BW_GunBarrelSmoke(string gfx = "PUF2U0",vector3 ofsPos = (5,2,-3), vector3 ofsVel = (0.2,0,0.6),int startsize = 5, double startalpha = 0.35, color col = 0xFFFFFF)
+	{
+		if(!BW_GetBarrelHeat())
+			return;
+		BW_AddBarrelHeat(-1);
+		if(BW_disableGunSmoke)
+			return;
+		
+		/*let qpl = QuakePlayer(player.mo);
+		if(qpl)
+		{
+			//account for weapon sway
+			ofsPos.y += qpl.finalbob.x * 0.3;
+			ofsPos.z -= qpl.finalbob.y * 0.25;
+		}*/
+		Quat dir = Quat.FromAngles(angle,pitch,roll);
+		vector3 ofs = dir * (ofsPos.x, -ofsPos.y,ofsPos.z);
+		vector3 spawnpos = Level.vec3offset((pos.xy,player.viewz), ofs);
+		vector3 vl = dir * (ofsVel.x,-ofsVel.y,ofsVel.z);
+		
+		FSpawnParticleParams WepSmk;
+		WepSmk.Texture = TexMan.CheckForTexture(gfx);
+		WepSmk.Color1 = col;
+		WepSmk.Style = style_translucent;
+		WepSmk.Flags = SPF_ROLL;
+		WepSmk.vel = vl;
+		WepSmk.Startroll = random(0,360);
+		WepSmk.RollVel = frandom(-6.0,6.0);
+		WepSmk.StartAlpha = startalpha;
+		WepSmk.Lifetime = random(7,8);
+		WepSmk.FadeStep = WepSmk.StartAlpha / WepSmk.Lifetime;
+		WepSmk.accel = -(vl * frandom(0.01,0.02));
+		WepSmk.Size = startsize;
+		WepSmk.SizeStep = -frandom(0.02,0.07);
+		WepSmk.Pos = spawnpos;
+		Level.SpawnParticle (WepSmk);
+	}
+
+	action void BW_AddBarrelHeat(int amnt = 1, bool set = false)
+	{
+		if(set)
+			invoker.barrelHeat = amnt;
+		else
+			invoker.barrelHeat += amnt;
+	}
+
+	action uint BW_GetBarrelHeat()
+	{
+		return invoker.barrelHeat;
 	}
 	
 	override void DoEffect()

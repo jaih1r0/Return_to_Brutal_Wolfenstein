@@ -5,6 +5,11 @@ Class BWGib : NashGoreGibs
 		speed 6;
 		NashGoreGibs.DoBoing false;
 	}
+	override void postbeginplay()
+	{
+		super.postbeginplay();
+		bXFLIP = random[rFlip](0,1);
+	}
 }
 
 Class BW_BGLeg : BWGib
@@ -14,7 +19,7 @@ Class BW_BGLeg : BWGib
 		spawn:
 			LEG1 K 0;
 		SpawnLoop:
-			#### K 1 //A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
+			"####" K 1 //A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
 			{
 				A_SetRoll(Roll + ((2.25 * Vel.Length()) * rollDir), SPF_INTERPOLATE);
 	
@@ -27,9 +32,9 @@ Class BW_BGLeg : BWGib
 			}
 			Loop;
 		Death:
-			#### K 0
+			"####" K 0
 			{
-				A_SetRoll(0);
+				A_SetRoll(0,SPF_INTERPOLATE);
 				
 				// clip gib into terrain
 				let t = GetFloorTerrain();
@@ -45,14 +50,14 @@ Class BW_BGLeg : BWGib
 				BW_GibHitBox.BW_CreateGibHitBox(self);
 				NashGoreGameplayStatics.FixZFighting(self);
 			}
-			#### KKKKKKKKKK 1
+			"####" KKKKKKKKKK 1
 			{
 				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
 					0, 0, 0,
 					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
 					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
 			}
-			#### K -1;
+			"####" K -1;
 			Stop;
 	}
 }

@@ -774,6 +774,7 @@ Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
             TNT1 A 0 A_Startsound("Barrel/Explosion");
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
             TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");
@@ -938,6 +939,7 @@ Class BW_ExplosiveBarrel : BW_ShootableDecoration replaces explosiveBarrel
         Death:
             GEBL AB 1;
             BEXP CD 2;
+            TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
             TNT1 A 0 A_Startsound("Barrel/Explosion");
             TNT1 A 0 A_NoBlocking();
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
@@ -1093,6 +1095,7 @@ Class BW_Stove : BW_ShootableDecoration replaces DeadStick
             DAMN AB 2;
             TNT1 A 0 A_Scream();
             TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
+            TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
             TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
             BEXP Z 1;
             stop;

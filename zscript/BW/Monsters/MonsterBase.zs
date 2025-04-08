@@ -76,7 +76,7 @@ Class BW_MonsterBase : Actor
 			else									// = hit body
 			{
 				if(aa > -30 && aa < 30)				//hit front
-					LastHit = 'Front';
+					LastHit = 'Chest';
 				else if(aa >= 30 && aa < 150)		//hit left
 					LastHit = 'LeftArm';
 				else if(aa > -150 && aa <= -30)		//hit right

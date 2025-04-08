@@ -44,6 +44,8 @@ class BW_Trenchgun : BaseBWWeapon
 			BW_HandleWeaponFeedback(3, 4, -0.40, frandom(+0.35, -0.35));//, 0, 0, 0);
 			A_ZoomFactor(1.2-0.04);
 			//BW_SpawnCasing("BW_ShellCasing",20,3,-5,random(2,5),random(2,5),random(1,3));
+			BW_GunSmoke("graphics/D_GSMK1.png",20,0,-5,4,2,0,30,0.55);
+			BW_GunSmoke("graphics/D_GSMK1.png",20,0,-5,4,-2,0,30,0.55);
 		}
 		else
 		{
@@ -51,7 +53,10 @@ class BW_Trenchgun : BaseBWWeapon
 			BW_HandleWeaponFeedback(3, 4, -0.60, frandom(+0.45, -0.45));//, -5, 0, 0);
 			A_ZoomFactor(1-0.04);
 			//BW_SpawnCasing("BW_ShellCasing",24,-1,-6,random(3,6),random(2,5),random(3,6));
+			BW_GunSmoke("graphics/D_GSMK1.png",20,0,-5,4,2,0,24,0.55);
+			BW_GunSmoke("graphics/D_GSMK1.png",20,0,-5,4,-2,0,24,0.55);
 		}
+		BW_AddBarrelHeat(32);
 		//gunsmoke 
 		A_TakeInventory("BW_Trenchgun_Mag", 1);
 	}
@@ -80,12 +85,18 @@ class BW_Trenchgun : BaseBWWeapon
 	Ready:	//keeping ready as the actual ready state
 		TNT1 A 0 BW_JumpifAiming("Ready_ADS");
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
-		BTGU E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+		BTGU E 1 {
+			BW_GunBarrelSmoke(ofsPos:(28,0,-6));
+			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+		}
 		loop;
 	
 	Ready_NoAmmo:
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 0,"Ready");
-		BTGF H 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+		BTGF H 1 {
+			BW_GunBarrelSmoke(ofsPos:(28,0,-6));
+			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+		}
 		loop;
 
 	Fire:
@@ -141,11 +152,17 @@ class BW_Trenchgun : BaseBWWeapon
 	
 	Ready_ADS:
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo_ADS");
-		BTGT E 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		BTGT E 1 {
+			BW_GunBarrelSmoke(ofsPos:(30,0,-3));
+			return BW_WeaponReady(WRF_ALLOWRELOAD);
+		}
 		loop;
 	Ready_NoAmmo_ADS:
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 0,"Ready_ADS");
-		BTGA H 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+		BTGA H 1 {
+			BW_GunBarrelSmoke(ofsPos:(30,0,-3));
+			return BW_WeaponReady(WRF_ALLOWRELOAD);
+		}
 		loop;
 	
 	Fire_ADS:

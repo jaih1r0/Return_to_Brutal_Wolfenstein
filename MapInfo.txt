@@ -68,8 +68,9 @@ DoomEdNums
 	7018 = "BW_RiflemanSpawner"		//rifol
 	7019 = "BW_ShotgunguySpawner"	//easy version
 	7045 = "BW_ZombiemanSpawner"	//easy
-
+	7156 = "BW_ZombiemanSpawner"	//easy p38 guard
 	7079 = "BW_Mutant"
+	7267 = "BW_ZombiemanSpawner"	//patroling p38 guard
 
 	//misc
 	1171 = "BW_StairsHitBox"

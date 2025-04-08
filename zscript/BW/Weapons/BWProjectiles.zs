@@ -760,3 +760,27 @@ Class BW_MGBullets : BW_Projectile
 
 
 
+Class BW_Rocket : Actor
+{
+	default
+	{
+		speed 40;
+		damage 35;
+		+missile;
+		projectile;
+	}
+	states
+	{
+		Spawn:
+			MISL A 1;
+			loop;
+		Death:
+			TNT1 A 0;
+			TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
+            TNT1 A 0 A_Startsound("Barrel/Explosion");
+            TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");
+            TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
+			TNT1 A 1;
+			stop;
+	}
+}

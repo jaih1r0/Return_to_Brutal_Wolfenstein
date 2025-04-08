@@ -41,6 +41,7 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			A_ZoomFactor(1.0-0.01);
 			BW_SpawnCasing("BW_9MMCasing",29,3,-10,random(2,5),random(2,5),random(1,3));
 		}
+		BW_AddBarrelHeat(10);
 		
 	}
 	
@@ -63,10 +64,16 @@ Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
 			TNT1 A 0 BW_WeaponLower();
 			wait;
 		Ready:
-			MP4U E 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+			MP4U E 1 {
+				BW_GunBarrelSmoke(ofsPos:(22,0,-5));
+				return BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+			}
 			loop;
 		Ready_ADS:
-			MP4C A 1 BW_WeaponReady(WRF_ALLOWRELOAD);
+			MP4C A 1 {
+				BW_GunBarrelSmoke(ofsPos:(23,0,-3));
+				return BW_WeaponReady(WRF_ALLOWRELOAD);
+			}
 			loop;
 		Fire:
 			TNT1 A 0 BW_JumpifAiming("Fire_ADS");
