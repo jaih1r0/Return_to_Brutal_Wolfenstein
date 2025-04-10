@@ -23,6 +23,8 @@ DoomEdNums
 	1317 = "BW_BlackKey"
 	1395 = "BW_DiamondKey"
 
+	9090 = "BW_UberHealth"
+
 	//ammo
 	7028 = "Clip"	//wolfclip, luger/mp40 ammo
 	7512 = "clip"	//PPSH ammo
@@ -60,6 +62,16 @@ DoomEdNums
 	7058 = "BW_RedLamp"
 	7059 = "BW_vasePlant1"
 	7060 = "BW_vasePlant2"
+
+	7202 = "BW_PoisonBarrel"
+	7203 = "BW_Electricity"
+	7204 = "BW_MutantGlass"
+	7205 = "BW_MutantGlass"
+	7206 = "BW_MutantGlass"
+	//a
+	7299 = "BW_SilentAlarm"
+	7300 = "BW_EarthQuaker"
+	7301 = "BW_EarthQuaker"
 	
 	//enemies
 	7006 = "BW_ZombiemanSpawner"
@@ -74,6 +86,11 @@ DoomEdNums
 
 	//misc
 	1171 = "BW_StairsHitBox"
+}
+
+SpawnNums
+{
+	34 = "BW_SilentAlarm"
 }
 
 map BWTEST "RTBW Test Map"

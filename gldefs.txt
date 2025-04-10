@@ -13,3 +13,84 @@ object PlayerMuzzleFlash
 {
     frame TNT1 { light GunMuzzleFlash }
 }
+
+PulseLight BWPuffLight
+{
+	color 0.5 0.3 0.05
+	size 5
+	secondarysize 8
+	interval 1.0
+}
+
+PulseLight BWExploLight1
+{
+	color 0.5 0.3 0.05
+	size 35
+	secondarysize 40
+	interval 0.5
+}
+
+PulseLight BWExploLight2
+{
+	color 0.5 0.3 0.05
+	size 30
+	secondarysize 35
+	interval 0.5
+}
+
+PulseLight BWExploLight3
+{
+	color 0.5 0.3 0.05
+	size 20
+	secondarysize 25
+	interval 0.5
+}
+
+//map decorations
+Pointlight BiggerCandelabraLight
+{
+    Color 0.8 0.2 0.0
+    size 180
+}
+
+Pointlight CandelabraLight
+{
+    color 1.0 1.0 0.0
+    size 90
+}
+
+Pointlight GreyLampLight
+{
+    color 0.8 0.8 1.0
+    size 100
+}
+
+Pointlight BlueLampLight
+{
+    color 0.0 0.0 1.0
+    size 120
+}
+
+Pointlight RedLampLight
+{
+    color 1.0 0.0 0.0 
+    size 120
+}
+
+Pulselight TreasureLight
+{
+    color 1.0 0.8 0.2
+    size 20
+    secondarySize 25
+    interval 0.4
+    //offset 0 44 0
+}
+
+pulselight TechLampLight
+{
+    color 0.8 0.8 1.0
+    size 64
+    secondarySize 66
+    interval 0.4
+    offset 0 45 0
+}

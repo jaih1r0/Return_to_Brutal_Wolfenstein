@@ -20,7 +20,7 @@ Class BW_Treasure_Cross : BW_Treasure
     states
     {
         Spawn:
-            TREA A -1 bright;
+            TREA A -1 bright light("TreasureLight");
             stop;
     }
 }
@@ -34,7 +34,7 @@ Class BW_Treasure_Chalice : BW_Treasure
     states
     {
         Spawn:
-            TREA C -1 bright;
+            TREA C -1 bright light("TreasureLight");
             stop;
     }
 }
@@ -51,7 +51,7 @@ Class BW_Treasure_Chest : BW_Treasure
     states
     {
         Spawn:
-            TREA D -1 bright;
+            TREA D -1 bright light("TreasureLight");
             stop;
     }
 }
@@ -65,7 +65,7 @@ Class BW_Treasure_Crown : BW_Treasure
     states
     {
         Spawn:
-            TREA B -1 bright;
+            TREA B -1 bright light("TreasureLight");
             stop;
     }
 }

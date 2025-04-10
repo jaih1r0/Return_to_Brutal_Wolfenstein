@@ -49,7 +49,9 @@ class BW_EventHandler : EventHandler
     {
         let pl = players[e.Player].mo;
         if(!pl)
-         return;
+        	return;
+		if(pl.health < 1)
+			return;
 
 		if (e.Name ~== "KickEm")
 		{	

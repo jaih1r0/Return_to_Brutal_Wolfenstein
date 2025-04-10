@@ -212,7 +212,7 @@ Class BW_Candleabra1 : BW_CeillingDecoration
             TNT1 A 0 nodelay {
                 flare = BW_Flare.NewFlare(self,3,(0.4,0.2),'Yellow',0.75);
             }
-            YCAN A -1 bright;
+            YCAN A -1 bright light("CandelabraLight");
             stop;
         Death:
             TNT1 A 0 killFlare();
@@ -266,7 +266,7 @@ Class BW_Candelabra3 : BW_CeillingDecoration
     states
     {
         spawn:
-            CAN5 ABC 3 bright;
+            CAN5 ABC 3 bright light("BiggerCandelabraLight");
             loop;
         death:
             TNT1 A 0;
@@ -288,7 +288,7 @@ Class BW_GreyLamp : BW_CeillingDecoration
             TNT1 A 0 nodelay {
                 flare = BW_Flare.NewFlare(self,3,(0.7,0.35),'white');
             }
-            GLOC Z -1 bright;
+            GLOC Z -1 bright light("GreyLampLight");
             stop;
         death:
             TNT1 A 0 killFlare();
@@ -323,7 +323,7 @@ Class BW_BlueLamp : BW_GreyLamp2
             TNT1 A 0 nodelay {
                 flare = BW_Flare.NewFlare(self,2,(0.2,0.075),'Blue');
             }
-            BLOC A -1 bright;
+            BLOC A -1 bright light("BlueLampLight");
             stop;
         Death:
             TNT1 A 0 killFlare();
@@ -340,7 +340,7 @@ Class BW_RedLamp : BW_GreyLamp2
             TNT1 A 0 nodelay {
                 flare = BW_Flare.NewFlare(self,3,(0.5,0.20),'Red');
             }
-            RLOC A -1 bright;
+            RLOC A -1 bright light("RedLampLight");
             stop;
         Death:
             TNT1 A 0 killFlare();
@@ -588,13 +588,13 @@ Class BW_TechLamp1 : BW_ShootableDecoration Replaces Candelabra //35
             TNT1 A 0 nodelay {
                 flare = BW_Flare.NewFlare(self,38,(0.7,0.35),'white');
             }
-            DLMP A -1 bright;
+            DLMP A -1 bright light("TechLampLight");
             stop;
         Death:
             TNT1 A 0 killFlare();
             TNT1 AA 0 BW_SpawnSmokeFx(random(20,40),25,45,gfx:"DIRPD0");
             TNT1 A 0 SpawnDyingFlare(38,35,10,gfx:"LENSA0");
-            TNT1 AAAAAA 0 SpawnDieSpark(0,2);
+            TNT1 AAAAAA 0 SpawnDieSpark(35,2);
             TNT1 A 0 A_NoBlocking();
             YVAS C 1;
             DLMP E -1;
@@ -675,7 +675,7 @@ Class BW_HealingWell : BW_Well1
             toucher.givebody(giveamt); 
             setstatelabel("Used");
             toucher.A_Setblend(0x98F5F9,0.1,7);
-            A_Startsound("misc/health_pkup");
+            A_Startsound("Health/Well");
             toucher.A_log(string.format("You drank from a pit! (+%d health)",giveamt));
             //A_Startsound();
         }
@@ -1163,7 +1163,9 @@ Class BW_Bed : BW_ShootableDecoration replaces HeadCandles
             POL3 A -1;
             stop;
         Death:
-            TNT1 A 1;
+            TNT1 A 0 A_NoBlocking();
+            NOO1 A 1;
+            NOO1 B -1;
             stop;
     }
 }
@@ -1206,6 +1208,71 @@ Class BW_DustPile3 : BW_DustPile1 replaces ShortGreenTorch //56
     }
 }
 
+Class BW_Electricity : BW_Decoration //7203
+{
+    //$Category BW new props
+    //$Title Eletricity
+    default
+    {
+        Radius 16;
+        Height 64;
+        +solid;
+    }
+    states
+    {
+        spawn:
+            //TNT1 A 0 A_Startsound("Eletric");
+            STIC AB 10 bright;
+            loop;
+        Spawn2:
+            STIC C -1;
+            stop;
+    }
+}
+
+Class BW_PoisonBarrel : BW_ShootableDecoration  //7202
+{
+    default
+    {
+        Radius 16;
+        Height 25;
+    }
+    states
+    {
+        Spawn:
+            YLBR A -1;
+            stop;
+        Death:
+            //TNT1 A 0 spawn toxic smoke
+            TNT1 A 0 A_Explode();
+            YLBR B -1;
+            stop; 
+    }
+}
+
+Class BW_MutantGlass : BW_Decoration   //7204, easy 7205, easy 7206 hard
+{
+    states
+    {
+        Spawn:
+            MNTG A -1;
+            stop;
+            TNT1 A 0 A_jumpif(bdormant,"Spawn"); //man...
+            Goto SOURPRISE;
+        Sourprise:
+            TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 A_log("fuck");
+            TNT1 A 0 A_Spawnitem("BW_Mutant");
+            MNTG B -1;
+            stop;
+    }
+
+    override void activate(actor activator)
+    {
+        setstatelabel("Sourprise");
+    }
+}
+
 //not really a shootable, not really a decoration
 Class BW_StairsHitBox : actor   
 {
@@ -1223,6 +1290,51 @@ Class BW_StairsHitBox : actor
     {
         spawn:
             TNT1 A -1;
+            stop;
+    }
+}
+
+Class BW_EarthQuaker : actor    //7300 7301
+{
+    states
+    {
+        Spawn:
+            TNT1 A 0;
+            TNT1 A random(200,800);
+            TNT1 A 3 A_QuakeEx(random(1,3),random(1,3),random(1,3),random(50,100),0,3500,"Nothing",QF_SCALEUP|QF_SCALEDOWN|QF_FULLINTENSITY);
+            TNT1 A 1 A_Startsound("Stone/sound",0,0,0.8,ATTN_NONE);
+            loop;
+    }
+}
+
+Class BW_SilentAlarm : actor //7299
+{
+    default
+    {
+        //spawnID 34;
+        Radius 16;
+        Height 54;
+        -solid;
+        //monster;
+        //-countkill;
+        +friendly;
+        +LOOKALLAROUND
+		+FRIENDLY
+		+SHOOTABLE;
+    }
+    states
+    {
+        spawn:
+            TNT1 A 1;
+            TNT1 A 0 A_AlertMonsters();
+            TNT1 AA 5;
+            stop;
+            TNT1 A 1;
+            TNT1 AA 0 A_AlertMonsters(0,AMF_TARGETEMITTER);
+            TNT1 A 1;
+            TNT1 AA 0 A_AlertMonsters(0,AMF_TARGETEMITTER);
+            TNT1 A 1;
+            TNT1 AA 0 A_AlertMonsters(0,AMF_TARGETEMITTER);
             stop;
     }
 }

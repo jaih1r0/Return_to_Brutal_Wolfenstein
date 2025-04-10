@@ -26,3 +26,48 @@ $random pickup/treasure
     pickup/treasure2
 }
 $volume pickup/treasure 0.8
+
+Ammo/pick1              "Sounds/Items/Ammo/MAGPICK1.ogg"
+Ammo/pick2              "Sounds/Items/Ammo/MAGPICK2.ogg"
+$random Ammo/Pick
+{
+    Ammo/pick1
+    Ammo/Pick2
+}
+$alias misc/ammo_pkup Ammo/Pick
+
+Health/Medikit          "Sounds/Items/Health/nMEDKIT.ogg"
+Health/Food             "Sounds/Items/Health/P_FOOD.ogg"
+Health/Well             "Sounds/Items/Health/DSBRNSIT.lmp"
+
+menu_nav1               "Sounds/Menu/menu_nav1.mp3"
+menu_nav2               "Sounds/Menu/menu_nav1.mp3"
+$random menu_navigate
+{
+    menu_nav1
+    menu_nav2
+}
+
+//menu sounds from wolf 2009, probably just temporally, just wanted to get rid of the doom menu sounds
+menu/activate			"Sounds/Menu/menu_open.mp3"	// Activate a new menu
+menu/backup			    "sounds/Menu/menu_back.mp3"	// Backup to previous menu
+menu/prompt			    "Sounds/Menu/menu_sel.mp3"	// Activate a prompt "menu"
+//menu/cursor			"Sounds/Menu/menu_nav.mp3"	// Move cursor up/down
+$alias menu/cursor      menu_navigate
+menu/change			    "Sounds/Menu/menu_sel.mp3"	// Select new value for option
+menu/invalid			"Sounds/Menu/menu_deny.mp3"	// Menu not available
+menu/dismiss			"Sounds/Menu/menu_deny.mp3"	// Dismiss a prompt message
+menu/choose			    "Sounds/Menu/menu_sel.mp3"	// Choose a menu item
+menu/clear			    "Sounds/Menu/menu_close.mp3"	// Close top menu
+$alias menu/advance     menu/choose			        // Open a submenu
+
+inter/tick              "Sounds/Menu/inter_tick.mp3"
+inter/next              "Sounds/Menu/inter_tick2.mp3"
+inter/end              "Sounds/Menu/inter_end.mp3"
+
+$alias				intermission/tick			inter/tick
+$alias				intermission/cooptotal		*death
+$alias				intermission/nextstage		inter/next
+$alias				intermission/paststats		inter/end
+$alias				intermission/pastcoopstats	inter/end
+$alias				intermission/pastdmstats	*gibbed

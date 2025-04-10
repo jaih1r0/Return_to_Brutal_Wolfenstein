@@ -20,7 +20,7 @@ Class BW_BulletPuff : Actor replaces bulletpuff
                     SpawnPuffSpark(pos);
 					spawnFxSmokeBasic();
             }
-            FX33 BCDEFGHIJK 1 bright;
+            FX33 BCDEFGHIJK 1 bright light("BWPuffLight");
 			stop;
 	}
 
@@ -268,7 +268,7 @@ class BW_impactpuff : BW_BulletPuff
 
 	void spawnMainPuff()
 	{
-		if(random[PUFFX]() < 128)
+		if(random[PUFFX]() < 200)
 			spawn("BW_PuffHit",pos);
 	}
 

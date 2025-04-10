@@ -579,6 +579,8 @@ Class BaseBWWeapon : DoomWeapon
 		WepSmk.Lifetime = random(10,14);
 		WepSmk.FadeStep = WepSmk.StartAlpha / WepSmk.Lifetime;
 		WepSmk.accel = -(vl * frandom(0.02,0.05));
+		if(CeilingPic == SkyFlatNum)
+			WepSmk.accel += getwinddir();
 		WepSmk.Size = startsize;
 		WepSmk.SizeStep = frandom(1.0,4.0);
 		WepSmk.Pos = spawnpos;
@@ -617,6 +619,8 @@ Class BaseBWWeapon : DoomWeapon
 		WepSmk.Lifetime = random(7,8);
 		WepSmk.FadeStep = WepSmk.StartAlpha / WepSmk.Lifetime;
 		WepSmk.accel = -(vl * frandom(0.01,0.02));
+		if(CeilingPic == SkyFlatNum)
+			WepSmk.accel += getwinddir();
 		WepSmk.Size = startsize;
 		WepSmk.SizeStep = -frandom(0.02,0.07);
 		WepSmk.Pos = spawnpos;
@@ -634,6 +638,20 @@ Class BaseBWWeapon : DoomWeapon
 	action uint BW_GetBarrelHeat()
 	{
 		return invoker.barrelHeat;
+	}
+
+	action vector3 getwinddir()
+	{
+		if(!level)
+			return (0,0,0);
+		switch(level.levelnum % 4)
+		{
+			case 0:	return (0.05,0.05,0.03);	break;
+			case 1:	return (-0.05,0.05,0.03);	break;
+			case 2:	return (0.05,-0.05,0.03);	break;
+			case 3:	return (-0.05,-0.05,0.03);	break;
+		}
+		return (0,0,0);
 	}
 	
 	override void DoEffect()

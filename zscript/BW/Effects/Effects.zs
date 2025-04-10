@@ -196,8 +196,8 @@ Class BW_PuffHit : BWFxBase
 	states
 	{
 		spawn:
-			FX33 ADF 1 light("BPUFF1");	
-			FX33 HIJ 1 light("BPUFF2");
+			FX33 ADF 1 light("BWPuffLight");	
+			FX33 HIJ 1 light("BWPuffLight");
 			FX33 K 1;
 			stop;
 	}
@@ -305,7 +305,9 @@ Class BW_BarrelExplosionFx : BWFxBase
 	states
 	{
 		spawn:
-			DB27 ABCDEFGHIJKLMNOPQRS 1 bright;
+			DB27 ABCDEFGHIJ 1 bright light("BWExploLight1");
+			DB27 KLMNOPQ 1 bright light("BWExploLight2");
+			DB27 RS 1 bright light("BWExploLight3");
 			DB27 TUVWXYZ 1;
 			stop;
 	}
