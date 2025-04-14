@@ -12,7 +12,9 @@ Class BaseBWWeapon : DoomWeapon
 		Weapon.BobSpeed 2.5;
 		Weapon.BobStyle "InverseSmooth"; //"Smooth";//"InverseAlpha";
 		BaseBWWeapon.FullMag 0;
+		BaseBWWeapon.canDual false;
 		Weapon.WeaponScaleX 1.2;
+		inventory.maxamount 1;
 		+dontgib;
 	}
 
@@ -23,6 +25,11 @@ Class BaseBWWeapon : DoomWeapon
 		BWWF_NoSlide 	= 1<<28,
 		BWWF_NoTaunt 	= 1<<29,
 	};
+
+	enum BW_Overlays {
+		PSP_LeftGun = 10,
+		PSP_RightGun = 11,
+	}
 	
 	int FullMag;
 	property FullMag:FullMag;
@@ -30,7 +37,14 @@ Class BaseBWWeapon : DoomWeapon
 	protected int BraceTicker;
 	bool GunBraced;
 
-	protected uint barrelHeat;
+	bool canDual;
+	property canDual:canDual;
+	protected bool Akimboing, firingLeft,firingRight;
+	class<Ammo> AmmoTypeLeft;
+	Ammo AmmoLeft;
+	Property AmmoTypeLeft: AmmoTypeLeft;
+
+	protected uint barrelHeat, barrelHeatLeft;
 
 	override void DoEffect()
 	{
@@ -45,6 +59,8 @@ Class BaseBWWeapon : DoomWeapon
 		super.attachtoowner(other);
 		if(FullMag > 0 && ammotype2)
 			other.giveinventory(ammotype2,FullMag);
+		if(AmmoTypeLeft) 
+			AmmoLeft = AddAmmo(Owner, AmmoTypeLeft, FullMag);
 	}
 	
 	override void Tick()
@@ -106,11 +122,16 @@ Class BaseBWWeapon : DoomWeapon
 	}
 
 	
-	
-	
-	
 }
 
+Class BW_DualWeapon : BaseBWWeapon
+{
+	default
+	{
+		BaseBWWeapon.canDual true;
+		inventory.maxamount 2;
+	}
+}
 
 
 Class BW_PenetratorTracer : LineTracer

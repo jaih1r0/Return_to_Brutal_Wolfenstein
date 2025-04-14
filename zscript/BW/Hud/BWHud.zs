@@ -4,7 +4,7 @@ Class BW_Hud : BaseStatusBar
 	int 			healthCol;
 	double 			alfadeofs;
 	bool 			NoHud;
-	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2,DV_Score;
+	DynamicValueInterpolator DV_Health,DV_Armor,DV_Ammo1,DV_Ammo2,DV_Score,DV_LeftAmmo;
 	int oldScore, scoreTics;
 	BW_EventHandler scorehandler;
 	int combo_timer,combo_counter, oldcounter, counterTics;
@@ -18,6 +18,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Ammo1 = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Ammo2 = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Score = dynamicvalueinterpolator.create(0,1,1,10);
+		DV_LeftAmmo = dynamicvalueinterpolator.create(0,1,1,10);
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -61,6 +62,8 @@ Class BW_Hud : BaseStatusBar
 				DV_Ammo1.update(primary.amount);
 			if(Secondary)
 				DV_Ammo2.update(Secondary.amount);
+			if(cplayer.readyweapon is "BW_DualWeapon")
+				DV_LeftAmmo.update(BW_DualWeapon(cplayer.readyweapon).Ammoleft.amount);
 		}
 		if(oldScore != DV_Score.getvalue())
 			scoreTics = 70;
@@ -144,19 +147,39 @@ Class BW_Hud : BaseStatusBar
 				[armi,amivec] = GetIcon(Secondary,0);
 				drawTexture(armi,(-150,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
 			}
+
+			//
+			int grenindY = -75;
+			bool isAkimbo;
+			if(cplayer.readyweapon is "BW_DualWeapon")
+			{
+				if(BW_DualWeapon(cplayer.readyweapon).Hud_IsAkimbo())
+				{
+					grenindY -= 15;
+					isAkimbo = true;
+					int am2 = DV_LeftAmmo.getvalue();	//Secondary.amount;
+					int max2 = BW_DualWeapon(cplayer.readyweapon).Ammoleft.maxamount;
+					string stam = "\ck";
+					if(am2 < max2)
+						stam = "\cj";
+					if(am2 < 1)
+						stam = "\ca";
+					drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-140,-65),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+				}
+			}
 			
 			
 			//grenades
 			int gam = pl.countinv("BW_GrenadeAmmo");
 			if(gam > 0)
 			{
-				drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM);
-				drawstring(BWFont,""..gam,(-140,-75),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM);
+				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
 			}	
 			else
 			{
-				drawimage("GRNDA",(-160,-65),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
-				drawstring(BWFont,""..gam,(-140,-75),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
+				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
+				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
 			}
 			/*
 			//axes
@@ -168,8 +191,11 @@ Class BW_Hud : BaseStatusBar
 			textureid wimg;	vector2 wimgsc;
 			[wimg,wimgsc] = geticon(cplayer.readyweapon,DI_SKIPICON|DI_SKIPALTICON);
 			if(wimg.isvalid())
+			{
 				drawtexture(wimg,(-200,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(90,60),wimgsc);
-			
+				if(isAkimbo)
+					drawtexture(wimg,(-210,-40),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(90,60),wimgsc);
+			}
 			//weapon tag
 			drawstring(BWFont,cplayer.readyweapon.gettag(),(-320,-12),DI_SCREEN_RIGHT_BOTTOM);
 		}
