@@ -340,6 +340,24 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 			WBPN IJKL 3;
 			WBPN M -1;
 			Stop;
+		
+		Death.Explosive:
+			TNT1 A 0
+			{
+				A_giveinventory("BW_HeadDeath",1);
+				A_Scream();
+				A_NoBlocking();
+				BW_SpawnGib("BW_BGArm",(pos + (0,0,30)),frandom(-5.5,5.0),frandom(5.0,5.0),4);
+				BW_SpawnGib("BW_BGLEG",(pos + (0,0,12)),frandom(-5.5,5.0),frandom(5.0,5.0),4);
+				BW_SpawnGib("BW_BGHead",(pos + (0,0,35)),frandom(-5.5,5.0),frandom(5.0,5.0),4);
+				vel.z += 3;
+				NashGoreGibs.SpawnGibs(self);
+			}
+			ID13 ABC 2;
+			ID13 EF 2;
+			ID13 G -1;
+			stop;
+
 		Death.Knife:
 			TNT1 A 0
 			{
@@ -417,7 +435,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 				//A_Scream();
 				A_NoBlocking();
 				A_Startsound("Gore/HeadShot");
-				A_SpawnitemEx("BW_BGHead",0,0,headheight,frandom(-3,3),frandom(-3,3),frandom(-1,4));
+				BW_SpawnGib("BW_BGHead",(pos + (0,0,headheight)),frandom(-3.0,3.0),frandom(3.0,3.0),frandom(-1.0,4.0));
 			}
 			TNT1 A 0 A_jump(128,"Death_HeadShotEnd");
 			TNT1 A 0 A_giveinventory("BW_HeadDeath",1);

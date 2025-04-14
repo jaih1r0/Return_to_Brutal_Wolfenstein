@@ -18,6 +18,20 @@ Class BW_Decoration : Actor abstract
         if(flare)
             flare.destroy();
     }
+
+    void spawnDebris(string type,vector3 spos,int amount = 1,int maxforceXY = 10,int maxforceZ = 10)
+	{
+		if(amount < 1)
+			return;
+		for(int i = 0; i < amount; i++)
+		{
+			actor deb = spawn(type,spos);
+			if(deb)
+			{
+				deb.vel = (random(-maxforceXY,maxforceXY),random(-maxforceXY,maxforceXY),random(-maxforceZ,maxforceZ));
+			}
+		}
+	}
 }
 
 Class BW_BJYeah : BW_Decoration
@@ -349,6 +363,30 @@ Class BW_RedLamp : BW_GreyLamp2
     }
 }
 
+Class BW_LittleLamp : BW_CeillingDecoration //7061
+{
+    default
+    {
+        +SpawnCeiling;
+        Radius 19;
+        Height 13;
+        Health 15;
+    }
+    states
+    {
+        spawn:
+            TNT1 A 0 nodelay {
+                flare = BW_Flare.NewFlare(self,2,(0.2,0.075),'Yellow');
+            }
+            LLLM A -1 bright light("CandelabraLight");
+            stop;
+        Death:
+            TNT1 A 0 killFlare();
+            LLLM B -1;
+            stop;
+    }
+}
+
 //columns
 
 Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
@@ -386,6 +424,36 @@ Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
         return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
     }
 }
+
+
+Class BW_RedColumn : BW_StoneColumn //1310
+{
+    states
+    {
+        spawn:
+            EPTW A -1;
+            stop;
+        //couldnt find the red column death sprites
+
+    }
+}
+
+Class BW_RedTallColumn : BW_RedColumn //1311
+{
+    default
+    {
+        height 128;
+    }
+    states
+    {
+        spawn:
+            EPTW B -1;
+            stop;
+    }
+}
+
+
+
 
 //tables
 
@@ -664,6 +732,7 @@ Class BW_HealingWell : BW_Well1
             UsedWeel = true;
             int giveamt = 100;
             int skil = G_SkillPropertyInt (SKILLP_SpawnFilter);
+            bspecial = false;
             switch(skil)
             {
                 case 1: giveamt = 100;  break;
@@ -801,6 +870,10 @@ Class BW_Skeleton1 : BW_ShootableDecoration replaces HangTSkull
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 {
+                spawnDebris("BW_BoneDebris",(pos + (0,0,height * 0.5)),random(2,5));
+                spawnDebris("BW_BoneHeadDebris",(pos + (0,0,height * 0.5)));
+            }
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),35,45);
             SKPO B -1;
             stop;
@@ -961,7 +1034,8 @@ Class BW_BloodPool : BW_Decoration Replaces HangTNoBrain
         spawn:
             TNT1 A 0 nodelay {
                 frame = random(0,7);
-                scale *= frandom(0.9,1.5);
+                scale *= frandom(0.9,2.5);
+                angle = random(0,360);
             }
             NGMV # -1;
             stop;
@@ -1008,6 +1082,10 @@ Class BW_CagedSkelly : BW_ShootableDecoration replaces HangTLookingDown
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 {
+                spawnDebris("BW_BoneDebris",(pos + (0,0,height * 0.5)),random(2,5));
+                spawnDebris("BW_BoneHeadDebris",(pos + (0,0,height * 0.5)));
+            }
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),35,45);
             GAB1 ABC 3;
             GAB1 D -1;
@@ -1119,6 +1197,10 @@ Class BW_BoneStack : BW_ShootableDecoration replaces ColonGibs
             stop;
         Death:
             TNT1 AA 0 BW_SpawnSmokeFx(5,35,30);
+            TNT1 A 0 {
+                spawnDebris("BW_BoneDebris",(pos + (0,0,height * 0.5)),random(2,4));
+                spawnDebris("BW_BoneHeadDebris",(pos + (0,0,height * 0.5)));
+            }
             TNT1 A 1;
             stop;
     }
@@ -1236,6 +1318,8 @@ Class BW_PoisonBarrel : BW_ShootableDecoration  //7202
     {
         Radius 16;
         Height 25;
+        health 20;
+        damagefactor "Radiation",20;
     }
     states
     {
@@ -1244,11 +1328,42 @@ Class BW_PoisonBarrel : BW_ShootableDecoration  //7202
             stop;
         Death:
             //TNT1 A 0 spawn toxic smoke
-            TNT1 A 0 A_Explode();
+            TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 A_Explode(5,100,0,damagetype:"Radiation");
+            TNT1 A 0 A_Spawnitem("BW_ToxicSmokeHandler");
+            //TNT1 A 0 SpawnDebris("BW_ToxicSmoke",(pos + (0,0,height)),random(3,6),3,0.5);
+            //TNT1 AAAAA 0 A_Spawnprojectile("BW_ToxicSmoke",18,0,angle:random(0,360),flags:CMF_AIMDIRECTION,pitch:random(-40,40));
             YLBR B -1;
             stop; 
     }
 }
+
+Class BW_MutantBasket : BW_ShootableDecoration
+{
+    default
+    {
+        //-noblood;
+        bloodcolor "FF00FF";
+        Radius 16;
+        Height 30;
+        health 40;
+        deathheight 38;
+    }
+    states
+    {
+        spawn:
+            YLBR C -1;
+            stop;
+        Death:
+            TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 {
+                nashgoregibs.spawngibs(self);   //need to change thisto proper mutant gibs
+            }
+            YLBR D -1;
+            stop;
+    }
+}
+
 
 Class BW_MutantGlass : BW_Decoration   //7204, easy 7205, easy 7206 hard
 {
@@ -1261,7 +1376,6 @@ Class BW_MutantGlass : BW_Decoration   //7204, easy 7205, easy 7206 hard
             Goto SOURPRISE;
         Sourprise:
             TNT1 A 0 A_NoBlocking();
-            TNT1 A 0 A_log("fuck");
             TNT1 A 0 A_Spawnitem("BW_Mutant");
             MNTG B -1;
             stop;
@@ -1337,4 +1451,100 @@ Class BW_SilentAlarm : actor //7299
             TNT1 AA 0 A_AlertMonsters(0,AMF_TARGETEMITTER);
             stop;
     }
+}
+
+Class BW_ToxicSmokeHandler : Actor
+{
+    default
+    {
+        +nointeraction;
+        damagetype "Radiation";
+        Height 30;
+        radius 3;
+    }
+    int maxlife;
+    array<actor> clouds;
+    override void postbeginplay()
+    {
+        super.postbeginplay();
+        maxlife = TICRATE * random(1,5);
+        for(int i = 0; i < random(5,10);i++)
+        {
+            actor cl = spawn("BW_ToxicSmoke",(pos + (random(-20,20),random(-20,20),random(5,height))));
+            if(cl)
+            {
+                cl.vel = (frandom(-0.1,0.1),frandom(-0.1,0.1),frandom(0.1,0.1));
+                clouds.push(cl);
+            }        
+        }
+        A_AttachLightDef('Lemon','BWRadLight');
+    }
+    override void tick()
+    {
+        super.tick();
+        if(isfrozen())
+            return;
+        if(getage() % 5 == 0)
+            A_Explode(10,100,0,damagetype:"Radiation");
+        if(maxlife)
+            maxlife--;
+        else
+        {
+            if(clouds.size() > 0)
+            {
+                for(int i = 0; i < clouds.size(); i++)
+                {
+                    clouds[i].bouncecount = 1;
+                }
+                clouds.clear();
+            }
+            destroy();
+            return;
+        }
+    }
+   
+}
+
+Class BW_ToxicSmoke : Actor
+{
+    default
+    {
+        renderstyle "add";
+        //+missile;
+        //+ripper;
+        +bright;
+        +nointeraction;
+        bouncecount 0;
+        scale 0.32;
+        +rollsprite;
+        +rollcenter;
+    }
+    states
+    {
+        Spawn:
+            DB59 K 1 A_SetRoll(roll + rdir);
+            TNT1 A 0 A_jumpif(bouncecount,"Death");
+            Loop;
+        Death:
+            DB59 K 1 {
+                A_SetRoll(roll + rdir);
+                A_Fadeout(0.05);
+            }
+            loop;
+    }
+    override void tick()
+    {
+        super.tick();
+        if(isfrozen())
+            return;
+        if(!bouncecount)
+            A_setscale(scale.x * frandom(1.005,1.01));
+    }
+    int rdir;
+    override void postbeginplay()
+    {
+        super.postbeginplay();
+        rdir = random(3,8) * randompick(-1,1);
+    }
+    
 }

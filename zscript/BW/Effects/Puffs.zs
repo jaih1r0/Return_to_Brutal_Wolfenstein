@@ -226,6 +226,7 @@ class BW_impactpuff : BW_BulletPuff
 				case 'Dirt':
 				case 'PurpleStone':
 				case 'Gravel':
+				case 'Marble':
 				case 'Stone':	typ = "FlatDecal_Concrete";	break;
 				case 'Crystal':	typ = "FlatDecal_Concrete";	break;
 				case 'Electric':

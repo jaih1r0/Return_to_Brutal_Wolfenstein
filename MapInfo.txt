@@ -18,6 +18,10 @@ DoomEdNums
 	300 = "BW_Treasure_Chalice"
 	400 = "BW_Treasure_Chest"
 	500 = "BW_Treasure_Crown"
+	600 = "BW_Radio"
+	700 = "BW_Plutonium"
+	800 = "BW_Bomb1"
+	900 = "BW_Bomb2"
 	3069 = "BW_Treasure_Chalice1"
 
 	1317 = "BW_BlackKey"
@@ -45,11 +49,14 @@ DoomEdNums
 	7501 = "BW_Luger"
 
 	//map things
+	1310 = "BW_RedColumn"
+	1311 = "BW_RedTallColumn"
 	7042 = "BW_Candleabra1"
 	7056 = "BW_Candelabra3"
 	7041 = "BW_GreyLamp"
 	7026 = "BW_KnightArmor1"
 	7036 = "BW_healingWell"
+	7061 = "BW_LittleLamp"
 	7022 = "BW_WoodenBarrel"
 	7023 = "BW_MP40Barrel"
 	7024 = "BW_FoodBarrel"
@@ -63,6 +70,7 @@ DoomEdNums
 	7059 = "BW_vasePlant1"
 	7060 = "BW_vasePlant2"
 
+	7201 = "BW_MutantBasket"
 	7202 = "BW_PoisonBarrel"
 	7203 = "BW_Electricity"
 	7204 = "BW_MutantGlass"

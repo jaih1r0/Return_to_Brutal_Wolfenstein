@@ -378,6 +378,17 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 			NAZI HIJK 3;
 			NAZI L -1;
 			Stop;
+		Death.Explosive:
+			TNT1 A 0
+			{
+				A_XScream();
+				A_NoBlocking();
+				NashGoreGibs.SpawnGibs(self);
+			}
+			NAZ2 ABC 3;
+			NAZ2 DEF 3;
+			NAZI L -1;
+			Stop;
 
 		Death.pistol:
 			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShotMinor");

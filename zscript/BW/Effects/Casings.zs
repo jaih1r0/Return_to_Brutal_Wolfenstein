@@ -37,6 +37,17 @@ Class BW_CasingBase : Actor abstract
 		super.beginplay();
 	}
 
+    override void tick()
+    {
+        super.tick();
+        if(waterlevel > 1 && vel.length() > 0)
+        {
+            bBOUNCEONWALLS = bBOUNCEONFLOORS = bBOUNCEONCEILINGS = false;
+            vel *= 0.95;
+            rolldir = clamp(rolldir * 0.95,3,40);
+        }
+    }
+
     void DoCasingRoll()
     {
         A_SetRoll(roll + RollDir);
@@ -44,7 +55,8 @@ Class BW_CasingBase : Actor abstract
 
     void FinishRoll()
     {
-        A_SetRoll(randompick(-90,90),SPF_INTERPOLATE);
+        if(waterlevel < 1)
+            A_SetRoll(randompick(-90,90),SPF_INTERPOLATE);
     }
 
     void playbouncesound()

@@ -46,6 +46,14 @@ PulseLight BWExploLight3
 	interval 0.5
 }
 
+PulseLight BWRadLight
+{
+    color 0.3 0.8 0.0
+	size 50
+	secondarysize 60
+	interval 0.5
+}
+
 //map decorations
 Pointlight BiggerCandelabraLight
 {

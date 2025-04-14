@@ -69,3 +69,61 @@ Class BW_Treasure_Crown : BW_Treasure
             stop;
     }
 }
+
+//
+
+Class BW_Radio : BW_Treasure    //600
+{
+    default
+    {
+        Inventory.PickupMessage "Radio";
+    }
+    states
+    {
+        Spawn:
+            LATS A -1 bright light("TreasureLight");
+            stop;
+    }
+}
+
+Class BW_Plutonium : BW_Treasure //700
+{
+    default
+    {
+        Inventory.PickupMessage "Plutonium";
+    }
+    states
+    {
+        Spawn:
+            LATS B -1 bright light("TreasureLight");
+            stop;
+    }
+}
+
+Class BW_Bomb1 : BW_Treasure //800
+{
+    default
+    {
+        Inventory.PickupMessage "Control Panel";
+    }
+    states
+    {
+        Spawn:
+            LATS C -1 bright light("TreasureLight");
+            stop;
+    }
+}
+
+Class BW_Bomb2 : BW_Treasure //900
+{
+    default
+    {
+        Inventory.PickupMessage "Bomb";
+    }
+    states
+    {
+        Spawn:
+            LATS D -1 bright light("TreasureLight");
+            stop;
+    }
+}

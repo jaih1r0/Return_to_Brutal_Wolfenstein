@@ -1,4 +1,4 @@
-Class BW_MP40 : BaseBWWeapon //Replaces Shotgun
+Class BW_MP40 : BaseBWWeapon Replaces Shotgun
 {
 	default
 	{

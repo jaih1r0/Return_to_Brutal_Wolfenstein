@@ -282,75 +282,6 @@ Class BW_Projectile : fastprojectile
 		FLineTraceData t;
 		bool hit = self.linetrace(lastview.x,10,lastview.y,TRF_THRUACTORS,1,-2,0,t);	//probably the easier approach
 		
-		/*if(!hit)
-		{
-			console.printf("fuck you");
-		}*/
-
-		/*switch(type)
-        {
-            case TRACE_HitWall: //wall
-				if(!hitline)
-				{
-					if(BlockingCeiling)
-					{
-						
-						tex	= texman.getname(ceilingpic);
-						mat = BW_StaticHandler.getmaterialname(tex);
-						normal = hitsector.ceilingplane.normal;
-						impc = BW_impactpuff.IMP_CEIL;
-					}
-					else if(BlockingFloor)
-					{
-						tex = texman.getname(floorpic);//floorpic
-						mat = BW_StaticHandler.getmaterialname(tex);
-						normal = hitsector.floorplane.normal;
-						impc = BW_impactpuff.IMP_FLOOR;
-					}
-					else
-					{
-						console.printf("Error: no line found!");
-						return;
-					}
-					
-				}
-
-				int sd = levellocals.PointOnLineSide(target.pos.xy,hitline,true);
-				TextureID tx = PB_GetLineTex(hitline,sd,pos.z);
-				tex = texman.getname(tx);
-                mat = BW_StaticHandler.getmaterialname(tex);
-
-				vector2 nrm = GetLineNormal(sd,HitLine);
-				double wn = -atan2(nrm.x, nrm.y);
-				normal = (RotateVector((0, 1),wn), 0);
-				wallAng = wn;
-				impc = BW_impactpuff.IMP_WALL;
-                break;
-
-            case TRACE_HitCeiling: //ceilling
-				if(!hitsector)
-				{
-					console.printf("Error: no sector found!");
-					return;
-				}
-				tex	= texman.getname(ceilingpic);//ceilingpic
-				mat = BW_StaticHandler.getmaterialname(tex);
-				normal = hitsector.ceilingplane.normal;
-				impc = BW_impactpuff.IMP_CEIL;
-                break;
-            case TRACE_HitFloor: //floor 
-				if(!hitsector)
-				{
-					console.printf("Error: no sector found!");
-					return;
-				}
-				tex = texman.getname(floorpic);//floorpic
-				mat = BW_StaticHandler.getmaterialname(tex);
-				normal = hitsector.floorplane.normal;
-				impc = BW_impactpuff.IMP_FLOOR;
-				break;
-        }*/
-		
 
 		tex = texman.getname(t.HitTexture);
         mat = BW_StaticHandler.getmaterialname(tex);
@@ -546,52 +477,7 @@ Class BW_Projectile : fastprojectile
         
 		if(tr.results.HitType == TRACE_HitWall || tr.results.HitType == TRACE_HitCeiling || tr.results.HitType == TRACE_HitFloor)
 		{
-			string tex = texman.getname(tr.results.HitTexture);
-			if(!tex)	//probably hit sky
-			{
-				destroy();
-				return;
-			}
-			name mat = BW_StaticHandler.getmaterialname(tex);
-			
-			if(mat == 'null')
-			{
-				if(BW_texturesChecker)
-					console.printf("\caTexture unknown\c-: \cy%s\c-, at map: \cy%s\c- at pos(%d,%d,%d)",tex,level.Mapname,endpos.x,endpos.y,endpos.z);
-				spawn("BW_BulletPuff",endpos);
-				destroy();
-				return;
-			}
-			if(BW_texturesChecker)
-				console.printf("\cdTexture\c-: \cy%s\c-, Material: \cy%s\c-",tex,mat);
-			let puf = BW_impactpuff(spawn("BW_ImpactPuff",endpos));
-			if(!puf)
-				return;
-			puf.tp = mat;
-			let sd = BW_StaticHandler.getmaterialSound(tex);
-			if(sd)
-				puf.A_Startsound(sd);
-			switch(tr.results.HitType)
-			{
-				case TRACE_HitWall:
-					vector2 nrm = GetLineNormal(tr.results.Side,tr.results.HitLine);
-					double wn = -atan2(nrm.x, nrm.y);
-					puf.norm = (RotateVector((0, 1),wn), 0);
-					puf.impctDir = tr.results.HitVector;
-					puf.wang = wn;
-					puf.impactType = BW_impactpuff.IMP_WALL;
-					break;
-				case TRACE_HitFloor:
-					puf.norm = tr.results.HitSector.floorplane.normal;
-					puf.impctDir = tr.results.HitVector;
-					puf.impactType = BW_impactpuff.IMP_FLOOR;
-					break;
-				case TRACE_HitCeiling:
-					puf.norm = tr.results.HitSector.ceilingplane.normal;
-					puf.impctDir = tr.results.HitVector;
-					puf.impactType = BW_impactpuff.IMP_CEIL;
-					break;
-			}
+			onProjectileImpact(tr,endpos);
 			destroy();
 		}
 
@@ -609,6 +495,56 @@ Class BW_Projectile : fastprojectile
 					return;
 				}
 			}
+		}
+	}
+
+	virtual void onProjectileImpact(BW_ProjectileTraveler tr,vector3 endpos)
+	{
+		string tex = texman.getname(tr.results.HitTexture);
+		if(!tex)	//probably hit sky
+		{
+			destroy();
+			return;
+		}
+		name mat = BW_StaticHandler.getmaterialname(tex);
+		
+		if(mat == 'null')
+		{
+			if(BW_texturesChecker)
+				console.printf("\caTexture unknown\c-: \cy%s\c-, at map: \cy%s\c- at pos(%d,%d,%d)",tex,level.Mapname,endpos.x,endpos.y,endpos.z);
+			spawn("BW_BulletPuff",endpos);
+			destroy();
+			return;
+		}
+		if(BW_texturesChecker)
+			console.printf("\cdTexture\c-: \cy%s\c-, Material: \cy%s\c-",tex,mat);
+		let puf = BW_impactpuff(spawn("BW_ImpactPuff",endpos));
+		if(!puf)
+			return;
+		puf.tp = mat;
+		let sd = BW_StaticHandler.getmaterialSound(tex);
+		if(sd)
+			puf.A_Startsound(sd);
+		switch(tr.results.HitType)
+		{
+			case TRACE_HitWall:
+				vector2 nrm = GetLineNormal(tr.results.Side,tr.results.HitLine);
+				double wn = -atan2(nrm.x, nrm.y);
+				puf.norm = (RotateVector((0, 1),wn), 0);
+				puf.impctDir = tr.results.HitVector;
+				puf.wang = wn;
+				puf.impactType = BW_impactpuff.IMP_WALL;
+				break;
+			case TRACE_HitFloor:
+				puf.norm = tr.results.HitSector.floorplane.normal;
+				puf.impctDir = tr.results.HitVector;
+				puf.impactType = BW_impactpuff.IMP_FLOOR;
+				break;
+			case TRACE_HitCeiling:
+				puf.norm = tr.results.HitSector.ceilingplane.normal;
+				puf.impctDir = tr.results.HitVector;
+				puf.impactType = BW_impactpuff.IMP_CEIL;
+				break;
 		}
 	}
 
@@ -768,19 +704,217 @@ Class BW_Rocket : Actor
 		damage 35;
 		+missile;
 		projectile;
+		radius 3;
+		height 3;
+		damagetype "Explosive";
 	}
 	states
 	{
 		Spawn:
-			MISL A 1;
+			MISL A 1 spawnFirespark(pos + (0,0,5));
 			loop;
 		Death:
 			TNT1 A 0;
+			TNT1 A 0 spawnrocketimpact();
 			TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
             TNT1 A 0 A_Startsound("Barrel/Explosion");
-            TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");
+            //TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");
             TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
 			TNT1 A 1;
 			stop;
+	}
+	vector2 startangles;
+	override void postbeginplay()
+	{
+		super.postbeginplay();
+		if(target)
+		{
+			startangles.x = target.angle;
+			startangles.y = target.pitch;
+		}
+	}
+
+	void spawnrocketimpact()
+	{
+		FLineTraceData t;
+		linetrace(startangles.x,32,startangles.y,0,1,-4,data:t);
+		string tex = texman.getname(t.HitTexture);
+		name mat = BW_StaticHandler.getmaterialname(tex);
+		vector3 safepos = t.hitlocation - t.hitdir - t.hitdir;
+		
+		if(safepos.z < floorz+1)
+			safepos.z = floorz + 1;
+		if(safepos.z > ceilingz - 1)
+			safepos.z = ceilingz - 1;
+		switch(mat)
+		{
+			case 'Metal': case 'Electronic':
+				spawnDebris("BW_MetalScrap",safepos,random(3,7));
+				//A_SpawnitemEx("BW_MetalScrap",0,0,0,random(-5,5),random(-5,5),random(-5,5));
+				break;
+			case 'Stone': case 'Marble': case 'Gravel':
+				spawnDebris("BW_Stonebits",safepos,random(3,7));
+				break;
+			case 'Wood': case 'Carpet':
+				spawnDebris("BW_WoodDebris",safepos,random(3,7));
+				break;
+		}
+		DoDecal(mat,t);
+		spawnFxSmokeBasic();
+		spawnFxSmokeBasic();
+		spawnFxSmokeBasic();
+		spawn("BW_RocketExplosionFx",safepos);
+	}
+
+	void spawnDebris(string type,vector3 spos,int amount = 1,int maxforce = 10)
+	{
+		if(amount < 1)
+			return;
+		for(int i = 0; i < amount; i++)
+		{
+			actor deb = spawn(type,spos);
+			if(deb)
+			{
+				deb.vel = (random(-maxforce,maxforce),random(-maxforce,maxforce),random(-maxforce*0.5,maxforce));
+			}
+		}
+	}
+
+	void spawnFxSmokeBasic()
+	{
+		FSpawnParticleParams WTFSMK;
+		WTFSMK.Pos = pos + (random(-20,20),random(-20,20),random(0,45));
+        WTFSMK.Texture = TexMan.CheckForTexture("SMO1C0");
+		WTFSMK.Color1 = 0xFFFFFF;
+		WTFSMK.Style = STYLE_Translucent;
+		WTFSMK.Flags = SPF_ROLL;
+		WTFSMK.Startroll = random(0,360);
+		WTFSMK.RollVel = random(-5,5);
+		WTFSMK.StartAlpha = 0.5;
+		WTFSMK.Size = random(60,75);
+		WTFSMK.SizeStep = 3;
+		WTFSMK.Lifetime = Random(20,35); 
+		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
+		WTFSMK.Vel = (frandom[bscsmk](-1.5,1.5),frandom[bscsmk](-1.5,1.5),frandom[bscsmk](-1.5,1.5));
+		if(CeilingPic == SkyFlatNum)
+			WTFSMK.accel = getwinddir();
+		Level.SpawnParticle (WTFSMK);
+	}
+
+	void spawnFirespark(vector3 position)
+	{
+		FSpawnParticleParams DBSPK;
+		DBSPK.Texture = TexMan.CheckForTexture("SPKOA0");
+		DBSPK.Color1 = "FFFFFF";//"FF8400";
+		DBSPK.Style = STYLE_ADD;
+		DBSPK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
+		DBSPK.Vel = (frandom(-1,1),frandom(-1,1),frandom(-1,1)); 
+		DBSPK.Startroll = random(0,360);
+		DBSPK.RollVel = frandom(-15,15);
+		DBSPK.StartAlpha = 0.85;
+		DBSPK.Size = random(12,20);
+		DBSPK.SizeStep = -2;
+		DBSPK.Lifetime = random(4,8); 
+		DBSPK.Pos = position;
+		Level.SpawnParticle(DBSPK);
+	}
+
+    vector3 getwinddir()
+	{
+		if(!level)
+			return (0,0,0);
+		switch(level.levelnum % 4)
+		{
+			case 0:	return (0.05,0.05,0.03);	break;
+			case 1:	return (-0.05,0.05,0.03);	break;
+			case 2:	return (0.05,-0.05,0.03);	break;
+			case 3:	return (-0.05,-0.05,0.03);	break;
+		}
+		return (0,0,0);
+	}
+	void DoDecal(name tp,FLineTraceData t)
+	{
+		int impactType = t.hittype;
+		vector3 impctDir = t.hitdir;
+		if(impactType == TRACE_HitWall)
+		{
+			string typ = "Impact_Stone";
+			switch(tp)
+			{
+				case 'Carpet':	typ = "Scorch";	break;
+				case 'Dirt':
+				case 'PurpleStone':
+				case 'Gravel':
+				case 'Marble':
+				case 'Stone':	typ = "Scorch";	break;
+				case 'Crystal':	typ = "Scorch";	break;
+				case 'Electric':
+				case 'Metal':	typ = "Scorch";	break;
+				case 'Wood':	typ = "Scorch";		break;
+				case 'Blood':
+                case 'Acid':
+				case 'Water':	
+				case 'Slime':	
+				case 'PurpleWater': 
+				case 'Lava':
+				case 'Sky':	typ = "noDec";	break;
+			}
+			if(typ == "noDec")
+				return;
+			A_SprayDecal(typ,10,(0,0,0),impctDir);
+		}
+		else
+		{
+			vector3 norm = (impactType == TRACE_HitFloor) 	? 
+			t.HitSector.floorplane.normal : t.HitSector.ceilingplane.normal;
+
+			double zfx = (impactType == TRACE_HitFloor) ? self.floorz : self.ceilingz;
+			double newpitch = atan2(norm.z,norm.x);
+			string typ = "FlatDecal_Scorch";
+			switch(tp)
+			{
+				case 'Carpet':	typ = "FlatDecal_Scorch";	break;
+				case 'Dirt':
+				case 'PurpleStone':
+				case 'Gravel':
+				case 'Marble':
+				case 'Stone':	typ = "FlatDecal_Scorch";	break;
+				case 'Crystal':	typ = "FlatDecal_Scorch";	break;
+				case 'Electric':
+				case 'Metal':	typ = "FlatDecal_Scorch";	break;
+				case 'Wood':	typ = "FlatDecal_Scorch";		break;
+				case 'Blood':
+				case 'Lava':
+				case 'Water':	
+				case 'Slime':	
+				case 'Acid':
+                case 'PurpleWater': 
+				case 'Sky':	typ = "noDec";	break;
+			}
+			if(typ == "noDec")
+				return;
+			actor fd = spawn(typ,(pos.xy,zfx));
+			if(fd)
+			{
+				if(norm.z == -1.0 || norm.z == 1.0)
+				{
+					if(impactType == TRACE_HitCeiling)
+						fd.pitch = 180;
+					else
+						fd.pitch = 0;
+					return;
+				}
+				Vector2 norm_p1 = (norm.X != 0 || norm.Y != 0) ? (norm.X, norm.Y).Unit() : (0, 0);
+				Vector2 norm_p2 = ((norm.X, norm.Y).Length(), norm.Z);
+				double dang = fd.Angle;
+				double fang = atan2(norm_p1.Y, norm_p1.X);
+				double fpitch = atan2(norm_p2.X, norm_p2.Y);
+				double ddiff1 = sin(fang - (dang));
+				double ddiff2 = cos(fang - dang);
+				fd.Pitch = (fpitch * ddiff2);
+				fd.Roll = -fpitch * ddiff1;
+				fd.Angle = dang;
+			}
+		}
 	}
 }

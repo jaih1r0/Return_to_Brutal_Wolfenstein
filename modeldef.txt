@@ -41,6 +41,17 @@ Model FlatDecal_Wood
 	FrameIndex DECA L 0 0
 }
 
+Model FlatDecal_Scorch
+{
+   UseActorPitch
+	UseActorRoll
+	Path "models/bulletdecals"
+	Model 0 "buldecground1"
+	Skin 0 "SCORCH1.png"
+	Scale 2.5 2.5 2.5
+	ZOffset 0.1
+	FrameIndex DECA L 0 0
+}
 
 model PlayerDecorativeTracer
 {

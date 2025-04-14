@@ -251,6 +251,15 @@ Class FlatDecal_Metal : FlatDecal
 Class FlatDecal_Wood : FlatDecal
 {}
 
+Class FlatDecal_Scorch : FlatDecal
+{
+	default
+	{
+		scale 9;
+		alpha 0.8;
+	}
+}
+
 
 
 //
@@ -301,6 +310,7 @@ Class BW_BarrelExplosionFx : BWFxBase
 	default
 	{
 		//scale 1.2;
+		+forcexybillboard;
 	}
 	states
 	{
@@ -309,6 +319,25 @@ Class BW_BarrelExplosionFx : BWFxBase
 			DB27 KLMNOPQ 1 bright light("BWExploLight2");
 			DB27 RS 1 bright light("BWExploLight3");
 			DB27 TUVWXYZ 1;
+			stop;
+	}
+}
+
+Class BW_RocketExplosionFx : BWFxBase
+{
+	default
+	{
+		+forcexybillboard;
+		scale 0.8;
+	}
+	states
+	{
+		spawn:
+			X125 ABCD 1 bright light("BWExploLight1");
+			X125 EFG 1 bright light("BWExploLight2");
+			X125 HIJ 1 bright light("BWExploLight3");
+			X125 KLMNOPQ 1; 
+			X125 RS 1; 
 			stop;
 	}
 }

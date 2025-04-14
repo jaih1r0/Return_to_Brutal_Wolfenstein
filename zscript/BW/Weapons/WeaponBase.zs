@@ -163,6 +163,9 @@ Class BaseBWWeapon : DoomWeapon
 			BWLG HIJ 1;
 			TNT1 AA 0 A_jump(256,"Ready");
 			wait;
+		PrepareLedgeGrab:	//pseudo virtual function
+			TNT1 A 1;
+			stop;
 		//dummy kick flashes 
 		KickFlash:
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
@@ -594,8 +597,10 @@ Class BaseBWWeapon : DoomWeapon
 		BW_AddBarrelHeat(-1);
 		if(BW_disableGunSmoke)
 			return;
-		
-		/*let qpl = QuakePlayer(player.mo);
+		if(WaterLevel > 1)
+			BW_AddBarrelHeat(0,true);	//instacold in water
+
+		/*let qpl = ZM_QuakePlayer(player.mo);
 		if(qpl)
 		{
 			//account for weapon sway
