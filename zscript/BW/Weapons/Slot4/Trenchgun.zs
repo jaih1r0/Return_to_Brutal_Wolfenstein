@@ -132,7 +132,7 @@ class BW_Trenchgun : BaseBWWeapon
 
 	AltFire:
 		TNT1 A 0 {
-			A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
+			A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
 			if(findinventory("AimingToken"))
 			{
 				A_setinventory("AimingToken",0);
@@ -201,7 +201,7 @@ class BW_Trenchgun : BaseBWWeapon
 		goto Ready_ADS;
 
 	ReloadADS:
-		TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP);
+		TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 		BTGT DCBA 1;
 	Reload:
