@@ -14,7 +14,8 @@ Extend Class BaseBWWeapon
 		State PSPState = player.GetPSprite(PSP_WEAPON).Curstate;
 		return (
 			InStateSequence(PSPState,invoker.ResolveState("Ready"))	||
-			InStateSequence(PSPState,invoker.ResolveState("Ready2"))
+			InStateSequence(PSPState,invoker.ResolveState("Ready2")) ||
+			InStateSequence(PSPState,invoker.ResolveState("Ready_Dual"))
 		);
 	}
 
@@ -42,6 +43,16 @@ Extend Class BaseBWWeapon
         let ps = player.findPSprite(layer);
 		if(ps)
 			ps.frame = frame;
+    }
+
+    action bool pressingButton(int button)
+    {
+        return (player.cmd.buttons & button);
+    }
+
+    action bool tappedButton(int button)
+    {
+        return (player.cmd.buttons & button) && !(player.oldbuttons & button);
     }
 
     //[Pop]This function is so we can replace all of the shitty A_Quake or QuakeEx
@@ -132,8 +143,68 @@ Extend Class BaseBWWeapon
 		
 	}
 
+    action bool BW_CangoDual()
+    {
+        return (invoker.canDual && invoker.amount > 1);
+    }
 
+    action bool BW_CheckAkimbo()
+    {
+        return invoker.Akimboing;
+    }
 
+	clearscope bool Hud_IsAkimbo()	//simple solutions to simple problems ig
+	{
+		return Akimboing;
+	}
+
+    action void BW_SetAkimbo(bool set = true)
+    {
+        invoker.Akimboing = set;
+    }
+
+    action state BW_jumpifAkimbo(statelabel jump)
+    {
+        if(BW_CheckAkimbo())
+            return resolvestate(jump);
+        return resolvestate(null);
+    }
+
+    action bool BW_isFiring(bool right = false)
+    {
+        return right ? invoker.firingRight:invoker.firingLeft;
+    }
+
+    action void BW_SetFiring(bool set = true,bool right = false)
+    {
+        if(right)
+            invoker.firingRight = set;
+        else
+            invoker.firingLeft = set;
+    }
+
+    action void BW_ClearFiring()
+    {
+        invoker.firingRight = invoker.firingLeft = false;
+    }
+
+	action state BW_DualPrefire(statelabel dry, bool isLeft = false, int min = 1)
+	{
+		int amt = isLeft ? invoker.AmmoLeft.amount : invoker.ammo2.amount;
+		if(amt < min)
+			return resolvestate(dry);
+		return resolvestate(null);
+	}
+
+	action void BW_ClearDualOverlays()
+	{
+		A_ClearOverlays(PSP_LeftGun,PSP_RightGun);
+	}
+
+	action bool notDualFiring()
+	{
+		return (!BW_isFiring(true) && !BW_isFiring(false));
+	}
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     // replacement for vanilla weapon handling functions
@@ -193,7 +264,7 @@ Extend Class BaseBWWeapon
 			{
 				double ang = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spreadx,spreadx);	//preserve the vanilla first shoot accurate
 				double ptc = (!player.refire && numbullets == 1) ? 0.0 : frandom(-spready,spready);	
-				A_fireprojectile(projectiletype,ang,0,0,0,0,ptc);
+				A_fireprojectile(projectiletype,ang,0,sdofs,0,0,ptc);
 			}
 		}
 	}
@@ -248,15 +319,15 @@ Extend Class BaseBWWeapon
 		Level.SpawnParticle (WepSmk);
 	}
 
-	action void BW_GunBarrelSmoke(string gfx = "PUF2U0",vector3 ofsPos = (5,2,-3), vector3 ofsVel = (0.2,0,0.6),int startsize = 5, double startalpha = 0.35, color col = 0xFFFFFF)
+	action void BW_GunBarrelSmoke(string gfx = "PUF2U0",vector3 ofsPos = (5,2,-3), vector3 ofsVel = (0.2,0,0.6),int startsize = 5, double startalpha = 0.35, color col = 0xFFFFFF, bool left = false)
 	{
-		if(!BW_GetBarrelHeat())
+		if(!BW_GetBarrelHeat(left))
 			return;
-		BW_AddBarrelHeat(-1);
+		BW_AddBarrelHeat(-1,false,left);
 		if(BW_disableGunSmoke)
 			return;
 		if(WaterLevel > 1)
-			BW_AddBarrelHeat(0,true);	//instacold in water
+			BW_AddBarrelHeat(0,true,left);	//instacold in water
 
 		/*let qpl = ZM_QuakePlayer(player.mo);
 		if(qpl)
@@ -290,17 +361,27 @@ Extend Class BaseBWWeapon
 		Level.SpawnParticle (WepSmk);
 	}
 
-	action void BW_AddBarrelHeat(int amnt = 1, bool set = false)
+	action void BW_AddBarrelHeat(int amnt = 1, bool set = false, bool isLeft = false)
 	{
-		if(set)
-			invoker.barrelHeat = amnt;
+		if(isLeft)
+		{
+			if(set)
+				invoker.barrelHeatLeft = amnt;
+			else
+				invoker.barrelHeatLeft += amnt;
+		}
 		else
-			invoker.barrelHeat += amnt;
+		{
+			if(set)
+				invoker.barrelHeat = amnt;
+			else
+				invoker.barrelHeat += amnt;
+		}
 	}
 
-	action uint BW_GetBarrelHeat()
+	action uint BW_GetBarrelHeat(bool left)
 	{
-		return invoker.barrelHeat;
+		return left ? invoker.barrelHeatLeft : invoker.barrelHeat;
 	}
 
 	action vector3 getwinddir()
@@ -329,6 +410,10 @@ Extend Class BaseBWWeapon
 	{
 		if(!isInReadyState())	//only when in ready state
 			return;
+		
+		if(BW_CheckAkimbo() && !notDualFiring())	//is dual wielding and firing right now, dont interrupt that
+			return;
+
 		statelabel pendkf = "KickFlash";
 		switch(type)
 		{
@@ -512,7 +597,7 @@ Extend Class BaseBWWeapon
 			
 			
 			self.LineTrace(angle + spx, 9000, pitch + spy, offsetz: pz, data: t);
-			A_Fireprojectile("PlayerDecorativeTracer",spx,false,pitch:spy);
+			A_Fireprojectile("PlayerDecorativeTracer",spx,false,sdofs,pitch:spy);
 			
 			//console.printf("startpos: "..(pos.xy,pos.z + pz).."hitlocation: "..t.hitlocation..", dist: "..t.Distance);
 			if(t.hitactor != null)	//hit something
@@ -629,7 +714,7 @@ Extend Class BaseBWWeapon
 			let tr = new("BW_penetratortracer");
 			if(!tr)	
 				return;
-			A_Fireprojectile("PlayerDecorativeTracer",spx,false,pitch:spy);
+			A_Fireprojectile("PlayerDecorativeTracer",spx,false,sdofs,pitch:spy);
 			tr.shooter = self;
 			tr.Trace(start, CurSector, dir, 8000, TRACE_HitSky);
 			int npn = maxpen;

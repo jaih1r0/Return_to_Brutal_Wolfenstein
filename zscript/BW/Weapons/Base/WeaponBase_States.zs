@@ -40,9 +40,10 @@ Extend Class BaseBWWeapon
 		EndSlideKick:
 			TNT1 A 0 {
 				BW_SlideDirSet(true);	//reset direction
-				//keep the weapon synced with the kick overlay
+				//keep the weapon synced with the kick overlay 
 				State PSPState = player.GetPSprite(PSP_WEAPON).Curstate;
-				if(InStateSequence(PSPState,invoker.ResolveState("SlideFlash")))
+				if(InStateSequence(PSPState,invoker.ResolveState("SlideFlash"))	||
+				InStateSequence(PSPState,invoker.ResolveState("SlideFlash_Akimbo")))
 				{
 					state endslide = invoker.resolvestate("SlideFlashEnd");
 					if(endslide)
@@ -61,6 +62,7 @@ Extend Class BaseBWWeapon
 		
 		User2:
 		KnifeAttack:
+			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 handleKnifeFlash();
 			TNT1 A 0 A_Startsound("Fists/Swing",16);
 			TNT1 A 1;
@@ -97,6 +99,7 @@ Extend Class BaseBWWeapon
 		
 		User3:
 		GrenadeThrow:
+			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 1;
 			//raise
 			TNT1 A 0 A_startsound("Grenade/Draw",6,CHANF_OVERLAP);
@@ -124,6 +127,7 @@ Extend Class BaseBWWeapon
 			wait;
 
 		LedgeGrabbing:
+			TNT1 A 0 BW_ClearDualOverlays();
 			BWLG ABC 1;
 			BWLG DEF 1;
 			BWLG GHI 1;
