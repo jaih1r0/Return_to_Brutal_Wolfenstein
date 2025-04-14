@@ -6,7 +6,9 @@ Version 4.3
 
 #include "zscript/BW/Spawners/SpawnerBase.zs"
 
-#include "zscript/BW/Weapons/WeaponBase.zs"
+#include "zscript/BW/Weapons/Base/WeaponBase.zs"
+#include "zscript/BW/Weapons/Base/WeaponBase_Functions.zs"
+#include "zscript/BW/Weapons/Base/WeaponBase_States.zs"
 #include "zscript/BW/Weapons/BWProjectiles.zs"
 #include "zscript/BW/Weapons/EnemyProjectiles.zs"
 #include "zscript/BW/Monsters/MonsterBase.zs"
