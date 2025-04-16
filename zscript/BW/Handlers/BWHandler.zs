@@ -87,6 +87,16 @@ class BW_EventHandler : EventHandler
 				if(pl.findinventory("AimingToken"))	//currently aiming, abort mission
 					return;
 
+				if(pl.findinventory("CanThrowAxe"))
+				{
+					pl.A_TakeInventory("CanthrowAxe",10);
+					let ks = wp.resolvestate("AxeThrow");
+					if(ks)
+						pl.player.SetPSprite(PSP_WEAPON,ks);
+					KnifeTimer = 12;
+					return;
+				}
+
 				let psp = pl.player.findpsprite(-4);
 				if(psp)	//is already knifing
 					return;
@@ -94,7 +104,10 @@ class BW_EventHandler : EventHandler
 				let ks = wp.resolvestate("KnifeAttack");
 				if(ks)
 					pl.player.SetPSprite(PSP_WEAPON,ks);
-				KnifeTimer = 12;
+				if(pl.countinv("BW_AxeAmmo") > 0)
+					KnifeTimer = 3;
+				else
+					KnifeTimer = 12;
 				
 			}
 		}

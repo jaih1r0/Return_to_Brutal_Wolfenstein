@@ -54,6 +54,14 @@ PulseLight BWRadLight
 	interval 0.5
 }
 
+flickerlight2 EnemyGrenade
+{
+    color 0.3 0.9 0.0
+    size 25
+    secondarySize 40
+    interval 0.4
+}
+
 //map decorations
 Pointlight BiggerCandelabraLight
 {

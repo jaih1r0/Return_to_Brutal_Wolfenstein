@@ -205,7 +205,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			TNT1 A 1 {
 				A_Overlay(PSP_LeftGun,"Dual_Left",true);
 				A_Overlay(PSP_RightGun,"Dual_Right",true);
-				A_Weaponready(WRF_NOFIRE|WRF_ALLOWUSER2|WRF_ALLOWUSER3);	//allow weapon changes
+				BW_Weaponready(WRF_NOFIRE|WRF_ALLOWUSER2|WRF_ALLOWUSER3);	//allow weapon changes
 				if(pressingButton(BT_RELOAD) && !BW_isFiring(true) && !BW_isFiring(false)
 				&& invoker.ammo1.amount > 0 && (invoker.ammo2.amount < invoker.FullMag || invoker.Ammoleft.amount < invoker.FullMag))
 				{
@@ -299,13 +299,11 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			TNT1 A 0 BW_jumpifAkimbo("KnifeGunFlash_Akimbo");
 			MP4U FGHI 1;	//temporary
 			TNT1 A 5;
-			//TNT1 A 4;
 			MP4U ABCD 1;
 			stop;
 		KnifeGunFlash_Akimbo:
 			DM4U FGHI 1;	//temporary
 			TNT1 A 5;
-			//TNT1 A 4;
 			DM4U ABCD 1;
 			stop;
 

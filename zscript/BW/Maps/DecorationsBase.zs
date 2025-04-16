@@ -198,6 +198,7 @@ Class BW_KnightArmor : BW_ShootableDecoration Replaces ShortGreenColumn
             stop;
         Death:
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),25,45);
+            TNT1 A 0 A_Spawnitem("BW_AxeAmmo");
             TNT1 A 0 A_NoBlocking();
             CAD1 ABC 2;
             CAD1 C -1;

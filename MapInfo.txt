@@ -92,6 +92,14 @@ DoomEdNums
 	7079 = "BW_Mutant"
 	7267 = "BW_ZombiemanSpawner"	//patroling p38 guard
 
+	//sod demons
+	1381 = "BW_Archvile"
+	1383 = "BW_Baron"
+	1386 = "BW_Caco"
+	1380 = "BW_Imp"
+	1384 = "BW_LostSoul"
+	1388 = "BW_Pinky"
+
 	//misc
 	1171 = "BW_StairsHitBox"
 }

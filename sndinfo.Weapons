@@ -338,6 +338,23 @@ $random Knife/Body
     Knife/Body3
 }
 
+//Axe 
+Axe/swing1 "Sounds/Weapons/Slot1/Axe/AXSWING1.ogg"
+Axe/swing2 "Sounds/Weapons/Slot1/Axe/AXSWING2.ogg"
+Axe/swing3 "Sounds/Weapons/Slot1/Axe/AXSWING3.ogg"
+$random Axe/Swing
+{
+    Axe/Swing1
+    Axe/Swing2
+    Axe/Swing3
+}
+
+Axe/PickUp  "Sounds/Weapons/Slot1/Axe/AXEDRAW.ogg"
+Axe/HitWall "Sounds/Weapons/Slot1/Axe/AXECLN.ogg"
+Axe/Hit     "Sounds/Weapons/Slot1/Axe/AXEHIT.ogg"
+
+
+
 //-----SLOT 2-----//
 
 //Luger P08
