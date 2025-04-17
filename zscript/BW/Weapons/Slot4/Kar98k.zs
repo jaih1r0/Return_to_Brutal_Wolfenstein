@@ -9,6 +9,7 @@ Class BW_Kar98K : BaseBWWeapon
 		weapon.ammotype1 "Clip";
 		weapon.ammogive1 15;
 		BaseBWWeapon.FullMag 5;
+		+weapon.noautofire;
 	}
 	
 	action void firekarbullets()
@@ -78,13 +79,13 @@ Class BW_Kar98K : BaseBWWeapon
 			goto ready;
 		DryFire_ADS:
 			K98U J 1;
-			goto ready;
+			goto ready_ADS;
 		NoAmmo:
 			K98U E 1;
 			goto ready;
 		NoAmmo_ADS:
 			K98U J 1;
-			goto ready;
+			goto ready_ADS;
 
 		Fire:
 			TNT1 A 0 BW_JumpifAiming("Fire_ADS");
@@ -113,6 +114,7 @@ Class BW_Kar98K : BaseBWWeapon
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 			K98P VWXYZ 1;
 			K98U EE 1;
+			TNT1 A 0 A_Refire();
 			goto ready;
 			
 		AltFire:
@@ -177,6 +179,7 @@ Class BW_Kar98K : BaseBWWeapon
 			K98P VWXYZ 1;
 			TNT1 A 0 A_ZoomFactor(1.4);
 			K98U KLMN 1;
+			TNT1 A 0 A_Refire("Fire_ADS");
 			goto Ready_ADS;
 		
 		ReloadADS:
