@@ -207,7 +207,7 @@ Class BW_StaticHandler : StaticEventHandler
 		for(int i = 0; i < self.BurnRockDef.size(); i++)
 		{
 			self.MaterialTypes.push("BurnStone");
-			self.MaterialStep.push("step/lava");
+			self.MaterialStep.push("step/default");
 			self.MaterialImpactSnd.push("bullet_Stone");
 			self.MaterialTextures.push(self.BurnRockDef[i]);
 		}

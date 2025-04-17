@@ -314,3 +314,65 @@ Class BW_Threenades : BW_GrenadeAmmo	//7081
 			stop;
 	}
 }
+
+Class BW_AxeAmmo : Ammo
+{
+	Default
+	{
+		Inventory.Amount 1;
+		Inventory.MaxAmount 5;
+		Ammo.BackpackAmount 0;
+		Ammo.BackpackMaxAmount 5;
+		Inventory.PickupMessage "Axe";
+		inventory.pickupsound "Axe/pickup";
+	}
+	states
+	{
+		spawn:
+			ACIA B -1;
+			stop;
+	}
+}
+
+Class CanThrowAxe : Powerup
+{
+	default
+	{
+		powerup.duration 8;
+	}
+}
+
+Class BW_ThrowedAxe : Actor
+{
+	default
+	{
+		projectile;
+		+missile;
+		speed 40;
+		-nogravity;
+		damage (150);
+		projectilekickback 200;
+		radius 3;
+		height 3;
+		+bloodsplatter;
+	}
+	states
+	{
+		Spawn:
+			ZMAX A 1;
+			loop;
+		Death:
+		Crash:
+			TNT1 A 0;
+			TNT1 A 0 A_Startsound("Axe/HitWall");
+			TNT1 A 0 A_Spawnitem("BW_AxeAmmo");
+			TNT1 A 0 A_Spawnitem("BW_BulletPuff");
+			TNT1 A 1;
+			stop;
+		Xdeath:
+			TNT1 A 0 A_Startsound("Axe/Hit");
+			TNT1 A 0 A_Spawnitem("BW_AxeAmmo");
+			TNT1 A 1;
+			stop;
+	}
+}

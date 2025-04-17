@@ -36,6 +36,7 @@ Version 4.3
 #include "zscript/BW/Monsters/BlueGuard/Shotgun.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 #include "zscript/BW/Monsters/Mutants/Mutant.zs"
+#include "zscript/BW/Monsters/Demons/Demons.zs"
 
 #include "zscript/BW/Monsters/Spawners.zs"
 

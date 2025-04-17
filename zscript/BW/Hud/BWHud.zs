@@ -181,12 +181,19 @@ Class BW_Hud : BaseStatusBar
 				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
 				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
 			}
-			/*
+			
 			//axes
-			drawimage("izras",(-160,-85),DI_SCREEN_RIGHT_BOTTOM);
-			int aam = pl.countinv("AxeAmmo");
-			drawstring(BWFont,""..aam,(-140,-95),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-			*/
+			int aam = pl.countinv("BW_AxeAmmo");
+			if(aam > 0)
+			{
+				drawimage("izras",(-160,grenindY-10),DI_SCREEN_RIGHT_BOTTOM);
+				drawstring(BWFont,""..aam,(-140,grenindY-20),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+			}
+			else
+			{
+				drawimage("izras",(-160,grenindY-10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
+				drawstring(BWFont,""..aam,(-140,grenindY-20),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
+			}
 			//weapon image
 			textureid wimg;	vector2 wimgsc;
 			[wimg,wimgsc] = geticon(cplayer.readyweapon,DI_SKIPICON|DI_SKIPALTICON);

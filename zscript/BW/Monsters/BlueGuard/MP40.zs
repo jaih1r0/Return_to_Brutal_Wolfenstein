@@ -42,7 +42,7 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 		
 		void FireProjGren()
 		{
-			A_Spawnprojectile("BW_Grenade", 32, 0, 0, CMF_ABSOLUTEPITCH, self.pitch-5);
+			A_Spawnprojectile("BW_enemyGrenade", 32, 0, 0, CMF_ABSOLUTEPITCH, self.pitch-5);
 			HowManyGrenadesHaveIThrown++;
 		}
 		

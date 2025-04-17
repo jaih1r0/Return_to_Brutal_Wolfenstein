@@ -64,37 +64,46 @@ Extend Class BaseBWWeapon
 		KnifeAttack:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 handleKnifeFlash();
+			TNT1 A 0 A_jumpif(countinv("BW_AxeAmmo") > 0,"AxeAttack");
 			TNT1 A 0 A_Startsound("Fists/Swing",16);
 			TNT1 A 1;
 			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
 			BWKF JIH 1;
 			BWKF G 1;
 			TNT1 A 0 A_QuakeEx(0,0.5,0,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
-			BWKF G 2 BW_HandleKnife(); //A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
+			BWKF G 2 BW_HandleKnife();
 			BWKF FEDCBA 1;
 			TNT1 A 0 A_Jump(256, "Ready");
 			goto ready;
-		
-		//old
-			TNT1 A 0 handleKnifeFlash();
-			TNT1 A 0 A_StartSound("Knife/Swing", 0, CHANF_OVERLAP, 1);
-			BWKF ABC 1;
-			BWKF DE 1;
-			TNT1 A 0 A_QuakeEx(0,0.5,0,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
-			BWKF F 2 BW_HandleKnife(); //A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
-			BWKF GGHIJ 1;
+		AxeAttack:
+			TNT1 A 0 A_StartSound("Axe/Swing", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 giveinventory("CanThrowAxe",1);
+			TNT1 AAA 1;
+			BAX1 ABC 1;
+			TNT1 A 0 A_QuakeEx(0.5,0.5,0.5,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
+			BAX1 D 1;
+			BAX1 E 1 BW_HandleKnife(100,70,true);
+			BAX1 FGH 1;
+			TNT1 A 2;
 			TNT1 A 0 A_Jump(256, "Ready");
 			goto ready;
-			
-			TNT1 A 0 A_StartSound("melee/knife/slash", 0, CHANF_OVERLAP, 1);
-			KNI9 AB 1;
-			KNI9 CDEF 1 A_CustomPunch(12, 1, CPF_PULLIN | CPF_NOTURN, "BulletPuff", 64, 0, 0, "BasicArmorBonus", "melee/knife/hit");
-			KNI9 GHI 1;
+		AxeThrow:
+			TNT1 A 0 handleKnifeFlash(); //restart the gun flash
+			TNT1 A 0 A_QuakeEx(0.5,0.5,0.5,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
+			BAX2 ABC 1;
+			TNT1 A 0 A_Startsound("Fists/Swing",16);
+			TNT1 A 0 {
+				A_fireprojectile("BW_ThrowedAxe",0,0);
+				A_TakeInventory("BW_AxeAmmo",1);
+			}
+			BAX2 DEF 1;
+			BAX2 GHI 1;
+			TNT1 A 4;
 			TNT1 A 0 A_Jump(256, "Ready");
-			Goto Ready;
+			goto ready;
 		
 		KnifeGunFlash:
-			TNT1 A 12;
+			TNT1 A 14;
 			stop;
 		
 		User3:
@@ -135,6 +144,7 @@ Extend Class BaseBWWeapon
 			TNT1 AA 0 A_jump(256,"Ready");
 			wait;
 		FinishClimb:
+			TNT1 A 0 BW_ClearDualOverlays();
 			BWLG G 1;
 			BWLG HIJ 1;
 			TNT1 AA 0 A_jump(256,"Ready");

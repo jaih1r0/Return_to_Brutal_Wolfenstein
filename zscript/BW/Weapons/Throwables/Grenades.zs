@@ -140,3 +140,19 @@ Class BW_Grenade : Actor
 		return (0,0,0);
 	}
 }
+
+//man, those are hard to see
+Class BW_enemyGrenade : BW_Grenade
+{
+    states
+    {
+        spawn:
+            GRND H 2 light("EnemyGrenade") A_setRoll(roll + rolldirspd,SPF_INTERPOLATE);
+            loop;
+        SpawnStop:
+            GRND H 3 light("EnemyGrenade") A_SetRoll(endroll,SPF_INTERPOLATE);
+        WaitLoop:
+            GRND H 1 light("EnemyGrenade") A_jumpif(!fuse,"Explode");
+            loop;
+    }
+}

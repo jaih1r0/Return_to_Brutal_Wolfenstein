@@ -212,8 +212,11 @@ Extend Class BaseBWWeapon
     Action State BW_WeaponReady(int BWRflags = 0)
 	{
 		if(countinv("BW_grenadeAmmo") < 1)
+		{
+			if((player.cmd.buttons & BT_USER3) && !(player.oldbuttons & BT_USER3))
+				A_Log("No grenades left.");
 			BWRflags &= ~(WRF_ALLOWUSER3);	//disable the grenade button if no grenades
-		
+		}
 		A_Weaponready(BWRflags);
 		return resolvestate(null);
 	}
@@ -509,7 +512,7 @@ Extend Class BaseBWWeapon
 
 	}
 
-	action state BW_HandleKnife(int dist = 70, int dmg = 50)
+	action state BW_HandleKnife(int dist = 70, int dmg = 50, bool isAxe = false)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData t;
@@ -527,10 +530,18 @@ Extend Class BaseBWWeapon
 					
                     if(victim.bNOBLOOD || victim.bINVULNERABLE || victim.bDORMANT || 
 						victim.bREFLECTIVE || (victim.bsolid && ! victim.bShootable))
-						puf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);	//non bleeding enemy
+					{
+						if(isAxe)
+							puf.A_Startsound("Axe/HitWall", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+						else
+							puf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);	//non bleeding enemy
+					}
 					else
 					{
-						puf.A_Startsound("Knife/Body", CHAN_AUTO, CHANF_OVERLAP, 0.75);  //impacted enemy
+						if(isAxe)
+							puf.A_Startsound("Knife/Body", CHAN_AUTO, CHANF_OVERLAP, 0.75); 
+						else
+							puf.A_Startsound("Knife/Body", CHAN_AUTO, CHANF_OVERLAP, 0.75);  //impacted enemy
 						victim.SpawnBlood(victim.pos,angle,ceil(dmg));
 					}
 					victim.damagemobj(puf,self,dmg,"Knife");
@@ -543,8 +554,16 @@ Extend Class BaseBWWeapon
 			actor pf = spawnpuff("BW_KickPuff",t.hitlocation,angle,0,0);
             if(pf)
 			{
-                pf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);   //impacted wall,floor,etc
-				pf.A_SprayDecal("KnifeChip",10,(0,0,0),t.hitdir);
+                if(isAxe)
+				{
+					pf.A_Startsound("Axe/HitWall", CHAN_AUTO, CHANF_OVERLAP, 0.75); 
+					pf.A_SprayDecal("KnifeChip",10,(0,0,0),t.hitdir);	//this needs a different decal for axe
+				}
+				else
+				{
+					pf.A_Startsound("Knife/Wall", CHAN_AUTO, CHANF_OVERLAP, 0.75);   //impacted wall,floor,etc
+					pf.A_SprayDecal("KnifeChip",10,(0,0,0),t.hitdir);
+				}
 			}
         }
 		return resolvestate(null);
