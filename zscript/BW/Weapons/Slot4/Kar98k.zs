@@ -10,6 +10,9 @@ Class BW_Kar98K : BaseBWWeapon
 		weapon.ammogive1 15;
 		BaseBWWeapon.FullMag 5;
 		+weapon.noautofire;
+		
+		Inventory.Pickupmessage "[Slot 4] Karabiner 98k";
+		Tag "Kar98K";
 	}
 	
 	action void firekarbullets()
@@ -47,15 +50,15 @@ Class BW_Kar98K : BaseBWWeapon
 			K98W A -1;
 			stop;
 		Select:
-			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
+			TNT1 A 0 BW_WeaponRaise("Generic/Marksman/Raise");
 			K98U AB 1;
 			TNT1 A 0 A_StartSound("Kar98/Raise", 0, CHANF_OVERLAP, 1);
 			K98U CD 1;
 			goto ready;
 		Deselect:
-			TNT1 A 0 A_Startsound("MP40/Lower",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("Kar98/Drop",5,CHANF_OVERLAP);
 			K98U FG 1;
-			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Marksman/Holster", 0, CHANF_OVERLAP, 1);
 			K98U HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;

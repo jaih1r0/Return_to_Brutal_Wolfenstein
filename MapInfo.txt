@@ -43,6 +43,7 @@ DoomEdNums
 	7692 = "Cell"	//teslaAmmo
 	7081 = "BW_Threenades"
 	7082 = "BW_GrenadeAmmo"
+	7513 = "RocketAmmo"	//panzerZooka rockets
 	
 	//weapons
 	7032 = "BW_MP40"
@@ -51,7 +52,10 @@ DoomEdNums
 
 	7231 = "BW_Luger"	//underwhelming normal luger instead of golden one 
 	7230 = "Clip"		//underwhelming clip instead of golden clip
-
+	
+	7515 = "BW_Panzerschreck"
+	1309 = "BW_Panzerschreck"	//panzerfaust in the future
+	
 	//map things
 	1310 = "BW_RedColumn"
 	1311 = "BW_RedTallColumn"

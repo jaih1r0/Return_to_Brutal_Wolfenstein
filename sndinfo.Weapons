@@ -599,6 +599,25 @@ Kar98/ClipLoad	"Sounds/Weapons/Slot4/Kar98k/Kar98ClipLoad.wav"
 Kar98/Drop	"Sounds/Weapons/Slot4/Kar98k/Kar98Drop.wav"
 Kar98/Raise	"Sounds/Weapons/Slot4/Kar98k/Kar98Raise.wav"
 
+//-----SLOT 6-----//
+
+Panzerschreck/fire	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFire.wav"
+Panzerschreck/Load	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckLoad.wav"
+Panzerschreck/Trigger	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFireTrigger.wav"
+Panzerschreck/Drop	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckDrop.wav"
+Panzerschreck/Raise	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckRaise.wav"
+
+$RANDOM Panzerschreck/Whoosh
+{
+Panzerschreck/Whoosh1
+Panzerschreck/Whoosh2
+Panzerschreck/Whoosh3
+}
+
+Panzerschreck/Whoosh1	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh1.wav"
+Panzerschreck/Whoosh2	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh2.wav"
+Panzerschreck/Whoosh3	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh3.wav"
+
 //-----MISC-----
 
 Grenade/Pin     "Sounds/Weapons/Grenades/GRENPIC2.ogg"

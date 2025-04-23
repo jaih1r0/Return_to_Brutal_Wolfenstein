@@ -27,8 +27,10 @@ Version 4.3
 #include "zscript/BW/Weapons/Slot3/MP40.zs"
 #include "zscript/BW/Weapons/Slot4/Trenchgun.zs"
 #include "zscript/BW/Weapons/Slot4/Kar98K.zs"
-#include "zscript/BW/Weapons/Throwables/grenades.zs"
+
+#include "zscript/BW/Weapons/Slot6/Panzerschreck.zs"
 //#include "zscript/BW/Weapons/Slot7/Flammerwerfer.zs"
+#include "zscript/BW/Weapons/Throwables/grenades.zs"
 
 //Monsters
 #include "zscript/BW/Monsters/BrownGuard/Pistol.zs"
