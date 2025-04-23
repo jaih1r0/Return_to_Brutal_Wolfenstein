@@ -22,7 +22,7 @@ class BW_Luger : BaseBWWeapon
 		Inventory.Pickupmessage "[Slot 2] Pistole Parabellum";
 		Tag "Luger P-08";
 		Scale 0.35;
-		Inventory.PickupSound "weapons/pistol/pickup";
+		Inventory.PickupSound "Generic/Pickup/Pistol";
 		+WEAPON.NOALERT;
 		+WEAPON.AMMO_OPTIONAL;
 		+WEAPON.NOAUTOFIRE;

@@ -22,7 +22,7 @@ class BW_Trenchgun : BaseBWWeapon
 		Inventory.Pickupmessage "[Slot 4] Winchester Model 1897";
 		Tag "Trenchgun";
 		Scale 0.5;
-		Inventory.PickupSound "weapons/pistol/pickup";
+		Inventory.PickupSound "Generic/Pickup/Rifle";
 		+WEAPON.NOALERT;
 		+WEAPON.AMMO_OPTIONAL;
 		+WEAPON.NOAUTOFIRE;
