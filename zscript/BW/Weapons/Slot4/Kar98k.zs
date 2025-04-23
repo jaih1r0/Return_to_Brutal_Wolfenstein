@@ -4,7 +4,7 @@ Class BW_Kar98K : BaseBWWeapon
 	{
 		weapon.slotnumber 4;
 		scale 0.35;
-		inventory.pickupsound "Kar98/CartLoad";
+		Inventory.PickupSound "Generic/Pickup/Rifle";
 		weapon.ammotype2 "Kar98Ammo";
 		weapon.ammotype1 "Clip";
 		weapon.ammogive1 15;

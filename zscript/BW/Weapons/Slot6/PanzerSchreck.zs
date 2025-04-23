@@ -10,6 +10,7 @@ Class BW_Panzerschreck : BaseBWWeapon
 		
 		Inventory.Pickupmessage "[Slot 6] Panzerschreck";
 		Tag "Panzerschreck";
+		Inventory.PickupSound "Generic/Pickup/Launcher";
 	}
 	states
 	{
@@ -43,7 +44,7 @@ Class BW_Panzerschreck : BaseBWWeapon
 			goto ready;
 		Fire:
 			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
-			PZSU E 5 A_Startsound("Panzerschreck/Trigger",0,CHANF_OVERLAP);
+			PZSU E 3 A_Startsound("Panzerschreck/Trigger",0,CHANF_OVERLAP);
 			PZSF A 1 bright firepanzerrocket();
 			PZSF B 1 bright;
 			PZSF C 1 A_StartSound("Panzerschreck/Whoosh", CHAN_AUTO, CHANF_OVERLAP, 0.75);

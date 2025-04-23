@@ -251,6 +251,14 @@ Generic/Launcher/Holster1	"Sounds/Weapons/GenericFoley/Holster/Launcher/Launcher
 Generic/Launcher/Holster2	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherHolster2.wav"
 Generic/Launcher/Holster3	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherHolster3.wav"
 
+Generic/Pickup/Blade	"Sounds/Weapons/GenericFoley/Pickups/AxePickup.wav"
+Generic/Pickup/Pistol	"Sounds/Weapons/GenericFoley/Pickups/PistolPickup.wav"
+Generic/Pickup/SMG	"Sounds/Weapons/GenericFoley/Pickups/SMGPickup.wav"
+Generic/Pickup/LMG	"Sounds/Weapons/GenericFoley/Pickups/LMGPickup.wav"
+Generic/Pickup/Rifle	"Sounds/Weapons/GenericFoley/Pickups/RiflePickup.wav"
+Generic/Pickup/Launcher	"Sounds/Weapons/GenericFoley/Pickups/LauncherPickup.wav"
+Generic/Pickup/Tech	"Sounds/Weapons/GenericFoley/Pickups/TechPickup.wav"
+
 //-----SLOT 1-----//
 
 //"Kicks are Slot 1, right?"

@@ -12,7 +12,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		Weapon.AmmoGive2 0;
 		BaseBWWeapon.FullMag 32;
 		tag "MP40";
-		Inventory.PickupSound "weapons/pistol/pickup";
+		Inventory.PickupSound "Generic/Pickup/SMG";
 		Obituary "$OB_MPPISTOL";
 		Inventory.Pickupmessage "[Slot 3] Maschinenpistole 40";
 		+weapon.noautofire;
