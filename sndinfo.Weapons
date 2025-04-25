@@ -632,3 +632,5 @@ Grenade/Pin     "Sounds/Weapons/Grenades/GRENPIC2.ogg"
 Grenade/Draw     "Sounds/Weapons/Grenades/grenade_draw.wav"
 Grenade/Throw     "Sounds/Weapons/Grenades/grenade_throw.wav"
 Grenade/Bounce     "Sounds/Weapons/Grenades/GRBOUNC1.wav"
+
+SOD/Desintegrate    HRPCK

@@ -60,6 +60,12 @@ Class BW_BouncingDebris : BW_Debris
             self.bnogravity = false;
             self.bnointeraction = true;
         }
+        if(waterlevel > 1 && vel.length() > 0)
+        {
+            bBOUNCEONWALLS = bBOUNCEONFLOORS = bBOUNCEONCEILINGS = false;
+            vel *= 0.95;
+            rollspd = clamp(rollspd * 0.95,3,40);
+        }
     }
     void rolldebris()
     {

@@ -143,7 +143,7 @@ class BW_Unknown : Actor replaces Unknown
 		Scale 0.05;
 		+FLOATBOB;
 		FloatBobStrength 0.5;
-		FloatBobFactor 0.5;
+		//FloatBobFactor 0.5; //lzdoom compat
 		+NOGRAVITY;
 		+NOBLOCKMAP;
 		+DONTSPLASH;
@@ -189,7 +189,7 @@ class BW_UnknownEye : Actor
 		Scale 0.05;
 		+FLOATBOB;
 		FloatBobStrength 0.5;
-		FloatBobFactor 0.5;
+		//FloatBobFactor 0.5; //lzdoom compat
 		+NOGRAVITY;
 		+NOBLOCKMAP;
 		+DONTSPLASH;

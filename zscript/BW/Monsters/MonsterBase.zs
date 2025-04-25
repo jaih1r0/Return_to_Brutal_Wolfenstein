@@ -31,13 +31,21 @@ Class BW_MonsterBase : Actor
 		+ROLLSPRITE;
 		+ROLLCENTER;
 		+FORCEPAIN;
-		+STRETCHPIXELS;
+		//+STRETCHPIXELS; //lzdoom compat
 		
 		health 100;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
 		//height 56
 		//radius 20
+	}
+
+	states
+	{
+		Death.LF:
+			"####" "###" 1;
+			//TNT1 A 1;
+			stop;
 	}
 	
 	//

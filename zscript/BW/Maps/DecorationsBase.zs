@@ -418,7 +418,7 @@ Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
     }
     override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
     {
-        if((flags & DMG_EXPLOSION) || mod == 'Explosive' || mod == 'Extreme')
+        if((flags & DMG_EXPLOSION) || mod == 'Explosive' || mod == 'Extreme' || mod == 'LF')
             damage *= 10;
         else
             damage = 0;
