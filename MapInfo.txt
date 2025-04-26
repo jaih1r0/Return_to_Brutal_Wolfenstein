@@ -49,7 +49,8 @@ DoomEdNums
 	7032 = "BW_MP40"
 	7035 = "BW_Kar98K"
 	7501 = "BW_Luger"
-
+	7034 = "BW_MG42"
+	
 	7231 = "BW_Luger"	//underwhelming normal luger instead of golden one 
 	7230 = "Clip"		//underwhelming clip instead of golden clip
 	

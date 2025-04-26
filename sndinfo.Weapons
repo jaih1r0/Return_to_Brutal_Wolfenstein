@@ -607,6 +607,57 @@ Kar98/ClipLoad	"Sounds/Weapons/Slot4/Kar98k/Kar98ClipLoad.wav"
 Kar98/Drop	"Sounds/Weapons/Slot4/Kar98k/Kar98Drop.wav"
 Kar98/Raise	"Sounds/Weapons/Slot4/Kar98k/Kar98Raise.wav"
 
+//-----SLOT 5-----//
+
+//MG42
+
+$RANDOM MG42/Mech
+{
+MG42/Mech1
+MG42/Mech2
+MG42/Mech3
+MG42/Mech4
+MG42/Mech5
+MG42/Mech6
+MG42/Mech7
+MG42/Mech8
+MG42/Mech9
+MG42/Mech10
+}
+
+MG42/Mech1	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech1.wav"
+MG42/Mech2	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech2.wav"
+MG42/Mech3	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech3.wav"
+MG42/Mech4	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech4.wav"
+MG42/Mech5	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech5.wav"
+MG42/Mech6	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech6.wav"
+MG42/Mech7	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech7.wav"
+MG42/Mech8	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech8.wav"
+MG42/Mech9	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech9.wav"
+MG42/Mech10	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech10.wav"
+
+MG42Bul		"Sounds/Weapons/Slot5/MG42/MG42BeltMove.wav"
+MG42BeltOut		"Sounds/Weapons/Slot5/MG42/MG42BeltOut.wav"
+
+MG42/Raise	"Sounds/Weapons/Slot5/MG42/MG42Raise.wav"
+MG42/Drop	"Sounds/Weapons/Slot5/MG42/MG42Drop.wav"
+
+//from magmacow
+MG42Fire	"Sounds/Weapons/Slot5/MG42/MG42FireStart.wav"	
+MG42Tail	"Sounds/Weapons/Slot5/MG42/MG42FireTail.wav"
+MG42Loop	"Sounds/Weapons/Slot5/MG42/MG42FireLoop.wav"
+$pitchset MG42Loop 0.9 0.92
+MG42/Overheat	"Sounds/Weapons/Slot5/MG42/MG42Overheat.wav"
+
+
+//from bw
+MG42OPEN	MG42OP
+MG42CLOSE	MG42CL
+MG42/MagIn	"Sounds/Weapons/Slot5/MG42/MG42_IN.ogg"
+MG42/MagOut	"Sounds/Weapons/Slot5/MG42/MG42_OUT.ogg"
+MG42/rechamber MG4CLIK
+
+
 //-----SLOT 6-----//
 
 Panzerschreck/fire	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFire.wav"
