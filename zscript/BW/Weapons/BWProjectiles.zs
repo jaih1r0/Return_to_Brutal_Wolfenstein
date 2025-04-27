@@ -15,6 +15,7 @@ Class BW_Projectile : fastprojectile
 		BW_Projectile.ripAmount 0;
 		BW_Projectile.projectiledmg 5;
 		damagetype "Bullet";
+		BW_Projectile.TracerLightColor 0xFFDE59; //  black/0x000000/"" = nolight
     }
 	
 	states
@@ -33,6 +34,8 @@ Class BW_Projectile : fastprojectile
 	actor LastActor;
 	int maxrip;
 	vector2 lastview;
+	color tracerLight;
+	property TracerLightColor:tracerLight;
 	
 	int GetProjectileDamage()
 	{
@@ -52,6 +55,8 @@ Class BW_Projectile : fastprojectile
 		maxrip = ripAmount;
 		if(target)
 			lastview = (target.angle,target.pitch);
+		if(!BW_DisableTracerLights && self.TracerLight != 0x000000)
+			A_AttachLight('TracerDynLight',DynamicLight.PointLight,self.TracerLight,20,25);
 		
 	}
     override void tick()
@@ -399,7 +404,7 @@ Class BW_Projectile : fastprojectile
 		return surfaceTexId;
 	}
 
-	vector2 GetLineNormal(int iSide, Line vLine)
+	static vector2 GetLineNormal(int iSide, Line vLine)
 	{
 		vector2 lineNormal = (-vLine.delta.y, vLine.delta.x).Unit();
 
@@ -750,7 +755,6 @@ Class BW_Rocket : Actor
 		{
 			case 'Metal': case 'Electronic':
 				spawnDebris("BW_MetalScrap",safepos,random(3,7));
-				//A_SpawnitemEx("BW_MetalScrap",0,0,0,random(-5,5),random(-5,5),random(-5,5));
 				break;
 			case 'Stone': case 'Marble': case 'Gravel':
 				spawnDebris("BW_Stonebits",safepos,random(3,7));
@@ -758,11 +762,18 @@ Class BW_Rocket : Actor
 			case 'Wood': case 'Carpet':
 				spawnDebris("BW_WoodDebris",safepos,random(3,7));
 				break;
+			case 'Water':	SpawnImpact_water(mat,0x98A6C5,trac:t);					break;
+			case 'Slime':	SpawnImpact_water(mat,0x956730,"SLIMC0",t);				break;
+			case 'PurpleWater': SpawnImpact_water(mat,0xC098C7,"PSPHB0",t);			break;
+			case 'Blood': SpawnImpact_water(mat,0xFF0000,trac:t);					break;
+			case 'Flesh': SpawnImpact_water(mat,0xFF0000,trac:t);					break;
+			case 'Acid': SpawnImpact_water(mat,0x5FB534,trac:t);					break;
+			case 'Lava': SpawnImpact_water(mat,0xFE9900,trac:t);					break;
 		}
 		DoDecal(mat,t);
 		spawnFxSmokeBasic();
 		spawnFxSmokeBasic();
-		spawnFxSmokeBasic();
+		spawnFxSmokeBasic();		
 		spawn("BW_RocketExplosionFx",safepos);
 	}
 
@@ -817,6 +828,74 @@ Class BW_Rocket : Actor
 		DBSPK.Lifetime = random(4,8); 
 		DBSPK.Pos = position;
 		Level.SpawnParticle(DBSPK);
+	}
+
+	void SpawnImpact_water(name tp,color col = 0xFFFFFF, string splashsprite = "WSPHC0", FLineTraceData trac = null)
+	{
+		FSpawnParticleParams WTRPX;
+		
+		WTRPX.Texture = TexMan.CheckForTexture(splashsprite);
+		WTRPX.Color1 = col;//0xFFFFFF;
+		WTRPX.Style = STYLE_Translucent;
+		WTRPX.Flags = SPF_ROLL;
+		WTRPX.Startroll = random(0,360);
+		WTRPX.RollVel = frandom(-15,15);
+		WTRPX.StartAlpha = 1.0;
+		
+		WTRPX.SizeStep = -2;
+		WTRPX.Pos = pos;
+		WTRPX.FadeStep = 0.075;
+		vector3 tofs = (0,0,0);
+        switch(trac.hittype)
+        {
+            case 'Acid':   case 'Lava': 
+            WTRPX.Flags |= SPF_FULLBRIGHT;
+			case 'Slime':  case 'Blood': 
+            WTRPX.Style = STYLE_Add;
+            break;
+            //case 'PurpleWater': case 'Water':
+        }
+		double wang;
+		vector3 norm;
+		switch(trac.hittype)
+		{
+			case TRACE_HitWall:
+				vector2 nrm = BW_Projectile.GetLineNormal(trac.LineSide,trac.HitLine);
+				wang = -atan2(nrm.x, nrm.y);
+				norm = (RotateVector((0, 1),wang), 0);
+				break;
+			case TRACE_HitFloor:
+				norm =  trac.hitsector.floorplane.normal;
+				break;
+			case TRACE_HitCeiling:
+				norm = trac.hitsector.ceilingplane.normal;
+				break;
+		}
+
+		for(int i = 0; i < random(7,15); i++)
+		{
+			WTRPX.Size = frandom(38,62);
+			WTRPX.Lifetime = Random(7,12); 
+			WTRPX.accel = (0,0,frandom(-0.75,-1.4));
+			vector3 fs = (0,0,0);
+			if(trac.hittype == TRACE_HitWall)
+			{
+				tofs = (rotatevector((frandom(-5.5,5.5),frandom(-0.5,0.5)),wang),frandom(-1.5,1.5));
+				WTRPX.Pos = pos + tofs;
+				//fs = (norm.x * frandom(0.25,5.5),norm.y * frandom(0.25,5.5),frandom(0.8,7.0)); //,norm.z * frandom(9.5,22.1)); i was wondering why the multiplier didnt worked lol
+				fs = (rotatevector((frandom(-4.5,4.5),frandom(-1.5,1.5)),wang),frandom(0.5,7.5));
+			}
+			else if(trac.hittype == TRACE_HitFloor)
+			{
+				fs = (norm.x + frandom(-5.0,5.0),norm.y + frandom(-5.0,5.0),norm.z * frandom(5.5,12.0));
+			}
+			else if(trac.hittype == TRACE_HitCeiling)
+			{
+				fs = (norm.x + frandom(-5.5,5.5),norm.y + frandom(-5.5,5.5),norm.z * frandom(0.2,0.5));
+			}
+			WTRPX.Vel = norm + fs;
+			Level.SpawnParticle (WTRPX);
+		}
 	}
 
     vector3 getwinddir()
@@ -917,4 +996,6 @@ Class BW_Rocket : Actor
 			}
 		}
 	}
+
+	
 }

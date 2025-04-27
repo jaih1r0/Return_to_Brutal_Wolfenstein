@@ -518,21 +518,6 @@ class BW_impactpuff : BW_BulletPuff
 	
 	void SpawnImpact_water(color col = 0xFFFFFF, string splashsprite = "WSPHC0")
 	{
-		/*FSpawnParticleParams WTFSMK;
-		WTFSMK.Pos = pos;
-		WTFSMK.Texture = TexMan.CheckForTexture("PUF2U0");//("SMK1I0");
-		WTFSMK.Color1 = col;//"CA9B7A";
-		WTFSMK.Style = STYLE_Translucent;
-		WTFSMK.Flags = SPF_ROLL;
-		WTFSMK.Startroll = random(0,360);
-		WTFSMK.RollVel = frandom(-5,5);
-		WTFSMK.StartAlpha = 0.65;
-		WTFSMK.Size = frandom(20,40);
-		WTFSMK.SizeStep = 1.5;
-		WTFSMK.Lifetime = Random(10,18); 
-		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
-		WTFSMK.Vel = norm * 0.5;
-		Level.SpawnParticle (WTFSMK);*/
 		
 		spawnFxSmoke(tp,"PUF2U0",col);
 		FSpawnParticleParams WTRPX;
@@ -568,7 +553,8 @@ class BW_impactpuff : BW_BulletPuff
 			{
 				tofs = (rotatevector((frandom(-2.5,2.5),frandom(-0.5,0.5)),wang),frandom(-0.5,0.5));
 				WTRPX.Pos = pos + tofs;
-				fs = (norm.x * frandom(0.75,2.5),norm.y * frandom(0.75,2.5),norm.z * frandom(0.5,1.1));
+				//fs = (norm.x * frandom(0.75,2.5),norm.y * frandom(0.75,2.5),norm.z * frandom(0.5,1.1));
+				fs = (rotatevector((frandom(-2.5,2.5),frandom(-1.5,1.5)),wang),frandom(-0.5,1.5));
 			}
 			else if(impacttype == IMP_FLOOR)
 			{

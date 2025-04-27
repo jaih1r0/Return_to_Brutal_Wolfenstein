@@ -141,6 +141,15 @@ Class BW_Grenade : Actor
 	}
 }
 
+Class BW_GrenadeSlow : BW_Grenade
+{
+    default
+    {
+        speed 5;
+        bouncecount 1;
+    }
+}
+
 //man, those are hard to see
 Class BW_enemyGrenade : BW_Grenade
 {

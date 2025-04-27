@@ -6,6 +6,7 @@ server bool BW_DisablePlayerFootsteps = false;
 nosave float BW_FootstepsVol = 1.0;
 nosave float BW_enemyFootstepsVol = 1.0;
 server bool BW_disableGunSmoke = false;
+server bool BW_DisableTracerLights = false;
 
 //Nashgore Cvars
 

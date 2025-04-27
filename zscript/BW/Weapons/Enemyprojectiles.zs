@@ -45,5 +45,6 @@ Class BW_MutantSuperBullet : BW_EnemyLugerBullets
 	{
 		BW_Projectile.projectiledmg 50;
 		speed 50;
+        BW_Projectile.TracerLightColor 0xCC6CE7;
 	}
 }

@@ -62,6 +62,25 @@ Class BW_StaticHandler : StaticEventHandler
 		}
 		return sound("bullet_generic");
 	}
+
+	clearscope static sound,name getmaterialstepandName(string texture)
+	{
+		if(!texture)
+			return sound("step/none"),'null';
+		
+		BW_StaticHandler hnd = BW_StaticHandler(BW_StaticHandler.find("BW_StaticHandler"));
+		
+		if(hnd.MaterialTextures.size() < 1)
+			return sound("step/default"),'null';
+		
+		for(int i = 0; i < hnd.MaterialTextures.size(); i++)
+		{
+			if(texture ~== hnd.MaterialTextures[i])
+				return sound(hnd.MaterialStep[i]),name(hnd.MaterialTypes[i]);
+		}
+		return sound("step/default"),'null';
+	}
+
 	
 	//setup
 	override void OnRegister()
@@ -273,7 +292,7 @@ Class BW_StaticHandler : StaticEventHandler
 		"FLAT20","CEIL3_4","CEIL3_2","TLITE6_1","SFLR7_4","CEIL3_1","CEIL3_3","F9","TLITE6_4",
 		"LABFLA1","FLOOR4_1","DEM1_6","DEM1_5","BWFLOOR6","W8","FLAT17","CEIL4_1","FLOOR7_2",
 		"FLOOR0_1","FLOOR1_7","BWFLOR17","BWFLOR15","FLOOR5_3",	//fancy blue 
-		"SODRFL","FLOOR4_8","CEIL1_2","EP6TX96","EP6T296","MARBLE1",
+		"SODRFL","FLOOR4_8","CEIL1_2","EP6TX96","EP6T296","MARBLE1","FLAT2",
 		"STONE6","PANEL6","STONE7","COMP01","SO139","GSTONE1","MARBFAC3","MARBLE2","MARBFAC3","MARBLE3"
 	};
 	

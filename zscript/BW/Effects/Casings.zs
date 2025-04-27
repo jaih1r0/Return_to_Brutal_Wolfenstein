@@ -102,3 +102,17 @@ Class BW_ShellCasing : BW_CasingBase
             stop;
     }
 }
+
+Class BW_792Casing : BW_CasingBase
+{
+    states
+    {
+        spawn:
+            72CS A 2 DoCasingRoll();
+            loop;
+        Death:
+            TNT1 A 0 FinishRoll();
+            72CS A -1;
+            stop;
+    }
+}

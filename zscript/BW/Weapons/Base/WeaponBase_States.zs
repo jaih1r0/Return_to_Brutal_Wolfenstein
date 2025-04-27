@@ -122,6 +122,7 @@ Extend Class BaseBWWeapon
 			BGTR LMN 1;
 			//lower
 			BGTR OPQ 1;
+			TNT1 A 0 A_jumpif(pressingButton(BT_USER3),"GrenadeDrop"); //if pressed user3 before throwing drop instead, will work on this later
 			TNT1 A 2;	//
 			//throw
 			TNT1 A 0 A_startsound("Grenade/Throw",7,CHANF_OVERLAP);
@@ -130,6 +131,20 @@ Extend Class BaseBWWeapon
 			{
 				A_fireprojectile("BW_Grenade",0,0,5);
 				Takeinventory("BW_grenadeAmmo",1);
+			}
+			BGTR VWXY 1;
+			TNT1 A 0 A_jump(256,"Ready");
+			wait;
+			
+		GrenadeDrop:
+			TNT1 A 2;
+			//drop (no animation for it yet
+			TNT1 A 0 A_startsound("Grenade/Throw",7,CHANF_OVERLAP);
+			BGTR RST 1;
+			BGTR U 1 
+			{
+					A_fireprojectile("BW_GrenadeSlow",0,0,5);
+					Takeinventory("BW_grenadeAmmo",1);
 			}
 			BGTR VWXY 1;
 			TNT1 A 0 A_jump(256,"Ready");

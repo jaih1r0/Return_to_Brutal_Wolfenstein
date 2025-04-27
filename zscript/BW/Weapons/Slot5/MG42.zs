@@ -93,8 +93,12 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 A_Startsound("Generic/Cloth/Short",0);
 			MGR1 ST 1 A_Weaponoffset(0.75,-0.25,WOF_ADD);
 			TNT1 A 0 A_Startsound("MG42Bul",32);
-			MGR1 UVVVVVWXYZ 1;
-			TNT1 A 0 A_weaponoffset(0,32);
+			MGR1 U 1;
+			MGR1 VV 1 A_Weaponoffset(-1,1,WOF_ADD);
+			MGR1 V 1;
+			MGR1 VVWX 1 A_Weaponoffset(0.25,-0.25,WOF_ADD);
+			TNT1 A 0 A_weaponoffset(0,32,WOF_INTERPOLATE);
+			MGR1 YZ 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),50,1);
 			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
 			MGR2 ABCDE 1;
@@ -122,8 +126,12 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 A_Startsound("Generic/Cloth/Short",0);
 			MGR1 ST 1 A_Weaponoffset(0.75,-0.25,WOF_ADD);
 			TNT1 A 0 A_Startsound("MG42Bul",CHAN_AUTO);
-			MGR1 UVVVVVWXYZ 1;
-			TNT1 A 0 A_weaponoffset(0,32);
+			MGR1 U 1;
+			MGR1 VV 1 A_Weaponoffset(-1,1,WOF_ADD);
+			MGR1 V 1;
+			MGR1 VVWX 1 A_Weaponoffset(0.25,-0.25,WOF_ADD);
+			TNT1 A 0 A_weaponoffset(0,32,WOF_INTERPOLATE);
+			MGR1 YZ 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),50,1);
 			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
 			MGR2 ABCDE 1;
@@ -198,7 +206,7 @@ Class BW_MG42 : BaseBWWeapon
 		A_StartSound("MG42Fire", CHAN_AUTO, CHANF_OVERLAP,0.85);
 		A_StartSound("MG42Mech", CHAN_AUTO, CHANF_OVERLAP,1);
 		A_StartSound("MG42Loop",42,CHANF_LOOPING, CHANF_NOSTOP, 0.9);
-		BW_SpawnCasing("BW_9MMCasing",20,2,-12,random(2,5),random(3,6),random(1,4));
+		BW_SpawnCasing("BW_792Casing",20,2,-12,random(2,5),random(3,6),random(1,4));
 		BW_AddBarrelHeat(16);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		invoker.ammo2.amount--;

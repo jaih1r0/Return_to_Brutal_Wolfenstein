@@ -68,6 +68,8 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	slider "Enemy footsteps volume","BW_enemyFootstepsVol",0.0,1.0,0.1
 	statictext ""
+	option "Disable bullet tracer dynamic lights","BW_DisableTracerLights","OnOff"
+	statictext ""
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
 
 	statictext ""
