@@ -999,3 +999,137 @@ Class BW_Rocket : Actor
 
 	
 }
+
+
+
+
+
+Class BW_BFGBALL : BFGBall replaces BFGBAll
+{
+	default
+	{
+		speed 200;
+		damagetype "Purpleish";
+		translation "0:255=%[0.20,0.00,1.00]:[2.00,0.5,1.50]";//"0:255=#[128,0,255]";
+		+bright;
+		renderstyle "add";
+		damagetype "LF";
+		damage 50;
+		+ripper;
+	}
+	override int DoSpecialDamage (Actor victim, int damage, Name damagetype)
+	{
+		if(victim.health < damage && !(victim is "CommanderKeen") && !victim.player)
+		{
+			victim.A_Giveinventory("LFedToken",1);
+			inventory fc = victim.findinventory("LFedToken");
+			if(fc)
+				fc.tracer = target;
+			victim.bbuddha = true;
+		}
+		return damage;
+	}
+	states
+	{
+		Death:
+			TNT1 A 0 A_QuakeEx(2,2,2,15,0,400,"",QF_RELATIVE|QF_SCALEDOWN);
+			BFE1 AB 3 Bright;
+			BFE1 C 3 Bright A_Explode(200,300,XF_THRUSTLESS);
+			BFE1 DEF 3 Bright;
+			Stop;
+	}
+}
+
+
+Class LFedToken : inventory
+{
+	uint origTrans;
+	int floatTimer;
+	bool brighty;
+	override void attachtoowner(actor other)
+	{
+		super.attachtoowner(other);
+		other.bnogravity = true;
+		other.vel = (frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(0.4,2.0));
+		origTrans = other.translation;
+		other.A_SetTranslation("BW_LFed");
+		brighty = other.bBright;
+		other.bbright = true;
+		floatTimer = frandom(1,3.5) * TICRATE;
+		other.bthruactors = true;
+		other.bdropoff = true;
+	}
+	override void doeffect()
+	{
+		if(!owner)
+			return;
+		if(owner.health > 0)
+			owner.tics = -1;	//keep it freeze if alive
+		if(isfrozen())
+			return;
+		if(floatTimer > 0)
+			floatTimer--;
+		else
+		{
+			owner.bnogravity = false;
+			if((owner.pos.z <= owner.floorz + 1 || owner.waterlevel > 2) && owner.health > 0)
+			{
+				owner.translation = origTrans;
+				if(tracer)	//keep track of the player for correct kill credits
+					owner.damagemobj(tracer,tracer,1000,'LF',DMG_FOILBUDDHA);
+				else
+					owner.damagemobj(owner,owner,1000,'LF',DMG_FOILBUDDHA);	//harakiri
+				owner.bBright = brighty;
+				owner.bbuddha = false;
+				if(owner.bismonster)
+				{
+					if(owner.resolvestate("LeanDeath"))
+						owner.setstatelabel("LeanDeath");
+					else
+					{
+						actor hb = spawn("BW_BoneHeadDebris",owner.pos + (0,0,owner.height));
+						if(hb)
+							hb.vel = (frandom(-10.0,10.0),frandom(-10.0,10.0),frandom(1.5,10.0));
+						int bones = owner.mass / 10;
+						spawnFxSmokeBasic();
+						spawnFxSmokeBasic();
+						spawnFxSmokeBasic();
+						for(int i = 0; i < bones; i++)
+						{
+							actor b = spawn("BW_BoneDebris",owner.pos + (0,0,owner.height));
+							if(b)
+								b.vel = (frandom(-10.0,10.0),frandom(-10.0,10.0),frandom(1.5,10.0));
+						}
+						owner.destroy();
+					}
+				}
+			}
+		}
+	}
+
+	override void detachfromowner()
+	{
+		owner.translation = origTrans;
+		owner.bBright = brighty;
+		owner.bbuddha = false;
+	}
+
+	void spawnFxSmokeBasic()
+	{
+		FSpawnParticleParams WTFSMK;
+		WTFSMK.Pos = owner.pos + (random(-20,20),random(-20,20),random(10,45));
+        WTFSMK.Texture = TexMan.CheckForTexture("SM7CA0");
+		WTFSMK.Color1 = 0xFFFFFF;
+		WTFSMK.Style = STYLE_Translucent;
+		WTFSMK.Flags = SPF_ROLL;
+		WTFSMK.Startroll = random(0,360);
+		WTFSMK.RollVel = random(-5,5);
+		WTFSMK.StartAlpha = 0.5;
+		WTFSMK.Size = random(60,75);
+		WTFSMK.SizeStep = 3;
+		WTFSMK.Lifetime = Random(20,35); 
+		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
+		WTFSMK.Vel = (frandom[bscsmk](-1.5,1.5),frandom[bscsmk](-1.5,1.5),frandom[bscsmk](-1.5,1.5));
+		Level.SpawnParticle (WTFSMK);
+	}
+}

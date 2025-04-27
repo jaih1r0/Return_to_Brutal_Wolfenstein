@@ -7,6 +7,9 @@ nosave float BW_FootstepsVol = 1.0;
 nosave float BW_enemyFootstepsVol = 1.0;
 server bool BW_disableGunSmoke = false;
 server bool BW_DisableTracerLights = false;
+server int BW_DebrisLimit = 256;
+server int BW_CasingsLimit = 256;
+server int BW_CleanTics = 0;
 
 //Nashgore Cvars
 

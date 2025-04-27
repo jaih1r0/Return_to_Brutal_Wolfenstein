@@ -49,10 +49,12 @@ optionvalue "BWProjectileType"
 OptionMenu RTBW_OptionsMenu
 {
 	Title "Return to brutal wolfenstein menu"
+	
 	statictext ""
 	command "go to test map","map BWTEST"
 	statictext ""
-	option "player bullet type","BW_BulletType","BWProjectileType"
+	statictext ""
+	statictext "Keybinds",orange
 	statictext ""
 	control "Kick/Slide","netevent KickEm"
 	statictext ""
@@ -62,6 +64,25 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	control "Weapon Special/ DualWield","+User2"
 	statictext ""
+	statictext ""
+
+	statictext "Performance",orange
+	statictext ""
+	slider "Max amount of casings in world","BW_CasingsLimit",0,1000,16
+	statictext "set to 0 to disable limit",brick
+	statictext ""
+	slider "Max amount of debris in world","BW_DebrisLimit",0,1000,16
+	statictext "set to 0 to disable limit",brick
+	statictext ""
+	slider "auto clean gore/casings/decals time","BW_CleanTics",0,60,1
+	statictext "*time in seconds, set to 0 to disable",brick
+	statictext ""
+	statictext ""
+
+	statictext "Gameplay",orange
+	statictext ""
+	option "player bullet type","BW_BulletType","BWProjectileType"
+	statictext ""
 	option "Disable footsteps","BW_DisablePlayerFootsteps","OnOff"
 	statictext ""
 	slider "Footsteps volume","BW_FootstepsVol",0.0,1.0,0.1
@@ -70,11 +91,14 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	option "Disable bullet tracer dynamic lights","BW_DisableTracerLights","OnOff"
 	statictext ""
+	statictext ""
+	statictext ""
+
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
 
 	statictext ""
 	statictext ""
-	statictext "=== Development ==="
+	statictext "=== Development ===",green
 	statictext ""
 	option "debug texture impacts","BW_texturesChecker","yesno"
 	statictext ""

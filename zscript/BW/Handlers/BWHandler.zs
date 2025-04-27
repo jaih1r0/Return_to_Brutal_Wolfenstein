@@ -1,14 +1,6 @@
 class BW_EventHandler : EventHandler
 {
-	override void playerentered(playerevent e)
-	{
-		let ft = FootStepsManager(new("FootStepsManager"));
-		let pmo = players[e.playernumber].mo;
-		if(ft && pmo)
-			ft.init(pmo);
-		pmo.A_SetBlend(0x000000,1.0,35);
-		players[e.PlayerNumber].mo.A_GiveInventory("Z_NashMove", 1);
-	}
+	
 	
 	int kicktimer;
 	int KnifeTimer;
@@ -20,9 +12,22 @@ class BW_EventHandler : EventHandler
 	const ComboSpace = TICRATE * 5;	//5 secs, probably would be better to turn this into a cvar
 	string lastWeap;
 
+	array<actor>	worldDebris;
+	array<actor>	worldCasings;
+
 	clearscope int, int getcomboinfo() const	//this is used only to retrieve info to the hud
 	{
 		return ComboTimer,ComboCounter;
+	}
+
+	override void playerentered(playerevent e)
+	{
+		let ft = FootStepsManager(new("FootStepsManager"));
+		let pmo = players[e.playernumber].mo;
+		if(ft && pmo)
+			ft.init(pmo);
+		pmo.A_SetBlend(0x000000,1.0,35);
+		players[e.PlayerNumber].mo.A_GiveInventory("Z_NashMove", 1);
 	}
 
     override void WorldTick()
@@ -37,7 +42,43 @@ class BW_EventHandler : EventHandler
 			ComboTimer--;
 		else
 			ComboCounter = 0;
+
+		
+		if(BW_DebrisLimit >= 0)		//limit the amount of debris
+		{
+			while(worldDebris.size() > BW_DebrisLimit)
+				worldDebris[0].destroy();
+		}
+
+		if(BW_CasingsLimit >= 0)	//limit the amount of casings
+		{
+			while(worldCasings.size() > BW_CasingsLimit)
+				worldCasings[0].destroy();
+		}
+
+		if(BW_CleanTics > 0)		//if this is not 0, clean after this amount of seconds
+		{
+			if(level.time % (BW_CleanTics * TICRATE) == 0)
+				NashgoreGameplayStatics.ClearGore();
+		}
+
     }
+
+	override void worldthingspawned(worldevent e)
+	{
+		if(e.thing is "BW_CasingBase")
+			worldCasings.push(e.thing);
+		if(e.thing is "BW_Debris")
+			worldDebris.push(e.thing);
+	}
+
+	override void worldthingdestroyed(worldevent e)
+	{
+		if(e.thing && e.thing is "BW_CasingBase")
+			worldCasings.delete(worldCasings.find(e.thing));
+		if(e.thing && e.thing is "BW_Debris")
+			worldDebris.delete(worldDebris.find(e.thing));
+	}
 
 	override void WorldThingDied(WorldEvent e)
 	{
