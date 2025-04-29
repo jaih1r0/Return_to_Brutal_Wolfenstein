@@ -91,6 +91,7 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 
 		name landtex = BW_StaticHandler.getmaterialname(texman.getname(floorpic));
 		sound landsnd = sound("land/concrete");
+		bool spawnsplash;
 		switch(landtex)
 		{
 			case 'carpet':
@@ -102,12 +103,16 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 			case 'Dirt':	landsnd = sound("land/dirt");		break;
 			
 			case 'slime': case 'purplewater': case 'blood':	case 'lava':
-			case 'Water':	landsnd = sound("land/water");		break;
+			case 'Water': case 'Acid':	spawnsplash = true;
+				landsnd = sound("land/water");		break;
 			case 'Metal':	landsnd = sound("land/metal");		break;
 			case 'sky':		landsnd = sound("step/none");		break;
 		}
 		A_Startsound(landsnd,10,CHANF_OVERLAP,pitch:frandom[landng](0.9,1.1));
 		
+		if(spawnsplash)
+			BW_StepActor.spawnfootstepFx(self,pos,landtex,true);
+
 	}
 	
 	States

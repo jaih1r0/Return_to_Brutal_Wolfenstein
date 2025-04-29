@@ -17,7 +17,7 @@ Class BW_Kar98K : BaseBWWeapon
 	
 	action void firekarbullets()
 	{
-		BW_FireBullets("BW_Kar98Bullets",0.1,0.1,-1,25,"Bulletpuff","Rifle",0,0,0);
+		BW_FireBullets("BW_Kar98Bullets",0.1,0.1,-1,160,"Bulletpuff","Rifle",0,0,0);
 		
 		A_StartSound("Kar98/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.9);
 		A_Startsound("Kar98/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1);

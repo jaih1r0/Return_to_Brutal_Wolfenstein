@@ -89,6 +89,7 @@ class NashGoreBloodPlane : Actor abstract
 		FloatBobPhase 0;
 		+NOTONAUTOMAP
 		+NOGRAVITY
+		DistanceCheck "BW_PlaneModelDrawDist";
 	}
 
 	//===========================================================================

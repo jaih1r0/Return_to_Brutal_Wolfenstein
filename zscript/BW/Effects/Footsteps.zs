@@ -28,9 +28,9 @@ Class FootStepsManager : thinker
 		{
 			sound snd; name mat;
 			[snd,mat] =BW_StaticHandler.getmaterialstepandName(texman.getname(follow.floorpic));
-			double vol = FootStepsManager.LinearMap(vl,3,14,0.5,1.0);
+			double vol = BW_Statics.LinearMap(vl,3,14,0.5,1.0);
 			follow.A_Startsound(snd,CHAN_AUTO,volume:(BW_FootstepsVol * vol),pitch: frandom(0.95,1.05));
-			refresh = FootStepsManager.LinearMap(vl,3,14,24,10);
+			refresh = BW_Statics.LinearMap(vl,3,14,24,10);
 			
 			
 			switch(mat)
@@ -57,11 +57,6 @@ Class FootStepsManager : thinker
 		enabled = !cvar.getcvar("BW_DisablePlayerFootsteps",toAttach.player).getbool();
 	}
 	
-	clearScope Static Double LinearMap(Double Val, Double O_Min, Double O_Max, Double N_Min, Double N_Max) 
-	{
-		Return (Val - O_Min) * (N_Max - N_Min) / (O_Max - O_Min) + N_Min;
-	}
-	
 }
 
 Class BW_StepActor : Actor
@@ -74,19 +69,19 @@ Class BW_StepActor : Actor
 	double fAng;
 	name stepType;
 
-	static void spawnfootstepFx(actor self, vector3 spos, name stepType)
+	static void spawnfootstepFx(actor self, vector3 spos, name stepType, bool isbig = false)
 	{
 		vector3 norm = self.cursector.floorplane.normal;
 
 		switch(stepType)
 		{
-			case 'Water':		SpawnImpact_water(spos,norm,stepType,self,0x98A6C5);				break;
-			case 'Slime':		SpawnImpact_water(spos,norm,stepType,self,0x956730,"SLIMC0");		break;
-			case 'PurpleWater': SpawnImpact_water(spos,norm,stepType,self,0xC098C7,"PSPHB0");		break;
-			case 'Blood': 		SpawnImpact_water(spos,norm,stepType,self,0xFF0000);				break;
-			case 'Flesh':		SpawnImpact_water(spos,norm,stepType,self,0xFF0000);				break;
-			case 'Acid': 		SpawnImpact_water(spos,norm,stepType,self,0x5FB534);				break;
-            case 'Lava': 		spawnimpact_Lava(spos,norm,stepType,self);									break;
+			case 'Water':		SpawnImpact_water(spos,norm,stepType,self,0x98A6C5,big:isbig);				break;
+			case 'Slime':		SpawnImpact_water(spos,norm,stepType,self,0x956730,"SLIMC0",big:isbig);		break;
+			case 'PurpleWater': SpawnImpact_water(spos,norm,stepType,self,0xC098C7,"PSPHB0",big:isbig);		break;
+			case 'Blood': 		SpawnImpact_water(spos,norm,stepType,self,0xFF0000,big:isbig);				break;
+			case 'Flesh':		SpawnImpact_water(spos,norm,stepType,self,0xFF0000,big:isbig);				break;
+			case 'Acid': 		SpawnImpact_water(spos,norm,stepType,self,0x5FB534,big:isbig);				break;
+            case 'Lava': 		spawnimpact_Lava(spos,norm,stepType,self,big:isbig);									break;
 			case 'Dirt': 		spawnFxSmoke(stepType,"DIRPC0",0xFFFFFF,self,norm);					break;
 			case 'Gravel':		spawnFxSmoke(stepType,"DIRPC0",0xFFFFFF,self,norm);					break;
 			default: 																				break;
@@ -100,9 +95,9 @@ Class BW_StepActor : Actor
 			stop;
 	}
 
-	static void SpawnImpact_water(vector3 spos,vector3 norm,name stepType,actor self,color col = 0xFFFFFF, string splashsprite = "WSPHC0")
+	static void SpawnImpact_water(vector3 spos,vector3 norm,name stepType,actor self,color col = 0xFFFFFF, string splashsprite = "WSPHC0",bool big = false)
 	{	
-		spawnFxSmoke(stepType,"PUF2U0",col,self,norm);
+		//spawnFxSmoke(stepType,"PUF2U0",col,self,norm);
 		FSpawnParticleParams WTRPX;
 		
 		WTRPX.Texture = TexMan.CheckForTexture(splashsprite);
@@ -120,13 +115,15 @@ Class BW_StepActor : Actor
         switch(stepType)
         {
             case 'Acid':   case 'Lava': 
-            WTRPX.Flags |= SPF_FULLBRIGHT;
-			case 'Slime':  case 'Blood': 
-            WTRPX.Style = STYLE_Add;
+            	WTRPX.Flags |= SPF_FULLBRIGHT;
+			case 'Blood': 
+            	WTRPX.Style = STYLE_Add;
+			case 'Slime':
             break;
             //case 'PurpleWater': case 'Water':
         }
-		for(int i = 0; i < random(2,5); i++)
+		int amt = big ? random(8,15) : random(2,5);
+		for(int i = 0; i < amt; i++)
 		{
 			WTRPX.Size = frandom(18,26);
 			WTRPX.Lifetime = Random(5,8); 
@@ -137,9 +134,9 @@ Class BW_StepActor : Actor
 		}
 	}
 
-    static void spawnimpact_Lava(vector3 spos,vector3 norm,name stepType,actor self)
+    static void spawnimpact_Lava(vector3 spos,vector3 norm,name stepType,actor self, bool big = false)
     {
-        spawnFxSmoke(stepType,"PUF2U0",0xE49801,self,norm);
+        //spawnFxSmoke(stepType,"PUF2U0",0xE49801,self,norm);
         FSpawnParticleParams WTFSMK;
 		WTFSMK.Pos = spos;
 		WTFSMK.Texture = TexMan.CheckForTexture("FRPRC0");
@@ -152,14 +149,17 @@ Class BW_StepActor : Actor
 		
 		WTFSMK.SizeStep = 1;
 		
-		
+		int amt = big ? random(7,12) : random(2,4);
         for(int i = 0; i < random(1,3); i++)
 		{
 			vector3 fs = (0,0,0);
             WTFSMK.Size = frandom(15,30);
             WTFSMK.Lifetime = Random(8,12); 
 		    WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
-			fs = (norm.x * frandom(-1.0,1.0),norm.y * frandom(-1.0,1.0),norm.z * frandom(0.2,0.5));
+			if(norm.x == 0 && norm.y == 0)	//is a plane surface, so its normal will be 0, since its pointing up, in those cases just randomize xy
+				fs = (frandom(-1.0,1.0),frandom(-1.0,1.0),norm.z * frandom(0.2,0.5));
+			else
+				fs = (norm.x * frandom(-1.0,1.0),norm.y * frandom(-1.0,1.0),norm.z * frandom(0.2,0.5));
 			WTFSMK.Vel = norm + fs;	//(frandom (0.1,-0.1),frandom (0.1,-0.1),frandom (0.6,1.5)); 
 			Level.SpawnParticle (WTFSMK);
 		}

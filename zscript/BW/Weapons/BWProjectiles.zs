@@ -672,7 +672,7 @@ Class BW_Kar98Bullets : BW_Projectile
 {
 	default
 	{
-		BW_Projectile.projectiledmg 80;
+		BW_Projectile.projectiledmg 160; //80; most enemies receive at least x2 damage from this
 		BW_Projectile.ripAmount 5;
 		damagetype "Rifle";
 		+ripper;

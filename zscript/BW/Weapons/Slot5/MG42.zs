@@ -182,6 +182,7 @@ Class BW_MG42 : BaseBWWeapon
 			BMGK FEDCBA 1;
 			goto ready;
 		MuzzleFlash:
+			TNT1 A 0 A_OverlayFlags(overlayID(),PSPF_MIRROR|PSPF_FLIP,random(0,1));
 			BMGM A 1 bright {
 				let ps = player.findPSprite(overlayID());
 				if(ps)

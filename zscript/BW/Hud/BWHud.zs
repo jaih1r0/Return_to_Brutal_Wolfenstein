@@ -8,6 +8,10 @@ Class BW_Hud : BaseStatusBar
 	int oldScore, scoreTics;
 	BW_EventHandler scorehandler;
 	int combo_timer,combo_counter, oldcounter, counterTics;
+
+	bool isCentered, custommsg;
+	double messageScale; 
+
 	override void Init()
 	{
 		Super.Init();
@@ -36,6 +40,14 @@ Class BW_Hud : BaseStatusBar
 		Super.NewGame();
 		healthCol = Font.CR_YELLOW;
 		alfadeofs = 0.0;
+		updateCvars();
+	}
+
+	void updateCvars()
+	{
+		isCentered = 		CVar.GetCVar("con_centernotify", CPlayer).getbool();
+		messageScale = 		CVar.GetCVar("BW_messageScale", CPlayer).getfloat();
+		custommsg = 		CVar.GetCVar("BW_Custommsg", CPlayer).getbool();
 	}
 	
 	override void Tick()
@@ -47,6 +59,9 @@ Class BW_Hud : BaseStatusBar
 		else
 			healthcol = Font.CR_YELLOW;
 		
+		if(menuactive || consolestate == c_up) 
+			updateCvars();
+		
 		if(!scorehandler)
 			scorehandler = BW_EventHandler(EventHandler.find("BW_EventHandler"));
 
@@ -54,6 +69,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Armor.update(GetArmorAmount());
 		oldScore = DV_Score.getvalue();
 		DV_Score.update(pl.score);
+		tickhudmessages();
 		if(cplayer.readyweapon)
 		{
 			Ammo Primary, Secondary;
@@ -94,6 +110,8 @@ Class BW_Hud : BaseStatusBar
 			return;
 		let pl = Cplayer.mo;
 		
+		drawhudMessages();
+
 		//health
 		int hl = DV_Health.getvalue();//pl.health;
 		drawstring(BWFont,formatnumber(hl),(15,-25),DI_SCREEN_LEFT_BOTTOM ,healthcol);
@@ -320,6 +338,116 @@ Class BW_Hud : BaseStatusBar
 			
 		}
 	}
+
+
+
+
+	//
+	// custom message drawing
+	//
+	array <BW_msgInfo> messages;
+	uint scrolltics;
+	const DEFAULT_MSG_DUR = 42;
+	const SCROLL_TIME = 10;
+	override bool processnotify(EPrintLevel printlevel, String outline)
+	{
+		if(!custommsg)
+			return false;
+		
+		string newm; int ind;
+		[newm,ind] = getLastmsg();
+		if(ind > -1)
+		{
+			if(messages[ind] && messages[ind].msg ~== outline)
+				messages[ind].addRepeated(DEFAULT_MSG_DUR);
+			else
+			{
+				addHudMessage(outline,DEFAULT_MSG_DUR,printlevel);
+				scrolltics = SCROLL_TIME;
+			}
+		}
+		else
+		{
+			addHudMessage(outline,DEFAULT_MSG_DUR,printlevel);
+			scrolltics = SCROLL_TIME;
+		}
+		return true;
+	}
+
+	override void flushnotify()
+	{
+		if(level.time == 0)
+			clearmessages();
+	}
+
+	void addHudMessage(string msg,uint duration = DEFAULT_MSG_DUR, EPrintLevel printlev = 0)
+	{
+		messages.push(BW_msgInfo.create(msg,duration,printlev));
+	}
+
+	void clearmessages()
+	{
+		messages.clear();
+	}
+
+	string,int getLastmsg()
+	{
+		int ind = messages.size();
+		if(ind <= 0)
+			return "",-1;
+		ind = max(0,ind - 1);
+		if(messages[ind])
+			return messages[ind].msg,ind;
+		return "",-1;
+	}
+
+	void tickhudmessages()
+	{
+		if(messages.size() > 0)
+		{
+			for(int i = 0; i < messages.size(); i++)
+			{
+				if(messages[i])	messages[i].tick();
+			}
+		}
+		if(scrolltics > 0)
+			scrolltics--;
+	}
+
+	ui void drawhudMessages()
+	{
+		if(messages.size() < 1)
+			return;
+		
+		double fontscale = 1.0 * messageScale;
+		int yfontsize = BWFont.mFont.getheight() * fontscale;
+		int startY = 62;
+		int startX = 20;
+		int flags = DI_SCREEN_LEFT;
+
+		if(isCentered)
+		{
+			startY = 10;
+			startX = -screen.getwidth() / 3.5;
+			flags = DI_SCREEN_CENTER_TOP;
+		}
+
+		startY += yfontsize * (double(scrolltics) / SCROLL_TIME);
+		int maxmsg = 6;
+		for(int i = 0; i < messages.size(); i++)
+		{
+			if(messages[i])
+			{
+				drawstring(BWFont,messages[i].getmsg(),(startX,startY),flags,messages[i].getColor()
+				,alpha:messages[i].alfa,
+				scale:(fontscale,fontscale));
+				startY += yfontsize;
+				maxmsg--;
+			}
+			if(maxmsg < 1)
+				break;
+		}
+	}
 	
 }
 
@@ -329,5 +457,57 @@ Class DisableHud : inventory
 	default
 	{
 		inventory.maxamount 1;
+	}
+}
+
+Class BW_msgInfo
+{
+	double alfa;
+	uint duration;
+	string msg;
+	int rep;
+	EPrintLevel type;
+	void tick()
+	{
+		duration--;
+		if(duration <= 20)
+			alfa -= 0.05;
+		if(duration < 1)
+			destroy();
+	}
+
+	void addRepeated(uint newduration)
+	{
+		duration = newduration;
+		alfa = 1.0;
+		rep++;
+	}
+
+	string getmsg()
+	{
+		if(rep > 0)
+			return string.format("%s (x%d)",msg,rep+1);
+		return msg;
+	}
+
+	int getColor()
+	{
+		//string.format("msg%dcolor",type);
+		if(type <= 4)
+			return CVar.GetCVar(string.format("msg%dcolor",type)).GetInt();
+		return 0;
+	}
+
+	static BW_msgInfo create(string msg,uint duration,EPrintLevel type)
+	{
+		let nmsg = new("BW_msgInfo");
+		if(nmsg)
+		{
+			nmsg.msg = msg;
+			nmsg.duration = duration;
+			nmsg.alfa = 1.0;
+			nmsg.type = type;
+		}
+		return nmsg;
 	}
 }

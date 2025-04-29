@@ -281,9 +281,9 @@ Class BW_StaticHandler : StaticEventHandler
 		"BWSO111","BWSO119","BWSO117","BWSO118","BRICK8","BWSO136","BWSO133","BWSO108","BWSO116",
 		"BWSO120","BWSO121","BWSO122","BWSOD77","BWSO131","BWSO132","PANEL7","SLIME13","RROCK20",
 		"RROCK15","BWSO129","BWSO134","BWSO135","BWSO106","BWSO114","BWSO110","BWSOD31","BWSO130",
-		"CFTX296","FLOOR6_1","CFTX496","BWWALL13","PANEL1","PANEL2","BRICK12","EP3WALL7",
+		"CFTX296","FLOOR6_1","CFTX496","BWWALL13","PANEL1","PANEL2","BRICK12","EP3WALL7","BWSOD25",
 		"E2M8A4","E2M8A5","E2M8A6","E2M9LAB","BWSO105","SO145","SP_HOT1","ROCKRED2","ROCKRED3",
-		"GSTONE2","BWWALL5","BWSOD23","-NOFLAT-"//how did i miss this?
+		"GSTONE2","BWWALL5","BWSOD23","BWSOD24","BWSOD18","-NOFLAT-"//how did i miss this?
 	};
 	
 	static const string MarbleDef[] = {
@@ -356,7 +356,7 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string BloodDef[] = {
-		"BFALL1","BLOOD1","BFALL01"
+		"BFALL1","BLOOD1","BFALL01","BLOOD3"
 	};
 	
 	static const string ElectricDef[] = {
@@ -364,12 +364,12 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string LavaDef[] = {
-		"LAVA1"
+		"LAVA1","LAVA2"
 	};
 	
 	static const string FleshDef[] = {
 		"SKSNAKE2","SKIN2","SKSPINE2","SKSNAKE1","SLOPPY2","SKINMET2","SKINSCAB",
-		"SKINSYMB","SP_FACE2","SKINFACE","SKINEDGE"
+		"SKINSYMB","SP_FACE2","SKINFACE","SKINEDGE","SKSPINE1"
 	};
 	
 	static const string BurnRockDef[] = {
