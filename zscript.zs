@@ -54,6 +54,7 @@ Version 4.3
 #include "zscript/BW/Items/Armor.zs"
 #include "zscript/BW/Items/Keys.zs"
 #include "zscript/BW/Items/Health.zs"
+#include "zscript/BW/Items/Ammo.zs"
 
 //NashGore
 #include "zscript/NashGore/NashGoreMath.zc"

@@ -23,7 +23,7 @@ Class BW_BrownGuard_Rifle : BW_MonsterBase
 			DeathSound "Nazi/Generic/death";
 			ActiveSound "Nazi/Generic/sight";
 			
-			DropItem "Clip", 255, 8;
+			DropItem "BW_KarAmmo", 255, 8;
 			DropItem "BW_Kar98K", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";

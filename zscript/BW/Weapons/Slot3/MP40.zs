@@ -3,7 +3,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 	default
 	{
 		weapon.slotnumber 3;
-		Weapon.AmmoType "Clip";
+		Weapon.AmmoType "BW_PistolAmmo";
 		Weapon.AmmoUse 0;
 		Weapon.AmmoGive 20;
 		Weapon.AmmoType2 "BW_MP40Mag";

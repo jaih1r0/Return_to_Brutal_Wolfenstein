@@ -6,7 +6,7 @@ Class BW_Kar98K : BaseBWWeapon
 		scale 0.35;
 		Inventory.PickupSound "Generic/Pickup/Rifle";
 		weapon.ammotype2 "Kar98Ammo";
-		weapon.ammotype1 "Clip";
+		weapon.ammotype1 "BW_KarAmmo";//"Clip";
 		weapon.ammogive1 15;
 		BaseBWWeapon.FullMag 5;
 		+weapon.noautofire;

@@ -3,7 +3,7 @@ Class BW_MG42 : BaseBWWeapon
 	default
 	{
 		weapon.slotnumber 5;
-		weapon.ammotype1 "Clip";
+		weapon.ammotype1 "BW_MGAmmo";
 		weapon.ammotype2 "MG42Ammo";
 		weapon.ammogive1 50;
 		Tag "MG42";

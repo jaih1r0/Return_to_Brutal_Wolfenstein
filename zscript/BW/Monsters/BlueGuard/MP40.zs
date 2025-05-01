@@ -23,7 +23,7 @@ Class BW_BlueGuard_MP40 : BW_MonsterBase
 			DeathSound "Nazi/Generic/death";
 			ActiveSound "Nazi/Generic/sight";
 			
-			DropItem "Clip", 255, 32;
+			DropItem "BW_PistolAmmo", 255, 32;
 			DropItem "BW_MP40", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";

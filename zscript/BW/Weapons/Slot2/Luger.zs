@@ -2,7 +2,7 @@ class BW_Luger : BaseBWWeapon
 {
  	Default
 	{
-		Weapon.AmmoType "Clip";
+		Weapon.AmmoType "BW_PistolAmmo";
 		Weapon.AmmoUse 0;
 		Weapon.AmmoGive 20;
 		Weapon.AmmoType2 "BW_Luger_Mag";
@@ -169,8 +169,8 @@ class BW_Luger : BaseBWWeapon
 		ZLUX BA 1;
 	Reload:
 		TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 1, "UnAimReload");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0 && CountInv("Clip") == 0, "WeaponReadyEmpty");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 9 || CountInv("Clip") == 0, "WeaponReady");
+		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0 && invoker.ammo1.amount == 0, "WeaponReadyEmpty");
+		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 9 || invoker.ammo1.amount == 0, "WeaponReady");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "Reload2");
 		TNT1 A 0 A_TakeInventory("AimingToken");
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
@@ -181,7 +181,7 @@ class BW_Luger : BaseBWWeapon
 		ZLR2 OPQRSTUUUUU 1;
 		TNT1 A 0 A_StartSound("Luger/In", 0, CHANF_OVERLAP);
 		ZLR2 VWXYZZZZZ 1;
-		TNT1 A 0 BW_AmmoIntoMag("BW_Luger_Mag", "Clip", 9, 1);
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammo2.getclassname(), invoker.ammo1.getclassname(), 9, 1);
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 		ZL22 ABCDEFG 1;
 		ZLR2 HGFEDCBA 1;
@@ -193,7 +193,7 @@ class BW_Luger : BaseBWWeapon
 		ZLR4 ABCDEFGHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Luger/inempty", 0, CHANF_OVERLAP);
 		ZLR4 NOPPPPPPQ 1;
-		TNT1 A 0 BW_AmmoIntoMag("BW_Luger_Mag", "Clip", 8 , 1);
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammo2.getclassname(), invoker.ammo1.getclassname(), 8, 1);
 		ZLR4 RSSSSS 1;
 		TNT1 A 0 A_StartSound("Luger/Charge", 0, CHANF_OVERLAP);
 		ZLR4 TTUUVW 1;

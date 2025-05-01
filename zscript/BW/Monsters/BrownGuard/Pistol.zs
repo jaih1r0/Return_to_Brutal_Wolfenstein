@@ -23,7 +23,7 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 			DeathSound "Nazi/Generic/death";
 			ActiveSound "Nazi/Generic/sight";
 			
-			DropItem "Clip", 255, 8;
+			DropItem "BW_PistolAmmo", 255, 8;
 			DropItem "BW_Luger", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";

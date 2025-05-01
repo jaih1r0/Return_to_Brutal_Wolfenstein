@@ -2,7 +2,7 @@ class BW_Trenchgun : BaseBWWeapon
 {
  	Default
 	{
-		Weapon.AmmoType "Shell";
+		Weapon.AmmoType "BW_ShotgunAmmo";
 		Weapon.AmmoUse 0;
 		Weapon.AmmoGive 20;
 		Weapon.AmmoType2 "BW_Trenchgun_Mag";

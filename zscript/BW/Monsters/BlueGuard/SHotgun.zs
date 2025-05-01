@@ -24,7 +24,7 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			DeathSound "Nazi/Generic/death";
 			ActiveSound "Nazi/Generic/sight";
 			
-			DropItem "Shell", 255, 6;
+			DropItem "BW_ShotgunAmmo", 255, 6;
 			DropItem "BW_Trenchgun", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";

@@ -20,7 +20,7 @@ Class BW_Mutant : BW_MonsterBase //7078
         bloodcolor "FF00FF"; //magenta
         BW_MonsterBase.CanIReload false;    //i think they have a builtin bullets factory inside
         BW_MonsterBase.AttackRange 2000;
-        dropitem "clip";
+        dropitem "BW_PistolAmmo";
     }
 
     void MutantFire()
