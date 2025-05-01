@@ -100,6 +100,9 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	slider "custom hud messages scale","BW_messageScale",0.3,1.5,0.1
 	statictext ""
+	Option "$MSGMNU_CENTERMESSAGES","con_centernotify", "OnOff"
+	statictext ""
+	statictext ""
 	
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
 
