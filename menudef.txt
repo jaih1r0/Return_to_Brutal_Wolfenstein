@@ -102,6 +102,8 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	Option "$MSGMNU_CENTERMESSAGES","con_centernotify", "OnOff"
 	statictext ""
+	option "custom hud messages position","BW_messagepos","hudmsgpos"
+	statictext "*does nothing if centered messages are enabled"
 	statictext ""
 	
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
@@ -122,6 +124,12 @@ optionvalue monsterdebugval
 	0,"None"
 	1,"head heights"
 	2,"damage inflicted"
+}
+
+optionvalue hudmsgpos
+{
+	0,"below level stats"
+	1,"above mugshot"
 }
 
 

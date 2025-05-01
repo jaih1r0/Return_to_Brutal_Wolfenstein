@@ -11,6 +11,7 @@ Class BW_Hud : BaseStatusBar
 
 	bool isCentered, custommsg;
 	double messageScale; 
+	int msgpos;
 
 	override void Init()
 	{
@@ -47,7 +48,8 @@ Class BW_Hud : BaseStatusBar
 	{
 		isCentered = 		CVar.GetCVar("con_centernotify", CPlayer).getbool();
 		messageScale = 		CVar.GetCVar("BW_messageScale", CPlayer).getfloat();
-		custommsg = 		CVar.GetCVar("BW_Custommsg", CPlayer).getbool();
+		custommsg = 		CVar.GetCVar("BW_Custommsg", CPlayer).getbool(); 
+		msgpos =			CVar.GetCVar("BW_messagepos", CPlayer).getint();
 	}
 	
 	override void Tick()
@@ -348,7 +350,7 @@ Class BW_Hud : BaseStatusBar
 	array <BW_msgInfo> messages;
 	uint scrolltics;
 	const DEFAULT_MSG_DUR = 42;
-	const SCROLL_TIME = 10;
+	const SCROLL_TIME = 12;
 	override bool processnotify(EPrintLevel printlevel, String outline)
 	{
 		if(!custommsg)
@@ -421,9 +423,10 @@ Class BW_Hud : BaseStatusBar
 		
 		double fontscale = 1.0 * messageScale;
 		int yfontsize = BWFont.mFont.getheight() * fontscale;
-		int startY = 62;
-		int startX = 20;
+		double startY = 70.;
+		double startX = 20.;
 		int flags = DI_SCREEN_LEFT;
+		int movedir = 1;
 
 		if(isCentered)
 		{
@@ -431,8 +434,25 @@ Class BW_Hud : BaseStatusBar
 			startX = -screen.getwidth() / 3.5;
 			flags = DI_SCREEN_CENTER_TOP;
 		}
+		else
+		{
+			switch(msgpos)
+			{
+				case 0:		//below level stats
+					break;
+				default:	//over mugshot
+				case 1:
+					startY = -150.;
+					flags = DI_SCREEN_LEFT_BOTTOM;
+					movedir = -1;	//move upwards
+					break;
+			}
+		}
+		
+		startY += movedir * yfontsize * (double(scrolltics) / SCROLL_TIME);
+		
 
-		startY += yfontsize * (double(scrolltics) / SCROLL_TIME);
+
 		int maxmsg = 6;
 		for(int i = 0; i < messages.size(); i++)
 		{
@@ -441,7 +461,7 @@ Class BW_Hud : BaseStatusBar
 				drawstring(BWFont,messages[i].getmsg(),(startX,startY),flags,messages[i].getColor()
 				,alpha:messages[i].alfa,
 				scale:(fontscale,fontscale));
-				startY += yfontsize;
+				startY += yfontsize * movedir;
 				maxmsg--;
 			}
 			if(maxmsg < 1)
