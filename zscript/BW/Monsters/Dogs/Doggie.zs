@@ -69,7 +69,7 @@ Class BW_Dog : BW_MonsterBase replaces demon
         Reload:
         SeeContinue:
         See:
-            TNT1 A 0 A_Setscale(0.75,0.75);
+            TNT1 A 0 A_Setscale(0.75,YscaleFix);
             WDOG AAABBBB 1 A_Chase(); //AI_SmartChase();
             TNT1  A 0 A_JumpIfCloser(100,"Melee");
             WDOG CCCCDDDD 1 A_Chase(); //AI_SmartChase();

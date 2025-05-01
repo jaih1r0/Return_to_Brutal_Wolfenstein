@@ -201,6 +201,13 @@ extend class BW_MonsterBase
 		heardOpponent = 0;
 		AttackDelay = 25;
 		kickeddown = false;
+		if(StringTable.Localize("$OPTVAL_MBF21STRICT") != "OPTVAL_MBF21STRICT")	//only triggered when loaded in gzdoom 4.13
+		{
+			YscaleFix = scale.y * level.pixelstretch;	//should look good in gzdoom 4.13+
+			A_SetScale(scale.x,YscaleFix);
+		}
+		else
+			YscaleFix = scale.y;
 	}
 	
 	default

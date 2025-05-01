@@ -58,7 +58,7 @@ Class BW_Mutant : BW_MonsterBase //7078
         See:
             TNT1 A 0 
             {
-                A_SetScale(1.0,1.0);
+                A_SetScale(1.0,YscaleFix);
                 EnemyLastSighted = Level.MapTime;
             }
         SeeContinue:

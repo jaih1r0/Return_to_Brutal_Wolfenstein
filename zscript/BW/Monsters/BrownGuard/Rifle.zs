@@ -83,7 +83,7 @@ Class BW_BrownGuard_Rifle : BW_MonsterBase
 		See:
 			TNT1 A 0
 			{
-				A_SetScale(1,1);
+				A_SetScale(1,YscaleFix);
 				EnemyLastSighted = Level.MapTime;
 				if(AmmoInMag < 5)
 				{

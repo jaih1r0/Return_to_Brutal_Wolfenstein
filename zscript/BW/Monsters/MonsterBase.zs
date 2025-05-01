@@ -14,6 +14,8 @@ Class BW_MonsterBase : Actor
 	bool canReceiveHead;
 	property HasHeadshot:canReceiveHead;
 	name LastHit;
+
+	double YscaleFix;	//this is the real scale.y value monsters should use, since it accounts for the pixel stretch
 	
 	default
 	{
