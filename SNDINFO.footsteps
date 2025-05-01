@@ -4,133 +4,226 @@
 // Define the actual sounds here
 step/none ""
 // Default / Ground
-step/default1			DSSTP1
-step/default2			DSSTP2
-step/default3			DSSTP3
-step/default4			DSSTP4
-$random step/default { step/default1  step/default2  step/default3  step/default4 }
+step/default1			"Sounds/Footstep/Ground/StepGround1.wav"
+step/default2			"Sounds/Footstep/Ground/StepGround2.wav"
+step/default3			"Sounds/Footstep/Ground/StepGround3.wav"
+step/default4			"Sounds/Footstep/Ground/StepGround4.wav"
+step/default5			"Sounds/Footstep/Ground/StepGround5.wav"
+step/default6			"Sounds/Footstep/Ground/StepGround6.wav"
+step/default7			"Sounds/Footstep/Ground/StepGround7.wav"
+step/default8			"Sounds/Footstep/Ground/StepGround8.wav"
+step/default9			"Sounds/Footstep/Ground/StepGround9.wav"
+step/default10			"Sounds/Footstep/Ground/StepGround10.wav"
+step/default11			"Sounds/Footstep/Ground/StepGround11.wav"
+step/default12			"Sounds/Footstep/Ground/StepGround12.wav"
+$random step/default { step/default1  step/default2  step/default3  step/default4 step/default5 step/default6 step/default7 step/default8 step/default9 step/default10 step/default11 step/default12 }
 
 // Water
-step/water1			DSWTR1
-step/water2			DSWTR2
-step/water3			DSWTR3
-step/water4			DSWTR4
-$random step/water { step/water1  step/water2  step/water3  step/water4 }
+step/water1			"Sounds/Footstep/Water/StepWater1.wav"
+step/water2			"Sounds/Footstep/Water/StepWater2.wav"
+step/water3			"Sounds/Footstep/Water/StepWater3.wav"
+step/water4			"Sounds/Footstep/Water/StepWater4.wav"
+step/water5			"Sounds/Footstep/Water/StepWater5.wav"
+step/water6			"Sounds/Footstep/Water/StepWater6.wav"
+step/water7			"Sounds/Footstep/Water/StepWater7.wav"
+step/water8			"Sounds/Footstep/Water/StepWater8.wav"
+step/water9			"Sounds/Footstep/Water/StepWater9.wav"
+step/water10			"Sounds/Footstep/Water/StepWater10.wav"
+step/water11			"Sounds/Footstep/Water/StepWater11.wav"
+step/water12			"Sounds/Footstep/Water/StepWater12.wav"
+$random step/water { step/water1  step/water2  step/water3  step/water4 step/water5 step/water6 step/water7 step/water8 step/water9 step/water10 step/water11 step/water12 }
 
 // Carpet
-step/carpet1			DSCARP1
-step/carpet2			DSCARP2
-step/carpet3			DSCARP3
-step/carpet4			DSCARP4
-step/carpet5			DSCARP5
-step/carpet6			DSCARP6
-$random step/carpet { step/carpet1 step/carpet2 step/carpet3 step/carpet4 step/carpet5 step/carpet6 }
+step/carpet1			"Sounds/Footstep/Carpet/StepCarpet1.wav"
+step/carpet2			"Sounds/Footstep/Carpet/StepCarpet2.wav"
+step/carpet3			"Sounds/Footstep/Carpet/StepCarpet3.wav"
+step/carpet4			"Sounds/Footstep/Carpet/StepCarpet4.wav"
+step/carpet5			"Sounds/Footstep/Carpet/StepCarpet5.wav"
+step/carpet6			"Sounds/Footstep/Carpet/StepCarpet6.wav"
+step/carpet7			"Sounds/Footstep/Carpet/StepCarpet7.wav"
+step/carpet8			"Sounds/Footstep/Carpet/StepCarpet8.wav"
+step/carpet9			"Sounds/Footstep/Carpet/StepCarpet9.wav"
+step/carpet10			"Sounds/Footstep/Carpet/StepCarpet10.wav"
+step/carpet11			"Sounds/Footstep/Carpet/StepCarpet11.wav"
+step/carpet12			"Sounds/Footstep/Carpet/StepCarpet12.wav"
+$random step/carpet { step/carpet1 step/carpet2 step/carpet3 step/carpet4 step/carpet5 step/carpet6 step/carpet7 step/carpet8 step/carpet9 step/carpet10 step/carpet11 step/carpet12 }
 
 // Dirt
-step/dirt1			DSDIRT1
-step/dirt2			DSDIRT2
-step/dirt3			DSDIRT3
-step/dirt4			DSDIRT4
-step/dirt5			DSDIRT5
-step/dirt6			DSDIRT6
-$random step/dirt { step/dirt1 step/dirt2 step/dirt3 step/dirt4 step/dirt5 step/dirt6 }
+step/dirt1			"Sounds/Footstep/Dirt/StepDirt1.wav"
+step/dirt2			"Sounds/Footstep/Dirt/StepDirt2.wav"
+step/dirt3			"Sounds/Footstep/Dirt/StepDirt3.wav"
+step/dirt4			"Sounds/Footstep/Dirt/StepDirt4.wav"
+step/dirt5			"Sounds/Footstep/Dirt/StepDirt5.wav"
+step/dirt6			"Sounds/Footstep/Dirt/StepDirt6.wav"
+step/dirt7			"Sounds/Footstep/Dirt/StepDirt7.wav"
+step/dirt8			"Sounds/Footstep/Dirt/StepDirt8.wav"
+step/dirt9			"Sounds/Footstep/Dirt/StepDirt9.wav"
+step/dirt10			"Sounds/Footstep/Dirt/StepDirt10.wav"
+step/dirt11			"Sounds/Footstep/Dirt/StepDirt11.wav"
+step/dirt12			"Sounds/Footstep/Dirt/StepDirt12.wav"
+$random step/dirt { step/dirt1 step/dirt2 step/dirt3 step/dirt4 step/dirt5 step/dirt6 step/dirt7 step/dirt8 step/dirt9 step/dirt10 step/dirt11 step/dirt12 }
 
 // Gravel
-step/gravel1			DSGRAV1
-step/gravel2			DSGRAV2
-step/gravel3			DSGRAV3
-step/gravel4			DSGRAV4
-$random step/gravel { step/gravel1 step/gravel2 step/gravel3 step/gravel4 }
+step/gravel1			"Sounds/Footstep/Gravel/StepGravel1.wav"
+step/gravel2			"Sounds/Footstep/Gravel/StepGravel2.wav"
+step/gravel3			"Sounds/Footstep/Gravel/StepGravel3.wav"
+step/gravel4			"Sounds/Footstep/Gravel/StepGravel4.wav"
+step/gravel5			"Sounds/Footstep/Gravel/StepGravel5.wav"
+step/gravel6			"Sounds/Footstep/Gravel/StepGravel6.wav"
+step/gravel7			"Sounds/Footstep/Gravel/StepGravel7.wav"
+step/gravel8			"Sounds/Footstep/Gravel/StepGravel8.wav"
+step/gravel9			"Sounds/Footstep/Gravel/StepGravel9.wav"
+step/gravel0			"Sounds/Footstep/Gravel/StepGravel10.wav"
+step/gravel11			"Sounds/Footstep/Gravel/StepGravel11.wav"
+step/gravel12			"Sounds/Footstep/Gravel/StepGravel12.wav"
+$random step/gravel { step/gravel1 step/gravel2 step/gravel3 step/gravel4 step/gravel5 step/gravel6 step/gravel7 step/gravel8 step/gravel9 step/gravel10 step/gravel11 step/gravel12 }
 
 // Hard
-step/hard1			DSHARD1
-step/hard2			DSHARD2
-step/hard3			DSHARD3
-step/hard4			DSHARD4
-step/hard5			DSHARD5
-step/hard6			DSHARD6
-$random step/hard { step/hard1 step/hard2 step/hard3 step/hard4 step/hard5 step/hard6 }
+step/hard1			"Sounds/Footstep/Hard/StepHard1.wav"
+step/hard2			"Sounds/Footstep/Hard/StepHard2.wav"
+step/hard3			"Sounds/Footstep/Hard/StepHard3.wav"
+step/hard4			"Sounds/Footstep/Hard/StepHard4.wav"
+step/hard5			"Sounds/Footstep/Hard/StepHard5.wav"
+step/hard6			"Sounds/Footstep/Hard/StepHard6.wav"
+step/hard7			"Sounds/Footstep/Hard/StepHard7.wav"
+step/hard8			"Sounds/Footstep/Hard/StepHard8.wav"
+step/hard9			"Sounds/Footstep/Hard/StepHard9.wav"
+step/hard10			"Sounds/Footstep/Hard/StepHard10.wav"
+step/hard11			"Sounds/Footstep/Hard/StepHard11.wav"
+step/hard12			"Sounds/Footstep/Hard/StepHard12.wav"
+$random step/hard { step/hard1 step/hard2 step/hard3 step/hard4 step/hard5 step/hard6 step/hard7 step/hard8 step/hard9 step/hard10 step/hard11 step/hard12 }
 
 // Metal A
-step/metal/a1			DSMET01
-step/metal/a2			DSMET02
-step/metal/a3			DSMET03
-step/metal/a4			DSMET04
-step/metal/a5			DSMET05
-step/metal/a6			DSMET06
-$random step/metal/a { step/metal/a1 step/metal/a2 step/metal/a3 step/metal/a4 step/metal/a5 step/metal/a6 }
+step/metal/a1			"Sounds/Footstep/Metal/StepMetalA1.wav"
+step/metal/a2			"Sounds/Footstep/Metal/StepMetalA2.wav"
+step/metal/a3			"Sounds/Footstep/Metal/StepMetalA3.wav"
+step/metal/a4			"Sounds/Footstep/Metal/StepMetalA4.wav"
+step/metal/a5			"Sounds/Footstep/Metal/StepMetalA5.wav"
+step/metal/a6			"Sounds/Footstep/Metal/StepMetalA6.wav"
+step/metal/a7			"Sounds/Footstep/Metal/StepMetalA7.wav"
+step/metal/a8			"Sounds/Footstep/Metal/StepMetalA8.wav"
+step/metal/a9			"Sounds/Footstep/Metal/StepMetalA9.wav"
+step/metal/a10			"Sounds/Footstep/Metal/StepMetalA10.wav"
+step/metal/a11			"Sounds/Footstep/Metal/StepMetalA11.wav"
+step/metal/a12			"Sounds/Footstep/Metal/StepMetalA12.wav"
+$random step/metal/a { step/metal/a1 step/metal/a2 step/metal/a3 step/metal/a4 step/metal/a5 step/metal/a6 step/metal/a7 step/metal/a8 step/metal/a9 step/metal/a10 step/metal/a11 step/metal/a12 }
 
 // Metal B (Thin Metals, Girders)
-step/metal/b1			DSMET201
-step/metal/b2			DSMET202
-step/metal/b3			DSMET203
-step/metal/b4			DSMET204
-$random step/metal/b { step/metal/b1 step/metal/b2 step/metal/b3 step/metal/b4 }
+step/metal/b1			"Sounds/Footstep/Metal/StepMetalB1.wav"
+step/metal/b2			"Sounds/Footstep/Metal/StepMetalB2.wav"
+step/metal/b3			"Sounds/Footstep/Metal/StepMetalB3.wav"
+step/metal/b4			"Sounds/Footstep/Metal/StepMetalB4.wav"
+step/metal/b5			"Sounds/Footstep/Metal/StepMetalB5.wav"
+step/metal/b6			"Sounds/Footstep/Metal/StepMetalB6.wav"
+step/metal/b7			"Sounds/Footstep/Metal/StepMetalB7.wav"
+step/metal/b8			"Sounds/Footstep/Metal/StepMetalB8.wav"
+step/metal/b9			"Sounds/Footstep/Metal/StepMetalB9.wav"
+step/metal/b10			"Sounds/Footstep/Metal/StepMetalB10.wav"
+step/metal/b11			"Sounds/Footstep/Metal/StepMetalB11.wav"
+step/metal/b12			"Sounds/Footstep/Metal/StepMetalB12.wav"
+$random step/metal/b { step/metal/b1 step/metal/b2 step/metal/b3 step/metal/b4 step/metal/b5 step/metal/b6 step/metal/b7 step/metal/b8 step/metal/b9 step/metal/b10 step/metal/b11 step/metal/b12 }
 
 // Rock
-step/rock1			DSROCK1
-step/rock2			DSROCK2
-step/rock3			DSROCK3
-step/rock4			DSROCK4
-step/rock5			DSROCK5
-step/rock6			DSROCK6
-step/rock7			DSROCK7
-step/rock8			DSROCK8
-$random step/rock { step/rock1 step/rock2 step/rock3 step/rock4 step/rock5 step/rock6 step/rock7 step/rock8 }
+step/rock1			"Sounds/Footstep/Rock/StepRock1.wav"
+step/rock2			"Sounds/Footstep/Rock/StepRock2.wav"
+step/rock3			"Sounds/Footstep/Rock/StepRock3.wav"
+step/rock4			"Sounds/Footstep/Rock/StepRock4.wav"
+step/rock5			"Sounds/Footstep/Rock/StepRock5.wav"
+step/rock6			"Sounds/Footstep/Rock/StepRock6.wav"
+step/rock7			"Sounds/Footstep/Rock/StepRock7.wav"
+step/rock8			"Sounds/Footstep/Rock/StepRock8.wav"
+step/rock9			"Sounds/Footstep/Rock/StepRock9.wav"
+step/rock10			"Sounds/Footstep/Rock/StepRock10.wav"
+step/rock11			"Sounds/Footstep/Rock/StepRock11.wav"
+step/rock12			"Sounds/Footstep/Rock/StepRock12.wav"
+$random step/rock { step/rock1 step/rock2 step/rock3 step/rock4 step/rock5 step/rock6 step/rock7 step/rock8 step/rock9 step/rock10 step/rock11 step/rock12 }
 
 // Snow
-step/snow1			DSSNOW1
-step/snow2			DSSNOW2
-step/snow3			DSSNOW3
-step/snow4			DSSNOW4
-step/snow5			DSSNOW5
-step/snow6			DSSNOW6
-$random step/snow { step/snow1 step/snow2 step/snow3 step/snow4 step/snow5 step/snow6 }
+step/snow1			"Sounds/Footstep/Snow/StepSnow1.wav"
+step/snow2			"Sounds/Footstep/Snow/StepSnow2.wav"
+step/snow3			"Sounds/Footstep/Snow/StepSnow3.wav"
+step/snow4			"Sounds/Footstep/Snow/StepSnow4.wav"
+step/snow5			"Sounds/Footstep/Snow/StepSnow5.wav"
+step/snow6			"Sounds/Footstep/Snow/StepSnow6.wav"
+step/snow7			"Sounds/Footstep/Snow/StepSnow7.wav"
+step/snow8			"Sounds/Footstep/Snow/StepSnow8.wav"
+step/snow9			"Sounds/Footstep/Snow/StepSnow9.wav"
+step/snow10			"Sounds/Footstep/Snow/StepSnow10.wav"
+step/snow11			"Sounds/Footstep/Snow/StepSnow11.wav"
+step/snow12			"Sounds/Footstep/Snow/StepSnow12.wav"
+$random step/snow { step/snow1 step/snow2 step/snow3 step/snow4 step/snow5 step/snow6 step/snow7 step/snow8 step/snow9 step/snow10 step/snow11 step/snow12 }
 
 // Tile A
-step/tile/a1			DSTILE01
-step/tile/a2			DSTILE02
-step/tile/a3			DSTILE03
-step/tile/a4			DSTILE04
-step/tile/a5			DSTILE05
-step/tile/a6			DSTILE06
-$random step/tile/a { step/tile/a1 step/tile/a2 step/tile/a3 step/tile/a4 step/tile/a5 step/tile/a6 }
+step/tile/a1			"Sounds/Footstep/Tile/StepTileA1.wav"
+step/tile/a2			"Sounds/Footstep/Tile/StepTileA2.wav"
+step/tile/a3			"Sounds/Footstep/Tile/StepTileA3.wav"
+step/tile/a4			"Sounds/Footstep/Tile/StepTileA4.wav"
+step/tile/a5			"Sounds/Footstep/Tile/StepTileA5.wav"
+step/tile/a6			"Sounds/Footstep/Tile/StepTileA6.wav"
+step/tile/a7			"Sounds/Footstep/Tile/StepTileA7.wav"
+step/tile/a8			"Sounds/Footstep/Tile/StepTileA8.wav"
+step/tile/a9			"Sounds/Footstep/Tile/StepTileA9.wav"
+step/tile/a10			"Sounds/Footstep/Tile/StepTileA10.wav"
+step/tile/a11			"Sounds/Footstep/Tile/StepTileA11.wav"
+step/tile/a12			"Sounds/Footstep/Tile/StepTileA12.wav"
+$random step/tile/a { step/tile/a1 step/tile/a2 step/tile/a3 step/tile/a4 step/tile/a5 step/tile/a6 step/tile/a7 step/tile/a8 step/tile/a9 step/tile/a10 step/tile/a11 step/tile/a12 }
 
 // Tile B (Hallways, Marble/Finer Tiles)
-step/tile/b1			DSTILE21
-step/tile/b2			DSTILE22
-step/tile/b3			DSTILE23
-step/tile/b4			DSTILE24
-step/tile/b5			DSTILE25
-step/tile/b6			DSTILE26
-step/tile/b7			DSTILE27
-step/tile/b8			DSTILE28
-$random step/tile/b { step/tile/b1 step/tile/b2 step/tile/b3 step/tile/b4 step/tile/b5 step/tile/b6 step/tile/b7 step/tile/b8 }
+step/tile/b1			"Sounds/Footstep/Tile/StepTileB1.wav"
+step/tile/b2			"Sounds/Footstep/Tile/StepTileB2.wav"
+step/tile/b3			"Sounds/Footstep/Tile/StepTileB3.wav"
+step/tile/b4			"Sounds/Footstep/Tile/StepTileB4.wav"
+step/tile/b5			"Sounds/Footstep/Tile/StepTileB5.wav"
+step/tile/b6			"Sounds/Footstep/Tile/StepTileB6.wav"
+step/tile/b7			"Sounds/Footstep/Tile/StepTileB7.wav"
+step/tile/b8			"Sounds/Footstep/Tile/StepTileB8.wav"
+step/tile/b9			"Sounds/Footstep/Tile/StepTileB9.wav"
+$random step/tile/b { step/tile/b1 step/tile/b2 step/tile/b3 step/tile/b4 step/tile/b5 step/tile/b6 step/tile/b7 step/tile/b8 step/tile/b9 }
 
 // Wood
-step/wood1			plank1//DSWOOD1
-step/wood2			plank2//DSWOOD2
-step/wood3			plank3//DSWOOD3
-step/wood4			plank4//DSWOOD4
-$random step/wood { step/wood1 step/wood2 step/wood3 step/wood4 }
+step/wood1			"Sounds/Footstep/Wood/StepWood1.wav"
+step/wood2			"Sounds/Footstep/Wood/StepWood2.wav"
+step/wood3			"Sounds/Footstep/Wood/StepWood3.wav"
+step/wood4			"Sounds/Footstep/Wood/StepWood4.wav"
+step/wood5			"Sounds/Footstep/Wood/StepWood5.wav"
+step/wood6			"Sounds/Footstep/Wood/StepWood6.wav"
+step/wood7			"Sounds/Footstep/Wood/StepWood7.wav"
+step/wood8			"Sounds/Footstep/Wood/StepWood8.wav"
+step/wood9			"Sounds/Footstep/Wood/StepWood9.wav"
+step/wood10			"Sounds/Footstep/Wood/StepWood10.wav"
+step/wood11			"Sounds/Footstep/Wood/StepWood11.wav"
+step/wood12			"Sounds/Footstep/Wood/StepWood12.wav"
+$random step/wood { step/wood1 step/wood2 step/wood3 step/wood4 step/wood5 step/wood6 step/wood7 step/wood8 step/wood9 step/wood10 step/wood11 step/wood12 }
 
 // Slime
-step/slime1			DSSLIME1
-step/slime2			DSSLIME2
-step/slime3			DSSLIME3
-step/slime4			DSSLIME4
-step/slime5			slosh1
-step/slime6			slosh2
-step/slime7			slosh3
-step/slime8			slosh4
-$random step/slime { step/slime1 step/slime2 step/slime3 step/slime4 step/slime5 step/slime6 step/slime7 step/slime8}
+step/slime1			"Sounds/Footstep/Slime/StepSlime1.wav"
+step/slime2			"Sounds/Footstep/Slime/StepSlime2.wav"
+step/slime3			"Sounds/Footstep/Slime/StepSlime3.wav"
+step/slime4			"Sounds/Footstep/Slime/StepSlime4.wav"
+step/slime5			"Sounds/Footstep/Slime/StepSlime5.wav"
+step/slime6			"Sounds/Footstep/Slime/StepSlime6.wav"
+step/slime7			"Sounds/Footstep/Slime/StepSlime7.wav"
+step/slime8			"Sounds/Footstep/Slime/StepSlime8.wav"
+step/slime9			"Sounds/Footstep/Slime/StepSlime9.wav"
+step/slime10			"Sounds/Footstep/Slime/StepSlime10.wav"
+step/slime11			"Sounds/Footstep/Slime/StepSlime11.wav"
+step/slime12			"Sounds/Footstep/Slime/StepSlime12.wav"
+$random step/slime { step/slime1 step/slime2 step/slime3 step/slime4 step/slime5 step/slime6 step/slime7 step/slime8 step/slime9 step/slime10 step/slime11 step/slime12 }
 
 // Slimy
-step/slimy1			DSSLIMY1
-step/slimy2			DSSLIMY2
-step/slimy3			DSSLIMY3
-step/slimy4			DSSLIMY4
-$random step/slimy { step/slimy1 step/slimy2 step/slimy3 step/slimy4 }
+step/slimy1			"Sounds/Footstep/Slimy/StepSlimy1.wav"
+step/slimy2			"Sounds/Footstep/Slimy/StepSlimy2.wav"
+step/slimy3			"Sounds/Footstep/Slimy/StepSlimy3.wav"
+step/slimy4			"Sounds/Footstep/Slimy/StepSlimy4.wav"
+step/slimy5			"Sounds/Footstep/Slimy/StepSlimy5.wav"
+step/slimy6			"Sounds/Footstep/Slimy/StepSlimy6.wav"
+step/slimy7			"Sounds/Footstep/Slimy/StepSlimy7.wav"
+step/slimy8			"Sounds/Footstep/Slimy/StepSlimy8.wav"
+step/slimy9			"Sounds/Footstep/Slimy/StepSlimy9.wav"
+step/slimy10			"Sounds/Footstep/Slimy/StepSlimy10.wav"
+step/slimy11			"Sounds/Footstep/Slimy/StepSlimy11.wav"
+step/slimy12			"Sounds/Footstep/Slimy/StepSlimy12.wav"
+$random step/slimy { step/slimy1 step/slimy2 step/slimy3 step/slimy4 step/slimy5 step/slimy6 step/slimy7 step/slimy8 step/slimy9 step/slimy10 step/slimy11 step/slimy12 }
 
 // Lava
 step/lava1			DSLAVA1
@@ -140,11 +233,19 @@ step/lava4			DSLAVA4
 step/lava5			hot1
 $random step/lava { step/lava1 step/lava2 step/lava3 step/lava4 }
 
-step/grass1			grass1
-step/grass2			grass2
-step/grass3			grass3
-step/grass4			grass4
-$random step/grass { step/grass1 step/grass2 step/grass3 step/grass4 }
+step/grass1			"Sounds/Footstep/Grass/StepGrass1.wav"
+step/grass2			"Sounds/Footstep/Grass/StepGrass2.wav"
+step/grass3			"Sounds/Footstep/Grass/StepGrass3.wav"
+step/grass4			"Sounds/Footstep/Grass/StepGrass4.wav"
+step/grass5			"Sounds/Footstep/Grass/StepGrass5.wav"
+step/grass6			"Sounds/Footstep/Grass/StepGrass6.wav"
+step/grass7			"Sounds/Footstep/Grass/StepGrass7.wav"
+step/grass8			"Sounds/Footstep/Grass/StepGrass8.wav"
+step/grass9			"Sounds/Footstep/Grass/StepGrass9.wav"
+step/grass10			"Sounds/Footstep/Grass/StepGrass10.wav"
+step/grass11			"Sounds/Footstep/Grass/StepGrass11.wav"
+step/grass12			"Sounds/Footstep/Grass/StepGrass12.wav"
+$random step/grass { step/grass1 step/grass2 step/grass3 step/grass4 step/grass5 step/grass6 step/grass7 step/grass8 step/grass9 step/grass10 step/grass11 step/grass12 }
 
 
 //Land sounds by ravik
