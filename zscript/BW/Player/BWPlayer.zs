@@ -83,8 +83,14 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 
 	override void PlayerLandedMakeGruntSound(Actor onmobj)
 	{
+		
 		if(onmobj || waterlevel > 1)
 		{
+			if(onmobj && onmobj.bismonster && onmobj.health > 0)
+			{
+				name dmgt = (abs(vel.z) > 9) ? 'stomp' : 'kick';
+				onmobj.DamagemObj(self,self,abs(vel.z) * 2,dmgt,DMG_USEANGLE,angle);
+			}
 			super.PlayerLandedMakeGruntSound(onmobj);	//ummmh
 			return;
 		}

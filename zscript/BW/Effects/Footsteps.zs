@@ -1,10 +1,6 @@
 
-class BD_Footsteps : Actor
-{
-	Default {
-		+NOINTERACTION
-	}
-	
+class BW_Footsteps : Thinker //the less actors the better
+{	
 	//the player footsteps are attached to.
 	PlayerPawn toFollow;
 	PlayerInfo fplayer;
@@ -17,11 +13,13 @@ class BD_Footsteps : Actor
 	protected bool f_enabled;	
 	protected double f_vol;
 	protected double f_delay;
+	protected bool 	 left;
 
 	//attach PlayerPawn, load the texture/sound associated tables.
 	void Init( PlayerPawn attached_player)
 	{
 		toFollow = attached_player;
+		fplayer = toFollow.player;
 	}
 	
 	override void Tick()
@@ -44,38 +42,60 @@ class BD_Footsteps : Actor
 		//0) do nothing until updateTics is below 0
 		if (updateTics > 0)
 			return;
-		
-		//1) Update the Footstep actor to follow Player.
-		SetOrigin(toFollow.pos, false);
-		floorz = toFollow.floorz;
 		   
-		double playerVel2D = sqrt(toFollow.vel.x * toFollow.vel.x + toFollow.vel.y * toFollow.vel.y);
+		double playerVel2D = toFollow.vel.xy.length();
 		
 		//2) Only play footsteps when on ground, and if the player is moving fast enough.
-		if (!f_enabled && (playerVel2D > 0.1) && (toFollow.pos.z - toFollow.floorz <= 0)) {			
-			
-			sound stepsound;			
+		if (!f_enabled && (playerVel2D > 0.1) && (toFollow.pos.z - toFollow.floorz <= 0)) 
+		{			
+			sound stepsound; name mat;	
+
 			//current floor texture for the player:
-			name floortex = name(Texman.GetName(toFollow.floorpic));
-			//no sound if steppin on sky
-			if (floorpic == skyflatnum)
-				stepsound = "none";
-			else
-				stepsound = GetFlatSound(Texman.GetName(toFollow.floorpic));
+			string floortex = (Texman.GetName(toFollow.floorpic));
+			[stepsound,mat] = BW_StaticHandler.getmaterialstepandName(floortex);	//get step sound and material for the floor
+
 			//sound volume is amplified by speed.
 			double soundVolume = f_vol * playerVel2D * 0.12; //multiplied by 0.12 because raw value is too high to be used as volume
 			
 			//play the sound if it's non-null
-			if (stepsound != "none")
+			if (stepsound != "step/none")
+			{
 				toFollow.A_StartSound(stepsound, CHAN_AUTO, CHANF_LOCAL|CHANF_UI, volume:soundVolume);
-			
+				if(steppedonLiquid(mat))
+				{
+					vector3 steppos = (cos(tofollow.angle + 90),sin(tofollow.angle + 90),0);
+					steppos *= (left ? -7 : 7);
+					BW_StepActor.spawnfootstepFx(toFollow,toFollow.pos + steppos,mat,false);	//splashes
+				}
+				left = !left;	//change side
+			}
 			//delay CVAR value is inverted, where 1.0 is default, higher means more frequent, smaller means less frequent
 			double dmul = (2.1 - Clamp(f_delay,0.1,2));
 			updateTics = (gameinfo.normforwardmove[0] - playerVel2D) * dmul;   
-		} else {
+		} 
+		else 
+		{
 			// no need to poll for change too often
 			updateTics = 1;
 		}
+	}
+
+	bool steppedonLiquid(name material = 'null')
+	{
+		switch(material)
+		{
+			case 'water':
+			case 'blood':
+			case 'acid':
+			case 'slime':
+			case 'lava':
+			case 'purplewater':
+				return true;	break;
+
+			default:
+				return false;	break;
+		}
+		return false;
 	}
 	
 	// a totally ugly check for texture name:

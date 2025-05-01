@@ -105,7 +105,7 @@ Class BW_StaticHandler : StaticEventHandler
 		for(int i = 0; i < self.MarbleDef.size(); i++)
 		{
 			self.MaterialTypes.push("Marble");	//marble is actually just stone heh
-			self.MaterialStep.push("step/tile/b");
+			self.MaterialStep.push("step/tile/a");
 			self.MaterialImpactSnd.push("bullet_Stone");
 			self.MaterialTextures.push(self.MarbleDef[i]);
 		}
@@ -282,7 +282,7 @@ Class BW_StaticHandler : StaticEventHandler
 		"BWSO120","BWSO121","BWSO122","BWSOD77","BWSO131","BWSO132","PANEL7","SLIME13","RROCK20",
 		"RROCK15","BWSO129","BWSO134","BWSO135","BWSO106","BWSO114","BWSO110","BWSOD31","BWSO130",
 		"CFTX296","FLOOR6_1","CFTX496","BWWALL13","PANEL1","PANEL2","BRICK12","EP3WALL7","BWSOD25",
-		"E2M8A4","E2M8A5","E2M8A6","E2M9LAB","BWSO105","SO145","SP_HOT1","ROCKRED2","ROCKRED3",
+		"E2M8A4","E2M8A5","E2M8A6","E2M9LAB","BWSO105","SO145","SP_HOT1","ROCKRED2","ROCKRED3","RROCK06",
 		"GSTONE2","BWWALL5","BWSOD23","BWSOD24","BWSOD18","-NOFLAT-"//how did i miss this?
 	};
 	

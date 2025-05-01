@@ -13,6 +13,10 @@ Class BW_MonsterBase : Actor
 	property feetheight:feetheight;
 	bool canReceiveHead;
 	property HasHeadshot:canReceiveHead;
+	bool onlyfronthead;
+	property onlyfronthead:onlyfronthead;
+	bool hasnuts;
+	property nuts:hasnuts;
 	name LastHit;
 
 	double YscaleFix;	//this is the real scale.y value monsters should use, since it accounts for the pixel stretch
@@ -24,7 +28,8 @@ Class BW_MonsterBase : Actor
 		//thisll need to be adjusted on a monster per monster basis still.
 		BW_MonsterBase.HeadShotMult 2.0;	//1.75
 		BW_MonsterBase.HasHeadshot true;
-		
+		BW_MonsterBase.onlyfronthead false;	//head can only be hit by front attacks
+		BW_MonsterBase.nuts false;			//self explanatory
 		Monster;
 		+FLOORCLIP;
 		+SLIDESONWALLS;
@@ -71,17 +76,45 @@ Class BW_MonsterBase : Actor
 			//this should be cleaner now
 			if(hitpos.z - floorz > Headh)			// = hit head
 			{
-				damage *= HeadShotMult;
-				LastHit = 'Head';
+				if(onlyfronthead)
+				{
+					//	pretty much the middle body checks
+					if(aa > -30 && aa < 30)				//hit front
+						LastHit = 'Head';
+					else if(aa >= 30 && aa < 150)		//hit left
+						LastHit = 'LeftArm';
+					else if(aa > -150 && aa <= -30)		//hit right
+						LastHit = 'RightArm';
+					else if((aa <= 180 && aa >= 150) || (aa >= -180 && aa <= -150))	//hit back
+						LastHit = 'Back';
+					else
+						LastHit = 'Chest';
+				}
+				else
+				{
+					damage *= HeadShotMult;
+					LastHit = 'Head';
+				}
 			}
 			else if(hitpos.z - floorz < Feeth)		// = hit feet
 			{
-				//i have only two sides
-				if(aa >= 0)							//hit left
-					LastHit = 'LeftFoot';
-				
-				else								//hit right
-					LastHit = 'RightFoot';
+				if(hasnuts)
+				{
+					if(aa > -30 && aa < 30)				//hit front
+						LastHit = 'Nuts';
+					else if(aa >= 30 && aa < 180)		//hit left
+						LastHit = 'LeftFoot';
+					else		//hit right
+						LastHit = 'RightFoot';
+				}
+				else
+				{
+					//i have only two sides usually
+					if(aa >= 0)							//hit left
+						LastHit = 'LeftFoot';
+					else								//hit right
+						LastHit = 'RightFoot';
+				}
 			}
 			else									// = hit body
 			{

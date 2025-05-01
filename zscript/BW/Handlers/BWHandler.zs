@@ -23,12 +23,10 @@ class BW_EventHandler : EventHandler
 	override void playerentered(playerevent e)
 	{
 		let pmo = players[e.playernumber].mo;
-		let steps = BD_Footsteps(Actor.Spawn("BD_Footsteps"));
+		let steps = new("BW_Footsteps");
 		if (steps)
-		{
-			steps.Init(pmo);
-			steps.fplayer = players[e.playerNumber];
-		}
+			steps.init(pmo);
+		
 		pmo.A_SetBlend(0x000000,1.0,35);
 		players[e.PlayerNumber].mo.A_GiveInventory("Z_NashMove", 1);
 	}
