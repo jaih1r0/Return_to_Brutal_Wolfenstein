@@ -40,12 +40,12 @@ Class BW_KarAmmo : BW_Ammo
 {
     default
     {
-        inventory.amount 8;
-        inventory.maxamount 50;
-        ammo.backpackamount 8;
+        inventory.amount 5;
+        inventory.maxamount 20;
+        ammo.backpackamount 10;
         ammo.BackpackMaxAmount 50;
         tag "7.92 x 57 Bullet";
-        scale 0.25;
+        scale 0.3;
     }
     states
     {
@@ -79,9 +79,9 @@ Class BW_PistolAmmo : BW_Ammo
     default
     {
         inventory.amount 8;
-        inventory.maxamount 200;
+        inventory.maxamount 128;
         ammo.backpackamount 8;
-        ammo.BackpackMaxAmount 200;
+        ammo.BackpackMaxAmount 128;
         tag "9mm Bullet";
         scale 0.8;
     }

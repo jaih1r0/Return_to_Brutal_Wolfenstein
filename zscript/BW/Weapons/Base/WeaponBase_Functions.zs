@@ -348,7 +348,7 @@ Extend Class BaseBWWeapon
 		WepSmk.Texture = TexMan.CheckForTexture(gfx);
 		WepSmk.Color1 = col;
 		WepSmk.Style = style_translucent;
-		WepSmk.Flags = SPF_ROLL;
+		WepSmk.Flags = SPF_ROLL|SPF_NOTIMEFREEZE;
 		WepSmk.vel = vl;
 		WepSmk.Startroll = random(0,360);
 		WepSmk.RollVel = frandom(-6.0,6.0);

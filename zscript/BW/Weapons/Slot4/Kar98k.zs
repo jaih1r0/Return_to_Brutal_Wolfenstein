@@ -196,7 +196,7 @@ Class BW_Kar98K : BaseBWWeapon
 			K98R ABCDE 2;
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 			K98R FGHIJ 2;
-			TNT1 A 0 A_JumpIf(CountInv("Kar98Ammo") == 0 && CountInv("Clip") > 4, "Reload_Clip");
+			TNT1 A 0 A_JumpIf(invoker.ammo2.amount == 0 && invoker.ammo1.amount > 4, "Reload_Clip");
 		Reload_Bullet:
 			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
 			K98R KLMNOPQ 2;
