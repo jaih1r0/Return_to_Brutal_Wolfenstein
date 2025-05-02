@@ -1,0 +1,4 @@
+Texture "FLOOR0_2",64,64
+{
+Patch "FLOOR0_2",0,0
+}
