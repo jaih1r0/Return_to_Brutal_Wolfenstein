@@ -55,7 +55,7 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	option "player bullet type","BW_BulletType","BWProjectileType"
 	statictext ""
-	control "Kick/Slide","netevent KickEm"
+	control "Kick/Slide","+zoom"
 	statictext ""
 	control "Knife","netevent SlashEm"
 	statictext ""
