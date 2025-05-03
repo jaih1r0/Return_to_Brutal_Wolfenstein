@@ -238,7 +238,7 @@ Class BW_StaticHandler : StaticEventHandler
 		{
 			self.TexturesList.insert(name(self.BloodDef[i]),'Blood');
 		}
-		self.StepsList.insert('Blood',sound("step/Blood"));
+		self.StepsList.insert('Blood',sound("step/water"));
 		self.ImpactsList.insert('Blood',sound("bullet_water"));
 
 		materialsNum = self.TexturesList.countused();
