@@ -16,14 +16,15 @@ Class BW_StaticHandler : StaticEventHandler
 		
 		BW_StaticHandler hnd = BW_StaticHandler(BW_StaticHandler.find("BW_StaticHandler"));
 		
-		if(hnd.MaterialTextures.size() < 1)
+		if(hnd.materialsNum < 1)
 			return 'null';
 		
-		for(int i = 0; i < hnd.MaterialTextures.size(); i++)
-		{
-			if(texture ~== hnd.MaterialTextures[i])
-				return name(hnd.MaterialTypes[i]);
-		}
+		name mat;	bool got;
+		[mat,got] = hnd.TexturesList.checkvalue(texture);
+
+		if(got)
+			return name(mat);
+
 		return 'null';
 	}
 	
@@ -34,14 +35,21 @@ Class BW_StaticHandler : StaticEventHandler
 		
 		BW_StaticHandler hnd = BW_StaticHandler(BW_StaticHandler.find("BW_StaticHandler"));
 		
-		if(hnd.MaterialTextures.size() < 1)
+		if(hnd.materialsNum < 1)
 			return sound("step/default");
 		
-		for(int i = 0; i < hnd.MaterialTextures.size(); i++)
-		{
-			if(texture ~== hnd.MaterialTextures[i])
-				return sound(hnd.MaterialStep[i]);
-		}
+		name mat;	bool got;
+		[mat,got] = hnd.TexturesList.checkvalue(texture);
+
+		if(!got)
+			return sound("step/default");
+		
+		sound snd;
+		[snd,got] = hnd.StepsList.checkvalue(mat);
+
+		if(got)
+			return sound(snd);
+		
 		return sound("step/default");
 	}
 	
@@ -52,14 +60,21 @@ Class BW_StaticHandler : StaticEventHandler
 		
 		BW_StaticHandler hnd = BW_StaticHandler(BW_StaticHandler.find("BW_StaticHandler"));
 		
-		if(hnd.MaterialTextures.size() < 1)
+		if(hnd.materialsNum < 1)
 			return sound("bullet_generic");
 		
-		for(int i = 0; i < hnd.MaterialTextures.size(); i++)
-		{
-			if(texture ~== hnd.MaterialTextures[i])
-				return sound(hnd.MaterialImpactSnd[i]);
-		}
+		name mat;	bool got;
+		[mat,got] = hnd.TexturesList.checkvalue(texture);
+
+		if(!got)
+			return sound("bullet_generic");
+		
+		sound snd;
+		[snd,got] = hnd.ImpactsList.checkvalue(mat);
+		
+		if(got)
+			return sound(snd);
+		
 		return sound("bullet_generic");
 	}
 
@@ -70,14 +85,21 @@ Class BW_StaticHandler : StaticEventHandler
 		
 		BW_StaticHandler hnd = BW_StaticHandler(BW_StaticHandler.find("BW_StaticHandler"));
 		
-		if(hnd.MaterialTextures.size() < 1)
+		if(hnd.materialsNum < 1)
+			return sound("step/default"),'null';
+	
+		name mat;	bool got;
+		[mat,got] = hnd.TexturesList.checkvalue(texture);
+
+		if(!got)
 			return sound("step/default"),'null';
 		
-		for(int i = 0; i < hnd.MaterialTextures.size(); i++)
-		{
-			if(texture ~== hnd.MaterialTextures[i])
-				return sound(hnd.MaterialStep[i]),name(hnd.MaterialTypes[i]);
-		}
+		sound snd;
+		[snd,got] = hnd.StepsList.checkvalue(mat);
+		
+		if(got)
+			return snd,mat;
+		
 		return sound("step/default"),'null';
 	}
 
@@ -85,166 +107,149 @@ Class BW_StaticHandler : StaticEventHandler
 	//setup
 	override void OnRegister()
 	{
-		
 		for(int i = 0; i < self.SkyDef.size(); i++)
 		{
-			self.MaterialTypes.push("Sky");
-			self.MaterialStep.push("step/none");
-			self.MaterialImpactSnd.push("step/none");
-			self.MaterialTextures.push(self.SkyDef[i]);
+			self.TexturesList.insert(name(self.skydef[i]),'Sky');
 		}
+		self.StepsList.insert('Sky',sound("step/none"));
+		self.ImpactsList.insert('Sky',sound("step/none"));
 		
 		for(int i = 0; i < self.StoneDef.size(); i++)
 		{
-			self.MaterialTypes.push("Stone");
-			self.MaterialStep.push("step/default");
-			self.MaterialImpactSnd.push("bullet_Stone");
-			self.MaterialTextures.push(self.StoneDef[i]);
+			self.TexturesList.insert(name(self.StoneDef[i]),'Stone');
 		}
+		self.StepsList.insert('Stone',sound("step/default"));
+		self.ImpactsList.insert('Stone',sound("bullet_Stone"));
 		
 		for(int i = 0; i < self.MarbleDef.size(); i++)
 		{
-			self.MaterialTypes.push("Marble");	//marble is actually just stone heh
-			self.MaterialStep.push("step/tile/a");
-			self.MaterialImpactSnd.push("bullet_Stone");
-			self.MaterialTextures.push(self.MarbleDef[i]);
+			self.TexturesList.insert(name(self.MarbleDef[i]),'Marble');
 		}
+		self.StepsList.insert('Marble',sound("step/tile/a"));
+		self.ImpactsList.insert('Marble',sound("bullet_Stone"));
 		
 		for(int i = 0; i < self.WoodDef.size(); i++)
 		{
-			self.MaterialTypes.push("Wood");
-			self.MaterialStep.push("step/wood");
-			self.MaterialImpactSnd.push("bullet_Wood");
-			self.MaterialTextures.push(self.WoodDef[i]);
+			self.TexturesList.insert(name(self.WoodDef[i]),'Wood');
 		}
+		self.StepsList.insert('Wood',sound("step/wood"));
+		self.ImpactsList.insert('Wood',sound("bullet_Wood"));
 		
 		for(int i = 0; i < self.MetalDef.size(); i++)
 		{
-			self.MaterialTypes.push("Metal");
-			self.MaterialStep.push("step/metal/a");
-			self.MaterialImpactSnd.push("bullet_metal");
-			self.MaterialTextures.push(self.MetalDef[i]);
+			self.TexturesList.insert(name(self.MetalDef[i]),'Metal');
 		}
+		self.StepsList.insert('Metal',sound("step/metal/a"));
+		self.ImpactsList.insert('Metal',sound("bullet_metal"));
 		
 		for(int i = 0; i < self.CarpetDef.size(); i++)
 		{
-			self.MaterialTypes.push("Carpet");
-			self.MaterialStep.push("step/carpet");
-			self.MaterialImpactSnd.push("bullet_Wood");
-			self.MaterialTextures.push(self.CarpetDef[i]);
+			self.TexturesList.insert(name(self.CarpetDef[i]),'Carpet');
 		}
+		self.StepsList.insert('Carpet',sound("step/carpet"));
+		self.ImpactsList.insert('Carpet',sound("bullet_Wood"));
 		
 		for(int i = 0; i < self.PurpleStoneDef.size(); i++)
 		{
-			self.MaterialTypes.push("PurpleStone");
-			self.MaterialStep.push("step/default");
-			self.MaterialImpactSnd.push("bullet_Stone");
-			self.MaterialTextures.push(self.PurpleStoneDef[i]);
+			self.TexturesList.insert(name(self.PurpleStoneDef[i]),'PurpleStone');
 		}
+		self.StepsList.insert('PurpleStone',sound("step/default"));
+		self.ImpactsList.insert('PurpleStone',sound("bullet_Stone"));
 		
 		for(int i = 0; i < self.DirtDef.size(); i++)
 		{
-			self.MaterialTypes.push("Dirt");
-			self.MaterialStep.push("step/dirt");
-			self.MaterialImpactSnd.push("bullet_Dirt");
-			self.MaterialTextures.push(self.DirtDef[i]);
+			self.TexturesList.insert(name(self.DirtDef[i]),'Dirt');
 		}
+		self.StepsList.insert('Dirt',sound("step/dirt"));
+		self.ImpactsList.insert('Dirt',sound("bullet_Dirt"));
 		
 		for(int i = 0; i < self.GravelDef.size(); i++)
 		{
-			self.MaterialTypes.push("Gravel");
-			self.MaterialStep.push("step/gravel");
-			self.MaterialImpactSnd.push("bullet_Dirt");
-			self.MaterialTextures.push(self.GravelDef[i]);
+			self.TexturesList.insert(name(self.GravelDef[i]),'Gravel');
 		}
+		self.StepsList.insert('Gravel',sound("step/gravel"));
+		self.ImpactsList.insert('Gravel',sound("bullet_Dirt"));
 		
 		for(int i = 0; i < self.WaterDef.size(); i++)
 		{
-			self.MaterialTypes.push("Water");
-			self.MaterialStep.push("step/water");
-			self.MaterialImpactSnd.push("bullet_water");
-			self.MaterialTextures.push(self.WaterDef[i]);
+			self.TexturesList.insert(name(self.WaterDef[i]),'Water');
 		}
+		self.StepsList.insert('Water',sound("step/water"));
+		self.ImpactsList.insert('Water',sound("bullet_water"));
 		
 		for(int i = 0; i < self.SlimeDef.size(); i++)
 		{
-			self.MaterialTypes.push("Slime");	//brown watha
-			self.MaterialStep.push("step/slime");
-			self.MaterialImpactSnd.push("bullet_water");
-			self.MaterialTextures.push(self.SlimeDef[i]);
+			self.TexturesList.insert(name(self.SlimeDef[i]),'Slime');
 		}
+		self.StepsList.insert('Slime',sound("step/slime"));
+		self.ImpactsList.insert('Slime',sound("bullet_water"));
 
 		for(int i = 0; i < self.acidDef.size(); i++)
 		{
-			self.MaterialTypes.push("Acid");	//brown watha
-			self.MaterialStep.push("step/slime");
-			self.MaterialImpactSnd.push("bullet_water");
-			self.MaterialTextures.push(self.acidDef[i]);
+			self.TexturesList.insert(name(self.acidDef[i]),'Acid');
 		}
+		self.StepsList.insert('Acid',sound("step/slime"));
+		self.ImpactsList.insert('Acid',sound("bullet_water"));
 		
 		for(int i = 0; i < self.PurpleLiqDef.size(); i++)
 		{
-			self.MaterialTypes.push("PurpleWater");	//purpurina
-			self.MaterialStep.push("step/Water");
-			self.MaterialImpactSnd.push("bullet_water");
-			self.MaterialTextures.push(self.PurpleLiqDef[i]);
+			self.TexturesList.insert(name(self.PurpleLiqDef[i]),'PurpleWater');
 		}
+		self.StepsList.insert('PurpleWater',sound("step/Water"));
+		self.ImpactsList.insert('PurpleWater',sound("bullet_water"));
 		
 		for(int i = 0; i < self.ElectricDef.size(); i++)
 		{
-			self.MaterialTypes.push("Electric");
-			self.MaterialStep.push("step/metal/b");
-			self.MaterialImpactSnd.push("bullet_electric");
-			self.MaterialTextures.push(self.ElectricDef[i]);
+			self.TexturesList.insert(name(self.ElectricDef[i]),"Electric");
 		}
+		self.StepsList.insert('Electric',sound("step/metal/b"));
+		self.ImpactsList.insert('Electric',sound("bullet_electric"));
 		
 		for(int i = 0; i < self.CrystalDef.size(); i++)
 		{
-			self.MaterialTypes.push("Crystal");
-			self.MaterialStep.push("step/snow");	//dont think this is even used to walk over it
-			self.MaterialImpactSnd.push("bullet_crystal");
-			self.MaterialTextures.push(self.CrystalDef[i]);
+			self.TexturesList.insert(name(self.CrystalDef[i]),'Crystal');
 		}
+		self.StepsList.insert('Crystal',sound("step/snow"));
+		self.ImpactsList.insert('Crystal',sound("bullet_crystal"));
 		
 		for(int i = 0; i < self.LavaDef.size(); i++)
 		{
-			self.MaterialTypes.push("Lava");
-			self.MaterialStep.push("step/lava");
-			self.MaterialImpactSnd.push("world/lavasizzle");
-			self.MaterialTextures.push(self.LavaDef[i]);
+			self.TexturesList.insert(name(self.LavaDef[i]),'Lava');
 		}
+		self.StepsList.insert('Lava',sound("step/lava"));
+		self.ImpactsList.insert('Lava',sound("world/lavasizzle"));
 		
 		  
 		for(int i = 0; i < self.FleshDef.size(); i++)
 		{
-			self.MaterialTypes.push("Flesh");
-			self.MaterialStep.push("step/slimy");
-			self.MaterialImpactSnd.push("bullet_flesh");
-			self.MaterialTextures.push(self.FleshDef[i]);
+			self.TexturesList.insert(name(self.FleshDef[i]),'Flesh');
 		}
+		self.StepsList.insert('Flesh',sound("step/slimy"));
+		self.ImpactsList.insert('Flesh',sound("bullet_flesh"));
 		
 		for(int i = 0; i < self.BurnRockDef.size(); i++)
 		{
-			self.MaterialTypes.push("BurnStone");
-			self.MaterialStep.push("step/default");
-			self.MaterialImpactSnd.push("bullet_Stone");
-			self.MaterialTextures.push(self.BurnRockDef[i]);
+			self.TexturesList.insert(name(self.BurnRockDef[i]),'BurnStone');
 		}
-		
+		self.StepsList.insert('BurnStone',sound("step/default"));
+		self.ImpactsList.insert('BurnStone',sound("bullet_Stone"));
+
 		for(int i = 0; i < self.BloodDef.size(); i++)
 		{
-			self.MaterialTypes.push("Blood");
-			self.MaterialStep.push("step/water");
-			self.MaterialImpactSnd.push("bullet_water");
-			self.MaterialTextures.push(self.BloodDef[i]);
+			self.TexturesList.insert(name(self.BloodDef[i]),'Blood');
 		}
-		
+		self.StepsList.insert('Blood',sound("step/Blood"));
+		self.ImpactsList.insert('Blood',sound("bullet_water"));
+
+		materialsNum = self.TexturesList.countused();
+		//console.printf("[\cdMaterials\c-] took %fms to add: %d defs",(mstimef() - tsf),materialsNum);
 		//console.printf("Pushed: "..self.MaterialTextures.size().." materials ("..self.MaterialTypes.size());
 	}
-	array	<string>	MaterialTypes;
-	array	<string>	MaterialTextures;
-	array	<string>	MaterialStep;
-	array	<string>	MaterialImpactSnd;
+
+	uint materialsNum;
+	map		<Name,Name>			TexturesList;	//k: str(textureID), v: material name
+	map		<Name,Sound>		StepsList;		//k: material name , v: stepsound
+	map		<Name,Sound>		ImpactsList;	//k: material name , v: impactsound
 	
 	static const string SkyDef[] = {
 		"F_SKY1","F_SKY2"
@@ -316,7 +321,7 @@ Class BW_StaticHandler : StaticEventHandler
 		"BWWALL15","BWMOB6","SLIME14","SW1SKULL","SOD2","BWSO123","BWSO125","BWSO126",
 		"BWSO127","BWSO128","SOD1","SLIME15","STEP5","METAL2","SLIME16","SUPPORT3",
 		"SW1COMM","BW_ELEV3","SW2STON1","SW1SATYR","SW2LION","SW2SATYR","BWMOB4","BWMENS",
-		"BWGDOOR1","BWGDOOR2","MIDBRN1","SW2COMM"
+		"BWGDOOR1","BWGDOOR2","MIDBRN1","SW2COMM","SW1LION"
 	};
 	
 	static const string CarpetDef[] = {
@@ -364,7 +369,7 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string LavaDef[] = {
-		"LAVA1","LAVA2"
+		"LAVA1","LAVA2","LAVA3","LAVA4"
 	};
 	
 	static const string FleshDef[] = {

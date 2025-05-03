@@ -101,7 +101,11 @@ Class BW_MonsterBase : Actor
 				if(hasnuts)
 				{
 					if(aa > -30 && aa < 30)				//hit front
+					{
 						LastHit = 'Nuts';
+						if(!self.curstate.InStateSequence(self.resolvestate("Pain.Nuts")))	//prevents abusing this
+							mod = 'Nuts';
+					}
 					else if(aa >= 30 && aa < 180)		//hit left
 						LastHit = 'LeftFoot';
 					else		//hit right

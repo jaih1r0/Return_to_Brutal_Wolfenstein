@@ -70,6 +70,7 @@ Class BW_Baron : BW_MonsterBase //1383
 		Mass 1000;
 		Speed 8;
 		PainChance 50;
+        PainChance "Nuts",255;
 		Monster;
 		+FLOORCLIP
 		+BOSSDEATH
@@ -82,10 +83,11 @@ Class BW_Baron : BW_MonsterBase //1383
 		HitObituary "$OB_BARONHIT";
 		Tag "$FN_BARON";
         bloodcolor "DarkGreen";
-        BW_MonsterBase.headheight 44;
-		BW_MonsterBase.feetheight 18;
+        BW_MonsterBase.headheight 48;
+		BW_MonsterBase.feetheight 36;
 		BW_MonsterBase.HeadShotMult 2.0;
 		BW_MonsterBase.HasHeadshot true;
+        BW_MonsterBase.nuts true;
 	}
 	States
 	{
@@ -100,6 +102,7 @@ Class BW_Baron : BW_MonsterBase //1383
             BOSS EF 8 A_FaceTarget;
             BOSS G 8 A_BruisAttack;
             Goto See;
+
         Pain:
             BOSS H  2;
             BOSS H  2 A_Pain;
@@ -116,6 +119,16 @@ Class BW_Baron : BW_MonsterBase //1383
             BOSS O 8;
             BOSS NMLKJI  8;
             Goto See;
+        Pain.Nuts:
+            TNT1 A 0 A_pain();
+            BNRJ AC 8;
+            TNT1 A 0 A_pain();
+            BNRJ AC 8;
+            TNT1 A 0 A_pain();
+            BNRJ AC 8;
+            TNT1 A 0 A_pain();
+            BNRJ AC 8;
+            goto see;
 	}
 }
 
