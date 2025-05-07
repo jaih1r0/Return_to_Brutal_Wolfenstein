@@ -16,25 +16,27 @@ Class BW_Leichenfaust : BaseBWWeapon
 			LFPK A -1;
 			stop;
 		Select:
-			TNT1 A 0 BW_WeaponRaise("Generic/Rifle/Raise");
+			TNT1 A 0 BW_WeaponRaise("Generic/Launcher/Raise");
 			BFPU AB 1;
-			TNT1 A 0 A_StartSound("MG42/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("LF/Raise", 0, CHANF_OVERLAP, 1);
 			BFPU CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 A_Stopsound(42);
-			TNT1 A 0 A_Startsound("MG42/Drop",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("LF/Drop",5,CHANF_OVERLAP);
 			BFPU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);
 			BFPU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
 		Ready:
-			BFPI ABCDEFGHIJKLMNO 1 {
+			BFPI ABCDEFGHIJKLMNO 1
+			{
 				if(invoker.ammo1.amount < 1)
 					return resolvestate("Ready2");
 				return BW_WeaponReady(WRF_ALLOWUSER3);
 			}
+			TNT1 A 0 A_StartSound("LF/Pulse", CHAN_AUTO, CHANF_NOSTOP, 1);
 			loop;
 		NoAmmo:
 		Ready2:

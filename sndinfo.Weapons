@@ -744,8 +744,21 @@ hssg/shell6	"Sounds/Weapons/Slot8/HellSSG/HSSGShell6.wav"
 
 //Leichenfaust
 
-LF/Fire 		LCHFIRE
-LF/Spin 		VSPIN
+LF/Fire 	LCHFIRE
+LF/Spin 	VSPIN
+LF/Raise	"Sounds/Weapons/Slot8/Leichenfaust/LeichRaise.wav"
+LF/Drop	"Sounds/Weapons/Slot8/Leichenfaust/LeichDrop.wav"
+
+$RANDOM LF/Pulse
+{
+LF/Pulse1
+LF/Pulse2
+LF/Pulse3
+}
+
+LF/Pulse1	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse1.wav"
+LF/Pulse2	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse2.wav"
+LF/Pulse3	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse3.wav"
 
 //-----MISC-----
 
