@@ -660,6 +660,7 @@ MG42/rechamber MG4CLIK
 
 //-----SLOT 6-----//
 
+//Panzerschreck
 Panzerschreck/fire	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFire.wav"
 Panzerschreck/Load	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckLoad.wav"
 Panzerschreck/Trigger	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFireTrigger.wav"
@@ -678,6 +679,8 @@ Panzerschreck/Whoosh2	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckW
 Panzerschreck/Whoosh3	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh3.wav"
 
 //-----SLOT 8-----//
+
+//Hell SSG
 
 $random HSSG/Fire
 {
@@ -738,6 +741,11 @@ hssg/shell3	"Sounds/Weapons/Slot8/HellSSG/HSSGShell3.wav"
 hssg/shell4	"Sounds/Weapons/Slot8/HellSSG/HSSGShell4.wav"
 hssg/shell5	"Sounds/Weapons/Slot8/HellSSG/HSSGShell5.wav"
 hssg/shell6	"Sounds/Weapons/Slot8/HellSSG/HSSGShell6.wav"
+
+//Leichenfaust
+
+LF/Fire 		LCHFIRE
+LF/Spin 		VSPIN
 
 //-----MISC-----
 

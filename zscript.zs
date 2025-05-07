@@ -33,6 +33,7 @@ Version 4.10
 #include "zscript/BW/Weapons/Slot6/Panzerschreck.zs"
 //#include "zscript/BW/Weapons/Slot7/Flammerwerfer.zs"
 #include "zscript/BW/Weapons/Slot8/HellSSG.zs"
+#include "zscript/BW/Weapons/Slot8/Leichenfaust.zs"
 #include "zscript/BW/Weapons/Throwables/grenades.zs"
 
 //Monsters
