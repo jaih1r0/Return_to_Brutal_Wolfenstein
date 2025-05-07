@@ -677,6 +677,68 @@ Panzerschreck/Whoosh1	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckW
 Panzerschreck/Whoosh2	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh2.wav"
 Panzerschreck/Whoosh3	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh3.wav"
 
+//-----SLOT 8-----//
+
+$random HSSG/Fire
+{
+HSSG/Fire1
+HSSG/Fire2
+HSSG/Fire3
+HSSG/Fire4
+HSSG/Fire5
+HSSG/Fire6
+HSSG/Fire7
+HSSG/Fire8
+}
+
+HSSG/Fire1	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire1.wav"
+HSSG/Fire2	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire2.wav"
+HSSG/Fire3	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire3.wav"
+HSSG/Fire4	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire4.wav"
+HSSG/Fire5	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire5.wav"
+HSSG/Fire6	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire6.wav"
+HSSG/Fire7	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire7.wav"
+HSSG/Fire8	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire8.wav"
+
+$random HSSG/FireAdd
+{
+HSSG/FireAdd1
+HSSG/FireAdd2
+HSSG/FireAdd3
+HSSG/FireAdd4
+HSSG/FireAdd5
+HSSG/FireAdd6
+}
+
+HSSG/FireAdd1	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd1.wav"
+HSSG/FireAdd2	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd2.wav"
+HSSG/FireAdd3	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd3.wav"
+HSSG/FireAdd4	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd4.wav"
+HSSG/FireAdd5	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd5.wav"
+HSSG/FireAdd6	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd6.wav"
+
+hssg/open	"Sounds/Weapons/Slot8/HellSSG/HSSGOpen.wav"
+hssg/close	"Sounds/Weapons/Slot8/HellSSG/HSSGClose.wav"
+hssg/Raise	"Sounds/Weapons/Slot8/HellSSG/HSSGRaise.wav"
+hssg/Drop	"Sounds/Weapons/Slot8/HellSSG/HSSGDrop.wav"
+
+$RANDOM hssg/shell
+{
+hssg/shell1
+hssg/shell2
+hssg/shell3
+hssg/shell4
+hssg/shell5
+hssg/shell6
+}
+
+hssg/shell1	"Sounds/Weapons/Slot8/HellSSG/HSSGShell1.wav"
+hssg/shell2	"Sounds/Weapons/Slot8/HellSSG/HSSGShell2.wav"
+hssg/shell3	"Sounds/Weapons/Slot8/HellSSG/HSSGShell3.wav"
+hssg/shell4	"Sounds/Weapons/Slot8/HellSSG/HSSGShell4.wav"
+hssg/shell5	"Sounds/Weapons/Slot8/HellSSG/HSSGShell5.wav"
+hssg/shell6	"Sounds/Weapons/Slot8/HellSSG/HSSGShell6.wav"
+
 //-----MISC-----
 
 Grenade/Pin     "Sounds/Weapons/Grenades/GRENPIC2.ogg"

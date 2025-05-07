@@ -57,6 +57,8 @@ DoomEdNums
 	7515 = "BW_Panzerschreck"
 	1309 = "BW_Panzerschreck"	//panzerfaust in the future
 	
+	7500 = "BW_SSG"
+	
 	//map things
 	1310 = "BW_RedColumn"
 	1311 = "BW_RedTallColumn"
