@@ -226,3 +226,19 @@ model BW_BloodPool
 	Skin 0 "bsplat8.png"
 	FrameIndex NGMV H 0 0
 }
+
+
+Model Tesla_Beam
+{
+	Path "models"    
+	Model 0 "tracer2.md3" 
+	Skin 0 "m2b1.png"     
+	scale 3.0 3.0 1.0
+	rotating
+	Rotation-Vector 0 1 0
+	Rotation-Speed 6
+	Useactorpitch
+	pitchoffset 90
+	FrameIndex MODL A 0 0
+		
+}

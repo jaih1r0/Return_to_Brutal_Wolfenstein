@@ -678,6 +678,98 @@ Panzerschreck/Whoosh1	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckW
 Panzerschreck/Whoosh2	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh2.wav"
 Panzerschreck/Whoosh3	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh3.wav"
 
+//-----SLOT 7-----//
+
+//Tesla
+
+tesla/reltake	"Sounds/Weapons/Slot7/Tesla/TesR1.ogg"
+tesla/relIns	"Sounds/Weapons/Slot7/Tesla/TesR2.ogg"
+
+Tesla/Drop	"Sounds/Weapons/Slot7/Tesla/TeslaDrop.wav"
+Tesla/Raise	"Sounds/Weapons/Slot7/Tesla/TeslaRaise.wav"
+
+Tesla/Fire	"Sounds/Weapons/Slot7/Tesla/LGLOOP.ogg"
+Tesla/StartFire	"Sounds/Weapons/Slot7/Tesla/PZPCHR2.ogg"
+Tesla/StartSpin	"Sounds/Weapons/Slot7/Tesla/CG_WINDU.ogg"
+Tesla/Spin	"Sounds/Weapons/Slot7/Tesla/CG_MOTOR.ogg"
+Tesla/StopSpin	"Sounds/Weapons/Slot7/Tesla/CG_WINDD.ogg"
+
+sprk1	"Sounds/Weapons/Slot7/Tesla/SPARKS1.ogg"
+sprk2	"Sounds/Weapons/Slot7/Tesla/SPARKS2.ogg"
+sprk3	"Sounds/Weapons/Slot7/Tesla/SPARKS3.ogg"
+sprk4	"Sounds/Weapons/Slot7/Tesla/SPARKS4.ogg"
+$random	Tesla/Sparks
+{
+	sprk1
+	sprk2
+	sprk3
+	sprk4
+}
+
+$RANDOM Tesla/FireAdd
+{
+Tesla/FireAdd1
+Tesla/FireAdd2
+Tesla/FireAdd3
+Tesla/FireAdd4
+Tesla/FireAdd5
+Tesla/FireAdd6
+Tesla/FireAdd7
+Tesla/FireAdd8
+Tesla/FireAdd9
+Tesla/FireAdd10
+Tesla/FireAdd11
+Tesla/FireAdd12
+Tesla/FireAdd13
+Tesla/FireAdd14
+Tesla/FireAdd15
+Tesla/FireAdd16
+Tesla/FireAdd17
+Tesla/FireAdd18
+Tesla/FireAdd19
+Tesla/FireAdd20
+}
+
+Tesla/FireAdd1	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd1.wav"
+Tesla/FireAdd2	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd2.wav"
+Tesla/FireAdd3	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd3.wav"
+Tesla/FireAdd4	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd4.wav"
+Tesla/FireAdd5	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd5.wav"
+Tesla/FireAdd6	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd6.wav"
+Tesla/FireAdd7	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd7.wav"
+Tesla/FireAdd8	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd8.wav"
+Tesla/FireAdd9	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd9.wav"
+Tesla/FireAdd10	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd10.wav"
+Tesla/FireAdd11	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd11.wav"
+Tesla/FireAdd12	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd12.wav"
+Tesla/FireAdd13	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd13.wav"
+Tesla/FireAdd14	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd14.wav"
+Tesla/FireAdd15	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd15.wav"
+Tesla/FireAdd16	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd16.wav"
+Tesla/FireAdd17	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd17.wav"
+Tesla/FireAdd18	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd18.wav"
+Tesla/FireAdd19	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd19.wav"
+Tesla/FireAdd20	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd20.wav"
+
+$RANDOM Tesla/AltAdd
+{
+Tesla/AltAdd1
+Tesla/AltAdd2
+Tesla/AltAdd3
+}
+
+Tesla/AltAdd1	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd1.wav"
+Tesla/AltAdd2	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd2.wav"
+Tesla/AltAdd3	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd3.wav"
+
+//Flamer
+
+flamer/firestart "Sounds/Weapons/Slot7/Flamer/FLAMER_START.ogg"
+flamer/fireloop "Sounds/Weapons/Slot7/Flamer/FLAMER_LOOP.ogg"
+flamer/hiss		"sounds/Weapons/Slot7/Flamer/FlamerHiss1.ogg"
+flamer/select	"sounds/Weapons/Slot7/Flamer/FT_Select1.wav"
+flamer/Drop	"sounds/Weapons/Slot7/Flamer/FlamerDrop.wav"
+
 //-----SLOT 8-----//
 
 //Hell SSG
