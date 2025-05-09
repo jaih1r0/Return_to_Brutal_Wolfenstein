@@ -44,6 +44,9 @@ DoomEdNums
 	7081 = "BW_Threenades"
 	7082 = "BW_GrenadeAmmo"
 	7513 = "RocketAmmo"	//panzerZooka rockets
+	7599 = "BW_LFAmmo"
+	7692 = "BW_TeslaCell"
+	
 	
 	//weapons
 	7032 = "BW_MP40"
@@ -56,6 +59,11 @@ DoomEdNums
 	
 	7515 = "BW_Panzerschreck"
 	1309 = "BW_Panzerschreck"	//panzerfaust in the future
+	
+	7645 = "BW_Tesla"
+	
+	7500 = "BW_SSG"
+	7600 = "BW_Leichenfaust"
 	
 	//map things
 	1310 = "BW_RedColumn"

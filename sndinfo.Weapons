@@ -660,6 +660,7 @@ MG42/rechamber MG4CLIK
 
 //-----SLOT 6-----//
 
+//Panzerschreck
 Panzerschreck/fire	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFire.wav"
 Panzerschreck/Load	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckLoad.wav"
 Panzerschreck/Trigger	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFireTrigger.wav"
@@ -676,6 +677,180 @@ Panzerschreck/Whoosh3
 Panzerschreck/Whoosh1	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh1.wav"
 Panzerschreck/Whoosh2	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh2.wav"
 Panzerschreck/Whoosh3	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh3.wav"
+
+//-----SLOT 7-----//
+
+//Tesla
+
+tesla/reltake	"Sounds/Weapons/Slot7/Tesla/TesR1.ogg"
+tesla/relIns	"Sounds/Weapons/Slot7/Tesla/TesR2.ogg"
+
+Tesla/Drop	"Sounds/Weapons/Slot7/Tesla/TeslaDrop.wav"
+Tesla/Raise	"Sounds/Weapons/Slot7/Tesla/TeslaRaise.wav"
+
+Tesla/Fire	"Sounds/Weapons/Slot7/Tesla/LGLOOP.ogg"
+Tesla/StartFire	"Sounds/Weapons/Slot7/Tesla/PZPCHR2.ogg"
+Tesla/StartSpin	"Sounds/Weapons/Slot7/Tesla/CG_WINDU.ogg"
+Tesla/Spin	"Sounds/Weapons/Slot7/Tesla/CG_MOTOR.ogg"
+Tesla/StopSpin	"Sounds/Weapons/Slot7/Tesla/CG_WINDD.ogg"
+
+sprk1	"Sounds/Weapons/Slot7/Tesla/SPARKS1.ogg"
+sprk2	"Sounds/Weapons/Slot7/Tesla/SPARKS2.ogg"
+sprk3	"Sounds/Weapons/Slot7/Tesla/SPARKS3.ogg"
+sprk4	"Sounds/Weapons/Slot7/Tesla/SPARKS4.ogg"
+$random	Tesla/Sparks
+{
+	sprk1
+	sprk2
+	sprk3
+	sprk4
+}
+
+$RANDOM Tesla/FireAdd
+{
+Tesla/FireAdd1
+Tesla/FireAdd2
+Tesla/FireAdd3
+Tesla/FireAdd4
+Tesla/FireAdd5
+Tesla/FireAdd6
+Tesla/FireAdd7
+Tesla/FireAdd8
+Tesla/FireAdd9
+Tesla/FireAdd10
+Tesla/FireAdd11
+Tesla/FireAdd12
+Tesla/FireAdd13
+Tesla/FireAdd14
+Tesla/FireAdd15
+Tesla/FireAdd16
+Tesla/FireAdd17
+Tesla/FireAdd18
+Tesla/FireAdd19
+Tesla/FireAdd20
+}
+
+Tesla/FireAdd1	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd1.wav"
+Tesla/FireAdd2	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd2.wav"
+Tesla/FireAdd3	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd3.wav"
+Tesla/FireAdd4	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd4.wav"
+Tesla/FireAdd5	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd5.wav"
+Tesla/FireAdd6	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd6.wav"
+Tesla/FireAdd7	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd7.wav"
+Tesla/FireAdd8	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd8.wav"
+Tesla/FireAdd9	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd9.wav"
+Tesla/FireAdd10	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd10.wav"
+Tesla/FireAdd11	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd11.wav"
+Tesla/FireAdd12	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd12.wav"
+Tesla/FireAdd13	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd13.wav"
+Tesla/FireAdd14	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd14.wav"
+Tesla/FireAdd15	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd15.wav"
+Tesla/FireAdd16	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd16.wav"
+Tesla/FireAdd17	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd17.wav"
+Tesla/FireAdd18	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd18.wav"
+Tesla/FireAdd19	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd19.wav"
+Tesla/FireAdd20	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd20.wav"
+
+$RANDOM Tesla/AltAdd
+{
+Tesla/AltAdd1
+Tesla/AltAdd2
+Tesla/AltAdd3
+}
+
+Tesla/AltAdd1	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd1.wav"
+Tesla/AltAdd2	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd2.wav"
+Tesla/AltAdd3	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd3.wav"
+
+//Flamer
+
+flamer/firestart "Sounds/Weapons/Slot7/Flamer/FLAMER_START.ogg"
+flamer/fireloop "Sounds/Weapons/Slot7/Flamer/FLAMER_LOOP.ogg"
+flamer/hiss		"sounds/Weapons/Slot7/Flamer/FlamerHiss1.ogg"
+flamer/select	"sounds/Weapons/Slot7/Flamer/FT_Select1.wav"
+flamer/Drop	"sounds/Weapons/Slot7/Flamer/FlamerDrop.wav"
+
+//-----SLOT 8-----//
+
+//Hell SSG
+
+$random HSSG/Fire
+{
+HSSG/Fire1
+HSSG/Fire2
+HSSG/Fire3
+HSSG/Fire4
+HSSG/Fire5
+HSSG/Fire6
+HSSG/Fire7
+HSSG/Fire8
+}
+
+HSSG/Fire1	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire1.wav"
+HSSG/Fire2	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire2.wav"
+HSSG/Fire3	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire3.wav"
+HSSG/Fire4	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire4.wav"
+HSSG/Fire5	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire5.wav"
+HSSG/Fire6	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire6.wav"
+HSSG/Fire7	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire7.wav"
+HSSG/Fire8	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire8.wav"
+
+$random HSSG/FireAdd
+{
+HSSG/FireAdd1
+HSSG/FireAdd2
+HSSG/FireAdd3
+HSSG/FireAdd4
+HSSG/FireAdd5
+HSSG/FireAdd6
+}
+
+HSSG/FireAdd1	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd1.wav"
+HSSG/FireAdd2	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd2.wav"
+HSSG/FireAdd3	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd3.wav"
+HSSG/FireAdd4	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd4.wav"
+HSSG/FireAdd5	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd5.wav"
+HSSG/FireAdd6	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd6.wav"
+
+hssg/open	"Sounds/Weapons/Slot8/HellSSG/HSSGOpen.wav"
+hssg/close	"Sounds/Weapons/Slot8/HellSSG/HSSGClose.wav"
+hssg/Raise	"Sounds/Weapons/Slot8/HellSSG/HSSGRaise.wav"
+hssg/Drop	"Sounds/Weapons/Slot8/HellSSG/HSSGDrop.wav"
+
+$RANDOM hssg/shell
+{
+hssg/shell1
+hssg/shell2
+hssg/shell3
+hssg/shell4
+hssg/shell5
+hssg/shell6
+}
+
+hssg/shell1	"Sounds/Weapons/Slot8/HellSSG/HSSGShell1.wav"
+hssg/shell2	"Sounds/Weapons/Slot8/HellSSG/HSSGShell2.wav"
+hssg/shell3	"Sounds/Weapons/Slot8/HellSSG/HSSGShell3.wav"
+hssg/shell4	"Sounds/Weapons/Slot8/HellSSG/HSSGShell4.wav"
+hssg/shell5	"Sounds/Weapons/Slot8/HellSSG/HSSGShell5.wav"
+hssg/shell6	"Sounds/Weapons/Slot8/HellSSG/HSSGShell6.wav"
+
+//Leichenfaust
+
+LF/Fire 	LCHFIRE
+LF/Spin 	VSPIN
+LF/Raise	"Sounds/Weapons/Slot8/Leichenfaust/LeichRaise.wav"
+LF/Drop	"Sounds/Weapons/Slot8/Leichenfaust/LeichDrop.wav"
+
+$RANDOM LF/Pulse
+{
+LF/Pulse1
+LF/Pulse2
+LF/Pulse3
+}
+
+LF/Pulse1	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse1.wav"
+LF/Pulse2	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse2.wav"
+LF/Pulse3	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse3.wav"
 
 //-----MISC-----
 

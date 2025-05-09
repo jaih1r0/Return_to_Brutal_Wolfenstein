@@ -6,26 +6,31 @@ Class BW_FlameThrower : BaseBWWeapon
         Weapon.AmmoType "BW_GasCan";
 		Weapon.AmmoUse 0;
 		Weapon.AmmoGive 30;
+		inventory.pickupmessage "[Slot 7] Flammenwerfer 35";
+		tag "Flammenwerfer";
+		scale 0.5;
     }
 
-    action void FireFlames()
+    action void FireFlames(bool take = true)
     {
         A_Fireprojectile("BW_FlameProjectile",0,0);
-        BW_HandleWeaponFeedback(2, 3, -0.20, frandom(+0.15, -0.15), 0, 0, 0);
-        invoker.ammo1.amount--;
+        BW_HandleWeaponFeedback(2, 3, -0.20, frandom(+0.15, -0.15));
+		if(take && invoker.ammo1.amount)
+			invoker.ammo1.amount--;
     }
 
-    action void fireStreamFlame()
+    action void fireStreamFlame(bool take = true)
     {
         double pz = height * 0.5 - floorclip + player.mo.AttackZOffset * player.crouchFactor;
-        pz -= 5;
-        invoker.ammo1.amount--;
+        pz -= 7;
+		if(take)
+			invoker.ammo1.amount--;
 		FLineTraceData t;
-        self.LineTrace(angle, 300, pitch, offsetz: pz, data: t);
-        if(t.hitactor != null)
+        self.LineTrace(angle, 300, pitch,0, offsetz: pz,radius, data: t);
+        if(t.hitactor != null && t.hitactor.health > 0)
         {
             t.hitactor.damagemobj(self,self,12,'Fire');
-            t.hitactor.A_GiveInventory("BW_BurningHandler",1);
+			//t.hitactor.GiveInventory("BW_BurningHandler",1);
         }
         vector3 cur = (pos.xy,pos.z + pz);
         vector3 dif = levellocals.vec3diff(cur,t.hitlocation);
@@ -44,15 +49,21 @@ Class BW_FlameThrower : BaseBWWeapon
     states
     {
         spawn:
-            TNT1 A -1;
+            BFLW A -1;
             stop;
         Select:
-            TNT1 A 0 BW_WeaponRaise();
-            BFLU ABCD 1;
+			TNT1 A 0 BW_WeaponRaise("Generic/Launcher/Raise");
+            BFLU AB 1;
+			TNT1 A 0 A_StartSound("Flamer/Draw", 0, CHANF_OVERLAP, 1);
+			BFLU CD 1;
             goto ready;
         Deselect:
+			TNT1 A 0 A_Stopsound(18);
             TNT1 A 0 A_clearoverlays(-5,-5);
-            BFLU FGHI 1;
+			TNT1 A 0 A_StartSound("Flamer/Drop", 0, CHANF_OVERLAP, 1);
+            BFLU FG 1;
+			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);
+			BFLU HI 1;
             TNT1 A 0 BW_WeaponLower();
             wait;
         Ready:
@@ -65,51 +76,71 @@ Class BW_FlameThrower : BaseBWWeapon
         Fire:
             TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
             TNT1 A 0 A_clearoverlays(-5,-5);
-            BFLF A 1 bright FireFlames();
-            BFLF BCD 1 bright;
-            TNT1 A 0 A_refire();
+			TNT1 A 0 A_Startsound("flamer/fireStart",17);
+			BFLU E 1;
+		FireLoop:
+			TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
+			TNT1 A 0 A_Startsound("flamer/fireloop",18,CHANF_LOOPING);
+            TNT1 A 0 A_Weaponoffset(0 + random(-1,1),32 + random(-1,0));
+			BFLF A 1 bright FireFlames();
+            BFLF B 1 bright;
+			TNT1 A 0 A_Weaponoffset(0,32);
+			BFLF C 1 bright FireFlames(false);
+			BFLF D 1 bright;
+            TNT1 A 0 A_refire("FireLoop");
+			TNT1 A 0 A_Stopsound(18);
+			TNT1 A 0 A_Startsound("flamer/hiss",17);
+			BFLU E 1;
             goto ready;
 
-        AltFire:    //altfire is the same as Fire, just with a different method of spawning the flames 
+       // AltFire:    //altfire is the same as Fire, just with a different method of spawning the flames 
             TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
             TNT1 A 0 A_clearoverlays(-5,-5);
             BFLF A 1 bright fireStreamFlame();
-            BFLF BCD 1 bright;
+            BFLF B 1 bright;
+			BFLF C 1 bright fireStreamFlame(false);
+			BFLF D 1 bright;
             TNT1 A 0 A_refire();
             goto ready;
         DryFire:
+			TNT1 A 0 A_Stopsound(18);
             BFLU E 2;
             goto ready;
         
         IdleFlameOverlay:
-            BFLI ABCDEFGHIJK 1 bright;
+            BFLI ABCDEFG 1 bright {
+				if(waterlevel > 1)
+					 A_clearoverlays(-5,-5);
+			}
             loop;
         
         KickFlash:
-            TNT1 A 0 A_clearoverlays(-5,-5);
+			TNT1 A 0 A_clearoverlays(-5,-5);
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
-			BFLK ABC 1;
-			BFLK DEF 1;
+			BFLK ABC 1 setpspriteifammo("BFLO");
+			BFLK DEF 1 setpspriteifammo("BFLO");
 			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
-			BFLK GGG 1;
-			BFLK FEDCBA 1;
-			goto ready;
+			BFLK GHHHG 1 setpspriteifammo("BFLO");
+			BFLK FEDCBA 1 setpspriteifammo("BFLO");
+			goto ready; 
 		SlideFlash:
-            TNT1 A 0 A_clearoverlays(-5,-5);
+			TNT1 A 0 A_clearoverlays(-5,-5);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
-			BFLK ABCD 1;
-			BFLK EFGH 1;
+			BFLK ABCD 1 setpspriteifammo("BFLO");
+			BFLK EFGH 1 setpspriteifammo("BFLO");
 			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
-			BFLK IJH 1;
-			BFLK IJH 1;
-			BFLK IJH 1;
-			BFLK IJH 1;
-			BFLK IJH 1;
-			BFLK IJH 1;
+			BFLK GHG 1 setpspriteifammo("BFLO");
+			BFLK HGH 1 setpspriteifammo("BFLO");
+			BFLK GHG 1 setpspriteifammo("BFLO");
+			BFLK HGH 1 setpspriteifammo("BFLO");
+			BFLK GHG 1 setpspriteifammo("BFLO");
+			BFLK HGH 1 setpspriteifammo("BFLO");
 		SlideFlashEnd:
+			TNT1 A 0 A_clearoverlays(-5,-5);
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
-			BFLK FEDCBA 1;
+			BFLK FEDCBA 1 setpspriteifammo("BFLO");
 			goto ready;
+			
 		KnifeGunFlash:
             TNT1 A 0 A_clearoverlays(-5,-5);
             BFLU FGHI 1;	//temporary
@@ -117,7 +148,16 @@ Class BW_FlameThrower : BaseBWWeapon
 			//TNT1 A 4;
 			BFLU ABCD 1;
 			stop;
+		LoadSprites:
+			BFLO A 0;
+			stop;
     }
+	
+	action void setpspriteifammo(string spt)
+	{
+		if(invoker.ammo1.amount < 1 || waterlevel > 1)
+			BW_ChangePsprite(spt);
+	}
 
     action void spawnFlameTrail(vector3 position)
 	{
@@ -142,15 +182,22 @@ Class BW_FlameThrower : BaseBWWeapon
 
 }
 
-Class BW_GasCan : ammo
+Class BW_GasCan : BW_Ammo //replaces cell
 {
     Default
 	{
-		Inventory.Amount 0;
+		Inventory.Amount 10;
 		Inventory.MaxAmount 60;
-		Ammo.BackpackAmount 0;
+		Ammo.BackpackAmount 10;
 		Ammo.BackpackMaxAmount 60;
-        inventory.icon "CELLA0";
+		tag "Gas can";
+        inventory.icon "AGASA0";
+	}
+	states
+	{
+		spawn:
+			AGAS A -1;
+			stop;
 	}
 }
 
@@ -165,7 +212,7 @@ Class BW_FlameProjectile : Actor
 		height 5;
 		renderstyle "add";
 		damagetype "Fire";
-		scale 0.3;
+		scale 0.32;
 		damage 2;
 		decal "Scorch";
 		+ripper;
@@ -181,7 +228,7 @@ Class BW_FlameProjectile : Actor
 			FRPR CCCCCCCCC 1;
 			//stop;
 		Death:
-			TNT1 A 0 {A_Stop(); bnogravity = true;}
+			//TNT1 A 0 {A_Stop(); bnogravity = true;}
 			TNT1 A 0 A_Explode(5,60,0);
 			DB54 ABCDEFGHIJKLMNOPQR 1;
 			stop;
@@ -218,7 +265,7 @@ Class BW_FlameProjectile : Actor
 
 	override int DoSpecialDamage (Actor victim, int damage, Name damagetype)
 	{
-		if(victim) //&& victim.health < 10)
+		if(victim && victim.health > 0) //&& victim.health < 10)
 		{
 			victim.A_GiveInventory("BW_BurningHandler",1);
 		}
@@ -229,16 +276,16 @@ Class BW_FlameProjectile : Actor
 	{
 		FSpawnParticleParams FTrail;
 		//string f = String.Format("%c", int("G") + random(0,5));
-		FTrail.Texture = TexMan.CheckForTexture("FRPRC0");
+		FTrail.Texture = TexMan.CheckForTexture("DB54G0");//("FRPRC0");
 		FTrail.Color1 = "FFFFFF";
 		FTrail.Style = STYLE_ADD;
 		FTrail.Flags = SPF_ROLL|SPF_FULLBRIGHT;
-		FTrail.Vel = (frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5)); 
+		FTrail.Vel = (frandom(-2.5,2.5),frandom(-2.5,2.5),frandom(-2.5,2.5)); 
 		FTrail.Startroll = random(0,360);
-		FTrail.RollVel = frandom(-3,3);
+		FTrail.RollVel = frandom(-15,15);
 		FTrail.StartAlpha = 1.0;
 		FTrail.FadeStep = 0.18;
-		FTrail.Size = random(25,30);
+		FTrail.Size = random(27,35);
 		FTrail.SizeStep = random(-1,-4);
 		FTrail.Lifetime = random(6,8); 
 		FTrail.Pos = position;
@@ -256,9 +303,10 @@ Class BW_BurningHandler : inventory
 	{
 		super.attachtoowner(other);
 		oldTranslation = other.translation;
-		burnTics = TICRATE * random(5,10);
+		burnTics = TICRATE * random(3,7);
 		other.A_SetTranslation("BW_Burning");
 		other.bBright = true;
+		//other.bnoblood = true;
 		if(other.target && other.target.player)
 			tracer = other.target;
 	}
@@ -274,7 +322,7 @@ Class BW_BurningHandler : inventory
 		if(burnTics)
 		{
 			burnTics--;
-			spawnFxFire((owner.pos.xy,owner.pos.z + random(0,owner.height * 0.75)));
+			spawnFxFire((owner.pos.xy,owner.pos.z + random(0,owner.height * 1.1)));
 			if(burnTics % 15 == 0)
 			{
 				if(tracer)
@@ -301,14 +349,15 @@ Class BW_BurningHandler : inventory
 		WTFSMK.Color1 = 0xFFFFFF;
 		WTFSMK.Style = STYLE_ADD;
 		WTFSMK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
-		WTFSMK.Startroll = 180;//random(0,360);
-		WTFSMK.RollVel = frandom(-1,1);
+		WTFSMK.Startroll = random(170,190);//180;//random(0,360);
+		WTFSMK.RollVel = frandom(-2,2);
 		WTFSMK.StartAlpha = 0.75;
 		WTFSMK.Size = frandom(35,48);
 		WTFSMK.SizeStep = -4;
 		WTFSMK.Lifetime = Random(5,8); 
 		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
-		WTFSMK.Vel = (frandom(-2.2,2.2),frandom(-2.2,2.2),frandom(-0.1,2.2));
+		WTFSMK.Vel = (frandom(-2.2,2.2),frandom(-2.2,2.2),frandom(-0.5,0.75));
+		WTFSMK.accel = (0,0,frandom(0.15,0.35));
 		Level.SpawnParticle (WTFSMK);
 	}
 }
