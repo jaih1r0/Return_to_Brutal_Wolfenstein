@@ -288,7 +288,8 @@ Class BW_StaticHandler : StaticEventHandler
 		"RROCK15","BWSO129","BWSO134","BWSO135","BWSO106","BWSO114","BWSO110","BWSOD31","BWSO130",
 		"CFTX296","FLOOR6_1","CFTX496","BWWALL13","PANEL1","PANEL2","BRICK12","EP3WALL7","BWSOD25",
 		"E2M8A4","E2M8A5","E2M8A6","E2M9LAB","BWSO105","SO145","SP_HOT1","ROCKRED2","ROCKRED3","RROCK06",
-		"GSTONE2","BWWALL5","BWSOD23","BWSOD24","BWSOD18","-NOFLAT-"//how did i miss this?
+		"GSTONE2","BWWALL5","BWSOD23","BWSOD24","BWSOD18","-NOFLAT-",//how did i miss this?
+		"F13"
 	};
 	
 	static const string MarbleDef[] = {
@@ -345,11 +346,13 @@ Class BW_StaticHandler : StaticEventHandler
 	};
 	
 	static const string WaterDef[] = {
-		"FWATER1","FWATER2","SFALL1"
+		"FWATER1","FWATER2","FWATER3","FWATER4",
+		"SFALL1","SFALL2","SFALL3","SFALL4"
 	};
 	
 	static const string SlimeDef[] = {
-		"SLIME01","SLIME05"//,"Nukage1"
+		"SLIME01","SLIME02","SLIME03","SLIME04",
+		"SLIME05","SLIME06","SLIME07","SLIME08" 
 	};
 
 	static const string acidDef[] = {

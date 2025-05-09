@@ -106,7 +106,7 @@ class NashGoreActor : NashGorePlugin
 		if (Owner)
 		{
 			canBleed = (!Owner.bNoBlood && !Owner.bNoBloodDecals);
-
+			CopyBloodColor(owner);
 			// was already dead upon activation
 			if (Owner.Health <= 0)
 			{

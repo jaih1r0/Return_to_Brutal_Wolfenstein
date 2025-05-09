@@ -230,7 +230,7 @@ model BW_BloodPool
 
 Model Tesla_Beam
 {
-	Path "models"    
+	Path "models/PROJECTILES"    
 	Model 0 "tracer2.md3" 
 	Skin 0 "m2b1.png"     
 	scale 3.0 3.0 1.0

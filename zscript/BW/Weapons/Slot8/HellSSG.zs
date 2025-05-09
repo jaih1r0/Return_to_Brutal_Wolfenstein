@@ -107,9 +107,14 @@ Class BW_SSG : BaseBWWeapon
 			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
 			BHGR MNO 1;
 			TNT1 A 0 A_Startsound("hssg/close",CHAN_AUTO);
-			BHGR PQR 1;
-			BHGR S 10;
+			BHGR PQS 1;
+			BHGR SS 1 A_Weaponoffset(-0.5,1,WOF_ADD);
+			BHGR S 1;
+			BHGR S 1 A_Weaponoffset(-1,2,WOF_ADD);
+			BHGR SSSS 1;
+			BHGR TT 1 A_Weaponoffset(1,-2,WOF_ADD);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_weaponoffset(0,32);
 			BHGR TUV 1;
 			BHGR WXY 1;
 			BHGU E 2;

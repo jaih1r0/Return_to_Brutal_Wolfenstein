@@ -2,6 +2,7 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 {
 	double StillRangeMulti, slideAngle;
 	double 	ssup;
+	vector2 finalbob;
 
 	override void tick()
 	{
