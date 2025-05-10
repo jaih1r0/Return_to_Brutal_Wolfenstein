@@ -226,9 +226,24 @@ Class BW_FlameProjectile : Actor
 	{
 		Spawn:
 			FRPR CCCCCCCCC 1;
+			goto fade;
 			//stop;
 		Death:
 			//TNT1 A 0 {A_Stop(); bnogravity = true;}
+			TNT1 A 0 {
+				actor fl = spawn("BW_GroundFire",pos);
+				if(!fl)
+					return;
+				fl.target = target;
+				if(pos.z > floorz + 35)
+					fl.bnogravity = true;
+			}
+			TNT1 A 0 A_Explode(5,60,0);
+			TNT1 A 1;
+			stop;
+		fade:
+		Xdeath:
+		Crash:
 			TNT1 A 0 A_Explode(5,60,0);
 			DB54 ABCDEFGHIJKLMNOPQR 1;
 			stop;
@@ -359,5 +374,72 @@ Class BW_BurningHandler : inventory
 		WTFSMK.Vel = (frandom(-2.2,2.2),frandom(-2.2,2.2),frandom(-0.5,0.75));
 		WTFSMK.accel = (0,0,frandom(0.15,0.35));
 		Level.SpawnParticle (WTFSMK);
+	}
+}
+
+Class BW_GroundFire : Actor
+{
+	default
+	{
+		renderstyle "add";
+		+bright;
+		scale 0.4;
+		damagetype "Fire";
+		+noblockmap;
+		+forcexybillboard;
+	}
+	states
+	{
+		Spawn:
+			CFCF ABCDEFGHIJKLM 1;
+			loop;
+	}
+	int lifetime, burnRate;
+	textureID flaregfx;
+	override void postbeginplay()
+	{
+		super.postbeginplay();
+		lifetime = random(2,4) * TICRATE;
+		A_Setscale(scale.x + frandom(-0.15,0.18));
+		bxflip = random(0,1);
+		burnRate = random(15,35);
+		switch(random(0,2))
+		{
+			case 0:	flaregfx = texman.CheckForTexture("LENYA0");	break;
+			case 1:	flaregfx = texman.CheckForTexture("LENRA0");	break;
+			case 2:	flaregfx = texman.CheckForTexture("LEYSO0");	break;
+		}
+	}
+	override void tick()
+	{
+		super.tick();
+		lifetime--;
+		if(lifetime < 20)
+		{
+			A_Fadeout(0.05);
+			A_Setscale(scale.x * 0.95);
+		}
+
+		if(getage() % burnRate == 0 && lifetime > 0)
+			A_Explode(5,64,XF_THRUSTLESS);
+		if(lifetime > 4 && getage() % 4 == 0)
+			SpawnFireFlare(pos + (0,0,height * 0.5));
+	}
+
+	void SpawnFireFlare(vector3 position)
+	{
+		FSpawnParticleParams FLARPUF;
+		FLARPUF.Texture = flaregfx;
+		FLARPUF.Style = STYLE_ADD;
+		FLARPUF.Color1 = "FFFFFF";
+		FLARPUF.Flags = SPF_FULLBRIGHT;
+		FLARPUF.StartRoll = 0;
+		FLARPUF.StartAlpha = 1.0;
+		FLARPUF.FadeStep = 0.25;
+		FLARPUF.Size = scale.x * 120;
+		FLARPUF.SizeStep = 1;
+		FLARPUF.Lifetime = 4; 
+		FLARPUF.Pos = position;
+		Level.SpawnParticle(FLARPUF);
 	}
 }
