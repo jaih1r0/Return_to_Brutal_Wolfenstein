@@ -138,6 +138,18 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		NoAmmo_ADS:
 			MP4T E 1;
 			goto ready_ADS;
+
+		//rechamber too
+		Fidget:
+			MP4C ABCDE 1 BW_Weaponready();
+			TNT1 A 0 A_Startsound("MP40/BoltBack",10,CHANF_OVERLAP,0.7);
+			MP4C FGHI 1 BW_Weaponready();
+			MP4C III 1 {A_Weaponoffset(-0.35,0.5,WOF_ADD); return BW_Weaponready();}
+			TNT1 A 0 A_Weaponoffset(0,32);
+			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
+			MP4C JKLMNA 1 BW_Weaponready();
+			MP4U E 1 BW_WeaponReady();
+			goto ready;
 		
 		AltFire:
 			TNT1 A 0
@@ -341,7 +353,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		Reload:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
-			TNT1 A 0 BW_CheckReload("EmptyReload","Ready","NoAmmo",32,1);
+			TNT1 A 0 BW_CheckReload("EmptyReload","Fidget","NoAmmo",32,1);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
 			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
@@ -387,7 +399,6 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			MP4C JKLMNA 1;
 			goto ready;
 		
-
 		Reload_Dual:
 			TNT1 A 0 BW_ClearDualOverlays();
 			//go single

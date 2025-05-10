@@ -105,7 +105,7 @@ Class BW_Kar98K : BaseBWWeapon
 			TNT1 A 0 A_StartSound("Kar98/BoltOpen", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P ABCD 1;
 			K98P EFGH 1 {A_SetPitch(pitch + 0.5); A_SetAngle(angle + 0.25);}
-			TNT1 A 0 BW_SpawnCasing("BW_9MMCasing",29,3,-10,random(2,3),random(2,3),random(3,6));
+			TNT1 A 0 BW_SpawnCasing("BW_792Casing",29,3,-10,random(2,3),random(2,3),random(3,6));
 			K98P IJKM 1;
 			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 			K98P MMNO 1 {A_SetPitch(pitch - 0.5); A_SetAngle(angle - 0.25);}
@@ -169,7 +169,7 @@ Class BW_Kar98K : BaseBWWeapon
 			TNT1 A 0 A_StartSound("Kar98/BoltOpen", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P ABCD 1;
 			K98P EFGH 1 {A_SetPitch(pitch + 0.5); A_SetAngle(angle + 0.25);}
-			TNT1 A 0 BW_SpawnCasing("BW_9MMCasing",29,3,-10,random(2,3),random(2,3),random(3,6));
+			TNT1 A 0 BW_SpawnCasing("BW_792Casing",29,3,-10,random(2,3),random(2,3),random(3,6));
 			K98P IJKM 1;
 			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 			K98P MMNO 1 {A_SetPitch(pitch - 0.5); A_SetAngle(angle - 0.25);}
