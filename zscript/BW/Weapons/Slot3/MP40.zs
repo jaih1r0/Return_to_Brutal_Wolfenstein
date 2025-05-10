@@ -249,7 +249,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			goto Dual_Left;
 		Dual_Left_DryFire:
 			DM4L A 1;
-			goto DualLeft;
+			goto Dual_Left;
 		Dual_Right_Fire:
 			TNT1 A 0 BW_DualPrefire("Dual_Right_DryFire",false);
 			TNT1 A 0 BW_SetFiring(true,true);
