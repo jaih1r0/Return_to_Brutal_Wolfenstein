@@ -236,17 +236,13 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		Dual_Left:
 			DM4L A 1 {
 				BW_GunBarrelSmoke(ofsPos:(22,-8,-5),left:true);
-				if(pressingButton(BT_Attack) && invoker.Ammoleft.amount > 0)
-					return resolvestate("Dual_Left_Fire");
-				return resolvestate(null);
+				return BW_DualReady(true,"Dual_Left_Fire");
 			}
 			loop;
 		Dual_Right:
 			DM4R A 1 {
 				BW_GunBarrelSmoke(ofsPos:(22,7,-5));
-				if(pressingButton(BT_AltAttack) && invoker.ammo2.amount > 0)
-					return resolvestate("Dual_Right_Fire");
-				return resolvestate(null);
+				return BW_DualReady(false,"Dual_Right_Fire");
 			}
 			loop;
 		Dual_Left_Fire:
@@ -270,7 +266,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			DM4R D 1;
 			DM4R E 1;
 			TNT1 A 0 BW_SetFiring(false,true);
-			DM4R F 1 BW_QuickRefire("Dual_Right_Fire",BT_ALTATTACK,false);
+			DM4R F 1 BW_QuickRefire("Dual_Right_Fire",getRightfirebutton(),false);
 			goto Dual_Right;
 		Dual_Right_DryFire:
 			DM4R A 1;

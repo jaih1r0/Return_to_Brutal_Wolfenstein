@@ -206,6 +206,31 @@ Extend Class BaseBWWeapon
 		return (!BW_isFiring(true) && !BW_isFiring(false));
 	}
 
+	action state BW_DualReady(bool left = false,statelabel firing = null)
+	{
+		bool pressing,hasammo;
+		if(left)
+		{
+			pressing = pressingButton(BT_ATTACK);
+			hasammo = invoker.ammoleft.amount > 0;
+		}
+		else
+		{
+			pressing = BW_DualFiremode == 1 ? pressingButton(BT_ATTACK) : pressingButton(BT_ALTATTACK);
+			hasammo = invoker.ammo2.amount > 0;
+		}
+
+		if(pressing && hasammo)
+			return resolvestate(firing);
+		return resolvestate(null);
+	}
+
+	//idk what to call this function, it returns the button to check for refire when dual
+	action int getRightfirebutton()
+	{
+		return BW_DualFiremode == 1 ? BT_ATTACK : BT_ALTATTACK;
+	}
+
     //////////////////////////////////////////////////////////////////////////////////////////////
     // replacement for vanilla weapon handling functions
     //////////////////////////////////////////////////////////////////////////////////////////////

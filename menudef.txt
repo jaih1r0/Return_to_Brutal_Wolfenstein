@@ -91,6 +91,8 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	option "Disable bullet tracer dynamic lights","BW_DisableTracerLights","OnOff"
 	statictext ""
+	option "Dual fire mode","BW_DualFiremode","dualfiremode"
+	statictext ""
 	statictext ""
 	statictext ""
 
@@ -132,6 +134,12 @@ optionvalue hudmsgpos
 {
 	0,"below level stats"
 	1,"above mugshot"
+}
+
+optionvalue dualfiremode
+{
+	0,"default (individual)"
+	1,"single button"
 }
 
 
