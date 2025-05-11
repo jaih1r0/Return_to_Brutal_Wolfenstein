@@ -182,24 +182,7 @@ Class BW_FlameThrower : BaseBWWeapon
 
 }
 
-Class BW_GasCan : BW_Ammo //replaces cell
-{
-    Default
-	{
-		Inventory.Amount 10;
-		Inventory.MaxAmount 60;
-		Ammo.BackpackAmount 10;
-		Ammo.BackpackMaxAmount 60;
-		tag "Gas can";
-        inventory.icon "AGASA0";
-	}
-	states
-	{
-		spawn:
-			AGAS A -1;
-			stop;
-	}
-}
+
 
 Class BW_FlameProjectile : Actor
 {

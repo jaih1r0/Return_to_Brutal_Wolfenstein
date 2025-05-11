@@ -98,22 +98,3 @@ Class BW_Leichenfaust : BaseBWWeapon
 	}
 }
 
-
-Class BW_LFAmmo : BW_Ammo //7692
-{
-	default
-	{
-		scale 0.75;
-		inventory.amount 3;
-        inventory.maxamount 6;
-        ammo.backpackamount 2;
-        ammo.BackpackMaxAmount 12;
-        tag "PlasmaSix Cell";
-	}
-	states
-	{
-		spawn:
-			LFAM A -1 bright;
-			stop;
-	}
-}

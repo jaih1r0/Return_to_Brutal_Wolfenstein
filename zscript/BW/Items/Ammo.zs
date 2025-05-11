@@ -46,6 +46,7 @@ Class BW_KarAmmo : BW_Ammo
         ammo.BackpackMaxAmount 50;
         tag "7.92 x 57 Bullet";
         scale 0.3;
+        inventory.althudicon "K98WB0";
     }
     states
     {
@@ -64,6 +65,7 @@ Class BW_MGAmmo : BW_Ammo
         ammo.backpackamount 50;
         ammo.BackpackMaxAmount 200;
         tag "7.92 x 57 Bullet"; //not sure if this is correct
+        inventory.althudicon "HBUSE0";
         scale 0.6;
     }
     states
@@ -84,6 +86,7 @@ Class BW_PistolAmmo : BW_Ammo
         ammo.BackpackMaxAmount 128;
         tag "9mm Bullet";
         scale 0.8;
+        inventory.althudicon "CLIPA0";
     }
     states
     {
@@ -103,6 +106,7 @@ Class BW_ShotgunAmmo : BW_Ammo
         ammo.BackpackMaxAmount 50;
         tag "12ga Shell";
         scale 0.8;
+        inventory.althudicon "SHELA0";
     }
     states
     {
@@ -110,4 +114,65 @@ Class BW_ShotgunAmmo : BW_Ammo
             SHEL A -1;
             stop;
     }
+}
+
+Class BW_GasCan : BW_Ammo //replaces cell
+{
+    Default
+	{
+		Inventory.Amount 10;
+		Inventory.MaxAmount 60;
+		Ammo.BackpackAmount 10;
+		Ammo.BackpackMaxAmount 60;
+		tag "Gas can";
+        inventory.icon "AGASA0";
+		inventory.althudicon "AGASA0";
+	}
+	states
+	{
+		spawn:
+			AGAS A -1;
+			stop;
+	}
+}
+
+Class BW_TeslaCell : BW_Ammo //7692
+{
+	default
+	{
+		scale 0.7;
+		inventory.amount 25;
+        inventory.maxamount 200;
+        ammo.backpackamount 25;
+        ammo.BackpackMaxAmount 300;
+        tag "Tesla Cell";
+		inventory.althudicon "TSAMA0";
+	}
+	states
+	{
+		spawn:
+			TSAM A -1 bright;
+			stop;
+	}
+}
+
+
+Class BW_LFAmmo : BW_Ammo //7692
+{
+	default
+	{
+		scale 0.75;
+		inventory.amount 3;
+        inventory.maxamount 6;
+        ammo.backpackamount 2;
+        ammo.BackpackMaxAmount 12;
+        tag "PlasmaSix Cell";
+		inventory.althudicon "LFAMA0";
+	}
+	states
+	{
+		spawn:
+			LFAM A -1 bright;
+			stop;
+	}
 }

@@ -105,6 +105,8 @@ OptionMenu RTBW_OptionsMenu
 	option "custom hud messages position","BW_messagepos","hudmsgpos"
 	statictext "*does nothing if centered messages are enabled"
 	statictext ""
+	option "draw current ammo list","BW_CurrentAmmoList","OnOff"
+	statictext ""
 	
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
 

@@ -709,25 +709,6 @@ Class TeslaAmmo : Ammo
 	}
 }
 
-Class BW_TeslaCell : BW_Ammo //7692
-{
-	default
-	{
-		scale 0.7;
-		inventory.amount 25;
-        inventory.maxamount 200;
-        ammo.backpackamount 25;
-        ammo.BackpackMaxAmount 300;
-        tag "Tesla Cell";
-	}
-	states
-	{
-		spawn:
-			TSAM A -1 bright;
-			stop;
-	}
-}
-
 class bw_teslatarget
 {
 	actor targ;

@@ -9,7 +9,7 @@ Class BW_Hud : BaseStatusBar
 	BW_EventHandler scorehandler;
 	int combo_timer,combo_counter, oldcounter, counterTics;
 
-	bool isCentered, custommsg;
+	bool isCentered, custommsg, curammolist;
 	double messageScale; 
 	int msgpos;
 
@@ -50,6 +50,7 @@ Class BW_Hud : BaseStatusBar
 		messageScale = 		CVar.GetCVar("BW_messageScale", CPlayer).getfloat();
 		custommsg = 		CVar.GetCVar("BW_Custommsg", CPlayer).getbool(); 
 		msgpos =			CVar.GetCVar("BW_messagepos", CPlayer).getint();
+		curammolist =		CVar.GetCVar("BW_CurrentAmmoList", CPlayer).getbool(); 
 	}
 	
 	override void Tick()
@@ -131,10 +132,11 @@ Class BW_Hud : BaseStatusBar
 			[armi,amivec] = GetIcon(ba,0);
 			drawTexture(armi,(50,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,1.0,(60,60),(4.0,4.0));
 		}
+
 		//weapons
+		Ammo Primary, Secondary;
 		if(cplayer.readyweapon != null)
 		{
-			Ammo Primary, Secondary;
 			[Primary, Secondary] = GetCurrentAmmo();
 			if(primary)
 			{
@@ -279,6 +281,8 @@ Class BW_Hud : BaseStatusBar
 		
 		//keys
 		DrawHudKeys();
+		if(curammolist)
+			drawammolist(Primary);
 	}
 	
 	static const string wolfkeys[] = {
@@ -341,7 +345,21 @@ Class BW_Hud : BaseStatusBar
 		}
 	}
 
-
+	void drawammolist(ammo current)
+	{
+		vector2 drawpos = (-140,-130);
+		for(let inv = cplayer.mo.inv; inv; inv = inv.inv)
+		{
+			if(inv is "BW_Ammo")
+			{
+				let tex = inv.althudicon;
+				if(tex)
+					DrawTexture(tex,drawpos - (20,-6),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER,1.0,box:(20,14));
+				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),drawpos,DI_SCREEN_RIGHT_BOTTOM,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
+				drawpos -= (0,15);
+			}
+		}
+	}
 
 
 	//
