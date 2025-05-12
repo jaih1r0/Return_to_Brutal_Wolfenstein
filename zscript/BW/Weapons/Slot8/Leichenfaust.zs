@@ -93,6 +93,7 @@ Class BW_Leichenfaust : BaseBWWeapon
 		A_Fireprojectile("BFGBALL",0,0,0,-12,0);
 		A_Startsound("LF/Fire",32);
 		BW_QuakeCamera(12, 2);
+		A_SpawnItemEx("PlayerMuzzleFlash_Purple",30,0,45);
 		BW_WeaponRecoilBasic(-2, frandom(-2.2,2.2));
 		invoker.ammo1.amount--;
 	}

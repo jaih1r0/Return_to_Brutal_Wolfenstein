@@ -282,6 +282,12 @@ Class PlayerMuzzleFlash : Actor
 	}
 }
 
+Class PlayerMuzzleFlash_Blue : PlayerMuzzleFlash
+{}
+
+Class PlayerMuzzleFlash_Purple : PlayerMuzzleFlash
+{}
+
 Class BW_GrenadeAmmo : Ammo	//7082
 {
 	Default

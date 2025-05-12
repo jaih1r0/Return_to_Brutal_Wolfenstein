@@ -459,6 +459,7 @@ Extend Class BaseBWWeapon
 	{
 		statelabel pendkf = "KnifeGunFlash";
 		A_Overlay(-4,pendkf);
+		A_Overlay(-32,"PrepareKnifeLayer");
 		//let kf = invoker.resolvestate(pendkf);
 		//if(kf)
 		//	player.SetPSprite(-4,kf);

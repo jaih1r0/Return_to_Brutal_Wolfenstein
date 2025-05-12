@@ -9,9 +9,31 @@ pointlight GunMuzzleFlash
     size 64
 }
 
+pointlight BlueGunMuzzleFlash
+{
+    color 0.5 0.98 1.0
+    size 64
+}
+
+pointlight PurpleGunMuzzleFlash
+{
+    color 0.8 0.52 1.0
+    size 64
+}
+
 object PlayerMuzzleFlash
 {
     frame TNT1 { light GunMuzzleFlash }
+}
+
+object PlayerMuzzleFlash_Blue
+{
+    frame TNT1 { light BlueGunMuzzleFlash }
+}
+
+object PlayerMuzzleFlash_Purple
+{
+    frame TNT1 { light PurpleGunMuzzleFlash }
 }
 
 PulseLight BWPuffLight

@@ -355,6 +355,7 @@ Class BW_Tesla : BaseBWWeapon
 		BW_WeaponRecoilBasic(-0.1, frandom(-0.2,0.2));
 		A_startsound("Tesla/Fire",32);
 		A_startsound("Tesla/FireAdd",CHAN_AUTO, CHANF_OVERLAP, 1);
+		A_SpawnItemEx("PlayerMuzzleFlash_Blue",30,0,45);
 		if(invoker.ammo2.amount)
 			invoker.ammo2.amount--;
 	}
@@ -522,6 +523,7 @@ Class BW_Tesla : BaseBWWeapon
 			}
 		}
 			
+		A_SpawnItemEx("PlayerMuzzleFlash_Blue",30,0,45);
 		BW_QuakeCamera(6, 2);
 		BW_WeaponRecoilBasic(-3, frandom(-0.75,0.75));
 		A_startsound("Tesla/Fire",32);
@@ -683,6 +685,7 @@ Class BW_Tesla : BaseBWWeapon
 		}
 		
 		
+		A_SpawnItemEx("PlayerMuzzleFlash_Blue",30,0,45);
 		BW_QuakeCamera(4, 1);
 		BW_WeaponRecoilBasic(-0.1, frandom(-0.2,0.2));
 		A_startsound("Tesla/Fire",32);

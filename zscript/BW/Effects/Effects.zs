@@ -462,3 +462,66 @@ Class BW_Flare : BWFxBase
 			stop;
 	}
 }
+
+Class BW_GroundFireFx : BWFxBase
+{
+	default
+	{
+		renderstyle "add";
+		+bright;
+		scale 0.32;
+		+noblockmap;
+		+forcexybillboard;
+	}
+	states
+	{
+		Spawn:
+			CFCF ABCDEFGHIJKLM 1;
+			loop;
+	}
+	int lifetime;
+	textureID flaregfx;
+	override void postbeginplay()
+	{
+		super.postbeginplay();
+		lifetime = random(2,4) * TICRATE;
+		A_Setscale(scale.x + frandom(-0.05,0.15));
+		bxflip = random(0,1);
+		switch(random(0,3))
+		{
+			case 0:	flaregfx = texman.CheckForTexture("LENYA0");	break;
+			case 1:	flaregfx = texman.CheckForTexture("LENRA0");	break;
+			case 2:	flaregfx = texman.CheckForTexture("SPKOA0");	break;
+			case 3:	flaregfx = texman.CheckForTexture("DBFLA0");	break;
+		}
+	}
+	override void tick()
+	{
+		super.tick();
+		lifetime--;
+		if(lifetime < 20)
+		{
+			A_Fadeout(0.05);
+			A_Setscale(scale.x * 0.95);
+		}
+		if(lifetime > 4 && getage() % 4 == 0)
+			SpawnFireFlare(pos + (0,0,height * 0.35));
+	}
+
+	void SpawnFireFlare(vector3 position)
+	{
+		FSpawnParticleParams FLARPUF;
+		FLARPUF.Texture = flaregfx;
+		FLARPUF.Style = STYLE_ADD;
+		FLARPUF.Color1 = "FFFFFF";
+		FLARPUF.Flags = SPF_FULLBRIGHT;
+		FLARPUF.StartRoll = 0;
+		FLARPUF.StartAlpha = 1.0;
+		FLARPUF.FadeStep = 0.25;
+		FLARPUF.Size = scale.x * 120;
+		FLARPUF.SizeStep = 1;
+		FLARPUF.Lifetime = 4; 
+		FLARPUF.Pos = position;
+		Level.SpawnParticle(FLARPUF);
+	}
+}

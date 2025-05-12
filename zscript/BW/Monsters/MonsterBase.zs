@@ -64,6 +64,12 @@ Class BW_MonsterBase : Actor
 	{
 		if(inflictor && canReceiveHead) //damaged by projectile or puff
 		{
+			if(mod == "Fire" || mod == "Burn" || mod == "LF" || (flags & DMG_EXPLOSION)) //fire (or explosives in general) cant headshot
+			{
+				LastHit = 'none';
+				return super.DamagemObj(inflictor,source,damage,mod,flags,angle);
+			}
+
 			vector3 hitpos = inflictor.pos;
 			
 			//if headheight/feetheight is negative, use it as a percentage instead

@@ -775,6 +775,8 @@ Class BW_Rocket : Actor
 		spawnFxSmokeBasic();
 		spawnFxSmokeBasic();		
 		spawn("BW_RocketExplosionFx",safepos);
+		if(pos.z < floorz + 20)
+			spawn("BW_GroundFireFx",(safepos.xy,floorz));
 	}
 
 	void spawnDebris(string type,vector3 spos,int amount = 1,int maxforce = 10)
@@ -1075,10 +1077,15 @@ Class LFedToken : inventory
 			if((owner.pos.z <= owner.floorz + 1 || owner.waterlevel > 2) && owner.health > 0)
 			{
 				owner.translation = origTrans;
+
+				if(owner)
+					owner.A_Explode(clamp(owner.mass,10,40),owner.radius);
+
 				if(tracer)	//keep track of the player for correct kill credits
 					owner.damagemobj(tracer,tracer,1000,'LF',DMG_FOILBUDDHA);
 				else
 					owner.damagemobj(owner,owner,1000,'LF',DMG_FOILBUDDHA);	//harakiri
+
 				owner.bBright = brighty;
 				owner.bbuddha = false;
 				if(owner.bismonster)

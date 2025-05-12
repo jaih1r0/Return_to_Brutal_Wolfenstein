@@ -40,7 +40,7 @@ DoomEdNums
 	7508 = "BW_PistolAmmo"	//thompson ammo
 	7511 = "BW_PistolAmmo"	//thompson ammo
 	1776 = "BW_ShotgunAmmo"	//actual shells
-	7692 = "Cell"	//teslaAmmo
+	//7692 = "Cell"	//teslaAmmo
 	7081 = "BW_Threenades"
 	7082 = "BW_GrenadeAmmo"
 	7513 = "RocketAmmo"	//panzerZooka rockets

@@ -511,7 +511,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			TNT1 A 0 A_Weaponoffset(0,32);
 			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1;
-			goto EndDualReload;
+			goto FinishedLeft;
 	}
 }
 
