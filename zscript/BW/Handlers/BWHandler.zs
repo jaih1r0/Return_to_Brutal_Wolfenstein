@@ -1,6 +1,6 @@
 class BW_EventHandler : EventHandler
 {
-	
+	transient int pickuptic[MAXPLAYERS];
 	
 	int kicktimer;
 	int KnifeTimer;

@@ -17,7 +17,9 @@ Class BaseBWWeapon : DoomWeapon
 		inventory.maxamount 1;
 		+dontgib;
 	}
-
+	
+	mixin BW_CheckFunctionsWeapon;
+	
 	enum BWWR_Flags {
 		BWWF_NoAxe		= 1<<26,
 		BWWF_NoGrenade 	= 1<<27,
@@ -66,6 +68,37 @@ Class BaseBWWeapon : DoomWeapon
 	override void Tick()
 	{
 		Super.Tick();
+		
+		
+		
+		if(
+		IsInState("UnAimReload") || 
+		IsInState("Reload") || 
+		IsInState("Reload2") || 
+		IsInState("ReloadADS") || 
+		IsInState("EmptyReload") || 
+		IsInState("Reload_Dual") || 
+		IsInState("ReloadRight") || 
+		IsInState("EmptyReloadRight") || 
+		IsInState("FinishedRight") || 
+		IsInState("ReloadLeft") || 
+		IsInState("EmptyReloadLeft") || 
+		IsInState("DoReloadLeft") || 
+		IsInState("FinishedLeft") || 
+		IsInState("Reload_Bullets") || 
+		IsInState("Reload_Bullets_Loop") || 
+		IsInState("Reload_Bullets_End") || 
+		IsInState("Reload_Clip") || 
+		IsInState("Reload_End") || 
+		IsInState("Reload_End2") || 
+		IsInState("ReloadLoop") || 
+		IsInState("Rechamber")
+		)
+		{
+			A_Log("ShouldBeWorking");
+			A_WeaponReady(WRF_NOFIRE);
+		}
+		
 		
 		let plr = BWPlayer(Owner);
 		if (!plr)

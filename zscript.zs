@@ -3,6 +3,7 @@ Version 4.10
 #include "zscript/BW/Handlers/Materials.zs"
 #include "zscript/BW/Handlers/BWHandler.zs"
 #include "zscript/BW/BW_Statics.zs"
+#include "zscript/BW/MathNMixins.zs"
 
 #include "zscript/BW/Spawners/SpawnerBase.zs"
 
