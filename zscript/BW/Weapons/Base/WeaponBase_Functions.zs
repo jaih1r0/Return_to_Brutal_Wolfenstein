@@ -474,6 +474,7 @@ Extend Class BaseBWWeapon
 
 	action void handleKnifeFlash()
 	{
+		BW_SetReloading(false);	//not sure if this is actually necessary, but just in case
 		statelabel pendkf = "KnifeGunFlash";
 		A_Overlay(-4,pendkf);
 		A_Overlay(-32,"PrepareKnifeLayer");
