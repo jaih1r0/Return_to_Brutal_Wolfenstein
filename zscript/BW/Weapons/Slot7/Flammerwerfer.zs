@@ -58,6 +58,7 @@ Class BW_FlameThrower : BaseBWWeapon
 			BFLU CD 1;
             goto ready;
         Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(18);
             TNT1 A 0 A_clearoverlays(-5,-5);
 			TNT1 A 0 A_StartSound("Flamer/Drop", 0, CHANF_OVERLAP, 1);

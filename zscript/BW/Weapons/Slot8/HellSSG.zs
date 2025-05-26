@@ -55,6 +55,7 @@ Class BW_SSG : BaseBWWeapon
 			BHGU CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Startsound("HSSG/Drop",0,CHANF_OVERLAP);
 			BHGU FG 1;
 			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);

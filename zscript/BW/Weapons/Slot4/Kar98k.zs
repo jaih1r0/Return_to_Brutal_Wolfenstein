@@ -56,6 +56,7 @@ Class BW_Kar98K : BaseBWWeapon
 			K98U CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Startsound("Kar98/Drop",5,CHANF_OVERLAP);
 			K98U FG 1;
 			TNT1 A 0 A_StartSound("Generic/Marksman/Holster", 0, CHANF_OVERLAP, 1);

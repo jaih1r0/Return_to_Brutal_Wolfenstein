@@ -28,6 +28,7 @@ Class BW_Tesla : BaseBWWeapon
 			goto ready;
 			
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Startsound("Tesla/Drop",0,CHANF_OVERLAP);
 			BTSU FG 1;
 			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);

@@ -65,6 +65,7 @@ class BW_Trenchgun : BaseBWWeapon
 	{
 	
 	Deselect:
+		TNT1 A 0 BW_SetReloading(false);
 		TNT1 A 0 A_ZoomFactor(1);
 		TNT1 A 0 A_StartSound("Trench/Drop", 0, CHANF_OVERLAP, 1);
 		BTGU FG 1;

@@ -83,6 +83,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			MP4U CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 A_Startsound("MP40/Lower",5,CHANF_OVERLAP);
 			TNT1 A 0 BW_jumpifAkimbo("Deselect_Dual");
@@ -221,6 +222,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 				if(pressingButton(BT_RELOAD) && !BW_isFiring(true) && !BW_isFiring(false)
 				&& invoker.ammo1.amount > 0 && (invoker.ammo2.amount < invoker.FullMag || invoker.Ammoleft.amount < invoker.FullMag))
 				{
+					BW_SetReloading(true);
 					return resolvestate("Reload_Dual");
 				}
 				if(invoker.amount < 2)

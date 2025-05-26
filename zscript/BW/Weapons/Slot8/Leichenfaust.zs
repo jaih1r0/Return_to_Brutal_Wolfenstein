@@ -22,6 +22,7 @@ Class BW_Leichenfaust : BaseBWWeapon
 			BFPU CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(42);
 			TNT1 A 0 A_Startsound("LF/Drop",5,CHANF_OVERLAP);
 			BFPU FG 1;

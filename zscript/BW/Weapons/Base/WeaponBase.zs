@@ -39,7 +39,7 @@ Class BaseBWWeapon : DoomWeapon
 
 	bool canDual;
 	property canDual:canDual;
-	protected bool Akimboing, firingLeft,firingRight;
+	protected bool Akimboing, firingLeft,firingRight,isReloading;
 	class<Ammo> AmmoTypeLeft;
 	Ammo AmmoLeft;
 	Property AmmoTypeLeft: AmmoTypeLeft;
@@ -52,6 +52,7 @@ Class BaseBWWeapon : DoomWeapon
 		let pl = owner.player;
 		if (pl && pl.readyweapon)
 			pl.WeaponState |= WF_WEAPONBOBBING;
+		
 	}
 
 	override void attachtoowner(actor other)
@@ -66,7 +67,7 @@ Class BaseBWWeapon : DoomWeapon
 	override void Tick()
 	{
 		Super.Tick();
-		
+
 		let plr = BWPlayer(Owner);
 		if (!plr)
 		{
