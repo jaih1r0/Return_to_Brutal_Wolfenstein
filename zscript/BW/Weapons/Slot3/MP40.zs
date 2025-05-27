@@ -83,6 +83,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			MP4U CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 A_Startsound("MP40/Lower",5,CHANF_OVERLAP);
 			TNT1 A 0 BW_jumpifAkimbo("Deselect_Dual");
@@ -221,6 +222,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 				if(pressingButton(BT_RELOAD) && !BW_isFiring(true) && !BW_isFiring(false)
 				&& invoker.ammo1.amount > 0 && (invoker.ammo2.amount < invoker.FullMag || invoker.Ammoleft.amount < invoker.FullMag))
 				{
+					BW_SetReloading(true);
 					return resolvestate("Reload_Dual");
 				}
 				if(invoker.amount < 2)
@@ -236,17 +238,13 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		Dual_Left:
 			DM4L A 1 {
 				BW_GunBarrelSmoke(ofsPos:(22,-8,-5),left:true);
-				if(pressingButton(BT_Attack) && invoker.Ammoleft.amount > 0)
-					return resolvestate("Dual_Left_Fire");
-				return resolvestate(null);
+				return BW_DualReady(true,"Dual_Left_Fire");
 			}
 			loop;
 		Dual_Right:
 			DM4R A 1 {
 				BW_GunBarrelSmoke(ofsPos:(22,7,-5));
-				if(pressingButton(BT_AltAttack) && invoker.ammo2.amount > 0)
-					return resolvestate("Dual_Right_Fire");
-				return resolvestate(null);
+				return BW_DualReady(false,"Dual_Right_Fire");
 			}
 			loop;
 		Dual_Left_Fire:
@@ -270,7 +268,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			DM4R D 1;
 			DM4R E 1;
 			TNT1 A 0 BW_SetFiring(false,true);
-			DM4R F 1 BW_QuickRefire("Dual_Right_Fire",BT_ALTATTACK,false);
+			DM4R F 1 BW_QuickRefire("Dual_Right_Fire",getRightfirebutton(),false);
 			goto Dual_Right;
 		Dual_Right_DryFire:
 			DM4R A 1;
@@ -515,7 +513,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			TNT1 A 0 A_Weaponoffset(0,32);
 			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1;
-			goto EndDualReload;
+			goto FinishedLeft;
 	}
 }
 

@@ -41,7 +41,7 @@ Class BaseBWWeapon : DoomWeapon
 
 	bool canDual;
 	property canDual:canDual;
-	protected bool Akimboing, firingLeft,firingRight;
+	protected bool Akimboing, firingLeft,firingRight,isReloading;
 	class<Ammo> AmmoTypeLeft;
 	Ammo AmmoLeft;
 	Property AmmoTypeLeft: AmmoTypeLeft;
@@ -54,6 +54,7 @@ Class BaseBWWeapon : DoomWeapon
 		let pl = owner.player;
 		if (pl && pl.readyweapon)
 			pl.WeaponState |= WF_WEAPONBOBBING;
+		
 	}
 
 	override void attachtoowner(actor other)
@@ -68,38 +69,6 @@ Class BaseBWWeapon : DoomWeapon
 	override void Tick()
 	{
 		Super.Tick();
-		
-		
-		
-		if(
-		IsInState("UnAimReload") || 
-		IsInState("Reload") || 
-		IsInState("Reload2") || 
-		IsInState("ReloadADS") || 
-		IsInState("EmptyReload") || 
-		IsInState("Reload_Dual") || 
-		IsInState("ReloadRight") || 
-		IsInState("EmptyReloadRight") || 
-		IsInState("FinishedRight") || 
-		IsInState("ReloadLeft") || 
-		IsInState("EmptyReloadLeft") || 
-		IsInState("DoReloadLeft") || 
-		IsInState("FinishedLeft") || 
-		IsInState("Reload_Bullets") || 
-		IsInState("Reload_Bullets_Loop") || 
-		IsInState("Reload_Bullets_End") || 
-		IsInState("Reload_Clip") || 
-		IsInState("Reload_End") || 
-		IsInState("Reload_End2") || 
-		IsInState("ReloadLoop") || 
-		IsInState("Rechamber")
-		)
-		{
-			A_Log("ShouldBeWorking");
-			A_WeaponReady(WRF_NOFIRE);
-		}
-		
-		
 		let plr = BWPlayer(Owner);
 		if (!plr)
 		{
@@ -314,6 +283,12 @@ Class PlayerMuzzleFlash : Actor
 			Stop;
 	}
 }
+
+Class PlayerMuzzleFlash_Blue : PlayerMuzzleFlash
+{}
+
+Class PlayerMuzzleFlash_Purple : PlayerMuzzleFlash
+{}
 
 Class BW_GrenadeAmmo : Ammo	//7082
 {

@@ -60,29 +60,26 @@ class BW_Luger : BaseBWWeapon
 	{
 	
 	Deselect:
+		TNT1 A 0 BW_SetReloading(false);
 		TNT1 A 0 A_ZoomFactor(1);
 		TNT1 A 0 A_StartSound("Lug/lower", 0, CHANF_OVERLAP, 1);
 		ZLUS FG 1;
 		TNT1 A 0 A_StartSound("Generic/Pistol/Holster", 0, CHANF_OVERLAP, 1);
 		ZLUS HI 1;
-		PSTG A 0 A_Lower(25);
+		TNT1 A 0 BW_WeaponLower();
 		Wait;
 	//User3:
 	//	TNT1 A 0 A_ZoomFactor(1);
 	//	TNT1 A 0 A_TakeInventory("AimingToken");
 	//	Goto KnifeAttack;
 	Select:
-		TNT1 A 0
-		{
-			A_TakeInventory("AimingToken");
-		}
-		TNT1 A 0 A_Raise(25);
-		Wait;
-	Ready:
+		TNT1 A 0 BW_WeaponRaise();
 		TNT1 A 0 A_StartSound("Generic/Pistol/raise", 0, CHANF_OVERLAP, 1);
 		ZLUS AB 1;
 		TNT1 A 0 A_StartSound("Lug/raise", 0, CHANF_OVERLAP, 1);
 		ZLUS CD 1;
+		goto ready;
+	Ready:
 	WeaponReady:
 		ZLUS E 1 {
 			BW_GunBarrelSmoke(ofsPos:(18,0,-4),startsize:4);
@@ -169,9 +166,7 @@ class BW_Luger : BaseBWWeapon
 		ZLUX BA 1;
 	Reload:
 		TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 1, "UnAimReload");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0 && invoker.ammo1.amount == 0, "WeaponReadyEmpty");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 9 || invoker.ammo1.amount == 0, "WeaponReady");
-		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "Reload2");
+		TNT1 A 0 BW_CheckReload("Reload2","WeaponReady","WeaponReadyEmpty",9,1);
 		TNT1 A 0 A_TakeInventory("AimingToken");
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
 		ZLR2 ABCDEFGHIJ 1;

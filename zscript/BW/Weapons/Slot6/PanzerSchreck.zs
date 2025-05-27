@@ -24,6 +24,7 @@ Class BW_Panzerschreck : BaseBWWeapon
 			PZSU CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Startsound("Panzerschreck/Drop",0,CHANF_OVERLAP);
 			PZSU FG 1;
 			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);

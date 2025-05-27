@@ -9,6 +9,18 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		super.tick();
 	}
 
+	override void CheckWeaponChange ()
+    {
+        let player = self.player;
+
+        let bwwp = BaseBWWeapon(player.readyweapon);
+        if(bwwp && bwwp.BW_IsReloading())
+        {
+            player.weaponstate |= WF_WEAPONSWITCHOK;
+        }
+        super.CheckWeaponChange();
+    }
+
 	override void playerthink()
 	{
 		super.playerthink();

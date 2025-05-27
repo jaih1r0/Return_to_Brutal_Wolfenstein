@@ -31,6 +31,16 @@ Extend Class BaseBWWeapon
 		return (findinventory("AimingToken"));
 	}
 
+	action bool BW_IsReloading()
+	{
+		return invoker.isReloading;
+	}
+
+	action void BW_SetReloading(bool set = true)
+	{
+		invoker.isReloading = set;
+	}
+
 	Action Void BW_ChangePsprite(name spt, int layer = PSP_WEAPON)
 	{
 		let ps = player.findPSprite(layer);
@@ -137,6 +147,10 @@ Extend Class BaseBWWeapon
 			return resolvestate(fullstate);
 		if(am_res < min)	//theres no ammo in reserve to reload
 			return resolvestate(noAmmostate);
+		
+		//all checks passed
+		//so set the reloading bool to true
+		BW_SetReloading(true);
 		if(am_mag < 1)		//the mag is empty, go to the empty reload if any, continue partial if not defined
 			return resolvestate(emptystate);
 		return resolvestate(null);	//continue normal
@@ -206,6 +220,31 @@ Extend Class BaseBWWeapon
 		return (!BW_isFiring(true) && !BW_isFiring(false));
 	}
 
+	action state BW_DualReady(bool left = false,statelabel firing = null)
+	{
+		bool pressing,hasammo;
+		if(left)
+		{
+			pressing = pressingButton(BT_ATTACK);
+			hasammo = invoker.ammoleft.amount > 0;
+		}
+		else
+		{
+			pressing = BW_DualFiremode == 1 ? pressingButton(BT_ATTACK) : pressingButton(BT_ALTATTACK);
+			hasammo = invoker.ammo2.amount > 0;
+		}
+		BW_SetReloading(false);	//if its on ready state then its not reloading
+		if(pressing && hasammo)
+			return resolvestate(firing);
+		return resolvestate(null);
+	}
+
+	//idk what to call this function, it returns the button to check for refire when dual
+	action int getRightfirebutton()
+	{
+		return BW_DualFiremode == 1 ? BT_ATTACK : BT_ALTATTACK;
+	}
+
     //////////////////////////////////////////////////////////////////////////////////////////////
     // replacement for vanilla weapon handling functions
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,6 +256,7 @@ Extend Class BaseBWWeapon
 				A_Log("No grenades left.");
 			BWRflags &= ~(WRF_ALLOWUSER3);	//disable the grenade button if no grenades
 		}
+		BW_SetReloading(false);	//if its on ready state then its not reloading
 		A_Weaponready(BWRflags);
 		return resolvestate(null);
 	}
@@ -227,6 +267,7 @@ Extend Class BaseBWWeapon
 		A_weaponoffset(0,32);
 		A_ZoomFactor(1.0);
 		A_setinventory("AimingToken",0);
+		BW_SetReloading(false); //just in case
 		if(SelectSound)
 			A_Startsound(sound(SelectSound),7);
 	}
@@ -236,6 +277,7 @@ Extend Class BaseBWWeapon
 	{
 		A_ZoomFactor(1.0);
 		A_setinventory("AimingToken",0);
+		BW_SetReloading(false);
 		A_Lower(120);
 	}
 
@@ -432,8 +474,10 @@ Extend Class BaseBWWeapon
 
 	action void handleKnifeFlash()
 	{
+		BW_SetReloading(false);	//not sure if this is actually necessary, but just in case
 		statelabel pendkf = "KnifeGunFlash";
 		A_Overlay(-4,pendkf);
+		A_Overlay(-32,"PrepareKnifeLayer");
 		//let kf = invoker.resolvestate(pendkf);
 		//if(kf)
 		//	player.SetPSprite(-4,kf);

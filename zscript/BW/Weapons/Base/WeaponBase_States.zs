@@ -109,6 +109,7 @@ Extend Class BaseBWWeapon
 		User3:
 		GrenadeThrow:
 			TNT1 A 0 BW_ClearDualOverlays();
+			TNT1 A 0 A_overlay(-33,"PrepareGrenadeLayer");
 			TNT1 A 1;
 			//raise
 			TNT1 A 0 A_startsound("Grenade/Draw",6,CHANF_OVERLAP);
@@ -165,6 +166,12 @@ Extend Class BaseBWWeapon
 			TNT1 AA 0 A_jump(256,"Ready");
 			wait;
 		PrepareLedgeGrab:	//pseudo virtual function
+			TNT1 A 1;
+			stop;
+		PrepareKnifeLayer:	
+			TNT1 A 1;
+			stop;
+		PrepareGrenadeLayer:
 			TNT1 A 1;
 			stop;
 		//dummy kick flashes 

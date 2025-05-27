@@ -60,6 +60,8 @@ Class BW_Grenade : Actor
                     A_Startsound("Grenade/Explosion/Water",10);
                 else
                     A_Startsound("Grenade/Explosion",10);
+                if(pos.z < floorz < 20)
+                    spawn("BW_GroundFireFx",(pos.xy,floorz));
             }
             TNT1 A 0 A_Explode(300,100);
             TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");

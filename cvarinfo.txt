@@ -11,9 +11,13 @@ server int BW_DebrisLimit = 256;
 server int BW_CasingsLimit = 256;
 server int BW_CleanTics = 0;
 server int BW_PlaneModelDrawDist = 700;
+server int BW_DualFiremode  = 0;    //0 individual, 1 single button
+
+//hud
 user   float BW_messageScale = 1.0;
 user   bool BW_Custommsg = true;
 user   int  BW_messagepos = 0;
+user   bool BW_CurrentAmmoList = true;
 
 //Nashgore Cvars
 

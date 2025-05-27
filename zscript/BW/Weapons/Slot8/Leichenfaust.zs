@@ -22,6 +22,7 @@ Class BW_Leichenfaust : BaseBWWeapon
 			BFPU CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(42);
 			TNT1 A 0 A_Startsound("LF/Drop",5,CHANF_OVERLAP);
 			BFPU FG 1;
@@ -93,27 +94,9 @@ Class BW_Leichenfaust : BaseBWWeapon
 		A_Fireprojectile("BFGBALL",0,0,0,-12,0);
 		A_Startsound("LF/Fire",32);
 		BW_QuakeCamera(12, 2);
+		A_SpawnItemEx("PlayerMuzzleFlash_Purple",30,0,45);
 		BW_WeaponRecoilBasic(-2, frandom(-2.2,2.2));
 		invoker.ammo1.amount--;
 	}
 }
 
-
-Class BW_LFAmmo : BW_Ammo //7692
-{
-	default
-	{
-		scale 0.75;
-		inventory.amount 3;
-        inventory.maxamount 6;
-        ammo.backpackamount 2;
-        ammo.BackpackMaxAmount 12;
-        tag "PlasmaSix Cell";
-	}
-	states
-	{
-		spawn:
-			LFAM A -1 bright;
-			stop;
-	}
-}

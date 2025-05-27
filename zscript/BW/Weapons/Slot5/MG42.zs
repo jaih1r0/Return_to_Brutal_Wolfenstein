@@ -25,6 +25,7 @@ Class BW_MG42 : BaseBWWeapon
 			BMGU CD 1;
 			goto ready;
 		Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(42);
 			TNT1 A 0 A_Startsound("MG42/Drop",5,CHANF_OVERLAP);
 			BMGU FG 1;
@@ -152,7 +153,7 @@ Class BW_MG42 : BaseBWWeapon
 			MGR3 EDCBA 1 BW_WeaponReady();
 			goto ready;
 			
-			
+		PrepareKnifeLayer:
 		PrepareLedgeGrab:
 			TNT1 A 0 A_Stopsound(42);
 			TNT1 A 1;

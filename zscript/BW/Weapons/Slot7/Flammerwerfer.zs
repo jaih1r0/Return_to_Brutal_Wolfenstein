@@ -58,6 +58,7 @@ Class BW_FlameThrower : BaseBWWeapon
 			BFLU CD 1;
             goto ready;
         Deselect:
+			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(18);
             TNT1 A 0 A_clearoverlays(-5,-5);
 			TNT1 A 0 A_StartSound("Flamer/Drop", 0, CHANF_OVERLAP, 1);
@@ -71,7 +72,7 @@ Class BW_FlameThrower : BaseBWWeapon
                 if(invoker.ammo1.amount > 0 && waterlevel < 1)
                     A_overlay(-5,"IdleFlameOverlay",true);
             }
-            BFLU E 1 BW_WeaponReady();
+            BFLU E 1 BW_WeaponReady(WRF_ALLOWUSER3);
             loop;
         Fire:
             TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
@@ -148,6 +149,14 @@ Class BW_FlameThrower : BaseBWWeapon
 			//TNT1 A 4;
 			BFLU ABCD 1;
 			stop;
+		
+		PrepareGrenadeLayer:
+		PrepareKnifeLayer:
+			TNT1 A 0 A_Clearoverlays(-5,-5);
+			TNT1 A 0 A_Stopsound(18);
+			TNT1 A 1;
+			stop;
+
 		LoadSprites:
 			BFLO A 0;
 			stop;
@@ -182,24 +191,7 @@ Class BW_FlameThrower : BaseBWWeapon
 
 }
 
-Class BW_GasCan : BW_Ammo //replaces cell
-{
-    Default
-	{
-		Inventory.Amount 10;
-		Inventory.MaxAmount 60;
-		Ammo.BackpackAmount 10;
-		Ammo.BackpackMaxAmount 60;
-		tag "Gas can";
-        inventory.icon "AGASA0";
-	}
-	states
-	{
-		spawn:
-			AGAS A -1;
-			stop;
-	}
-}
+
 
 Class BW_FlameProjectile : Actor
 {
@@ -220,12 +212,13 @@ Class BW_FlameProjectile : Actor
 		+rollsprite;
 		+rollcenter;
 		+BLOODLESSIMPACT;
-		-nogravity;
+		//-nogravity;
 	}
 	states
 	{
 		Spawn:
-			FRPR CCCCCCCCC 1;
+			FRPR I 1;
+			FRPR CCCC 1;
 			goto fade;
 			//stop;
 		Death:
@@ -239,19 +232,26 @@ Class BW_FlameProjectile : Actor
 					fl.bnogravity = true;
 			}
 			TNT1 A 0 A_Explode(5,60,0);
+			TNT1 AAA 0 spawndiespark(pos,true);
 			TNT1 A 1;
 			stop;
 		fade:
 		Xdeath:
 		Crash:
+			TNT1 A 0 A_Setscale(frandom(0.4,0.62));
 			TNT1 A 0 A_Explode(5,60,0);
-			DB54 ABCDEFGHIJKLMNOPQR 1;
+			DB54 ABCDEFGHIJKLMNOPQR 1 
+			{
+				vel *= 0.9;
+				spawndiespark(pos);
+			}
 			stop;
 	}
 	override void postbeginplay()
 	{
 		super.postbeginplay();
 		A_SetRoll(random(0,360));
+		bxflip = random(0,1);
 		A_Attachlightdef('FlameLight','GunMuzzleFlash');
 	}
 	bool ticked;
@@ -282,6 +282,10 @@ Class BW_FlameProjectile : Actor
 	{
 		if(victim && victim.health > 0) //&& victim.health < 10)
 		{
+			/*
+			if(victim.resolvestate("Burning"))
+				victim.setstatelabel("Burning");
+			*/
 			victim.A_GiveInventory("BW_BurningHandler",1);
 		}
 		return damage;
@@ -307,6 +311,35 @@ Class BW_FlameProjectile : Actor
 		Level.SpawnParticle(FTrail);
 	}
 
+	
+	void spawndiespark(vector3 position, bool stopped = false)
+	{
+		FSpawnParticleParams PUFSPRK;
+		PUFSPRK.Texture = TexMan.CheckForTexture("SPKOA0");
+		PUFSPRK.Color1 = "FFFFFF";
+		PUFSPRK.Style = STYLE_Add;
+		PUFSPRK.Flags = SPF_ROLL|SPF_FULLBRIGHT;
+		if(stopped)
+		{
+			PUFSPRK.Vel = (frandom(-2.5,2.5),frandom(-2.5,2.5),frandom(-2.5,0.5));
+			PUFSPRK.accel = (0,0,frandom(0.02,0.06));
+		}
+		else
+		{
+			PUFSPRK.Vel = vel + (frandom(-1.0,1.0),frandom(-1.0,1.0),frandom(-1.0,1.0));
+			PUFSPRK.accel = PUFSPRK.Vel * frandom(-0.018,-0.012);
+		}
+		PUFSPRK.Startroll = random(0,360);
+		PUFSPRK.RollVel = 0;
+		PUFSPRK.StartAlpha = 1.0;
+		PUFSPRK.FadeStep = 0.075;
+		PUFSPRK.Size = random(8,14);
+		PUFSPRK.SizeStep = -0.5;
+		PUFSPRK.Lifetime = random(12,18); 
+		PUFSPRK.Pos = position + (random(-radius,radius) * 3,random(-radius,radius) * 3,random(0,height) * 2);
+		Level.SpawnParticle(PUFSPRK);
+	}
+
 }
 
 Class BW_BurningHandler : inventory
@@ -322,6 +355,8 @@ Class BW_BurningHandler : inventory
 		other.A_SetTranslation("BW_Burning");
 		other.bBright = true;
 		//other.bnoblood = true;
+		if(!other.bBoss)
+			other.bfrightened = true;	//too busy burning alive to think about attacking
 		if(other.target && other.target.player)
 			tracer = other.target;
 	}
@@ -350,9 +385,18 @@ Class BW_BurningHandler : inventory
 		
 		if(burntics <= 0 && !burned)
 		{
-			burned = true;
-			owner.A_SetTranslation("BW_Burned");
-			owner.bBright = false;
+			if(owner.health > 0)
+			{
+				burntics = 10;
+			}
+			else
+			{
+				burned = true;
+				owner.A_SetTranslation("BW_Burned");
+				owner.bBright = false;
+				spawnburnedSmoke(owner.pos);
+				
+			}
 		}
 	}
 
@@ -375,7 +419,43 @@ Class BW_BurningHandler : inventory
 		WTFSMK.accel = (0,0,frandom(0.15,0.35));
 		Level.SpawnParticle (WTFSMK);
 	}
+
+	void spawnburnedSmoke(vector3 position)
+	{
+		FSpawnParticleParams WTFSMK;
+		WTFSMK.Pos = position + (random(-20,20),random(-20,20),random(0,owner.height));
+        WTFSMK.Texture = TexMan.CheckForTexture("SMO1C0");
+		WTFSMK.Color1 = 0xFFFFFF;
+		WTFSMK.Style = STYLE_Translucent;
+		WTFSMK.Flags = SPF_ROLL;
+		WTFSMK.Startroll = random(0,360);
+		WTFSMK.RollVel = random(-5,5);
+		WTFSMK.StartAlpha = 0.5;
+		WTFSMK.Size = random(35,42);
+		WTFSMK.SizeStep = 2;
+		WTFSMK.Lifetime = Random(20,35); 
+		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
+		WTFSMK.Vel = (frandom[bscsmk](-1.0,1.0),frandom[bscsmk](-1.0,1.0),frandom[bscsmk](0.1,1.5));
+		if(CeilingPic == SkyFlatNum)
+			WTFSMK.accel = getwinddir();
+		Level.SpawnParticle (WTFSMK);
+	}
+
+    vector3 getwinddir()
+	{
+		if(!level)
+			return (0,0,0);
+		switch(level.levelnum % 4)
+		{
+			case 0:	return (0.05,0.05,0.03);	break;
+			case 1:	return (-0.05,0.05,0.03);	break;
+			case 2:	return (0.05,-0.05,0.03);	break;
+			case 3:	return (-0.05,-0.05,0.03);	break;
+		}
+		return (0,0,0);
+	}
 }
+
 
 Class BW_GroundFire : Actor
 {
