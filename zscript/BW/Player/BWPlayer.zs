@@ -333,7 +333,7 @@ class Z_NashMove : inventory
 				Owner.vel.x *= DECEL_MULT;
 				Owner.vel.y *= DECEL_MULT;
 				// make the view bobbing match the player's movement
-				PlayerPawn(Owner).ViewBob = Owner.vel.length() / 16;//DECEL_MULT / 2;
+				PlayerPawn(Owner).ViewBob = GetVelocity() / 16;//DECEL_MULT / 2;
 			}
 		}
 		

@@ -25,31 +25,6 @@ Mixin Class BW_CheckFunctions
 	}
 }
 
-Mixin Class BW_CheckFunctionsWeapon
-{
-	Bool IsInState(StateLabel CheckFor = "Spawn")
-	{
-		if (!owner || !owner.player)
-		{
-			return false;
-		}
-		let weap = owner.player.readyweapon;
-		if (!weap || weap != self)
-		{
-			return false;
-		}
-		
-		let psp = owner.player.FindPSprite(PSP_WEAPON);
-		if(!psp)
-		{
-			Return false;
-		}
-		
-		Return (InStateSequence(psp.curstate, ResolveState(CheckFor)));
-
-	}
-}
-
 mixin class BW_BetterPickupSound
 {
 	override void PlayPickupSound(actor toucher)

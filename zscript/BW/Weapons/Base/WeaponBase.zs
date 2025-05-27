@@ -18,8 +18,6 @@ Class BaseBWWeapon : DoomWeapon
 		+dontgib;
 	}
 	
-	mixin BW_CheckFunctionsWeapon;
-	
 	enum BWWR_Flags {
 		BWWF_NoAxe		= 1<<26,
 		BWWF_NoGrenade 	= 1<<27,
