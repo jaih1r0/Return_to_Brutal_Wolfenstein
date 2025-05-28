@@ -17,7 +17,7 @@ Class BaseBWWeapon : DoomWeapon
 		inventory.maxamount 1;
 		+dontgib;
 	}
-
+	
 	enum BWWR_Flags {
 		BWWF_NoAxe		= 1<<26,
 		BWWF_NoGrenade 	= 1<<27,
@@ -67,7 +67,6 @@ Class BaseBWWeapon : DoomWeapon
 	override void Tick()
 	{
 		Super.Tick();
-
 		let plr = BWPlayer(Owner);
 		if (!plr)
 		{

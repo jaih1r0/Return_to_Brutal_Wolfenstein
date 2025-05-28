@@ -7,7 +7,8 @@ Class BW_Ammo : Ammo
 			type = type.GetParentClass();
 		return (class<Ammo>)(type);
 	}
-
+	
+	mixin BW_BetterPickupSound;
 
     int got;
     override bool trypickup(in out actor toucher)

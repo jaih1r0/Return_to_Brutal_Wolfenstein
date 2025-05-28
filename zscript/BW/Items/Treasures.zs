@@ -9,6 +9,8 @@ Class BW_Treasure : scoreitem
         Inventory.PickupSound "pickup/treasure";
         Inventory.PickupMessage "treasure";
     }
+	
+	mixin BW_BetterPickupSound;
 }
 
 Class BW_Treasure_Cross : BW_Treasure
