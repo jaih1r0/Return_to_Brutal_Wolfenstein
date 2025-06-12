@@ -84,6 +84,14 @@ flickerlight2 EnemyGrenade
     interval 0.4
 }
 
+flickerlight2 EnemySmokeGrenade
+{
+    color 0.3 0.1 0.9
+    size 25
+    secondarySize 40
+    interval 0.4
+}
+
 //map decorations
 Pointlight BiggerCandelabraLight
 {

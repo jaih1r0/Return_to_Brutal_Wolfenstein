@@ -109,6 +109,11 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	option "draw current ammo list","BW_CurrentAmmoList","OnOff"
 	statictext ""
+	option "use classic hud scaling","hud_oldscale","OnOff"
+	statictext "use it if hud looks too big or small"
+	statictext ""
+	slider "hud scale factor","hud_scalefactor",0.3,1.0,0.05
+	statictext ""
 	
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
 

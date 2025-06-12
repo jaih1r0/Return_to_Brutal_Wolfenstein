@@ -167,3 +167,69 @@ Class BW_enemyGrenade : BW_Grenade
             loop;
     }
 }
+
+Class BW_SmokeGrenade : BW_Grenade
+{
+	states
+	{
+		spawn:
+            GRND H 2 light("EnemySmokeGrenade") A_setRoll(roll + rolldirspd,SPF_INTERPOLATE);
+            loop;
+        SpawnStop:
+            GRND H 3 light("EnemySmokeGrenade") A_SetRoll(endroll,SPF_INTERPOLATE);
+        WaitLoop:
+            GRND H 1 light("EnemySmokeGrenade") A_jumpif(!fuse,"Explode");
+            loop;
+		Explode:
+			TNT1 A 0 A_Startsound("Grenade/Explosion",10);
+			TNT1 AAAAA 0 spawnSmokeGrenadeFx(true);
+			TNT1 AAA 7 spawnSmokeGrenadeFx(false);
+			TNT1 AA 0 spawnSmokeGrenadeFx(true);
+			TNT1 AAA 7 spawnSmokeGrenadeFx(false);
+			TNT1 AA 0 spawnSmokeGrenadeFx(true);
+			TNT1 AAA 7 spawnSmokeGrenadeFx(false);
+			TNT1 AA 0 spawnSmokeGrenadeFx(true);
+			TNT1 AAAAA 7 spawnSmokeGrenadeFx(false);
+			TNT1 AA 0 spawnSmokeGrenadeFx(true);
+            stop;
+	}
+	
+	
+	void spawnSmokeGrenadeFx(bool starting = false)
+	{
+		FSpawnParticleParams WTFSMK;
+		
+        WTFSMK.Texture = TexMan.CheckForTexture("SMO1C0");//("X102A0"); 
+		WTFSMK.Color1 = 0xFFFFFF;
+		WTFSMK.Style = STYLE_Translucent;
+		WTFSMK.Flags = SPF_ROLL;
+		WTFSMK.Startroll = random(0,360);
+		WTFSMK.RollVel = random(-5,5);
+		WTFSMK.StartAlpha = 0.5;
+		WTFSMK.Size = random(80,105);
+		WTFSMK.SizeStep = 1;
+		
+		if(starting)
+		{
+			WTFSMK.Size = random(60,85);
+			WTFSMK.Lifetime = random(14,21);
+			WTFSMK.Pos = pos + (0,0,5);
+			WTFSMK.Vel = (frandom[bscsmk](-3,3),frandom[bscsmk](-3,3),frandom[bscsmk](-0.2,3));
+		}
+		else
+		{
+			WTFSMK.StartAlpha = 0.75;
+			WTFSMK.Lifetime = Thinker.TICRATE * Random(4,7); 
+			WTFSMK.Pos = pos + (random(-20,20),random(-20,20),random(0,32));
+			WTFSMK.Vel = (frandom[bscsmk](-0.25,0.25),frandom[bscsmk](-0.25,0.25),frandom[bscsmk](-0.15,0.25));
+		}
+		
+		WTFSMK.FadeStep = WTFSMK.StartAlpha / WTFSMK.Lifetime;
+		
+        if(CeilingPic == SkyFlatNum)
+			WTFSMK.accel = (getwinddir() * 0.2);
+
+		Level.SpawnParticle (WTFSMK);
+	}
+	
+}

@@ -24,3 +24,9 @@ sprite NGMVW0, 1, 1 { patch TNT1A0, 0, 0 {} }
 sprite NGMVX0, 1, 1 { patch TNT1A0, 0, 0 {} }
 sprite NGMVY0, 1, 1 { patch TNT1A0, 0, 0 {} }
 sprite NGMVZ0, 1, 1 { patch TNT1A0, 0, 0 {} }
+
+
+Texture "BWMOVIE",320,200
+{
+	Patch "TNT1A0",0,0
+}
