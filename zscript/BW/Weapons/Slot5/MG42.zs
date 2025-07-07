@@ -63,6 +63,7 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 A_StopSound(42);
 			goto ready;
 		DryFire:
+			TNT1 A 0 A_Startsound("weapon/dryfire",13);
 			TNT1 A 0 A_Stopsound(42);
 			BMGE E 1;
 			goto ready;

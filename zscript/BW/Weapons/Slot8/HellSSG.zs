@@ -70,6 +70,7 @@ Class BW_SSG : BaseBWWeapon
 			}
 			loop;
 		DryFire:
+			TNT1 A 0 A_Startsound("weapon/dryfire",13);
 			BHGU E 1;
 			goto ready;
 		NoAmmo:

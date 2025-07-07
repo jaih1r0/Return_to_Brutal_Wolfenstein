@@ -6,6 +6,8 @@
 
 //-----GENERIC-----//
 
+weapon/dryfire "Sounds/Weapons/DRYFIRE.ogg"
+
 $RANDOM Generic/Rattle/Small
 {
 Generic/Rattle/Small1

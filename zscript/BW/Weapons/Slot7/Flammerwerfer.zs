@@ -83,6 +83,7 @@ Class BW_FlameThrower : BaseBWWeapon
 			TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
 			TNT1 A 0 A_Startsound("flamer/fireloop",18,CHANF_LOOPING);
             TNT1 A 0 A_Weaponoffset(0 + random(-1,1),32 + random(-1,0));
+			TNT1 A 0 spawnfiringspark();
 			BFLF A 1 bright FireFlames();
             BFLF B 1 bright;
 			TNT1 A 0 A_Weaponoffset(0,32);
@@ -187,6 +188,32 @@ Class BW_FlameThrower : BaseBWWeapon
 		FTrail.Lifetime = random(6,8); 
 		FTrail.Pos = position;
 		Level.SpawnParticle(FTrail);
+	}
+
+	action void spawnfiringspark(int amt = 3)
+	{
+		let q = quat.fromangles(angle,pitch,roll);
+
+		for(int i = 0; i < amt; i++)
+		{
+			FSpawnParticleParams FTrail;
+			FTrail.Texture = TexMan.CheckForTexture("SPKOA0");//("FRPRC0");
+			FTrail.Color1 = "FFFFFF";
+			FTrail.Style = STYLE_ADD;
+			FTrail.Flags = SPF_ROLL|SPF_FULLBRIGHT;
+			vector3 fvel = q * (frandom(1.8,9.2),frandom(-1.75,1.75),1);
+			FTrail.Vel = fvel;
+			FTrail.Startroll = random(0,360);
+			FTrail.RollVel = frandom(-15,15);
+			FTrail.StartAlpha = 1.0;
+			FTrail.FadeStep = 0.18;
+			FTrail.Size = random(2,4);
+			FTrail.SizeStep = -0.1;//frandom(-0.5,-0.8);
+			FTrail.Lifetime = random(6,8); 
+			vector3 ofs = q * (28,0,height * 0.55);
+			FTrail.Pos = levellocals.vec3offset(pos,ofs);
+			Level.SpawnParticle(FTrail);
+		}
 	}
 
 }

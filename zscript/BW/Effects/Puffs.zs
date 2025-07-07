@@ -143,9 +143,9 @@ class BW_impactpuff : BW_BulletPuff
 	}
 	
 	enum Puff_ImpactType {
-		IMP_WALL = 0,
-		IMP_FLOOR = 1,
-		IMP_CEIL = 2,
+		IMP_WALL = TRACE_HitWall,
+		IMP_FLOOR = TRACE_HitFloor,
+		IMP_CEIL = TRACE_HitCeiling,
 	}
 	
 	void a_spawnimpact()

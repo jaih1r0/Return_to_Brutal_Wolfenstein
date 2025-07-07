@@ -126,9 +126,11 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			Goto Ready_ADS;
 		
 		DryFire:
+			TNT1 A 0 A_Startsound("weapon/dryfire",13);
 			MP4U E 1;
 			goto ready;
 		DryFire_ADS:
+			TNT1 A 0 A_Startsound("weapon/dryfire",13);
 			MP4T E 1;
 			goto ready_ADS;
 		
@@ -258,6 +260,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			DM4L F 1 BW_QuickRefire("Dual_Left_Fire",BT_ATTACK,false);
 			goto Dual_Left;
 		Dual_Left_DryFire:
+			TNT1 A 0 A_Startsound("weapon/dryfire",13);
 			DM4L A 1;
 			goto Dual_Left;
 		Dual_Right_Fire:
@@ -271,6 +274,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			DM4R F 1 BW_QuickRefire("Dual_Right_Fire",getRightfirebutton(),false);
 			goto Dual_Right;
 		Dual_Right_DryFire:
+			TNT1 A 0 A_Startsound("weapon/dryfire",14);
 			DM4R A 1;
 			goto Dual_Right;
 		
