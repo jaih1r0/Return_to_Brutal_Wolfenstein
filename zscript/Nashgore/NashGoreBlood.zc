@@ -114,7 +114,13 @@ class NashGoreBloodBase : Blood
 
 		// need to copy blood color to get correct decal color for TraceBleed
 		if (Target)
-			CopyBloodColor(Target);
+		{
+			actor ng = target.findinventory("NashGoreActor");
+			if(ng)
+				copybloodcolor(ng);
+			else
+				CopyBloodColor(Target);
+		}
 	}
 
 	//===========================================================================

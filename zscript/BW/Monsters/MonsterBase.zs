@@ -276,7 +276,7 @@ Class BW_MonsterBase : Actor
 			frandom[rnd_SpawnBloodSpurt](-5.0, 5.0), frandom[rnd_SpawnBloodSpurt](-5.0, 5.0), zofs,
 			frandom[rnd_SpawnBloodSpurt](-2.0, 2.0), frandom[rnd_SpawnBloodSpurt](-2.0, 2.0), frandom[rnd_SpawnBloodSpurt](4.0, 8.0),
 			frandom[rnd_SpawnBloodSpurt](0.0, 360.0),
-			NashGoreBloodBase.BLOOD_FLAGS);
+			SXF_SETTARGET|NashGoreBloodBase.BLOOD_FLAGS);
 	}
 
 	void BW_SpawnGib(string type,vector3 spawnpos,double frontspeed = 1, double sidespeed = 1, double zpeed = 0)
