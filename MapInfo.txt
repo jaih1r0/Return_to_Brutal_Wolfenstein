@@ -32,7 +32,7 @@ DoomEdNums
 	//ammo
 	7028 = "BW_PistolAmmo"	//wolfclip, luger/mp40 ammo
 	7512 = "BW_PistolAmmo"	//PPSH ammo
-	7029 = "Cell"	//STG44 ammo
+	7029 = "BW_SMGAmmo"
 	7030 = "BW_MGAmmo"	//chaingun/mg42 ammo
 	7031 = "BW_KarAmmo"	//kar98k ammo
 	7507 = "shell"	//m1 garand ammo
@@ -53,6 +53,7 @@ DoomEdNums
 	7035 = "BW_Kar98K"
 	7501 = "BW_Luger"
 	7034 = "BW_MG42"
+	7033 = "BW_STG44"
 	
 	7231 = "BW_Luger"	//underwhelming normal luger instead of golden one 
 	7230 = "Clip"		//underwhelming clip instead of golden clip

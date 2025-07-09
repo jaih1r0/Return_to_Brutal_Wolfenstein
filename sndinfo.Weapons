@@ -474,6 +474,34 @@ MP40/BoltRelease	"Sounds/Weapons/Slot3/MP40/MP40BoltForward.wav"
 MP40/Raise	"Sounds/Weapons/Slot3/MP40/MP40Raise.wav"
 MP40/Lower	"Sounds/Weapons/Slot3/MP40/MP40Drop.wav"
 
+//STG44
+
+STG/Fire	"Sounds/Weapons/Slot3/STG44/Fire/STGFire.ogg"
+STG/FireAdd	"Sounds/Weapons/Slot3/STG44/Fire/STGAdd.wav"
+
+//[pop] Just a test, wanna see if GZDooM sound stuff is complex enough to feel these
+STG/FireBass	"Sounds/Weapons/Slot3/STG44/Fire/STGBass.wav"
+STG/FireSubWoof	"Sounds/Weapons/Slot3/STG44/Fire/STGSubWoof.wav"
+
+$RANDOM STG/FireMech
+{
+STG/FireMech1
+STG/FireMech2
+STG/FireMech3
+STG/FireMech4
+}
+
+STG/FireMech1	"Sounds/Weapons/Slot3/STG44/Fire/STGMech1.wav"
+STG/FireMech2	"Sounds/Weapons/Slot3/STG44/Fire/STGMech2.wav"
+STG/FireMech3	"Sounds/Weapons/Slot3/STG44/Fire/STGMech3.wav"
+STG/FireMech4	"Sounds/Weapons/Slot3/STG44/Fire/STGMech4.wav"
+
+STG/MagIn	"Sounds/Weapons/Slot3/STG44/STGMagIn.wav"
+STG/MagOut	"Sounds/Weapons/Slot3/STG44/STGMagOut.wav"
+STG/MagInEmpty	"Sounds/Weapons/Slot3/STG44/STGMagInEmpty.wav"
+STG/MagOutEmpty	"Sounds/Weapons/Slot3/STG44/STGMagOutEmpty.wav"
+STG/Charge	"Sounds/Weapons/Slot3/STG44/STGCharge.wav"
+
 //-----SLOT 4-----//
 
 //Trenchgun
