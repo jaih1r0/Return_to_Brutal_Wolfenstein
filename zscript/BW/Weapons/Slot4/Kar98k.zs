@@ -22,6 +22,8 @@ Class BW_Kar98K : BaseBWWeapon
 		A_StartSound("Kar98/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.9);
 		A_Startsound("Kar98/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1);
 		A_StartSound("Kar98/FireMech", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+		A_StartSound("Kar98/FireBass", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+		A_StartSound("Kar98/FireSubWoof", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 		
 		if(CountInv("AimingToken"))
 		{
