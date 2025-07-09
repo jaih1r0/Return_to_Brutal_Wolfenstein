@@ -36,6 +36,7 @@ class BW_Trenchgun : BaseBWWeapon
 		A_StartSound("Trench/FireAlt", 0, CHANF_OVERLAP, 0.7);
 		A_StartSound("Trench/Fireadd", 0, CHANF_OVERLAP, 0.8);
 		A_StartSound("Trench/FireMech", 0, CHANF_OVERLAP, 1);
+		A_StartSound("Trench/FireBass", 0, CHANF_OVERLAP, 0.75);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
 		if(CountInv("AimingToken"))

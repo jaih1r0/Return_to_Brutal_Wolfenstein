@@ -207,6 +207,7 @@ Class BW_MG42 : BaseBWWeapon
 		A_Overlay(-7,"MuzzleFlash");
 		BW_HandleWeaponFeedback(4, 3, -1.2, frandom(+0.70, -0.70));
 		A_StartSound("MG42Fire", CHAN_AUTO, CHANF_OVERLAP,0.85);
+		A_StartSound("MG42/FireBass", CHAN_AUTO, CHANF_OVERLAP,0.75);
 		A_StartSound("MG42Mech", CHAN_AUTO, CHANF_OVERLAP,1);
 		A_StartSound("MG42Loop",42,CHANF_LOOPING, CHANF_NOSTOP, 0.9);
 		BW_SpawnCasing("BW_792Casing",20,2,-12,random(2,5),random(3,6),random(1,4));
