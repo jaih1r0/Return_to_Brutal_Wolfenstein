@@ -4,6 +4,8 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 	double 	ssup;
 	vector2 finalbob;
 
+	double YscaleFix;	//port this over from monsters
+
 	override void tick()
 	{
 		super.tick();
@@ -76,6 +78,18 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		return dam;
 	}
 	
+	override void PostBeginPlay()
+	{
+		Super.PostBeginPlay();
+		if(StringTable.Localize("$OPTVAL_MBF21STRICT") != "OPTVAL_MBF21STRICT")	//only triggered when loaded in gzdoom 4.13
+		{
+			YscaleFix = scale.y * level.pixelstretch;	//should look good in gzdoom 4.13+
+			A_SetScale(scale.x,YscaleFix);
+		}
+		else
+			YscaleFix = scale.y;
+	}
+	
 	Default
 	{
 		Player.StartItem "BW_Luger", 1;
@@ -84,10 +98,13 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		
 		//Player.StartItem "QuickKick", 1;
 		
-		Player.AttackZOffset 18;//10;
+		//+STRETCHPIXELS;
+		+ROLLSPRITE;
+		
+		Player.AttackZOffset 28;//18;
 		Player.ViewBobSpeed 15;
-		Player.ViewHeight 40;
-		Scale 0.8;
+		Player.ViewHeight 50;//40;
+		Scale 1.0;
 		Player.SoundClass "BWPlayer";
 		Player.Face "STF";
 		Player.DisplayName "William J. Blazkowicz";
