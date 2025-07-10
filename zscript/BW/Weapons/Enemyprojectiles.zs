@@ -15,6 +15,14 @@ Class BW_EnemyMP40Bullets : BW_MP40Bullets
     }
 }
 
+Class BW_EnemySTG44Bullets : BW_STG44Bullets
+{
+    default
+    {
+        speed 50;
+    }
+}
+
 Class BW_EnemyKar98Bullets : BW_Kar98Bullets
 {
     default

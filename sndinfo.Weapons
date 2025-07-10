@@ -502,6 +502,9 @@ STG/MagInEmpty	"Sounds/Weapons/Slot3/STG44/STGMagInEmpty.wav"
 STG/MagOutEmpty	"Sounds/Weapons/Slot3/STG44/STGMagOutEmpty.wav"
 STG/Charge	"Sounds/Weapons/Slot3/STG44/STGCharge.wav"
 
+STG/Raise	"Sounds/Weapons/Slot3/STG44/STGRaise.wav"
+STG/Lower	"Sounds/Weapons/Slot3/STG44/STGDrop.wav"
+
 //-----SLOT 4-----//
 
 //Trenchgun

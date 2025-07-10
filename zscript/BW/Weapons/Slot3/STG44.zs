@@ -88,13 +88,13 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
 			TNT1 A 0 BW_jumpifAkimbo("Select_Dual");
 			ST4U AB 1;
-			TNT1 A 0 A_StartSound("MP40/raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("STG/raise", 0, CHANF_OVERLAP, 1);
 			ST4U CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 A_Startsound("MP40/Lower",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("STG/Lower",5,CHANF_OVERLAP);
 			TNT1 A 0 BW_jumpifAkimbo("Deselect_Dual");
 			ST4U FG 1;
 			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
@@ -459,35 +459,5 @@ Class STG44MagLeft : Ammo
 		Inventory.MaxAmount 31;
 		Ammo.BackpackAmount 0;
 		Ammo.BackpackMaxAmount 31;
-	}
-}
-
-Class BW_SMGAmmo : BW_Ammo //idk how to call this ammo
-{
-    default
-    {
-        inventory.amount 10;
-        inventory.maxamount 90;
-        ammo.backpackamount 10;
-        ammo.BackpackMaxAmount 180;
-        tag "7.92 x 33mm Bullet";
-        Scale 0.65;
-        inventory.althudicon "KARMA0";
-    }
-    states
-    {
-        spawn:
-            KARM A -1;
-            stop;
-    }
-}
-
-Class BW_STG44Bullets : BW_Projectile
-{
-	default
-	{
-		BW_Projectile.projectiledmg 40;
-		BW_Projectile.ripAmount 0;
-		damagetype "SMG";
 	}
 }

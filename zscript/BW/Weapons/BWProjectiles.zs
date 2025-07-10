@@ -394,6 +394,16 @@ Class BW_MP40Bullets : BW_Projectile
 	}
 }
 
+Class BW_STG44Bullets : BW_Projectile
+{
+	default
+	{
+		BW_Projectile.projectiledmg 40;
+		BW_Projectile.ripAmount 0;
+		damagetype "SMG";
+	}
+}
+
 Class BW_Kar98Bullets : BW_Projectile
 {
 	default
