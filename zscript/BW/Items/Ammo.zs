@@ -97,6 +97,26 @@ Class BW_PistolAmmo : BW_Ammo
     }
 }
 
+Class BW_SMGAmmo : BW_Ammo //idk how to call this ammo
+{
+    default
+    {
+        inventory.amount 10;
+        inventory.maxamount 90;
+        ammo.backpackamount 10;
+        ammo.BackpackMaxAmount 180;
+        tag "7.92 x 33mm Bullet";
+        Scale 0.65;
+        inventory.althudicon "KARMA0";
+    }
+    states
+    {
+        spawn:
+            KARM A -1;
+            stop;
+    }
+}
+
 Class BW_ShotgunAmmo : BW_Ammo
 {
     default

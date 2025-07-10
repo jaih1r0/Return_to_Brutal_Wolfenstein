@@ -154,6 +154,16 @@ model BW_EnemyMP40Bullets
    FrameIndex TRAC A 0 0
 }
 
+model BW_EnemySTG44Bullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
 model BW_EnemyKar98Bullets
 {
    Path "models/PROJECTILES"
