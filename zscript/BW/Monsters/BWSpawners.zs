@@ -13,7 +13,7 @@
 	24 equals Skill_hard|Skill_Uber
 */
 
-Class BW_ZombiemanSpawner : BW_Spawner replaces Zombieman
+Class BW_BrownGuardSpawner : BW_Spawner
 {
 	default
 	{
@@ -22,7 +22,15 @@ Class BW_ZombiemanSpawner : BW_Spawner replaces Zombieman
 	}
 }
 
-Class BW_ShotgunguySpawner : BW_Spawner replaces ShotgunGuy
+Class BW_RiflemanSpawner : BW_Spawner
+{
+	default
+	{
+		dropItem "BW_BrownGuard_Rifle",Skill_All, 1;
+	}
+}
+
+Class BW_BlueGuardSpawner : BW_Spawner
 {
 	Default
 	{
@@ -32,10 +40,18 @@ Class BW_ShotgunguySpawner : BW_Spawner replaces ShotgunGuy
 	}
 }
 
-Class BW_RiflemanSpawner : BW_Spawner
+Class BW_MutantSpawner : BW_Spawner
 {
 	default
 	{
-		dropItem "BW_BrownGuard_Rifle",Skill_All, 1;
+		dropItem "BW_Mutant",Skill_All, 1;
+	}
+}
+
+Class BW_BlackGuardSpawner : BW_Spawner
+{
+	default
+	{
+		dropItem "BW_BlackGuard_STG44",Skill_All, 1;
 	}
 }
