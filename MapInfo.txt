@@ -100,15 +100,15 @@ DoomEdNums
 	7301 = "BW_EarthQuaker"
 	
 	//enemies
-	7006 = "BW_ZombiemanSpawner"
+	7006 = "BW_BrownGuardSpawner"
 	7007 = "BW_BrownGuard_Pistol"	//patroling brown guard
-	7008 = "BW_ShotgunguySpawner"
+	7008 = "BW_BlueGuardSpawner"
 	7018 = "BW_RiflemanSpawner"		//rifol
-	7019 = "BW_ShotgunguySpawner"	//easy version
-	7045 = "BW_ZombiemanSpawner"	//easy
-	7156 = "BW_ZombiemanSpawner"	//easy p38 guard
-	7079 = "BW_Mutant"
-	7267 = "BW_ZombiemanSpawner"	//patroling p38 guard
+	7019 = "BW_BlueGuardSpawner"	//easy version
+	7045 = "BW_BrownGuardSpawner"	//easy
+	7156 = "BW_BrownGuardSpawner"	//easy p38 guard
+	7079 = "BW_MutantSpawner"
+	7267 = "BW_BrownGuardSpawner"	//patroling p38 guard
 
 	//sod demons
 	1381 = "BW_Archvile"

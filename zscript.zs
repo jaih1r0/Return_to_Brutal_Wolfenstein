@@ -53,9 +53,12 @@ Version 4.10
 #include "zscript/BW/Monsters/BlackGuard/STG44.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 #include "zscript/BW/Monsters/Mutants/Mutant.zs"
-#include "zscript/BW/Monsters/Demons/Demons.zs"
 
-#include "zscript/BW/Monsters/Spawners.zs"
+#include "zscript/BW/Monsters/Demons/Demons.zs"
+#include "zscript/BW/Monsters/Demons/DoomImp.zs"
+
+#include "zscript/BW/Monsters/BWSpawners.zs"
+#include "zscript/BW/Monsters/DooMSpawners.zs"
 
 
 //Map props

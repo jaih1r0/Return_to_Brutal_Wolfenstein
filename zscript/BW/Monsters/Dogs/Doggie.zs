@@ -1,4 +1,4 @@
-Class BW_Dog : BW_MonsterBase replaces demon
+Class BW_Dog : BW_MonsterBase
 {
     default
     {

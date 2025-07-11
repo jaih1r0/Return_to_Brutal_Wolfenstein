@@ -27,6 +27,8 @@ extend class BW_MonsterBase
 	Property SoundCategory : soundBase;
 	//used for A_SmartPain
 	
+	double Mana; //For Demons, or anything else that itd make sense on.
+	
 	int AmmoInMag;
 	int Timer;
 	
