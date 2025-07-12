@@ -18,7 +18,7 @@ Class DooM_ZombiemanSpawner : BW_Spawner replaces Zombieman
 	default
 	{
 		dropItem "BW_BrownGuard_Pistol",Skill_All, 1;
-		DropItem "BW_BrownGuard_Rifle", Skill_hard|Skill_Uber, 1;
+		DropItem "BW_BrownGuard_Rifle", Skill_All, 1;
 	}
 }
 
@@ -86,6 +86,6 @@ Class DooM_ArchvileSpawner : BW_Spawner replaces Archvile
 {
 	default
 	{
-		DropItem "BW_Baron", Skill_All, 1;
+		DropItem "BW_Archvile", Skill_All, 1;
 	}
 }
