@@ -217,8 +217,8 @@ Class BW_Imp : BW_MonsterBase //1380
 			Goto See;
 		
 		Pain:
-            TROO H 2;
-            TROO H 2 A_Pain;
+            TNT1 A 0 A_JumpIf(kickeddown, "KickedPain");
+            TROO H 4 A_Pain;
             Goto See;
 		
 		Pain.Kick:
