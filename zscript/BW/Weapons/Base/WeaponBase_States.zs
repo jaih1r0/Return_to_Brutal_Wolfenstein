@@ -7,6 +7,25 @@ Extend Class BaseBWWeapon
 {
     states
 	{
+		//handles kick and knife inputs
+		HelperHandler:
+			TNT1 A 1 {
+				int btns = player.cmd.buttons;
+				int oldbt = player.oldbuttons;
+				bool isKicking = !!(player.findpsprite(-3));
+				bool isSlashing = !!(player.findpsprite(-4));
+				bool aiming = BW_IsAiming();
+
+				if(!isKicking && (btns & BT_User4))
+					A_overlay(-3,"DoKick");
+
+				if(!isSlashing && (btns & BT_User1) && !aiming)
+					player.SetPSprite(PSP_WEAPON,resolvestate("KnifeAttack"));
+				
+			}
+			loop;
+		
+		//User4:	//kick
 		DoKick:
 			TNT1 A 0 A_jumpif(pos.z <= floorz + 2 && vel.xy.length() > 3 && (player.cmd.buttons & BT_CROUCH),"SlideKick");
 			TNT1 A 0 handlekickFlash();
@@ -56,11 +75,8 @@ Extend Class BaseBWWeapon
 			stop;
 		
 		//there was already an states block here lol
-		User1: //replaces BD Weapon Special
-			TNT1 A 1;
-			Goto WeaponReady;
 		
-		User2:
+		User1:	//knoife/axe
 		KnifeAttack:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 handleKnifeFlash();
@@ -79,12 +95,17 @@ Extend Class BaseBWWeapon
 			TNT1 A 0 A_StartSound("Axe/Swing", 0, CHANF_OVERLAP, 1);
 			TNT1 A 0 giveinventory("CanThrowAxe",1);
 			TNT1 AAA 1;
-			BAX1 ABC 1;
+			BAX1 ABC 1 A_jumpif(shouldthrowaxe(),"AxeThrow");
 			TNT1 A 0 A_QuakeEx(0.5,0.5,0.5,7,0,10,"",QF_SCALEDOWN|QF_RELATIVE,0,0,0,0,0,2,2);
-			BAX1 D 1;
-			BAX1 E 1 BW_HandleKnife(100,70,true);
-			BAX1 FGH 1;
-			TNT1 A 2;
+			BAX1 D 1 A_jumpif(shouldthrowaxe(),"AxeThrow");
+			BAX1 E 1 {
+				if(shouldthrowaxe())
+					return resolvestate("AxeThrow");
+				BW_HandleKnife(100,70,true);
+				return resolvestate(null);
+			}
+			BAX1 FGH 1 A_jumpif(shouldthrowaxe(),"AxeThrow");
+			TNT1 A 2 A_jumpif(shouldthrowaxe(),"AxeThrow");
 			TNT1 A 0 A_Jump(256, "Ready");
 			goto ready;
 		AxeThrow:
@@ -106,6 +127,8 @@ Extend Class BaseBWWeapon
 			TNT1 A 14;
 			stop;
 		
+		//User2:	//weapon special/dual wield/etc
+
 		User3:
 		GrenadeThrow:
 			TNT1 A 0 BW_ClearDualOverlays();

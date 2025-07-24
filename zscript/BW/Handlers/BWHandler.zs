@@ -95,65 +95,6 @@ class BW_EventHandler : EventHandler
 		if(pl.health < 1)
 			return;
 
-		if (e.Name ~== "KickEm")
-		{	
-			if(kicktimer <= 0)
-			{
-				let wp = pl.player.readyweapon;
-				if(!wp)
-					return;
-				let psp = pl.player.findpsprite(-3);
-				if(!psp)	//is already kicking
-				{
-					//pl.A_GiveInventory("DoKick");
-					let ks = wp.resolvestate("DoKick");
-					if(ks)
-						pl.player.SetPSprite(-3,ks);
-					//let kf = wp.resolvestate("KickFlash");
-					//if(kf)
-					//	pl.player.SetPSprite(PSP_WEAPON,kf);
-					kicktimer = 18;
-				}
-				
-			}
-		}
-
-		if (e.Name ~== "SlashEm")
-		{	
-			if(KnifeTimer <= 0)
-			{
-				let wp = pl.player.readyweapon;
-				if(!wp)
-					return;
-
-				if(pl.findinventory("AimingToken"))	//currently aiming, abort mission
-					return;
-
-				if(pl.findinventory("CanThrowAxe"))
-				{
-					pl.A_TakeInventory("CanthrowAxe",10);
-					let ks = wp.resolvestate("AxeThrow");
-					if(ks)
-						pl.player.SetPSprite(PSP_WEAPON,ks);
-					KnifeTimer = 12;
-					return;
-				}
-
-				let psp = pl.player.findpsprite(-4);
-				if(psp)	//is already knifing
-					return;
-				
-				let ks = wp.resolvestate("KnifeAttack");
-				if(ks)
-					pl.player.SetPSprite(PSP_WEAPON,ks);
-				if(pl.countinv("BW_AxeAmmo") > 0)
-					KnifeTimer = 3;
-				else
-					KnifeTimer = 12;
-				
-			}
-		}
-
 	}
 
 	//basic version of a combo system
