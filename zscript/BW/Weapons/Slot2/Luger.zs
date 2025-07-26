@@ -83,7 +83,7 @@ class BW_Luger : BaseBWWeapon
 	WeaponReady:
 		ZLUS E 1 {
 			BW_GunBarrelSmoke(ofsPos:(18,0,-4),startsize:4);
-			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
+			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3);
 		}
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "WeaponReadyEmpty");
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
@@ -91,7 +91,7 @@ class BW_Luger : BaseBWWeapon
 	WeaponReady2:
 		ZLU2 A 1 {
 			BW_GunBarrelSmoke(ofsPos:(18,0,-4),startsize:4);
-			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
+			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3);
 		}
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "WeaponReady2Empty");
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
@@ -99,14 +99,14 @@ class BW_Luger : BaseBWWeapon
 	WeaponReadyEmpty:
 		ZLUG E 1 {
 			BW_GunBarrelSmoke(ofsPos:(18,0,-4),startsize:4);
-			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
+			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3);
 		}
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
 		Loop;
 	WeaponReady2Empty:
 		ZLU2 E 1 {
 			BW_GunBarrelSmoke(ofsPos:(18,0,-4),startsize:4);
-			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
+			return BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3);
 		}
 		//TNT1 A 0 A_JumpIfInventory("ThrowGrenade", 1, "FragGrenade");
 		Loop;

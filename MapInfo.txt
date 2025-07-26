@@ -119,6 +119,17 @@ DoomEdNums
 	7079 = "BW_MutantSpawner"
 	7267 = "BW_BrownGuardSpawner"	//patroling p38 guard
 
+	7010 = "BW_BlackGuardSpawner"	//black guard, called Panzergrenadier in original BW
+	7011 = "BW_BlackGuardSpawner"	//same but patroling
+	7002 = "BW_BlackGuardSpawner"
+	7020 = "BW_BlackGuardSpawner"
+	7069 = "BW_BlackGuardSpawner"
+	7075 = "BW_BlackGuardSpawner"
+
+	1355 = "BW_BlackGuardSpawner"	//fg42 guard
+	1353 = "BW_BlackGuardSpawner"	// easy
+	1354 = "BW_BlackGuardSpawner"	// hard
+
 	//sod demons
 	1381 = "BW_Archvile"
 	1383 = "BW_Baron"

@@ -31,6 +31,21 @@ Extend Class BaseBWWeapon
 		return (findinventory("AimingToken"));
 	}
 
+	action bool BW_GotAxe()
+	{
+		return (findinventory("BW_AxeAmmo"));
+	}
+
+	action bool BW_CanThrowAxe()
+	{
+		return (findinventory("CanThrowAxe"));
+	}
+
+	action bool shouldthrowaxe()
+	{
+		return (BW_CanThrowAxe() && tappedButton(BT_User1));
+	}
+
 	action bool BW_IsReloading()
 	{
 		return invoker.isReloading;
@@ -267,6 +282,7 @@ Extend Class BaseBWWeapon
 		A_weaponoffset(0,32);
 		A_ZoomFactor(1.0);
 		A_setinventory("AimingToken",0);
+		A_Overlay(-99,"HelperHandler");
 		BW_SetReloading(false); //just in case
 		if(SelectSound)
 			A_Startsound(sound(SelectSound),7);
@@ -472,7 +488,7 @@ Extend Class BaseBWWeapon
 			player.SetPSprite(PSP_WEAPON,kf);
 	}
 
-	action void handleKnifeFlash()
+	action void handleKnifeFlash(bool throwing = false)
 	{
 		BW_SetReloading(false);	//not sure if this is actually necessary, but just in case
 		statelabel pendkf = "KnifeGunFlash";
