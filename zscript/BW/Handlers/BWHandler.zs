@@ -94,7 +94,10 @@ class BW_EventHandler : EventHandler
         	return;
 		if(pl.health < 1)
 			return;
-
+		if (e.name ~== "AddBonusCount")
+		{
+			ComboTimer = ComboSpace;	//reset the timer  
+		}
 	}
 
 	//basic version of a combo system
