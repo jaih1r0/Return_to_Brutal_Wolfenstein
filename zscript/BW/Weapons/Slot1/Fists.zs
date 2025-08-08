@@ -26,6 +26,10 @@ Class BW_Fists : BaseBWWeapon replaces fist
         Ready:
             MPFI ABCDEFGHIJKLMNOPQRSTUVWX 1 BW_WeaponReady(WRF_ALLOWUSER3);
             loop;
+		BackToReady:
+			MPFU BCD 1;
+			goto ready;
+			
         Fire:   //left jab
             TNT1 A 0 A_Startsound("Fists/Swing",7);
             MPFL ABC 1;
@@ -34,11 +38,26 @@ Class BW_Fists : BaseBWWeapon replaces fist
             MPFL E 1 BW_Punch();
             MPFL EFG 1;
             TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
-            MPFL HI 1 BW_QuickRefire("AltFire",BT_ALTATTACK,false);
-            MPFI A 1 BW_QuickRefire("AltFire",BT_ALTATTACK,false);
+            MPFL HI 1 BW_QuickRefire("AltFire2",BT_ALTATTACK,false);
+            MPFI A 1 BW_QuickRefire("AltFire2",BT_ALTATTACK,false);
             MPFI A 1;
-            TNT1 A 0 A_Refire();
+            TNT1 A 0 A_Refire("Fire2");
             goto ready;
+		Fire2:
+			TNT1 A 0 A_Startsound("Fists/Swing",7);
+            MPFL ABC 1;
+            TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+            MPFL D 1;
+            MPFL E 1 BW_Punch();
+            MPFL EFG 1;
+            TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
+            MPFL HI 1 BW_QuickRefire("StrongRight",BT_ALTATTACK,false);
+            MPFI A 1 BW_QuickRefire("StrongRight",BT_ALTATTACK,false);
+            MPFI A 1;
+            TNT1 A 0 A_Refire("StrongLeft");
+            goto ready;
+			
+			
         AltFire:    //right jab
             TNT1 A 0 A_Startsound("Fists/Swing",8);
             MPFR ABC 1;
@@ -47,11 +66,54 @@ Class BW_Fists : BaseBWWeapon replaces fist
             MPFR E 1 BW_Punch();
             MPFR EFG 1;
             TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
-            MPFR HI 1 BW_QuickRefire("Fire",BT_ATTACK,false);
-            MPFI A 1 BW_QuickRefire("Fire",BT_ATTACK,false);
+            MPFR HI 1 BW_QuickRefire("Fire2",BT_ATTACK,false);
+            MPFI A 1 BW_QuickRefire("Fire2",BT_ATTACK,false);
             MPFI A 1;
-            TNT1 A 0 A_Refire();
+            TNT1 A 0 A_Refire("AltFire2");
             goto ready;
+		AltFire2:
+            TNT1 A 0 A_Startsound("Fists/Swing",8);
+            MPFR ABC 1;
+            TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+            MPFR D 1;
+            MPFR E 1 BW_Punch();
+            MPFR EFG 1;
+            TNT1 A 0 A_Startsound("Generic/Cloth/Medium",9);
+            MPFR HI 1 BW_QuickRefire("StrongLeft",BT_ATTACK,false);
+            MPFI A 1 BW_QuickRefire("StrongLeft",BT_ATTACK,false);
+            MPFI A 1;
+            TNT1 A 0 A_Refire("StrongRight");
+            goto ready;
+			
+		StrongLeft:
+			MPFU CA 1;
+			TNT1 A 0 A_QuakeEx(2,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+			TNT1 A 1;
+			TNT1 A 0 A_Startsound("Fists/Swing",8);
+			MPHL AB 1;
+			MPHL C 1 BW_Punch(sideOfs:-5);
+			MPHL E 1 BW_Punch();
+			MPHL F 1 BW_Punch(sideOfs:5);
+			MPHL GGHH 1;
+			MPHL IJKL 1;
+			TNT1 A 1;
+			goto BackToReady;
+		
+		StrongRight:
+			MPFU CA 1;
+			TNT1 A 0 A_QuakeEx(2,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+			TNT1 A 1;
+			TNT1 A 0 A_Startsound("Fists/Swing",8);
+			MPHR AB 1;
+			MPHR C 1 BW_Punch(sideOfs:5);
+			MPHR E 1 BW_Punch();
+			MPHR F 1 BW_Punch(sideOfs:-5);
+			MPHR GGHH 1;
+			MPHR IJKL 1;
+			TNT1 A 1;
+			goto BackToReady;
+			
+			
         KickFlash:
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
             MPFK ABC 1;
@@ -79,11 +141,11 @@ Class BW_Fists : BaseBWWeapon replaces fist
             goto ready;
     }
 
-    action void BW_Punch(int dist = 60,int dmg = 30)
+    action void BW_Punch(int dist = 60,int dmg = 30, double sideOfs = 0)
 	{
 		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
 		FLineTraceData t;
-		LineTrace(angle, dist, pitch, offsetz: pz, data: t);
+		LineTrace(angle, dist, pitch, offsetz: pz,offsetside:sideOfs, data: t);
 		
 		if(t.hitactor)
 		{
