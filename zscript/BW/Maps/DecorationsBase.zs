@@ -836,6 +836,8 @@ Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
     default
     {
         DamageType "Explosive";
+        damagefactor "kick",    0.1;
+        damagefactor "melee",   0.1;
     }
     states
     {
@@ -1004,6 +1006,8 @@ Class BW_ExplosiveBarrel : BW_ShootableDecoration replaces explosiveBarrel
         Mass 200;
         -dontthrust;
         +pushable;
+        damagefactor "kick",    0.1;
+        damagefactor "melee",   0.1;
     }
     states
     {
@@ -1164,6 +1168,8 @@ Class BW_Stove : BW_ShootableDecoration replaces DeadStick
         Radius 16;
         Height 80;
         damagetype "Explosive";
+        damagefactor "kick",    0.1;
+        damagefactor "melee",   0.1;
     }
     states
     {

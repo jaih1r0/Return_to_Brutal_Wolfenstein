@@ -18,4 +18,24 @@ Class BW_Statics abstract
 			lerp(from.z,to.z,t)
 		);
 	}
+	
+	static void SpawnIndicator(vector3 where, string tex = "YAE4A0")
+	{
+		FSpawnParticleParams 	PLASPRK;
+		PLASPRK.Texture = 		TexMan.CheckForTexture(tex);
+		PLASPRK.Color1 = 		"FFFFFF";
+		PLASPRK.Style = 		STYLE_Add;
+		PLASPRK.Flags = 		SPF_ROLL|SPF_FULLBRIGHT;
+		PLASPRK.Vel = 			(0,0,0);
+		PLASPRK.accel = 		(0,0,0);
+		PLASPRK.Startroll = 	randompick(0,90,180,270,360);
+		PLASPRK.RollVel = 		0;
+		PLASPRK.StartAlpha = 	1.0;
+		PLASPRK.FadeStep = 		0.075;
+		PLASPRK.Size = 			random(8,14);
+		PLASPRK.SizeStep = 		-0.5;
+		PLASPRK.Lifetime = 		random(12,18); 
+		PLASPRK.Pos = 			where;
+		Level.SpawnParticle(PLASPRK);
+	}
 }

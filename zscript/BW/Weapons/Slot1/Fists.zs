@@ -91,9 +91,9 @@ Class BW_Fists : BaseBWWeapon replaces fist
 			TNT1 A 1;
 			TNT1 A 0 A_Startsound("Fists/Swing",8);
 			MPHL AB 1;
-			MPHL C 1 BW_Punch(sideOfs:-5);
+			MPHL C 1 BW_strongpunch();
 			MPHL E 1 BW_Punch();
-			MPHL F 1 BW_Punch(sideOfs:5);
+			MPHL F 1;
 			MPHL GGHH 1;
 			MPHL IJKL 1;
 			TNT1 A 1;
@@ -105,9 +105,9 @@ Class BW_Fists : BaseBWWeapon replaces fist
 			TNT1 A 1;
 			TNT1 A 0 A_Startsound("Fists/Swing",8);
 			MPHR AB 1;
-			MPHR C 1 BW_Punch(sideOfs:5);
+			MPHR C 1 BW_strongpunch();
 			MPHR E 1 BW_Punch();
-			MPHR F 1 BW_Punch(sideOfs:-5);
+			MPHR F 1;
 			MPHR GGHH 1;
 			MPHR IJKL 1;
 			TNT1 A 1;
@@ -167,4 +167,32 @@ Class BW_Fists : BaseBWWeapon replaces fist
                 pf.A_Startsound("Fists/Hit", CHAN_AUTO, CHANF_OVERLAP, 0.75);   //impacted wall,floor,etc, may need a different sound here
         }
 	}
+
+    action void BW_strongpunch(int dist = 60, int dmg = 50)
+    {
+        blockthingsiterator bti = blockthingsiterator.create(self,dist);
+        actor mo,puf;
+		double pz = height * 0.5 - floorclip + player.mo.AttackZOffset * player.crouchFactor;
+		
+        quat baseq = quat.fromangles(angle,pitch,roll);
+        vector3 ofss = baseq * (dist,0,pz);
+		
+        puf = spawn("BW_dmgpuff",levellocals.vec3offset(pos,ofss));
+		//BW_Statics.SpawnIndicator(levellocals.vec3offset(pos,ofss));
+        while(bti.next())
+        {
+            mo = bti.thing;
+            if(mo && (mo.bisMonster || mo.bshootable) && mo != self && checksight(mo)) //can be damaged, is not the player, and the player can see it
+            {
+                vector3 sc = levellocals.sphericalcoords((pos.xy,pos.z + height * 0.5),(mo.pos.xy,mo.pos.z + mo.height * 0.5),(angle,pitch));
+                if(abs(sc.x) < 60 && abs(sc.y) < 30 && sc.z < dist)
+                {
+                    mo.A_Startsound("Fists/Hit", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+                    mo.damagemobj(puf,self,dmg,'melee');
+                }
+            }
+        }
+    }
+	
+
 }
