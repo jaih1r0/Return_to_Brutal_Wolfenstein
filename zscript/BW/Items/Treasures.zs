@@ -11,6 +11,15 @@ Class BW_Treasure : scoreitem
     }
 	
 	mixin BW_BetterPickupSound;
+    override bool trypickup(in out actor toucher)
+    {
+        if(toucher && toucher.player)
+        {
+            eventhandler.sendnetworkevent("AddBonusCount");
+            //eventhandler.sendnetworkevent("AddBonusCount",toucher.player.playernumber);
+        }
+        return super.trypickup(toucher);
+    }
 }
 
 Class BW_Treasure_Cross : BW_Treasure

@@ -28,6 +28,7 @@ Extend Class BaseBWWeapon
 		//User4:	//kick
 		DoKick:
 			TNT1 A 0 A_jumpif(pos.z <= floorz + 2 && vel.xy.length() > 3 && (player.cmd.buttons & BT_CROUCH),"SlideKick");
+			TNT1 A 0 A_jumpif(vel.xy.length() > 0 && (pos.z > floorz || vel.z != 0),"AirKick");
 			TNT1 A 0 handlekickFlash();
 			TNT1 A 0 A_StartSound("Player/Kick", 0, CHANF_OVERLAP, 1);
 			BWK1 ABCDE 1;
@@ -72,6 +73,21 @@ Extend Class BaseBWWeapon
 			//end sliding 6 frames
 			BWK2 H 1;
 			BWK2 FDCBA 1;
+			stop;
+		
+		AirKick:
+			TNT1 A 0 handlekickFlash(0);
+			TNT1 A 1;
+			TNT1 A 0 A_StartSound("Player/Kick", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_QuakeEx(1,0,0,6,0,10,"",QF_SCALEDOWN|QF_RELATIVE);
+			BWK3 A 1 A_recoil(-3);
+			BWK3 BC 1 A_recoil(-2);
+			BWK3 DE 1 A_recoil(-2);
+			TNT1 A 0 HandleKick(dmg:25);
+			BWK3 F 1 A_recoil(-1);
+			TNT1 A 0 HandleKick(dmg:35);
+			BWK3 GHII 1;
+			BWK3 FEDCBA 1;
 			stop;
 		
 		//there was already an states block here lol
