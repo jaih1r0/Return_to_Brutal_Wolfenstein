@@ -16,7 +16,7 @@ Extend Class BaseBWWeapon
 				bool isSlashing = !!(player.findpsprite(-4));
 				bool aiming = BW_IsAiming();
 
-				if(!isKicking && (btns & BT_User4))
+				if(!isKicking && (btns & BT_Zoom))
 					A_overlay(-3,"DoKick");
 
 				if(!isSlashing && (btns & BT_User1) && !aiming)
