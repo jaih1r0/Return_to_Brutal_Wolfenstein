@@ -1,3 +1,4 @@
 STARTUPTITLE = "Return to Brutal Wolfenstein"
 STARTUPCOLORS = "FFFA2D", "8B0000"
 STARTUPTYPE = "Hexen"
+DiscordAppID= "1417505975535009853"
