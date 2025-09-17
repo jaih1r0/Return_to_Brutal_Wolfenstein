@@ -56,7 +56,7 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	statictext "Keybinds",orange
 	statictext ""
-	control "Kick/Slide","+user4" // +zoom does nothing actually
+	control "Kick/Slide","+zoom"
 	statictext ""
 	control "Knife","+user1"
 	statictext ""
