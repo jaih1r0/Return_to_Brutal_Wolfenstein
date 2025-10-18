@@ -264,6 +264,15 @@ Class BW_MonsterBase : Actor
 		}
 	}
 
+	void FireGrenadeToTarget(string grenType = "",double ang = 0, double pit = 0, int spawnheight = 32,int xyofs = 0)
+	{
+		actor pj = A_spawnprojectile(grenType,spawnheight,xyofs,ang,CMF_AIMDIRECTION,pit);
+		if(!pj)
+			return;
+		pj.vel.xy = pj.vel.xy.Unit() * pj.Speed;
+		pj.vel.z = BW_Statics.CalculateZSpeed(pj.Pos, target.pos, pj.Speed, pj.GetGravity());
+	}
+
 	//
 	//	death related fx
 	//

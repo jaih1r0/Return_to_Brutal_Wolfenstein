@@ -5,7 +5,7 @@ Gameinfo
 	quitmessages = "Dost thou wish to\nleave with such hasty\nabandon?", "Chickening out...\nalready?", "Press N for more carnage.\nPress Y to be a weenie.", "So, you think you can\nquit this easily, huh?", "Press N to save the world.\nPress Y to abandon it in\nits hour of need.", "Heroes, press N.\nWimps, press Y.", "For guns and glory, press N.\nFor work and worry, press Y.","All ideals must be respected.Except Fascism.\nThat's not an ideal but the death of all ideals.","Don't play The New Colossus!\nGo play Doom Incarnate instead!","Did you know that at some point this\nwas supposed to be called Bermudal Wulfenduberg?","The Dog Pope won't forget\nthe genocide you commited here!","decino,play Bloodstain"
 	
 	PlayerClasses = "BWPlayer"
-	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler"
+	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler","BW_BossBarHandler"
 	StatusBarClass = "BW_Hud"
 	//NormForwardMove = 0x32, 0x32	//Walk speed is modulated through
 	//NormSideMove = 0x32, 0x32		//CVar in the menu options
@@ -120,6 +120,11 @@ DoomEdNums
 	1355 = "BW_BlackGuardSpawner"	//fg42 guard
 	1353 = "BW_BlackGuardSpawner"	// easy
 	1354 = "BW_BlackGuardSpawner"	// hard
+
+	//bosses
+	9000 = "BW_HansGrosse"
+	7643 = "BW_HansGrosse"	//easy
+	985 = "BW_HansGrosse"	//drip
 
 	//sod demons
 	1381 = "BW_Archvile"
