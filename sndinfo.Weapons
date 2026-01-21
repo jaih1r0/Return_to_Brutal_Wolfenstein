@@ -410,6 +410,8 @@ Luger/FireAdd3	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd3.wav"
 Luger/FireAdd4	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd4.wav"
 Luger/FireAdd5	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd5.wav"
 
+Luger/FireMech "Sounds/Weapons/Slot2/Luger/Fire/LugFireMech.wav"
+
 Luger/Out	"Sounds/Weapons/Slot2/Luger/LugOut.wav"
 Luger/OutEmpty	"Sounds/Weapons/Slot2/Luger/LugOutEmpty.wav"
 Luger/In	"Sounds/Weapons/Slot2/Luger/LugIn.wav"

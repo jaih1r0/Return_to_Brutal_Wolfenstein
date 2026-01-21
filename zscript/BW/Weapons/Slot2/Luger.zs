@@ -31,7 +31,7 @@ class BW_Luger : BaseBWWeapon
 	action void FireWeapon()
 	{
 		A_AlertMonsters();
-
+		
 		A_StartSound("Luger/Fire", 0, CHANF_OVERLAP, 1);
 		A_StartSound("Luger/Fireadd", 0, CHANF_OVERLAP, 0.8);
 		A_StartSound("Luger/FireTail", 0, CHANF_OVERLAP, 0.7);
@@ -113,24 +113,23 @@ class BW_Luger : BaseBWWeapon
 	Fire:
 		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Fire2");
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "DryFire");
-		ZLUG B 1 BRIGHT;
 		TNT1 A 0 FireWeapon();
-		ZLUG C 1;
+		ZLUG AB 1 BRIGHT;
+		ZLUG C 1 A_StartSound("Luger/FireMech", CHAN_WEAPON, CHANF_OVERLAP, 0.8);
 		TNT1 A 0 A_ZoomFactor(1);
 		ZLUG D 1;
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "WeaponReadyEmpty");
-		ZLUG E 1;
-		ZLUG F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
+		ZLUG E 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
+		ZLUG F 1;
 		Goto WeaponReady;
 	Fire2:
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "DryFire2");
-		ZLU2 B 1 BRIGHT;
-		TNT1 A 0 FireWeapon();
+		ZLU2 B 1 BRIGHT FireWeapon();
 		ZLU2 C 1;
 		TNT1 A 0 A_ZoomFactor(1.2);
 		ZLU2 D 1;
 		TNT1 A 0 A_JumpIf(CountInv("BW_Luger_Mag") == 0, "WeaponReady2Empty");
-		ZLU2 E 1;
+		ZLU2 E 1 A_StartSound("Luger/FireMech", CHAN_WEAPON, CHANF_OVERLAP, 0.8);
 		ZLU2 F 1 BW_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWUSER2 | WRF_ALLOWUSER3 | WRF_ALLOWUSER4);
 		Goto WeaponReady2;
 	AltFire:
