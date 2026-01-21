@@ -107,12 +107,12 @@ Class BW_USAPistolAmmo : BW_Ammo
         ammo.BackpackMaxAmount 128;
         tag "9mm Bullet";
         scale 0.8;
-        inventory.althudicon "CLIPA0";
+        inventory.althudicon "45AMA0";
     }
     states
     {
         spawn:
-            CLIP A -1;
+            45AM A -1;
             stop;
     }
 }

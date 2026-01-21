@@ -28,6 +28,7 @@ Class DooM_ShotgunguySpawner : BW_Spawner replaces Shotgunguy
 	{
 		DropItem "BW_BlueGuard_MP40", Skill_All, 2;
 		DropItem "BW_BlueGuard_TrenchGun", Skill_normal|Skill_hard, 1;
+		DropItem "BW_BlueGuard_M1Thompson", Skill_normal|Skill_hard, 1;
 		DropItem "BW_BlueGuard_TrenchGun", Skill_Uber, 5;
 	}
 }

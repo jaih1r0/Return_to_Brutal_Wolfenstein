@@ -1,4 +1,4 @@
-Class BW_M1Thomspon : BaseBWWeapon
+Class BW_M1Thompson : BaseBWWeapon
 {
 	default
 	{

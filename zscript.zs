@@ -53,6 +53,7 @@ Version 4.10
 #include "zscript/BW/Monsters/BrownGuard/Rifle.zs"
 #include "zscript/BW/Monsters/BlueGuard/MP40.zs"
 #include "zscript/BW/Monsters/BlueGuard/Shotgun.zs"
+#include "zscript/BW/Monsters/BlueGuard/Tommy.zs"
 #include "zscript/BW/Monsters/BlackGuard/STG44.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 #include "zscript/BW/Monsters/Mutants/Mutant.zs"
