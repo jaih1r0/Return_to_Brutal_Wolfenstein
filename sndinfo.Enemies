@@ -36,3 +36,18 @@ Dog/Sight3	"Sounds/Enemies/Dogs/DogSight3.ogg"
 
 
 Mutant/Death        MUTDE
+
+Hans/Death "Sounds/Enemies/Bosses/Hans/HChrg.wav"
+Hans/Pain "Sounds/Enemies/Bosses/Hans/HNPAIN.wav"
+
+Hans/Step1 "Sounds/Enemies/Bosses/Hans/bigstep1.wav"
+Hans/Step2 "Sounds/Enemies/Bosses/Hans/bigstep2.wav"
+Hans/Step3 "Sounds/Enemies/Bosses/Hans/bigstep3.wav"
+Hans/Step4 "Sounds/Enemies/Bosses/Hans/bigstep4.wav"
+$random Hans/Step 
+{
+    Hans/Step1
+    Hans/Step2
+    Hans/Step3
+    Hans/Step4
+}

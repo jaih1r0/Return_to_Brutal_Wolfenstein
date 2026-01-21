@@ -14,12 +14,14 @@ Version 4.10
 #include "zscript/BW/Weapons/EnemyProjectiles.zs"
 #include "zscript/BW/Monsters/MonsterBase.zs"
 #include "zscript/BW/Monsters/AIBase.zs"
+#include "zscript/BW/Monsters/BossesBase.zs"
 #include "zscript/BW/Effects/Effects.zs"
 #include "zscript/BW/Effects/Puffs.zs"
 #include "zscript/BW/Effects/Footsteps.zs"
 #include "zscript/BW/Effects/Debris.zs"
 #include "zscript/BW/Effects/Casings.zs"
 #include "zscript/BW/Hud/BWHud.zs"
+#include "zscript/BW/Hud/BossBar.zs"
 #include "zscript/BW/Player/BWPlayer.zs"
 
 //Weapons
@@ -57,6 +59,9 @@ Version 4.10
 
 #include "zscript/BW/Monsters/Demons/Demons.zs"
 #include "zscript/BW/Monsters/Demons/DoomImp.zs"
+
+//Bosses
+#include "zscript/BW/Monsters/Bosses/Hans.zs"
 
 #include "zscript/BW/Monsters/BWSpawners.zs"
 #include "zscript/BW/Monsters/DooMSpawners.zs"

@@ -14,7 +14,7 @@ Gameinfo
 	"The Dog Pope won't forget\nthe genocide you commited here!"
 	
 	PlayerClasses = "BWPlayer"
-	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler"
+	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler","BW_BossBarHandler"
 	StatusBarClass = "BW_Hud"
 	//NormForwardMove = 0x32, 0x32	//Walk speed is modulated through
 	//NormSideMove = 0x32, 0x32		//CVar in the menu options
@@ -129,6 +129,11 @@ DoomEdNums
 	1355 = "BW_BlackGuardSpawner"	//fg42 guard
 	1353 = "BW_BlackGuardSpawner"	// easy
 	1354 = "BW_BlackGuardSpawner"	// hard
+
+	//bosses
+	9000 = "BW_HansGrosse"
+	7643 = "BW_HansGrosse"	//easy
+	985 = "BW_HansGrosse"	//drip
 
 	//sod demons
 	1381 = "BW_Archvile"

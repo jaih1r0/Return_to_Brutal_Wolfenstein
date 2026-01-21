@@ -38,4 +38,19 @@ Class BW_Statics abstract
 		PLASPRK.Pos = 			where;
 		Level.SpawnParticle(PLASPRK);
 	}
+
+	// Returns the Z speed needed for a projectile to get from origin to dest when accounting for gravity.
+	// * origin - The starting position of the projectile.
+	// * dest - The desired position for the projectile.
+	// * speed - The speed of the projectile.
+	// * grav - How much gravity the projectile should have.
+	// credits: Boondorl
+	static double CalculateZSpeed(Vector3 origin, Vector3 dest, double speed, double grav)
+	{
+		if (speed < double.equal_epsilon || grav ~== 0.0)
+			return 0.0;
+	
+		double travelTime = Level.Vec3Diff(origin, dest).Length() / speed;
+		return (dest.Z - origin.Z - 0.5 * -grav * travelTime * travelTime) / travelTime;
+	}
 }
