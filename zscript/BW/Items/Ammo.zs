@@ -97,7 +97,27 @@ Class BW_PistolAmmo : BW_Ammo
     }
 }
 
-Class BW_SMGAmmo : BW_Ammo //idk how to call this ammo
+Class BW_USAPistolAmmo : BW_Ammo
+{
+    default
+    {
+        inventory.amount 8;
+        inventory.maxamount 128;
+        ammo.backpackamount 8;
+        ammo.BackpackMaxAmount 128;
+        tag "9mm Bullet";
+        scale 0.8;
+        inventory.althudicon "CLIPA0";
+    }
+    states
+    {
+        spawn:
+            CLIP A -1;
+            stop;
+    }
+}
+
+Class BW_STGAmmo : BW_Ammo //idk how to call this ammo
 {
     default
     {

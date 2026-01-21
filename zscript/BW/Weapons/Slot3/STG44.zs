@@ -5,7 +5,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 		weapon.slotnumber 3;
 		tag "STG44";
 		weapon.ammotype2 "STG44Mag";
-		weapon.ammotype1 "BW_SMGAmmo"; 
+		weapon.ammotype1 "BW_STGAmmo"; 
 		BaseBWWeapon.AmmoTypeLeft "STG44MagLeft";
 		Inventory.PickupSound "Generic/Pickup/SMG";
 		Obituary "$OB_MPPISTOL";
