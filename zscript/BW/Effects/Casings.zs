@@ -89,6 +89,25 @@ Class BW_9MMCasing : BW_CasingBase
     }
 }
 
+Class BW_45ACPCasing : BW_CasingBase
+{
+	Default
+	{
+		Scale 0.25;
+	}
+	
+    states
+    {
+        spawn:
+            9MCS A 2 DoCasingRoll();
+            loop;
+        Death:
+            TNT1 A 0 FinishRoll();
+            9MCS A -1;
+            stop;
+    }
+}
+
 Class BW_ShellCasing : BW_CasingBase
 {
     states
