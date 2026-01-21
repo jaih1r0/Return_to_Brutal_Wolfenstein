@@ -31,6 +31,7 @@ Version 4.10
 
 #include "zscript/BW/Weapons/Slot3/MP40.zs"
 #include "zscript/BW/Weapons/Slot3/STG44.zs"
+#include "zscript/BW/Weapons/Slot3/M1Thompson.zs"
 
 #include "zscript/BW/Weapons/Slot4/Trenchgun.zs"
 #include "zscript/BW/Weapons/Slot4/Kar98K.zs"
@@ -52,6 +53,7 @@ Version 4.10
 #include "zscript/BW/Monsters/BrownGuard/Rifle.zs"
 #include "zscript/BW/Monsters/BlueGuard/MP40.zs"
 #include "zscript/BW/Monsters/BlueGuard/Shotgun.zs"
+#include "zscript/BW/Monsters/BlueGuard/Tommy.zs"
 #include "zscript/BW/Monsters/BlackGuard/STG44.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 #include "zscript/BW/Monsters/Mutants/Mutant.zs"

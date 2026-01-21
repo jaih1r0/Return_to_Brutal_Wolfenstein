@@ -18,10 +18,10 @@ Class BW_BlackGuard_STG44 : BW_MonsterBase
 			
 			BW_MonsterBase.AttackRange 9600; //32 Dmu (1 meter) * 300 (300 yards effective range of MP40)
 			BW_MonsterBase.CanIRoll true;
-			SeeSound "WSS1/Generic/sight";
-			PainSound "WSS1/Generic/pain";
-			DeathSound "WSS1/Generic/death";
-			ActiveSound "WSS1/Generic/sight";
+			SeeSound "Nazi/Generic/sight";
+			PainSound "Nazi/Generic/pain";
+			DeathSound "Nazi/Generic/death";
+			ActiveSound "Nazi/Generic/sight";
 			
 			DropItem "BW_SMGAmmo", 255, 30;
 			DropItem "BW_STG44", 100, 1;

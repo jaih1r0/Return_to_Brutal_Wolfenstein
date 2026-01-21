@@ -93,6 +93,16 @@ model BW_MP40Bullets
    FrameIndex TRAC A 0 0
 }
 
+model BW_M1ThompsonBullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
 model BW_Kar98Bullets
 {
    Path "models/PROJECTILES"
@@ -145,6 +155,16 @@ model BW_EnemyLugerBullets
 }
 
 model BW_EnemyMP40Bullets
+{
+   Path "models/PROJECTILES"
+   SKIN 0 "tracer1.tga"
+   MODEL 0 "Tracer.md3"
+   Scale 1.0 1.0 1.0
+   PITCHFROMMOMENTUM
+   FrameIndex TRAC A 0 0
+}
+
+model BW_EnemyM1ThompsonBullets
 {
    Path "models/PROJECTILES"
    SKIN 0 "tracer1.tga"

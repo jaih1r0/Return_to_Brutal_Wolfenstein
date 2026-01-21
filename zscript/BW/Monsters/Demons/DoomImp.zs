@@ -154,7 +154,7 @@ Class BW_Imp : BW_MonsterBase //1380
 				}
 				AttackDelay = AttackDelay + 20;
 				
-				return A_Jump(256, "Attack1");
+				return A_Jump(256, "Attack1", "Fallback", "Roll");
 			}
 		
 		Attack1:
@@ -166,8 +166,8 @@ Class BW_Imp : BW_MonsterBase //1380
 				}
 			}
 			TROO E 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			TROO E random(5,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			TROO F random(5,20) BRIGHT A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			TROO E random(2,10) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			TROO F random(2,10) BRIGHT A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			TROO G 6 BRIGHT FireProjBullets;
 			TROO F 4;
 			TNT1 A 0 A_Jump(90, "Attack1");
@@ -217,9 +217,37 @@ Class BW_Imp : BW_MonsterBase //1380
 			Goto See;
 		
 		Pain:
-            TROO H 2;
-            TROO H 2 A_Pain;
+            TNT1 A 0 A_JumpIf(kickeddown, "KickedPain");
+            TROO H 4 A_Pain;
             Goto See;
+		
+		Pain.Kick:
+			TNT1 A 0
+			{
+				kickeddown = true;
+				A_Pain();
+				A_ChangeVelocity(0, 0, 5, CVF_RELATIVE);
+			}
+			TROK A 3;
+		KickedLoop:
+			TROK A 1 A_CheckFloor("Kicked");
+			Loop;
+		KickedPain:
+			TROK B 10 A_Pain();
+		Kicked:
+			TNT1 A 0 A_CheckFloor(1);
+			Goto KickedLoop;
+			TNT1 A 0;
+			TROK BC 10;
+			TROK C random(25,50);
+			TROK D 10;
+			TNT1 A 0
+			{
+				kickeddown = false;
+				A_ActiveSound();
+			}
+			Goto See;
+		
         Death:
             TROO I 8;
             TROO J 8 A_Scream;

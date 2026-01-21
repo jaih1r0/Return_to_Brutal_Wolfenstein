@@ -505,6 +505,33 @@ STG/Charge	"Sounds/Weapons/Slot3/STG44/STGCharge.wav"
 STG/Raise	"Sounds/Weapons/Slot3/STG44/STGRaise.wav"
 STG/Lower	"Sounds/Weapons/Slot3/STG44/STGDrop.wav"
 
+//M1 Thompson
+
+M1Tom/Fire	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFire.wav"
+M1Tom/FireAdd	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireAdd.wav"
+M1Tom/FireTail	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireTail.wav"
+M1Tom/FireBass	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireBass.wav"
+
+$RANDOM M1Tom/FireMech { M1Tom/FireMech1 M1Tom/FireMech2 M1Tom/FireMech3 M1Tom/FireMech4 M1Tom/FireMech5 M1Tom/FireMech6 M1Tom/FireMech7 }
+M1Tom/FireMech1	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech1.wav"
+M1Tom/FireMech2	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech2.wav"
+M1Tom/FireMech3	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech3.wav"
+M1Tom/FireMech4	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech4.wav"
+M1Tom/FireMech5	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech5.wav"
+M1Tom/FireMech6	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech6.wav"
+M1Tom/FireMech7	"Sounds/Weapons/SLot3/M1Thomp/Fire/M1TomFireMech7.wav"
+
+M1Tom/Raise	"Sounds/Weapons/Slot3/M1Thomp/M1TomSelect.wav"
+M1Tom/Lower	"Sounds/Weapons/Slot3/M1Thomp/M1TomLower.wav"
+M1Tom/MagIn	"Sounds/Weapons/Slot3/M1Thomp/M1TomMagIn.wav"
+M1Tom/MagOut	"Sounds/Weapons/Slot3/M1Thomp/M1TomMagOut.wav"
+M1Tom/MagInEmpty	"Sounds/Weapons/Slot3/M1Thomp/M1TomMagInEmpty.wav"
+M1Tom/MagOutEmpty	"Sounds/Weapons/Slot3/M1Thomp/M1TomMagOutEmpty.wav"
+$RANDOM M1Tom/Bolt { M1Tom/MagIn1 M1Tom/MagIn2 M1Tom/MagIn3 }
+M1Tom/MagIn1	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt1.wav"
+M1Tom/MagIn2	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt2.wav"
+M1Tom/MagIn3	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt3.wav"
+
 //-----SLOT 4-----//
 
 //Trenchgun

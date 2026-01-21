@@ -2,7 +2,16 @@
 Gameinfo
 {
 	Infopage = "PAGE1","PAGE2","PAGE3","PAGE4","Page13","PAGE5","PAGE6","PAGE7","PAGE8","PAGE9","PAGE10","PAGE11","PAGE12"
-	quitmessages = "Dost thou wish to\nleave with such hasty\nabandon?", "Chickening out...\nalready?", "Press N for more carnage.\nPress Y to be a weenie.", "So, you think you can\nquit this easily, huh?", "Press N to save the world.\nPress Y to abandon it in\nits hour of need.", "Heroes, press N.\nWimps, press Y.", "For guns and glory, press N.\nFor work and worry, press Y.","All ideals must be respected.Except Fascism.\nThat's not an ideal but the death of all ideals.","Don't play The New Colossus!\nGo play Doom Incarnate instead!","Did you know that at some point this\nwas supposed to be called Bermudal Wulfenduberg?","The Dog Pope won't forget\nthe genocide you commited here!","decino,play Bloodstain"
+	quitmessages =
+	"Dost thou wish to\nleave with such hasty\nabandon?",
+	"Chickening out...\nalready?",
+	"Press N for more carnage.\nPress Y to be a weenie.",
+	"So, you think you can\nquit this easily, huh?",
+	"Press N to save the world.\nPress Y to abandon it in\nits hour of need.",
+	"Heroes, press N.\nWimps, press Y.",
+	"For guns and glory, press N.\nFor work and worry, press Y.",
+	"Don't play Wolfenstein Youngblood.\nGo play Doom Incarnate instead!",
+	"The Dog Pope won't forget\nthe genocide you commited here!"
 	
 	PlayerClasses = "BWPlayer"
 	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler","BW_BossBarHandler"
@@ -32,7 +41,7 @@ DoomEdNums
 	//ammo
 	7028 = "BW_PistolAmmo"	//wolfclip, luger/mp40 ammo
 	7512 = "BW_PistolAmmo"	//PPSH ammo
-	7029 = "BW_SMGAmmo"
+	7029 = "BW_STGAmmo"
 	7030 = "BW_MGAmmo"	//chaingun/mg42 ammo
 	7031 = "BW_KarAmmo"	//kar98k ammo
 	7507 = "shell"	//m1 garand ammo

@@ -389,6 +389,16 @@ Class BW_MP40Bullets : BW_Projectile
 	default
 	{
 		BW_Projectile.projectiledmg 25;
+		BW_Projectile.ripAmount 1;
+		damagetype "SMG";
+	}
+}
+
+Class BW_M1ThompsonBullets : BW_Projectile
+{
+	default
+	{
+		BW_Projectile.projectiledmg 30;
 		BW_Projectile.ripAmount 0;
 		damagetype "SMG";
 	}
