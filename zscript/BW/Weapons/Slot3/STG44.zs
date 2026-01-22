@@ -88,16 +88,16 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
 			TNT1 A 0 BW_jumpifAkimbo("Select_Dual");
 			ST4U AB 1;
-			TNT1 A 0 A_StartSound("STG/raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("STG/raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4U CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 A_Startsound("STG/Lower",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("STG/Lower",CHAN_AUTO,CHANF_OVERLAP);
 			TNT1 A 0 BW_jumpifAkimbo("Deselect_Dual");
 			ST4U FG 1;
-			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/SMG/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4U HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -137,11 +137,11 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			goto ready_ADS;
 			
 		DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			ST4U E 1;
 			goto ready;
 		DryFire_ADS:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			ST4A E 1;
 			goto ready_ADS;
 		NoAmmo:
@@ -155,7 +155,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 		AltFire:
 			TNT1 A 0
 			{
-				A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+				A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 				if(findinventory("AimingToken"))
 				{
 					A_setinventory("AimingToken",0);
@@ -175,7 +175,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			
 		ReloadADS:
 			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
-			TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			ST4A DCBA 1;
 		Reload:
 			TNT1 A 0 BW_ClearDualOverlays();
@@ -206,7 +206,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			ST4T JIHGFEDCBA 1;
 			TNT1 A 0 A_jumpif(invoker.ammo2.amount > 30,"Reload_Left");
 		ReloadRight:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4R ABCDE 1;
 			TNT1 A 0 A_Startsound("STG/MagOut",CHAN_AUTO);
 			ST4R FGHHHHHIJKLMNNNNNNN 1;
@@ -346,7 +346,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			STLF G 1 BW_QuickRefire("Dual_Left_Fire",BT_ATTACK,false);
 			goto Dual_Left;
 		Dual_Left_DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			STLF A 1;
 			goto Dual_Left;
 			
@@ -361,7 +361,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			STRF G 1 BW_QuickRefire("Dual_Right_Fire",getRightfirebutton(),false);
 			goto Dual_Right;
 		Dual_Right_DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",14);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			STRF A 1;
 			goto Dual_Right;
 			
@@ -372,20 +372,20 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 		KickFlash:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("KickFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4K ABC 1;
 			ST4K DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4K GGG 1;
 			ST4K FEDCBA 1;
 			goto ready;
 		SlideFlash:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("SlideFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4K ABCD 1;
 			ST4K EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4K GGG 1;
 			ST4K GGG 1;
 			ST4K GGG 1;
@@ -395,7 +395,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 		SlideFlashEnd:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("SlideFlashEnd_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			ST4K FEDCBA 1;
 			goto ready;
 		KnifeGunFlash:
@@ -408,10 +408,10 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 		
 		KickFlash_Akimbo:
 			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			STDK ABC 1;
 			STDK DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			STDK GGG 1;
 			STDK FEDCBA 1;
 			goto ready;
@@ -422,10 +422,10 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			stop;
 		
 		SlideFlash_Akimbo:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			STDK ABCD 1;
 			STDK EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			STDK GGG 1;
 			STDK GGG 1;
 			STDK GGG 1;
@@ -433,7 +433,7 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			STDK GGG 1;
 			STDK GGG 1;
 		SlideFlashEnd_Akimbo:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			STDK FEDCBA 1;
 			goto ready;
 		

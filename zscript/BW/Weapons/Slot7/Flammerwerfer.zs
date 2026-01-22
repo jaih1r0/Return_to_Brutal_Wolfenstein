@@ -54,16 +54,16 @@ Class BW_FlameThrower : BaseBWWeapon
         Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/Launcher/Raise");
             BFLU AB 1;
-			TNT1 A 0 A_StartSound("Flamer/Draw", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Flamer/Draw", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLU CD 1;
             goto ready;
         Deselect:
 			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(18);
             TNT1 A 0 A_clearoverlays(-5,-5);
-			TNT1 A 0 A_StartSound("Flamer/Drop", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Flamer/Drop", CHAN_AUTO, CHANF_OVERLAP, 1);
             BFLU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLU HI 1;
             TNT1 A 0 BW_WeaponLower();
             wait;
@@ -77,7 +77,7 @@ Class BW_FlameThrower : BaseBWWeapon
         Fire:
             TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
             TNT1 A 0 A_clearoverlays(-5,-5);
-			TNT1 A 0 A_Startsound("flamer/fireStart",17);
+			TNT1 A 0 A_Startsound("flamer/fireStart",CHAN_AUTO);
 			BFLU E 1;
 		FireLoop:
 			TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire",true);
@@ -91,7 +91,7 @@ Class BW_FlameThrower : BaseBWWeapon
 			BFLF D 1 bright;
             TNT1 A 0 A_refire("FireLoop");
 			TNT1 A 0 A_Stopsound(18);
-			TNT1 A 0 A_Startsound("flamer/hiss",17);
+			TNT1 A 0 A_Startsound("flamer/hiss",CHAN_AUTO);
 			BFLU E 1;
             goto ready;
 
@@ -118,19 +118,19 @@ Class BW_FlameThrower : BaseBWWeapon
         
         KickFlash:
 			TNT1 A 0 A_clearoverlays(-5,-5);
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLK ABC 1 setpspriteifammo("BFLO");
 			BFLK DEF 1 setpspriteifammo("BFLO");
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLK GHHHG 1 setpspriteifammo("BFLO");
 			BFLK FEDCBA 1 setpspriteifammo("BFLO");
 			goto ready; 
 		SlideFlash:
 			TNT1 A 0 A_clearoverlays(-5,-5);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLK ABCD 1 setpspriteifammo("BFLO");
 			BFLK EFGH 1 setpspriteifammo("BFLO");
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLK GHG 1 setpspriteifammo("BFLO");
 			BFLK HGH 1 setpspriteifammo("BFLO");
 			BFLK GHG 1 setpspriteifammo("BFLO");
@@ -139,7 +139,7 @@ Class BW_FlameThrower : BaseBWWeapon
 			BFLK HGH 1 setpspriteifammo("BFLO");
 		SlideFlashEnd:
 			TNT1 A 0 A_clearoverlays(-5,-5);
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFLK FEDCBA 1 setpspriteifammo("BFLO");
 			goto ready;
 			

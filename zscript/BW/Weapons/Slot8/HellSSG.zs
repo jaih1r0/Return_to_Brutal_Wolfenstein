@@ -23,10 +23,10 @@ Class BW_SSG : BaseBWWeapon
 	{
 		A_AlertMonsters();
 		
-		A_StartSound("HSSG/Fire", 0, CHANF_OVERLAP, 1);
-		A_StartSound("Trench/FireAdd", 0, CHANF_OVERLAP, 0.75);
-		A_StartSound("HSSG/FireAdd", 0, CHANF_OVERLAP, 0.9);
-		A_StartSound("Trench/FireMech", 0, CHANF_OVERLAP, 1);
+		A_StartSound("HSSG/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
+		A_StartSound("Trench/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+		A_StartSound("HSSG/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.9);
+		A_StartSound("Trench/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1);
 		/*A_StartSound("Trench/FireAlt", 0, CHANF_OVERLAP, 0.7);
 		A_StartSound("Trench/Fireadd", 0, CHANF_OVERLAP, 0.8);
 		A_StartSound("Trench/FireMech", 0, CHANF_OVERLAP, 1);*/
@@ -51,14 +51,14 @@ Class BW_SSG : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("HSSG/Raise");
 			BHGU AB 1;
-			TNT1 A 0 A_StartSound("Generic/Rifle/raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rifle/raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGU CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 A_Startsound("HSSG/Drop",0,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("HSSG/Drop",CHAN_AUTO,CHANF_OVERLAP);
 			BHGU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -70,7 +70,7 @@ Class BW_SSG : BaseBWWeapon
 			}
 			loop;
 		DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			BHGU E 1;
 			goto ready;
 		NoAmmo:
@@ -89,16 +89,16 @@ Class BW_SSG : BaseBWWeapon
 		
 		Reload:
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",2);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGO ABC 1;
 			TNT1 A 0 A_Startsound("hssg/open", CHAN_AUTO, CHANF_OVERLAP, 0.6);
 			BHGO DEF 1;
 			BHGO GI 1;
 			TNT1 AA 0 BW_SpawnCasing("BW_ShellCasing",24,-1,-10,random(3,6),-random(2,5),random(3,6));
 			BHGO K 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGR A 10;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGR BCD 1;
 			BHGR FG 1;
 			TNT1 A 0 A_Startsound("hssg/shell", CHAN_AUTO, CHANF_OVERLAP);
@@ -106,7 +106,7 @@ Class BW_SSG : BaseBWWeapon
 			BHGR KL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),2,1);
 			TNT1 A 6;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGR MNO 1;
 			TNT1 A 0 A_Startsound("hssg/close",CHAN_AUTO);
 			BHGR PQS 1;
@@ -115,7 +115,7 @@ Class BW_SSG : BaseBWWeapon
 			BHGR S 1 A_Weaponoffset(-1,2,WOF_ADD);
 			BHGR SSSS 1;
 			BHGR TT 1 A_Weaponoffset(1,-2,WOF_ADD);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TNT1 A 0 A_weaponoffset(0,32);
 			BHGR TUV 1;
 			BHGR WXY 1;
@@ -123,18 +123,18 @@ Class BW_SSG : BaseBWWeapon
 			goto ready;
 		
 		KickFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGK ABC 1;
 			BHGK DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGK GHHHG 1;
 			BHGK FEDCBA 1;
 			goto ready;	
 		SlideFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGK ABCD 1;
 			BHGK EFGH 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGK HHH 1;
 			BHGK HHH 1;
 			BHGK HHH 1;
@@ -142,7 +142,7 @@ Class BW_SSG : BaseBWWeapon
 			BHGK HHH 1;
 			BHGK HHH 1;
 		SlideFlashEnd:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BHGK FEDCBA 1;
 			goto ready;
 	}

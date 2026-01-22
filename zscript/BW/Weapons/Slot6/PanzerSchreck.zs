@@ -20,14 +20,14 @@ Class BW_Panzerschreck : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/Launcher/Raise");
 			PZSU AB 1;
-			TNT1 A 0 A_StartSound("Panzerschreck/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Panzerschreck/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSU CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 A_Startsound("Panzerschreck/Drop",0,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("Panzerschreck/Drop",CHAN_AUTO,CHANF_OVERLAP);
 			PZSU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -45,7 +45,7 @@ Class BW_Panzerschreck : BaseBWWeapon
 			goto ready;
 		Fire:
 			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
-			PZSU E 3 A_Startsound("Panzerschreck/Trigger",0,CHANF_OVERLAP);
+			PZSU E 3 A_Startsound("Panzerschreck/Trigger",CHAN_AUTO,CHANF_OVERLAP);
 			PZSF A 1 bright firepanzerrocket();
 			PZSF B 1 bright;
 			PZSF C 1 A_StartSound("Panzerschreck/Whoosh", CHAN_AUTO, CHANF_OVERLAP, 0.75);
@@ -55,13 +55,13 @@ Class BW_Panzerschreck : BaseBWWeapon
 			goto ready;
 		Reload:
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",1,1);
-			TNT1 A 0 A_StartSound("Generic/Rattle/Large", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Large", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSR ABCDEFGHI 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSR J 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSR KL 1;
-			TNT1 A 0 A_Startsound("Panzerschreck/Load",21);
+			TNT1 A 0 A_Startsound("Panzerschreck/Load",CHAN_AUTO);
 			PZSR MNOP 1;
 			PZSR QQQQQ 1;
 			
@@ -73,18 +73,18 @@ Class BW_Panzerschreck : BaseBWWeapon
 		
 		
 		KickFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSK ABC 1;
 			PZSK DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSK GHHHG 1;
 			PZSK FEDCBA 1;
 			goto ready;	
 		SlideFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSK ABCD 1;
 			PZSK EFGH 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSK HHH 1;
 			PZSK HHH 1;
 			PZSK HHH 1;
@@ -92,7 +92,7 @@ Class BW_Panzerschreck : BaseBWWeapon
 			PZSK HHH 1;
 			PZSK HHH 1;
 		SlideFlashEnd:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			PZSK FEDCBA 1;
 			goto ready;
 	}

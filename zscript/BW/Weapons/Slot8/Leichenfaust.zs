@@ -18,15 +18,15 @@ Class BW_Leichenfaust : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/Launcher/Raise");
 			BFPU AB 1;
-			TNT1 A 0 A_StartSound("LF/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("LF/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPU CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(42);
-			TNT1 A 0 A_Startsound("LF/Drop",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("LF/Drop",CHAN_AUTO,CHANF_OVERLAP);
 			BFPU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -64,18 +64,18 @@ Class BW_Leichenfaust : BaseBWWeapon
 			goto ready;
 		
 		KickFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPK ABC 1;
 			BFPK DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPK GHHHG 1;
 			BFPK FEDCBA 1;
 			goto ready;	
 		SlideFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPK ABCD 1;
 			BFPK EFGH 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPK HHH 1;
 			BFPK HHH 1;
 			BFPK HHH 1;
@@ -83,7 +83,7 @@ Class BW_Leichenfaust : BaseBWWeapon
 			BFPK HHH 1;
 			BFPK HHH 1;
 		SlideFlashEnd:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BFPK FEDCBA 1;
 			goto ready;
 		

@@ -24,8 +24,8 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		A_AlertMonsters();
 		
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
-		A_Startsound("MP40/Fire",5,CHANF_OVERLAP);
-		A_Startsound("MP40/FireAdd",5,CHANF_OVERLAP, 0.70);
+		A_Startsound("MP40/Fire",CHAN_AUTO,CHANF_OVERLAP);
+		A_Startsound("MP40/FireAdd",CHAN_AUTO,CHANF_OVERLAP, 0.70);
 		invoker.ammo2.amount--;
 		
 		if(CountInv("AimingToken"))
@@ -49,8 +49,8 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 	action void BW_DualMP40Fire(bool isLeft = false)
 	{
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
-		A_Startsound("MP40/Fire",5,CHANF_OVERLAP);
-		A_Startsound("MP40/FireAdd",5,CHANF_OVERLAP, 0.70);
+		A_Startsound("MP40/Fire",CHAN_AUTO,CHANF_OVERLAP);
+		A_Startsound("MP40/FireAdd",CHAN_AUTO,CHANF_OVERLAP, 0.70);
 		
 		if(isLeft)
 		{
@@ -79,16 +79,16 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
 			TNT1 A 0 BW_jumpifAkimbo("Select_Dual");
 			MP4U AB 1;
-			TNT1 A 0 A_StartSound("MP40/raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("MP40/raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4U CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 A_Startsound("MP40/Lower",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("MP40/Lower",CHAN_AUTO,CHANF_OVERLAP);
 			TNT1 A 0 BW_jumpifAkimbo("Deselect_Dual");
 			MP4U FG 1;
-			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/SMG/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4U HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -111,7 +111,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			MP4F A 1 bright BW_MP40Fire();
 			MP4F B 1 bright;
 			TNT1 A 0 A_ZoomFactor(1);
-			MP4F C 1 A_Startsound("MP40/FireMech",5,CHANF_OVERLAP, 0.8);
+			MP4F C 1 A_Startsound("MP40/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
 			MP4F D 1;
 			MP4U E 1 A_Refire();
 			goto ready;
@@ -120,17 +120,17 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			MP4A A 1 bright BW_MP40Fire();
 			MP4A B 1;
 			TNT1 A 0 A_ZoomFactor(1.2);
-			MP4A C 1 A_Startsound("MP40/FireMech",5,CHANF_OVERLAP, 0.8);
+			MP4A C 1 A_Startsound("MP40/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
 			MP4A D 1;
 			MP4T E 1 A_Refire();
 			Goto Ready_ADS;
 		
 		DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			MP4U E 1;
 			goto ready;
 		DryFire_ADS:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			MP4T E 1;
 			goto ready_ADS;
 		
@@ -145,11 +145,11 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		//rechamber too
 		Fidget:
 			MP4C ABCDE 1 BW_Weaponready();
-			TNT1 A 0 A_Startsound("MP40/BoltBack",10,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C FGHI 1 BW_Weaponready();
 			MP4C III 1 {A_Weaponoffset(-0.35,0.5,WOF_ADD); return BW_Weaponready();}
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1 BW_Weaponready();
 			MP4U E 1 BW_WeaponReady();
 			goto ready;
@@ -157,7 +157,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		AltFire:
 			TNT1 A 0
 			{
-				A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+				A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 				if(findinventory("AimingToken"))
 				{
 					A_setinventory("AimingToken",0);
@@ -274,7 +274,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			DM4R F 1 BW_QuickRefire("Dual_Right_Fire",getRightfirebutton(),false);
 			goto Dual_Right;
 		Dual_Right_DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",14);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			DM4R A 1;
 			goto Dual_Right;
 		
@@ -283,20 +283,20 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		KickFlash:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("KickFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4K ABC 1;
 			MP4K DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4K GGG 1;
 			MP4K FEDCBA 1;
 			goto ready;
 		SlideFlash:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("SlideFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4K ABCD 1;
 			MP4K EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4K GGG 1;
 			MP4K GGG 1;
 			MP4K GGG 1;
@@ -305,7 +305,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			MP4K GGG 1;
 		SlideFlashEnd:
 			TNT1 A 0 BW_jumpifAkimbo("SlideFlashEnd_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4K FEDCBA 1;
 			goto ready;
 		KnifeGunFlash:
@@ -322,18 +322,18 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			stop;
 
 		KickFlash_Akimbo:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			DM4K ABC 1;
 			DM4K DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			DM4K GGG 1;
 			DM4K FEDCBA 1;
 			goto ready;
 		SlideFlash_Akimbo:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			DM4K ABCD 1;
 			DM4K EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			DM4K GGG 1;
 			DM4K GGG 1;
 			DM4K GGG 1;
@@ -341,7 +341,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			DM4K GGG 1;
 			DM4K GGG 1;
 		SlideFlashEnd_Akimbo:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			DM4K FEDCBA 1;
 			goto ready;
 
@@ -350,54 +350,54 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		
 		ReloadADS:
 			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
-			TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			MP4T DCBA 1;
 		Reload:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
 			TNT1 A 0 BW_CheckReload("EmptyReload","Fidget","NoAmmo",32,1);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R MNOPQRST 1;
-			TNT1 A 0 A_startsound("MP40/Out",17);
+			TNT1 A 0 A_startsound("MP40/Out",CHAN_AUTO);
 			MP4R UVWXYZ 1;
 			MP4S ABCCC 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4S DEFG 1;
-			TNT1 A 0 A_startsound("MP40/In",18);
+			TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 			MP4S HIJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
 			MP4S MNO 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R QPONM 1;
 			MP4R GFEDCBA 1;
 			goto ready;
 
 		EmptyReload:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R MNOPQRST 1;
-			TNT1 A 0 A_startsound("MP40/Out",17);
+			TNT1 A 0 A_startsound("MP40/Out",CHAN_AUTO);
 			MP4R UVWXYZ 1;
 			MP4S ABCCC 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4S DEFG 1;
-			TNT1 A 0 A_startsound("MP40/In",18);
+			TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 			MP4S HIJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),31,1);
 			MP4S MNO 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R QPONM 1;
 			MP4R GFEDCBA 1;
 		//rechamber
 			MP4C ABCDE 1;
-			TNT1 A 0 A_Startsound("MP40/BoltBack",10,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C FGHI 1;
 			MP4C III 1 A_Weaponoffset(-0.35,0.5,WOF_ADD);
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1;
 			goto ready;
 		
@@ -408,48 +408,48 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			TNT1 A 0 A_jumpif(invoker.ammo2.amount > 31,"Reload_Left");
 		ReloadRight:
 			TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"EmptyReloadRight");
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R MNOPQRST 1;
-			TNT1 A 0 A_startsound("MP40/Out",17);
+			TNT1 A 0 A_startsound("MP40/Out",CHAN_AUTO);
 			MP4R UVWXYZ 1;
 			MP4S ABCCC 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4S DEFG 1;
-			TNT1 A 0 A_startsound("MP40/In",18);
+			TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 			MP4S HIJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
 			MP4S MNO 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R QPONM 1;
 			MP4R GFEDCBA 1;
 			goto FinishedRight;
 
 		EmptyReloadRight:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R MNOPQRST 1;
-			TNT1 A 0 A_startsound("MP40/Out",17);
+			TNT1 A 0 A_startsound("MP40/Out",CHAN_AUTO);
 			MP4R UVWXYZ 1;
 			MP4S ABCCC 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4S DEFG 1;
-			TNT1 A 0 A_startsound("MP40/In",18);
+			TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 			MP4S HIJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),31,1);
 			MP4S MNO 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R QPONM 1;
 			MP4R GFEDCBA 1;
 		//rechamber
 			MP4C ABCDE 1;
-			TNT1 A 0 A_Startsound("MP40/BoltBack",10,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C FGHI 1;
 			MP4C III 1 A_Weaponoffset(-0.35,0.5,WOF_ADD);
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1;
 			goto FinishedRight;
 
@@ -465,20 +465,20 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		//reload left
 		doReloadLeft:
 			TNT1 A 0 A_jumpif(invoker.ammoleft.amount < 1,"EmptyReloadLeft");
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R MNOPQRST 1;
-			TNT1 A 0 A_startsound("MP40/Out",17);
+			TNT1 A 0 A_startsound("MP40/Out",CHAN_AUTO);
 			MP4R UVWXYZ 1;
 			MP4S ABCCC 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4S DEFG 1;
-			TNT1 A 0 A_startsound("MP40/In",18);
+			TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 			MP4S HIJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeLeft.getclassname(),invoker.ammotype1.getclassname(),32,1);
 			MP4S MNO 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R QPONM 1;
 			MP4R GFEDCBA 1;
 		FinishedLeft:
@@ -493,29 +493,29 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 			goto ready_Dual;
 		
 		EmptyReloadLeft:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R MNOPQRST 1;
-			TNT1 A 0 A_startsound("MP40/Out",17);
+			TNT1 A 0 A_startsound("MP40/Out",CHAN_AUTO);
 			MP4R UVWXYZ 1;
 			MP4S ABCCC 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4S DEFG 1;
-			TNT1 A 0 A_startsound("MP40/In",18);
+			TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 			MP4S HIJKL 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeLeft.getclassname(),invoker.ammotype1.getclassname(),31,1);
 			MP4S MNO 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R QPONM 1;
 			MP4R GFEDCBA 1;
 		//rechamber
 			MP4C ABCDE 1;
-			TNT1 A 0 A_Startsound("MP40/BoltBack",10,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C FGHI 1;
 			MP4C III 1 A_Weaponoffset(-0.35,0.5,WOF_ADD);
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1;
 			goto FinishedLeft;
 	}
