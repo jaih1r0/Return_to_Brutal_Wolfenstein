@@ -24,12 +24,9 @@ Class BW_SSG : BaseBWWeapon
 		A_AlertMonsters();
 		
 		A_StartSound("HSSG/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
-		A_StartSound("Trench/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+		A_StartSound("Trench/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.5, ATTN_NORM, frandom(0.73, 0.87));
 		A_StartSound("HSSG/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.9);
-		A_StartSound("Trench/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1);
-		/*A_StartSound("Trench/FireAlt", 0, CHANF_OVERLAP, 0.7);
-		A_StartSound("Trench/Fireadd", 0, CHANF_OVERLAP, 0.8);
-		A_StartSound("Trench/FireMech", 0, CHANF_OVERLAP, 1);*/
+		A_StartSound("Trench/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1, ATTN_NORM, frandom(0.73, 0.87));
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
 		BW_FireBullets("BW_12GABullets",12.5,4.5,24,22,"Bulletpuff","Shotgun",0,0,0);

@@ -67,6 +67,8 @@ DoomEdNums
 	7231 = "BW_Luger"	//underwhelming normal luger instead of golden one 
 	7230 = "Clip"		//underwhelming clip instead of golden clip
 	
+	7308 = "BW_Chaingun"
+	
 	7515 = "BW_Panzerschreck"
 	1309 = "BW_Panzerschreck"	//panzerfaust in the future
 	

@@ -37,6 +37,7 @@ Version 4.10
 #include "zscript/BW/Weapons/Slot4/Kar98K.zs"
 
 #include "zscript/BW/Weapons/Slot5/MG42.zs"
+#include "zscript/BW/Weapons/Slot5/Chaingun.zs"
 
 #include "zscript/BW/Weapons/Slot6/Panzerschreck.zs"
 
