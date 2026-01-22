@@ -23,15 +23,15 @@ class BW_Chaingun : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/Rifle/Raise");
 			BCGU AB 1;
-			TNT1 A 0 A_StartSound("MG42/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Chaingun/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGU CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(42);
-			TNT1 A 0 A_Startsound("MG42/Drop",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("Chaingun/Lower",CHAN_AUTO,CHANF_OVERLAP);
 			BCGU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -44,8 +44,12 @@ class BW_Chaingun : BaseBWWeapon
 		
 		Fire:
 			TNT1 A 0 BW_PrefireCheck(1,"DryFire","DryFire");
+			TNT1 A 0 A_StartSound("Chaingun/SpinUp", 41, CHANF_OVERLAP, 1);
+			BCGT ABCDEFGH 1;
 			BCGS ABCD 1;
 		FireLoop1:
+			TNT1 A 0 A_StopSound(41);
+			TNT1 A 0 A_StartSound("Chaingun/Spin", 42, CHANF_LOOPING, 0.75, ATTN_NORM, 1.0, 0.1);
 			TNT1 A 0 A_Weaponoffset(0,32);
 			TNT1 A 0 BW_PrefireCheck(1,"DryFireFast","DryFireFast");
 			BCGF A 1 bright fireChaingun();
@@ -54,7 +58,7 @@ class BW_Chaingun : BaseBWWeapon
 			TNT1 A 0 A_Weaponoffset(0 + random(-2,2),32 + random(-1,-2));
 			BCGF B 1 bright fireChaingun(true);
 			TNT1 A 0 A_JumpIf(invoker.ammo2.amount <= 0, "DryFireFast");
-			
+			TNT1 A 0 A_StartSound("Chaingun/FireMech", CHAN_AUTO, CHANF_OVERLAP,0.7);
 			TNT1 A 0 A_refire("FireLoop2");
 			goto FireEnd;
 		
@@ -66,31 +70,36 @@ class BW_Chaingun : BaseBWWeapon
 			TNT1 A 0 A_Weaponoffset(0,32);
 			BCGF D 1 bright fireChaingun(true);
 			TNT1 A 0 A_JumpIf(invoker.ammo2.amount <= 0, "DryFireFast");
-			
+			TNT1 A 0 A_StartSound("Chaingun/FireMech", CHAN_AUTO, CHANF_OVERLAP,0.7);
 			TNT1 A 0 A_refire("FireLoop1");
 			goto FireEnd;
 			
 		FireEnd:
 			TNT1 A 0 A_Weaponoffset(0,32);
 			TNT1 A 0 A_StopSound(42);
+			TNT1 A 0 A_StartSound("Chaingun/SpinDown", 41, CHANF_OVERLAP, 1);
 			BCGS ABCD 1;
 			BCGT ACEG 1;
 		FireSlowEnd:
 			TNT1 A 0 A_StopSound(42);
+			TNT1 A 0 A_StartSound("Chaingun/SpinDown", 41, CHAN_NOSTOP, 1, ATTN_NORM, 0.7);
 			BCGT ABCDEFGH 1 BW_WeaponReady(WRF_ALLOWUSER3|WRF_ALLOWRELOAD);
 			BCGT ABCDEFGH 2 BW_WeaponReady(WRF_ALLOWUSER3|WRF_ALLOWRELOAD);
 			TNT1 A 0 A_StopSound(42);
 			goto ready;
 		
 		DryFire:
-			TNT1 A 0 A_StopSound(42);
-			BCGT ABCDEFGH 1 BW_WeaponReady(WRF_ALLOWUSER3|WRF_ALLOWRELOAD);
+			TNT1 A 0 A_StartSound("Chaingun/SpinUp", 41, CHANF_OVERLAP, 1, ATTN_NORM, 0.7);
+			BCGT ABCDEFGH 1;
+			TNT1 A 0 A_StopSound(41);
+			TNT1 A 0 A_StartSound("Chaingun/Spin", 42, CHANF_LOOPING, 0.75, ATTN_NORM, 0.7);
+		DryFireLoop:
+			BCGT ABCDEFGH 1 BW_WeaponReady(WRF_ALLOWUSER3);
 			TNT1 A 0 A_JumpIf(invoker.ammo2.amount > 0, "FireLoop1");
-			TNT1 A 0 A_refire("DryFire");
-			goto ready;
+			TNT1 A 0 A_refire("DryFireLoop");
+			goto FireSLowEnd;
 		DryFireFast:
-			TNT1 A 0 A_StopSound(42);
-			BCGS ABCD 1 BW_WeaponReady(WRF_ALLOWUSER3|WRF_ALLOWRELOAD);
+			BCGS ABCD 1 BW_WeaponReady(WRF_ALLOWUSER3);
 			TNT1 A 0 A_JumpIf(invoker.ammo2.amount > 0, "FireLoop1");
 			TNT1 A 0 A_refire("DryFireFast");
 			goto FireEnd;
@@ -100,24 +109,24 @@ class BW_Chaingun : BaseBWWeapon
 		
 		Reload:
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",200,1);
-			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
+			TNT1 A 0 A_Startsound("Generic/Rattle/Small",CHAN_AUTO);
 			BCGK ABCD 1;
-			TNT1 A 0 A_Startsound("MG42OPEN",CHAN_AUTO);
+			TNT1 A 0 A_Startsound("Chaingun/MagOut",CHAN_AUTO);
 			BCGK EFGH 1;
 			BCGK H 5;
 			BCGK H 10;
-			TNT1 A 0 A_Startsound("MG42Bul",32);
-			BCGK H 2 offset(0,33);
-			BCGK H 2 offset(0,35);
-			BCGK H 26 offset(-1,37);
-			BCGK H 2 offset(-2,38);
-			TNT1 A 0 A_Startsound("MG42Close",CHAN_AUTO);
-			BCGK H 2 offset(-1,37);
+			TNT1 A 0 A_Startsound("Chaingun/MagIn",CHAN_AUTO);
+			BCGK H 2 A_WeaponOffset(0,33, WOF_INTERPOLATE);
+			BCGK H 2 A_WeaponOffset(0,35, WOF_INTERPOLATE);
+			BCGK H 26 A_WeaponOffset(-1,37, WOF_INTERPOLATE);
+			BCGK H 2 A_WeaponOffset(-2,38, WOF_INTERPOLATE);
+			TNT1 A 0 A_Startsound("Chaingun/Belt",CHAN_AUTO);
+			BCGK H 2 A_WeaponOffset(-1,37, WOF_INTERPOLATE);
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),200,1);
-			BCGK H 2 offset(-2,36);
-			BCGK H 2 offset(-1,34);
-			BCGK H 2 offset(0,33);
-			BCGK H 2 offset(0,32);
+			BCGK H 2 A_WeaponOffset(-2,36, WOF_INTERPOLATE);
+			BCGK H 2 A_WeaponOffset(-1,34, WOF_INTERPOLATE);
+			BCGK H 2 A_WeaponOffset(0,33, WOF_INTERPOLATE);
+			BCGK H 2 A_WeaponOffset(0,32, WOF_INTERPOLATE);
 			BCGK FEDCBA 1;
 			goto ready;
 		
@@ -128,18 +137,18 @@ class BW_Chaingun : BaseBWWeapon
 			stop;
 			
 		KickFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGK ABC 1;
 			BCGK DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGK GHHHG 1;
 			BCGK FEDCBA 1;
 			goto ready;	
 		SlideFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGK ABCD 1;
 			BCGK EFGH 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGK HHH 1;
 			BCGK HHH 1;
 			BCGK HHH 1;
@@ -147,7 +156,7 @@ class BW_Chaingun : BaseBWWeapon
 			BCGK HHH 1;
 			BCGK HHH 1;
 		SlideFlashEnd:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BCGK FEDCBA 1;
 			goto ready;
 		MuzzleFlash:
@@ -176,10 +185,9 @@ class BW_Chaingun : BaseBWWeapon
 		}
 		
 		BW_HandleWeaponFeedback(4, 3, -1.2, frandom(+0.70, -0.70));
-		A_StartSound("MG42Fire", CHAN_AUTO, CHANF_OVERLAP,0.85);
-		A_StartSound("MG42/FireBass", CHAN_AUTO, CHANF_OVERLAP,0.75);
-		A_StartSound("MG42Mech", CHAN_AUTO, CHANF_OVERLAP,1);
-		A_StartSound("MG42Loop",42,CHANF_LOOPING, CHANF_NOSTOP, 0.9);
+		A_StartSound("Chaingun/Fire", CHAN_AUTO, CHANF_OVERLAP,0.75);
+		A_StartSound("Chaingun/FireBass", CHAN_AUTO, CHANF_OVERLAP,0.9);
+		A_StartSound("Chaingun/FireTail", CHAN_AUTO, CHANF_OVERLAP,0.5);
 		
 		BW_AddBarrelHeat(16);
 		
