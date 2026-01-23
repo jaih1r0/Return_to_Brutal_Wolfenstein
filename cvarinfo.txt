@@ -12,6 +12,7 @@ server int BW_CasingsLimit = 256;
 server int BW_CleanTics = 0;
 server int BW_PlaneModelDrawDist = 700;
 server int BW_DualFiremode  = 0;    //0 individual, 1 single button
+server bool BW_CrouchKick   = false;
 
 //hud
 user   float BW_messageScale = 1.0;

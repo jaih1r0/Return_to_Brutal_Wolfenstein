@@ -93,6 +93,8 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	option "Dual fire mode","BW_DualFiremode","dualfiremode"
 	statictext ""
+	option "Slide Kick with a single button","BW_CrouchKick","OnOff"
+	statictext "(press crouch while moving to slide)"
 	statictext ""
 	statictext ""
 
