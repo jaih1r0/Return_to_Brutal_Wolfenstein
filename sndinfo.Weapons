@@ -225,6 +225,51 @@ Luger/Charge	"Sounds/Weapons/Slot2/Luger/LugCharge.wav"
 Luger/Raise	"Sounds/Weapons/Slot2/Luger/LugRaise.wav"
 Luger/Lower	"Sounds/Weapons/Slot2/Luger/LugDrop.wav"
 
+//M1911
+
+M1911/Raise	"Sounds/Weapons/SLot2/M1911/M1911Raise.wav"
+M1911/Lower	"Sounds/Weapons/SLot2/M1911/M1911Lower.wav"
+M1911/MagIn	"Sounds/Weapons/SLot2/M1911/M1911MagIn.wav"
+M1911/MagOut	"Sounds/Weapons/SLot2/M1911/M1911MagOut.wav"
+M1911/Charge	"Sounds/Weapons/SLot2/M1911/M1911Charge.wav"
+
+$RANDOM M1911/Fire { M1911/Fire1 M1911/Fire2 M1911/Fire3 M1911/Fire4 M1911/Fire5 M1911/Fire6 M1911/Fire7 M1911/Fire8 M1911/Fire9 }
+M1911/Fire1	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire1.wav"
+M1911/Fire2	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire2.wav"
+M1911/Fire3	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire3.wav"
+M1911/Fire4	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire4.wav"
+M1911/Fire5	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire5.wav"
+M1911/Fire6	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire6.wav"
+M1911/Fire7	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire7.wav"
+M1911/Fire8	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire8.wav"
+M1911/Fire9	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire9.wav"
+
+$RANDOM M1911/FireAdd { M1911/FireAdd1 M1911/FireAdd2 M1911/FireAdd3 M1911/FireAdd4 M1911/FireAdd5 M1911/FireAdd6 M1911/FireAdd7 M1911/FireAdd8 }
+M1911/FireAdd1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd1.wav"
+M1911/FireAdd2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd2.wav"
+M1911/FireAdd3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd3.wav"
+M1911/FireAdd4	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd4.wav"
+M1911/FireAdd5	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd5.wav"
+M1911/FireAdd6	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd6.wav"
+M1911/FireAdd7	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd7.wav"
+M1911/FireAdd8	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd8.wav"
+
+$RANDOM M1911/FireTail { M1911/FireTail1 M1911/FireTail2 M1911/FireTail3 }
+M1911/FireTail1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTail1.wav"
+M1911/FireTail2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTail2.wav"
+M1911/FireTail3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTail3.wav"
+
+$RANDOM M1911/FireMech { M1911/FireMech1 M1911/FireMech2 M1911/FireMech3 M1911/FireMech4 M1911/FireMech5 }
+M1911/FireMech1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech1.wav"
+M1911/FireMech2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech2.wav"
+M1911/FireMech3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech3.wav"
+M1911/FireMech4	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech4.wav"
+M1911/FireMech5	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech5.wav"
+
+M1911/FireBass	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireBass.wav"
+
+
+
 //-----SLOT 3-----//
 
 //MP40

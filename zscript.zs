@@ -28,6 +28,7 @@ Version 4.10
 #include "zscript/BW/Weapons/Slot1/Fists.zs"
 
 #include "zscript/BW/Weapons/Slot2/Luger.zs"
+#include "zscript/BW/Weapons/Slot2/M1911.zs"
 
 #include "zscript/BW/Weapons/Slot3/MP40.zs"
 #include "zscript/BW/Weapons/Slot3/STG44.zs"
