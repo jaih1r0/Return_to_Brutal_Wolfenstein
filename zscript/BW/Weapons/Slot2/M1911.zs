@@ -53,7 +53,7 @@ class BW_M1911 : BaseBWWeapon
 			BW_SpawnCasing("BW_45ACPCasing",27,2,-7,random(2,5),random(2,5),random(3,6));
 		}
 		//gunsmoke
-		BW_AddBarrelHeat(10);
+		BW_AddBarrelHeat(12);
 		A_TakeInventory("BW_M1911_Mag", 1);
 	}
 	
