@@ -8,7 +8,7 @@ Class BW_BossBarHandler : eventhandler
     string presentation;
     Font useFont;
     const fadeStopTimer = TICRATE;
-    transient ui cVar scaler;
+    transient ui cVar scaler, ofsX,ofsY;
     int portdimx,portdimy;
 
     override void worldloaded(worldevent e)
@@ -41,10 +41,15 @@ Class BW_BossBarHandler : eventhandler
             return;
         if(!scaler)
             scaler = CVar.GetCVar("BW_BossBarScale", e.camera.player);
+        if(!ofsX)
+            ofsX = CVar.GetCVar("BW_BossBarOfsX", e.camera.player);
+        if(!ofsY)
+            ofsY = CVar.GetCVar("BW_BossBarOfsY", e.camera.player);
         
         //general things
         vector2 screenSize = (screen.getwidth(),screen.getheight());
         vector2 drawpos = (screensize.x / 2,screensize.y / 10);
+        drawpos += (ofsX.getfloat(),ofsY.getfloat());
 
         double alfa = BW_Statics.LinearMap(stopTimer,0,fadeStopTimer,1.0f,0.0f);
 

@@ -19,6 +19,8 @@ user   bool BW_Custommsg = true;
 user   int  BW_messagepos = 0;
 user   bool BW_CurrentAmmoList = true;
 user   float BW_BossBarScale = 2.0;
+user   float BW_BossBarOfsX = 0.0;
+user   float BW_BossBarOfsY = 0.0;
 
 //Nashgore Cvars
 

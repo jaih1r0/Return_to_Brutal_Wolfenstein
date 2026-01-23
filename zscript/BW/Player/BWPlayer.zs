@@ -103,7 +103,7 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		
 		Player.AttackZOffset 28;//18;
 		Player.ViewBobSpeed 15;
-		Player.ViewHeight 50;//40;
+		Player.ViewHeight 42;// player feels too big for the maps
 		Scale 1.0;
 		Player.SoundClass "BWPlayer";
 		Player.Face "STF";

@@ -116,6 +116,10 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	
 	slider "boss bar scale","BW_BossBarScale",0.1,3.0,0.1
+	statictext "" 
+	slider "boss bar horizontal offset","BW_BossBarOfsX",-500,500,5
+	statictext ""
+	slider "boss bar vertical offset","BW_BossBarOfsY",-500,500,5
 	statictext ""
 
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
