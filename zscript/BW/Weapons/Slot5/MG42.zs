@@ -21,15 +21,15 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 BW_WeaponRaise("Generic/Rifle/Raise");
 			TNT1 A 0 addfired(0,true);
 			BMGU AB 1;
-			TNT1 A 0 A_StartSound("MG42/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("MG42/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGU CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 A_Stopsound(42);
-			TNT1 A 0 A_Startsound("MG42/Drop",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("MG42/Drop",CHAN_AUTO,CHANF_OVERLAP);
 			BMGU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rifle/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -63,7 +63,7 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 A_StopSound(42);
 			goto ready;
 		DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
+			TNT1 A 0 A_Startsound("weapon/dryfire",CHAN_AUTO);
 			TNT1 A 0 A_Stopsound(42);
 			BMGE E 1;
 			goto ready;
@@ -78,23 +78,23 @@ Class BW_MG42 : BaseBWWeapon
 			BMGU EEE 1 A_Weaponoffset(-0.35,0.2,WOF_ADD);	//moving hand to open it
 			BMGU EE 1 A_Weaponoffset(0.4,-0.3,WOF_ADD);
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
+			TNT1 A 0 A_Startsound("Generic/Rattle/Small",CHAN_AUTO);
 			MGR4 ABCDEF 1;
 			TNT1 A 0 A_Startsound("MG42OPEN",CHAN_AUTO);
 			MGR4 GHIJKLMNOOOOOOOOOO 1;
 			MGR4 PQRST 1;
-			TNT1 A 0 A_Startsound("MG42BeltOut",32);
+			TNT1 A 0 A_Startsound("MG42BeltOut",CHAN_AUTO);
 			TNT1 A 0 A_Startsound("MG42/MagOut",CHAN_AUTO);
 			MGR4 UVWXYZ 1;
-			TNT1 A 0 A_Startsound("Generic/Ammo/MagFoleyDrum",0);
+			TNT1 A 0 A_Startsound("Generic/Ammo/MagFoleyDrum",CHAN_AUTO);
 			MGR1 ABCDEEEEEEEEEEFGH 1;
 			TNT1 A 0 A_Startsound("MG42/MagIn",CHAN_AUTO);
 			MGR1 IJKLMNOPQQ 1;
 			MGR1 RRRRRRRRR 1 A_Weaponoffset(-0.3,0.1,WOF_ADD);
 			MGR1 R 1;
-			TNT1 A 0 A_Startsound("Generic/Cloth/Short",0);
+			TNT1 A 0 A_Startsound("Generic/Cloth/Short",CHAN_AUTO);
 			MGR1 ST 1 A_Weaponoffset(0.75,-0.25,WOF_ADD);
-			TNT1 A 0 A_Startsound("MG42Bul",32);
+			TNT1 A 0 A_Startsound("MG42Bul",CHAN_AUTO);
 			MGR1 U 1;
 			MGR1 VV 1 A_Weaponoffset(-1,1,WOF_ADD);
 			MGR1 V 1;
@@ -102,7 +102,7 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 A_weaponoffset(0,32,WOF_INTERPOLATE);
 			MGR1 YZ 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),50,1);
-			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
+			TNT1 A 0 A_Startsound("Generic/Rattle/Small",CHAN_AUTO);
 			MGR2 ABCDE 1;
 			TNT1 A 0 A_Startsound("MG42Close",CHAN_AUTO);
 			MGR2 FGHIJK 1;
@@ -112,7 +112,7 @@ Class BW_MG42 : BaseBWWeapon
 			BMGE EEE 1 A_Weaponoffset(-0.35,0.2,WOF_ADD);	//moving hand to open it
 			BMGE EE 1 A_Weaponoffset(0.4,+0.3,WOF_ADD);
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
+			TNT1 A 0 A_Startsound("Generic/Rattle/Small",CHAN_AUTO);
 			MGR0 ABCDEFG 1;
 			TNT1 A 0 A_Startsound("MG42OPEN",CHAN_AUTO);
 			MGR0 HIJKLMNOOOOOOOOOO 1;
@@ -125,7 +125,7 @@ Class BW_MG42 : BaseBWWeapon
 			MGR1 IJKLMNOPQQ 1;
 			MGR1 RRRRRRRRR 1 A_Weaponoffset(-0.3,0.1,WOF_ADD);
 			MGR1 R 1;
-			TNT1 A 0 A_Startsound("Generic/Cloth/Short",0);
+			TNT1 A 0 A_Startsound("Generic/Cloth/Short",CHAN_AUTO);
 			MGR1 ST 1 A_Weaponoffset(0.75,-0.25,WOF_ADD);
 			TNT1 A 0 A_Startsound("MG42Bul",CHAN_AUTO);
 			MGR1 U 1;
@@ -135,7 +135,7 @@ Class BW_MG42 : BaseBWWeapon
 			TNT1 A 0 A_weaponoffset(0,32,WOF_INTERPOLATE);
 			MGR1 YZ 1;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),50,1);
-			TNT1 A 0 A_Startsound("Generic/Rattle/Small",0);
+			TNT1 A 0 A_Startsound("Generic/Rattle/Small",CHAN_AUTO);
 			MGR2 ABCDE 1;
 			TNT1 A 0 A_Startsound("MG42Close",CHAN_AUTO);
 			MGR2 FGHIJKK 1;
@@ -161,18 +161,18 @@ Class BW_MG42 : BaseBWWeapon
 			stop;
 			
 		KickFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGK ABC 1;
 			BMGK DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGK GHHHG 1;
 			BMGK FEDCBA 1;
 			goto ready;	
 		SlideFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGK ABCD 1;
 			BMGK EFGH 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGK HHH 1;
 			BMGK HHH 1;
 			BMGK HHH 1;
@@ -180,7 +180,7 @@ Class BW_MG42 : BaseBWWeapon
 			BMGK HHH 1;
 			BMGK HHH 1;
 		SlideFlashEnd:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BMGK FEDCBA 1;
 			goto ready;
 		MuzzleFlash:

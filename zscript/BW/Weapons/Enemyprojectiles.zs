@@ -7,6 +7,15 @@ Class BW_EnemyLugerBullets : BW_LugerBullets
     }
 }
 
+Class BW_EnemyM1911Bullets : BW_M1911Bullets
+{
+    default
+    {
+        speed 50;
+    }
+}
+
+
 Class BW_EnemyMP40Bullets : BW_MP40Bullets
 {
     default

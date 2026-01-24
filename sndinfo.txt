@@ -39,6 +39,23 @@ $rolloff bullet_metal 200 700
 $rolloff bullet_crystal 200 700
 $rolloff bullet_flesh 200 700
 
+$RANDOM Bullet/Flesh { Bullet/Flesh1 Bullet/Flesh2 Bullet/Flesh3 Bullet/Flesh4 Bullet/Flesh5 Bullet/Flesh6 Bullet/Flesh7 Bullet/Flesh8 }
+Bullet/Flesh1	"Sounds/effects/BloodImpacts/FleshImpact1.wav"
+Bullet/Flesh2	"Sounds/effects/BloodImpacts/FleshImpact2.wav"
+Bullet/Flesh3	"Sounds/effects/BloodImpacts/FleshImpact3.wav"
+Bullet/Flesh4	"Sounds/effects/BloodImpacts/FleshImpact4.wav"
+Bullet/Flesh5	"Sounds/effects/BloodImpacts/FleshImpact5.wav"
+Bullet/Flesh6	"Sounds/effects/BloodImpacts/FleshImpact6.wav"
+Bullet/Flesh7	"Sounds/effects/BloodImpacts/FleshImpact7.wav"
+Bullet/Flesh8	"Sounds/effects/BloodImpacts/FleshImpact8.wav"
+
+$RANDOM Bullet/Head { Bullet/Head1 Bullet/Head2 Bullet/Head3 Bullet/Head4 Bullet/Head5 }
+Bullet/Head1	"Sounds/effects/BloodImpacts/HeadImpact1.wav"
+Bullet/Head2	"Sounds/effects/BloodImpacts/HeadImpact2.wav"
+Bullet/Head3	"Sounds/effects/BloodImpacts/HeadImpact3.wav"
+Bullet/Head4	"Sounds/effects/BloodImpacts/HeadImpact4.wav"
+Bullet/Head5	"Sounds/effects/BloodImpacts/HeadImpact5.wav"
+
 //===========================================================================
 //
 // Blood Splash

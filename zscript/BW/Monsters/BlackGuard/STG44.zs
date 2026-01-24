@@ -23,7 +23,7 @@ Class BW_BlackGuard_STG44 : BW_MonsterBase
 			DeathSound "Nazi/Generic/death";
 			ActiveSound "Nazi/Generic/sight";
 			
-			DropItem "BW_SMGAmmo", 255, 30;
+			DropItem "BW_STGAmmo", 255, 30;
 			DropItem "BW_STG44", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";

@@ -23,15 +23,15 @@ Class BW_Tesla : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/Launcher/Raise");
 			BTSU AB 1;
-			TNT1 A 0 A_StartSound("Tesla/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Tesla/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BTSU CD 1;
 			goto ready;
 			
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 A_Startsound("Tesla/Drop",0,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("Tesla/Drop",CHAN_AUTO,CHANF_OVERLAP);
 			BTSU FG 1;
-			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Launcher/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			BTSU HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;

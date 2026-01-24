@@ -54,14 +54,14 @@ Class BW_Kar98K : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/Marksman/Raise");
 			K98U AB 1;
-			TNT1 A 0 A_StartSound("Kar98/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Kar98/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98U CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 A_Startsound("Kar98/Drop",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("Kar98/Drop",CHAN_AUTO,CHANF_OVERLAP);
 			K98U FG 1;
-			TNT1 A 0 A_StartSound("Generic/Marksman/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Marksman/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98U HI 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -104,20 +104,20 @@ Class BW_Kar98K : BaseBWWeapon
 			K98F GHI 1;
 			//K98F A 1;
 		Bolt:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TNT1 A 0 A_StartSound("Kar98/BoltOpen", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P ABCD 1;
 			K98P EFGH 1 {A_SetPitch(pitch + 0.5); A_SetAngle(angle + 0.25);}
 			TNT1 A 0 BW_SpawnCasing("BW_792Casing",29,3,-10,random(2,3),random(2,3),random(3,6));
 			K98P IJKM 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P MMNO 1 {A_SetPitch(pitch - 0.5); A_SetAngle(angle - 0.25);}
 			TNT1 A 0 A_StartSound("Kar98/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P PQ 1;
 			K98P RS 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P TU 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P VWXYZ 1;
 			K98U EE 1;
 			TNT1 A 0 A_Refire();
@@ -125,7 +125,7 @@ Class BW_Kar98K : BaseBWWeapon
 			
 		AltFire:
 			TNT1 A 0 {
-				A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+				A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 				if(findinventory("AimingToken"))
 				{
 					A_setinventory("AimingToken",0);
@@ -168,20 +168,20 @@ Class BW_Kar98K : BaseBWWeapon
 		Bolt_ADS:
 			TNT1 A 0 A_ZoomFactor(1.0);
 			K98U NMLK 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TNT1 A 0 A_StartSound("Kar98/BoltOpen", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P ABCD 1;
 			K98P EFGH 1 {A_SetPitch(pitch + 0.5); A_SetAngle(angle + 0.25);}
 			TNT1 A 0 BW_SpawnCasing("BW_792Casing",29,3,-10,random(2,3),random(2,3),random(3,6));
 			K98P IJKM 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P MMNO 1 {A_SetPitch(pitch - 0.5); A_SetAngle(angle - 0.25);}
 			TNT1 A 0 A_StartSound("Kar98/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P PQ 1;
 			K98P RS 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P TU 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98P VWXYZ 1;
 			TNT1 A 0 A_ZoomFactor(1.4);
 			K98U KLMN 1;
@@ -189,7 +189,7 @@ Class BW_Kar98K : BaseBWWeapon
 			goto Ready_ADS;
 		
 		ReloadADS:
-			TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 			K98U NMLK 1;
 		Reload:
@@ -197,14 +197,14 @@ Class BW_Kar98K : BaseBWWeapon
 			TNT1 A 0 BW_CheckReload(null,"Ready","NoAmmo",5,1);
 			TNT1 A 0 A_StartSound("Kar98/BoltOpen", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R ABCDE 2;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R FGHIJ 2;
 			TNT1 A 0 A_JumpIf(invoker.ammo2.amount == 0 && invoker.ammo1.amount > 4, "Reload_Clip");
 		Reload_Bullet:
-			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R KLMNOPQ 2;
 		Reload_Bullets_Loop:
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R RST 2;
 			TNT1 A 0 A_StartSound("Kar98/CartLoad", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R U 4 BW_AmmointoMagSingle(5,1);
@@ -212,19 +212,19 @@ Class BW_Kar98K : BaseBWWeapon
 			TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 5 || invoker.ammo1.amount < 1, "Reload_Bullet_End");
 			Loop;
 		Reload_Bullet_End:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R QPONMLKJ 2;
 			Goto Reload_End;
 		Reload_Clip:
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R VWXYZ 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98C ABC 2;
 			TNT1 A 0 A_StartSound("Kar98/ClipLoad", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98C DDDD 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98C EEEE 2;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98C FGHIJ 2;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),5,1);
 			goto Reload_End2;
@@ -233,24 +233,24 @@ Class BW_Kar98K : BaseBWWeapon
 		Reload_End2:
 			TNT1 A 0 A_StartSound("Kar98/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R ED 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98R CBA 2;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			Goto Ready;
 			
 		KickFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98K ABC 1;
 			K98K DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98K GGG 1;
 			K98K FEDCBA 1;
 			goto ready;	
 		SlideFlash:
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98K ABCD 1;
 			K98K EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98K GGG 1;
 			K98K GGG 1;
 			K98K GGG 1;
@@ -258,7 +258,7 @@ Class BW_Kar98K : BaseBWWeapon
 			K98K GGG 1;
 			K98K GGG 1;
 		SlideFlashEnd:
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			K98K FEDCBA 1;
 			goto ready;
 	}

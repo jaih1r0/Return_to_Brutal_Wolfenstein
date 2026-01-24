@@ -8,78 +8,37 @@
 
 weapon/dryfire "Sounds/Weapons/DRYFIRE.ogg"
 
-$RANDOM Generic/Rattle/Small
-{
-Generic/Rattle/Small1
-Generic/Rattle/Small2
-Generic/Rattle/Small3
-}
-
+$RANDOM Generic/Rattle/Small { Generic/Rattle/Small1 Generic/Rattle/Small2 Generic/Rattle/Small3 }
 Generic/Rattle/Small1	"Sounds/Weapons/GenericFoley/MiscClatter/RattleSmall1.wav"
 Generic/Rattle/Small2	"Sounds/Weapons/GenericFoley/MiscClatter/RattleSmall2.wav"
 Generic/Rattle/Small3	"Sounds/Weapons/GenericFoley/MiscClatter/RattleSmall3.wav"
 
-$RANDOM Generic/Rattle/Medium
-{
-Generic/Rattle/Medium1
-Generic/Rattle/Medium2
-Generic/Rattle/Medium3
-Generic/Rattle/Medium4
-Generic/Rattle/Medium5
-}
-
+$RANDOM Generic/Rattle/Medium { Generic/Rattle/Medium1 Generic/Rattle/Medium2 Generic/Rattle/Medium3 Generic/Rattle/Medium4 Generic/Rattle/Medium5 }
 Generic/Rattle/Medium1	"Sounds/Weapons/GenericFoley/MiscClatter/RattleMedium1.wav"
 Generic/Rattle/Medium2	"Sounds/Weapons/GenericFoley/MiscClatter/RattleMedium2.wav"
 Generic/Rattle/Medium3	"Sounds/Weapons/GenericFoley/MiscClatter/RattleMedium3.wav"
 Generic/Rattle/Medium4	"Sounds/Weapons/GenericFoley/MiscClatter/RattleMedium4.wav"
 Generic/Rattle/Medium5	"Sounds/Weapons/GenericFoley/MiscClatter/RattleMedium5.wav"
 
-$RANDOM Generic/Rattle/Large
-{
-Generic/Rattle/Large1
-Generic/Rattle/Large2
-Generic/Rattle/Large3
-Generic/Rattle/Large4
-}
-
+$RANDOM Generic/Rattle/Large { Generic/Rattle/Large1 Generic/Rattle/Large2 Generic/Rattle/Large3 Generic/Rattle/Large4 }
 Generic/Rattle/Large1	"Sounds/Weapons/GenericFoley/MiscClatter/RattleLarge1.wav"
 Generic/Rattle/Large2	"Sounds/Weapons/GenericFoley/MiscClatter/RattleLarge2.wav"
 Generic/Rattle/Large3	"Sounds/Weapons/GenericFoley/MiscClatter/RattleLarge3.wav"
 Generic/Rattle/Large4	"Sounds/Weapons/GenericFoley/MiscClatter/RattleLarge4.wav"
 
-$RANDOM Generic/Cloth/Short
-{
-Generic/Cloth/Short1
-Generic/Cloth/Short2
-Generic/Cloth/Short3
-Generic/Cloth/Short4
-}
-
+$RANDOM Generic/Cloth/Short { Generic/Cloth/Short1 Generic/Cloth/Short2 Generic/Cloth/Short3 Generic/Cloth/Short4 }
 Generic/Cloth/Short1	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyShort1.wav"
 Generic/Cloth/Short2	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyShort2.wav"
 Generic/Cloth/Short3	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyShort3.wav"
 Generic/Cloth/Short4	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyShort4.wav"
 
-$RANDOM Generic/Cloth/Medium
-{
-Generic/Cloth/Medium1
-Generic/Cloth/Medium2
-Generic/Cloth/Medium3
-Generic/Cloth/Medium4
-}
-
+$RANDOM Generic/Cloth/Medium { Generic/Cloth/Medium1 Generic/Cloth/Medium2 Generic/Cloth/Medium3 Generic/Cloth/Medium4 }
 Generic/Cloth/Medium1	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyMedium1.ogg"
 Generic/Cloth/Medium2	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyMedium2.wav"
 Generic/Cloth/Medium3	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyMedium3.wav"
 Generic/Cloth/Medium4	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyMedium4.wav"
 
-$RANDOM Generic/Cloth/Long
-{
-Generic/Cloth/Long1
-Generic/Cloth/Long2
-Generic/Cloth/Long3
-}
-
+$RANDOM Generic/Cloth/Long { Generic/Cloth/Long1 Generic/Cloth/Long2 Generic/Cloth/Long3 }
 Generic/Cloth/Long1	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyLong1.wav"
 Generic/Cloth/Long2	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyLong2.wav"
 Generic/Cloth/Long3	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyLong3.wav"
@@ -87,29 +46,11 @@ Generic/Cloth/Long3	"Sounds/Weapons/GenericFoley/Cloth/ClothFoleyLong3.wav"
 Generic/Ammo/MagFoley	"Sounds/Weapons/GenericFoley/Magazine/MagFoley.ogg"
 Generic/Ammo/MagFoleyDrum	"Sounds/Weapons/GenericFoley/Magazine/MagFoleyDrum.wav"
 
-$RANDOM Generic/Ammo/CartFoley
-{
-Generic/Ammo/CartFoley1
-Generic/Ammo/CartFoley2
-}
-
+$RANDOM Generic/Ammo/CartFoley { Generic/Ammo/CartFoley1 Generic/Ammo/CartFoley2 }
 Generic/Ammo/CartFoley1	"Sounds/Weapons/GenericFoley/Magazine/CartFoley1.ogg"
 Generic/Ammo/CartFoley2	"Sounds/Weapons/GenericFoley/Magazine/CartFoley2.ogg"
 
-$RANDOM Generic/ADS
-{
-Generic/ADS1
-Generic/ADS2
-Generic/ADS3
-Generic/ADS4
-Generic/ADS5
-Generic/ADS6
-Generic/ADS7
-Generic/ADS8
-Generic/ADS9
-Generic/ADS10
-}
-
+$RANDOM Generic/ADS { Generic/ADS1 Generic/ADS2 Generic/ADS3 Generic/ADS4 Generic/ADS5 Generic/ADS6 Generic/ADS7 Generic/ADS8 Generic/ADS9 Generic/ADS10 }
 Generic/ADS1	"Sounds/Weapons/GenericFoley/Aim/GenericADS1.wav"
 Generic/ADS2	"Sounds/Weapons/GenericFoley/Aim/GenericADS2.wav"
 Generic/ADS3	"Sounds/Weapons/GenericFoley/Aim/GenericADS3.wav"
@@ -121,134 +62,62 @@ Generic/ADS8	"Sounds/Weapons/GenericFoley/Aim/GenericADS8.wav"
 Generic/ADS9	"Sounds/Weapons/GenericFoley/Aim/GenericADS9.wav"
 Generic/ADS10	"Sounds/Weapons/GenericFoley/Aim/GenericADS10.wav"
 
-$RANDOM Generic/Melee/Raise
-{
-Generic/Melee/Raise1
-Generic/Melee/Raise2
-Generic/Melee/Raise3
-Generic/Melee/Raise4
-}
-
+$RANDOM Generic/Melee/Raise { Generic/Melee/Raise1 Generic/Melee/Raise2 Generic/Melee/Raise3 Generic/Melee/Raise4 }
 Generic/Melee/Raise1	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeRaise1.wav"
 Generic/Melee/Raise2	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeRaise2.wav"
 Generic/Melee/Raise3	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeRaise3.wav"
 Generic/Melee/Raise4	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeRaise4.wav"
 
-$RANDOM Generic/Melee/Holster
-{
-Generic/Melee/Holster1
-Generic/Melee/Holster2
-Generic/Melee/Holster3
-Generic/Melee/Holster4
-}
-
+$RANDOM Generic/Melee/Holster { Generic/Melee/Holster1 Generic/Melee/Holster2 Generic/Melee/Holster3 Generic/Melee/Holster4 }
 Generic/Melee/Holster1	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeHolster1.wav"
 Generic/Melee/Holster2	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeHolster2.wav"
 Generic/Melee/Holster3	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeHolster3.wav"
 Generic/Melee/Holster4	"Sounds/Weapons/GenericFoley/Holster/Melee/MeleeHolster4.wav"
 
-$RANDOM Generic/Pistol/Raise
-{
-Generic/Pistol/Raise1
-Generic/Pistol/Raise2
-Generic/Pistol/Raise3
-}
-
+$RANDOM Generic/Pistol/Raise { Generic/Pistol/Raise1 Generic/Pistol/Raise2 Generic/Pistol/Raise3 }
 Generic/Pistol/Raise1	"Sounds/Weapons/GenericFoley/Holster/Pistols/PistolRaise1.wav"
 Generic/Pistol/Raise2	"Sounds/Weapons/GenericFoley/Holster/Pistols/PistolRaise2.wav"
 Generic/Pistol/Raise3	"Sounds/Weapons/GenericFoley/Holster/Pistols/PistolRaise3.wav"
 
-$RANDOM Generic/Pistol/Holster
-{
-Generic/Pistol/Holster1
-Generic/Pistol/Holster2
-Generic/Pistol/Holster3
-}
-
+$RANDOM Generic/Pistol/Holster { Generic/Pistol/Holster1 Generic/Pistol/Holster2 Generic/Pistol/Holster3 }
 Generic/Pistol/Holster1	"Sounds/Weapons/GenericFoley/Holster/Pistols/PistolHolster1.wav"
 Generic/Pistol/Holster2	"Sounds/Weapons/GenericFoley/Holster/Pistols/PistolHolster2.wav"
 Generic/Pistol/Holster3	"Sounds/Weapons/GenericFoley/Holster/Pistols/PistolHolster3.wav"
 
-$RANDOM Generic/SMG/Raise
-{
-Generic/SMG/Raise1
-Generic/SMG/Raise2
-Generic/SMG/Raise3
-}
-
+$RANDOM Generic/SMG/Raise { Generic/SMG/Raise1 Generic/SMG/Raise2 Generic/SMG/Raise3 }
 Generic/SMG/Raise1	"Sounds/Weapons/GenericFoley/Holster/SMG/SMGRaise1.wav"
 Generic/SMG/Raise2	"Sounds/Weapons/GenericFoley/Holster/SMG/SMGRaise2.wav"
 Generic/SMG/Raise3	"Sounds/Weapons/GenericFoley/Holster/SMG/SMGRaise3.wav"
 
-$RANDOM Generic/SMG/Holster
-{
-Generic/SMG/Holster1
-Generic/SMG/Holster2
-Generic/SMG/Holster3
-}
-
+$RANDOM Generic/SMG/Holster { Generic/SMG/Holster1 Generic/SMG/Holster2 Generic/SMG/Holster3 }
 Generic/SMG/Holster1	"Sounds/Weapons/GenericFoley/Holster/SMG/SMGHolster1.wav"
 Generic/SMG/Holster2	"Sounds/Weapons/GenericFoley/Holster/SMG/SMGHolster2.wav"
 Generic/SMG/Holster3	"Sounds/Weapons/GenericFoley/Holster/SMG/SMGHolster3.wav"
 
-$RANDOM Generic/Rifle/Raise
-{
-Generic/Rifle/Raise1
-Generic/Rifle/Raise2
-Generic/Rifle/Raise3
-}
-
+$RANDOM Generic/Rifle/Raise { Generic/Rifle/Raise1 Generic/Rifle/Raise2 Generic/Rifle/Raise3 }
 Generic/Rifle/Raise1	"Sounds/Weapons/GenericFoley/Holster/Rifle/RifleRaise1.wav"
 Generic/Rifle/Raise2	"Sounds/Weapons/GenericFoley/Holster/Rifle/RifleRaise2.wav"
 Generic/Rifle/Raise3	"Sounds/Weapons/GenericFoley/Holster/Rifle/RifleRaise3.wav"
 
-$RANDOM Generic/Rifle/Holster
-{
-Generic/Rifle/Holster1
-Generic/Rifle/Holster2
-Generic/Rifle/Holster3
-}
-
+$RANDOM Generic/Rifle/Holster { Generic/Rifle/Holster1 Generic/Rifle/Holster2 Generic/Rifle/Holster3 }
 Generic/Rifle/Holster1	"Sounds/Weapons/GenericFoley/Holster/Rifle/RifleHolster1.wav"
 Generic/Rifle/Holster2	"Sounds/Weapons/GenericFoley/Holster/Rifle/RifleHolster2.wav"
 Generic/Rifle/Holster3	"Sounds/Weapons/GenericFoley/Holster/Rifle/RifleHolster3.wav"
 
-$RANDOM Generic/Marksman/Raise
-{
-Generic/Marksman/Raise1
-Generic/Marksman/Raise2
-}
-
+$RANDOM Generic/Marksman/Raise { Generic/Marksman/Raise1 Generic/Marksman/Raise2 }
 Generic/Marksman/Raise1	"Sounds/Weapons/GenericFoley/Holster/Marksman/MarksmanRaise1.wav"
 Generic/Marksman/Raise2	"Sounds/Weapons/GenericFoley/Holster/Marksman/MarksmanRaise2.wav"
 
-$RANDOM Generic/Marksman/Holster
-{
-Generic/Marksman/Holster1
-Generic/Marksman/Holster2
-}
-
+$RANDOM Generic/Marksman/Holster { Generic/Marksman/Holster1 Generic/Marksman/Holster2 }
 Generic/Marksman/Holster1	"Sounds/Weapons/GenericFoley/Holster/Marksman/MarksmanHolster1.wav"
 Generic/Marksman/Holster2	"Sounds/Weapons/GenericFoley/Holster/Marksman/MarksmanHolster2.wav"
 
-$RANDOM Generic/Launcher/Raise
-{
-Generic/Launcher/Raise1
-Generic/Launcher/Raise2
-Generic/Launcher/Raise3
-}
-
+$RANDOM Generic/Launcher/Raise { Generic/Launcher/Raise1 Generic/Launcher/Raise2 Generic/Launcher/Raise3 }
 Generic/Launcher/Raise1	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherRaise1.wav"
 Generic/Launcher/Raise2	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherRaise2.wav"
 Generic/Launcher/Raise3	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherRaise3.wav"
 
-$RANDOM Generic/Launcher/Holster
-{
-Generic/Launcher/Holster1
-Generic/Launcher/Holster2
-Generic/Launcher/Holster3
-}
-
+$RANDOM Generic/Launcher/Holster { Generic/Launcher/Holster1 Generic/Launcher/Holster2 Generic/Launcher/Holster3 }
 Generic/Launcher/Holster1	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherHolster1.wav"
 Generic/Launcher/Holster2	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherHolster2.wav"
 Generic/Launcher/Holster3	"Sounds/Weapons/GenericFoley/Holster/Launcher/LauncherHolster3.wav"
@@ -264,24 +133,13 @@ Generic/Pickup/Tech	"Sounds/Weapons/GenericFoley/Pickups/TechPickup.wav"
 //-----SLOT 1-----//
 
 //"Kicks are Slot 1, right?"
-$RANDOM Player/Kick
-{
-Player/Kick1
-Player/Kick2
-Player/Kick3
-Player/Kick4
-}
+$RANDOM Player/Kick { Player/Kick1 Player/Kick2 Player/Kick3 Player/Kick4 }
 Player/Kick1	"Sounds/Weapons/Kicks/Kick1.wav"
 Player/Kick2	"Sounds/Weapons/Kicks/Kick2.wav"
 Player/Kick3	"Sounds/Weapons/Kicks/Kick3.wav"
 Player/Kick4	"Sounds/Weapons/Kicks/Kick4.wav"
 
-$RANDOM Player/Slide
-{
-Player/Slide1
-Player/Slide2
-Player/Slide3
-}
+$RANDOM Player/Slide { Player/Slide1 Player/Slide2 Player/Slide3 }
 Player/Slide1	"Sounds/Weapons/Kicks/Slide1.ogg"
 Player/Slide2	"Sounds/Weapons/Kicks/Slide2.ogg"
 Player/Slide3	"Sounds/Weapons/Kicks/Slide3.ogg"
@@ -294,22 +152,12 @@ Fists/Swap "Sounds/Weapons/Slot1/Fists/FistSwap.ogg"
 Fists/Swing1 "Sounds/Weapons/Slot1/Fists/F1STWH1.ogg"
 Fists/Swing2 "Sounds/Weapons/Slot1/Fists/F1STWH2.ogg"
 Fists/Swing3 "Sounds/Weapons/Slot1/Fists/F1STWH3.ogg"
-$random Fists/Swing
-{
-    Fists/Swing1
-    Fists/Swing2
-    Fists/Swing3
-}
+$random Fists/Swing { Fists/Swing1 Fists/Swing2 Fists/Swing3 }
 
 Fists/Hit1  "Sounds/Weapons/Slot1/Fists/plspnch1.ogg"
 Fists/Hit2  "Sounds/Weapons/Slot1/Fists/plspnch2.ogg"
 Fists/Hit3  "Sounds/Weapons/Slot1/Fists/plspnch3.ogg"
-$random Fists/Hit   
-{
-    Fists/Hit1
-    Fists/Hit2
-    Fists/Hit3
-}
+$random Fists/Hit { Fists/Hit1 Fists/Hit2 Fists/Hit3 }
 
 //Knife
 
@@ -319,45 +167,24 @@ Knife/Wall2 "Sounds/Weapons/Slot1/Knife/DSSAWAL2.ogg"
 Knife/Wall3 "Sounds/Weapons/Slot1/Knife/DSSAWAL3.ogg"
 Knife/Wall4 "Sounds/Weapons/Slot1/Knife/DSSAWAL4.ogg"
 Knife/Wall5 "Sounds/Weapons/Slot1/Knife/DSSAWAL5.ogg"
-$random Knife/Wall
-{
-    Knife/Wall1
-    Knife/Wall2
-    Knife/Wall3
-    Knife/Wall4
-    Knife/Wall5
-}
+$random Knife/Wall{ Knife/Wall1 Knife/Wall2 Knife/Wall3 Knife/Wall4 Knife/Wall5 }
+
 Knife/Swing1 "Sounds/Weapons/Slot1/Knife/bowie_swing_00.wav"
 Knife/Swing2 "Sounds/Weapons/Slot1/Knife/bowie_swing_01.wav"
 Knife/Swing3 "Sounds/Weapons/Slot1/Knife/bowie_swing_02.wav"
-$random Knife/Swing
-{
-    Knife/Swing1
-    Knife/Swing2
-    Knife/Swing3
-}
+$random Knife/Swing { Knife/Swing1 Knife/Swing2 Knife/Swing3 }
 
 
 Knife/Body1 "Sounds/Weapons/Slot1/Knife/BladeStab-1.ogg"
 Knife/Body2 "Sounds/Weapons/Slot1/Knife/BladeStab-2.ogg"
 Knife/Body3 "Sounds/Weapons/Slot1/Knife/BladeStab-3.ogg"
-$random Knife/Body
-{
-    Knife/Body1
-    Knife/Body2
-    Knife/Body3
-}
+$random Knife/Body { Knife/Body1 Knife/Body2 Knife/Body3 }
 
 //Axe 
 Axe/swing1 "Sounds/Weapons/Slot1/Axe/AXSWING1.ogg"
 Axe/swing2 "Sounds/Weapons/Slot1/Axe/AXSWING2.ogg"
 Axe/swing3 "Sounds/Weapons/Slot1/Axe/AXSWING3.ogg"
-$random Axe/Swing
-{
-    Axe/Swing1
-    Axe/Swing2
-    Axe/Swing3
-}
+$random Axe/Swing { Axe/Swing1 Axe/Swing2 Axe/Swing3 }
 
 Axe/PickUp  "Sounds/Weapons/Slot1/Axe/AXEDRAW.ogg"
 Axe/HitWall "Sounds/Weapons/Slot1/Axe/AXECLN.ogg"
@@ -369,46 +196,26 @@ Axe/Hit     "Sounds/Weapons/Slot1/Axe/AXEHIT.ogg"
 
 //Luger P08
 //Luger/Fire	"Sounds/Weapons/Slot2/Luger/LugFire.ogg"
-$RANDOM Luger/Fire
-{
-Luger/Fire1
-Luger/Fire2
-Luger/Fire3
-Luger/Fire4
-}
-
+$RANDOM Luger/Fire { Luger/Fire1 Luger/Fire2 Luger/Fire3 Luger/Fire4 }
 Luger/Fire1	"Sounds/Weapons/Slot2/Luger/Fire/LugFire1.ogg"
 Luger/Fire2	"Sounds/Weapons/Slot2/Luger/Fire/LugFire2.ogg"
 Luger/Fire3	"Sounds/Weapons/Slot2/Luger/Fire/LugFire3.ogg"
 Luger/Fire4	"Sounds/Weapons/Slot2/Luger/Fire/LugFire4.ogg"
 
-$RANDOM Luger/FireTail
-{
-Luger/FireTail1
-Luger/FireTail2
-Luger/FireTail3
-Luger/FireTail4
-}
-
+$RANDOM Luger/FireTail { Luger/FireTail1 Luger/FireTail2 Luger/FireTail3 Luger/FireTail4 }
 Luger/FireTail1	"Sounds/Weapons/Slot2/Luger/Fire/FireTail1.wav"
 Luger/FireTail2	"Sounds/Weapons/Slot2/Luger/Fire/FireTail2.wav"
 Luger/FireTail3	"Sounds/Weapons/Slot2/Luger/Fire/FireTail3.wav"
 Luger/FireTail4	"Sounds/Weapons/Slot2/Luger/Fire/FireTail4.wav"
 
-$RANDOM Luger/FireAdd
-{
-Luger/FireAdd1
-Luger/FireAdd2
-Luger/FireAdd3
-Luger/FireAdd4
-Luger/FireAdd5
-}
-
+$RANDOM Luger/FireAdd { Luger/FireAdd1 Luger/FireAdd2 Luger/FireAdd3 Luger/FireAdd4 Luger/FireAdd5 }
 Luger/FireAdd1	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd1.wav"
 Luger/FireAdd2	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd2.wav"
 Luger/FireAdd3	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd3.wav"
 Luger/FireAdd4	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd4.wav"
 Luger/FireAdd5	"Sounds/Weapons/Slot2/Luger/Fire/LugFireAdd5.wav"
+
+Luger/FireMech "Sounds/Weapons/Slot2/Luger/Fire/LugFireMech.wav"
 
 Luger/Out	"Sounds/Weapons/Slot2/Luger/LugOut.wav"
 Luger/OutEmpty	"Sounds/Weapons/Slot2/Luger/LugOutEmpty.wav"
@@ -418,33 +225,62 @@ Luger/Charge	"Sounds/Weapons/Slot2/Luger/LugCharge.wav"
 Luger/Raise	"Sounds/Weapons/Slot2/Luger/LugRaise.wav"
 Luger/Lower	"Sounds/Weapons/Slot2/Luger/LugDrop.wav"
 
+//M1911
+
+M1911/Raise	"Sounds/Weapons/SLot2/M1911/M1911Raise.wav"
+M1911/Lower	"Sounds/Weapons/SLot2/M1911/M1911Lower.wav"
+M1911/MagIn	"Sounds/Weapons/SLot2/M1911/M1911MagIn.wav"
+M1911/MagOut	"Sounds/Weapons/SLot2/M1911/M1911MagOut.wav"
+M1911/Charge	"Sounds/Weapons/SLot2/M1911/M1911Charge.wav"
+
+$RANDOM M1911/Fire { M1911/Fire1 M1911/Fire2 M1911/Fire3 M1911/Fire4 M1911/Fire5 M1911/Fire6 M1911/Fire7 M1911/Fire8 M1911/Fire9 }
+M1911/Fire1	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire1.wav"
+M1911/Fire2	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire2.wav"
+M1911/Fire3	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire3.wav"
+M1911/Fire4	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire4.wav"
+M1911/Fire5	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire5.wav"
+M1911/Fire6	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire6.wav"
+M1911/Fire7	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire7.wav"
+M1911/Fire8	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire8.wav"
+M1911/Fire9	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire9.wav"
+
+$RANDOM M1911/FireAdd { M1911/FireAdd1 M1911/FireAdd2 M1911/FireAdd3 M1911/FireAdd4 M1911/FireAdd5 M1911/FireAdd6 M1911/FireAdd7 M1911/FireAdd8 }
+M1911/FireAdd1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd1.wav"
+M1911/FireAdd2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd2.wav"
+M1911/FireAdd3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd3.wav"
+M1911/FireAdd4	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd4.wav"
+M1911/FireAdd5	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd5.wav"
+M1911/FireAdd6	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd6.wav"
+M1911/FireAdd7	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd7.wav"
+M1911/FireAdd8	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd8.wav"
+
+$RANDOM M1911/FireTail { M1911/FireTail1 M1911/FireTail2 M1911/FireTail3 }
+M1911/FireTail1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTail1.wav"
+M1911/FireTail2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTail2.wav"
+M1911/FireTail3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTail3.wav"
+
+$RANDOM M1911/FireMech { M1911/FireMech1 M1911/FireMech2 M1911/FireMech3 M1911/FireMech4 M1911/FireMech5 }
+M1911/FireMech1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech1.wav"
+M1911/FireMech2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech2.wav"
+M1911/FireMech3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech3.wav"
+M1911/FireMech4	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech4.wav"
+M1911/FireMech5	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireMech5.wav"
+
+M1911/FireBass	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireBass.wav"
+
+
+
 //-----SLOT 3-----//
 
 //MP40
 
-$RANDOM MP40/Fire
-{
-MP40/Fire1
-MP40/Fire2
-MP40/Fire3
-MP40/Fire4
-}
-
+$RANDOM MP40/Fire { MP40/Fire1 MP40/Fire2 MP40/Fire3 MP40/Fire4 }
 MP40/Fire1	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire1.ogg"
 MP40/Fire2	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire2.ogg"
 MP40/Fire3	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire3.ogg"
 MP40/Fire4	"Sounds/Weapons/Slot3/MP40/Fire/MP40Fire4.ogg"
 
-$RANDOM MP40/FireMech
-{
-MP40/FireMech1
-MP40/FireMech2
-MP40/FireMech3
-MP40/FireMech4
-MP40/FireMech5
-MP40/FireMech6
-}
-
+$RANDOM MP40/FireMech { MP40/FireMech1 MP40/FireMech2 MP40/FireMech3 MP40/FireMech4 MP40/FireMech5 MP40/FireMech6 }
 MP40/FireMech1	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech1.ogg"
 MP40/FireMech2	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech2.ogg"
 MP40/FireMech3	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech3.ogg"
@@ -452,14 +288,7 @@ MP40/FireMech4	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech4.ogg"
 MP40/FireMech5	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech5.ogg"
 MP40/FireMech6	"Sounds/Weapons/Slot3/MP40/Fire/MP40Mech6.ogg"
 
-$RANDOM MP40/FireAdd
-{
-MP40/FireAdd1
-MP40/FireAdd2
-MP40/FireAdd3
-MP40/FireAdd4
-}
-
+$RANDOM MP40/FireAdd { MP40/FireAdd1 MP40/FireAdd2 MP40/FireAdd3 MP40/FireAdd4 }
 MP40/FireAdd1	"Sounds/Weapons/Slot3/MP40/Fire/MP40FireAdd1.wav"
 MP40/FireAdd2	"Sounds/Weapons/Slot3/MP40/Fire/MP40FireAdd2.wav"
 MP40/FireAdd3	"Sounds/Weapons/Slot3/MP40/Fire/MP40FireAdd3.wav"
@@ -483,14 +312,7 @@ STG/FireAdd	"Sounds/Weapons/Slot3/STG44/Fire/STGAdd.wav"
 STG/FireBass	"Sounds/Weapons/Slot3/STG44/Fire/STGBass.wav"
 STG/FireSubWoof	"Sounds/Weapons/Slot3/STG44/Fire/STGSubWoof.wav"
 
-$RANDOM STG/FireMech
-{
-STG/FireMech1
-STG/FireMech2
-STG/FireMech3
-STG/FireMech4
-}
-
+$RANDOM STG/FireMech { STG/FireMech1 STG/FireMech2 STG/FireMech3 STG/FireMech4 }
 STG/FireMech1	"Sounds/Weapons/Slot3/STG44/Fire/STGMech1.wav"
 STG/FireMech2	"Sounds/Weapons/Slot3/STG44/Fire/STGMech2.wav"
 STG/FireMech3	"Sounds/Weapons/Slot3/STG44/Fire/STGMech3.wav"
@@ -538,16 +360,7 @@ M1Tom/MagIn3	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt3.wav"
 
 Trench/FireBass	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireBass.wav"
 
-$RANDOM Trench/Fire
-{
-Trench/Fire1
-Trench/Fire2
-Trench/Fire3
-Trench/Fire4
-Trench/Fire5
-Trench/Fire6
-}
-
+$RANDOM Trench/Fire { Trench/Fire1 Trench/Fire2 Trench/Fire3 Trench/Fire4 Trench/Fire5 Trench/Fire6 }
 Trench/Fire1	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire1.wav"
 Trench/Fire2	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire2.wav"
 Trench/Fire3	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire3.wav"
@@ -555,18 +368,7 @@ Trench/Fire4	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire4.wav"
 Trench/Fire5	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire5.wav"
 Trench/Fire6	"Sounds/Weapons/Slot4/Trenchgun/Fire/Fire6.wav"
 
-$RANDOM Trench/FireAlt
-{
-Trench/FireAlt1
-Trench/FireAlt2
-Trench/FireAlt3
-Trench/FireAlt4
-Trench/FireAlt5
-Trench/FireAlt6
-Trench/FireAlt7
-Trench/FireAlt8
-}
-
+$RANDOM Trench/FireAlt { Trench/FireAlt1 Trench/FireAlt2 Trench/FireAlt3 Trench/FireAlt4 Trench/FireAlt5 Trench/FireAlt6 Trench/FireAlt7 Trench/FireAlt8 }
 Trench/FireAlt1	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt1.wav"
 Trench/FireAlt2	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt2.wav"
 Trench/FireAlt3	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt3.wav"
@@ -576,23 +378,11 @@ Trench/FireAlt6	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt6.wav"
 Trench/FireAlt7	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt7.wav"
 Trench/FireAlt8	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAlt8.wav"
 
-$RANDOM Trench/FireAdd
-{
-Trench/FireAdd1
-Trench/FireAdd2
-}
-
+$RANDOM Trench/FireAdd { Trench/FireAdd1 Trench/FireAdd2 }
 Trench/FireAdd1	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAdd1.wav"
 Trench/FireAdd2	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireAdd1.wav"
 
-$RANDOM Trench/FireMech
-{
-Trench/FireMech1
-Trench/FireMech2
-Trench/FireMech3
-Trench/FireMech4
-}
-
+$RANDOM Trench/FireMech { Trench/FireMech1 Trench/FireMech2 Trench/FireMech3 Trench/FireMech4 }
 Trench/FireMech1	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech1.wav"
 Trench/FireMech2	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech2.wav"
 Trench/FireMech3	"Sounds/Weapons/Slot4/Trenchgun/Fire/FireMech3.wav"
@@ -603,15 +393,7 @@ Trench/Forward	"Sounds/Weapons/Slot4/Trenchgun/TrenchForward.ogg"
 Trench/Raise	"Sounds/Weapons/Slot4/Trenchgun/TrenchRaise.wav"
 Trench/Drop	"Sounds/Weapons/Slot4/Trenchgun/TrenchDrop.wav"
 
-$RANDOM Trench/Shell
-{
-Trench/Shell1
-Trench/Shell2
-Trench/Shell3
-Trench/Shell4
-Trench/Shell5
-}
-
+$RANDOM Trench/Shell { Trench/Shell1 Trench/Shell2 Trench/Shell3 Trench/Shell4 Trench/Shell5 }
 Trench/Shell1	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell1.wav"
 Trench/Shell2	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell2.wav"
 Trench/Shell3	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell3.wav"
@@ -623,38 +405,17 @@ Trench/Shell5	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell5.wav"
 Kar98/FireBass	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Bass.wav"
 Kar98/FireSubWoof	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98SubWoof.wav"
 
-$RANDOM Kar98/Fire
-{
-Kar98/Fire1
-Kar98/Fire2
-Kar98/Fire3
-}
-
+$RANDOM Kar98/Fire { Kar98/Fire1 Kar98/Fire2 Kar98/Fire3 }
 Kar98/Fire1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Fire1.wav"
 Kar98/Fire2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Fire2.wav"
 Kar98/Fire3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Fire3.wav"
 
-$RANDOM Kar98/FireMech
-{
-Kar98/FireMech1
-Kar98/FireMech2
-Kar98/FireMech3
-}
-
+$RANDOM Kar98/FireMech { Kar98/FireMech1 Kar98/FireMech2 Kar98/FireMech3 }
 Kar98/FireMech1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech1.wav"
 Kar98/FireMech2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech2.wav"
 Kar98/FireMech3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Mech3.wav"
 
-$RANDOM Kar98/FireAdd
-{
-Kar98/FireAdd1
-Kar98/FireAdd2
-Kar98/FireAdd3
-Kar98/FireAdd4
-Kar98/FireAdd5
-Kar98/FireAdd6
-}
-
+$RANDOM Kar98/FireAdd { Kar98/FireAdd1 Kar98/FireAdd2 Kar98/FireAdd3 Kar98/FireAdd4 Kar98/FireAdd5 Kar98/FireAdd6 }
 Kar98/FireAdd1	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Add1.ogg"
 Kar98/FireAdd2	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Add2.ogg"
 Kar98/FireAdd3	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Add3.ogg"
@@ -679,20 +440,7 @@ Kar98/Raise	"Sounds/Weapons/Slot4/Kar98k/Kar98Raise.wav"
 
 MG42/FireBass	"Sounds/Weapons/Slot5/MG42/Fire/MG42Bass.wav"	
 
-$RANDOM MG42/Mech
-{
-MG42/Mech1
-MG42/Mech2
-MG42/Mech3
-MG42/Mech4
-MG42/Mech5
-MG42/Mech6
-MG42/Mech7
-MG42/Mech8
-MG42/Mech9
-MG42/Mech10
-}
-
+$RANDOM MG42/Mech { MG42/Mech1 MG42/Mech2 MG42/Mech3 MG42/Mech4 MG42/Mech5 MG42/Mech6 MG42/Mech7 MG42/Mech8 MG42/Mech9 MG42/Mech10 }
 MG42/Mech1	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech1.wav"
 MG42/Mech2	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech2.wav"
 MG42/Mech3	"Sounds/Weapons/Slot5/MG42/FireAdd/MG42Mech3.wav"
@@ -717,13 +465,61 @@ MG42Loop	"Sounds/Weapons/Slot5/MG42/MG42FireLoop.wav"
 $pitchset MG42Loop 0.9 0.92
 MG42/Overheat	"Sounds/Weapons/Slot5/MG42/MG42Overheat.wav"
 
-
 //from bw
 MG42OPEN	MG42OP
 MG42CLOSE	MG42CL
 MG42/MagIn	"Sounds/Weapons/Slot5/MG42/MG42_IN.ogg"
 MG42/MagOut	"Sounds/Weapons/Slot5/MG42/MG42_OUT.ogg"
 MG42/rechamber MG4CLIK
+
+//Chaingun
+
+Chaingun/Raise	"Sounds/Weapons/Slot5/Chaingun/CHNGRaise.wav"
+Chaingun/Lower	"Sounds/Weapons/Slot5/Chaingun/CHNGLower.wav"
+
+Chaingun/MagIn	"Sounds/Weapons/Slot5/Chaingun/CHNGMagIn.wav"
+Chaingun/MagOut	"Sounds/Weapons/Slot5/Chaingun/CHNGMagOut.wav"
+Chaingun/Belt	"Sounds/Weapons/Slot5/Chaingun/CHNGBeltFeed.wav"
+
+Chaingun/SpinUp	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinUp.wav"
+$RANDOM Chaingun/Spin { Chaingun/Spin1 Chaingun/Spin2 Chaingun/Spin3 Chaingun/Spin4 }
+Chaingun/Spin1	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpin1.ogg"
+Chaingun/Spin2	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpin2.ogg"
+Chaingun/Spin3	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpin3.ogg"
+Chaingun/Spin4	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpin4.ogg"
+
+$RANDOM Chaingun/SpinDown { Chaingun/SpinDown1 Chaingun/SpinDown2 Chaingun/SpinDown3 Chaingun/SpinDown4 Chaingun/SpinDown5 Chaingun/SpinDown6 }
+Chaingun/SpinDown1	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinDown1.wav"
+Chaingun/SpinDown2	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinDown2.wav"
+Chaingun/SpinDown3	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinDown3.wav"
+Chaingun/SpinDown4	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinDown4.wav"
+Chaingun/SpinDown5	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinDown5.wav"
+Chaingun/SpinDown6	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGSpinDown6.wav"
+
+$RANDOM Chaingun/Fire { Chaingun/Fire1 Chaingun/Fire2 Chaingun/Fire3 Chaingun/Fire4 Chaingun/Fire5 Chaingun/Fire6 }
+Chaingun/Fire1	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFire1.wav"
+Chaingun/Fire2	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFire2.wav"
+Chaingun/Fire3	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFire3.wav"
+Chaingun/Fire4	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFire4.wav"
+Chaingun/Fire5	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFire5.wav"
+Chaingun/Fire6	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFire6.wav"
+
+$RANDOM Chaingun/FireMech { Chaingun/FireMech1 Chaingun/FireMech2 Chaingun/FireMech3 Chaingun/FireMech4 Chaingun/FireMech5 Chaingun/FireMech6 }
+Chaingun/FireMech1	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireMech1.wav"
+Chaingun/FireMech2	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireMech2.wav"
+Chaingun/FireMech3	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireMech3.wav"
+Chaingun/FireMech4	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireMech4.wav"
+Chaingun/FireMech5	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireMech5.wav"
+Chaingun/FireMech6	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireMech6.wav"
+
+$RANDOM Chaingun/FireTail { Chaingun/FireTail1 Chaingun/FireTail2 Chaingun/FireTail3 Chaingun/FireTail4 }
+Chaingun/FireTail1	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireTail1.wav"
+Chaingun/FireTail2	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireTail2.wav"
+Chaingun/FireTail3	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireTail3.wav"
+Chaingun/FireTail4	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireTail4.wav"
+
+Chaingun/FireBass	"Sounds/Weapons/Slot5/Chaingun/Fire/CHNGFireBass.wav"
+
 
 
 //-----SLOT 6-----//
@@ -735,13 +531,7 @@ Panzerschreck/Trigger	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckFireTrigg
 Panzerschreck/Drop	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckDrop.wav"
 Panzerschreck/Raise	"Sounds/Weapons/Slot6/Panzerschreck/PanzerschreckRaise.wav"
 
-$RANDOM Panzerschreck/Whoosh
-{
-Panzerschreck/Whoosh1
-Panzerschreck/Whoosh2
-Panzerschreck/Whoosh3
-}
-
+$RANDOM Panzerschreck/Whoosh { Panzerschreck/Whoosh1 Panzerschreck/Whoosh2 Panzerschreck/Whoosh3 }
 Panzerschreck/Whoosh1	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh1.wav"
 Panzerschreck/Whoosh2	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh2.wav"
 Panzerschreck/Whoosh3	"Sounds/Weapons/Slot6/Panzerschreck/FireAdd/PanzerschreckWoosh3.wav"
@@ -766,38 +556,9 @@ sprk1	"Sounds/Weapons/Slot7/Tesla/SPARKS1.ogg"
 sprk2	"Sounds/Weapons/Slot7/Tesla/SPARKS2.ogg"
 sprk3	"Sounds/Weapons/Slot7/Tesla/SPARKS3.ogg"
 sprk4	"Sounds/Weapons/Slot7/Tesla/SPARKS4.ogg"
-$random	Tesla/Sparks
-{
-	sprk1
-	sprk2
-	sprk3
-	sprk4
-}
+$random	Tesla/Sparks { sprk1 sprk2 sprk3 sprk4 }
 
-$RANDOM Tesla/FireAdd
-{
-Tesla/FireAdd1
-Tesla/FireAdd2
-Tesla/FireAdd3
-Tesla/FireAdd4
-Tesla/FireAdd5
-Tesla/FireAdd6
-Tesla/FireAdd7
-Tesla/FireAdd8
-Tesla/FireAdd9
-Tesla/FireAdd10
-Tesla/FireAdd11
-Tesla/FireAdd12
-Tesla/FireAdd13
-Tesla/FireAdd14
-Tesla/FireAdd15
-Tesla/FireAdd16
-Tesla/FireAdd17
-Tesla/FireAdd18
-Tesla/FireAdd19
-Tesla/FireAdd20
-}
-
+$RANDOM Tesla/FireAdd { Tesla/FireAdd1 Tesla/FireAdd2 Tesla/FireAdd3 Tesla/FireAdd4 Tesla/FireAdd5 Tesla/FireAdd6 Tesla/FireAdd7 Tesla/FireAdd8 Tesla/FireAdd9 Tesla/FireAdd10 Tesla/FireAdd11 Tesla/FireAdd12 Tesla/FireAdd13 Tesla/FireAdd14 Tesla/FireAdd15 Tesla/FireAdd16 Tesla/FireAdd17 Tesla/FireAdd18 Tesla/FireAdd19 Tesla/FireAdd20 }
 Tesla/FireAdd1	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd1.wav"
 Tesla/FireAdd2	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd2.wav"
 Tesla/FireAdd3	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd3.wav"
@@ -819,13 +580,7 @@ Tesla/FireAdd18	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd18.wav"
 Tesla/FireAdd19	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd19.wav"
 Tesla/FireAdd20	"Sounds/Weapons/Slot7/Tesla/FireAdd/TeslaFireAdd20.wav"
 
-$RANDOM Tesla/AltAdd
-{
-Tesla/AltAdd1
-Tesla/AltAdd2
-Tesla/AltAdd3
-}
-
+$RANDOM Tesla/AltAdd { Tesla/AltAdd1 Tesla/AltAdd2 Tesla/AltAdd3 }
 Tesla/AltAdd1	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd1.wav"
 Tesla/AltAdd2	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd2.wav"
 Tesla/AltAdd3	"Sounds/Weapons/Slot7/Tesla/AltFireAdd/TeslaAltAdd3.wav"
@@ -842,18 +597,7 @@ flamer/Drop	"sounds/Weapons/Slot7/Flamer/FlamerDrop.wav"
 
 //Hell SSG
 
-$random HSSG/Fire
-{
-HSSG/Fire1
-HSSG/Fire2
-HSSG/Fire3
-HSSG/Fire4
-HSSG/Fire5
-HSSG/Fire6
-HSSG/Fire7
-HSSG/Fire8
-}
-
+$random HSSG/Fire { HSSG/Fire1 HSSG/Fire2 HSSG/Fire3 HSSG/Fire4 HSSG/Fire5 HSSG/Fire6 HSSG/Fire7 HSSG/Fire8 }
 HSSG/Fire1	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire1.wav"
 HSSG/Fire2	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire2.wav"
 HSSG/Fire3	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire3.wav"
@@ -863,16 +607,7 @@ HSSG/Fire6	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire6.wav"
 HSSG/Fire7	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire7.wav"
 HSSG/Fire8	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFire8.wav"
 
-$random HSSG/FireAdd
-{
-HSSG/FireAdd1
-HSSG/FireAdd2
-HSSG/FireAdd3
-HSSG/FireAdd4
-HSSG/FireAdd5
-HSSG/FireAdd6
-}
-
+$random HSSG/FireAdd { HSSG/FireAdd1 HSSG/FireAdd2 HSSG/FireAdd3 HSSG/FireAdd4 HSSG/FireAdd5 HSSG/FireAdd6 }
 HSSG/FireAdd1	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd1.wav"
 HSSG/FireAdd2	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd2.wav"
 HSSG/FireAdd3	"Sounds/Weapons/Slot8/HellSSG/Fire/HSSGFireAdd3.wav"
@@ -885,16 +620,7 @@ hssg/close	"Sounds/Weapons/Slot8/HellSSG/HSSGClose.wav"
 hssg/Raise	"Sounds/Weapons/Slot8/HellSSG/HSSGRaise.wav"
 hssg/Drop	"Sounds/Weapons/Slot8/HellSSG/HSSGDrop.wav"
 
-$RANDOM hssg/shell
-{
-hssg/shell1
-hssg/shell2
-hssg/shell3
-hssg/shell4
-hssg/shell5
-hssg/shell6
-}
-
+$RANDOM hssg/shell { hssg/shell1 hssg/shell2 hssg/shell3 hssg/shell4 hssg/shell5 hssg/shell6 }
 hssg/shell1	"Sounds/Weapons/Slot8/HellSSG/HSSGShell1.wav"
 hssg/shell2	"Sounds/Weapons/Slot8/HellSSG/HSSGShell2.wav"
 hssg/shell3	"Sounds/Weapons/Slot8/HellSSG/HSSGShell3.wav"
@@ -909,13 +635,7 @@ LF/Spin 	VSPIN
 LF/Raise	"Sounds/Weapons/Slot8/Leichenfaust/LeichRaise.wav"
 LF/Drop	"Sounds/Weapons/Slot8/Leichenfaust/LeichDrop.wav"
 
-$RANDOM LF/Pulse
-{
-LF/Pulse1
-LF/Pulse2
-LF/Pulse3
-}
-
+$RANDOM LF/Pulse { LF/Pulse1 LF/Pulse2 LF/Pulse3 }
 LF/Pulse1	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse1.wav"
 LF/Pulse2	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse2.wav"
 LF/Pulse3	"Sounds/Weapons/Slot8/Leichenfaust/LeichIdlePulse3.wav"
