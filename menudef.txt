@@ -96,6 +96,8 @@ OptionMenu RTBW_OptionsMenu
 	option "Slide Kick with a single button","BW_CrouchKick","OnOff"
 	statictext "(press crouch while moving to slide)"
 	statictext ""
+	option "Allow weapons auto reload when fired while empty","BW_AutoReload","OnOff"
+	statictext ""
 	statictext ""
 
 	statictext "HUD",orange
