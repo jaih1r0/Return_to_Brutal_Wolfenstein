@@ -141,10 +141,9 @@ Extend Class BaseBWWeapon
 		int am_res = checkprimary ? invoker.ammo1.amount : invoker.ammo2.amount;	//just in case, ig
 		if(am_res < min)
 		{
-			//probably cvar to allow autoreload whem empty instead of dryfiring
-			/*if(BW_AutoReload)
+			if(BW_AutoReload)
 				return resolvestate(reloadstate);
-			else*/
+			else
 				return resolvestate(drystate);
 		}
 		return resolvestate(null);

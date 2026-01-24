@@ -101,9 +101,9 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		//+STRETCHPIXELS;
 		+ROLLSPRITE;
 		
-		Player.AttackZOffset 28;//18;
+		Player.AttackZOffset 15; //this was so high it made the enemy hitboxes feel inaccurate
 		Player.ViewBobSpeed 15;
-		Player.ViewHeight 50;//40;
+		Player.ViewHeight 42;// player feels too big for the maps
 		Scale 1.0;
 		Player.SoundClass "BWPlayer";
 		Player.Face "STF";
