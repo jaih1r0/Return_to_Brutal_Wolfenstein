@@ -49,6 +49,16 @@ Class BW_MutantSpawner : BW_Spawner
 	}
 }
 
+Class BW_WhiteOfficerSpawner : BW_Spawner
+{
+	default
+	{
+		dropItem "BW_WhiteOfficer_Pistol",Skill_All, 1;
+		DropItem "BW_WhiteOfficer_M1911", Skill_normal|Skill_hard, 1;
+		DropItem "BW_WhiteOfficer_M1911", Skill_Uber, 3;
+	}
+}
+
 Class BW_BlackGuardSpawner : BW_Spawner
 {
 	default

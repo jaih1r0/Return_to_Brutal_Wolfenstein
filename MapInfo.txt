@@ -120,7 +120,19 @@ DoomEdNums
 	7156 = "BW_BrownGuardSpawner"	//easy p38 guard
 	7079 = "BW_MutantSpawner"
 	7267 = "BW_BrownGuardSpawner"	//patroling p38 guard
-
+	
+	7012 = "BW_WhiteOfficerSpawner"
+	7013 = "BW_WhiteOfficerSpawner" //patroling Officer
+	7070 = "BW_WhiteOfficerSpawner" //hard officer
+	7568 = "BW_WhiteOfficerSpawner"
+	7569 = "BW_WhiteOfficerSpawner" //patroling P38 Officer
+	7570 = "BW_WhiteOfficerSpawner" //easy 938 officer
+	7571 = "BW_WhiteOfficerSpawner" //hard p38 officer
+	
+	//These two are the MP40 Officers
+	7014 = "BW_WhiteOfficerSpawner"
+	7015 = "BW_WhiteOfficerSpawner" //patroling MP40 Officer
+	
 	7010 = "BW_BlackGuardSpawner"	//black guard, called Panzergrenadier in original BW
 	7011 = "BW_BlackGuardSpawner"	//same but patroling
 	7002 = "BW_BlackGuardSpawner"
