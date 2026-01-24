@@ -23,10 +23,10 @@ Class BW_M1Thompson : BaseBWWeapon
 		A_AlertMonsters();
 		
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
-		A_Startsound("M1Tom/Fire",5,CHANF_OVERLAP);
-		A_Startsound("M1Tom/FireAdd",5,CHANF_OVERLAP, 0.90);
-		A_Startsound("M1Tom/FireTail",5,CHANF_OVERLAP, 0.60);
-		A_Startsound("M1Tom/FireBass",5,CHANF_OVERLAP, 0.75);
+		A_Startsound("M1Tom/Fire",CHAN_AUTO,CHANF_OVERLAP);
+		A_Startsound("M1Tom/FireAdd",CHAN_AUTO,CHANF_OVERLAP, 0.90);
+		A_Startsound("M1Tom/FireTail",CHAN_AUTO,CHANF_OVERLAP, 0.60);
+		A_Startsound("M1Tom/FireBass",CHAN_AUTO,CHANF_OVERLAP, 0.75);
 		invoker.ammo2.amount--;
 		
 		if(CountInv("AimingToken"))
@@ -55,15 +55,15 @@ Class BW_M1Thompson : BaseBWWeapon
 		Select:
 			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
 			TMS1 AB 1;
-			TNT1 A 0 A_StartSound("M1Tom/Raise", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("M1Tom/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TMS1 CD 1;
 			goto ready;
 		Deselect:
 			TNT1 A 0 BW_SetReloading(false);
 			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 A_Startsound("M1Tom/Lower",5,CHANF_OVERLAP);
+			TNT1 A 0 A_Startsound("M1Tom/Lower",CHAN_AUTO,CHANF_OVERLAP);
 			TMS1 DC 1;
-			TNT1 A 0 A_StartSound("Generic/SMG/Holster", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/SMG/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TMS1 BA 1;
 			TNT1 A 0 BW_WeaponLower();
 			wait;
@@ -85,7 +85,7 @@ Class BW_M1Thompson : BaseBWWeapon
 			TMF1 B 1 bright BW_M1ThompsonFire();
 			TMF1 C 1;
 			TNT1 A 0 A_ZoomFactor(1);
-			TMF1 D 1 A_Startsound("M1Tom/FireMech",5,CHANF_OVERLAP, 0.8);
+			TMF1 D 1 A_Startsound("M1Tom/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
 			TMF1 C 1 A_Refire();
 			goto ready;
 		Fire_ADS:
@@ -93,7 +93,7 @@ Class BW_M1Thompson : BaseBWWeapon
 			TMF2 B 1 bright BW_M1ThompsonFire();
 			TMF2 C 1;
 			TNT1 A 0 A_ZoomFactor(1.2);
-			TMF2 D 1 A_Startsound("M1Tom/FireMech",5,CHANF_OVERLAP, 0.8);
+			TMF2 D 1 A_Startsound("M1Tom/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
 			TMF2 C 1 A_Refire();
 			Goto Ready_ADS;
 		
@@ -117,11 +117,11 @@ Class BW_M1Thompson : BaseBWWeapon
 		//rechamber too
 		Fidget:
 			MP4C ABCDE 1 BW_Weaponready();
-			TNT1 A 0 A_Startsound("MP40/BoltBack",10,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C FGHI 1 BW_Weaponready();
 			MP4C III 1 {A_Weaponoffset(-0.35,0.5,WOF_ADD); return BW_Weaponready();}
 			TNT1 A 0 A_Weaponoffset(0,32);
-			TNT1 A 0 A_Startsound("MP40/BoltRelease",11,CHANF_OVERLAP,0.7);
+			TNT1 A 0 A_Startsound("MP40/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1 BW_Weaponready();
 			MP4U E 1 BW_WeaponReady();
 			goto ready;
@@ -129,7 +129,7 @@ Class BW_M1Thompson : BaseBWWeapon
 		AltFire:
 			TNT1 A 0
 			{
-				A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+				A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 				if(findinventory("AimingToken"))
 				{
 					A_setinventory("AimingToken",0);
@@ -152,20 +152,20 @@ Class BW_M1Thompson : BaseBWWeapon
 		KickFlash:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("KickFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TM1K ABC 1;
 			TM1K DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TM1K GGG 1;
 			TM1K FEDCBA 1;
 			goto ready;
 		SlideFlash:
 			TNT1 A 0 BW_ClearDualOverlays();
 			TNT1 A 0 BW_jumpifAkimbo("SlideFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TM1K ABCD 1;
 			TM1K EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TM1K GGG 1;
 			TM1K GGG 1;
 			TM1K GGG 1;
@@ -174,7 +174,7 @@ Class BW_M1Thompson : BaseBWWeapon
 			TM1K GGG 1;
 		SlideFlashEnd:
 			TNT1 A 0 BW_jumpifAkimbo("SlideFlashEnd_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TM1K FEDCBA 1;
 			goto ready;
 		KnifeGunFlash:
@@ -189,49 +189,49 @@ Class BW_M1Thompson : BaseBWWeapon
 		
 		ReloadADS:
 			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
-			TNT1 A 0 A_StartSound("Generic/ADS", 0, CHANF_OVERLAP, 0.5);
+			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			TMS2 DCBA 1;
 		Reload:
 			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
 			TNT1 A 0 BW_CheckReload("EmptyReload","Fidget","NoAmmo",20,1);
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TMR1 ABCDEFGHI 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Small", 0, CHANF_OVERLAP, 1);
-			TMR1 JKLMNNNNN 1;
+			TNT1 A 0 A_StartSound("Generic/Cloth/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMR1 JKLMNNNNN 2;
 			TNT1 A 0 A_startsound("M1Tom/MagOut",17);
-			TMR1 OPQRSTUVW 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
-			TMR1 XXXXXYZ 1;
-			TMR2 ABCD 1;
+			TMR1 OPQRSTUVW 2;
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMR1 XXXXXYZ 2;
+			TMR2 ABCD 2;
 			TNT1 A 0 A_startsound("M1Tom/MagIn",18);
-			TMR1 NNN 1;
+			TMR1 NNN 2;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-			TMR1 MLKJ 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMR1 MLKJ 2;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TMR1 IHGFEDCBA 1;
 			goto ready;
 
 		EmptyReload:
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
-			TMS1 DC 1;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMS1 DC 2;
 			TMR3 ABCDEFGHHH 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-			TMR3 IJKLLL 1;
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMR3 IJKLLL 2;
 			TNT1 A 0 A_startsound("M1Tom/MagOutEmpty",17);
-			TMR3 MNOPQRS 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", 0, CHANF_OVERLAP, 1);
-			TMR3 TUVWXY 1;
+			TMR3 MNOPQRS 2;
+			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMR3 TUVWXY 2;
 			TNT1 A 0 A_startsound("M1Tom/MagInEmpty",18);
-			TMR3 LLL 1;
+			TMR3 LLL 2;
 			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", 0, CHANF_OVERLAP, 1);
-			TMR3 K 1;
+			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+			TMR3 K 2;
 			TNT1 A 0 A_Startsound("M1Tom/Bolt",10,CHANF_OVERLAP,0.7);
-			TMR3 Z 1;
-			TMR4 ABBB 1;
-			TMR3 H 3;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", 0, CHANF_OVERLAP, 1);
+			TMR3 Z 2;
+			TMR4 ABBB 2;
+			TMR3 H 2;
+			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TMR3 GFEDCBA 1;
 			goto ready;
 	}

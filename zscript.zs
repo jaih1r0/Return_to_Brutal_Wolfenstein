@@ -28,6 +28,7 @@ Version 4.10
 #include "zscript/BW/Weapons/Slot1/Fists.zs"
 
 #include "zscript/BW/Weapons/Slot2/Luger.zs"
+#include "zscript/BW/Weapons/Slot2/M1911.zs"
 
 #include "zscript/BW/Weapons/Slot3/MP40.zs"
 #include "zscript/BW/Weapons/Slot3/STG44.zs"
@@ -37,6 +38,7 @@ Version 4.10
 #include "zscript/BW/Weapons/Slot4/Kar98K.zs"
 
 #include "zscript/BW/Weapons/Slot5/MG42.zs"
+#include "zscript/BW/Weapons/Slot5/Chaingun.zs"
 
 #include "zscript/BW/Weapons/Slot6/Panzerschreck.zs"
 
@@ -54,6 +56,8 @@ Version 4.10
 #include "zscript/BW/Monsters/BlueGuard/MP40.zs"
 #include "zscript/BW/Monsters/BlueGuard/Shotgun.zs"
 #include "zscript/BW/Monsters/BlueGuard/Tommy.zs"
+#include "zscript/BW/Monsters/WhiteOfficer/Pistol.zs"
+#include "zscript/BW/Monsters/WhiteOfficer/M1911.zs"
 #include "zscript/BW/Monsters/BlackGuard/STG44.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 #include "zscript/BW/Monsters/Mutants/Mutant.zs"

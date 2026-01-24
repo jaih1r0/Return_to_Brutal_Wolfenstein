@@ -78,6 +78,21 @@ Class BW_Projectile : fastprojectile
 			{
 				victim.SpawnBlood( pos, angle, ceil(scaled_damage) );
 				victim.TraceBleed(ceil(scaled_damage), self);
+				if(victim is 'BW_MonsterBase')
+				{
+					if(BW_MonsterBase(victim).HitHead())
+					{
+						A_StartSound("Bullet/Head", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+					}
+					else
+					{
+						A_StartSound("Bullet/Flesh", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+					}
+				}
+				else
+				{
+					A_StartSound("Bullet/Flesh", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+				}
 			}
 		}
 		
@@ -379,6 +394,16 @@ Class BW_LugerBullets : BW_Projectile
 	default
 	{
 		BW_Projectile.projectiledmg 25;
+		BW_Projectile.ripAmount 1;
+		damagetype "Pistol";
+	}
+}
+
+Class BW_M1911Bullets : BW_Projectile
+{
+	default
+	{
+		BW_Projectile.projectiledmg 30;
 		BW_Projectile.ripAmount 0;
 		damagetype "Pistol";
 	}

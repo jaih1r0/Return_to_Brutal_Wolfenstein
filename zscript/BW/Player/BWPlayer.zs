@@ -326,7 +326,7 @@ class Z_NashMove : inventory
 				// bump up the player's speed to compensate for the deceleration
 				// TO DO: math here is shit and wrong, please fix
 				double s = 0.7 + (1.1 - DECEL_MULT); //1.0
-				double mod = 1;
+				double mod = 1.5;
 				
 				//[Pop] Initialize the base value
 				s *= 2;
@@ -344,13 +344,13 @@ class Z_NashMove : inventory
 					}
 				}
 				
-				//Owner.A_SetSpeed(s * mod);
-				Owner.A_SetSpeed(s);
+				Owner.A_SetSpeed(s * mod);
+				//Owner.A_SetSpeed(s);
 				
 				Owner.vel.x *= DECEL_MULT;
 				Owner.vel.y *= DECEL_MULT;
 				// make the view bobbing match the player's movement
-				PlayerPawn(Owner).ViewBob = GetVelocity() / 16;//DECEL_MULT / 2;
+				PlayerPawn(Owner).ViewBob = GetVelocity() / 24;//DECEL_MULT / 2;
 			}
 		}
 		
