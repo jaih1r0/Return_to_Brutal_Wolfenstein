@@ -4,7 +4,7 @@ Class BW_Mutant : BW_MonsterBase //7078
     //$Title Mutant
     default
     {
-        Health 75;
+        Health 150;
         Radius 20;
         Height 56;
         Mass 500;

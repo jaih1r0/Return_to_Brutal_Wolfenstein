@@ -7,7 +7,7 @@ Class BW_BlackGuard_STG44 : BW_MonsterBase
 			Speed 4;
 			FastSpeed 6;
 			Mass 100;
-			Health 90;
+			Health 125;
 			GibHealth -40;
 			PainChance 256;
 			Scale 1; //Make sure to adjust the values in the See state to match these

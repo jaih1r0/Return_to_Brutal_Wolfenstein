@@ -7,7 +7,7 @@ Class BW_BlueGuard_M1Thompson : BW_MonsterBase
 			Speed 4;
 			FastSpeed 6;
 			Mass 100;
-			Health 90;
+			Health 100;
 			GibHealth -40;
 			PainChance 256;
 			Scale 1; //Make sure to adjust the values in the See state to match these

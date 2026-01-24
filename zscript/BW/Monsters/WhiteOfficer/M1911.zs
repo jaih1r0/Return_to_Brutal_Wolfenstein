@@ -7,7 +7,7 @@ Class BW_WhiteOfficer_M1911 : BW_MonsterBase //replaces Zombieman //[Pop] replac
 			Speed 4;
 			FastSpeed 6;
 			Mass 100;
-			Health 50;
+			Health 75;
 			GibHealth -40;
 			PainChance 256;
 			Scale 1; //Make sure to adjust the values in the See state to match these

@@ -2,7 +2,7 @@ Class BW_Dog : BW_MonsterBase
 {
     default
     {
-        Health 50;
+        Health 25;
         Radius 14;
         Height 32;
         speed 6;

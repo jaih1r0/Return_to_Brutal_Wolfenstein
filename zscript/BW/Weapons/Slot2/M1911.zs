@@ -163,7 +163,7 @@ class BW_M1911 : BaseBWWeapon
 			M4S2 BA 1;
 		Reload:
 			TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 1, "UnAimReload");
-			TNT1 A 0 BW_CheckReload("Reload2","WeaponReady","WeaponReadyEmpty",9,1);
+			TNT1 A 0 BW_CheckReload("Reload2","WeaponReady","WeaponReadyEmpty",8,1);
 			TNT1 A 0 A_TakeInventory("AimingToken");
 			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			M4R1 ABCDEFGHIJKK 1;
