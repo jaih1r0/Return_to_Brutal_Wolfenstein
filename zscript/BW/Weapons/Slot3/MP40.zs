@@ -348,13 +348,13 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 
 
 		
-		ReloadADS:
+		Reload_ADS:
 			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			MP4T DCBA 1;
 		Reload:
 			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
+			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Reload_ADS");
 			TNT1 A 0 BW_CheckReload("EmptyReload","Fidget","NoAmmo",32,1);
 			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			MP4R ABCDEFGHIJKL 1;

@@ -19,7 +19,7 @@ Extend Class BaseBWWeapon
 				if(!isKicking && (btns & BT_Zoom))
 					A_overlay(-3,"DoKick");
 				
-				if(!isKicking && tappedButton(BT_Crouch) &&
+				if(!isKicking && player.onground && tappedButton(BT_Crouch) &&
 				vel.xy.length() > 2 && BW_CrouchKick)
 					A_overlay(-3,"SlideKick");
 
