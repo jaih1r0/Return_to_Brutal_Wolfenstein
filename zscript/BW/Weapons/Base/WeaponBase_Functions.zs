@@ -220,7 +220,7 @@ Extend Class BaseBWWeapon
 	{
 		int amt = isLeft ? invoker.AmmoLeft.amount : invoker.ammo2.amount;
 		if(amt < min)
-			return resolvestate(dry);
+				return resolvestate(dry);
 		return resolvestate(null);
 	}
 
@@ -248,7 +248,7 @@ Extend Class BaseBWWeapon
 			hasammo = invoker.ammo2.amount > 0;
 		}
 		BW_SetReloading(false);	//if its on ready state then its not reloading
-		if(pressing && hasammo)
+		if(pressing) //&& hasammo)
 			return resolvestate(firing);
 		return resolvestate(null);
 	}
@@ -257,6 +257,35 @@ Extend Class BaseBWWeapon
 	action int getRightfirebutton()
 	{
 		return BW_DualFiremode == 1 ? BT_ATTACK : BT_ALTATTACK;
+	}
+
+	action state BW_MainDualReady()
+	{
+		A_Overlay(PSP_LeftGun,"Dual_Left",true);	//set the overlays, just in case
+		A_Overlay(PSP_RightGun,"Dual_Right",true);
+		BW_Weaponready(WRF_NOFIRE|WRF_ALLOWUSER2|WRF_ALLOWUSER3);	//allow weapon changes
+
+		//autoreload if: the cvar is enabled, has at least 1 ammo, is not currently firing and is not already reloading 
+		bool requestingReload = (pressingButton(BT_RELOAD) 
+		&& (invoker.ammo2.amount < invoker.FullMag || invoker.Ammoleft.amount < invoker.FullMag))
+		|| 
+		(BW_AutoReload
+		&& (pressingButton(BT_ATTACK) && invoker.ammoleft.amount < 1 || pressingButton(getRightfirebutton()) && invoker.ammo2.amount < 1));
+		
+		if(requestingReload && invoker.ammo1.amount > 0 && !BW_IsReloading() && notDualFiring())
+		{
+			BW_SetReloading(true);
+			return resolvestate("Reload_Dual");
+		}
+		
+
+		if(invoker.amount < 2)
+		{
+			BW_ClearDualOverlays();
+			BW_SetAkimbo(false);
+			return resolvestate("goSingle");
+		}
+		return resolvestate(null);
 	}
 
     //////////////////////////////////////////////////////////////////////////////////////////////

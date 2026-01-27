@@ -217,24 +217,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 
 		StartDual:
 		Ready_Dual:
-			TNT1 A 1 {
-				A_Overlay(PSP_LeftGun,"Dual_Left",true);
-				A_Overlay(PSP_RightGun,"Dual_Right",true);
-				BW_Weaponready(WRF_NOFIRE|WRF_ALLOWUSER2|WRF_ALLOWUSER3);	//allow weapon changes
-				if(pressingButton(BT_RELOAD) && !BW_isFiring(true) && !BW_isFiring(false)
-				&& invoker.ammo1.amount > 0 && (invoker.ammo2.amount < invoker.FullMag || invoker.Ammoleft.amount < invoker.FullMag))
-				{
-					BW_SetReloading(true);
-					return resolvestate("Reload_Dual");
-				}
-				if(invoker.amount < 2)
-				{
-					BW_ClearDualOverlays();
-					BW_SetAkimbo(false);
-					return resolvestate("goSingle");
-				}
-				return resolvestate(null);
-			}
+			TNT1 A 1 BW_MainDualReady();
 			loop;
 
 		Dual_Left:
