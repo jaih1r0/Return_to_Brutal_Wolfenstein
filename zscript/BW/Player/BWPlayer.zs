@@ -92,7 +92,7 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 	
 	Default
 	{
-		Player.StartItem "BW_Luger", 1;
+		//Player.StartItem "BW_Luger", 1;
 		Player.StartItem "BW_PistolAmmo", 8;
 		Player.startItem "BW_Fists";
 		
@@ -109,6 +109,51 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		Player.Face "STF";
 		Player.DisplayName "William J. Blazkowicz";
 		height 48; //to avoid getting stuck in random stairs
+	}
+
+	override void GiveDefaultInventory()
+	{
+		super.GiveDefaultInventory();
+		//might need to add a way to support custom campaigns and non bw campaign levels with specific starter items
+		int ep = -1;
+		string bwepis = level.mapname.left(2);
+		if(bwepis != "BW")
+		{
+			//not a base episode
+		}
+		else
+		{
+			string episInt = level.mapname.Mid(2,1); //BW[#] <-
+			int episodeNum = episInt.toInt();
+			ep = episodeNum;
+		}
+		switch(ep)
+		{
+			
+			case 2:
+				GiveInventoryType("BW_MP40");
+				break;
+			
+			case 6:
+			case 4:
+				GiveInventoryType("BW_M1911");
+			case 3:
+				GiveInventoryType("BW_M1Thompson");
+				break;
+			
+			case 5:
+				GiveInventoryType("BW_Kar98K"); //m1 garand
+				break;
+			
+			case 7:
+				GiveInventoryType("BW_M1911");
+				break;
+			case 1:
+			case -1:
+			default:
+				GiveInventoryType("BW_Luger");
+				break;
+		}
 	}
 
 	override void PlayerLandedMakeGruntSound(Actor onmobj)

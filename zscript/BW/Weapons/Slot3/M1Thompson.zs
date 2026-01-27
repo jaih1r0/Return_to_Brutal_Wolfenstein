@@ -187,12 +187,12 @@ Class BW_M1Thompson : BaseBWWeapon
 
 
 		
-		ReloadADS:
+		Reload_ADS:
 			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			TMS2 DCBA 1;
 		Reload:
-			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
+			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Reload_ADS");
 			TNT1 A 0 BW_CheckReload("EmptyReload","Fidget","NoAmmo",20,1);
 			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 			TMR1 ABCDEFGHI 1;
