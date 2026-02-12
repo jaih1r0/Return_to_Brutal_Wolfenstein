@@ -1,0 +1,68 @@
+
+//bw bonus levels commands
+
+alias WANKSTEIN1 "MAP E1M1A;SKILL 0;closemenu"
+alias WANKSTEIN2 "MAP E1M1A;SKILL 1;closemenu"
+alias WANKSTEIN3 "MAP E1M1A;SKILL 2;closemenu"
+alias WANKSTEIN4 "MAP E1M1A;SKILL 3;closemenu"
+alias WANKSTEIN5 "MAP E1M1A;SKILL 4;closemenu"
+
+alias 1ANKSTEIN1 "MAP E1M2;SKILL 0;closemenu"
+alias 1ANKSTEIN2 "MAP E1M2;SKILL 1;closemenu"
+alias 1ANKSTEIN3 "MAP E1M2;SKILL 2;closemenu"
+alias 1ANKSTEIN4 "MAP E1M2;SKILL 3;closemenu"
+alias 1ANKSTEIN5 "MAP E1M2;SKILL 4;closemenu"
+
+alias 2ANKSTEIN1 "Map Map62;SKILL 0;closemenu"
+alias 2ANKSTEIN2 "Map Map62;SKILL 1;closemenu"
+alias 2ANKSTEIN3 "Map Map62;SKILL 2;closemenu"
+alias 2ANKSTEIN4 "Map Map62;SKILL 3;closemenu"
+alias 2ANKSTEIN5 "Map Map62;SKILL 4;closemenu"
+
+alias 3ANKSTEIN1 "Map Antoleve;SKILL 0;closemenu"
+alias 3ANKSTEIN2 "Map Antoleve;SKILL 1;closemenu"
+alias 3ANKSTEIN3 "Map Antoleve;SKILL 2;closemenu"
+alias 3ANKSTEIN4 "Map Antoleve;SKILL 3;closemenu"
+alias 3ANKSTEIN5 "Map Antoleve;SKILL 4;closemenu"
+
+alias 4ANKSTEIN1 "Map NOAH;SKILL 0;closemenu"
+alias 4ANKSTEIN2 "Map NOAH;SKILL 1;closemenu"
+alias 4ANKSTEIN3 "Map NOAH;SKILL 2;closemenu"
+alias 4ANKSTEIN4 "Map NOAH;SKILL 3;closemenu"
+alias 4ANKSTEIN5 "Map NOAH;SKILL 4;closemenu"
+
+alias 5ANKSTEIN1 "Map WolfDoom;SKILL 0;closemenu"
+alias 5ANKSTEIN2 "Map WolfDoom;SKILL 1;closemenu"
+alias 5ANKSTEIN3 "Map WolfDoom;SKILL 2;closemenu"
+alias 5ANKSTEIN4 "Map WolfDoom;SKILL 3;closemenu"
+alias 5ANKSTEIN5 "Map WolfDoom;SKILL 4;closemenu"
+
+alias 6ANKSTEIN1 "Map Slend;SKILL 0;closemenu"
+alias 6ANKSTEIN2 "Map Slend;SKILL 1;closemenu"
+alias 6ANKSTEIN3 "Map Slend;SKILL 2;closemenu"
+alias 6ANKSTEIN4 "Map Slend;SKILL 3;closemenu"
+alias 6ANKSTEIN5 "Map Slend;SKILL 4;closemenu"
+
+alias 7ANKSTEIN1 "Map Map30;SKILL 0;closemenu"
+alias 7ANKSTEIN2 "Map Map30;SKILL 1;closemenu"
+alias 7ANKSTEIN3 "Map Map30;SKILL 2;closemenu"
+alias 7ANKSTEIN4 "Map Map30;SKILL 3;closemenu"
+alias 7ANKSTEIN5 "Map Map30;SKILL 4;closemenu"
+
+alias 8ANKSTEIN1 "Map E7M18;SKILL 0;closemenu"
+alias 8ANKSTEIN2 "Map E7M18;SKILL 1;closemenu"
+alias 8ANKSTEIN3 "Map E7M18;SKILL 2;closemenu"
+alias 8ANKSTEIN4 "Map E7M18;SKILL 3;closemenu"
+alias 8ANKSTEIN5 "Map E7M18;SKILL 4;closemenu"
+
+alias 9ANKSTEIN1 "Map DM1944;SKILL 0;closemenu"
+alias 9ANKSTEIN2 "Map DM1944;SKILL 1;closemenu"
+alias 9ANKSTEIN3 "Map DM1944;SKILL 2;closemenu"
+alias 9ANKSTEIN4 "Map DM1944;SKILL 3;closemenu"
+alias 9ANKSTEIN5 "Map DM1944;SKILL 4;closemenu"
+
+alias FEGELEIN1 "Map Halt01;SKILL 0;closemenu"
+alias FEGELEIN2 "Map Halt01;SKILL 1;closemenu"
+alias FEGELEIN3 "Map Halt01;SKILL 2;closemenu"
+alias FEGELEIN4 "Map Halt01;SKILL 3;closemenu"
+alias FEGELEIN5 "Map Halt01;SKILL 4;closemenu"

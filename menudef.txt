@@ -24,14 +24,7 @@ LISTMENU "MainMenu"
 			TextItem "Read This!","r", "ReadThisMenu"
 		}
 		TextItem "Quit Game", "q", "QuitMenu"
-		/*PatchItem "M_NGAME",  "n", "PlayerclassMenu"
-		//PatchItem "M_RDTHIS", "b", "ReadThisMenu"
-		PatchItem "M_BWOPT2", "c", "RTBW_OptionsMenu"
-		PatchItem "M_LOADG", "l", "LoadGameMenu"
-		PatchItem "M_SAVEG", "s", "SaveGameMenu"
-		PatchItem "M_OPTION", "o", "OptionsMenu"
-		//TextItem "READ THIS!",  "r", "ReadThisMenu"
-		patchitem "M_QUITG", "q", "QuitMenu"*/
+		
 }
 
 addoptionmenu "optionsmenu"
@@ -127,6 +120,9 @@ OptionMenu RTBW_OptionsMenu
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
 
 	statictext ""
+
+	submenu "BW Extra Levels","BWExtraLevels"
+
 	statictext ""
 	statictext "=== Development ===",green
 	statictext ""
@@ -163,12 +159,6 @@ optionvalue dualfiremode
 //
 //
 
-/*AddOptionMenu "OptionsMenu"
-{
-	StaticText ""
-	StaticText "Nash's Gore Mod: Vengeance Edition v1.01 Hotfix"
-	Submenu "$OPTMNU_NASHGORE", "NashGoreMenu"
-}*/
 
 OptionMenu "NashGoreOptionMenu"
 {
@@ -263,142 +253,132 @@ OptionValue "NashGoreFootprintTypeValues"
 
 
 
-
-
-
-
-
 //
-//	unused
+//	bw bonus levels menu
 //
 
-OptionMenu "BWOptions"
+OptionMenu "BWExtraLevels"
 {
-Title "Brutal Wolfenstein's Bonus Levels"
-//SubMenu "GameModes options","GAMEMODEOP"
-//SubMenu "Enemies Options","EnemyMenu"
-//SubMenu "Weapons options","WeaponMenu"
-//SubMenu "Props. options","PropMenu"
-//SubMenu "QUI","BWQUI"
-Command "Brutal Wolfenstein's Museum",			"map Museum"
-SubMenu "Classic Redux's E1M1","L1OPTIONS"
-SubMenu "Classic Redux's E1M2","L2OPTIONS"
-SubMenu "Das Ubersoldat's dance","L3OPTIONS"
-SubMenu "The Courtyard","L4OPTIONS"
-SubMenu "Noah in Trouble!","L5OPTIONS"
-SubMenu "Wolf 'En Doom","L6OPTIONS"
-SubMenu "The Dresden Column","L7OPTIONS"
-SubMenu "Dreadful Terror","L10PTIONS"
-SubMenu "Spear of Destiny-Floor 17(Original)","L8OPTIONS"
-SubMenu "Spear of Destiny-Floor 18/Angel of Death(Original)","L9OPTIONS"
+	Title "Brutal Wolfenstein's Bonus Levels"
+	Command "Brutal Wolfenstein's Museum",			"map Museum"
+	SubMenu "Classic Redux's E1M1","L1OPTIONS"
+	SubMenu "Classic Redux's E1M2","L2OPTIONS"
+	SubMenu "Das Ubersoldat's dance","L3OPTIONS"
+	SubMenu "The Courtyard","L4OPTIONS"
+	SubMenu "Noah in Trouble!","L5OPTIONS"
+	SubMenu "Wolf 'En Doom","L6OPTIONS"
+	SubMenu "The Dresden Column","L7OPTIONS"
+	SubMenu "Dreadful Terror","L10PTIONS"
+	SubMenu "Spear of Destiny-Floor 17(Original)","L8OPTIONS"
+	SubMenu "Spear of Destiny-Floor 18/Angel of Death(Original)","L9OPTIONS"
 }
 
 OptionMenu "L1OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","WANKSTEIN1"
-Command "Don't Hurt me!","WANKSTEIN2"
-Command "Bring 'em on!","WANKSTEIN3"
-Command "I'm a death incarnate!","WANKSTEIN4"
-Command "UBER","WANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","WANKSTEIN1"
+	Command "Don't Hurt me!","WANKSTEIN2"
+	Command "Bring 'em on!","WANKSTEIN3"
+	Command "I'm a death incarnate!","WANKSTEIN4"
+	Command "UBER","WANKSTEIN5"
 }
 
 OptionMenu "L2OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","1ANKSTEIN1"
-Command "Don't Hurt me!","1ANKSTEIN2"
-Command "Bring 'em on!","1ANKSTEIN3"
-Command "I'm a death incarnate!","1ANKSTEIN4"
-Command "UBER","1ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","1ANKSTEIN1"
+	Command "Don't Hurt me!","1ANKSTEIN2"
+	Command "Bring 'em on!","1ANKSTEIN3"
+	Command "I'm a death incarnate!","1ANKSTEIN4"
+	Command "UBER","1ANKSTEIN5"
 }
 
 OptionMenu "L3OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","2ANKSTEIN1"
-Command "Don't Hurt me!","2ANKSTEIN2"
-Command "Bring 'em on!","2ANKSTEIN3"
-Command "I'm a death incarnate!","2ANKSTEIN4"
-Command "UBER","2ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","2ANKSTEIN1"
+	Command "Don't Hurt me!","2ANKSTEIN2"
+	Command "Bring 'em on!","2ANKSTEIN3"
+	Command "I'm a death incarnate!","2ANKSTEIN4"
+	Command "UBER","2ANKSTEIN5"
 }
 
 OptionMenu "L4OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","3ANKSTEIN1"
-Command "Don't Hurt me!","3ANKSTEIN2"
-Command "Bring 'em on!","3ANKSTEIN3"
-Command "I'm a death incarnate!","3ANKSTEIN4"
-Command "UBER","3ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","3ANKSTEIN1"
+	Command "Don't Hurt me!","3ANKSTEIN2"
+	Command "Bring 'em on!","3ANKSTEIN3"
+	Command "I'm a death incarnate!","3ANKSTEIN4"
+	Command "UBER","3ANKSTEIN5"
 }
 
 OptionMenu "L5OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","4ANKSTEIN1"
-Command "Don't Hurt me!","4ANKSTEIN2"
-Command "Bring 'em on!","4ANKSTEIN3"
-Command "I'm a death incarnate!","4ANKSTEIN4"
-Command "UBER","4ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","4ANKSTEIN1"
+	Command "Don't Hurt me!","4ANKSTEIN2"
+	Command "Bring 'em on!","4ANKSTEIN3"
+	Command "I'm a death incarnate!","4ANKSTEIN4"
+	Command "UBER","4ANKSTEIN5"
 }
 
 OptionMenu "L6OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","5ANKSTEIN1"
-Command "Don't Hurt me!","5ANKSTEIN2"
-Command "Bring 'em on!","5ANKSTEIN3"
-Command "I'm a death incarnate!","5ANKSTEIN4"
-Command "UBER","5ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","5ANKSTEIN1"
+	Command "Don't Hurt me!","5ANKSTEIN2"
+	Command "Bring 'em on!","5ANKSTEIN3"
+	Command "I'm a death incarnate!","5ANKSTEIN4"
+	Command "UBER","5ANKSTEIN5"
 }
 
 OptionMenu "L7OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","6ANKSTEIN1"
-Command "Don't Hurt me!","6ANKSTEIN2"
-Command "Bring 'em on!","6ANKSTEIN3"
-Command "I'm a death incarnate!","6ANKSTEIN4"
-Command "UBER","6ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","6ANKSTEIN1"
+	Command "Don't Hurt me!","6ANKSTEIN2"
+	Command "Bring 'em on!","6ANKSTEIN3"
+	Command "I'm a death incarnate!","6ANKSTEIN4"
+	Command "UBER","6ANKSTEIN5"
 }
 
 OptionMenu "L8OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","7ANKSTEIN1"
-Command "Don't Hurt me!","7ANKSTEIN2"
-Command "Bring 'em on!","7ANKSTEIN3"
-Command "I'm a death incarnate!","7ANKSTEIN4"
-Command "UBER","7ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","7ANKSTEIN1"
+	Command "Don't Hurt me!","7ANKSTEIN2"
+	Command "Bring 'em on!","7ANKSTEIN3"
+	Command "I'm a death incarnate!","7ANKSTEIN4"
+	Command "UBER","7ANKSTEIN5"
 }
 
 OptionMenu "L9OPTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","8ANKSTEIN1"
-Command "Don't Hurt me!","8ANKSTEIN2"
-Command "Bring 'em on!","8ANKSTEIN3"
-Command "I'm a death incarnate!","8ANKSTEIN4"
-Command "UBER","8ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","8ANKSTEIN1"
+	Command "Don't Hurt me!","8ANKSTEIN2"
+	Command "Bring 'em on!","8ANKSTEIN3"
+	Command "I'm a death incarnate!","8ANKSTEIN4"
+	Command "UBER","8ANKSTEIN5"
 }
 
 OptionMenu "L10PTIONS"
 {
-Title "How tough are you?"
-STATICTEXT ""
-Command "Can i play,Daddy?","9ANKSTEIN1"
-Command "Don't Hurt me!","9ANKSTEIN2"
-Command "Bring 'em on!","9ANKSTEIN3"
-Command "I'm a death incarnate!","9ANKSTEIN4"
-Command "UBER","9ANKSTEIN5"
+	Title "How tough are you?"
+	STATICTEXT ""
+	Command "Can i play,Daddy?","9ANKSTEIN1"
+	Command "Don't Hurt me!","9ANKSTEIN2"
+	Command "Bring 'em on!","9ANKSTEIN3"
+	Command "I'm a death incarnate!","9ANKSTEIN4"
+	Command "UBER","9ANKSTEIN5"
 }
