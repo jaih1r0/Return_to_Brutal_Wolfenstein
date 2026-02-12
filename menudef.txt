@@ -2,7 +2,7 @@
 LISTMENU "MainMenu"
 {
 		StaticPatch 90, -2, "M_DOOM"
-		//font "BWBGFNT",white,red
+		//font "BWFONT",white,red
 		Position 102, 42
 		TextItem "New Game", "n", "PlayerclassMenu"
 		ifOption(SwapMenu)
@@ -44,9 +44,23 @@ OptionMenu RTBW_OptionsMenu
 	Title "Return to brutal wolfenstein menu"
 	
 	statictext ""
-	command "go to test map","map BWTEST"
+
+	submenu "Performance Options","RTBW_PerformanceMenu"
 	statictext ""
+
+	SubMenu "Gameplay Options","RTBW_GameplayMenu"
 	statictext ""
+
+	SubMenu "Hud Options","RTBW_HudMenu"
+	statictext ""
+
+	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
+
+	statictext ""
+
+	submenu "BW Extra Levels","BWExtraLevels"
+	statictext ""
+
 	statictext "Keybinds",orange
 	statictext ""
 	control "Kick/Slide","+zoom"
@@ -59,76 +73,15 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	statictext ""
 
-	statictext "Performance",orange
-	statictext ""
-	slider "Max amount of casings in world","BW_CasingsLimit",0,1000,16
-	statictext "set to 0 to disable limit",brick
-	statictext ""
-	slider "Max amount of debris in world","BW_DebrisLimit",0,1000,16
-	statictext "set to 0 to disable limit",brick
-	statictext ""
-	slider "auto clean gore/casings/decals time","BW_CleanTics",0,60,1
-	statictext "*time in seconds, set to 0 to disable",brick
-	statictext ""
-	statictext ""
-
-	statictext "Gameplay",orange
-	statictext ""
-	option "Disable footsteps","BW_DisablePlayerFootsteps","OnOff"
-	statictext ""
-	slider "Footsteps volume","BW_FootstepsVol",0.0,1.0,0.1
-	statictext ""
-	slider "Enemy footsteps volume","BW_enemyFootstepsVol",0.0,1.0,0.1
-	statictext ""
-	option "Disable bullet tracer dynamic lights","BW_DisableTracerLights","OnOff"
-	statictext ""
-	option "Dual fire mode","BW_DualFiremode","dualfiremode"
-	statictext ""
-	option "Slide Kick with a single button","BW_CrouchKick","OnOff"
-	statictext "(press crouch while moving to slide)"
-	statictext ""
-	option "Allow weapons auto reload when fired while empty","BW_AutoReload","OnOff"
-	statictext ""
-	statictext ""
-
-	statictext "HUD",orange
-	statictext ""
-	option "disable custom hud messages","BW_Custommsg","OffOn"
-	statictext ""
-	slider "custom hud messages scale","BW_messageScale",0.3,1.5,0.1
-	statictext ""
-	Option "$MSGMNU_CENTERMESSAGES","con_centernotify", "OnOff"
-	statictext ""
-	option "custom hud messages position","BW_messagepos","hudmsgpos"
-	statictext "*does nothing if centered messages are enabled"
-	statictext ""
-	option "draw current ammo list","BW_CurrentAmmoList","OnOff"
-	statictext ""
-	option "use classic hud scaling","hud_oldscale","OnOff"
-	statictext "use it if hud looks too big or small"
-	statictext ""
-	slider "hud scale factor","hud_scalefactor",0.3,1.0,0.05
-	statictext ""
-	
-	slider "boss bar scale","BW_BossBarScale",0.1,3.0,0.1
-	statictext "" 
-	slider "boss bar horizontal offset","BW_BossBarOfsX",-500,500,5
-	statictext ""
-	slider "boss bar vertical offset","BW_BossBarOfsY",-500,500,5
-	statictext ""
-
-	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
-
-	statictext ""
-
-	submenu "BW Extra Levels","BWExtraLevels"
-
 	statictext ""
 	statictext "=== Development ===",green
 	statictext ""
 	option "debug texture impacts","BW_texturesChecker","yesno"
 	statictext ""
 	option "Monsters Debug","BW_Debug","monsterdebugval"
+	statictext ""
+	statictext ""
+	command "go to test map","map BWTEST"
 	statictext ""
 	
 }
@@ -150,6 +103,74 @@ optionvalue dualfiremode
 {
 	0,"default (individual)"
 	1,"single button"
+}
+
+optionmenu RTBW_GameplayMenu
+{
+	Title "RTBW Gameplay options"
+	statictext ""
+	option "Disable footsteps","BW_DisablePlayerFootsteps","OnOff"
+	statictext ""
+	slider "Footsteps volume","BW_FootstepsVol",0.0,1.0,0.1
+	statictext ""
+	slider "Enemy footsteps volume","BW_enemyFootstepsVol",0.0,1.0,0.1
+	statictext ""
+	option "Disable bullet tracer dynamic lights","BW_DisableTracerLights","OnOff"
+	statictext ""
+	option "Dual fire mode","BW_DualFiremode","dualfiremode"
+	statictext ""
+	option "Slide Kick with a single button","BW_CrouchKick","OnOff"
+	statictext "(press crouch while moving to slide)"
+	statictext ""
+	option "Allow weapons auto reload when fired while empty","BW_AutoReload","OnOff"
+	statictext ""
+	statictext ""
+}
+
+optionmenu RTBW_PerformanceMenu
+{
+	Title "RTBW Performance options"
+	statictext ""
+	slider "Max amount of casings in world","BW_CasingsLimit",0,1000,16
+	statictext "set to 0 to disable limit",brick
+	statictext ""
+	slider "Max amount of debris in world","BW_DebrisLimit",0,1000,16
+	statictext "set to 0 to disable limit",brick
+	statictext ""
+	slider "auto clean gore/casings/decals time","BW_CleanTics",0,60,1
+	statictext "*time in seconds, set to 0 to disable",brick
+	statictext ""
+	statictext ""
+}
+
+optionmenu RTBW_HudMenu
+{
+	Title "RTBW hud options"
+	statictext ""
+	option "disable custom hud messages","BW_Custommsg","OffOn"
+	statictext ""
+	slider "custom hud messages scale","BW_messageScale",0.3,1.5,0.1
+	statictext ""
+	Option "$MSGMNU_CENTERMESSAGES","con_centernotify", "OnOff"
+	statictext ""
+	option "custom hud messages position","BW_messagepos","hudmsgpos"
+	statictext "*does nothing if centered messages are enabled"
+	statictext ""
+	option "draw current ammo list","BW_CurrentAmmoList","OnOff"
+	statictext ""
+	option "use classic hud scaling","hud_oldscale","OnOff"
+	statictext "use it if hud looks too big or small"
+	statictext ""
+	slider "hud scale factor","hud_scalefactor",0.3,1.0,0.05
+	statictext ""
+	
+	statictext "Boss health bar",orange
+	slider "boss bar scale","BW_BossBarScale",0.1,3.0,0.1
+	statictext "" 
+	slider "boss bar horizontal offset","BW_BossBarOfsX",-500,500,5
+	statictext ""
+	slider "boss bar vertical offset","BW_BossBarOfsY",-500,500,5
+	statictext ""
 }
 
 

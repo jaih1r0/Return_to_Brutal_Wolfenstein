@@ -1,3 +1,9 @@
+addkeysection "RTBW keybinds" RTBWKeyBinds
+addmenukey "Kick/Slide" "+zoom"
+addmenukey "Knife/Axe" "+User1"
+addmenukey "Grenade" "+User3"
+addmenukey "Weapon Special action" "+User2"
+
 
 //bw bonus levels commands
 
