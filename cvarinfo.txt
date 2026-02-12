@@ -1,5 +1,4 @@
 
-server int BW_BulletType = 0;   //0 hitscan, 1 projectile
 nosave server int BW_Debug = 0;
 nosave server bool BW_texturesChecker = false;
 server bool BW_DisablePlayerFootsteps = false;
