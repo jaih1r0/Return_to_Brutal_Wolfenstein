@@ -747,6 +747,10 @@ Class BW_HealingWell : BW_Well1
             toucher.A_Setblend(0x98F5F9,0.1,7);
             A_Startsound("Health/Well");
             toucher.A_log(string.format("You drank from a pit! (+%d health)",giveamt));
+
+            let bwp = BWPlayer(toucher);
+            if(bwp)
+                bwp.playergothealed(giveamt);
             //A_Startsound();
         }
         super.touch(toucher); //i think this actually does nothing
