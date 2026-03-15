@@ -120,7 +120,7 @@ Extend Class BaseBWWeapon
 				return;
 			
 			A_GiveInventory(AmmoMag_Action, 1);
-			A_TakeInventory(AmmoPool_Action, takeReserve);
+			A_TakeInventory(AmmoPool_Action, takeReserve,TIF_NOTAKEINFINITE);
 		}
 	}
 
