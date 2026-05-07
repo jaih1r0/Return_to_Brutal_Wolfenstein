@@ -12,6 +12,8 @@ Class BW_Hud : BaseStatusBar
 	bool isCentered, custommsg, curammolist;
 	double messageScale; 
 	int msgpos;
+	textureID mHudBlood;
+	uint mbloodtics;
 
 	override void Init()
 	{
@@ -24,6 +26,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Ammo2 = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Score = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_LeftAmmo = dynamicvalueinterpolator.create(0,1,1,10);
+		mHudBlood = texman.checkfortexture("graphics/HUD/pain1.png");
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -98,13 +101,13 @@ Class BW_Hud : BaseStatusBar
 		if(oldcounter != combo_counter)
 			counterTics = 8;
 		NoHud = cplayer.mo.findinventory("DisableHud");
-		/*if(cplayer.mo.findinventory("NoSliding"))
+
+		let bwplay = BWPlayer(pl);
+		if(bwplay)
 		{
-			alfadeofs += 0.01;
-			if(alfadeofs >= 0.5)
-				alfadeofs = 0.0;
-			//alfadeofs = frandom(0.1,0.5);
-		}*/
+			mbloodtics = bwplay.bloodtics;
+		}
+		
 	}
 	
 	void DrawHudStuff()
@@ -113,6 +116,8 @@ Class BW_Hud : BaseStatusBar
 			return;
 		let pl = Cplayer.mo;
 		
+		drawbloodoverlay();
+
 		drawhudMessages();
 
 		//health
@@ -358,6 +363,18 @@ Class BW_Hud : BaseStatusBar
 				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),drawpos,DI_SCREEN_RIGHT_BOTTOM,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
 				drawpos -= (0,15);
 			}
+		}
+	}
+
+	void drawbloodoverlay()
+	{
+		if(mbloodtics)
+		{
+			double alfa = BW_Statics.linearmap(mbloodtics,0,35,0.0,0.85,true);
+			screen.drawtexture(mHudBlood,false,0,0
+			,DTA_DestWidth, screen.getwidth()
+			,DTA_DestHeight,screen.getheight()
+			,DTA_Alpha,	alfa);
 		}
 	}
 

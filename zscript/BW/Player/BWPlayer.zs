@@ -6,6 +6,8 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 
 	double YscaleFix;	//port this over from monsters
 
+	uint bloodtics;
+
 	override void tick()
 	{
 		super.tick();
@@ -26,6 +28,18 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 	override void playerthink()
 	{
 		super.playerthink();
+
+		if(bloodtics)
+		{
+			if(health <= 20)
+			{
+				if(level.time % 5 == 0)
+					bloodtics--;
+			}
+			else
+				bloodtics--;
+		}
+
 		bool wasOnGround = player.onGround;
 		//stick player to the frond when going downstairs
 		if (wasOnGround && !player.onGround && pos.z - GetZAt() < maxDropOffHeight && vel.z <= 0)
@@ -75,7 +89,14 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		}*/
 		int dam = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 		player.damagecount = Clamp(player.damagecount, 0, 5);	//reduced red flash
+		self.bloodtics += dam;
 		return dam;
+	}
+
+	void playergothealed(int healamt = 0) //getting healed reduces the blood flash faster
+	{
+		double mult = BW_Statics.linearmap(healamt,0,100,0.9,0.1,true);
+		bloodtics = int(bloodtics * mult); 
 	}
 	
 	override void PostBeginPlay()

@@ -23,6 +23,10 @@ Class BW_HealthItem : Health
         if (!bNoScreenFlash && toucher.player.playerstate != PST_DEAD)  //funny yellow pickup flash
             toucher.player.bonuscount = BONUSADD;
         
+        let bwp = BWPlayer(toucher);
+        if(bwp)
+            bwp.playergothealed(self.amount);
+
         if(resolvestate("Consumed") != null)    //set it to consumed state if any
             setstatelabel("Consumed");
 

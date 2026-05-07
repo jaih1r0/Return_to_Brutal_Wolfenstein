@@ -1,8 +1,24 @@
 Class BW_Statics abstract
 {
-    clearScope Static Double LinearMap(Double Val, Double O_Min, Double O_Max, Double N_Min, Double N_Max) 
+	static clearscope double LinearMap(double val, double source_min, double source_max, double out_min, double out_max, bool clampResult = false) 
+    {
+        double sourceDiff = source_max - source_min;
+        if (sourceDiff == 0)
+        {
+            return 0;
+        }
+        double d = (val - source_min) * (out_max - out_min) / sourceDiff + out_min;
+        if (clampResult)
+        {
+            d = Clamp(d, min(out_max, out_min), max(out_max, out_min));
+        }
+        return d;
+    }
+
+    static double SmoothStep(double x, double edge0 = 0, double edge1 = 1) 
 	{
-		Return (Val - O_Min) * (N_Max - N_Min) / (O_Max - O_Min) + N_Min;
+		x = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+		return x * x * (3 - 2 * x);
 	}
 
 	clearScope static Double lerp(Double a, Double b, Double t) 
