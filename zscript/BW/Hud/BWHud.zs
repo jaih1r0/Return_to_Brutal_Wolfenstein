@@ -460,14 +460,14 @@ Class BW_Hud : BaseStatusBar
 		int yfontsize = BWFont.mFont.getheight() * fontscale;
 		double startY = 70.;
 		double startX = 20.;
-		int flags = DI_SCREEN_LEFT;
+		int flags = DI_SCREEN_LEFT | DI_ITEM_LEFT | DI_TEXT_ALIGN_LEFT;
 		int movedir = 1;
 
 		if(isCentered)
 		{
 			startY = 10;
-			startX = -screen.getwidth() / 3.5;
-			flags = DI_SCREEN_CENTER_TOP;
+			startX = 0;
+			flags = DI_SCREEN_CENTER_TOP | DI_ITEM_CENTER | DI_TEXT_ALIGN_CENTER;
 		}
 		else
 		{
@@ -478,7 +478,7 @@ Class BW_Hud : BaseStatusBar
 				default:	//over mugshot
 				case 1:
 					startY = -150.;
-					flags = DI_SCREEN_LEFT_BOTTOM;
+					flags = DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT | DI_TEXT_ALIGN_LEFT;
 					movedir = -1;	//move upwards
 					break;
 			}
