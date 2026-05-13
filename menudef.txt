@@ -1,6 +1,7 @@
 
 LISTMENU "MainMenu"
 {
+		ForceList
 		class "BW_MainMenu"
 		StaticPatchSplash 90, -2, "M_DOOM"
 		
@@ -34,6 +35,7 @@ addoptionmenu "optionsmenu"
 
 listmenu "EpisodeMenu"
 {
+	ForceList
 	class "BW_Epismenu"
 }
 

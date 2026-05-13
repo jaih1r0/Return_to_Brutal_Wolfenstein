@@ -472,7 +472,7 @@ ReplaceActor = "AdolfHitler","UberAdolfHitler"
 ReplaceActor = "GretelGrosse","HardMEINPUZZA"
 }
 
-clearepisodes
+//clearepisodes
 
 map BWTEST "RTBW Test Map"
 {
