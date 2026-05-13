@@ -1,0 +1,58 @@
+[default]
+
+BW_Number_of_Splashes = "29";	//this is not meant to be translated, is used to indicate the max number of splashtexts, everytime the menu opens it chooses a random one between 0 and this number
+
+//the actual splashtexts 
+BWSplash1 = "Also Try Terraria!";
+BWSplash2 = "Doom 3 shotgun, best melee weapon";
+BWSplash3 = "Now with extra sugar!";
+BWSplash4 = "";
+BWSplash5 = "Rip and Tear until im bored";
+BWSplash6 = "i am death incarnate";
+BWSplash7 = "Bright doom > Brutal Doom";
+BWSplash8 = "Johto best region";
+BWSplash9 = "John Brutal Doom was here";
+BWSplash10 = "Nah, i'd win";
+BWSplash11 = "Bad Ass edition";
+BWSplash12 = "Error 404";
+BWSplash13 = "Also Try Minecraft!";
+BWSplash14 = "There was a hole here. Now its gone.";
+BWSplash15 = "Those residents are truly evil...";
+BWSplash16 = "Im literally procrastinating right now";
+BWSplash17 = "Seven minutes is all I can spare to play with you";
+BWSplash18 = "LitDoom tomorrow";
+BWSplash19 = "Also try BW2: now its personal!";
+BWSplash20 = "HESOYAM";
+BWSplash21 = "Thank you, Chainsaw Man";
+BWSplash22 = "This Destructor is really Hideous...";
+BWSplash23 = "Tonight in Channel 5: Tremors!";
+BWSplash24 = "Also try Final Doomer!";
+BWSplash25 = "Project Brutality";
+BWSplash26 = "This is my meeeessage tooo my maaaster";
+BWSplash27 = "up up down down left right left right B A";
+BWSplash28 = "\chF\cgi\chr\cge\chb\cgl\chu\cge";
+BWSplash29 = "Sunken Sea Overhaul Tomorrow";
+
+
+
+
+
+//
+//	graphics things for the menu
+//
+
+BWEPI_EscapefromWolfenstein = "Escape from Wolfenstein";
+BWEPI_OperationEisenfaust = "Operation: Eisenfaust";
+BWEPI_DieFuhrerDie = "Die, Fuhrer, Die!";
+BWEPI_ADarkSecret = "A Dark Secret";
+BWEPI_TheTrailoftheMadman = "The Trail of the Madman";
+BWEPI_Confrontation = "Confrontation";
+BWEPI_SpearofDestiny = "Spear of Destiny";
+
+BWDIFIC_CanIplayDaddy = 			"dif1";
+BWDIFIC_DontHurtMe = 				"dif2";
+BWDIFIC_BringEmOn = 				"dif3";
+BWDIFIC_ImaDeathIncarnate = 		"dif4";
+BWDIFIC_Uber = 						"dif5";
+
+BW_CurGame = "-";

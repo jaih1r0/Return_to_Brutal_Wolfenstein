@@ -1,0 +1,2 @@
+[default]
+BW_CurGame = "FreeDoom1";

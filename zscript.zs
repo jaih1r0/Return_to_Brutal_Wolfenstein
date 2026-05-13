@@ -5,6 +5,19 @@ Version 4.10
 #include "zscript/BW/BW_Statics.zs"
 #include "zscript/BW/MathNMixins.zs"
 
+//zforms main include
+#include "zscript/BW/Menu/BW_ZForms/Include.zsc"
+
+#include "zscript/BW/Menu/StaticMenuInfo.zs"
+#include "zscript/BW/Menu/BW_ZFElements.zs"
+
+//actual bw menu classes
+#include "zscript/BW/Menu/MainMenu.zs"
+#include "zscript/BW/Menu/EpisodeMenu.zs"
+
+
+
+
 #include "zscript/BW/Spawners/SpawnerBase.zs"
 
 #include "zscript/BW/Weapons/Base/WeaponBase.zs"

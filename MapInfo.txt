@@ -14,7 +14,9 @@ Gameinfo
 	"The Dog Pope won't forget\nthe genocide you commited here!"
 	
 	PlayerClasses = "BWPlayer"
-	addeventhandlers = "BW_StaticHandler","BW_EventHandler","NashGoreHandler","BW_BossBarHandler"
+	addeventhandlers = "BW_StaticHandler","BW_EventHandler",
+	"NashGoreHandler","BW_BossBarHandler","BWMenuStaticInfo"
+	
 	StatusBarClass = "BW_Hud"
 	//NormForwardMove = 0x32, 0x32	//Walk speed is modulated through
 	//NormSideMove = 0x32, 0x32		//CVar in the menu options
