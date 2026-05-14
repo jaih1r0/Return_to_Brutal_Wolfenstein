@@ -150,7 +150,7 @@ class BW_Epismenu : BW_ZF_Listmenu
 		//keep track of the first and last element
 		BW_ZF_Element head,tail;
 		
-		vector2 dlistsize = (350,40);
+		vector2 dlistsize = (350,36);
 
 		
 		//
@@ -168,7 +168,7 @@ class BW_Epismenu : BW_ZF_Listmenu
 		}
 		
 		
-		let dlist = BW_ZF_DropdownList.create(initpos,dlistsize,list1,fnt:bwfon,textScale:0.6,
+		let dlist = BW_ZF_DropdownListScroll.create(initpos,dlistsize,list1,fnt:bwfon,textScale:0.6,
 		textColor:Font.CR_WHITE,
 		boxBg: box2, listBg:box3,highlightBg: box4,
 		dropTex:"dropsel", defaultSelection: selEpis,cmdHandler:cmd,command:'Epis',
@@ -311,6 +311,9 @@ class BW_Epismenu : BW_ZF_Listmenu
 		,bwfon,0.7);
 		butto.pack(mainframe);
 		
+		tail.setFocusNeighbor(BW_ZF_NavEventType_Right,butto);
+		butto.setFocusNeighbor(BW_ZF_NavEventType_Left,tail);
+
 		butto.setFocusNeighbor(BW_ZF_NavEventType_Up,tail);
 		tail.setFocusNeighbor(BW_ZF_NavEventType_Down,butto);
 		tail = butto;
@@ -480,11 +483,11 @@ class BW_EpiSkillHandler : BW_ZF_Handler
 		}
 	}
 	
-	override void dropdownChanged(BW_ZF_DropdownList caller, Name command)
+	override void dropdownScrollChanged(BW_ZF_DropdownListScroll caller, Name command)
 	{
 		if(command == 'Epis')
 		{	
-			destmen.selEpis = caller.getselection();
+			destmen.selEpis = caller.getRealSelection();
 			destmen.mDesc.mSelectedItem = destmen.selEpis;
 			destmen.MenuSound("menu/advance");
 			destmen.updateLevelInfoLabel(true,false);
