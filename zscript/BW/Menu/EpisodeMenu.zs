@@ -92,10 +92,12 @@ class BW_Epismenu : BW_ZF_Listmenu
 		{
 			for(int j = 0; j < episodes.size(); j++)
 			{
-				if(ev.episinfo[i].displayname == episodes[j].displayname)
-					episodes[j].patch = ev.episinfo[i].patch;
-				if(ev.episinfo[i].patch == episodes[j].patch)
-					episodes[j].displayname = stringtable.localize(ev.episinfo[i].displayname);
+				if(episodes[j].displayName != "")
+					continue;
+				if(episodes[j].patch != "" && episodes[j].patch == ev.episinfo[i].patch)
+				{
+					episodes[j].displayname = ev.episinfo[i].displayname;
+				}
 			}
 		}
 		
@@ -103,7 +105,11 @@ class BW_Epismenu : BW_ZF_Listmenu
 		for(int i = 0; i < episodes.size(); i++)
 		{
 			if(episodes[i].displayname != "") //&& episodes[i].patch != "")
+			{
 				temp.push(episodes[i]);	//only save the ones with a name
+				if(episodes[i].displayName == "Escape from Wolfenstein")
+					bwmap = i;
+			}	
 		}
 		
 		episodes.clear();
@@ -153,14 +159,13 @@ class BW_Epismenu : BW_ZF_Listmenu
 		if(mDesc.mSelectedItem < Episodes.size())
 			selEpis = mDesc.mSelectedItem; //if theres a valid one already selected, set it here
 		
-		
 		list1 = new("BW_ZF_DropdownItems");
 		for(int i = 0; i < episodes.size(); i++)
 		{
 			list1.items.push(episodes[i].displayname);
 		}
 		
-		vector2 dlistsize = (200,40);
+		vector2 dlistsize = (200,30);
 		let dlist = BW_ZF_DropdownList.create(initpos,dlistsize,list1,fnt:bwfon,textScale:0.6,
 		textColor:Font.CR_WHITE,
 		boxBg: box2, listBg:box3,highlightBg: box4,
@@ -338,6 +343,7 @@ class BW_Epismenu : BW_ZF_Listmenu
 	
 	int selEpis;
 	int selSkill;
+	int bwmap;
 	BW_ZF_RadioController vr;
 	BW_ZF_DropdownItems list1;
 	BW_ZF_Label infopanelLabel;
@@ -381,7 +387,7 @@ class BW_Epismenu : BW_ZF_Listmenu
 		if(updateEpisode || difInfo == "")	
 		{
 			if(selEpis > -1)
-				difInfo = "Current mission: \cf"..Episodes[selEpis].displayname.."\c-\n\n";
+				difInfo = "Current mission: \cf"..stringtable.localize(Episodes[selEpis].displayname).."\c-\n\n";
 			else
 				difInfo = "Current mission: \cbUnselected\c-\n\n";
 		}
@@ -473,6 +479,7 @@ class BW_EpiSkillHandler : BW_ZF_Handler
 			}
 			
 			//console.printf("\cdNEW GAME SKILL: %d [%s]",skl,destmen.skils[skl].displayname);
+			//,destmen.bwmap + destmen.selEpis
 			destmen.MenuSound("menu/advance");
 			destmen.startgamedirect(true,false,PlayerClasses[0].type.getclassname(),destmen.selEpis,destmen.selSkill);
 		}

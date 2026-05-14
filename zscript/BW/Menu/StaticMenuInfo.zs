@@ -21,23 +21,30 @@ Class BWMenuStaticInfo : StaticEventhandler
 			console.printf("[%d] skill: %s",i,AllSkills[i].SkillName);
 		}*/
 		
-		getSkillsInfo(_skillInfo);
-		getEpisodeInfo(episinfo);
+		
+		_skillInfo.clear();
+		episinfo.clear();
 		
 		
+		
+		array<int> lumpssearch;
+		//first get all the lumps
+		for(int lump = -1; (lump = Wads.FindLump("MAPINFO", lump + 1,Wads.GlobalNamespace)) != -1;)
+		{
+			//console.printf("LUMP: %d, name: %s",lump,wads.GetLumpFullName(lump));
+			if(lump != -1)
+				lumpssearch.push(lump);
+		}
+
+		//parse them, both skills and episodes at the same time
+		for(int i = 0; i < lumpssearch.size(); i++)
+		{
+			ParseSkillsEpisodes(_skillInfo,episinfo,"MAPINFO",lumpssearch[i]);
+		}
+		
+
 		//just in case
-		string thisGame = stringtable.localize("$BW_CurGame");
-		if(episinfo.size() < 1)
-		{
-			thisgame = "mapinfo/"..thisgame..".txt";
-			getEpisodeInfo(episinfo,thisGame);
-		}
 		
-		if(_skillInfo.size() < 1)
-		{
-			thisgame = "mapinfo/"..thisgame..".txt";
-			getSkillsInfo(_skillInfo,thisgame);
-		}
 		
 		if(_skillInfo.size() < 1)
 		{
@@ -65,18 +72,50 @@ Class BWMenuStaticInfo : StaticEventhandler
 	
 	
 	//from HaloDoom -> https://github.com/Lewisk3/HaloDoom_GZDoomVersion/blob/e1c16e0cb1389064b76849f16c7485b35c658115/ZScript/math.zsc#L544
-	//imported to keep lzdoom/slightly older gzdoom compat
-	static void getSkillsInfo(out Array<BWSkillInfo> skInfo, string lumpSearch = "MAPINFO")
+	static bool, string parseStrElement(String type, String ln, bool filterNewLines = true, bool filterSpaces = true)
+	{
+		string quote = "\"";
+		string lnLower = ln.MakeLower();
+		type = type.MakeLower();
+		
+		int element_S = lnLower.IndexOf(type);
+		int elementStr_S = lnLower.IndexOf(quote, element_S);
+		int element_E = lnLower.IndexOf(quote, elementStr_S+1);
+		
+		/*
+		console.printf("Parsing: [%s] \nfor StringKeyword %s", ln, type);
+		console.printf("Starting At: %d -> %s \n", element_S, lnLower.Mid(element_S));
+		console.printf("String Starts: %d -> %s \n", elementStr_S, lnLower.Mid(elementStr_S));
+		console.printf("Ending At: %d -> %s \n", element_E, lnLower.Mid(element_E));
+		console.printf("\n\n");
+		*/
+		
+		if(element_S < 0 || element_E < 0) return false, "";
+		
+		String output = ln.Mid(elementStr_S+1, (element_E-elementStr_S)-1);	
+		if(filterNewLines) output.Replace("\n", "");
+		if(filterSpaces) 
+		{
+			output.Replace(" ", "");
+			output.Replace("\t", "");
+		}
+		
+		return true, output;
+	}
+	
+	
+
+	static void ParseSkillsEpisodes(out Array<BWSkillInfo> skInfo,out Array<BWEpisodeInfo> episInf, string lumpSearch = "MAPINFO", int lump =-1)
 	{
 		// adwnawdlnkdawlknawdkln why isn't this just a feature??!?!!?!?!?
 		// ffs.
+
+		//console.printf("\cr%d = Reading %s =",lump,lumpSearch);
 		
-		skInfo.Clear();
-		for(int lump = -1; (lump = Wads.FindLump(lumpSearch, lump+1)) != -1;)
 		{
 			string data = Wads.ReadLump(lump);
 			string dataLower = data.MakeLower();
-	
+			//console.printf("[] \cvReading Lump #%d: %s (Path: %s)",lump,wads.GetLumpFullName(lump),wads.GetLumpFullPath(lump));
 			// Look for `skill` keyword(s).
 			int skillIndex = 0;
 			int skillOffset = 0;
@@ -148,56 +187,12 @@ Class BWMenuStaticInfo : StaticEventhandler
 				curSkillInfo.Pic = skillPic;
 						
 				skInfo.push(curSkillInfo);
-			}			
-		}
-	}
-	
-	static bool, string parseStrElement(String type, String ln, bool filterNewLines = true, bool filterSpaces = true)
-	{
-		string quote = "\"";
-		string lnLower = ln.MakeLower();
-		type = type.MakeLower();
-		
-		int element_S = lnLower.IndexOf(type);
-		int elementStr_S = lnLower.IndexOf(quote, element_S);
-		int element_E = lnLower.IndexOf(quote, elementStr_S+1);
-		
-		/*
-		console.printf("Parsing: [%s] \nfor StringKeyword %s", ln, type);
-		console.printf("Starting At: %d -> %s \n", element_S, lnLower.Mid(element_S));
-		console.printf("String Starts: %d -> %s \n", elementStr_S, lnLower.Mid(elementStr_S));
-		console.printf("Ending At: %d -> %s \n", element_E, lnLower.Mid(element_E));
-		console.printf("\n\n");
-		*/
-		
-		if(element_S < 0 || element_E < 0) return false, "";
-		
-		String output = ln.Mid(elementStr_S+1, (element_E-elementStr_S)-1);	
-		if(filterNewLines) output.Replace("\n", "");
-		if(filterSpaces) 
-		{
-			output.Replace(" ", "");
-			output.Replace("\t", "");
-		}
-		
-		return true, output;
-	}
-	
-	
-	
-	static void getEpisodeInfo(out Array<BWEpisodeInfo> episInf, string lumpSearch = "MAPINFO")
-	{
+			}
+			
+			skillIndex = 0;
+			skillOffset = 0;
+			loopCheck = 0;
 
-		episInf.Clear();
-		for(int lump = -1; (lump = Wads.FindLump(lumpSearch, lump+1)) != -1;)
-		{
-			string data = Wads.ReadLump(lump);
-			string dataLower = data.MakeLower();
-	
-			// Look for `skill` keyword(s).
-			int skillIndex = 0;
-			int skillOffset = 0;
-			int loopCheck = 0;
 			while(skillIndex >= 0)
 			{
 				loopCheck++;
@@ -210,15 +205,19 @@ Class BWMenuStaticInfo : StaticEventhandler
 				skillIndex = dataLower.IndexOf("episode", skillOffset);
 				if(skillIndex < 0) break;
 				
+				string startmap = "nomap";
+				int nextws = datalower.IndexOf(" ",skillIndex);
+				int nextnextws = nextws;
+				if(nextws > 0)
+					nextnextws = datalower.IndexOf(" ",nextws);
+				
+				if(nextnextws > nextws && nextws > 0)
+					startmap = datalower.mid(nextws,nextnextws);
+
 				// Grab skill block.
 				int blockStart = dataLower.IndexOf("{", skillIndex);
 				int blockEnd = dataLower.IndexOf("}", skillIndex);
 				if(blockStart < 0 || blockEnd < 0) break;
-				// "episode" 7
-				int siz = skillIndex + 8;
-				string wd = dataLower.mid(siz,blockStart - siz);
-				
-				
 				
 				int blockLen = blockEnd - blockStart;
 				skillOffset = blockEnd+1; // Advance read "head".
@@ -260,25 +259,17 @@ Class BWMenuStaticInfo : StaticEventhandler
 				bool specialName = skillName.IndexOf("$") >= 0; 
 				if(specialName) skillName = StringTable.Localize(skillName);
 				
-				// Get "desc" from `MustConfirm`
-				//[gotStr, skillDesc] = BWMenuStaticInfo.parseStrElement("mustconfirm", skillData);
-				//if(!gotStr) skillDesc = "";
-				
-				let curSkillInfo = new("BWEpisodeInfo");
-				curSkillInfo.displayName = skillName;
-				//curSkillInfo.Description = skillDesc;
-				curSkillInfo.patch = skillPic;
-				
-				
-				wd.replace("\n","");
-				wd.StripLeftRight("");
-				
-				//console.printf("\cdepisode\c-: \cg%s\c- start map is: [\ca%s\c-]",skillname,wd);
-				episInf.push(curSkillInfo);
-			}			
+				let curEpisInfo = new("BWEpisodeInfo");
+				curEpisInfo.displayName = skillName;
+				curEpisInfo.patch = skillPic;
+				curEpisInfo.startmap = startmap;
+
+						
+				episInf.push(curEpisInfo);
+			}
 		}
 	}
-	
+
 	
 	/*
 	override void worldloaded(worldevent e)
