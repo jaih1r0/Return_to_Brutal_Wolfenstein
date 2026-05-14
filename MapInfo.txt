@@ -474,6 +474,51 @@ ReplaceActor = "GretelGrosse","HardMEINPUZZA"
 
 //clearepisodes
 
+episode BW1M1
+{
+	picname = "BW_EPI1"
+	name = "Escape from Wolfenstein"
+}
+
+episode BW2M1
+
+{
+	picname = "BW_EPI2"
+	name = "Operation: Eisenfaust"
+}
+
+episode BW3M1
+{
+	picname = "BW_EPI3"
+	name = "Die, Fuhrer, Die!"
+}
+
+episode BW4M1
+{
+	picname = "BW_EPI4"
+	name = "A Dark Secret"
+}
+
+episode BW5M1
+{
+	picname = "BW_EPI5"
+	name = "The Trail of the Madman"
+}
+
+episode BW6M1
+{
+	picname = "BW_EPI6"
+	name = "Confrontation"
+}
+
+episode BW7M1
+{
+	picname = "BW_EPI7"
+	name = "Spear of Destiny"
+}
+
+//////////////
+
 map BWTEST "RTBW Test Map"
 {
 	next = "BWTEST"
@@ -481,51 +526,6 @@ map BWTEST "RTBW Test Map"
 	//name = "RTBW Test Map"
 	sky1 = "SODSKY"
 }
-
-episode BW1M1
-{
-	picname = "M_EPI1"
-	name = "Escape from Wolfenstein"
-}
-
-episode BW2M1
-
-{
-	picname = "M_EPI2"
-	name = "Operation: Eisenfaust"
-}
-
-episode BW3M1
-{
-	picname = "M_EPI3"
-	name = "Die, Fuhrer, Die!"
-}
-
-episode BW4M1
-{
-	picname = "M_EPI4"
-	name = "A Dark Secret"
-}
-
-episode BW5M1
-{
-	picname = "M_EPI5"
-	name = "The Trail of the Madman"
-}
-
-episode BW6M1
-{
-	picname = "M_EPI6"
-	name = "Confrontation"
-}
-
-episode BW7M1
-{
-	picname = "M_EPI7"
-	name = "Spear of Destiny"
-}
-
-//////////////
 
 map BW1M1 "Escape from Wolfenstein-Floor 1"
 {
