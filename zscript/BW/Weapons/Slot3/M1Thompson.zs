@@ -25,8 +25,8 @@ Class BW_M1Thompson : BaseBWWeapon
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		A_Startsound("M1Tom/Fire",CHAN_AUTO,CHANF_OVERLAP);
 		A_Startsound("M1Tom/FireAdd",CHAN_AUTO,CHANF_OVERLAP, 0.90);
-		A_Startsound("M1Tom/FireTail",CHAN_AUTO,CHANF_OVERLAP, 0.60);
-		A_Startsound("M1Tom/FireBass",CHAN_AUTO,CHANF_OVERLAP, 0.75);
+		A_Startsound("M1Tom/FireTail",CHAN_AUTO,CHANF_OVERLAP, 0.75);
+		A_Startsound("M1Tom/FireBass",CHAN_AUTO,CHANF_OVERLAP, 1.0);
 		invoker.ammo2.amount--;
 		
 		if(CountInv("AimingToken"))
