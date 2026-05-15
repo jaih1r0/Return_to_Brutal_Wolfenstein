@@ -45,3 +45,172 @@ $volume     Gore/LimbGib2 0.2
 $limit      Gore/LimbGib2 3
 $volume     Gore/LimbGib3 0.2
 $limit      Gore/LimbGib3 3
+
+$RANDOM Bullet/Flesh { Bullet/Flesh1 Bullet/Flesh2 Bullet/Flesh3 Bullet/Flesh4 Bullet/Flesh5 Bullet/Flesh6 Bullet/Flesh7 Bullet/Flesh8 }
+Bullet/Flesh1	"Sounds/effects/BloodImpacts/FleshImpact1.wav"
+Bullet/Flesh2	"Sounds/effects/BloodImpacts/FleshImpact2.wav"
+Bullet/Flesh3	"Sounds/effects/BloodImpacts/FleshImpact3.wav"
+Bullet/Flesh4	"Sounds/effects/BloodImpacts/FleshImpact4.wav"
+Bullet/Flesh5	"Sounds/effects/BloodImpacts/FleshImpact5.wav"
+Bullet/Flesh6	"Sounds/effects/BloodImpacts/FleshImpact6.wav"
+Bullet/Flesh7	"Sounds/effects/BloodImpacts/FleshImpact7.wav"
+Bullet/Flesh8	"Sounds/effects/BloodImpacts/FleshImpact8.wav"
+
+$RANDOM Bullet/Head { Bullet/Head1 Bullet/Head2 Bullet/Head3 Bullet/Head4 Bullet/Head5 }
+Bullet/Head1	"Sounds/effects/BloodImpacts/HeadImpact1.wav"
+Bullet/Head2	"Sounds/effects/BloodImpacts/HeadImpact2.wav"
+Bullet/Head3	"Sounds/effects/BloodImpacts/HeadImpact3.wav"
+Bullet/Head4	"Sounds/effects/BloodImpacts/HeadImpact4.wav"
+Bullet/Head5	"Sounds/effects/BloodImpacts/HeadImpact5.wav"
+
+//===========================================================================
+//
+// Blood Splash
+//
+//===========================================================================
+
+nashgore/bloodsplash1 "sounds/effects/BWGore/BloodSplatter1.ogg"
+nashgore/bloodsplash2 "sounds/effects/BWGore/BloodSplatter2.ogg"
+nashgore/bloodsplash3 "sounds/effects/BWGore/BloodSplatter3.ogg"
+nashgore/bloodsplash4 "sounds/effects/BWGore/BloodSplatter4.ogg"
+nashgore/bloodsplash5 "sounds/effects/BWGore/BloodSplatter5.ogg"
+nashgore/bloodsplash6 "sounds/effects/BWGore/BloodSplatter6.ogg"
+nashgore/bloodsplash7 "sounds/effects/BWGore/BloodSplatter7.ogg"
+nashgore/bloodsplash8 "sounds/effects/BWGore/BloodSplatter8.ogg"
+nashgore/bloodsplash9 "sounds/effects/BWGore/BloodSplatter9.ogg"
+nashgore/bloodsplash10 "sounds/effects/BWGore/BloodSplatter10.ogg"
+
+$random nashgore/bloodsplash
+{
+	nashgore/bloodsplash1
+	nashgore/bloodsplash2
+	nashgore/bloodsplash3
+	nashgore/bloodsplash4
+	nashgore/bloodsplash5
+	nashgore/bloodsplash6
+	nashgore/bloodsplash7
+	nashgore/bloodsplash8
+	nashgore/bloodsplash9
+	nashgore/bloodsplash10
+}
+
+$limit nashgore/bloodsplash 5
+$volume nashgore/bloodsplash 0.3
+
+//===========================================================================
+//
+// Blood Drop
+//
+//===========================================================================
+
+nashgore/blooddrop1 "sounds/effect/BWGore/Drip1.ogg"
+nashgore/blooddrop2 "sounds/effect/BWGore/Drip2.ogg"
+nashgore/blooddrop3 "sounds/effect/BWGore/Drip3.ogg"
+nashgore/blooddrop4 "sounds/effect/BWGore/Drip4.ogg"
+nashgore/blooddrop5 "sounds/effect/BWGore/Drip5.ogg"
+
+$random nashgore/blooddrop
+{
+nashgore/blooddrop1
+nashgore/blooddrop2
+nashgore/blooddrop3
+nashgore/blooddrop4
+nashgore/blooddrop5
+}
+
+$volume nashgore/blooddrop 0.5
+$limit nashgore/blooddrop 5
+
+//===========================================================================
+//
+// Small Gib
+//
+//===========================================================================
+
+nashgore/gibsmall01 "sounds/nashgore/gib small 01.ogg"
+nashgore/gibsmall02 "sounds/nashgore/gib small 02.ogg"
+
+$random nashgore/gibsmall
+{
+	nashgore/gibsmall01
+	nashgore/gibsmall02
+}
+
+$volume nashgore/gibsmall 0.44;
+
+//===========================================================================
+//
+// Big Gib
+//
+//===========================================================================
+
+nashgore/giblarge01 "sounds/nashgore/gib large 01.ogg"
+nashgore/giblarge02 "sounds/nashgore/gib large 02.ogg"
+nashgore/giblarge03 "sounds/nashgore/gib large 03.ogg"
+
+// replace the stock gibbed sound
+$random misc/gibbed
+{
+	nashgore/giblarge01
+	nashgore/giblarge02
+	nashgore/giblarge03
+}
+
+$limit misc/gibbed 3
+
+//===========================================================================
+//
+// Bouncing Gib
+//
+//===========================================================================
+
+nashgore/gibbounce01 "sounds/nashgore/gib bounce 01.ogg"
+nashgore/gibbounce02 "sounds/nashgore/gib bounce 02.ogg"
+nashgore/gibbounce03 "sounds/nashgore/gib bounce 03.ogg"
+
+$random nashgore/gibbounce
+{
+	nashgore/gibbounce01
+	nashgore/gibbounce02
+	nashgore/gibbounce03
+}
+
+$volume nashgore/gibbounce 0.35
+$limit nashgore/gibbounce 4
+
+
+$RANDOM Gore/BoneBounce
+{
+Gore/BoneBounce1
+Gore/BoneBounce2
+}
+Gore/BoneBounce1	"Sounds/effects/BWGore/BoneBounce1.ogg"
+Gore/BoneBounce2	"Sounds/effects/BWGore/BoneBounce2.ogg"
+
+$volume gore/bonebounce 0.5
+$limit gore/bonebounc 3
+
+//===========================================================================
+//
+// Body Drop
+//
+//===========================================================================
+
+$RANDOM nashgore/bodydrop { nashgore/bodydrop1 nashgore/bodydrop2 nashgore/bodydrop3 nashgore/bodydrop4 nashgore/bodydrop5 nashgore/bodydrop6 }// "sounds/nashgore/body drop 01.ogg"
+nashgore/bodydrop1	"Sounds/effects/BWGore/BodyFall1.ogg"
+nashgore/bodydrop2	"Sounds/effects/BWGore/BodyFall2.ogg"
+nashgore/bodydrop3	"Sounds/effects/BWGore/BodyFall3.ogg"
+nashgore/bodydrop4	"Sounds/effects/BWGore/BodyFall4.ogg"
+nashgore/bodydrop5	"Sounds/effects/BWGore/BodyFall5.ogg"
+nashgore/bodydrop6	"Sounds/effects/BWGore/BodyFall6.ogg"
+
+//===========================================================================
+//
+// Bullet Hit Flesh
+//
+//===========================================================================
+
+nashgore/bullethitflesh "sounds/nashgore/bullet hit flesh.ogg"
+$volume nashgore/bullethitflesh 0.23
+
+

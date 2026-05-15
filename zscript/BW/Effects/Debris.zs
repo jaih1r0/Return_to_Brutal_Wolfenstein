@@ -154,7 +154,7 @@ Class BW_BoneDebris : BW_BouncingDebris
 {
     default
     {
-
+		BounceSound "Gore/BoneBounce";
     }
     states
     {
@@ -173,7 +173,7 @@ Class BW_BoneHeadDebris : BW_BouncingDebris
 {
     default
     {
-
+		BounceSound "Gore/BoneBounce";
     }
     states
     {
