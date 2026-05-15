@@ -150,6 +150,8 @@ class BW_Epismenu : BW_ZF_Listmenu
 		//keep track of the first and last element
 		BW_ZF_Element head,tail;
 		
+		vector2 dlistsize = (350,36);
+
 		
 		//
 		//create the droplist
@@ -165,16 +167,16 @@ class BW_Epismenu : BW_ZF_Listmenu
 			list1.items.push(episodes[i].displayname);
 		}
 		
-		vector2 dlistsize = (200,30);
-		let dlist = BW_ZF_DropdownList.create(initpos,dlistsize,list1,fnt:bwfon,textScale:0.6,
+		
+		let dlist = BW_ZF_DropdownListScroll.create(initpos,dlistsize,list1,fnt:bwfon,textScale:0.6,
 		textColor:Font.CR_WHITE,
 		boxBg: box2, listBg:box3,highlightBg: box4,
 		dropTex:"dropsel", defaultSelection: selEpis,cmdHandler:cmd,command:'Epis',
 		bindingFrame:NULL);
 		dlist.pack(mainframe);
-		initpos.x += dlistsize.x + 10;
+		initpos.x += (dlistsize.x) + 1;
 		
-		infoboxPos = (initpos.x + butsize.x + 10, initpos.y);
+		infoboxPos = (SCN.x / 2, initpos.y);//(initpos.x + butsize.x + 10, initpos.y);
 		
 		
 		//start the snake
@@ -182,19 +184,12 @@ class BW_Epismenu : BW_ZF_Listmenu
 		tail = dlist;
 		
 		
-		//the choose skill label
-		BW_ZF_Label SkillLabel = BW_ZF_Label.create((initpos.x,initposer.y)
-		,(200,40),text: "Choose Skill", fnt:bwfon,wrap:true,textScale:1.2,textColor:font.cr_yellow);
-		SkillLabel.pack(mainframe);
-		
-		
-		
+		//
 		//fallback
 		if(ev._skillinfo.size() < 1)
 		{
 			TitleLabel.destroy();
 			dlist.destroy();
-			SkillLabel.destroy();
 			BW_ZF_Label FailLabel = BW_ZF_Label.create((35,20)
 			,(200,40),text: "Something went Wrong", fnt:bwfon,wrap:true,textScale:1.2,textColor:font.cr_yellow);
 			FailLabel.pack(mainframe);
@@ -208,45 +203,32 @@ class BW_Epismenu : BW_ZF_Listmenu
 		}
 				
 		
+		vector2 skilpos = (initposer.x, scn.y / 2);
+		//the choose skill label
+		BW_ZF_Label SkillLabel = BW_ZF_Label.create(skilpos//(initpos.x,initposer.y)
+		,(200,40),text: "Choose Skill", fnt:bwfon,wrap:true,textScale:1.2,textColor:font.cr_yellow);
+		SkillLabel.pack(mainframe);
+
 		//
 		//Here we set the Skill selector Buttons, only one can be active at a time
 		//
-		butsize = (50,70);
+		skilpos.y += 40;
+		butsize = (200,35);
 		vr = new("BW_ZF_RadioController");
 		for(int i = 0; i < ev._skillInfo.size(); i++)
 		{
 			
 			skils.push(BWSkillInfoGrab.from(ev._skillInfo[i].displayname,ev._skillInfo[i].description,ev._skillInfo[i].pic,i));
 			
-			vector2 ipos = initpos + (butsize.x, 0);
+			vector2 ipos = skilpos; //+ (butsize.x, 0);
 			
 			let radb = BW_ZF_RadioButton.create(ipos,butsize,vr,i
 			,inactive:box2,hover:box3,click:box4,disabled:box5
-			,text:"" //ev._skillInfo[i].displayname
+			,text:ev._skillInfo[i].displayname
 			,fnt:bwfon,textScale:0.80,cmdHandler:cmd,command:"Skill");
 			radb.pack(mainframe);
 			
-			//the actual image of the skill
-			string locater = "$BWDIFIC_"..cleartosearch(ev._skillInfo[i].displayname);
-			string imgsearch = stringtable.localize(locater);
-			if(imgsearch == locater)	//not defined
-				imgsearch = "dif3";
-			
-			let texid = texman.checkfortexture(imgsearch);
-			let [wd,hg] = texman.getsize(texid);
-			
-			vector2 scal = ((butsize.x * 0.9) / wd, (butsize.y * 0.9) / hg);
-			
-			let img = BW_ZF_Image.create(
-			ipos + (butsize.x * 0.05,butsize.y * 0.05)		//correctly center it 
-			,butsize
-			, image: imgsearch
-			,alignment:BW_ZF_ELEMENT.AlignType_TopLeft,imageScale: scal);
-			img.setDontBlockMouse(true);
-			img.pack(mainframe);
-			
-			initpos.y += butsize.y + 5;
-			
+			skilpos.y += butsize.y + 2;
 			
 			
 			if(!head)
@@ -276,21 +258,62 @@ class BW_Epismenu : BW_ZF_Listmenu
 			
 		}
 		
+
+
 		selSkill = 2;
 		vr.curval = selSkill;
+
+		//double portdif = skilpos.y - (scn.y / 2);
+
+		vector2 portraitScale = (70,100);//(portdif * 0.75,portdif);
+		let portbg = BW_ZF_BoxImage.create((skilpos.x + butsize.x + 10,(scn.y / 2) + 40)	,portraitScale,box5);
+		portbg.setDontBlockMouse(true);
+		portbg.pack(mainframe);
+
+		//the actual image of the skill
+		string locater = "$BWDIFIC_"..cleartosearch(ev._skillInfo[selSkill].displayname);
+		string imgsearch = stringtable.localize(locater);
+		if(imgsearch == locater)	//not defined
+			imgsearch = "dif3";
+		
+		
+		let texid = texman.checkfortexture(imgsearch);
+		let [wd,hg] = texman.getsize(texid);
+			
+		vector2 scal = ((portraitScale.x * 0.9) / wd, (portraitScale.y * 0.9) / hg);
+		
+		skillIMG = BW_ZF_Image.create(
+		(skilpos.x + butsize.x + 13,(scn.y / 2) + 40)		//correctly center it 
+		,portraitScale
+		, image: imgsearch
+		,alignment:BW_ZF_ELEMENT.AlignType_TopLeft,imageScale: scal);
+		skillIMG.setDontBlockMouse(true);
+		skillIMG.pack(mainframe);
+		
+
+
 		
 		butsize = (200,50);
 		initpos.y += dlistsize.y;
 		initpos.x -= dlistsize.x + 10;
 		
+
+
+
+		vector2 butpos = infoboxPos + (0,infoboxSize.y);
+		butsize.x = (infoboxsize.x / 3);
+
 		//
 		//start game button
 		//
-		let butto = BW_ZF_Button.create(initpos,butsize,"Start Game"
+		let butto = BW_ZF_Button.create(butpos,butsize,"Start Game"
 		,cmd,"Start",inactive:box2,hover: box3,click: box4, disabled: box5
 		,bwfon,0.7);
 		butto.pack(mainframe);
 		
+		tail.setFocusNeighbor(BW_ZF_NavEventType_Right,butto);
+		butto.setFocusNeighbor(BW_ZF_NavEventType_Left,tail);
+
 		butto.setFocusNeighbor(BW_ZF_NavEventType_Up,tail);
 		tail.setFocusNeighbor(BW_ZF_NavEventType_Down,butto);
 		tail = butto;
@@ -298,7 +321,7 @@ class BW_Epismenu : BW_ZF_Listmenu
 		//
 		//back/exitmenu button
 		//
-		let exitbut = BW_ZF_Button.create(initpos + (butsize.x + 5,0),butsize,"Back"
+		let exitbut = BW_ZF_Button.create(butpos + (butsize.x + 5,0),butsize,"Back"
 		,cmd,"GoBack",inactive:box5,hover: box3,click: box4, disabled: box5
 		,bwfon,0.7);
 		exitbut.pack(mainframe);
@@ -323,6 +346,7 @@ class BW_Epismenu : BW_ZF_Listmenu
 		}
 		
 		
+
 		BW_ZF_Label LevelInfLabel = BW_ZF_Label.create((infoboxpos.x,initposer.y)
 		,(200,40),text: "Level info", fnt:bwfon,wrap:true,textScale:1.2,textColor:font.cr_yellow);
 		LevelInfLabel.pack(mainframe);
@@ -344,9 +368,12 @@ class BW_Epismenu : BW_ZF_Listmenu
 	int selEpis;
 	int selSkill;
 	int bwmap;
+	int curSet;
 	BW_ZF_RadioController vr;
-	BW_ZF_DropdownItems list1;
+	BW_ZF_DropdownItems list1, listbw;
 	BW_ZF_Label infopanelLabel;
+	BW_ZF_Button mapsetButton;
+	BW_ZF_Image skillIMG;
 	string difInfo, skilInfo;
 	
 	override void setupFocusIndicator()
@@ -393,8 +420,16 @@ class BW_Epismenu : BW_ZF_Listmenu
 		}
 		
 		if(updateSkill || skilInfo == "")
+		{
 			skilInfo = string.format("\nCurrent skill: \cf%s\c-: \n\n\cg%s \n",skils[selSkill].displayname,skils[selSkill].description);
-		
+			//update the skill portrait too
+			string locater = "$BWDIFIC_"..cleartosearch(skils[selSkill].displayname);
+			string imgsearch = stringtable.localize(locater);
+			if(imgsearch == locater)	//not defined
+				imgsearch = "dif3";
+			if(skillIMG)
+				skillIMG.setImage(imgsearch);
+		}
 		infopanelLabel.settext(string.format("%s%s",difInfo,skilInfo));
 	}
 	
@@ -448,11 +483,11 @@ class BW_EpiSkillHandler : BW_ZF_Handler
 		}
 	}
 	
-	override void dropdownChanged(BW_ZF_DropdownList caller, Name command)
+	override void dropdownScrollChanged(BW_ZF_DropdownListScroll caller, Name command)
 	{
 		if(command == 'Epis')
 		{	
-			destmen.selEpis = caller.getselection();
+			destmen.selEpis = caller.getRealSelection();
 			destmen.mDesc.mSelectedItem = destmen.selEpis;
 			destmen.MenuSound("menu/advance");
 			destmen.updateLevelInfoLabel(true,false);

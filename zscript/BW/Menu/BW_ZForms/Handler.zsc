@@ -44,6 +44,10 @@ class BW_ZF_Handler ui {
 	/// user.
 	virtual void dropdownChanged(BW_ZF_DropdownList caller, Name command) {}
 
+	/// Called when a [dropdown list](ZF_DropdownList)'s item is changed by the
+	/// user.
+	virtual void dropdownScrollChanged(BW_ZF_DropdownListScroll caller, Name command) {}
+
 	/// Called when any element is hovered or unhovered.
 	virtual void elementHoverChanged(BW_ZF_Element caller, Name command, bool unhovered) {}
 }
