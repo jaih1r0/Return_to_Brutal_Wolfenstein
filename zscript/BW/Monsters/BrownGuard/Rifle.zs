@@ -194,14 +194,14 @@ Class BW_BrownGuard_Rifle : BW_MonsterBase
 				}
 			}
 			WBRN E 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			WBRN E random(5,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN E random(10,30) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			WBRN F 2 BRIGHT FireProjBullets;
 			WBRN E 4;
 			WBRN G 4;
 			WBRN G 24 A_StartSound("Kar98/BoltOpen", 8, CHANF_OVERLAP, attenuation: 2);
 			WBRN G 24 A_StartSound("Kar98/BoltClose", 8, CHANF_OVERLAP, attenuation: 2);
 			WBRN E 4;
-			TNT1 A 0 A_Jump(90, "Attack1");
+			TNT1 A 0 A_Jump(90, "Attack1", "Attack2", "Attack3");
 			WBRN E 8;
 			Goto See;
 			
@@ -214,7 +214,39 @@ Class BW_BrownGuard_Rifle : BW_MonsterBase
 				}
 			}
 			WBRN G 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			WBRN JJ random(5,10) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN JJ random(10,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN KK random(10,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN L 2 BRIGHT FireProjBullets;
+			WBRN K 4;
+			WBRN J 4;
+			WBRN J 24 A_StartSound("Kar98/BoltOpen", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN J 24 A_StartSound("Kar98/BoltClose", 8, CHANF_OVERLAP, attenuation: 2);
+			WBRN J 4;
+			TNT1 A 0 A_Jump(90, "Attack2", "Attack3B");
+			WBRN G 8;
+			Goto See;
+		
+		Attack3:
+			TNT1 A 0
+			{
+				if(AmmoInMag <= 0)
+				{
+					A_Jump(256,"Reload");
+				}
+				
+				/*
+					This attack is going to use some slightly custom stuff.
+					Enemy is going to first try and face just a bit more towards
+					the player, to track them. Then do A_CheckSight for if it will
+					FaceTarget more.
+				*/
+			}
+			WBRN G 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			WBRN JJ random(5,10) A_FaceTarget(20, 20, 0, 0, FAF_MIDDLE);
+		Attack3B:
+			WBRN KK random(5,10) A_FaceTarget(20, 20, 0, 0, FAF_MIDDLE);
+			TNT1 A 0 A_CheckSight("Attack3Hold");
+		Attack3Fire:
 			WBRN KK random(5,10) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			WBRN L 2 BRIGHT FireProjBullets;
 			WBRN K 4;
@@ -222,10 +254,24 @@ Class BW_BrownGuard_Rifle : BW_MonsterBase
 			WBRN J 24 A_StartSound("Kar98/BoltOpen", 8, CHANF_OVERLAP, attenuation: 2);
 			WBRN J 24 A_StartSound("Kar98/BoltClose", 8, CHANF_OVERLAP, attenuation: 2);
 			WBRN J 4;
-			TNT1 A 0 A_Jump(90, "Attack2");
+			TNT1 A 0 A_Jump(90, "Attack3Hold");
 			WBRN G 8;
 			Goto See;
-			
+		Attack3Hold:
+			WBRN K random(5,10)
+			{
+				if(CheckSight(target))
+				{
+					A_FaceTarget(20, 20, 0, 0, FAF_MIDDLE);
+				}
+			}
+			TNT1 A 0 A_Jump(25, "StandUp");
+			TNT1 A 0 A_JumpIf(CheckSight(target), "Attack3Fire");
+			Loop;
+		StandUp:
+			WBRN JG 4;
+			Goto See;
+		
 		Grenade:
 			TNT1 A 0 A_JumpIfCloser(500, 1);
 			Goto Attack1;

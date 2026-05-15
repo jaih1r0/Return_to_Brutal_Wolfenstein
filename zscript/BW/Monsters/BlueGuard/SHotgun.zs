@@ -215,7 +215,7 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 				}
 			}
 			NAZI E 4 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
-			NAZI E random(5,20) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
+			NAZI E random(10,30) A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
 			NAZI F 2 BRIGHT FireProjBullets;
 			NAZI E 1;
 			NAZI E 10;

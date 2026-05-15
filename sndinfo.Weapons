@@ -244,6 +244,14 @@ M1911/Fire7	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire7.wav"
 M1911/Fire8	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire8.wav"
 M1911/Fire9	"Sounds/Weapons/SLot2/M1911/Fire/M1911Fire9.wav"
 
+$RANDOM M1911/FireLayer { M1911/FireLayer1 M1911/FireLayer2 M1911/FireLayer3 M1911/FireLayer4 M1911/FireLayer5 M1911/FireLayer6 }
+M1911/FireLayer1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTest1.wav"
+M1911/FireLayer2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTest2.wav"
+M1911/FireLayer3	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTest3.wav"
+M1911/FireLayer4	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTest4.wav"
+M1911/FireLayer5	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTest5.wav"
+M1911/FireLayer6	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireTest6.wav"
+
 $RANDOM M1911/FireAdd { M1911/FireAdd1 M1911/FireAdd2 M1911/FireAdd3 M1911/FireAdd4 M1911/FireAdd5 M1911/FireAdd6 M1911/FireAdd7 M1911/FireAdd8 }
 M1911/FireAdd1	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd1.wav"
 M1911/FireAdd2	"Sounds/Weapons/SLot2/M1911/Fire/M1911FireAdd2.wav"

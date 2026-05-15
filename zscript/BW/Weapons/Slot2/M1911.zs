@@ -33,9 +33,10 @@ class BW_M1911 : BaseBWWeapon
 		A_AlertMonsters();
 		
 		A_StartSound("M1911/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
+		A_StartSound("M1911/FireLayer", CHAN_AUTO, CHANF_OVERLAP, 0.9);
 		A_StartSound("M1911/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.8);
-		A_StartSound("M1911/FireTail", CHAN_AUTO, CHANF_OVERLAP, 0.75, ATTN_NORM, 1.5);
-		A_StartSound("M1911/FireBass", CHAN_AUTO, CHANF_OVERLAP, 0.6);
+		A_StartSound("M1911/FireTail", CHAN_AUTO, CHANF_OVERLAP, 0.5, ATTN_NORM, 0.85);
+		A_StartSound("M1911/FireBass", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
 		if(CountInv("AimingToken"))
