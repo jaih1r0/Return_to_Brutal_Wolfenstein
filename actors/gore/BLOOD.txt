@@ -1,0 +1,815 @@
+
+
+
+/*
+ACTOR TinyBlood
+{
+ game Doom
+ scale 0.2
+ speed 7
+ health 1
+ radius 8
+ height 1
+  +DontSplash
+ Gravity 0.7
+	Decal BrutalBloodSplat
+   +MISSILE
+   +CLIENTSIDEONLY
+   +NOTELEPORT
+   +NOBLOCKMAP
+   +FORCEXYBILLBOARD
+        -EXPLODEONWATER
++DOOMBOUNCE
++DontSplash
+BounceFACTOR 0.01
+    States
+    {
+     Spawn:
+       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        BLUD Z 500
+		Stop
+	Splash:
+        BLOD A 0
+        stop
+     Death:
+        XDT1 EFGHIJKL 2
+        stop
+    }
+}
+
+
+
+ACTOR DetectCeilBloodSimpler
+{
+ game Doom
+ scale 0.4
+ speed 0
+ health 1
+ radius 1
+ height 1
+ Gravity 0.0
+ Renderstyle Translucent
+ Alpha 0.95
+	DamageType Blood
+   +MISSILE
+   +CLIENTSIDEONLY
+   +NOTELEPORT
+   +NOBLOCKMAP
+   +DontSplash
+   +FORCEXYBILLBOARD
+   +NODAMAGETHRUST
+   -DONTSPLASH
+   +NOGRAVITY
+    States
+    {
+     Spawn:
+	 TNT1 A 0
+	 TNT1 A 0 ThrustThingZ(0,35,0,1)
+	 TNT1 A 2
+	 Stop
+	 Death:
+	 TNT1 A 0
+	 TNT1 A 0 A_CustomMissile ("CeilBloodChecker", -15, 0, 90, 2, 90)
+  Stop
+    }
+}
+
+ACTOR BloodHit
+{
+  height 8
+  radius 4
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOCLIP
+  +DontSplash
+  +CLIENTSIDEONLY
+  states
+  {
+  Spawn:
+  TNT1 A 0
+  BLOD BCD 4
+    Stop
+  }
+}
+
+ACTOR Big_Blood : NashGore_Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 AAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail", 15, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180))
+        BLOD BCD 0
+        stop
+ }
+}
+
+
+ACTOR 12BloodTrail : NashGore_Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 A 0 A_CustomMissile ("NashGore_FlyingBloodTrail", 15, 0, random (0, 360), 2, random (0, 180))
+        stop
+ }
+}
+
+ACTOR BrainBlood : Nashgore_Blood
+{
+Decal BrutalBloodSplat
+}
+
+ACTOR Nashgore_FlyingBloodTrail5 : 12BloodTrail
+{
+Decal BrutalBloodSplat
+}
+
+
+ACTOR NashGore_FlyingBlood 
+{
+ game Doom
+ scale 0.9
+ speed 7
+ health 1
+ radius 8
+ height 1
+ Gravity 0.9
+ Renderstyle Translucent
+ Alpha 0.95
+	DamageType Blood
+	Decal BrutalBloodSplat
+-SOLID
+   +MISSILE
+   +CLIENTSIDEONLY
+   +NOTELEPORT
+   +NOBLOCKMAP
+    +RIPPER
+	+DontSplash
+    +BLOODLESSIMPACT 
+   +FORCEXYBILLBOARD
+   +NODAMAGETHRUST
+   +MOVEWITHSECTOR
+   +CORPSE
+   Mass 1
+    States
+    {
+     Spawn:
+	 //BLOD ABCD 2
+	 TNT1 A 0
+	 BLOD BC 2
+	 TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+	 TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
+	 Spawn1:
+		BLOD E 6
+        loop
+	Spawn2:
+		BLOD E 6
+        loop
+	Splash:
+        BLOD A 0
+        stop
+     Death:
+  	    //TNT1 A 0 A_CustomMissile ("SmallBloodSplasher", 0, 0, random (0, 360), 2, random (0, 160))
+				TNT1 A 0 A_PlaySound("blooddrop")
+				TNT1 A 0
+				TNT1 A 0 A_SpawnItem ("BloodHeightDetector")
+				TNT1 A 0 A_SpawnItemEx ("DetectCeilBloodSimpler",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+				TNT1 AAAAA 0 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+				TNT1 A 1
+  Stop
+    }
+}
+
+ACTOR BloodHeightDetector: TinyBlood //Doesnt spawns blood pools if it hits the ceiling or walls
+{
++DontSplash
+ scale 1.0
+ Gravity 1.0
+    States
+    {
+     Spawn:
+       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+	   BLUD C 0 ThrustThingZ (0,25,1,0)
+        BLOD C 3
+        Stop
+	Splash:
+        BLOD A 0
+        stop
+     Death:
+	    TNT1 A 0
+		TNT1 A 0 A_SpawnItem("Nashgore_Bloodspot")
+		TNT1 A 0 A_PlaySound("blooddrop")
+		XDT1 EFGHIJK 3 
+        stop
+    }
+}
+
+ACTOR NashGore_FlyingBloodMuchFaster: NashGore_FlyingBlood
+{
+ speed 18
+}
+
+
+
+// Checks if there is a ceiling above, and isn't hitting a monster.
+ACTOR CeilBloodChecker: Nashgore_FLyingBlood
+{
+    +RIPPER
+    +BLOODLESSIMPACT 
+	+DontSplash
+damagetype Blood
+Radius 0
+Height 0
+Speed 400
+
+ Gravity 0.0
+	Decal BrutalBloodSuper
+    States
+    {
+     Spawn:
+       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 A 4
+        Stop
+	Splash:
+        BLOD A 0
+        stop
+     Death:
+       TNT1 A 1 A_SpawnItem("CeilBloodSpot",0,0,0,1)
+                TNT1 A 5
+        stop
+     Xdeath:
+	    TNT1 A 1
+        Stop
+    }
+}
+
+// The Ceil Blood Spot.
+
+
+
+ACTOR DripingBlood: TinyBlood
+{
+ scale 0.3
+    States
+    {
+     Spawn:
+       TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        BLUD Z 4
+        loop
+	Splash:
+        BLOD A 0
+        stop
+     Death:
+	 TNT1 A 0
+	 TNT1 A 0 A_PlaySound("blooddrop")
+        XDT1 EFGHIJKL 2
+        stop
+    }
+}
+
+
+
+
+
+// Blood trails spawned by FlyingBlood
+ACTOR NashGore_FlyingBloodTrail
+{
+game Doom
+ scale 0.70
+ mass 1
+  renderstyle Translucent
+  alpha 0.7
+Decal BrutalBloodSplat
+ +LOWGRAVITY
+ +NOTELEPORT
+ +NOBLOCKMAP
++NOCLIP
++FORCEXYBILLBOARD
++CLIENTSIDEONLY
++DontSplash
++MISSILE
+-NOGRAVITY
+Speed 2
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  //BTRL ABCD 4
+BLOD ABCDDEEFFF 4
+  stop
+Death:
+TNT1 A 0
+Stop
+
+	Splash:
+        BLOD A 0
+        stop
+
+ }
+}
+
+ACTOR BloodTr: NashGore_FlyingBloodTrail
+{
+Speed 4
+  alpha 0.7
+scale 1.1
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  BTRL ABCD 4
+  stop
+ }
+ }
+
+ACTOR BloodTr2: NashGore_FlyingBloodTrail
+{
+Speed 4
+  alpha 0.7
+scale 1.1
+-NOGRAVITY
++DontSplash
+Gravity 0.6
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  BTRL ABCD 4
+  stop
+  Death:
+  TNT1 A 0
+  Stop
+ }
+ }
+
+ACTOR BloodTr3: NashGore_FlyingBloodTrail
+{
+Speed 6
+  alpha 0.7
+scale 1.1
+-NOGRAVITY
++DontSplash
+Gravity 0.9
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  BTRL ABCD 6
+  stop
+ }
+ }
+
+ACTOR BloodTr95: NashGore_FlyingBloodTrail
+{
+Speed 4
+  alpha 0.7
+scale 1.1
+-NOGRAVITY
++DontSplash
+Gravity 0.7
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  BTRL ABCD 7
+  stop
+  Death:
+  TNT1 A 0
+  Stop
+ }
+ }
+
+
+ACTOR BloodTr255: NashGore_FlyingBloodTrail
+{
+Speed 2
+  alpha 0.5
+scale 1.0
+-NOGRAVITY
++THRUACTORS
++DontSplash
+Gravity 0.3
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  BTRL ABCD 3
+  stop
+  Death:
+  TNT1 A 0
+  Stop
+ }
+ }
+ 
+ACTOR BloodTr255G: NashGore_FlyingBloodTrail
+{
+Speed 3
+  alpha 0.6
+scale 0.7
+-NOGRAVITY
++DontSplash
+Gravity 0.8
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  BTRL ABCD 3
+  stop
+  Death:
+  TNT1 A 0
+  Stop
+ }
+ }
+
+ACTOR NashGore_FlyingBloodFaster: NashGore_FlyingBloodTrail
+{
+Speed 4
+ states
+ {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  //BTRL ABCD 6
+  BLOD ABCDEFFFFFF 3
+  stop
+ }
+}
+
+ACTOR NashGore_FlyingBloodTrail16: NashGore_FlyingBloodTrail
+{
+  renderstyle Translucent
+  alpha 0.4
+}
+
+
+ACTOR Brains1
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+	BounceFACTOR 0.4
+	Scale 0.5
+	+DOOMBOUNCE
+	+MISSILE
+    +NOBLOCKMAP
+    +NOTELEPORT
+	+CLIENTSIDEONLY
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+		XDB5 EFGH 6
+	Loop
+	Death:
+	    XDT5 C 1
+	    XDT5 C -1
+		Stop
+    }
+}
+
+ACTOR Brains2
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFACTOR 0.4
+	+DOOMBOUNCE
+	+MISSILE
+    +NOBLOCKMAP
+    +NOTELEPORT
++DontSplash
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+		BRIB ABCD 4 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:
+	    BRIN B 2500
+        BRIN B -1
+        Stop
+    }
+}
+
+ACTOR Brains3
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+	+MISSILE
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+		BRIB EFGH 4 //A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:
+	    BRIN C 2500
+        BRIN C -1
+        Stop
+    }
+}
+
+ACTOR Brains4
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFACTOR 0.4
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+    +MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+		BRIB IJKL 4 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:
+	    BRIN D 2500
+        BRIN D -1
+        Stop
+    }
+}
+
+ACTOR Brains5
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFACTOR 0.4
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+    +MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+		BRIB IJKL 4 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:
+	    BRIN E 2500
+        BRIN E -1
+        Stop
+    }
+}
+
+
+ACTOR Brains6
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFACTOR 0.4
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+    +MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+		BRIB MNOP 4 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:
+	    BRIN F 2500
+        BRIN F -1
+        Stop
+    }
+}
+
+ACTOR Brains7
+{
+    Radius 2
+    Height 2
+	Speed 6
+	Mass 1
+    Decal BrutalBloodSplat
+    +CLIENTSIDEONLY
+	BounceFACTOR 0.4
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+    +MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+		BRIB QRST 4 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+		Loop
+	Death:
+	    BRIN G 2500
+        BRIN G -1
+        Stop
+    }
+}
+
+ACTOR BonePieces : Blood
+{
+Decal BrutalBloodSplat
+ game Doom
++FORCEXYBILLBOARD
+ states
+ {
+  Spawn:
+    TNT1 AA 0 A_CustomMissile ("LSpart3", 15, 0, random (0, 360), 2, random (0, 160))
+    TNT1 A 0 A_CustomMissile ("LSpart1", 15, 0, random (0, 360), 2, random (0, 160))
+  stop
+ }
+}
+
+ACTOR BloodJuice
+{
+    Radius 1
+    Height 1
+	Alpha 0.5
+	Scale 4.4
+	Gravity 0.01
+	Speed 0.2
+	+FORCEXYBILLBOARD
+	+CLIENTSIDEONLY
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+    States
+    {
+    Spawn:
+        BLOD A 1
+        Goto Death
+	Death:
+	    BLOD AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.01)
+		Stop
+    }
+}
+
+ACTOR FatalityBlood: Nashgore_FlyingBlood
+{
+ Speed 14
+}
+
+ACTOR MuchBlood : Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodTr255", 15, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAA 0 A_CustomMissile("NashGore_FlyingBloodTrail", 0, 0, 180)
+  	    TNT1 AAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
+        BLOD BCD 0
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+
+ACTOR MuchBlood2 : Blood
+{
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodTr255", 15, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAAAAAAA 0 A_CustomMissile ("NashGore_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAA 0 A_CustomMissile("NashGore_FlyingBloodTrail", 0, 0, 180)
+  	    TNT1 AAA 0 A_CustomMissile ("Nashgore_FlyingBlood", 0, 0, random (0, 360), 2, random (0, 160))
+        BLOD BCD 0
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+ACTOR DeadBlood : Blood
+{
+Decal BrutalBloodSplat
+ game Doom
++FORCEXYBILLBOARD
++GHOST
++NOBLOCKMAP
++NOGRAVITY
++NOCLIP
+-DONTSPLASH
+ states
+ {
+  Spawn:
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+  Spawn:
+        TNT1 A 0
+        //TNT1 A 0 A_JumpIf (floorz > 10, "SpawnLeg")
+        TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 0 A_CustomMissile ("Nashgore_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("BloodHit")
+  	    TNT1 A 0 A_CustomMissile ("TinyBloodSplasher", 0, 0, random (0, 360), 2, random (0, 160))
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+ACTOR GoreBloodFly: NashGore_FlyingBlood
+{
+ speed 10
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR MediumInfiniteBlood: NashGore_FlyingBlood
+{
+    States
+    {
+     Death:
+  	    //TNT1 A 0 A_CustomMissile ("SmallBloodSplasher", 0, 0, random (0, 360), 2, random (0, 160))
+				TNT1 A 0 A_PlaySound("blooddrop")
+        TNT1 A 0 A_SpawnItem ("MediumBloodSpot", 1)
+        TNT1 A 0  
+    }
+}
+
+ACTOR BloodDying : NashGore_Blood
+{
+ states
+ {
+  Spawn:
+        //TNT1 AAAAA 0 A_CustomMissile ("BloodTr2", 7, 0, random (0, 360), 2, random (0, 180))
+        //TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BloodTr2", 0, 0, random (0, 180), 2, random (0, 180))
+		TNT1 AAAAAAA 0 A_CustomMissile ("BloodTr255", 0, 0, random (0, 360), 2, random (0, 360))
+	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash")
+        //TNT1 A 0 A_CustomMissile ("CeilBloodLauncher", -1, 0, random (0, 360), 2, random (50, 130))
+		//TNT1 AA 0 A_CustomMissile ("WallRedBlood", 0, 0, random (0, 360), 2, random (0, 160))
+  	    TNT1 A 0 A_CustomMissile ("BloodSplasher", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("BloodHit")
+		TNT1 A 0 A_SpawnItem ("Nashgore_FlyingBlood")
+        BLOD BCD 0
+        stop
+	Splash:
+        BLOD A 0
+        stop
+ }
+}
+
+

@@ -1,0 +1,710 @@
+////Code by SGT_MARK_IV
+/*
+ACTOR XDeathBurnedLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	Scale 0.8
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB E 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB EEEEE 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB E -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathBurnedMLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	Scale 0.8
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        1ARB A 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        1ARB AAAAA 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        1ARB A -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedImpLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB F 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB F -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedSkull
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        BURN B 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        BURN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        BURN B -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB D 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB DDDDD 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB D -1
+        Stop
+    }
+}
+
+ACTOR BurnedIrkenLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        8KEG d 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        8KEG DDDDD 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        8KEG D -1
+        Stop
+    }
+}
+
+ACTOR BurnedIrkenArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        8KEG C 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        8KEG CCCCC 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        8KEG C -1
+        Stop
+    }
+}
+
+ACTOR BurnedImpArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB G 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB GGGGG 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB G -1
+        Stop
+    }
+}
+
+ACTOR BurnedImpLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB F 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB FFFFF 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB F -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathBurnedMArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        1ARB D 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        1ARB DDDDDD 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        1ARB D -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathBurnedImpArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB G 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB G -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedDemonArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB H 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB H -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedDemonLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB I 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB I -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedMeat
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB A 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB AAAAA 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB A -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedDogArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        2ARB A 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        2ARB AAAAA 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        2ARB A -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathBurnedMMeat
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        1ARB A 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        1ARB AAAA 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        1ARB A -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedMeat2
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB B 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB BBBBB 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB B -1
+        Stop
+    }
+}
+
+
+ACTOR XDeathBurnedDogMeat
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        2ARB B 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        2ARB BBBBB 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        2ARB B -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedMMeat2
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        1ARB B 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        1ARB BBBBB 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        1ARB B -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedMeat3
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CARB C 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CARB CCCCC 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB C -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedBlueMeat1
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CACB P 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CACB PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 15 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        BURN D -1
+        Stop
+    }
+}
+
+ACTOR XDeathBurnedBlueMeat2
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        CACB Q 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        CACB QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 15 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        BURN D -1
+        Stop
+    }
+}
+
+
+ACTOR BurnedArchvileArm
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        XIAG R 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        XIAG RRRRR 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        XIAG R -1
+        Stop
+    }
+}
+
+
+ACTOR BurnedArchvileLeg
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        XIAG Q 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        XIAG QQQQQ 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        XIAG Q -1
+        Stop
+    }
+}
+
+ACTOR BurnedArchvileTorso
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        XIAG B 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        XIAG BBBBB 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        XIAG B -1
+        Stop
+    }
+}
+
+ACTOR BurnedBaronTrousers
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        XBO2 D 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        XBO2 DDDDD 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        XBO2 D -1
+        Stop
+    }
+}
+
+ACTOR BurnedBaronTorso
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        XBO2 E 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        XBO2 EEEEE 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        XBO2 E -1
+        Stop
+    }
+}
+
+ACTOR BurnedBaronHEAD
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFACTOR 0.5
+	+DOOMBOUNCE
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    States
+    {
+    Spawn:
+        XBO2 F 10 A_CustomMissile("PlasmaSmoke",0,0,180,2)
+        Loop
+    Death:
+        XBO2 FFFFF 14 A_CustomMissile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        XBO2 F -1
+        Stop
+    }
+}

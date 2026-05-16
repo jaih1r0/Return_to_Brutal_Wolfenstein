@@ -472,8 +472,17 @@ ReplaceActor = "AdolfHitler","UberAdolfHitler"
 ReplaceActor = "GretelGrosse","HardMEINPUZZA"
 }
 
-//clearepisodes
 
+map BWTEST "RTBW Test Map"
+{
+	next = "BWTEST"
+	secretnext = "BWTEST"
+	//name = "RTBW Test Map"
+	sky1 = "SODSKY"
+}
+
+//clearepisodes
+/*
 episode BW1M1
 {
 	picname = "BW_EPI1"
@@ -519,13 +528,7 @@ episode BW7M1
 
 //////////////
 
-map BWTEST "RTBW Test Map"
-{
-	next = "BWTEST"
-	secretnext = "BWTEST"
-	//name = "RTBW Test Map"
-	sky1 = "SODSKY"
-}
+
 
 map BW1M1 "Escape from Wolfenstein-Floor 1"
 {
@@ -1609,3 +1612,4 @@ map WolfDoom "Wolf 'En Doom"
 	music = E1M1
 	par = 70
 }
+*/

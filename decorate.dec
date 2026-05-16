@@ -1,0 +1,110 @@
+actor dummymodelidk 
+{
+	+nointeraction
+	states
+	{ 
+		spawn: 
+			TNT1 A 1
+			BPDL A 0
+			TNT5 A 0
+			GUTS A 0
+			XXX1 A 0
+			stop
+	} 
+}
+
+actor GiantBloodSpot : dummymodelidk {}
+actor PurpleGiantBloodSpot : dummymodelidk {}
+actor BigBloodSpot : dummymodelidk {}
+actor NashGore_BloodSpot : dummymodelidk {}
+actor PurpleBloodspot : dummymodelidk {}
+actor MinuscleBloodSpot : dummymodelidk {}
+actor PurpleMinuscleBloodSpot : dummymodelidk {}
+actor PurpleMinuscleBloodSpot : dummymodelidk {}
+actor NashGore_FlyingBlood : dummymodelidk {}
+actor PurpleFlyingBlood : dummymodelidk {}
+actor PurpleBloodspot : dummymodelidk {}
+actor NashGore_FlyingBlood : dummymodelidk {}
+actor PurpleFlyingBlood : dummymodelidk {}
+actor CeilBloodSpot : dummymodelidk {}
+actor PurpleCeilBloodSpot : dummymodelidk {}
+actor PurpleCeilBloodSpot : dummymodelidk {}
+actor MediumBloodSpot : dummymodelidk {}
+actor PurpleMediumBloodSpot : dummymodelidk {}
+actor PoolofBlood : dummymodelidk {}
+actor BoneswithBlood : dummymodelidk {}
+actor Tracer : dummymodelidk {}
+actor HardTRANSTRACER : dummymodelidk {}
+actor UberSoldatTracer : dummymodelidk {}
+actor UberSoldatTracerUber : dummymodelidk {}
+actor UberSoldatTracerUber2 : dummymodelidk {}
+actor HansTracer : dummymodelidk {}
+actor Mutantstg44 : dummymodelidk {}
+actor UberMutantstg44 : dummymodelidk {}
+actor 2UberMutantstg44 : dummymodelidk {}
+actor OfficerTracer : dummymodelidk {}
+actor UberOfficerTracer : dummymodelidk {}
+actor 2UberOfficerTracer : dummymodelidk {}
+actor STG44Tracer : dummymodelidk {}
+actor TRANSTRACER : dummymodelidk {}
+actor UberSTG44Tracer : dummymodelidk {}
+actor 2UberSTG44Tracer : dummymodelidk {}
+actor RIFLEMANTRACER : dummymodelidk {}
+actor UberRIFLEMANTRACER : dummymodelidk {}
+actor 2UberRIFLEMANTRACER : dummymodelidk {}
+actor MutantTracer : dummymodelidk {}
+actor DAREALUBERMUTANTTracer : dummymodelidk {}
+actor IrkenTracer : dummymodelidk {}
+actor UberIrkenTracer : dummymodelidk {}
+actor UberMutantTracer : dummymodelidk {}
+actor 2UberMutantTracer : dummymodelidk {}
+actor RIFLEMANTRACERHEADSHOT : dummymodelidk {}
+actor UberRIFLEMANTRACERHEADSHOT : dummymodelidk {}
+actor 2UberRIFLEMANTRACERHEADSHOT : dummymodelidk {}
+actor GRETELTRACE : dummymodelidk {}
+actor MinigunTracer : dummymodelidk {}
+actor MonsterMinigunTracer : dummymodelidk {}
+actor MonsterTracer : dummymodelidk {}
+actor ZombieManTracer : dummymodelidk {}
+actor UberNaziTracer : dummymodelidk {}
+actor 2UberNaziTracer : dummymodelidk {}
+actor MarineTracer : dummymodelidk {}
+actor MarineMinigunTracer : dummymodelidk {}
+actor MastermindTracer : dummymodelidk {}
+actor DetectFloorBullet : dummymodelidk {}
+actor DetectCeilBullet : dummymodelidk {}
+actor ShrapnelParticle : dummymodelidk {}
+actor SparkX : dummymodelidk {}
+actor WaterSplashBase2 : dummymodelidk {}
+actor bloodSplashbasebw : dummymodelidk {}
+actor nukageSplashbase : dummymodelidk {}
+actor slimeSplashbase : dummymodelidk {}
+actor GiantBloodSpot : dummymodelidk {}
+actor BigBloodSpot : dummymodelidk {}
+actor BDLargeBloodSpot : dummymodelidk {}
+actor Waterbloodspot : dummymodelidk {}
+actor PurpleWaterBloodSpot : dummymodelidk {}
+actor BD_FlyingBlood : dummymodelidk {}
+actor CeilBloodSpotLarge : dummymodelidk {}
+actor MPurpleCeilBloodSpotLarge : dummymodelidk {}
+actor MediumBloodSpot2 : dummymodelidk {}
+actor MediumBloodSpot : dummymodelidk {}
+actor SplatteredSmall : dummymodelidk {}
+actor SplatteredLarge : dummymodelidk {}
+actor GrowingBloodPool : dummymodelidk {}
+actor Guts : dummymodelidk {}
+actor BlueGiantBloodSpot : dummymodelidk {}
+actor BlueBigBloodSpot : dummymodelidk {}
+actor Blue_BloodSpot : dummymodelidk {}
+actor BlueMinuscleBloodSpot : dummymodelidk {}
+actor BlueWaterbloodspot : dummymodelidk {}
+actor Blue_FlyingBlood : dummymodelidk {}
+actor BlueCeilBloodSpot : dummymodelidk {}
+actor BlueCeilBloodSpotLarge : dummymodelidk {}
+actor BlueMediumBloodSpot2 : dummymodelidk {}
+actor BlueMediumBloodSpot : dummymodelidk {}
+actor SplatteredBlueSmall : dummymodelidk {}
+actor SplatteredBlueLarge : dummymodelidk {}
+actor BlueGrowingBloodPool : dummymodelidk {}
+actor BlueBloodFootPrintLeft : dummymodelidk {}
+actor BlueBloodFootPrintRight : dummymodelidk {}

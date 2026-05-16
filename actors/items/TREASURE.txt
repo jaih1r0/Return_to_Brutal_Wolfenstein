@@ -1,0 +1,235 @@
+
+
+/*
+Actor Helmet: BasicArmorbonus 132
+{
+Radius 20
+Height 8
+Inventory.PickUpSound "Stahlhelm"
+Inventory.PickupMessage "Picked up a stahlhelm."
+Armor.SavePercent 50
+Armor.SaveAmount 25
+Armor.maxSaveAmount 100
+-INVENTORY.ALWAYSPICKUP
+Inventory.Icon "BON2A0"
+States
+{
+Spawn:
+BON2 A -1
+Loop
+}
+}
+
+Actor LittleHelmet: BasicArmorbonus replaces  ArmorBonus
+{
+Radius 20
+Height 8
+Inventory.PickUpSound "Stahlhelm"
+Inventory.PickupMessage "Picked up a stahlhelm."
+Armor.SavePercent 50
+Armor.SaveAmount 5
+Armor.maxSaveAmount 100
+Inventory.Icon "BON2A0"
+-INVENTORY.ALWAYSPICKUP
+States
+{
+Spawn:
+BON2 A -1
+Loop
+}
+}
+
+
+Actor Cross :CustomInventory 200
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "pickups/cross"
+Inventory.PickupMessage "Cross"
+States
+{
+Spawn:
+TREA A 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+
+ACTOR Chalice : ScoreItem 300
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "pickups/cup"
+Inventory.PickupMessage "Chalice"
+States
+{
+Spawn:
+TREA C 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+ACTOR Chalice1 : ScoreItem 3069
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "pickups/cup"
+Inventory.PickupMessage "Chalice"
+States
+{
+Spawn:
+TREA C 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+
+ACTOR Chest : ScoreItem 400
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "pickups/chest"
+Inventory.PickupMessage "Chest"
+States
+{
+Spawn:
+TREA D 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+ACTOR Crown : ScoreItem 500
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++Inventory.Neverrespawn
++INVENTORY.ALWAYSPICKUP
+Inventory.MaxAmount 0
+Inventory.PickupSound "pickups/crown"
+Inventory.PickupMessage "Crown"
+States
+{
+Spawn:
+TREA B 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+//EP 2 TREASURES//
+
+Actor Radio :CustomInventory 600
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "T_RADIO"
+Inventory.PickupMessage "Radio"
+States
+{
+Spawn:
+LATS A 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+
+ACTOR goldenvase : ScoreItem 700
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "t_vase"
+Inventory.PickupMessage "Plutonium"
+States
+{
+Spawn:
+LATS B 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+ACTOR TRBomb : ScoreItem 800
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++INVENTORY.ALWAYSPICKUP
++Inventory.Neverrespawn
+Inventory.MaxAmount 0
+Inventory.PickupSound "T_PANEL"
+Inventory.PickupMessage "ControlPanel"
+States
+{
+Spawn:
+LATS C 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}
+
+ACTOR TrBomb2 : ScoreItem 900
+{
++CountItem
++INVENTORY.AUTOACTIVATE
++Inventory.Neverrespawn
++INVENTORY.ALWAYSPICKUP
+Inventory.MaxAmount 0
+Inventory.PickupSound "T_BOMB"
+Inventory.PickupMessage "Bomb"
+States
+{
+Spawn:
+LATS D 2 bright 
+Loop
+
+Use:
+TNT1 A 0 
+Stop
+}
+}

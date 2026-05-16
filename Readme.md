@@ -6,6 +6,7 @@
 A (WIP) rework of *ZioMcCall's Brutal Wolfenstein*. <br>
 Focused in giving it a more modern look and improve its gameplay
 
+### *Requires brutal wolfenstein 7.2 to run
 
 ## Features
 * Nashgore NEXT

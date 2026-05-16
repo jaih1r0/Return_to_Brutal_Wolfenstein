@@ -42,7 +42,30 @@ Class BWMenuStaticInfo : StaticEventhandler
 			ParseSkillsEpisodes(_skillInfo,episinfo,"MAPINFO",lumpssearch[i]);
 		}
 		
+		//check repeated ones
+		if(_SkillInfo.size() > 0)
+		{
+			array<BWSkillInfo> dup;
+			
+			for(int i = 0; i < _skillInfo.size(); i++)
+			{
+				if(dup.size() < 1)
+					dup.push(_skillInfo[i]);
+				else
+				{
+					bool alreadythere;
+					for(int j = 0; j < dup.size(); j++)
+					{
+						if(_skillInfo[i].displayName == dup[j].displayName)
+							alreadythere = true;
+					}
+					if(!alreadythere)
+						dup.push(_skillInfo[i]);
+				}
+			}
 
+			_skillInfo.move(dup);
+		}
 		//just in case
 		
 		

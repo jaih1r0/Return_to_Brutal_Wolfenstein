@@ -72,3 +72,24 @@ alias FEGELEIN2 "Map Halt01;SKILL 1;closemenu"
 alias FEGELEIN3 "Map Halt01;SKILL 2;closemenu"
 alias FEGELEIN4 "Map Halt01;SKILL 3;closemenu"
 alias FEGELEIN5 "Map Halt01;SKILL 4;closemenu"
+
+
+
+//
+// i really hate this stupid thing
+//
+
+clearplayerclasses
+addplayerclass BWPlayer
+
+weaponsection "Return_to_Brutal_Wolfenstein"
+
+setslot 1 BW_Fists
+setslot 2 BW_Luger BW_M1911
+setslot 3 BW_M1Thompson BW_MP40 BW_STG44
+setslot 4 BW_Kar98K BW_Trenchgun
+setslot 5 BW_Chaingun BW_MG42
+setslot 6 BW_Panzerschreck
+setslot 7 BW_FlameThrower BW_Tesla
+SetSlot 8 BW_SSG BW_Leichenfaust
+SetSlot 9  
