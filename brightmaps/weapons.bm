@@ -1,0 +1,4 @@
+// TrenchGun brightmaps
+//Fire
+Brightmap Sprite BTGFA0 { map "brightmaps/weapons/trenchgun/BMBTGFA0.png" disablefullbright } 
+Brightmap Sprite BTGFB0 { map "brightmaps/weapons/trenchgun/BMBTGFB0.png" disablefullbright } 

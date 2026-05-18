@@ -2,6 +2,7 @@
 #include "models/nashgore/CorpseBlood/_materials.txt"
 #include "models/nashgore/Footprint/_materials.txt"*/
 
+#include "brightmaps/weapons.bm"
 
 pointlight GunMuzzleFlash
 {
