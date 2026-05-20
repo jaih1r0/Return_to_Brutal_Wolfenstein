@@ -111,9 +111,10 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGF C 1;
 		TNT1 A 0 A_ZoomFactor(1.0);
 		BTGF DE 1;
-		BTGF FG 1;
-		BTGF H 1;
+		BTGF F 1;
+		BTGF G 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
+		BTGF H 1 A_ReFire("SlamPump");
 	Pump:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 		BTGH BC 1;
@@ -135,7 +136,15 @@ class BW_Trenchgun : BaseBWWeapon
 	EndPumpNoAmmo:
 		BTGH HGFEDCBA 1;
 		goto ready;
-
+	SlamPump:
+		BTF2 A 1 A_StartSound("Trench/Back", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTF2 BCDE 1;
+		TNT1 A 0 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTF2 EFGH 1;
+		BTGU EEE 1;
+		TNT1 A 0 A_ReFire("Fire");
+		Goto Ready;
+		
 	AltFire:
 		TNT1 A 0 {
 			A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
@@ -222,7 +231,8 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGR ABC 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 		BTGR D 1;
-		TNT1 A 0 A_StartSound("Trench/Shell", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TNT1 A 0 A_StartSound("Trench/Shell", CHAN_AUTO, CHANF_OVERLAP, 0.8);
+		TNT1 A 0 A_StartSound("Trench/ShellAdd", CHAN_AUTO, CHANF_OVERLAP, 0.78);
 		BTGR E 1 BW_AmmointoMagSingle(7,1);
 		BTGR FGH 1 A_WeaponReady(WRF_NOSWITCH);
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);

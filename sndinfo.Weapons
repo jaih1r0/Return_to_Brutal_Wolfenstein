@@ -408,6 +408,12 @@ Trench/Shell3	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell3.wav"
 Trench/Shell4	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell4.wav"
 Trench/Shell5	"Sounds/Weapons/Slot4/Trenchgun/TrenchShell5.wav"
 
+$RANDOM Trench/ShellAdd { Trench/ShellAdd1 Trench/ShellAdd2 Trench/ShellAdd3 }
+Trench/ShellAdd1	"Sounds/Weapons/Slot4/Trenchgun/TrenchShellAdd1.wav"
+Trench/ShellAdd2	"Sounds/Weapons/Slot4/Trenchgun/TrenchShellAdd2.wav"
+Trench/ShellAdd3	"Sounds/Weapons/Slot4/Trenchgun/TrenchShellAdd3.wav"
+
+
 //Kar98K
 
 Kar98/FireBass	"Sounds/Weapons/Slot4/Kar98k/Fire/Kar98Bass.wav"
