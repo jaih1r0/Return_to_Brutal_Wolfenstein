@@ -10,6 +10,8 @@ Extend Class BaseBWWeapon
 		//handles kick and knife inputs
 		HelperHandler:
 			TNT1 A 1 {
+				if(health < 1)
+					return;
 				int btns = player.cmd.buttons;
 				int oldbt = player.oldbuttons;
 				bool isKicking = !!(player.findpsprite(-3));
