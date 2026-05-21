@@ -81,9 +81,11 @@ Version 4.10
 //Bosses
 #include "zscript/BW/Monsters/Bosses/Hans.zs"
 
+//Spawners
 #include "zscript/BW/Monsters/BWSpawners.zs"
 #include "zscript/BW/Monsters/DooMSpawners.zs"
-
+#include "zscript/BW/Weapons/DooMGunSpawners.zs"
+#include "zscript/BW/Items/DooMAmmoSpawners.zs"
 
 //Map props
 #include "zscript/BW/Maps/DecorationsBase.zs"
