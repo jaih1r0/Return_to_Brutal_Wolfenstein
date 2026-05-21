@@ -80,6 +80,12 @@ Extend Class BaseBWWeapon
         return (player.cmd.buttons & button) && !(player.oldbuttons & button);
     }
 
+	action bool isButtonPressed(int firedButton = BT_ATTACK,bool noHold = true)
+	{
+		int bt = player.cmd.buttons, oldbt = player.oldbuttons;
+		return noHold ? ((bt & firedButton) && !(oldbt & firedButton)) : (bt & firedButton);
+	}
+
     //[Pop]This function is so we can replace all of the shitty A_Quake or QuakeEx
 	//whatever the fucks in the mod, ESPECIALLY on the weapon front
 	//no more of these SHAKEYOURASSMINOR and SHAKEYOURASSMAJOR actor spawning garbage
@@ -239,12 +245,12 @@ Extend Class BaseBWWeapon
 		bool pressing,hasammo;
 		if(left)
 		{
-			pressing = pressingButton(BT_ATTACK);
+			pressing = isButtonPressed(BT_ATTACK, invoker.bnoautofire);
 			hasammo = invoker.ammoleft.amount > 0;
 		}
 		else
 		{
-			pressing = BW_DualFiremode == 1 ? pressingButton(BT_ATTACK) : pressingButton(BT_ALTATTACK);
+			pressing = isButtonPressed(getRightfirebutton(),invoker.bnoautofire);
 			hasammo = invoker.ammo2.amount > 0;
 		}
 		BW_SetReloading(false);	//if its on ready state then its not reloading
