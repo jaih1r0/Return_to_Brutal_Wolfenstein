@@ -37,11 +37,12 @@ class BW_Trenchgun : BaseBWWeapon
 		A_StartSound("Trench/Fireadd", CHAN_AUTO, CHANF_OVERLAP, 0.8);
 		A_StartSound("Trench/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1);
 		A_StartSound("Trench/FireBass", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+		
 		A_SpawnItemEx("PlayerMuzzleFlash",30,0,45);
 		
 		if(CountInv("AimingToken"))
 		{
-			BW_FireBullets("BW_12GABullets",1,1,8,25,"Bulletpuff","Bullet",0,0,0);
+			BW_FireBullets("BW_12GABullets",1.5,1.5,8,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(3, 4, -0.40, frandom(+0.35, -0.35));//, 0, 0, 0);
 			A_ZoomFactor(1.2-0.04);
 			//BW_SpawnCasing("BW_ShellCasing",20,3,-5,random(2,5),random(2,5),random(1,3));
@@ -50,7 +51,8 @@ class BW_Trenchgun : BaseBWWeapon
 		}
 		else
 		{
-			BW_FireBullets("BW_12GABullets",1.5,1.5,8,25,"Bulletpuff","Bullet",0,0,0);
+			A_overlay(-7,"MuzzleFlash");
+			BW_FireBullets("BW_12GABullets",2.5,2.5,8,25,"Bulletpuff","Bullet",0,0,0);
 			BW_HandleWeaponFeedback(3, 4, -0.60, frandom(+0.45, -0.45));//, -5, 0, 0);
 			A_ZoomFactor(1-0.04);
 			//BW_SpawnCasing("BW_ShellCasing",24,-1,-6,random(3,6),random(2,5),random(3,6));
@@ -109,29 +111,40 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGF C 1;
 		TNT1 A 0 A_ZoomFactor(1.0);
 		BTGF DE 1;
-		BTGF FG 1;
-		BTGF H 1;
+		BTGF F 1;
+		BTGF G 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
+		BTGF H 1 A_ReFire("SlamPump");
 	Pump:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP ABC 1;
-		BTGP DEF 1;
-		BTGP GHIJ 1;
-		BTGP K 1 A_StartSound("Trench/Back", CHAN_AUTO, CHANF_OVERLAP, 1);
-		TNT1 A 0 BW_SpawnCasing("BW_ShellCasing",24,-1,-10,random(3,6),random(2,5),random(3,6));
-		BTGP LMNOP 1;
-		BTGP Q 1 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP RS 1;
+		BTGH BC 1;
+		BTGH DEF 1;
+		BTGH GHIJK 1;
+		BTGP B 1 A_StartSound("Trench/Back", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TNT1 A 0 BW_SpawnCasing("BW_ShellCasing",20,-5,-16,random(3,6),random(2,5),random(3,6));
+		BTGP CDE 1;
+		BTGP F 1 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTGP GH 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP TU 1;
-		BTGP JIHG 1;
+		BTGP I 1;
+		//BTGH K 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"EndPumpNoAmmo");
-		BTGR FEDCBA 1;
+		BTGH HGFED 1;
+		BTGH LMN 1;
+		TNT1 A 0 A_refire();
 		goto ready;
 	EndPumpNoAmmo:
-		BTGP FEDCBA 1;
+		BTGH HGFEDCBA 1;
 		goto ready;
-
+	SlamPump:
+		BTF2 A 1 A_StartSound("Trench/Back", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTF2 BCDE 1;
+		TNT1 A 0 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTF2 EFGH 1;
+		BTGU EEE 1;
+		TNT1 A 0 A_ReFire("Fire");
+		Goto Ready;
+		
 	AltFire:
 		TNT1 A 0 {
 			A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
@@ -208,83 +221,93 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGT DCBA 1;
 	Reload:
 		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "ReloadADS");
-		TNT1 A 0 BW_CheckReload("Reload2","Ready","ready",7);
+		TNT1 A 0 BW_CheckReload("ReloadEmpty","Ready","ready",7);
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR ABC 1;
-		BTGR DEF 1;
-		BTGR GHI 1;
-		BTGR JK 1;
+		BTGH NML 1;
+		BTGH DEF 1;
+		BTGH GHIJK 1;
 	ReloadLoop:
-		BTGR K 2;
+		BTGR ABC 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR LM 1;
-		TNT1 A 0 A_StartSound("Trench/Shell", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR N 1 BW_AmmointoMagSingle(7,1);
-		BTGR OPQQQ 1 A_WeaponReady(WRF_NOSWITCH);
+		BTGR D 1;
+		TNT1 A 0 A_StartSound("Trench/Shell", CHAN_AUTO, CHANF_OVERLAP, 0.8);
+		TNT1 A 0 A_StartSound("Trench/ShellAdd", CHAN_AUTO, CHANF_OVERLAP, 0.78);
+		BTGR E 1 BW_AmmointoMagSingle(7,1);
+		BTGR FGH 1 A_WeaponReady(WRF_NOSWITCH);
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR RS 1;
+		BTGR IAAAA 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");
 		loop;
 	ReloadEnd:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR JIHG 1;
-		BTGR FEDCBA 1;
+		BTGH HGFEDLMN 1;
 		goto ready;
-	Reload2:
-		TNT1 A 0 A_TakeInventory("AimingToken");
+	
+	ReloadEmpty:
+		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTGH ABC 1;
+		BTGH DEF 1;
+		BTGH GHIJK 1;
+	//reload one
 		BTGR ABC 1;
-		BTGR DEF 1;
-		BTGR GHI 1;
-		BTGR JKKK 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/CartFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR LM 1;
+		BTGR D 1;
 		TNT1 A 0 A_StartSound("Trench/Shell", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR N 1 BW_AmmointoMagSingle(7,1);
-		BTGR OPQQQ 1;
+		BTGR E 1 BW_AmmointoMagSingle(7,1);
+		BTGR FGH 1 A_WeaponReady(WRF_NOSWITCH);
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR RSKKJIH 1;
-		BTGP IJ 1;
-		BTGP K 1 A_StartSound("Trench/Back", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP LMNOP 1;
-		BTGP Q 1 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP RS 1;
+		BTGR IAAAA 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");
+	//pump
+		BTGP AA 1;
+		BTGP B 1 A_StartSound("Trench/Back", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TNT1 A 0 BW_SpawnCasing("BW_ShellCasing",20,-5,-16,random(3,6),random(2,5),random(3,6));
+		BTGP CCDDE 1;
+		BTGP F 1 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);
+		BTGP GH 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP TU 1;
-		BTGR HIJKK 1;
-		TNT1 A 0 A_JumpIf(CountInv("Shell") == 0, "ReloadEnd");
-		Goto ReloadLoop;
+		BTGP I 1;
+		BTGH KKKKKK 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");
+		goto ReloadLoop;
+		
 	
 	KickFlash:
 		TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR ABC 1;
-		BTGR DEF 1;
+		BTGK ABC 1;
+		BTGK DEF 1;
 		TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGP GHIJK 1;
-		BTGP IHG 1;
-		BTGR FEDCBA 1;
+		BTGK GHHHH 1;
+		BTGK HG 1;
+		BTGK FEDCBA 1;
 		goto ready;
 	
 	SlideFlash:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR ABCD 1;
-		BTGR EFGH 1;
+		BTGK ABCD 1;
+		BTGK EFGH 1;
 		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR IJK 1;
-		BTGR KKK 1;
-		BTGR KKK 1;
-		BTGR KKK 1;
-		BTGR KKK 1;
-		BTGR KKK 1;
+		BTGK GHG 1;
+		BTGK HGH 1;
+		BTGK GHG 1;
+		BTGK HGH 1;
+		BTGK GGH 1;
+		BTGK HGG 1;
 	SlideFlashEnd:
 		TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		BTGR FEDCBA 1;
+		BTGK FEDCBA 1;
 		goto ready;
 
  	Spawn:
 		SHTA G -1;
 		Stop;
+	
+	MuzzleFlash:
+		TNT1 A 0 A_overlayflags(overlayid(),PSPF_MIRROR|PSPF_FLIP,random(0,1));
+		BTGM AB 1 bright;
+		stop;
 	
 	}
 }
