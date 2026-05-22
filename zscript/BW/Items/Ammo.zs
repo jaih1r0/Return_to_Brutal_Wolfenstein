@@ -105,8 +105,8 @@ Class BW_USAPistolAmmo : BW_Ammo
         inventory.maxamount 128;
         ammo.backpackamount 8;
         ammo.BackpackMaxAmount 128;
-        tag "9mm Bullet";
-        scale 0.8;
+        tag ".45 ACP Bullet";
+        scale 0.2;
         inventory.althudicon "45AMA0";
     }
     states
