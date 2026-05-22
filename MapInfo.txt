@@ -481,1135 +481,713 @@ map BWTEST "RTBW Test Map"
 	sky1 = "SODSKY"
 }
 
-//clearepisodes
-/*
-episode BW1M1
+
+//old maps mapinfo 
+episode map01
 {
 	picname = "BW_EPI1"
 	name = "Escape from Wolfenstein"
+	key = "e"
 }
 
-episode BW2M1
+episode map11
 
 {
 	picname = "BW_EPI2"
 	name = "Operation: Eisenfaust"
+	key = "o"
 }
 
-episode BW3M1
+episode map21
 {
 	picname = "BW_EPI3"
 	name = "Die, Fuhrer, Die!"
+	key = "d"
 }
 
-episode BW4M1
+episode map31
 {
 	picname = "BW_EPI4"
-	name = "A Dark Secret"
+	name = "A dark segret"
+	key = "f"
 }
 
-episode BW5M1
+episode map41
 {
 	picname = "BW_EPI5"
-	name = "The Trail of the Madman"
+	name = "The trail of the madman"
+	key = "b"
 }
 
-episode BW6M1
+episode map51
 {
 	picname = "BW_EPI6"
 	name = "Confrontation"
+	key = "n"
 }
 
-episode BW7M1
-{
-	picname = "BW_EPI7"
-	name = "Spear of Destiny"
-}
-
-//////////////
-
-
-
-map BW1M1 "Escape from Wolfenstein-Floor 1"
+map MAP01 "Escape from Wolfenstein-Floor 1"
 {
 	titlepatch = "CWILV00"
-	next = "BW1M2"
-	secretnext = "BW1M10"
+	next = "MAP02"
+	secretnext = "MAP10"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = Getthem
-	par = 240
+	music = GetThem
+	par = 90
 }
 
-map BW1M2 "Escape from Wolfenstein-Floor 2"
+map MAP02 "Escape from Wolfenstein-Floor 2"
 {
 	titlepatch = "CWILV01"
-	next = "BW1M3"
-	secretnext = "BW1M3"
+	next = "MAP03"
+	secretnext = "MAP03"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = Searchn
-	par = 540
+	par = 120
 }
 
-map BW1M3 "Escape from Wolfenstein-Floor 3"
+map MAP03 "Escape from Wolfenstein-Floor 3"
 {
 	titlepatch = "CWILV02"
-	next = "BW1M4"
-	secretnext = "BW1M4"
+	next = "MAP04"
+	secretnext = "MAP04"
 	sky1 = "SKY1"
-	Grinding_Polyobj
 	music = POW
-	par = 600
+	par = 120
 }
 
-map BW1M4 "Escape from Wolfenstein-Floor 4"
+map MAP04 "Escape from Wolfenstein-Floor 4"
 {
 	titlepatch = "CWILV03"
-	next = "BW1M5"
-	secretnext = "BW1M5"
+	next = "MAP05"
+	secretnext = "MAP05"
 	sky1 = "SKY1"
-	Grinding_Polyobj
 	music = Suspense
-	par = 420
+	par = 210
 }
 
-map BW1M5 "Escape from Wolfenstein-Floor 5"
+map MAP05 "Escape from Wolfenstein-Floor 5"
 {
 	titlepatch = "CWILV04"
-	next = "BW1M6"
-	secretnext = "BW1M6"
+	next = "MAP06"
+	secretnext = "MAP06"
 	sky1 = "SKY1"
-	Grinding_Polyobj
 	MUSIC = Getthem
-	par = 420
+	par = 180
 }
 
-map BW1M6 "Escape from Wolfenstein-Floor 6"
+map MAP06 "Escape from Wolfenstein-Floor 6"
 {
 	titlepatch = "CWILV05"
-	next = "BW1M7"
-	secretnext = "BW1M7"
-	sky1 = "BWSKY1"
-	Grinding_Polyobj
+	next = "MAP07"
+	secretnext = "MAP07"
+	sky1 = "SKY1"
 	music = Searchn
-	par = 360
+	par = 180
 }
 
-map BW1M7 "Escape from Wolfenstein-Floor 7"
+map MAP07 "Escape from Wolfenstein-Floor 7"
 {
 	titlepatch = "CWILV06"
-	next = "BW1M8"
-	secretnext = "BW1M8"
-	sky1 = "BWSKY1"
-	Grinding_Polyobj
+	next = "MAP08"
+	secretnext = "MAP08"
+	sky1 = "SKY1"
 	music = POW
-	par = 420
-}
-
-map BW1M8 "Escape from Wolfenstein-Floor 8"
-{
-	titlepatch = "CWILV07"
-	next = "BW1M9"
-	secretnext = "BW1M9"
-	sky1 = "SKY1"
-	Grinding_Polyobj
-	music = Suspense
-	par = 360
-}
-
-map BW1M9 "Escape from Wolfenstein-Floor 9"
-{
-	titlepatch = "CWILV08"
-	next = ENDTITLE
-	secretnext = ENDTITLE
-	sky1 = "SKY1"
-	Grinding_Polyobj
-        InterMusic = D_READ_M
-	music = WarMarch
-	par = 300
-}
-
-map BW1M10 "Escape from Wolfenstein-Floor 10"
-{
-	titlepatch = "CWILV09"
-	next = "BW1M2"
-	secretnext = "BW1M2"
-	sky1 = "SKY1"
-	Grinding_Polyobj
-	music = Corner2
-	par = 480
-}
-
-//Episode 2 
-
-map BW2M1 "Operation Eisenfaust-Floor 1"
-{
-	titlepatch = "CWILV10"
-	next = "BW2M2"
-	secretnext = "BW2M10"
-	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = Anthem
 	par = 150
 }
 
-map BW2M2 "Operation Eisenfaust-Floor 2"
+map MAP08 "Escape from Wolfenstein-Floor 8"
+{
+	titlepatch = "CWILV07"
+	next = "MAP09"
+	secretnext = "MAP09"
+	sky1 = "SKY1"
+	music = Suspense
+	par = 150
+}
+
+map MAP09 "Escape from Wolfenstein-Floor 9"
+{
+	titlepatch = "CWILV08"
+	next = endpic, "END1"
+	secretnext = endpic, "END1"
+	sky1 = "SKY1"
+	music = WarMarch
+	par = 70
+}
+
+map MAP10 "Escape from Wolfenstein-Floor 10"
+{
+	titlepatch = "CWILV09"
+	next = "MAP02"
+	secretnext = "MAP02"
+	sky1 = "SKY1"
+	music = Corner
+	par = 0
+}
+
+map MAP11 "Operation Eisenfaust-Floor 1"
+{
+	titlepatch = "CWILV10"
+	next = "MAP12"
+	secretnext = "MAP20"
+	sky1 = "SKY2"
+	music = Nazi_omi
+	par = 90
+}
+
+map MAP12 "Operation Eisenfaust-Floor 2"
 {
 	titlepatch = "CWILV11"
-	next = "BW2M3"
-	secretnext = "BW2M3"
+	next = "MAP13"
+	secretnext = "MAP13"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = Pregnant
-	par = 330
+	par = 210
 }
 
-map BW2M3 "Operation Eisenfaust-Floor 3"
+map MAP13 "Operation Eisenfaust-Floor 3"
 {
 	titlepatch = "CWILV12"
-	next = "BW2M4"
-	secretnext = "BW2M4"
+	next = "MAP14"
+	secretnext = "MAP14"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = GoingAft
-	par = 300 
+	par = 180
 }
 
-map BW2M4 "Operation Eisenfaust-Floor 4"
+map MAP14 "Operation Eisenfaust-Floor 4"
 {
 	titlepatch = "CWILV13"
-	next = "BW2M5"
-	secretnext = "BW2M5"
+	next = "MAP15"
+	secretnext = "MAP15"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = Headache
-	par = 390
+	par = 120
 }
 
-map BW2M5 "Operation Eisenfaust-Floor 5"
+map MAP15 "Operation Eisenfaust-Floor 5"
 {
 	titlepatch = "CWILV14"
-	next = "BW2M6"
-	secretnext = "BW2M6"
+	next = "MAP16"
+	secretnext = "MAP16"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = Anthem
-	par = 420
+	music = Nazi_omi
+	par = 240
 }
 
-map BW2M6 "Operation Eisenfaust-Floor 6"
+map MAP16 "Operation Eisenfaust-Floor 6"
 {
 	titlepatch = "CWILV15"
-	next = "BW2M7"
-	secretnext = "BW2M7"
+	next = "MAP17"
+	secretnext = "MAP17"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = Pregnant
 	par = 360
 }
 
-map BW2M7 "Operation Eisenfaust-Floor 7"
+map MAP17 "Operation Eisenfaust-Floor 7"
 {
 	titlepatch = "CWILV16"
-	next = "BW2M8"
-	secretnext = "BW2M8"
+	next = "MAP18"
+	secretnext = "MAP18"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = GoingAFT
-	par = 180
+	par = 60
 }
 
-map BW2M8 "Operation Eisenfaust-Floor 8"
+map MAP18 "Operation Eisenfaust-Floor 8"
 {
 	titlepatch = "CWILV17"
-	next = 	BW2M9
-	secretnext = BW2M9
+	next = "MAP19"
+	secretnext = "MAP19"
 	sky1 = "SKY2"
-	Grinding_Polyobj
 	music = Headache
-	par = 360
+	par = 180
 }
 
-map BW2M9 "Operation Eisenfaust-Floor 9"
+map MAP19 "Operation Eisenfaust-Floor 9"
 {
 	titlepatch = "CWILV18"
-	next = ENDTITLE
-	secretnext = ENDTITLE
+	next = endpic, "END2"
+	secretnext = endpic, "END2"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-      InterMusic = D_READ_M
-	music = WarMarch
-	par = 180
+        SpecialAction = "DrSchabbs","Teleport_EndGame" 
+	music = Action
+	par = 70
 }
 
-map BW2M10 "Operation Eisenfaust-Floor 10"
+map MAP20 "Operation Eisenfaust-Floor 10"
 {
 	titlepatch = "CWILV19"
-	next = "BW2M2"
-	secretnext = "BW2M2"
-	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = DUNGEONS
-	par = 300
-}
-
-map BW3M1 "Die Führer,DIE!-Floor 1"
-{
-	titlepatch = "CWILV20"
-	next = "BW3M2"
-	secretnext = "BW3M2"
-	sky1 = "SKY1"
-	Grinding_Polyobj
-	music = introcw3
-	par = 160
-}
-
-map BW3M2 "Die Führer,DIE!-Floor 2"
-{
-	titlepatch = "CWILV21"
-	next = "BW3M3"
-	secretnext = "BW3M3"
-	sky1 = "SKY1"
-	Grinding_Polyobj
-	music = nazirap
-	par = 180
-}
-
-map BW3M3 "Die Führer,DIE!-Floor 3"
-{
-	titlepatch = "CWILV22"
-	Next = "BW3M4"
-	secretnext = "BW3M4"
-	sky1 = "SKY1"
-	Grinding_Polyobj
-	music = Twelfth
-	par = 240
-}
-
-map BW3M4 "Die Führer,DIE!-Floor 4"
-{
-	titlepatch = "CWILV23"
-	next = "BW3M5"
-	secretnext = "BW3M5"
-	sky1 = "SKY1"
-	music = Zerohour
-	par = 185
-}
-
-map BW3M5 "Die Führer,DIE!-Floor 5"
-{
-	titlepatch = "CWILV24"
-	next = "BW3M6"
-	secretnext = "BW3M6"
-	sky1 = "SKY1"
-	music = introcw3
-	par = 325
-}
-
-map BW3M6 "Die Führer,DIE!-Floor 6"
-{
-	titlepatch = "CWILV25"
-	next = "BW3M7"
-	secretnext = "MAP27"
-	sky1 = "SKY1"
-	music = nazirap
-	par = 540
-}
-
-map BW3M7 "Die Führer,DIE!-Floor 7"
-{
-	titlepatch = "CWILV26"
-	next = "BW3M8"
-	secretnext = "Pacman"
-	sky1 = "SKY1"
-	music = dungeons
-	par = 330
-}
-
-map BW3M8 "Die Führer,DIE!-Floor 8"
-{
-	titlepatch = "CWILV27"
-	next = "BW3M9"
-	secretnext = "BW3M9"
-	sky1 = "SKY1"
-	music = BODYBLOW
-	par = 450
-}
-
-map BW3M9 "Die Führer,DIE!-Floor 9"
-{
-	titlepatch = "CWILV28"
-	next = ENDTITLE
-	secretnext = ENDTITLE
-	sky1 = "SKY3"
-        InterMusic = D_READ_M
-	music = HTL1
-	par = 420 
-}
-
-map PACMAN "Pacman!"
-{
-	titlepatch = "CWILV29"
-	next = "BW3M8"
-	//secretnext = "MAP62"
-	sky1 = "SKY1"
-	music = PACMAN1
-	par = 300
-}
-
-
-/////////////////////////////////////
-
-
-
-map BW4M1 "A dark Secret-Floor 1"
-{
-	titlepatch = "CWILV30"
-	next = "BW4M2"
-	secretnext = "BW4M2"
-	sky1 = "EP4SKY"
-	music = GETTHE1
-	par = 270
-}
-
-map BW4M2 "A dark Secret-Floor 2"
-{
-	titlepatch = "CWILV31"
-	next = "BW4M3"
-	secretnext = "BW4M3"
-	sky1 = "EP4SKY"
-	music = SEARCHN
-	par = 360
-}
-
-map BW4M3 "A dark Secret-Floor 3"
-{
-	titlepatch = "CWILV32"
-	next = "BW4M4"
-	secretnext = "BW4M10"
-	sky1 = "SKY2"
-	music = POW1
-	par = 300
-}
-
-map BW4M4 "A dark Secret-Floor 4"
-{
-	titlepatch = "CWILV33"
-	next = "BW4M5"
-	secretnext = "BW4M5"
-	sky1 = "SKY2"
-	music = Suspense
-	par = 300
-}
-
-map BW4M5 "A dark Secret-Floor 5"
-{
-	titlepatch = "CWILV34"
-	next = "BW4M6"
-	secretnext = "Zim01"
-	sky1 = "SKY2"
-	music = Corner
-	par = 480
-}
-
-map BW4M6 "A dark Secret-Floor 6"
-{
-	titlepatch = "CWILV35"
-	next = "BW4M7"
-	secretnext = "BW4M7"
-	sky1 = "SKY2"
-	music = SEARCHN
-	par = 330
-}
-
-map BW4M7 "A dark Secret-Floor 7"
-{
-	titlepatch = "CWILV36"
-	next = "BW4M8"
-	secretnext = "BW4M8"
-	sky1 = "SKY2"
-	music = POW1
-	par = 405
-}
-
-map BW4M8 "A dark Secret-Floor 8"
-{
-	titlepatch = "CWILV37"
-	next = "BW4M9"
-	secretnext = "BW4M9"
-	sky1 = "SKY2"
-	music = Headache
-	par = 540
-}
-
-map BW4M9 "A dark Secret-Floor 9"
-{
-	titlepatch = "CWILV38"
-	next = ENDTITLE
-	secretnext = ENDTITLE
-      InterMusic = D_READ_M
-	sky1 = "SKY2"
-	music = WarMarch
-	par = 240
-}
-
-map BW4M10 "A dark Secret-Floor 10"
-{
-	titlepatch = "CWILV39"
-	next = "BW4M4"
-	sky1 = "SKY2"
-	music = Nacht
-	par =  30
-}
-
-map BW5M1 "Trail of Madman-Floor 1"
-{
-	titlepatch = "CWILV40"
-	next = "BW5M2"
-	secretnext = "BW5M2"
-	sky1 = "SKY1"
-	music = GRUNDGE
-	par = 300
-}
-
-map BW5M2 "Trail of Madman-Floor 2"
-{
-	titlepatch = "CWILV41"
-	next = "BW5M3"
-	secretnext = "BW5M10"
-	sky1 = "SKY1"
-	music = ROCKED
-	par = 300
-}
-
-map BW5M3 "Trail of Madman-Floor 3"
-{
-	titlepatch = "CWILV42"
-	next = "BW5M4"
-	secretnext = "BW5M4"
-	sky1 = "SKY1"
-	music = ORIGINAL
-	par = 180
-}
-
-map BW5M4 "Trail of Madman-Floor 4"
-{
-	titlepatch = "CWILV43"
-	next = "BW5M5"
-	secretnext = "BW5M5"
-	sky1 = "SKY1"
-	music = DOOM
-	par = 360
-}
-
-map BW5M5 "Trail of Madman-Floor 5"
-{
-	titlepatch = "CWILV44"
-	next = "BW5M6"
-	secretnext = "Zim02"
-	sky1 = "SKY1"
-	music = GRUNDGE
-	par = 360
-}
-
-map BW5M6 "Trail of Madman-Floor 6"
-{
-	titlepatch = "CWILV45"
-	next = "BW5M7"
-	secretnext = "BW5M7"
-	sky1 = "BWSKY1"
-	music = ROCKED
-	par = 390
-}
-
-map BW5M7 "Trail of Madman-Floor 7"
-{
-	titlepatch = "CWILV46"
-	next = "BW5M8"
-	secretnext = "BW5M8"
-	sky1 = "BWSKY1"
-	music = ORIGINAL
-	par = 390
-}
-
-map BW5M8 "Trail of Madman-Floor 8"
-{
-	titlepatch = "CWILV47"
-	next = "BW5M9"
-	secretnext = "BW5M9"
-	sky1 = "SKY2"
-	music = DOOM
-	par = 330
-}
-
-map BW5M9 "Trail of Madman-Floor 9"
-{
-	titlepatch = "CWILV48"
-         NEXT = ENDTITLE
-	secretnext = ENDTITLE
-      InterMusic = D_READ_M
-	sky1 = "SKY2"
-	music = WarMarch
-	par = 240
-}
-
-map BW5M10 "Trail of Madman-Floor 10"
-{
-	titlepatch = "CWILV49"
-	next = "BW5M3"
+	next = "MAP12"
+	secretnext = "MAP12"
 	sky1 = "SKY2"
 	music = DUNGEON
-	par = 300
+	par = 0
 }
 
-map Zim01 "Die ärgerliche Angelegenheit-ACT 1"
+map MAP21 "Die fhurer,DIE!-Floor 1"
 {
-	titlepatch = "OPIRK1"
-	next = "BW4M6"
-	secretnext = "BW4M6"
-	sky1 = "SKY2"
-	music = EE1
-	par = 390
-}
-
-map Zim02 "Die ärgerliche Angelegenheit-ACT 2"
-{
-	titlepatch = "OPIRK2"
-	next = "BW5M6"
-	secretnext = "BW5M6"
-	sky1 = "SKY2"
-	music = E6M9
-	par = 750
-}
-
-map Zim03 "Die ärgerliche Angelegenheit-ACT 3"
-{
-	titlepatch = "OPIRK3"
-	next = "BW6M9"
-	sky1 = "SKY2"
-	music = INFIL
-	par = 900
-}
-
-map BW6M1 "Confrontation-Floor 1"
-{
-	titlepatch = "CWILV50"
-	next = "BW6M2"
-	secretnext = "BW6M2"
-	sky1 = "SKY2"
+	titlepatch = "CWILV20"
+	next = "MAP22"
+	secretnext = "MAP22"
+	sky1 = "SKY1"
 	music = introcw3
-	par = 660
+	par = 90
 }
 
-map BW6M2 "Confrontation-Floor 2"
+map MAP22 "Die fhurer,DIE!-Floor 2"
 {
-	titlepatch = "CWILV51"
-	next = "BW6M3"
-	secretnext = "BW6M3"
-	sky1 = "SKY2"
-	music = NaziRap2
-	par = 600
+	titlepatch = "CWILV21"
+	next = "MAP23"
+	secretnext = "MAP23"
+	sky1 = "SKY1"
+	music = nazi_rap
+	par = 90
 }
 
-map BW6M3 "Confrontation-Floor 3"
+map MAP23 "Die fhurer,DIE!-Floor 3"
 {
-	titlepatch = "CWILV52"
-	next = "BW6M4"
-	sky1 = "SKY2"
+	titlepatch = "CWILV22"
+	next = "MAP24"
+	secretnext = "MAP24"
+	sky1 = "SKY1"
 	music = Twelfth
-	par = 540
+	par = 150
 }
 
-map BW6M4 "Confrontation-Floor 4"
+map MAP24 "Die fhurer,DIE!-Floor 4"
 {
-	titlepatch = "CWILV53"
-	next = "BW6M5"
-	secretnext = "BW6M5"
-	sky1 = "SKY2"
+	titlepatch = "CWILV23"
+	next = "MAP25"
+	secretnext = "MAP25"
+	sky1 = "SKY1"
+	music = Zerohour
+	par = 150
+}
+
+map MAP25 "Die fhurer,DIE!-Floor 5"
+{
+	titlepatch = "CWILV24"
+	next = "MAP26"
+	secretnext = "MAP26"
+	sky1 = "SKY1"
+	music = introcw3
+	par = 210
+}
+
+map MAP26 "Die fhurer,DIE!-Floor 6"
+{
+	titlepatch = "CWILV25"
+	next = "MAP27"
+	secretnext = "MAP27"
+	sky1 = "SKY1"
+	music = Nazi_Rap
+	par = 150
+}
+
+map MAP27 "Die fhurer,DIE!-Floor 7"
+{
+	titlepatch = "CWILV26"
+	next = "MAP28"
+	secretnext = "MAP30"
+	sky1 = "SKY1"
+	music = Twelfth
+	par = 120
+}
+
+map MAP28 "Die fhurer,DIE!-Floor 8"
+{
+	titlepatch = "CWILV27"
+	next = "MAP29"
+	secretnext = "MAP29"
+	sky1 = "SKY1"
 	music = ZeroHour
-	par = 420
+	par = 360
 }
 
-map BW6M5 "Confrontation-Floor 5"
+map MAP29 "Die fhurer,DIE!-Floor 9"
 {
-	titlepatch = "CWILV54"
-	next = "BW6M6"
-	secretnext = "BW6M10"
+	titlepatch = "CWILV28"
+	next = endpic, "END3"
+	secretnext = endpic, "END3"
+	sky1 = "SKY3"
+        SpecialAction = "AdolfHitler","Teleport_EndGame" 
+	music = Ultimate
+	par = 70
+}
+
+map MAP30 "PAC-MAN"
+{
+	titlepatch = "CWILV29"
+	next = "MAP28"
+	secretnext = "MAP62"
+	sky1 = "SKY1"
+	music = PACMAN
+	par = 0
+}
+
+map MAP31 "A dark Segret-Floor 1"
+{
+	titlepatch = "CWILV30"
+	next = "MAP32"
+	secretnext = "MAP32"
 	sky1 = "SKY2"
-	music = GoingAft
-	par = 420
+	music = GETTHEM
+	par = 90
 }
 
-map BW6M6 "Confrontation-Floor 6"
+map MAP32 "A dark Segret-Floor 2"
 {
-	titlepatch = "CWILV55"
-	next = "BW6M7"
-	secretnext = "BW6M7"
+	titlepatch = "CWILV31"
+	next = "MAP33"
+	secretnext = "MAP33"
 	sky1 = "SKY2"
-	music = Drums
-	par = 480
+	music = SEARCHN
+	par = 120
 }
 
-map BW6M7 "Confrontation-Floor 7"
+map MAP33 "A dark Segret-Floor 3"
 {
-	titlepatch = "CWILV56"
-	next = "BW6M8"
-	secretnext = "BW6M8"
+	titlepatch = "CWILV32"
+	next = "MAP34"
+	secretnext = "MAP40"
 	sky1 = "SKY2"
-	music = NaziRap2
-	par = 900
+	music = POW
+	par = 120
 }
 
-map BW6M8 "Confrontation-Floor 8"
+map MAP34 "A dark Segret-Floor 4"
 {
-	titlepatch = "CWILV57"
-	next = "BW6M9"
-	secretnext = "MAP61"
+	titlepatch = "CWILV33"
+	next = "MAP35"
+	secretnext = "MAP35"
 	sky1 = "SKY2"
-	music =EE1
-	par = 900
+	music = Suspense
+	par = 210
 }
 
-map BW6M9 "Confrontation-Floor 9"
+map MAP35 "A dark Segret-Floor 5"
 {
-	titlepatch = "CWILV58"
-         NEXT = ENDTITLE
-	secretnext = ENDTITLE
-      InterMusic = D_READ_M
+	titlepatch = "CWILV34"
+	next = "MAP36"
+	secretnext = "MAP36"
 	sky1 = "SKY2"
-       // SpecialAction = "FatFace","Teleport_EndGame"  
-	music = E6M9
-	par = 720
-}
-
-map BW6M10 "Confrontation-Floor 10"
-{
-	titlepatch = "CWILV59"
-	next = "BW6M6"
-	secretnext = "BW6M6"
-	sky1 = "SKY2" 
-	music = FUNKYOU
-	par = 600
-}
-
-
-map BW7M1 "Spear of Destiny-Wet Works"
-{
-	titlepatch = "SPEAR01"
-	next = "BW7M2"
-	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = Tiptoe
-        Interpic = Interpi2
-	//ReplaceActor = "LugerSpawner","P38Spawner" Yeah,would have been TOO FUCKING EASY if that worked on the map/episodes definition.FUCK YOU!
+	music = GETTHEM
 	par = 180
 }
 
-map BW7M2 "Spear of Destiny-Curse of the Forbidden name"
+map MAP36 "A dark Segret-Floor 6"
 {
-	titlepatch = "SPEAR02"
-	next = "BW7M3"
+	titlepatch = "CWILV35"
+	next = "MAP37"
+	secretnext = "MAP37"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-        Interpic = Interpi2
-	music = Funkie
-	par = 540
+	music = SEARCHN
+	par = 180
 }
 
-map BW7M3 "Spear of Destiny-Living Quarters"
+map MAP37 "A dark Segret-Floor 7"
 {
-	titlepatch = "SPEAR03"
-	next = "BW7M4"
+	titlepatch = "CWILV36"
+	next = "MAP38"
+	secretnext = "MAP38"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-        Interpic = Interpi2
-	music = DETHNAZI
-	par = 420
+	music = POW
+	par = 150
 }
 
-
-map BW7M4 "Spear of Destiny-The SS gonna get you!"
+map MAP38 "A dark Segret-Floor 8"
 {
-	titlepatch = "SPEAR04"
-	next = "BW7M5"
-        secretnext = "SEC1"
+	titlepatch = "CWILV37"
+	next = "MAP39"
+	secretnext = "MAP39"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-        Interpic = Interpi2
-	music = SSGETYOU
-	par = 600
+	music = Suspense
+	par = 150
 }
 
-map SEC1 "Spear of Destiny-Dead then Red"
+map MAP39 "A dark Segret-Floor 9"
 {
-	titlepatch = "SPEAR20"
-	next = "BW7M5"
+	titlepatch = "CWILV38"
+	next = endpic, "END4"
+	secretnext = endpic, "END4"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-        Interpic = Interpi2
-	music = Nazi_Jaz
-	par = 600
+        SpecialAction = "Giftmacher","Teleport_EndGame" 
+	music = Doom
+	par = 70
 }
 
-map BW7M5 "Spear of Destiny-Metal Man"
+map MAP40 "A dark Segret-Floor 10"
 {
-	titlepatch = "SPEAR05"
-	next = "BW7M6"
+	titlepatch = "CWILV39"
+	next = "MAP35"
+	secretnext = "MAP35"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-        Interpic = Interpi2
-	music = SUSPENS1
-	par = 300
+	music = CORNER
+	par = 0
 }
 
-
-
-map BW7M6 "Spear of Destiny-Halls of Agony"
+map MAP41 "Trail of Madman-Floor 1"
 {
-	titlepatch = "SPEAR06"
-	next = "BW7M7"
+	titlepatch = "CWILV40"
+	next = "MAP42"
+	secretnext = "MAP42"
 	sky1 = "SKY2"
-        Interpic = Interpi2
-	Grinding_Polyobj
-	music = Prey
-	par = 720
+	music = GRUNDGE
+	par = 90
 }
 
-map BW7M7 "Spear of Destiny-Shock and Awe!"
+map MAP42 "Trail of Madman-Floor 2"
 {
-	titlepatch = "SPEAR07"
-	next = "BW7M8"
-        secretnext = "SEC2"
+	titlepatch = "CWILV41"
+	next = "MAP43"
+	secretnext = "MAP43"
 	sky1 = "SKY2"
-        Interpic = Interpi2
-	Grinding_Polyobj
-	music = GoingAFT
-	par = 720
-	
+	music = ROCKED
+	par = 210
 }
 
-map SEC2 "Spear of Destiny-Bill digs it!"
+map MAP43 "Trail of Madman-Floor 3"
 {
-	titlepatch = "SPEAR21"
-	next = "BW7M8"
-        Interpic = Interpi2
+	titlepatch = "CWILV42"
+	next = "MAP44"
+	secretnext = "MAP44"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = Funkie
-	par = 960
+	music = ORIGINAL
+	par = 180
 }
 
-map BW7M8 "Spear of Destiny-Marksman Trouble"
+map MAP44 "Trail of Madman-Floor 4"
 {
-	titlepatch = "SPEAR08"
-	next = "BW7M9"
-        Interpic = Interpi2
+	titlepatch = "CWILV43"
+	next = "MAP45"
+	secretnext = "MAP45"
 	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = NaziRap2
-	PAR = 480
-	
+	music = DOOM
+	par = 120
 }
 
-map BW7M9 "Spear of Destiny-Flooded Secrets"
+map MAP45 "Trail of Madman-Floor 5"
 {
-	titlepatch = "SPEAR09"
-	next = "BW7M10"
+	titlepatch = "CWILV44"
+	next = "MAP46"
+	secretnext = "MAP50"
 	sky1 = "SKY2"
-        Interpic = Interpi2
-	Grinding_Polyobj
-	music = Headache
-	PAR = 540
-	
-}
-
-map BW7M10 "Spear of Destiny-The Barnacle and the Grosse"
-{
-	titlepatch = "SPEAR10"
-	next = "BW7M11"
-	sky1 = "SKY2"
-        Interpic = Interpi2
-	Grinding_Polyobj
-	music = EE2
-	PAR = 540
-	
-}
-
-map BW7M11 "Spear of Destiny-Castle Hassle"
-{
-	titlepatch = "SPEAR11"
-	next = "BW7M12"
-	sky1 = "SODSKY"
-        Interpic = Interpi2
-	Grinding_Polyobj
-	music = Sandy
-	PAR = 960
-	
-}
-
-map BW7M12 "Spear of Destiny-Grand Nuremberg Hotel"
-{
-	titlepatch = "SPEAR12"
-	next = "BW7M13"
-        secretnext = "SEC3"
-        Interpic = Interpi2
-	sky1 = "SODSKY"
-	Grinding_Polyobj
-	music = RAPT2
-	PAR = 600
-	
-}
-
-map SEC3 "Spear of Destiny-Theatre of oddities"
-{
-	titlepatch = "SPEAR22"
-	next = "BW7M13"
-        Interpic = Interpi2
-	sky1 = "SODSKY"
-	Grinding_Polyobj
-	music = STAIRS
-	PAR = 840
-	
-}
-
-map BW7M13 "Spear of Destiny-Window War"
-{
-	titlepatch = "SPEAR13"
-	next = "BW7M14"
-        Interpic = Interpi2
-	sky1 = "SODSKY"
-	Grinding_Polyobj
-	music = CULO
-	PAR = 600
-	
-}
-
-map BW7M14 "Spear of Destiny-Dead in no seconds"
-{
-	titlepatch = "SPEAR14"
-	next = "BW7M15"
-        Interpic = Interpi2
-	sky1 = "SODSKY"
-	Grinding_Polyobj
-	music = FAN
-	PAR = 540
-	
-}
-
-map BW7M15 "Spear of Destiny-The Fast Way"
-{
-	titlepatch = "SPEAR15"
-	next = BW7M16
-        Interpic = Interpi2
-	sky1 = "SODSKY"
-	Grinding_Polyobj
-	music = PACMAN
-	PAR = 720
-	
-}
-
-map BW7M16 "Spear of Destiny-R.N.D."
-{
-	titlepatch = "SPEAR16"
-	next = BW7M17
-        Interpic = Interpi2
-	sky1 = "SODSKY"
-	Grinding_Polyobj
-	music = FUNERAL
-	PAR = 900
-	
-}
-
-map BW7M17 "Spear of Destiny-Last Stand"
-{
-	titlepatch = "SPEAR17"
-	next = BW7M18
-        Interpic = Interpi2
-	sky1 = "SODSK1"
-	Grinding_Polyobj
-	music = EE1
-	PAR = 900
-	
-}
-
-map BW7M18 "Spear of Destiny-Judgement"
-{
-	titlepatch = "SPEAR18"
-	next = BW7M19
-        Interpic = Interpi2
-	sky1 = "SODSK1"
-        NoIntermission
-	Grinding_Polyobj
-	music = Warmarch
-	PAR = 180
-	
-}
-
-map BW7M19 "Spear of Destiny-Harbinger Of DOOM"
-{
-	titlepatch = "SPEAR19"
-	next = BW7MEnd
-        ResetInventory
-        Interpic = Interpi2
-		NOINTERMISSION
-	sky1 = "HellSky"
-	Grinding_Polyobj
-	music = Tense
-	PAR = 1800
-	
-}
-
-map BW7MEnd "Spear of Destiny-Ending"
-{
-	next = Museum
-        Interpic = Interpi2
-	sky1 = "SODSK1"
-        NoIntermission
-	Grinding_Polyobj
-	music = SoDFN1
-	
-}
-
-////REMAKE MAP OF ONE OF THE LEVELS FROM "LEGO WOLFENSTEIN 3D"
-map MAP62 "Das Ubersoldat Dance"
-{
-	//titlepatch = "uberdance"
-	next = "EndTitle"
-	secretnext = "AntoLeve"
-	sky1 = "SKY3"
-	music = CMON
+	music = GRUNDGE
 	par = 240
 }
 
-map NOAH "Noah in trouble!"
+map MAP46 "Trail of Madman-Floor 6"
 {
-	//titlepatch = "uberdance"
-	next = "EndTitle"
-	secretnext = "AntoLeve"
-	sky1 = "SKY3"
-	music = NOAH
-	par = 480
+	titlepatch = "CWILV45"
+	next = "MAP47"
+	secretnext = "MAP47"
+	sky1 = "SKY2"
+	music = ROCKED
+	par = 360
 }
 
-map DM1944 "Dreadful Terror"
+map MAP47 "Trail of Madman-Floor 7"
 {
-	//titlepatch = "uberdance"
-	next = "EndTitle"
-	secretnext = "AntoLeve"
-	sky1 = "SODSKY"
-	music = E6M9
-	par = 300
+	titlepatch = "CWILV46"
+	next = "MAP48"
+	secretnext = "MAP48"
+	sky1 = "SKY2"
+	music = ORIGINAL
+	par = 60
 }
 
-map SLEND "The Dresden Column"
+map MAP48 "Trail of Madman-Floor 8"
 {
-    next = "EndTitle"
-    sky1 = "RSKY2"
-    music = RAPT1
-    par = 3 // epic troll
-    Grinding_Polyobj
-    Interpic = Interpi2
+	titlepatch = "CWILV47"
+	next = "MAP49"
+	secretnext = "MAP49"
+	sky1 = "SKY2"
+	music = DOOM
+	par = 180
 }
 
-map AntoLeve "The Courtyard"
+map MAP49 "Trail of Madman-Floor 9"
 {
-	//titlepatch = "Courtyard"
-	next = "EndTitle"
-	secretnext = "map28"
+	titlepatch = "CWILV48"
+	next = endpic, "END5"
+	secretnext = endpic, "END5"
+	sky1 = "SKY2"
+	music = WarMarch
+	par = 70
+}
+
+map MAP50 "Trail of Madman-Floor 10"
+{
+	titlepatch = "CWILV49"
+	next = "MAP46"
+	secretnext = "MAP46"
+	sky1 = "SKY2"
+	music = DUNGEON
+	par = 0
+}
+
+map MAP51 "Confrontation-Floor 1"
+{
+	titlepatch = "CWILV50"
+	next = "MAP52"
+	secretnext = "MAP52"
+	sky1 = "SKY2"
+	music = introcw3
+	par = 90
+}
+
+map MAP52 "Confrontation-Floor 2"
+{
+	titlepatch = "CWILV51"
+	next = "MAP53"
+	secretnext = "MAP53"
+	sky1 = "SKY2"
+	music = Nazi_rap
+	par = 90
+}
+
+map MAP53 "Confrontation-Floor 3"
+{
+	titlepatch = "CWILV52"
+	next = "MAP54"
+	secretnext = "MAP60"
+	sky1 = "SKY2"
+	music = Twelfth
+	par = 150
+}
+
+map MAP54 "Confrontation-Floor 4"
+{
+	titlepatch = "CWILV53"
+	next = "MAP55"
+	secretnext = "MAP55"
+	sky1 = "SKY2"
+	music = ZeroHour
+	par = 150
+}
+
+map MAP55 "Confrontation-Floor 5"
+{
+	titlepatch = "CWILV54"
+	next = "MAP56"
+	secretnext = "MAP56"
+	sky1 = "SKY2"
+	music = introcw3
+	par = 210
+}
+
+map MAP56 "Confrontation-Floor 6"
+{
+	titlepatch = "CWILV55"
+	next = "MAP57"
+	secretnext = "MAP57"
+	sky1 = "SKY2"
+	music = Nazi_rap
+	par = 150
+}
+
+map MAP57 "Confrontation-Floor 7"
+{
+	titlepatch = "CWILV56"
+	next = "MAP58"
+	secretnext = "MAP58"
+	sky1 = "SKY2"
+	music = Twelfth
+	par = 120
+}
+
+map MAP58 "Confrontation-Floor 8"
+{
+	titlepatch = "CWILV57"
+	next = "MAP59"
+	secretnext = "MAP59"
+	sky1 = "SKY2"
+	music =ZeroHour
+	par = 360
+}
+
+map MAP59 "Confrontation-Floor 9"
+{
+	titlepatch = "CWILV58"
+	next = endpic, "END6"
+	secretnext = endpic, "END6"
+	sky1 = "SKY2"
+        SpecialAction = "FatFace","Teleport_EndGame"  
+	music = Ultimate
+	par = 70
+}
+
+map MAP60 "Confrontation-Floor 10"
+{
+	titlepatch = "CWILV59"
+	next = "MAP54"
+	secretnext = "MAP54"
+	sky1 = "SKY2" 
+	music = FUNKYOU
+	par = 70
+}
+
+map DM01 "Deathmatch Map - Number One"
+{
+	titlepatch = "CWILV59"
+	next = "dm02"
+	secretnext = "dm02"
+	sky1 = "SKY1" 
+	cluster = 4
+	music = Action_2
+	par = 70
+}
+
+map DM02 "Deathmatch Map - Number Two"
+{
+	titlepatch = "CWILV59"
+	next = "dm01"
+	secretnext = "dm01"
+	sky1 = "SKY1" 
+	cluster = 4
+	music = Action3
+	par = 70
+}
+////THIS IS THE MAP WHERE I HAD MY TEST!
+map test "TEST MAP"
+{
+	titlepatch = "CWILV22"
+	next = "MAP30"
+	secretnext = "MAP60"
 	sky1 = "SKY1"
-	music = Pacman
-	par = 600
-}
-
-
-
-
-////The test map has been turned into a museum where players can learn about the lore of the enemies and check out other things. 
-map Museum "Museum"
-{
-	//titlepatch = "testmap"
-	next = "EndTitle"
-	sky1 = "SKY1"
-        ResetHealth
-        ResetInventory
-	InterMusic = D_READ_M
-	music = Victory
+	music = Original
 	par = 150
 }
 //"is one" non significa "è unica" ma "è uno/a"... potevi cambiare con "is unique", ma credo ROCKS sta bene
-map TITLEMAP "RTBW"
+map TITLEMAP "Return to Brutal Wolfenstein"
 {
 	titlepatch = "CWILV23" //che ti serve? //In effett....
 	next = "MAP01" //che ti serve? //Bho
 	secretnext = "MAP01" //che ti serve? //A un cazzo XD
-	sky1 = "SKY1"  //che ti serve?//Adesso mi serve
+	sky1 = "SKY2"  //che ti serve?
 	music = WONDER
 	par = 150  //che ti serve?
-	
-	//Ozy,non cagare il cazzo. 
 }
-
-map E1M1A "Escape from Wolfenstein-Floor 1"
+////REMAKE MAP OF ONE OF THE LEVELS FROM "LEGO WOLFENSTEIN 3D"
+map MAP62 "The Right Hour"
 {
-	titlepatch = "CWILV00"
-	sky1 = "SKY2"
-	Next = "Endtitle"
-    SecretNext = "EndTitle"
-	music = Getthem
-	par = 240
-}
-
-map E1M2 "Escape from Wolfenstein-Floor 2"
-{
-	titlepatch = "CWILV01"
-	Next = "Endtitle"
-    SecretNext = "EndTitle"
-	sky1 = "SKY2"
-	Grinding_Polyobj
-	music = Searchn
-	par = 540
-}
-
-map SOD17Old "Spear Of Destiny-Floor 17"
-{
-	titlepatch = "RAMPA"
-	next = ENDTITLE
-	//secretnext = "MAP62"
-	sky1 = "SKY1"
+	titlepatch = "CWILV29"
+	next = "AntoLeve"
+	secretnext = "AntoLeve"
+	sky1 = "SKY3"
 	music = BODYBLOW
-	par = 330
-}
-
-map E7M18 "Spear of Destiny-Original Death Knight Boss Fight"
-{
-	next = E7M19
-        Interpic = Interpi2
-	sky1 = "SODSK1"
-        NoIntermission
-	Grinding_Polyobj
-	music = ULTIMATE
-	
-}
-
-
-map E7M19 "Spear of Destiny-Original Angel of Death Boss Fight"
-{
-	titlepatch = "SODB"
-	next = ENDTITLE
-        Interpic = Interpi2
-	sky1 = "HellSky"
-	Grinding_Polyobj
-	music = EEVIL
-	
-}
-
-map WolfDoom "Wolf 'En Doom"
-{
-	//titlepatch = "uberdance"
-	next = "EndTitle"
-	sky1 = "SODSKY"
-	music = E1M1
 	par = 70
 }
-*/
+
+map AntoLeve "?-?"
+{
+	titlepatch = "CWILV29"
+	next = "map28"
+	secretnext = "map28"
+	sky1 = "SKY1"
+	music = Action
+	par = 70
+}
