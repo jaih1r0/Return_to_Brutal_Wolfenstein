@@ -403,7 +403,7 @@ Class BW_M1911Bullets : BW_Projectile
 {
 	default
 	{
-		BW_Projectile.projectiledmg 30;
+		BW_Projectile.projectiledmg 35;
 		BW_Projectile.ripAmount 0;
 		damagetype "Pistol";
 	}
@@ -423,7 +423,7 @@ Class BW_M1ThompsonBullets : BW_Projectile
 {
 	default
 	{
-		BW_Projectile.projectiledmg 30;
+		BW_Projectile.projectiledmg 35;
 		BW_Projectile.ripAmount 0;
 		damagetype "SMG";
 	}

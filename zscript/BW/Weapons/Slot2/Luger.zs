@@ -69,7 +69,7 @@ class BW_Luger : BW_DualWeapon
 		if(isLeft)
 		{
 			invoker.AmmoLeft.amount--;
-			BW_FireBullets("BW_LugerBullets",1.0,1.0,-1,25,"Bulletpuff","Bullet",0,0,0);
+			BW_FireBullets("BW_LugerBullets",1.0,1.0,-1,25,"Bulletpuff","Bullet",0,0,-5);
 			BW_HandleWeaponFeedback(2, 3, -0.20, frandom(+0.15, -0.15));//, 0, 0, 0);
 			BW_SpawnCasing("BW_9MMCasing",20,-12,-3,random(2,5),random(2,5),random(3,6));
 			BW_AddBarrelHeat(10,false,true);
@@ -77,7 +77,7 @@ class BW_Luger : BW_DualWeapon
 		else
 		{
 			invoker.ammo2.amount--;
-			BW_FireBullets("BW_LugerBullets",1.0,1.0,-1,25,"Bulletpuff","Bullet",0,0,0);
+			BW_FireBullets("BW_LugerBullets",1.0,1.0,-1,25,"Bulletpuff","Bullet",0,0,5);
 			BW_HandleWeaponFeedback(2, 3, -0.40, frandom(+0.30, -0.30));//, -5, 0, 0);
 			BW_SpawnCasing("BW_9MMCasing",27,12,-7,random(2,5),random(2,5),random(3,6));
 			BW_AddBarrelHeat(10,false,false);
