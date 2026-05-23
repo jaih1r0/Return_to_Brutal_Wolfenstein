@@ -84,7 +84,7 @@ Class BW_PistolAmmo : BW_Ammo
         inventory.amount 8;
         inventory.maxamount 128;
         ammo.backpackamount 8;
-        ammo.BackpackMaxAmount 128;
+        ammo.BackpackMaxAmount 256;
         tag "9mm Bullet";
         scale 0.8;
         inventory.althudicon "CLIPA0";
@@ -102,9 +102,9 @@ Class BW_USAPistolAmmo : BW_Ammo
     default
     {
         inventory.amount 8;
-        inventory.maxamount 128;
+        inventory.maxamount 80;
         ammo.backpackamount 8;
-        ammo.BackpackMaxAmount 128;
+        ammo.BackpackMaxAmount 160;
         tag ".45 ACP Bullet";
         scale 0.2;
         inventory.althudicon "45AMA0";
@@ -113,6 +113,26 @@ Class BW_USAPistolAmmo : BW_Ammo
     {
         spawn:
             45AM A -1;
+            stop;
+    }
+}
+
+Class BW_RUPistolAmmo : BW_Ammo
+{
+    default
+    {
+        inventory.amount 8;
+        inventory.maxamount 142;
+        ammo.backpackamount 8;
+        ammo.BackpackMaxAmount 284;
+        tag "7.62x25 Tokarev Bullet";
+        scale 0.75;
+        inventory.althudicon "PPSZB0";
+    }
+    states
+    {
+        spawn:
+            PPSZ B -1;
             stop;
     }
 }
@@ -144,7 +164,7 @@ Class BW_ShotgunAmmo : BW_Ammo
         inventory.amount 4;
         inventory.maxamount 50;
         ammo.backpackamount 4;
-        ammo.BackpackMaxAmount 50;
+        ammo.BackpackMaxAmount 100;
         tag "12ga Shell";
         scale 0.8;
         inventory.althudicon "SHELA0";
@@ -164,7 +184,7 @@ Class BW_GasCan : BW_Ammo //replaces cell
 		Inventory.Amount 10;
 		Inventory.MaxAmount 60;
 		Ammo.BackpackAmount 10;
-		Ammo.BackpackMaxAmount 60;
+		Ammo.BackpackMaxAmount 120;
 		tag "Gas can";
         inventory.icon "AGASA0";
 		inventory.althudicon "AGASA0";
@@ -185,7 +205,7 @@ Class BW_TeslaCell : BW_Ammo //7692
 		inventory.amount 25;
         inventory.maxamount 200;
         ammo.backpackamount 25;
-        ammo.BackpackMaxAmount 300;
+        ammo.BackpackMaxAmount 400;
         tag "Tesla Cell";
 		inventory.althudicon "TSAMA0";
 	}

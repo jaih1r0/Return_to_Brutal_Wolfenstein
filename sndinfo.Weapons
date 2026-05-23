@@ -316,7 +316,6 @@ MP40/Lower	"Sounds/Weapons/Slot3/MP40/MP40Drop.wav"
 STG/Fire	"Sounds/Weapons/Slot3/STG44/Fire/STGFire.ogg"
 STG/FireAdd	"Sounds/Weapons/Slot3/STG44/Fire/STGAdd.wav"
 
-//[pop] Just a test, wanna see if GZDooM sound stuff is complex enough to feel these
 STG/FireBass	"Sounds/Weapons/Slot3/STG44/Fire/STGBass.wav"
 STG/FireSubWoof	"Sounds/Weapons/Slot3/STG44/Fire/STGSubWoof.wav"
 
@@ -361,6 +360,31 @@ $RANDOM M1Tom/Bolt { M1Tom/MagIn1 M1Tom/MagIn2 M1Tom/MagIn3 }
 M1Tom/MagIn1	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt1.wav"
 M1Tom/MagIn2	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt2.wav"
 M1Tom/MagIn3	"Sounds/Weapons/Slot3/M1Thomp/M1TomBolt3.wav"
+
+//PPSH-41
+
+PPSH/Raise	"Sounds/Weapons/Slot3/PPSH/PPSHRaise.wav"
+PPSH/MagOut	"Sounds/Weapons/Slot3/PPSH/PPSHMagOut.wav"
+PPSH/MagIn	"Sounds/Weapons/Slot3/PPSH/PPSHMagIn.wav"
+PPSH/BoltCharge	"Sounds/Weapons/Slot3/PPSH/PPSHBoltCharge.wav"
+PPSH/BoltRelease	"Sounds/Weapons/Slot3/PPSH/PPSHBoltRelease.wav"
+PPSH/Lower	"Sounds/Weapons/Slot3/PPSH/PPSHLower.wav"
+
+PPSH/Fire	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFire.ogg"
+PPSH/FireBass	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireBass.wav"
+
+$RANDOM PPSH/FireAdd { PPSH/FireAdd1 PPSH/FireAdd2 PPSH/FireAdd3 }
+PPSH/FireAdd1	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireAdd1.wav"
+PPSH/FireAdd2	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireAdd2.wav"
+PPSH/FireAdd3	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireAdd3.wav"
+
+$RANDOM PPSH/FireMech { PPSH/FireMech1 PPSH/FireMech2 PPSH/FireMech3 PPSH/FireMech4 PPSH/FireMech5 PPSH/FireMech6 }
+PPSH/FireMech1	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireMech1.wav"
+PPSH/FireMech2	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireMech2.wav"
+PPSH/FireMech3	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireMech3.wav"
+PPSH/FireMech4	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireMech4.wav"
+PPSH/FireMech5	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireMech5.wav"
+PPSH/FireMech6	"Sounds/Weapons/Slot3/PPSH/Fire/PPSHFireMech6.wav"
 
 //-----SLOT 4-----//
 
