@@ -34,8 +34,18 @@ Dog/Sight1	"Sounds/Enemies/Dogs/DogSight1.ogg"
 Dog/Sight2	"Sounds/Enemies/Dogs/DogSight2.ogg"
 Dog/Sight3	"Sounds/Enemies/Dogs/DogSight3.ogg"
 
+$RANDOM Mutant/Sight { Mutant/Sight1 Mutant/Sight2 Mutant/Sight3 Mutant/Sight4 }
+Mutant/Sight1	"Sounds/Enemies/Mutants/MUTSIG1.ogg"
+Mutant/Sight2	"Sounds/Enemies/Mutants/MUTSIG2.ogg"
+Mutant/Sight3	"Sounds/Enemies/Mutants/MUTSIG3.ogg"
+Mutant/Sight4	"Sounds/Enemies/Mutants/MUTSIG4.ogg"
 
-Mutant/Death        MUTDE
+$RANDOM Mutant/Pain { Mutant/Pain1 Mutant/Pain2 Mutant/Pain3 }
+Mutant/Pain1	"Sounds/Enemies/Mutants/Pain25.ogg"
+Mutant/Pain2	"Sounds/Enemies/Mutants/Pain50.ogg"
+Mutant/Pain3	"Sounds/Enemies/Mutants/Pain75.ogg"
+
+Mutant/Death	"Sounds/Enemies/Mutants/MUTDE.wav"
 
 Hans/Death "Sounds/Enemies/Bosses/Hans/HChrg.wav"
 Hans/Pain "Sounds/Enemies/Bosses/Hans/HNPAIN.wav"

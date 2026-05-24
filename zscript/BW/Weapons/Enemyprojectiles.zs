@@ -79,17 +79,26 @@ Class BW_MutantCleaver : Actor
 	default
 	{
 		Projectile;
-		damage 5;
-		speed 12;
+		speed 6;
+		damagefunction damagebase;
 		renderstyle "Normal";
 		BounceType "Doom";
 		BounceFactor 0.5;
 		WallBounceFactor 0.5;
+		BounceCount 3;
 		+NOGRAVITY;
 		+USEBOUNCESTATE
 		radius 3;
 		height 6;
 		Gravity 1.0;
+	}
+	
+	int damagebase;
+	
+	override void PostBeginPlay()
+	{
+		Super.PostBeginPlay();
+		damagebase = 15;
 	}
 	
 	States
@@ -102,8 +111,9 @@ Class BW_MutantCleaver : Actor
 			{
 				A_ChangeVelocity(0,0,1, CVF_RELATIVE);
 				SpawnPuff("Bulletpuff", pos, angle, 0, 0, PF_HITTHING);
-				A_StartSound("Axe/HitWall");
+				A_StartSound("Axe/HitWall", volume: 0.5);
 				bNoGravity = false;
+				damagebase = damagebase/3;
 			}
 			Goto Spawn;
 		Death:
@@ -113,7 +123,7 @@ Class BW_MutantCleaver : Actor
 				{
 					bNoGravity = false;
 				}
-				A_StartSound("Axe/HitWall");
+				A_StartSound("Axe/HitWall", volume: 0.5);
 				SpawnPuff("Bulletpuff", pos, angle, 0, 0, PF_HITTHING);
 			}
 			CLVR A 70;

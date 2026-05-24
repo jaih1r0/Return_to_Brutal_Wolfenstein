@@ -8,13 +8,13 @@ Class BW_Mutant : BW_MonsterBase //7078
         Radius 20;
         Height 56;
         Mass 500;
-        Speed 2;
-        FastSpeed 4;
+        Speed 3;
+        FastSpeed 6;
         Painchance 120;
         painchance "Kick", 255;
         +NOINFIGHTING;
-        SeeSound "";
-        PainSound "";
+        SeeSound "Mutant/Sight";
+        PainSound "Mutant/Pain";
         DeathSound "Mutant/Death";
         Scale 1;
         bloodcolor "FF00FF"; //magenta
