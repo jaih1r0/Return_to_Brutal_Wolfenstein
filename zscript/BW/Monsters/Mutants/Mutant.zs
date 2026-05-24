@@ -8,8 +8,8 @@ Class BW_Mutant : BW_MonsterBase //7078
         Radius 20;
         Height 56;
         Mass 500;
-        Speed 5;
-        FastSpeed 8;
+        Speed 2;
+        FastSpeed 4;
         Painchance 120;
         painchance "Kick", 255;
         +NOINFIGHTING;
@@ -23,19 +23,25 @@ Class BW_Mutant : BW_MonsterBase //7078
         dropitem "BW_PistolAmmo";
     }
 
-    void MutantFire()
+    void MutantFire(int type)
     {
-       // A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-       BW_FireMonsterBullet("BW_EnemyLugerBullets"); 
-       A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
-    }
-
-    void MutantSuperFire()
-    {
-        //A_SpawnProjectile("BW_MutantSuperBullet", 32, 0, (frandom(5,-5)), CMF_AIMDIRECTION, self.pitch + (frandom(2,-2)));
-        BW_FireMonsterBullet("BW_MutantSuperBullet",1,5,5);
-        A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
-        A_StartSound("Trench/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
+		switch(type)
+		{
+			default:
+			case 0:
+				BW_FireMonsterBullet("BW_EnemyLugerBullets"); 
+				A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
+				break;
+			case 1:
+				BW_FireMonsterBullet("BW_MutantSuperBullet",1,5,5);
+				A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
+				A_StartSound("Trench/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
+				break;
+			case 2:
+				BW_FireMonsterBullet("BW_MutantCleaver",1,5);
+				A_StartSound("Axe/Swing", CHAN_AUTO, CHANF_OVERLAP);
+				break;
+		}
     }
 
     states
@@ -62,25 +68,39 @@ Class BW_Mutant : BW_MonsterBase //7078
                 EnemyLastSighted = Level.MapTime;
             }
         SeeContinue:
-            WMUT AAA 2 AI_SmartChase();
-            WMUT BBB 2 AI_SmartChase();
-            WMUT CCC 2 AI_SmartChase();
-            WMUT DDD 2 AI_SmartChase();
+            WMUT AAAAAA 1 AI_SmartChase();
+            WMUT BBBBBB 1 AI_SmartChase();
+            WMUT CCCCCC 1 AI_SmartChase();
+            WMUT DDDDDD 1 AI_SmartChase();
             loop;
         Missile:
             WMUT G 1 A_CheckLOFRanged("AttackHandler", "Roll");
         AttackHandler:
-            TNT1 A 0 A_jump(64,"SuperFire");
-        Attack1:
+            TNT1 A 0 
+			{
+				AttackDelay = AttackDelay + 20;
+				
+				return A_Jump(256, "Attack1", "Attack2", "Attack3");
+			}
+		Attack1:
+			WMUT GG 3 A_FaceTarget();
+            WMUT H 6 MutantFire(2);
             WMUT GG 3 A_FaceTarget();
-            WMUT H 3 MutantFire();
-            WMUT G 3 A_FaceTarget();
-            WMUT I 3 MutantFire();
-            WMUT G 3;
+            WMUT I 6 MutantFire(2);
+            WMUT G 6;
+			TNT1 A 0 A_Jump(90, "Attack1", "Attack2");
             goto see;
-        SuperFire:
+        Attack2:
+			WMUT GG 3 A_FaceTarget();
+            WMUT H 3 MutantFire(0);
+            WMUT G 3 A_FaceTarget();
+            WMUT I 3 MutantFire(0);
+            WMUT G 3;
+            TNT1 A 0 A_Jump(90, "Attack1", "Attack2");
+			goto see;
+        Attack3:
             WMUT GGGGG 3 A_FaceTarget();
-            WMUT H 3 MutantSuperFire();
+            WMUT H 3 MutantFire(1);
             WMUT G 9 A_FaceTarget();
             TNT1 A 0 A_jumpif(checklof(),"Attack1");
             goto see;

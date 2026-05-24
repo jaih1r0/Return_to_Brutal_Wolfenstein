@@ -21,7 +21,7 @@ class BW_M1911 : BaseBWWeapon
 		Obituary "$OB_MPPISTOL";
 		Inventory.Pickupmessage "[Slot 2] M1911";
 		Tag "Colt M1911A1";
-		Scale 0.35;
+		Scale 0.45;
 		Inventory.PickupSound "Generic/Pickup/Pistol";
 		+WEAPON.NOALERT;
 		+WEAPON.AMMO_OPTIONAL;
