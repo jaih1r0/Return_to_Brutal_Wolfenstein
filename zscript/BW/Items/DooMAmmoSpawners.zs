@@ -19,6 +19,7 @@ Class DooM_ClipSpawner : BW_Spawner replaces Clip
 	{
 		dropItem "BW_PistolAmmo", Skill_All, 2;
 		dropItem "BW_USAPistolAmmo", Skill_All, 2;
+		dropItem "BW_RUPistolAmmo", Skill_All, 2;
 		dropItem "BW_STGAmmo", Skill_All, 1;
 	}
 }
@@ -29,6 +30,7 @@ Class DooM_ClipBoxSpawner : BW_Spawner replaces ClipBox
 	{
 		dropItem "BW_PistolAmmo", Skill_All, 1;
 		dropItem "BW_USAPistolAmmo", Skill_All, 1;
+		dropItem "BW_RUPistolAmmo", Skill_All, 1;
 		dropItem "BW_STGAmmo", Skill_All, 1;
 		dropItem "BW_MGAmmo", Skill_All, 3;
 		dropItem "BW_ThreeNades", Skill_All, 1;

@@ -111,7 +111,7 @@ Class BW_MutantCleaver : Actor
 			{
 				A_ChangeVelocity(0,0,1, CVF_RELATIVE);
 				SpawnPuff("Bulletpuff", pos, angle, 0, 0, PF_HITTHING);
-				A_StartSound("Axe/HitWall", volume: 0.5);
+				A_StartSound("Axe/HitWall", volume: 0.25);
 				bNoGravity = false;
 				damagebase = damagebase/3;
 			}
@@ -123,7 +123,7 @@ Class BW_MutantCleaver : Actor
 				{
 					bNoGravity = false;
 				}
-				A_StartSound("Axe/HitWall", volume: 0.5);
+				A_StartSound("Axe/HitWall", volume: 0.25);
 				SpawnPuff("Bulletpuff", pos, angle, 0, 0, PF_HITTHING);
 			}
 			CLVR A 70;

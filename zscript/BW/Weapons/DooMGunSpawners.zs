@@ -31,6 +31,7 @@ Class DooM_ShotgunSpawner : BW_Spawner replaces Shotgun
 		dropItem "BW_MP40", Skill_All, 1;
 		dropItem "BW_STG44", Skill_All, 1;
 		dropItem "BW_M1Thompson", Skill_All, 1;
+		dropItem "BW_PPS41", Skill_All, 1;
 	}
 }
 
@@ -42,6 +43,7 @@ Class DooM_SuperShotgunSpawner : BW_Spawner replaces SuperShotgun
 		dropItem "BW_MP40", Skill_All, 1;
 		dropItem "BW_STG44", Skill_All, 1;
 		dropItem "BW_M1Thompson", Skill_All, 1;
+		dropItem "BW_PPS41", Skill_All, 1;
 	}
 }
 
@@ -51,7 +53,6 @@ Class DooM_ChaingunSpawner : BW_Spawner replaces Chaingun
 	{
 		dropItem "BW_MP40", Skill_All, 1;
 		dropItem "BW_STG44", Skill_All, 1;
-		dropItem "BW_M1Thompson", Skill_All, 1;
 		dropItem "BW_MG42", Skill_All, 2;
 		dropItem "BW_Chaingun", Skill_All, 2;
 	}
