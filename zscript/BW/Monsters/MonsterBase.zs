@@ -18,7 +18,10 @@ Class BW_MonsterBase : Actor
 	bool hasnuts;
 	property nuts:hasnuts;
 	name LastHit;
-
+	
+	string customFootstep;
+	property CustomStepSound:customFootstep;
+	
 	double YscaleFix;	//this is the real scale.y value monsters should use, since it accounts for the pixel stretch
 	
 	default
@@ -177,7 +180,10 @@ Class BW_MonsterBase : Actor
 		if(health < 1)
 			return;
 		sound snd = BW_StaticHandler.getmaterialstep(texman.getname(floorpic));
-		A_Startsound(snd,CHAN_AUTO,volume:BW_enemyFootstepsVol,attenuation:(1200/700));
+		if(customFootstep)
+			A_Startsound(customFootstep,CHAN_AUTO,volume:BW_enemyFootstepsVol*2,attenuation:(1200/700));
+		else
+			A_Startsound(snd,CHAN_AUTO,volume:BW_enemyFootstepsVol,attenuation:(1200/700));
 		// 
 	}
 	
