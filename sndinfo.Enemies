@@ -83,3 +83,9 @@ $random Hans/Step
     Hans/Step3
     Hans/Step4
 }
+
+$RANDOM FlyingMonster/Drag { FlyingMonster/Drag1 FlyingMonster/Drag2 FlyingMonster/Drag3 FlyingMonster/Drag4 }
+FlyingMonster/Drag1	"Sounds/Enemies/Demons/FlyingDrag1.wav"
+FlyingMonster/Drag2	"Sounds/Enemies/Demons/FlyingDrag2.wav"
+FlyingMonster/Drag3	"Sounds/Enemies/Demons/FlyingDrag3.wav"
+FlyingMonster/Drag4	"Sounds/Enemies/Demons/FlyingDrag4.wav"

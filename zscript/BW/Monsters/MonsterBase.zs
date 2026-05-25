@@ -181,7 +181,7 @@ Class BW_MonsterBase : Actor
 			return;
 		sound snd = BW_StaticHandler.getmaterialstep(texman.getname(floorpic));
 		if(customFootstep)
-			A_Startsound(customFootstep,CHAN_AUTO,volume:BW_enemyFootstepsVol*2,attenuation:(1200/700));
+			A_Startsound(customFootstep,CHAN_AUTO,volume:BW_enemyFootstepsVol,attenuation:(1200/700));
 		else
 			A_Startsound(snd,CHAN_AUTO,volume:BW_enemyFootstepsVol,attenuation:(1200/700));
 		// 
