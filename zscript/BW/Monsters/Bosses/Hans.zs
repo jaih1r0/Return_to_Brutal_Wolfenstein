@@ -275,6 +275,8 @@ Class BW_HansGrosse : BW_Boss
 		A_Startsound("STG/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1);
         A_spawnprojectile("BW_EnemyLugerBullets",32,16,random[rndang](-15,15),CMF_AIMDIRECTION,random[rndpt](-15,15));
         A_spawnprojectile("BW_EnemyLugerBullets",32,-16,random[rndang](-15,15),CMF_AIMDIRECTION,random[rndpt](-15,15));
+        BW_MiscEffect.SpawnFireFlashFx(self,30,15,38);
+        BW_MiscEffect.SpawnFireFlashFx(self,30,-15,38);
     }
 
     void FireDualChaingun()
@@ -283,6 +285,8 @@ Class BW_HansGrosse : BW_Boss
 		A_Startsound("STG/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1);
         A_spawnprojectile("BW_EnemyLugerBullets",32,16,random[rndang](-2,2),CMF_AIMDIRECTION,random[rndpt](-1,1));
         A_spawnprojectile("BW_EnemyLugerBullets",32,-16,random[rndang](-2,2),CMF_AIMDIRECTION,random[rndpt](-1,1));
+        BW_MiscEffect.SpawnFireFlashFx(self,30,15,38);
+        BW_MiscEffect.SpawnFireFlashFx(self,30,-15,38);
         //A_SpawnItem ("Mausercasespawn", 0, 30,0)
     }
 
@@ -292,6 +296,8 @@ Class BW_HansGrosse : BW_Boss
 		A_Startsound("STG/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1);
         A_spawnprojectile("BW_EnemyLugerBullets",32,16,random[rndang](-2,2) - angleSep,CMF_AIMDIRECTION,random[rndpt](-1,1));
         A_spawnprojectile("BW_EnemyLugerBullets",32,-16,random[rndang](-2,2) + angleSep,CMF_AIMDIRECTION,random[rndpt](-1,1));
+        BW_MiscEffect.SpawnFireFlashFx(self,30,15,38);
+        BW_MiscEffect.SpawnFireFlashFx(self,30,-15,38);
     }
 
     void firegrenades(int maxdispersion = 12)

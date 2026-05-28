@@ -89,7 +89,7 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		}*/
 		int dam = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 		player.damagecount = Clamp(player.damagecount, 0, 5);	//reduced red flash
-		self.bloodtics += dam;
+		self.bloodtics += clamp(dam,0,105); //we dont want to add 9999999 tics to this
 		return dam;
 	}
 

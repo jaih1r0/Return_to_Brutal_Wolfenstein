@@ -525,3 +525,74 @@ Class BW_GroundFireFx : BWFxBase
 		Level.SpawnParticle(FLARPUF);
 	}
 }
+
+
+
+Class BW_MiscEffect abstract
+{
+	static void SpawnFireFlashFx(Actor self = null,double fwofs = 0, double sdofs = 0, double zofs = 0, string tex = "DBFLA0") // LEYSO0
+	{
+		if(!self)
+			return;
+		vector3 ofs = 	(cos(self.angle) * fwofs, 		sin(self.angle) * fwofs,		0) + 
+						(cos(self.angle - 90) * sdofs, 	sin(self.angle - 90) * sdofs,	0) + 
+						(0,								0,								zofs);
+		FSpawnParticleParams 	mFlash;
+		mFlash.Texture = 		TexMan.CheckForTexture(tex);
+		mFlash.Color1 = 		0xFFFFFF;
+		mFlash.Style = 			STYLE_Add;
+		mFlash.Flags = 			SPF_ROLL|SPF_FULLBRIGHT;
+		mFlash.Vel = 			(0,0,0);
+		mFlash.accel = 			(0,0,0);
+		mFlash.Startroll = 		randompick(0,90,180,270,360);
+		mFlash.RollVel = 		0;
+		mFlash.StartAlpha = 	1.0;
+		mFlash.FadeStep = 		0.1;
+		mFlash.Size = 			random(80,100);
+		mFlash.SizeStep = 		-10;
+		mFlash.Lifetime = 		random(3,5); 
+		mFlash.Pos = 			self.pos + ofs;
+		Level.SpawnParticle(mFlash);
+	}
+
+	static void SpawnFlameImpactFx(vector3 where,int lifetime = 8,double size = 150, double sizesub = -20 ,string tex = "DBFLA0")
+	{
+		FSpawnParticleParams 	mFlameFx;
+		mFlameFx.Texture = 		TexMan.CheckForTexture(tex);
+		mFlameFx.Color1 = 		0xFFFFFF;
+		mFlameFx.Style = 		STYLE_Add;
+		mFlameFx.Flags = 		SPF_ROLL|SPF_FULLBRIGHT;
+		mFlameFx.Vel = 			(0,0,0);
+		mFlameFx.accel = 		(0,0,0);
+		mFlameFx.Startroll = 	randompick(0,90,180,270,360);
+		mFlameFx.RollVel = 		0;
+		mFlameFx.StartAlpha = 	1.0;
+		mFlameFx.FadeStep = 	0.1;
+		mFlameFx.Size = 		size;
+		mFlameFx.SizeStep = 	sizesub;
+		mFlameFx.Lifetime = 	lifetime;
+		mFlameFx.Pos = 			where;
+		Level.SpawnParticle(mFlameFx);
+	}
+
+
+	static void SpawnExplotionImpactFx(vector3 where, string tex = "DBFLA0")
+	{
+		FSpawnParticleParams 	mExploFx;
+		mExploFx.Texture = 		TexMan.CheckForTexture(tex);
+		mExploFx.Color1 = 		0xFFFFFF;
+		mExploFx.Style = 		STYLE_Add;
+		mExploFx.Flags = 		SPF_ROLL|SPF_FULLBRIGHT;
+		mExploFx.Vel = 			(0,0,0);
+		mExploFx.accel = 		(0,0,0);
+		mExploFx.Startroll = 	randompick(0,90,180,270,360);
+		mExploFx.RollVel = 		0;
+		mExploFx.StartAlpha = 	1.0;
+		mExploFx.FadeStep = 	0.08;
+		mExploFx.Size = 		random(30,40);
+		mExploFx.SizeStep = 	random(30,50);
+		mExploFx.Lifetime = 	random(8,12); 
+		mExploFx.Pos = 			where;
+		Level.SpawnParticle(mExploFx);
+	}
+}

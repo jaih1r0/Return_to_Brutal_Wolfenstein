@@ -412,6 +412,7 @@ Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
                 BW_SpawnSmokeFx(35,20,40);
                 BW_SpawnSmokeFx(50,20,40);
             }
+            TNT1 A 0 A_QuakeEx(1,1,1,35,0,250,"",QF_SCALEDOWN|QF_SCALEUP);
             TNT1 A 0 A_NoBlocking();
             COLM B -1;
             stop;
@@ -421,7 +422,7 @@ Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
         if((flags & DMG_EXPLOSION) || mod == 'Explosive' || mod == 'Extreme' || mod == 'LF')
             damage *= 10;
         else
-            damage = 0;
+            damage = damage > 1000 ? damage : 1;    //let it be mdk'ed
         return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
     }
 }
@@ -850,9 +851,10 @@ Class BW_GrenadeBarrel : BW_WoodenBarrel //7025
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
-            TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
+            TNT1 A 0 A_QuakeEx(1,1,1,16,0,400,"",QF_SCALEDOWN);
             TNT1 A 0 A_Startsound("Barrel/Explosion");
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
+            TNT1 A 0 {BW_MiscEffect.SpawnExplotionImpactFx(pos + (0,0,10));}
             TNT1 A 0 A_spawnitem("BW_BarrelExplosionFx");
             TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
             WBDT A -1;
@@ -1021,10 +1023,11 @@ Class BW_ExplosiveBarrel : BW_ShootableDecoration replaces explosiveBarrel
         Death:
             GEBL AB 1;
             BEXP CD 2;
-            TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
+            TNT1 A 0 A_QuakeEx(1,1,1,16,0,400,"",QF_SCALEDOWN);
             TNT1 A 0 A_Startsound("Barrel/Explosion");
             TNT1 A 0 A_NoBlocking();
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
+            TNT1 A 0 {BW_MiscEffect.SpawnExplotionImpactFx(pos + (0,0,10));}
             TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
             TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
             MP1C A -1;
@@ -1183,8 +1186,9 @@ Class BW_Stove : BW_ShootableDecoration replaces DeadStick
         Death:
             DAMN AB 2;
             TNT1 A 0 A_Scream();
+            TNT1 A 0 {BW_MiscEffect.SpawnExplotionImpactFx(pos + (0,0,10));}
             TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
-            TNT1 A 0 A_QuakeEx(1,1,1,12,0,300,"");
+            TNT1 A 0 A_QuakeEx(1,1,1,16,0,400,"",QF_SCALEDOWN);
             TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
             BEXP Z 1;
             stop;

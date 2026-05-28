@@ -30,10 +30,12 @@ Class BW_Mutant : BW_MonsterBase //7078
 			default:
 			case 0:
 				BW_FireMonsterBullet("BW_EnemyLugerBullets"); 
+                BW_MiscEffect.SpawnFireFlashFx(self,30,0,30);
 				A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
 				break;
 			case 1:
 				BW_FireMonsterBullet("BW_MutantSuperBullet",1,5,5);
+                BW_MiscEffect.SpawnFireFlashFx(self,30,0,30,"DBFLB0");
 				A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
 				A_StartSound("Trench/Fire", CHAN_AUTO, CHANF_OVERLAP, 1);
 				break;
