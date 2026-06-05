@@ -376,7 +376,19 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 			goto death;
 		Death.Rifle:
 			TNT1 A 0 A_jumpif(HitHead(),"Death_HeadShot");
+			TNT1 A 0 A_jumpif(HitChest() || HitBack(),"Death_Hole");
 			goto death;
+		Death_Hole:
+			TNT1 A 0
+			{
+				A_XScream();
+				A_NoBlocking();
+				A_Startsound("Gore/LimbGib");
+			}
+			3SUB AAAAAAAA 3 A_SpawnItem("Blood",0,24);
+			3SUB BC 3;
+			3SUB C -1;
+			stop;
 
 		Death_RightArm:
 			TNT1 A 0
@@ -453,6 +465,39 @@ Class BW_BrownGuard_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] replace
 			ZMAD ACCCD 3;
 			ZMAD E -1;
 			stop;
+		
+
+		Death.Shotgun:
+			TNT1 A 0 A_jump(156,"XDeath");
+			//maybe he wasnt the strongest...
+			TNT1 A 0 {
+				A_Scream();
+				A_NoBlocking();
+				actor up = spawn("BW_BrownGuardUpper",pos + (0,0,height * 0.5));
+				if(up)
+				{
+					up.angle = random(0,360);
+					up.velfromangle(random(2,6),up.angle);
+					up.vel.z += random(4,8);
+				}
+			}
+			POSX ABC 1;
+			POSX C -1;
+			stop;
+		
+		Death.MachineGun:
+			TNT1 A 0 A_jump(64,"Death");
+		Death_MachineGun_normal:
+			TNT1 A 0
+			{
+				A_Scream();
+				A_NoBlocking();
+				NashGoreGibs.SpawnGibs(self);
+			}
+			FUCG ABCD 3;
+			FUCG D -1;
+			stop;
+			
 		
 	}
 }

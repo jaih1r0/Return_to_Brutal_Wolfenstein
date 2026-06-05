@@ -212,3 +212,61 @@ Class BW_WOHead : BW_BGHead
 			goto SpawnLoop;
 	}
 }
+
+
+Class BW_BrownGuardUpper : BWGib
+{
+	states
+	{
+		Spawn:
+		SpawnLoop:
+			POSX F -1;
+			stop;
+		Bounce.Floor:
+			"####" "#" 0
+			{
+				bouncefactor *= 0.73;
+
+				// boing boing
+				if (WaterLevel == 0 && boingin)
+					Scale.X = 2.224;
+
+				// spawn one large blood splash upon bounce impact
+				Actor bloodSplash;
+				bool result;
+				[result, bloodSplash] = A_SpawnItemEx("NashGoreBloodFloorSplash", flags: NashGoreBloodBase.BLOOD_FLAGS);
+				if (bloodSplash)
+					bloodSplash.Scale = (bloodSplash.Scale.X * 2.0, bloodSplash.Scale.Y * 2.0);
+			}
+			Goto SpawnLoop;
+		Death:
+			"####" F 0
+			{
+				A_SetRoll(0,SPF_INTERPOLATE);
+				
+				// clip gib into terrain
+				let t = GetFloorTerrain();
+
+				// clip by 2 map units; ignore the terrain's FootClip value
+				if (t && t.FootClip > 0)
+					FloorClip = 2.0;
+				
+				class<Actor> cls;
+				if (nashgore_bloodtype == 0)		cls = "NashGoreBloodSpot";
+				else if (nashgore_bloodtype == 1)	cls = "NashGoreBloodSpotClassic";
+				A_SpawnItemEx(cls, flags: (NashGoreBloodBase.BLOOD_FLAGS | SXF_TRANSFERPOINTERS) & ~SXF_NOCHECKPOSITION, 150);
+				BW_GibHitBox.BW_CreateGibHitBox(self,true);
+				NashGoreGameplayStatics.FixZFighting(self);
+			}
+			"####" FFFFFFFFF 1
+			{
+				A_SpawnItemEx("NashGoreBloodFloorSplashSpawner",
+					0, 0, 0,
+					frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(1.0, 4.0),
+					frandom(0, 360), NashGoreDefaultBlood.BLOOD_FLAGS, 175);
+			}
+			"####" F -1;
+			Stop;
+		
+	}
+}
