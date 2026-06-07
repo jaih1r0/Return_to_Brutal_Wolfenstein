@@ -36,6 +36,7 @@ Class BW_BlackGuard_STG44 : BW_MonsterBase
 			A_Light(2);
 			//A_SpawnProjectile("BW_MP40Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
 			BW_FireMonsterBullet("BW_EnemySTG44Bullets");
+			BW_MiscEffect.SpawnFireFlashFx(self,30,2,38);
 			A_Startsound("STG/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.65);
 			A_Startsound("STG/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1);
 			AmmoInMag--;

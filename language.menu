@@ -1,6 +1,6 @@
 [default]
 
-BW_Number_of_Splashes = "29";	//this is not meant to be translated, is used to indicate the max number of splashtexts, everytime the menu opens it chooses a random one between 0 and this number
+BW_Number_of_Splashes = "30";	//this is not meant to be translated, is used to indicate the max number of splashtexts, everytime the menu opens it chooses a random one between 0 and this number
 
 //the actual splashtexts 
 BWSplash1 = "Also Try Terraria!";
@@ -32,6 +32,7 @@ BWSplash26 = "This is my meeeessage tooo my maaaster";
 BWSplash27 = "up up down down left right left right B A";
 BWSplash28 = "\chF\cgi\chr\cge\chb\cgl\chu\cge";
 BWSplash29 = "Sunken Sea Overhaul Tomorrow";
+BWSplash30 = "Kar En Tuk when?";
 
 
 

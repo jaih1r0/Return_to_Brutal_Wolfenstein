@@ -119,6 +119,7 @@ Version 4.10
 
 #include "zscript/BW/Gore/BWGibs.zs"
 #include "zscript/BW/Gore/BWHitBox.zs"
+#include "zscript/BW/Gore/BWMultiStageDeaths.zs"
 
 // global constants
 const STAT_NashGore_Gore = Thinker.STAT_USER + 1;

@@ -37,6 +37,7 @@ Class BW_BlueGuard_M1Thompson : BW_MonsterBase
 			A_Light(2);
 			//A_SpawnProjectile("BW_MP40Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
 			BW_FireMonsterBullet("BW_EnemyM1ThompsonBullets");
+			BW_MiscEffect.SpawnFireFlashFx(self,30,0,35);
 			A_StartSound("M1Tom/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}

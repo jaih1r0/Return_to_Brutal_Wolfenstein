@@ -251,6 +251,7 @@ Class BW_FlameProjectile : Actor
 		Death:
 			//TNT1 A 0 {A_Stop(); bnogravity = true;}
 			TNT1 A 0 {
+				BW_MiscEffect.SpawnFlameImpactFx(pos,size:random(110,160));
 				actor fl = spawn("BW_GroundFire",pos);
 				if(!fl)
 					return;
@@ -313,6 +314,7 @@ Class BW_FlameProjectile : Actor
 			if(victim.resolvestate("Burning"))
 				victim.setstatelabel("Burning");
 			*/
+			BW_MiscEffect.SpawnFlameImpactFx(pos,size:random(110,120));
 			victim.A_GiveInventory("BW_BurningHandler",1);
 		}
 		return damage;
@@ -520,6 +522,8 @@ Class BW_GroundFire : Actor
 	override void tick()
 	{
 		super.tick();
+		if(isfrozen())
+			return;
 		lifetime--;
 		if(lifetime < 20)
 		{

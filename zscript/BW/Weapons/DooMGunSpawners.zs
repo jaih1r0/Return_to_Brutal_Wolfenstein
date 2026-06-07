@@ -82,3 +82,11 @@ Class DooM_BFGSpawner : BW_Spawner replaces BFG9000
 		dropItem "BW_Leichenfaust", Skill_All, 1;
 	}
 }
+
+Class DooM_ChainsawSpawner : BW_Spawner replaces Chainsaw
+{
+	default
+	{
+		dropItem "BW_AxeAmmo", Skill_All, 1;
+	}
+}
