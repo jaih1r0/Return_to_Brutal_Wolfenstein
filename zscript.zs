@@ -90,6 +90,12 @@ Version 4.10
 
 //Map props
 #include "zscript/BW/Maps/DecorationsBase.zs"
+#include "zscript/BW/Maps/Furniture.zs"
+#include "zscript/BW/Maps/Barrels.zs"
+#include "zscript/BW/Maps/Dead.zs"
+#include "zscript/BW/Maps/Lamps.zs"
+#include "zscript/BW/Maps/Misc.zs"
+#include "zscript/BW/Maps/Nature.zs"
 
 //Items
 #include "zscript/BW/Items/Treasures.zs"

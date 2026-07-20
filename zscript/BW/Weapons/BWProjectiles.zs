@@ -710,7 +710,7 @@ Class BW_Rocket : Actor
 		vector3 impctDir = t.hitdir;
 		if(impactType == TRACE_HitWall)
 		{
-			string typ = "Impact_Stone";
+			string typ = "Scorch";
 			switch(tp)
 			{
 				case 'Carpet':	typ = "Scorch";	break;
