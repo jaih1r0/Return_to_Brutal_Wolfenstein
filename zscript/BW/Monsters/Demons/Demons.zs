@@ -156,6 +156,7 @@ Class BW_Caco : BW_MonsterBase //1386
 		BW_MonsterBase.feetheight 18;
 		BW_MonsterBase.HeadShotMult 2.0;
 		BW_MonsterBase.HasHeadshot true;
+		BW_MonsterBase.CustomStepSound "FlyingMonster/Drag";
 	}
 	States
 	{
@@ -216,6 +217,7 @@ Class BW_LostSoul : BW_MonsterBase//1384
 		BW_MonsterBase.feetheight 18;
 		BW_MonsterBase.HeadShotMult 2.0;
 		BW_MonsterBase.HasHeadshot false;
+		BW_MonsterBase.CustomStepSound "FlyingMonster/Drag";
 	}
 	States
 	{

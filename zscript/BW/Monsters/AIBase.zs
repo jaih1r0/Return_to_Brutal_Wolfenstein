@@ -189,6 +189,17 @@ extend class BW_MonsterBase
 			AttackDelay = 0;
 		}
 		
+		//[Pop] This way enemies can have custom footstep timing logic
+		FootstepLogic();
+
+		if(BW_Debug == 1)
+		{
+			testhitzones();
+		}
+	}
+	
+	virtual void FootstepLogic()
+	{
 		//if(vel.xy.length() > 1)	//monster do not get vel when walking
 		//	PlayFootsteps();
 		//this would be more accurate if done in the states, but its easier to do it from here
@@ -197,13 +208,8 @@ extend class BW_MonsterBase
 			PlayFootsteps();
 			footstepWait = 9;
 		}
-
-		if(BW_Debug == 1)
-		{
-			testhitzones();
-		}
 	}
-
+	
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();

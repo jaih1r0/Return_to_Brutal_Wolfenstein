@@ -1,6 +1,6 @@
 [default]
 
-BW_Number_of_Splashes = "30";	//this is not meant to be translated, is used to indicate the max number of splashtexts, everytime the menu opens it chooses a random one between 0 and this number
+BW_Number_of_Splashes = "31";	//this is not meant to be translated, is used to indicate the max number of splashtexts, everytime the menu opens it chooses a random one between 0 and this number
 
 //the actual splashtexts 
 BWSplash1 = "Also Try Terraria!";
@@ -24,15 +24,17 @@ BWSplash18 = "LitDoom tomorrow";
 BWSplash19 = "Also try BW2: now its personal!";
 BWSplash20 = "HESOYAM";
 BWSplash21 = "Thank you, Chainsaw Man";
-BWSplash22 = "This Destructor is really Hideous...";
+BWSplash22 = "Im Striding through Death here!";
 BWSplash23 = "Tonight in Channel 5: Tremors!";
 BWSplash24 = "Also try Final Doomer!";
 BWSplash25 = "Project Brutality";
 BWSplash26 = "This is my meeeessage tooo my maaaster";
-BWSplash27 = "up up down down left right left right B A";
+BWSplash27 = "up up down down left right left right B A start select";
 BWSplash28 = "\chF\cgi\chr\cge\chb\cgl\chu\cge";
 BWSplash29 = "Sunken Sea Overhaul Tomorrow";
 BWSplash30 = "Kar En Tuk when?";
+BWSplash31 = "Barhoodal Woufandstain!1! lol so funny right?"
+BWSplash32 = "Max Ammo!"
 
 
 

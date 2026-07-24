@@ -12,6 +12,7 @@ Class BW_Dog : BW_MonsterBase
 		BW_MonsterBase.headheight 16;
 		BW_MonsterBase.feetheight 8;
 		
+		BW_MonsterBase.CustomStepSound "Dog/Footstep";
         BW_MonsterBase.AttackRange 100;
         BW_MonsterBase.CanIReload false;
         SeeSound "dog/sight";
@@ -19,6 +20,22 @@ Class BW_Dog : BW_MonsterBase
 		PainSound "Dog/Pain";
 		Scale 0.75;
     }
+	
+	bool FootstepDelay;
+	
+	override void FootstepLogic()
+	{
+		//if(vel.xy.length() > 1)	//monster do not get vel when walking
+		//	PlayFootsteps();
+		//this would be more accurate if done in the states, but its easier to do it from here
+		if(footstepWait-- <= 0 && pos.z <= floorz + 1 && levellocals.Vec2Diff(prev.xy,pos.xy).length() > 3)
+		{
+			PlayFootsteps();
+			if(FootstepDelay) { footstepWait = 8; FootstepDelay = false; }
+			else { footstepWait = 2; FootstepDelay = true; }
+		}
+	}
+	
     states
     {
         spawn:
