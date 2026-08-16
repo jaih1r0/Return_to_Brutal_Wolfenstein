@@ -1,0 +1,39 @@
+Hans/Step1 "Sounds/Enemies/Bosses/bigstep1.wav"
+Hans/Step2 "Sounds/Enemies/Bosses/bigstep2.wav"
+Hans/Step3 "Sounds/Enemies/Bosses/bigstep3.wav"
+Hans/Step4 "Sounds/Enemies/Bosses/bigstep4.wav"
+$random Hans/Step 
+{
+    Hans/Step1
+    Hans/Step2
+    Hans/Step3
+    Hans/Step4
+}
+
+Hans/See	"Sounds/Enemies/Bosses/Hans/HansSee.mp3"
+
+$RANDOM Hans/Death { Hans/Death1 Hans/Death2 Hans/Death3 }
+Hans/Death1	"Sounds/Enemies/Bosses/Hans/HansDeath1.mp3"
+Hans/Death2	"Sounds/Enemies/Bosses/Hans/HansDeath2.mp3"
+Hans/Death3	"Sounds/Enemies/Bosses/Hans/HansDeath3.mp3"
+
+$RANDOM Hans/Pain { Hans/Pain1 Hans/Pain2 Hans/Pain3 Hans/Pain4 Hans/Pain5 }
+Hans/Pain1	"Sounds/Enemies/Bosses/Hans/HansPain1.mp3"
+Hans/Pain2	"Sounds/Enemies/Bosses/Hans/HansPain1.mp3"
+Hans/Pain3	"Sounds/Enemies/Bosses/Hans/HansPain1.mp3"
+Hans/Pain4	"Sounds/Enemies/Bosses/Hans/HansPain1.mp3"
+Hans/Pain5	"Sounds/Enemies/Bosses/Hans/HansPain1.mp3"
+
+$RANDOM Hans/Charge { Hans/Charge1 Hans/Charge2 Hans/Charge3 Hans/Charge4 }
+Hans/Charge1	"Sounds/Enemies/Bosses/Hans/HansCharge1.mp3"
+Hans/Charge2	"Sounds/Enemies/Bosses/Hans/HansCharge2.mp3"
+Hans/Charge3	"Sounds/Enemies/Bosses/Hans/HansCharge3.mp3"
+Hans/Charge4	"Sounds/Enemies/Bosses/Hans/HansCharge4.mp3"
+
+$RANDOM Hans/Active { Hans/Active1 Hans/Active2 Hans/Active3 Hans/Active4 Hans/Active5 Hans/Active6 }
+Hans/Active1	"Sounds/Enemies/Bosses/Hans/HansActive1.mp3"
+Hans/Active2	"Sounds/Enemies/Bosses/Hans/HansActive2.mp3"
+Hans/Active3	"Sounds/Enemies/Bosses/Hans/HansActive3.mp3"
+Hans/Active4	"Sounds/Enemies/Bosses/Hans/HansActive4.mp3"
+Hans/Active5	"Sounds/Enemies/Bosses/Hans/HansActive5.mp3"
+Hans/Active6	"Sounds/Enemies/Bosses/Hans/HansActive6.mp3"

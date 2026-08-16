@@ -69,21 +69,6 @@ Mutant/Pain3	"Sounds/Enemies/Mutants/Pain75.ogg"
 
 Mutant/Death	"Sounds/Enemies/Mutants/MUTDE.wav"
 
-Hans/Death "Sounds/Enemies/Bosses/Hans/HChrg.wav"
-Hans/Pain "Sounds/Enemies/Bosses/Hans/HNPAIN.wav"
-
-Hans/Step1 "Sounds/Enemies/Bosses/Hans/bigstep1.wav"
-Hans/Step2 "Sounds/Enemies/Bosses/Hans/bigstep2.wav"
-Hans/Step3 "Sounds/Enemies/Bosses/Hans/bigstep3.wav"
-Hans/Step4 "Sounds/Enemies/Bosses/Hans/bigstep4.wav"
-$random Hans/Step 
-{
-    Hans/Step1
-    Hans/Step2
-    Hans/Step3
-    Hans/Step4
-}
-
 $RANDOM FlyingMonster/Drag { FlyingMonster/Drag1 FlyingMonster/Drag2 FlyingMonster/Drag3 FlyingMonster/Drag4 }
 FlyingMonster/Drag1	"Sounds/Enemies/Demons/FlyingDrag1.wav"
 FlyingMonster/Drag2	"Sounds/Enemies/Demons/FlyingDrag2.wav"

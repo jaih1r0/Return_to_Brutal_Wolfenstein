@@ -9,12 +9,15 @@ Class BW_HansGrosse : BW_Boss
         Mass 10000;
         Speed 5;
         painchance 20;
+		PainChance "Head", 128;
         BW_MonsterBase.headheight 50;
 		BW_MonsterBase.feetheight 26;
         Obituary "%o tried to escape while Hans Grosse was on duty.";
-        DeathSound "Hans/death";
-        SeeSound "Hans/sight";
+        
+		DeathSound "Hans/death";
+        SeeSound "Hans/See";
         PainSound "Hans/Pain";
+		ActiveSound "Hans/Active";
     }
 
     states
@@ -44,7 +47,7 @@ Class BW_HansGrosse : BW_Boss
             TNT1 A 0 RequestBossBar(null); //start the boss bar
             TNT1 A 0 SetBossMusic("grosse","BW1M9");
             HNHP ABABABAB 4;
-            TNT1 A 0 A_StartSound("Shaiser");
+            TNT1 A 0 A_StartSound("Hans/See", CHAN_VOICE, CHANF_OVERLAP);
             HANS E 30 A_FACETARGET();
             Goto WallOfBullets;
         
@@ -55,7 +58,7 @@ Class BW_HansGrosse : BW_Boss
         
         Gutentag:
             TNT1 A 0;
-            TNT1 A 0 A_StartSound("Shaiser");
+            TNT1 A 0 A_StartSound("Hans/Active", CHAN_VOICE, CHANF_OVERLAP);
             HANS E 30 A_FACETARGET();
             Goto Chainguns;
 
@@ -71,9 +74,9 @@ Class BW_HansGrosse : BW_Boss
             goto Chainguns+1;
 
         Grenades:
-            TNT1 A 0 A_StartSound("Grenade/Pin");
+            TNT1 A 0 A_StartSound("Grenade/Pin", CHAN_AUTO, CHANF_OVERLAP);
             HNGR AA 3 A_FaceTarget();
-            TNT1 A 0 A_StartSound ("Grenade/Throw");
+            TNT1 A 0 A_StartSound ("Grenade/Throw", CHAN_AUTO, CHANF_OVERLAP);
             HNGR BB 3 A_FaceTarget();
             HNGR C 1 firegrenades();
             HNGR CC 3 A_FaceTarget();
@@ -81,23 +84,23 @@ Class BW_HansGrosse : BW_Boss
         
         Ultimate:
             HNCH A 2 A_FaceTarget();
-            TNT1 A 0 A_StartSound("Hans/scream");
-            HNCH BCBD 10 A_FaceTarget();
-            TNT1 A 0 A_StartSound("Grenade/Pin");
+            TNT1 A 0 A_StartSound("Hans/Charge", CHAN_VOICE, CHANF_OVERLAP);
+            HNCH BCBDB 10 A_FaceTarget();
+            TNT1 A 0 A_StartSound("Grenade/Pin", CHAN_AUTO, CHANF_OVERLAP);
             HNGR AA 3 A_FaceTarget();
-            TNT1 A 0 A_StartSound ("Grenade/Throw");
+            TNT1 A 0 A_StartSound ("Grenade/Throw", CHAN_AUTO, CHANF_OVERLAP);
             HNGR BB 3 A_FaceTarget();
             HNGR C 1 firegrenades();
             HNGR CC 3 A_FaceTarget();
-            TNT1 A 0 A_StartSound("Grenade/Pin");
+            TNT1 A 0 A_StartSound("Grenade/Pin", CHAN_AUTO, CHANF_OVERLAP);
             HNGR AA 3 A_FaceTarget();
-            TNT1 A 0 A_StartSound ("Grenade/Throw");
+            TNT1 A 0 A_StartSound ("Grenade/Throw", CHAN_AUTO, CHANF_OVERLAP);
             HNGR BB 3 A_FaceTarget();
             HNGR C 1 firegrenades(30);
             HNGR CC 3 A_FaceTarget();
-            TNT1 A 0 A_StartSound("Grenade/Pin");
+            TNT1 A 0 A_StartSound("Grenade/Pin", CHAN_AUTO, CHANF_OVERLAP);
             HNGR AA 3 A_FaceTarget();
-            TNT1 A 0 A_StartSound ("Grenade/Throw");
+            TNT1 A 0 A_StartSound ("Grenade/Throw", CHAN_AUTO, CHANF_OVERLAP);
             HNGR BB 3 A_FaceTarget();
             HNGR C 1 firegrenades(42);
             HNGR CC 3 A_FaceTarget();
@@ -106,7 +109,7 @@ Class BW_HansGrosse : BW_Boss
         
         Ultimate2:
             HNCH A 2 A_FaceTarget();
-            TNT1 A 0 A_StartSound("Hans/scream");
+            TNT1 A 0 A_StartSound("Hans/Charge", CHAN_VOICE, CHANF_OVERLAP);
             HNCH BCBD 10 A_FaceTarget();
         Ultimate2Refire:
             HANS F 1 fireAngledChaingun(90);
