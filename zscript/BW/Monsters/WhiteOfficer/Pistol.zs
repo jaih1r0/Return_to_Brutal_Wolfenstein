@@ -18,10 +18,10 @@ Class BW_WhiteOfficer_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] repla
 			
 			BW_MonsterBase.AttackRange 2000; //32 Dmu (1 meter) * 50 (55 yards effective range of Luger)
 			BW_MonsterBase.CanIRoll true;
-			SeeSound "Nazi/Generic/sight";
-			PainSound "Nazi/Generic/pain";
-			DeathSound "Nazi/Generic/death";
-			ActiveSound "Nazi/Generic/sight";
+			SeeSound "WhiteOfficer/See";
+			PainSound "WhiteOfficer/Pain";
+			DeathSound "WhiteOfficer/Death";
+			ActiveSound "WhiteOfficer/Active";
 			
 			DropItem "BW_PistolAmmo", 255, 8;
 			DropItem "BW_Luger", 100, 1;
@@ -238,7 +238,7 @@ Class BW_WhiteOfficer_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] repla
 			TNT1 A 0; //Grenade sound
 			WTGG A 6
 			{
-				A_ActiveSound();
+				A_StartSound("WhiteGuard/Grenade", CHAN_VOICE);
 				A_FaceTarget(90,45);
 			}
 			WTGG B 6;
