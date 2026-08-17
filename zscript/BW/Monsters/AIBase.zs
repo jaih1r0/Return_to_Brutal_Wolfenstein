@@ -97,13 +97,13 @@ extend class BW_MonsterBase
 					}
 					
 				}
-				A_Chase(flags: CHF_NOPLAYACTIVE);
-				//A_DoActiveSoundRoll();
+				A_Chase("Melee", "Missile", CHF_NOPLAYACTIVE);
+				A_DoActiveSoundRoll();
 			}
 			else if (CheckSight(target) == false && abs(Level.MapTime - EnemyLastSighted) < 360)
 			{
-				A_Chase(flags: CHF_NOPLAYACTIVE);
-				//A_DoActiveSoundRoll();
+				A_Chase("Melee", "Missile", CHF_NOPLAYACTIVE);
+				A_DoActiveSoundRoll();
 				
 				int chanceR = (random(1,10));
 			
@@ -170,9 +170,10 @@ extend class BW_MonsterBase
 	
 	virtual void A_DoActiveSoundRoll()
 	{
-		if(Timer >= 280)
+		Timer++;
+		if(Timer >= 35)
 		{
-			if(random(1,100) >= 95)
+			if(random(1,20) <= 3)
 			{
 				A_ActiveSound();
 			}
@@ -198,8 +199,6 @@ extend class BW_MonsterBase
 		{
 			testhitzones();
 		}
-		//Gonna redo how Active sounds are played by limiting them to a timer.
-		Timer++;
 	}
 	
 	virtual void FootstepLogic()
@@ -220,6 +219,7 @@ extend class BW_MonsterBase
 		heardOpponent = 0;
 		AttackDelay = 25;
 		kickeddown = false;
+		Timer = random(1,35);
 		if(StringTable.Localize("$OPTVAL_MBF21STRICT") != "OPTVAL_MBF21STRICT")	//only triggered when loaded in gzdoom 4.13
 		{
 			YscaleFix = scale.y * level.pixelstretch;	//should look good in gzdoom 4.13+
