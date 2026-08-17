@@ -7,7 +7,6 @@ extend class BW_MonsterBase
 	
 	bool kickeddown;
 	
-	int ActiveSoundPlayChance;
 	int MissileChance;
 	int FallbackChance;
 	
@@ -36,6 +35,7 @@ extend class BW_MonsterBase
 	
 	void AI_SmartChase()
 	{
+		
 		if(!target)	//looking cycle
 		{
 			if(Wandering)
@@ -76,8 +76,6 @@ extend class BW_MonsterBase
 				double dist = Distance3D(target);
 
 				MissileChance = (random(1,300));
-				ActiveSoundPlayChance = (random(1,300));
-
 				//check if sight of player or close enough to "hear" player for memory
 				if (CheckSight(target) || CheckIfCloser(target, 500))
 				{
@@ -99,22 +97,14 @@ extend class BW_MonsterBase
 					}
 					
 				}
-				A_Chase();
-
+				A_Chase(flags: CHF_NOPLAYACTIVE);
+				//A_DoActiveSoundRoll();
 			}
 			else if (CheckSight(target) == false && abs(Level.MapTime - EnemyLastSighted) < 360)
 			{
-				ActiveSoundPlayChance = (random(1,100));
-				//because 1 tic A_Chase calls spams this lol
-				if((ActiveSoundPlayChance > 2))
-				{
-					A_Chase("_a_chase_default", "_a_chase_default", CHF_NOPLAYACTIVE);
-				}
-				else
-				{
-					A_Chase();
-				}
-
+				A_Chase(flags: CHF_NOPLAYACTIVE);
+				//A_DoActiveSoundRoll();
+				
 				int chanceR = (random(1,10));
 			
 				// Do our Reload checks while the player is out of sight.
@@ -178,6 +168,18 @@ extend class BW_MonsterBase
 		}
 	}
 	
+	virtual void A_DoActiveSoundRoll()
+	{
+		if(Timer >= 280)
+		{
+			if(random(1,100) >= 95)
+			{
+				A_ActiveSound();
+			}
+			Timer = 0;
+		}
+	}
+	
 	int footstepWait;
 	//Tick and PostBeginPlay stuff
 	override void Tick()
@@ -196,6 +198,8 @@ extend class BW_MonsterBase
 		{
 			testhitzones();
 		}
+		//Gonna redo how Active sounds are played by limiting them to a timer.
+		Timer++;
 	}
 	
 	virtual void FootstepLogic()
