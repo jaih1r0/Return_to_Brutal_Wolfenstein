@@ -538,6 +538,7 @@ map BW1M1 "Escape from Wolfenstein-Floor 1"
 	Grinding_Polyobj
 	music = Getthem
 	par = 240
+	Interpic = BW1INTER
 }
 
 map BW1M2 "Escape from Wolfenstein-Floor 2"
@@ -549,6 +550,7 @@ map BW1M2 "Escape from Wolfenstein-Floor 2"
 	Grinding_Polyobj
 	music = Searchn
 	par = 540
+	Interpic = BW1INTER
 }
 
 map BW1M3 "Escape from Wolfenstein-Floor 3"
@@ -560,6 +562,7 @@ map BW1M3 "Escape from Wolfenstein-Floor 3"
 	Grinding_Polyobj
 	music = POW
 	par = 600
+	Interpic = BW1INTER
 }
 
 map BW1M4 "Escape from Wolfenstein-Floor 4"
@@ -571,6 +574,7 @@ map BW1M4 "Escape from Wolfenstein-Floor 4"
 	Grinding_Polyobj
 	music = Suspense
 	par = 420
+	Interpic = BW1INTER
 }
 
 map BW1M5 "Escape from Wolfenstein-Floor 5"
@@ -582,6 +586,7 @@ map BW1M5 "Escape from Wolfenstein-Floor 5"
 	Grinding_Polyobj
 	MUSIC = Getthem
 	par = 420
+	Interpic = BW1INTER
 }
 
 map BW1M6 "Escape from Wolfenstein-Floor 6"
@@ -593,6 +598,7 @@ map BW1M6 "Escape from Wolfenstein-Floor 6"
 	Grinding_Polyobj
 	music = Searchn
 	par = 360
+	Interpic = BW1INTER
 }
 
 map BW1M7 "Escape from Wolfenstein-Floor 7"
@@ -604,6 +610,7 @@ map BW1M7 "Escape from Wolfenstein-Floor 7"
 	Grinding_Polyobj
 	music = POW
 	par = 420
+	Interpic = BW1INTER
 }
 
 map BW1M8 "Escape from Wolfenstein-Floor 8"
@@ -615,6 +622,7 @@ map BW1M8 "Escape from Wolfenstein-Floor 8"
 	Grinding_Polyobj
 	music = Suspense
 	par = 360
+	Interpic = BW1INTER
 }
 
 map BW1M9 "Escape from Wolfenstein-Floor 9"
@@ -627,6 +635,7 @@ map BW1M9 "Escape from Wolfenstein-Floor 9"
         InterMusic = D_READ_M
 	music = WarMarch
 	par = 300
+	Interpic = BW1INTER
 }
 
 map BW1M10 "Escape from Wolfenstein-Floor 10"
@@ -638,6 +647,7 @@ map BW1M10 "Escape from Wolfenstein-Floor 10"
 	Grinding_Polyobj
 	music = Corner2
 	par = 480
+	Interpic = BW1INTER
 }
 
 //Episode 2 
@@ -651,6 +661,7 @@ map BW2M1 "Operation Eisenfaust-Floor 1"
 	Grinding_Polyobj
 	music = Anthem
 	par = 150
+	Interpic = BW2INTER
 }
 
 map BW2M2 "Operation Eisenfaust-Floor 2"
@@ -662,6 +673,7 @@ map BW2M2 "Operation Eisenfaust-Floor 2"
 	Grinding_Polyobj
 	music = Pregnant
 	par = 330
+	Interpic = BW2INTER
 }
 
 map BW2M3 "Operation Eisenfaust-Floor 3"
@@ -672,7 +684,8 @@ map BW2M3 "Operation Eisenfaust-Floor 3"
 	sky1 = "SKY2"
 	Grinding_Polyobj
 	music = GoingAft
-	par = 300 
+	par = 300
+	Interpic = BW2INTER
 }
 
 map BW2M4 "Operation Eisenfaust-Floor 4"
@@ -684,6 +697,7 @@ map BW2M4 "Operation Eisenfaust-Floor 4"
 	Grinding_Polyobj
 	music = Headache
 	par = 390
+	Interpic = BW2INTER
 }
 
 map BW2M5 "Operation Eisenfaust-Floor 5"
@@ -695,6 +709,7 @@ map BW2M5 "Operation Eisenfaust-Floor 5"
 	Grinding_Polyobj
 	music = Anthem
 	par = 420
+	Interpic = BW2INTER
 }
 
 map BW2M6 "Operation Eisenfaust-Floor 6"
@@ -706,6 +721,7 @@ map BW2M6 "Operation Eisenfaust-Floor 6"
 	Grinding_Polyobj
 	music = Pregnant
 	par = 360
+	Interpic = BW2INTER
 }
 
 map BW2M7 "Operation Eisenfaust-Floor 7"
@@ -717,6 +733,7 @@ map BW2M7 "Operation Eisenfaust-Floor 7"
 	Grinding_Polyobj
 	music = GoingAFT
 	par = 180
+	Interpic = BW2INTER
 }
 
 map BW2M8 "Operation Eisenfaust-Floor 8"
@@ -728,6 +745,7 @@ map BW2M8 "Operation Eisenfaust-Floor 8"
 	Grinding_Polyobj
 	music = Headache
 	par = 360
+	Interpic = BW2INTER
 }
 
 map BW2M9 "Operation Eisenfaust-Floor 9"
@@ -740,6 +758,7 @@ map BW2M9 "Operation Eisenfaust-Floor 9"
       InterMusic = D_READ_M
 	music = WarMarch
 	par = 180
+	Interpic = BW2INTER
 }
 
 map BW2M10 "Operation Eisenfaust-Floor 10"
@@ -751,6 +770,7 @@ map BW2M10 "Operation Eisenfaust-Floor 10"
 	Grinding_Polyobj
 	music = DUNGEONS
 	par = 300
+	Interpic = BW2INTER
 }
 
 map BW3M1 "Die Führer,DIE!-Floor 1"
@@ -762,6 +782,7 @@ map BW3M1 "Die Führer,DIE!-Floor 1"
 	Grinding_Polyobj
 	music = introcw3
 	par = 160
+	Interpic = BW3INTER
 }
 
 map BW3M2 "Die Führer,DIE!-Floor 2"
@@ -773,6 +794,7 @@ map BW3M2 "Die Führer,DIE!-Floor 2"
 	Grinding_Polyobj
 	music = nazirap
 	par = 180
+	Interpic = BW3INTER
 }
 
 map BW3M3 "Die Führer,DIE!-Floor 3"
@@ -784,6 +806,7 @@ map BW3M3 "Die Führer,DIE!-Floor 3"
 	Grinding_Polyobj
 	music = Twelfth
 	par = 240
+	Interpic = BW3INTER
 }
 
 map BW3M4 "Die Führer,DIE!-Floor 4"
@@ -794,6 +817,7 @@ map BW3M4 "Die Führer,DIE!-Floor 4"
 	sky1 = "SKY1"
 	music = Zerohour
 	par = 185
+	Interpic = BW3INTER
 }
 
 map BW3M5 "Die Führer,DIE!-Floor 5"
@@ -804,6 +828,7 @@ map BW3M5 "Die Führer,DIE!-Floor 5"
 	sky1 = "SKY1"
 	music = introcw3
 	par = 325
+	Interpic = BW3INTER
 }
 
 map BW3M6 "Die Führer,DIE!-Floor 6"
@@ -814,6 +839,7 @@ map BW3M6 "Die Führer,DIE!-Floor 6"
 	sky1 = "SKY1"
 	music = nazirap
 	par = 540
+	Interpic = BW3INTER
 }
 
 map BW3M7 "Die Führer,DIE!-Floor 7"
@@ -824,6 +850,7 @@ map BW3M7 "Die Führer,DIE!-Floor 7"
 	sky1 = "SKY1"
 	music = dungeons
 	par = 330
+	Interpic = BW3INTER
 }
 
 map BW3M8 "Die Führer,DIE!-Floor 8"
@@ -834,6 +861,7 @@ map BW3M8 "Die Führer,DIE!-Floor 8"
 	sky1 = "SKY1"
 	music = BODYBLOW
 	par = 450
+	Interpic = BW3INTER
 }
 
 map BW3M9 "Die Führer,DIE!-Floor 9"
@@ -845,6 +873,7 @@ map BW3M9 "Die Führer,DIE!-Floor 9"
         InterMusic = D_READ_M
 	music = HTL1
 	par = 420 
+	Interpic = BW3INTER
 }
 
 map PACMAN "Pacman!"
@@ -855,6 +884,7 @@ map PACMAN "Pacman!"
 	sky1 = "SKY1"
 	music = PACMAN1
 	par = 300
+	Interpic = BW3INTER
 }
 
 
@@ -870,6 +900,7 @@ map BW4M1 "A dark Secret-Floor 1"
 	sky1 = "EP4SKY"
 	music = GETTHE1
 	par = 270
+	Interpic = BW4INTER
 }
 
 map BW4M2 "A dark Secret-Floor 2"
@@ -880,6 +911,7 @@ map BW4M2 "A dark Secret-Floor 2"
 	sky1 = "EP4SKY"
 	music = SEARCHN
 	par = 360
+	Interpic = BW4INTER
 }
 
 map BW4M3 "A dark Secret-Floor 3"
@@ -890,6 +922,7 @@ map BW4M3 "A dark Secret-Floor 3"
 	sky1 = "SKY2"
 	music = POW1
 	par = 300
+	Interpic = BW4INTER
 }
 
 map BW4M4 "A dark Secret-Floor 4"
@@ -900,6 +933,7 @@ map BW4M4 "A dark Secret-Floor 4"
 	sky1 = "SKY2"
 	music = Suspense
 	par = 300
+	Interpic = BW4INTER
 }
 
 map BW4M5 "A dark Secret-Floor 5"
@@ -910,6 +944,7 @@ map BW4M5 "A dark Secret-Floor 5"
 	sky1 = "SKY2"
 	music = Corner
 	par = 480
+	Interpic = BW4INTER
 }
 
 map BW4M6 "A dark Secret-Floor 6"
@@ -920,6 +955,7 @@ map BW4M6 "A dark Secret-Floor 6"
 	sky1 = "SKY2"
 	music = SEARCHN
 	par = 330
+	Interpic = BW4INTER
 }
 
 map BW4M7 "A dark Secret-Floor 7"
@@ -930,6 +966,7 @@ map BW4M7 "A dark Secret-Floor 7"
 	sky1 = "SKY2"
 	music = POW1
 	par = 405
+	Interpic = BW4INTER
 }
 
 map BW4M8 "A dark Secret-Floor 8"
@@ -940,6 +977,7 @@ map BW4M8 "A dark Secret-Floor 8"
 	sky1 = "SKY2"
 	music = Headache
 	par = 540
+	Interpic = BW4INTER
 }
 
 map BW4M9 "A dark Secret-Floor 9"
@@ -951,6 +989,7 @@ map BW4M9 "A dark Secret-Floor 9"
 	sky1 = "SKY2"
 	music = WarMarch
 	par = 240
+	Interpic = BW4INTER
 }
 
 map BW4M10 "A dark Secret-Floor 10"
@@ -960,6 +999,7 @@ map BW4M10 "A dark Secret-Floor 10"
 	sky1 = "SKY2"
 	music = Nacht
 	par =  30
+	Interpic = BW4INTER
 }
 
 map BW5M1 "Trail of Madman-Floor 1"
@@ -970,6 +1010,7 @@ map BW5M1 "Trail of Madman-Floor 1"
 	sky1 = "SKY1"
 	music = GRUNDGE
 	par = 300
+	Interpic = BW5INTER
 }
 
 map BW5M2 "Trail of Madman-Floor 2"
@@ -980,6 +1021,7 @@ map BW5M2 "Trail of Madman-Floor 2"
 	sky1 = "SKY1"
 	music = ROCKED
 	par = 300
+	Interpic = BW5INTER
 }
 
 map BW5M3 "Trail of Madman-Floor 3"
@@ -990,6 +1032,7 @@ map BW5M3 "Trail of Madman-Floor 3"
 	sky1 = "SKY1"
 	music = ORIGINAL
 	par = 180
+	Interpic = BW5INTER
 }
 
 map BW5M4 "Trail of Madman-Floor 4"
@@ -1000,6 +1043,7 @@ map BW5M4 "Trail of Madman-Floor 4"
 	sky1 = "SKY1"
 	music = DOOM
 	par = 360
+	Interpic = BW5INTER
 }
 
 map BW5M5 "Trail of Madman-Floor 5"
@@ -1010,6 +1054,7 @@ map BW5M5 "Trail of Madman-Floor 5"
 	sky1 = "SKY1"
 	music = GRUNDGE
 	par = 360
+	Interpic = BW5INTER
 }
 
 map BW5M6 "Trail of Madman-Floor 6"
@@ -1020,6 +1065,7 @@ map BW5M6 "Trail of Madman-Floor 6"
 	sky1 = "BWSKY1"
 	music = ROCKED
 	par = 390
+	Interpic = BW5INTER
 }
 
 map BW5M7 "Trail of Madman-Floor 7"
@@ -1030,6 +1076,7 @@ map BW5M7 "Trail of Madman-Floor 7"
 	sky1 = "BWSKY1"
 	music = ORIGINAL
 	par = 390
+	Interpic = BW5INTER
 }
 
 map BW5M8 "Trail of Madman-Floor 8"
@@ -1040,6 +1087,7 @@ map BW5M8 "Trail of Madman-Floor 8"
 	sky1 = "SKY2"
 	music = DOOM
 	par = 330
+	Interpic = BW5INTER
 }
 
 map BW5M9 "Trail of Madman-Floor 9"
@@ -1051,6 +1099,7 @@ map BW5M9 "Trail of Madman-Floor 9"
 	sky1 = "SKY2"
 	music = WarMarch
 	par = 240
+	Interpic = BW5INTER
 }
 
 map BW5M10 "Trail of Madman-Floor 10"
@@ -1060,6 +1109,7 @@ map BW5M10 "Trail of Madman-Floor 10"
 	sky1 = "SKY2"
 	music = DUNGEON
 	par = 300
+	Interpic = BW5INTER
 }
 
 map Zim01 "Die ärgerliche Angelegenheit-ACT 1"
@@ -1070,6 +1120,7 @@ map Zim01 "Die ärgerliche Angelegenheit-ACT 1"
 	sky1 = "SKY2"
 	music = EE1
 	par = 390
+	Interpic = BW4INTER
 }
 
 map Zim02 "Die ärgerliche Angelegenheit-ACT 2"
@@ -1080,6 +1131,7 @@ map Zim02 "Die ärgerliche Angelegenheit-ACT 2"
 	sky1 = "SKY2"
 	music = E6M9
 	par = 750
+	Interpic = BW5INTER
 }
 
 map Zim03 "Die ärgerliche Angelegenheit-ACT 3"
@@ -1089,6 +1141,7 @@ map Zim03 "Die ärgerliche Angelegenheit-ACT 3"
 	sky1 = "SKY2"
 	music = INFIL
 	par = 900
+	Interpic = BW6INTER
 }
 
 map BW6M1 "Confrontation-Floor 1"
@@ -1099,6 +1152,7 @@ map BW6M1 "Confrontation-Floor 1"
 	sky1 = "SKY2"
 	music = introcw3
 	par = 660
+	Interpic = BW6INTER
 }
 
 map BW6M2 "Confrontation-Floor 2"
@@ -1109,6 +1163,7 @@ map BW6M2 "Confrontation-Floor 2"
 	sky1 = "SKY2"
 	music = NaziRap2
 	par = 600
+	Interpic = BW6INTER
 }
 
 map BW6M3 "Confrontation-Floor 3"
@@ -1118,6 +1173,7 @@ map BW6M3 "Confrontation-Floor 3"
 	sky1 = "SKY2"
 	music = Twelfth
 	par = 540
+	Interpic = BW6INTER
 }
 
 map BW6M4 "Confrontation-Floor 4"
@@ -1128,6 +1184,7 @@ map BW6M4 "Confrontation-Floor 4"
 	sky1 = "SKY2"
 	music = ZeroHour
 	par = 420
+	Interpic = BW6INTER
 }
 
 map BW6M5 "Confrontation-Floor 5"
@@ -1138,6 +1195,7 @@ map BW6M5 "Confrontation-Floor 5"
 	sky1 = "SKY2"
 	music = GoingAft
 	par = 420
+	Interpic = BW6INTER
 }
 
 map BW6M6 "Confrontation-Floor 6"
@@ -1148,6 +1206,7 @@ map BW6M6 "Confrontation-Floor 6"
 	sky1 = "SKY2"
 	music = Drums
 	par = 480
+	Interpic = BW6INTER
 }
 
 map BW6M7 "Confrontation-Floor 7"
@@ -1158,6 +1217,7 @@ map BW6M7 "Confrontation-Floor 7"
 	sky1 = "SKY2"
 	music = NaziRap2
 	par = 900
+	Interpic = BW6INTER
 }
 
 map BW6M8 "Confrontation-Floor 8"
@@ -1168,6 +1228,7 @@ map BW6M8 "Confrontation-Floor 8"
 	sky1 = "SKY2"
 	music =EE1
 	par = 900
+	Interpic = BW6INTER
 }
 
 map BW6M9 "Confrontation-Floor 9"
@@ -1180,6 +1241,7 @@ map BW6M9 "Confrontation-Floor 9"
        // SpecialAction = "FatFace","Teleport_EndGame"  
 	music = E6M9
 	par = 720
+	Interpic = BW6INTER
 }
 
 map BW6M10 "Confrontation-Floor 10"
@@ -1190,6 +1252,7 @@ map BW6M10 "Confrontation-Floor 10"
 	sky1 = "SKY2" 
 	music = FUNKYOU
 	par = 600
+	Interpic = BW6INTER
 }
 
 
@@ -1203,6 +1266,7 @@ map BW7M1 "Spear of Destiny-Wet Works"
         ////Interpic = Interpi2
 	//ReplaceActor = "LugerSpawner","P38Spawner" Yeah,would have been TOO FUCKING EASY if that worked on the map/episodes definition.FUCK YOU!
 	par = 180
+	Interpic = BW7INTER
 }
 
 map BW7M2 "Spear of Destiny-Curse of the Forbidden name"
@@ -1214,6 +1278,7 @@ map BW7M2 "Spear of Destiny-Curse of the Forbidden name"
         ////Interpic = Interpi2
 	music = Funkie
 	par = 540
+	Interpic = BW7INTER
 }
 
 map BW7M3 "Spear of Destiny-Living Quarters"
@@ -1225,6 +1290,7 @@ map BW7M3 "Spear of Destiny-Living Quarters"
         ////Interpic = Interpi2
 	music = DETHNAZI
 	par = 420
+	Interpic = BW7INTER
 }
 
 
@@ -1238,6 +1304,7 @@ map BW7M4 "Spear of Destiny-The SS gonna get you!"
         ////Interpic = Interpi2
 	music = SSGETYOU
 	par = 600
+	Interpic = BW7INTER
 }
 
 map SEC1 "Spear of Destiny-Dead then Red"
@@ -1249,6 +1316,7 @@ map SEC1 "Spear of Destiny-Dead then Red"
         //Interpic = Interpi2
 	music = Nazi_Jaz
 	par = 600
+	Interpic = BW7INTER
 }
 
 map BW7M5 "Spear of Destiny-Metal Man"
@@ -1260,6 +1328,7 @@ map BW7M5 "Spear of Destiny-Metal Man"
         //Interpic = Interpi2
 	music = SUSPENS1
 	par = 300
+	Interpic = BW7INTER
 }
 
 
@@ -1273,6 +1342,7 @@ map BW7M6 "Spear of Destiny-Halls of Agony"
 	Grinding_Polyobj
 	music = Prey
 	par = 720
+	Interpic = BW7INTER
 }
 
 map BW7M7 "Spear of Destiny-Shock and Awe!"
@@ -1285,7 +1355,7 @@ map BW7M7 "Spear of Destiny-Shock and Awe!"
 	Grinding_Polyobj
 	music = GoingAFT
 	par = 720
-	
+	Interpic = BW7INTER
 }
 
 map SEC2 "Spear of Destiny-Bill digs it!"
@@ -1297,6 +1367,7 @@ map SEC2 "Spear of Destiny-Bill digs it!"
 	Grinding_Polyobj
 	music = Funkie
 	par = 960
+	Interpic = BW7INTER
 }
 
 map BW7M8 "Spear of Destiny-Marksman Trouble"
@@ -1308,7 +1379,7 @@ map BW7M8 "Spear of Destiny-Marksman Trouble"
 	Grinding_Polyobj
 	music = NaziRap2
 	PAR = 480
-	
+	Interpic = BW7INTER
 }
 
 map BW7M9 "Spear of Destiny-Flooded Secrets"
@@ -1320,7 +1391,7 @@ map BW7M9 "Spear of Destiny-Flooded Secrets"
 	Grinding_Polyobj
 	music = Headache
 	PAR = 540
-	
+	Interpic = BW7INTER
 }
 
 map BW7M10 "Spear of Destiny-The Barnacle and the Grosse"
@@ -1332,7 +1403,7 @@ map BW7M10 "Spear of Destiny-The Barnacle and the Grosse"
 	Grinding_Polyobj
 	music = EE2
 	PAR = 540
-	
+	Interpic = BW7INTER
 }
 
 map BW7M11 "Spear of Destiny-Castle Hassle"
@@ -1344,7 +1415,7 @@ map BW7M11 "Spear of Destiny-Castle Hassle"
 	Grinding_Polyobj
 	music = Sandy
 	PAR = 960
-	
+	Interpic = BW7INTER
 }
 
 map BW7M12 "Spear of Destiny-Grand Nuremberg Hotel"
@@ -1357,7 +1428,7 @@ map BW7M12 "Spear of Destiny-Grand Nuremberg Hotel"
 	Grinding_Polyobj
 	music = RAPT2
 	PAR = 600
-	
+	Interpic = BW7INTER
 }
 
 map SEC3 "Spear of Destiny-Theatre of oddities"
@@ -1369,7 +1440,7 @@ map SEC3 "Spear of Destiny-Theatre of oddities"
 	Grinding_Polyobj
 	music = STAIRS
 	PAR = 840
-	
+	Interpic = BW7INTER
 }
 
 map BW7M13 "Spear of Destiny-Window War"
@@ -1381,7 +1452,7 @@ map BW7M13 "Spear of Destiny-Window War"
 	Grinding_Polyobj
 	music = CULO
 	PAR = 600
-	
+	Interpic = BW7INTER
 }
 
 map BW7M14 "Spear of Destiny-Dead in no seconds"
@@ -1393,7 +1464,7 @@ map BW7M14 "Spear of Destiny-Dead in no seconds"
 	Grinding_Polyobj
 	music = FAN
 	PAR = 540
-	
+	Interpic = BW7INTER
 }
 
 map BW7M15 "Spear of Destiny-The Fast Way"
@@ -1405,7 +1476,7 @@ map BW7M15 "Spear of Destiny-The Fast Way"
 	Grinding_Polyobj
 	music = PACMAN
 	PAR = 720
-	
+	Interpic = BW7INTER
 }
 
 map BW7M16 "Spear of Destiny-R.N.D."
@@ -1417,7 +1488,7 @@ map BW7M16 "Spear of Destiny-R.N.D."
 	Grinding_Polyobj
 	music = FUNERAL
 	PAR = 900
-	
+	Interpic = BW7INTER
 }
 
 map BW7M17 "Spear of Destiny-Last Stand"
@@ -1429,7 +1500,7 @@ map BW7M17 "Spear of Destiny-Last Stand"
 	Grinding_Polyobj
 	music = EE1
 	PAR = 900
-	
+	Interpic = BW7INTER
 }
 
 map BW7M18 "Spear of Destiny-Judgement"
@@ -1442,7 +1513,7 @@ map BW7M18 "Spear of Destiny-Judgement"
 	Grinding_Polyobj
 	music = Warmarch
 	PAR = 180
-	
+	Interpic = BW7INTER
 }
 
 map BW7M19 "Spear of Destiny-Harbinger Of DOOM"
@@ -1456,7 +1527,7 @@ map BW7M19 "Spear of Destiny-Harbinger Of DOOM"
 	Grinding_Polyobj
 	music = Tense
 	PAR = 1800
-	
+	Interpic = BW7INTER
 }
 
 map BW7MEnd "Spear of Destiny-Ending"
