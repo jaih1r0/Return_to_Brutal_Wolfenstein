@@ -1,4 +1,3 @@
-
 Gameinfo
 {
 	Infopage = "PAGE1","PAGE2","PAGE3","PAGE4","Page13","PAGE5","PAGE6","PAGE7","PAGE8","PAGE9","PAGE10","PAGE11","PAGE12"
@@ -18,6 +17,7 @@ Gameinfo
 	"NashGoreHandler","BW_BossBarHandler","BWMenuStaticInfo"
 	
 	StatusBarClass = "BW_Hud"
+	Statscreen_Single = "wolfStatus"
 	//NormForwardMove = 0x32, 0x32	//Walk speed is modulated through
 	//NormSideMove = 0x32, 0x32		//CVar in the menu options
 }
@@ -1200,7 +1200,7 @@ map BW7M1 "Spear of Destiny-Wet Works"
 	sky1 = "SKY2"
 	Grinding_Polyobj
 	music = Tiptoe
-        Interpic = Interpi2
+        ////Interpic = Interpi2
 	//ReplaceActor = "LugerSpawner","P38Spawner" Yeah,would have been TOO FUCKING EASY if that worked on the map/episodes definition.FUCK YOU!
 	par = 180
 }
@@ -1211,7 +1211,7 @@ map BW7M2 "Spear of Destiny-Curse of the Forbidden name"
 	next = "BW7M3"
 	sky1 = "SKY2"
 	Grinding_Polyobj
-        Interpic = Interpi2
+        ////Interpic = Interpi2
 	music = Funkie
 	par = 540
 }
@@ -1222,7 +1222,7 @@ map BW7M3 "Spear of Destiny-Living Quarters"
 	next = "BW7M4"
 	sky1 = "SKY2"
 	Grinding_Polyobj
-        Interpic = Interpi2
+        ////Interpic = Interpi2
 	music = DETHNAZI
 	par = 420
 }
@@ -1235,7 +1235,7 @@ map BW7M4 "Spear of Destiny-The SS gonna get you!"
         secretnext = "SEC1"
 	sky1 = "SKY2"
 	Grinding_Polyobj
-        Interpic = Interpi2
+        ////Interpic = Interpi2
 	music = SSGETYOU
 	par = 600
 }
@@ -1246,7 +1246,7 @@ map SEC1 "Spear of Destiny-Dead then Red"
 	next = "BW7M5"
 	sky1 = "SKY2"
 	Grinding_Polyobj
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	music = Nazi_Jaz
 	par = 600
 }
@@ -1257,7 +1257,7 @@ map BW7M5 "Spear of Destiny-Metal Man"
 	next = "BW7M6"
 	sky1 = "SKY2"
 	Grinding_Polyobj
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	music = SUSPENS1
 	par = 300
 }
@@ -1269,7 +1269,7 @@ map BW7M6 "Spear of Destiny-Halls of Agony"
 	titlepatch = "SPEAR06"
 	next = "BW7M7"
 	sky1 = "SKY2"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	Grinding_Polyobj
 	music = Prey
 	par = 720
@@ -1281,7 +1281,7 @@ map BW7M7 "Spear of Destiny-Shock and Awe!"
 	next = "BW7M8"
         secretnext = "SEC2"
 	sky1 = "SKY2"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	Grinding_Polyobj
 	music = GoingAFT
 	par = 720
@@ -1292,7 +1292,7 @@ map SEC2 "Spear of Destiny-Bill digs it!"
 {
 	titlepatch = "SPEAR21"
 	next = "BW7M8"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SKY2"
 	Grinding_Polyobj
 	music = Funkie
@@ -1303,7 +1303,7 @@ map BW7M8 "Spear of Destiny-Marksman Trouble"
 {
 	titlepatch = "SPEAR08"
 	next = "BW7M9"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SKY2"
 	Grinding_Polyobj
 	music = NaziRap2
@@ -1316,7 +1316,7 @@ map BW7M9 "Spear of Destiny-Flooded Secrets"
 	titlepatch = "SPEAR09"
 	next = "BW7M10"
 	sky1 = "SKY2"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	Grinding_Polyobj
 	music = Headache
 	PAR = 540
@@ -1328,7 +1328,7 @@ map BW7M10 "Spear of Destiny-The Barnacle and the Grosse"
 	titlepatch = "SPEAR10"
 	next = "BW7M11"
 	sky1 = "SKY2"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	Grinding_Polyobj
 	music = EE2
 	PAR = 540
@@ -1340,7 +1340,7 @@ map BW7M11 "Spear of Destiny-Castle Hassle"
 	titlepatch = "SPEAR11"
 	next = "BW7M12"
 	sky1 = "SODSKY"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	Grinding_Polyobj
 	music = Sandy
 	PAR = 960
@@ -1352,7 +1352,7 @@ map BW7M12 "Spear of Destiny-Grand Nuremberg Hotel"
 	titlepatch = "SPEAR12"
 	next = "BW7M13"
         secretnext = "SEC3"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSKY"
 	Grinding_Polyobj
 	music = RAPT2
@@ -1364,7 +1364,7 @@ map SEC3 "Spear of Destiny-Theatre of oddities"
 {
 	titlepatch = "SPEAR22"
 	next = "BW7M13"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSKY"
 	Grinding_Polyobj
 	music = STAIRS
@@ -1376,7 +1376,7 @@ map BW7M13 "Spear of Destiny-Window War"
 {
 	titlepatch = "SPEAR13"
 	next = "BW7M14"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSKY"
 	Grinding_Polyobj
 	music = CULO
@@ -1388,7 +1388,7 @@ map BW7M14 "Spear of Destiny-Dead in no seconds"
 {
 	titlepatch = "SPEAR14"
 	next = "BW7M15"
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSKY"
 	Grinding_Polyobj
 	music = FAN
@@ -1400,7 +1400,7 @@ map BW7M15 "Spear of Destiny-The Fast Way"
 {
 	titlepatch = "SPEAR15"
 	next = BW7M16
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSKY"
 	Grinding_Polyobj
 	music = PACMAN
@@ -1412,7 +1412,7 @@ map BW7M16 "Spear of Destiny-R.N.D."
 {
 	titlepatch = "SPEAR16"
 	next = BW7M17
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSKY"
 	Grinding_Polyobj
 	music = FUNERAL
@@ -1424,7 +1424,7 @@ map BW7M17 "Spear of Destiny-Last Stand"
 {
 	titlepatch = "SPEAR17"
 	next = BW7M18
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSK1"
 	Grinding_Polyobj
 	music = EE1
@@ -1436,7 +1436,7 @@ map BW7M18 "Spear of Destiny-Judgement"
 {
 	titlepatch = "SPEAR18"
 	next = BW7M19
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSK1"
         NoIntermission
 	Grinding_Polyobj
@@ -1450,7 +1450,7 @@ map BW7M19 "Spear of Destiny-Harbinger Of DOOM"
 	titlepatch = "SPEAR19"
 	next = BW7MEnd
         ResetInventory
-        Interpic = Interpi2
+        //Interpic = Interpi2
 		NOINTERMISSION
 	sky1 = "HellSky"
 	Grinding_Polyobj
@@ -1462,7 +1462,7 @@ map BW7M19 "Spear of Destiny-Harbinger Of DOOM"
 map BW7MEnd "Spear of Destiny-Ending"
 {
 	next = Museum
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSK1"
         NoIntermission
 	Grinding_Polyobj
@@ -1508,7 +1508,7 @@ map SLEND "The Dresden Column"
     music = RAPT1
     par = 3 // epic troll
     Grinding_Polyobj
-    Interpic = Interpi2
+    //Interpic = Interpi2
 }
 
 map AntoLeve "The Courtyard"
@@ -1583,7 +1583,7 @@ map SOD17Old "Spear Of Destiny-Floor 17"
 map E7M18 "Spear of Destiny-Original Death Knight Boss Fight"
 {
 	next = E7M19
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "SODSK1"
         NoIntermission
 	Grinding_Polyobj
@@ -1596,7 +1596,7 @@ map E7M19 "Spear of Destiny-Original Angel of Death Boss Fight"
 {
 	titlepatch = "SODB"
 	next = ENDTITLE
-        Interpic = Interpi2
+        //Interpic = Interpi2
 	sky1 = "HellSky"
 	Grinding_Polyobj
 	music = EEVIL
