@@ -8,11 +8,11 @@ Focused in giving it a more modern look and improve its gameplay
 
 
 ## Features
-* Nashgore NEXT
+* Nashgore driven gore system
 * Enhanced enemy AI
 * Enhanced sound/visual effects
 * (Heavily WIP) improved weapon sprites/code/animations
-* 37% less actors than your favorite brutal fork!
+* 66% less actors than your favorite brutal fork!
 
 <br>
 

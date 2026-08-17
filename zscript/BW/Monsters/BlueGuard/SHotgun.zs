@@ -19,10 +19,10 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			
 			BW_MonsterBase.AttackRange 640; //32 Dmu (1 meter) * 20 (20 yards effective range of M1897)
 			BW_MonsterBase.CanIRoll true;
-			SeeSound "Nazi/Generic/sight";
-			PainSound "Nazi/Generic/pain";
-			DeathSound "Nazi/Generic/death";
-			ActiveSound "Nazi/Generic/sight";
+			SeeSound "BlueGuard/See";
+			PainSound "BlueGuard/Pain";
+			DeathSound "BlueGuard/death";
+			ActiveSound "BlueGuard/Active";
 			
 			DropItem "BW_ShotgunAmmo", 255, 6;
 			DropItem "BW_Trenchgun", 100, 1;
@@ -266,7 +266,7 @@ Class BW_BlueGuard_Trenchgun : BW_MonsterBase
 			TNT1 A 0; //Grenade sound
 			NAZI E 6
 			{
-				A_ActiveSound();
+				A_StartSound("BlueGuard/Grenade", CHAN_VOICE);
 				A_FaceTarget(90,45);
 			}
 			NAZI E 6;

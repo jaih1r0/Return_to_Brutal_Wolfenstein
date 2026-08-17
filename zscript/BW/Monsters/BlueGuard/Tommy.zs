@@ -19,10 +19,10 @@ Class BW_BlueGuard_M1Thompson : BW_MonsterBase
 			
 			BW_MonsterBase.AttackRange 6400; //32 Dmu (1 meter) * 200 (20 yards effective range of MP40)
 			BW_MonsterBase.CanIRoll true;
-			SeeSound "Nazi/Generic/sight";
-			PainSound "Nazi/Generic/pain";
-			DeathSound "Nazi/Generic/death";
-			ActiveSound "Nazi/Generic/sight";
+			SeeSound "BlueGuard/See";
+			PainSound "BlueGuard/Pain";
+			DeathSound "BlueGuard/death";
+			ActiveSound "BlueGuard/Active";
 			
 			DropItem "BW_USAPistolAmmo", 255, 20;
 			DropItem "BW_M1Thompson", 100, 1;
@@ -250,7 +250,7 @@ Class BW_BlueGuard_M1Thompson : BW_MonsterBase
 			TNT1 A 0; //Grenade sound
 			NAZI E 6
 			{
-				A_ActiveSound();
+				A_StartSound("BlueGuard/Grenade", CHAN_VOICE);
 				A_FaceTarget(90,45);
 			}
 			NAZI E 6;

@@ -1,4 +1,3 @@
-
 //bullet impacts
 //Credits: Ravik
 bimp_1 "Sounds/effects/ricochets/bullet_hit_1.ogg"

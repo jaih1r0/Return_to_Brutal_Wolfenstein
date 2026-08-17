@@ -104,9 +104,9 @@ extend class BW_MonsterBase
 			}
 			else if (CheckSight(target) == false && abs(Level.MapTime - EnemyLastSighted) < 360)
 			{
-				ActiveSoundPlayChance = (random(1,300));
+				ActiveSoundPlayChance = (random(1,100));
 				//because 1 tic A_Chase calls spams this lol
-				if((ActiveSoundPlayChance > 5 ))
+				if((ActiveSoundPlayChance > 2))
 				{
 					A_Chase("_a_chase_default", "_a_chase_default", CHF_NOPLAYACTIVE);
 				}

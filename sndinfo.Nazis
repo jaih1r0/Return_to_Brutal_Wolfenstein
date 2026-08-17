@@ -1,0 +1,151 @@
+//Blue Guard
+
+$RANDOM BlueGuard/See { BlueGuard/See1 BlueGuard/See2 BlueGuard/See3 BlueGuard/See4 BlueGuard/See5 BlueGuard/See6 }
+BlueGuard/See1	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSSee1.mp3"
+BlueGuard/See2	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSSee2.mp3"
+BlueGuard/See3	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSSee3.mp3"
+BlueGuard/See4	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSSee4.mp3"
+BlueGuard/See5	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSSee5.mp3"
+BlueGuard/See6	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSSee6.mp3"
+
+$RANDOM BlueGuard/Active { BlueGuard/Active1 BlueGuard/Active2 BlueGuard/Active3 BlueGuard/Active4 BlueGuard/Active5 BlueGuard/Active6 BlueGuard/Active7 BlueGuard/Active8 BlueGuard/Active9 }
+BlueGuard/Active1	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive1.mp3"
+BlueGuard/Active2	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive2.mp3"
+BlueGuard/Active3	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive3.mp3"
+BlueGuard/Active4	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive4.mp3"
+BlueGuard/Active5	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive5.mp3"
+BlueGuard/Active6	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive6.mp3"
+BlueGuard/Active7	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive7.mp3"
+BlueGuard/Active8	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive8.mp3"
+BlueGuard/Active9	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSActive9.mp3"
+
+$RANDOM BlueGuard/Pain { BlueGuard/Pain1 BlueGuard/Pain2 BlueGuard/Pain3 BlueGuard/Pain4 BlueGuard/Pain5 BlueGuard/Pain6 }
+BlueGuard/Pain1	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSPain1.mp3"
+BlueGuard/Pain2	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSPain2.mp3"
+BlueGuard/Pain3	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSPain3.mp3"
+BlueGuard/Pain4	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSPain4.mp3"
+BlueGuard/Pain5	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSPain5.mp3"
+BlueGuard/Pain6	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSPain6.mp3"
+
+$RANDOM BlueGuard/Death { BlueGuard/Death1 BlueGuard/Death2 BlueGuard/Death3 BlueGuard/Death4 BlueGuard/Death5 BlueGuard/Death6 BlueGuard/Death7 BlueGuard/Death8 BlueGuard/Death9 }
+BlueGuard/Death1	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath1.mp3"
+BlueGuard/Death2	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath2.mp3"
+BlueGuard/Death3	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath3.mp3"
+BlueGuard/Death4	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath4.mp3"
+BlueGuard/Death5	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath5.mp3"
+BlueGuard/Death6	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath6.mp3"
+BlueGuard/Death7	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath7.mp3"
+BlueGuard/Death8	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath8.mp3"
+BlueGuard/Death9	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSDeath9.mp3"
+
+$RANDOM BlueGuard/Grenade { BlueGuard/Grenade1 BlueGuard/Grenade2 BlueGuard/Grenade3 }
+BlueGuard/Grenade1	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSGrenade1.mp3"
+BlueGuard/Grenade2	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSGrenade2.mp3"
+BlueGuard/Grenade3	"Sounds/Enemies/TypeSpecific/BlueGuard/WolfSSGrenade3.mp3"
+
+
+//White Officer
+
+$RANDOM WhiteOfficer/See { WhiteOfficer/See1 WhiteOfficer/See2 WhiteOfficer/See3 WhiteOfficer/See4 WhiteOfficer/See5 WhiteOfficer/See6 WhiteOfficer/See7 WhiteOfficer/See8 WhiteOfficer/See9 WhiteOfficer/See10 WhiteOfficer/See11 WhiteOfficer/See12 WhiteOfficer/See13 WhiteOfficer/See14 WhiteOfficer/See15 WhiteOfficer/See16 WhiteOfficer/See17 WhiteOfficer/See18 WhiteOfficer/See19 WhiteOfficer/See20 }
+WhiteOfficer/See1	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee1.wav"
+WhiteOfficer/See2	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee2.wav"
+WhiteOfficer/See3	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee3.wav"
+WhiteOfficer/See4	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee4.wav"
+WhiteOfficer/See5	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee5.wav"
+WhiteOfficer/See6	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee6.wav"
+WhiteOfficer/See7	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee7.wav"
+WhiteOfficer/See8	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee8.wav"
+WhiteOfficer/See9	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee9.wav"
+WhiteOfficer/See10	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee10.wav"
+WhiteOfficer/See11	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee11.wav"
+WhiteOfficer/See12	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee12.wav"
+WhiteOfficer/See13	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee13.wav"
+WhiteOfficer/See14	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee14.wav"
+WhiteOfficer/See15	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee15.wav"
+WhiteOfficer/See16	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee16.wav"
+WhiteOfficer/See17	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee17.wav"
+WhiteOfficer/See18	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee18.wav"
+WhiteOfficer/See19	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee19.wav"
+WhiteOfficer/See20	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerSee20.wav"
+
+$RANDOM WhiteOfficer/Active { WhiteOfficer/Active1 WhiteOfficer/Active2 WhiteOfficer/Active3 WhiteOfficer/Active4 WhiteOfficer/Active5WhiteOfficer/Active6 WhiteOfficer/Active7 WhiteOfficer/Active8 WhiteOfficer/Active9WhiteOfficer/Active10 }
+WhiteOfficer/Active1	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive1.wav"
+WhiteOfficer/Active2	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive2.wav"
+WhiteOfficer/Active3	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive3.wav"
+WhiteOfficer/Active4	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive4.wav"
+WhiteOfficer/Active5	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive5.wav"
+WhiteOfficer/Active6	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive6.wav"
+WhiteOfficer/Active7	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive7.wav"
+WhiteOfficer/Active8	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive8.wav"
+WhiteOfficer/Active9	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive9.wav"
+WhiteOfficer/Active10	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerActive10.wav"
+
+$RANDOM WhiteOfficer/Pain { WhiteOfficer/Pain1 WhiteOfficer/Pain2 WhiteOfficer/Pain3 WhiteOfficer/Pain4 WhiteOfficer/Pain5 }
+WhiteOfficer/Pain1	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerPain1.wav"
+WhiteOfficer/Pain2	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerPain2.wav"
+WhiteOfficer/Pain3	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerPain3.wav"
+WhiteOfficer/Pain4	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerPain4.wav"
+WhiteOfficer/Pain5	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerPain5.wav"
+
+$RANDOM WhiteOfficer/Death { WhiteOfficer/Death1 WhiteOfficer/Death2 WhiteOfficer/Death3 WhiteOfficer/Death4 WhiteOfficer/Death5 WhiteOfficer/Death6 WhiteOfficer/Death7 WhiteOfficer/Death8 }
+WhiteOfficer/Death1	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath1.wav"
+WhiteOfficer/Death2	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath2.wav"
+WhiteOfficer/Death3	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath3.wav"
+WhiteOfficer/Death4	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath4.wav"
+WhiteOfficer/Death5	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath5.wav"
+WhiteOfficer/Death6	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath6.wav"
+WhiteOfficer/Death7	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath7.wav"
+WhiteOfficer/Death8	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerDeath8.wav"
+
+$RANDOM WhiteOfficer/Grenade { WhiteOfficer/Grenade1 WhiteOfficer/Grenade2 WhiteOfficer/Grenade3 WhiteOfficer/Grenade4 WhiteOfficer/Grenade5 }
+WhiteOfficer/Grenade1	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerGrenade1.wav"
+WhiteOfficer/Grenade2	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerGrenade2.wav"
+WhiteOfficer/Grenade3	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerGrenade3.wav"
+WhiteOfficer/Grenade4	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerGrenade4.wav"
+WhiteOfficer/Grenade5	"Sounds/Enemies/TypeSpecific/WhiteOfficer/WhiteOfficerGrenade5.wav"
+
+//Black Guard (STG)
+
+$RANDOM BlackGuard/See { BlackGuard/See1 BlackGuard/See2 BlackGuard/See3 BlackGuard/See4 BlackGuard/See5 }
+BlackGuard/See1	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1See1.mp3"
+BlackGuard/See2	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1See2.mp3"
+BlackGuard/See3	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1See3.mp3"
+BlackGuard/See4	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1See4.mp3"
+BlackGuard/See5	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1See5.mp3"
+
+$RANDOM BlackGuard/Active { BlackGuard/Active1 BlackGuard/Active2 BlackGuard/Active3 BlackGuard/Active4 BlackGuard/Active5 BlackGuard/Active6 BlackGuard/Active7 BlackGuard/Active8BlackGuard/Active9 BlackGuard/Active10 BlackGuard/Active11 BlackGuard/Active12 }
+BlackGuard/Active1	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active1.mp3"
+BlackGuard/Active2	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active2.mp3"
+BlackGuard/Active3	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active3.mp3"
+BlackGuard/Active4	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active4.mp3"
+BlackGuard/Active5	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active5.mp3"
+BlackGuard/Active6	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active6.mp3"
+BlackGuard/Active7	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active7.mp3"
+BlackGuard/Active8	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active8.mp3"
+BlackGuard/Active9	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active9.mp3"
+BlackGuard/Active10	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active10.mp3"
+BlackGuard/Active11	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active11.mp3"
+BlackGuard/Active12	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Active12.mp3"
+
+$RANDOM BlackGuard/Pain { BlackGuard/Pain1 BlackGuard/Pain2 BlackGuard/Pain3 BlackGuard/Pain4 BlackGuard/Pain5 BlackGuard/Pain6 }
+BlackGuard/Pain1	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Pain1.mp3"
+BlackGuard/Pain2	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Pain2.mp3"
+BlackGuard/Pain3	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Pain3.mp3"
+BlackGuard/Pain4	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Pain4.mp3"
+BlackGuard/Pain5	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Pain5.mp3"
+BlackGuard/Pain6	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Pain6.mp3"
+
+$RANDOM BlackGuard/Death { BlackGuard/Death1 BlackGuard/Death2 BlackGuard/Death3 BlackGuard/Death4 BlackGuard/Death5 BlackGuard/Death6 BlackGuard/Death7 BlackGuard/Death8BlackGuard/Death9 }
+BlackGuard/Death1	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death1.mp3"
+BlackGuard/Death2	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death2.mp3"
+BlackGuard/Death3	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death3.mp3"
+BlackGuard/Death4	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death4.mp3"
+BlackGuard/Death5	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death5.mp3"
+BlackGuard/Death6	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death6.mp3"
+BlackGuard/Death7	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death7.mp3"
+BlackGuard/Death8	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death8.mp3"
+BlackGuard/Death9	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Death9.mp3"
+
+$RANDOM BlackGuard/Grenade { BlackGuard/Grenade1 BlackGuard/Grenade2 }
+BlackGuard/Grenade1	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Grenade1.mp3"
+BlackGuard/Grenade2	"Sounds/Enemies/TypeSpecific/BlackGuardSTG/Black1Grenade2.mp3"
