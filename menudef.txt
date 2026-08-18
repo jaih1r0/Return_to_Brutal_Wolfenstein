@@ -61,7 +61,6 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 
 	Submenu "$OPTMNU_NASHGORE", "NashGoreOptionMenu"
-
 	statictext ""
 
 	submenu "BW Extra Levels","BWExtraLevels"
@@ -77,6 +76,7 @@ OptionMenu RTBW_OptionsMenu
 	statictext ""
 	control "Weapon Special/ DualWield","+User2"
 	statictext ""
+	control "Weapon Fidget","+User4"
 	statictext ""
 
 	statictext ""

@@ -3,6 +3,7 @@ addmenukey "Kick/Slide" "+zoom"
 addmenukey "Knife/Axe" "+User1"
 addmenukey "Grenade" "+User3"
 addmenukey "Weapon Special action" "+User2"
+addmenukey "Weapon Fidget" "+user4"
 
 
 //bw bonus levels commands
