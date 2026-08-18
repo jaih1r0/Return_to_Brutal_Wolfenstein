@@ -91,7 +91,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
 		BTGU E 1 {
 			BW_GunBarrelSmoke(ofsPos:(28,0,-6));
-			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER4);
 		}
 		loop;
 	
@@ -99,7 +99,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 0,"Ready");
 		BTGF H 1 {
 			BW_GunBarrelSmoke(ofsPos:(28,0,-6));
-			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3);
+			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER4);
 		}
 		loop;
 
@@ -272,8 +272,14 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGH KKKKKK 1;
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount >= 7 || invoker.ammo1.amount < 1,"ReloadEnd");
 		goto ReloadLoop;
-		
+
+	FidgetADS:
+		TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
+		BTGT DCBA 1;
+	User4:
 	Fidget:
+		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "FidgetADS");	
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 		BTGH BCDEF 1 BW_WeaponReady();
 		BTGH GHIJK 1 BW_WeaponReady();
@@ -281,7 +287,7 @@ class BW_Trenchgun : BaseBWWeapon
 		BTGP C 1 BW_WeaponReady();
 	FidgetLoop:
 		BTGP D 1 BW_WeaponReady();
-		TNT1 A 0 BW_QuickRefire("FidgetLoop",BT_RELOAD,false);
+		TNT1 A 0 BW_QuickRefire("FidgetLoop",BT_RELOAD|BT_USER4,false);
 
 		BTGP E 1 BW_WeaponReady();
 		BTGP F 1 A_StartSound("Trench/Forward", CHAN_AUTO, CHANF_OVERLAP, 1);

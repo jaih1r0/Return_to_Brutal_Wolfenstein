@@ -1,4 +1,4 @@
-Class BW_WhiteOfficer_M1911 : BW_MonsterBase //replaces Zombieman //[Pop] replace is temporary until spawners are implemented. Do we want to do spawner injection?
+Class BW_WhiteOfficer_M1911 : BW_WhiteOfficer_Pistol //replaces Zombieman //[Pop] replace is temporary until spawners are implemented. Do we want to do spawner injection?
 {
 		Default
 		{
@@ -35,7 +35,7 @@ Class BW_WhiteOfficer_M1911 : BW_MonsterBase //replaces Zombieman //[Pop] replac
 		{
 			A_Light(2);
 			//A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-			BW_FireMonsterBullet("BW_EnemyM1911Bullets", zofs: 34);
+			BW_FireMonsterBullet("BW_EnemyM1911Bullets");
 			BW_MiscEffect.SpawnFireFlashFx(self,30,0,40);
 			A_StartSound("M1911/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			A_StartSound("M1911/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.8);

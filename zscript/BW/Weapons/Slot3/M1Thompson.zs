@@ -49,73 +49,83 @@ Class BW_M1Thompson : BaseBWWeapon
 	
 	states
 	{
-		spawn:
-			TM1P A -1;
-			stop;
-		Select:
-			TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
-			TMS1 AB 1;
-			TNT1 A 0 A_StartSound("M1Tom/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMS1 CD 1;
-			goto ready;
-		Deselect:
-			TNT1 A 0 BW_SetReloading(false);
-			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 A_Startsound("M1Tom/Lower",CHAN_AUTO,CHANF_OVERLAP);
-			TMS1 DC 1;
-			TNT1 A 0 A_StartSound("Generic/SMG/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMS1 BA 1;
-			TNT1 A 0 BW_WeaponLower();
-			wait;
-		Ready:
-			TMF1 A 1 {
-				BW_GunBarrelSmoke(ofsPos:(22,0,-5));
-				return BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER2);
-			}
-			loop;
-		Ready_ADS:
-			TMF2 A 1 {
-				BW_GunBarrelSmoke(ofsPos:(23,0,-3));
-				return BW_WeaponReady(WRF_ALLOWRELOAD);
-			}
-			loop;
-		Fire:
-			TNT1 A 0 BW_JumpifAiming("Fire_ADS");
-			TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
-			TMF1 B 1 bright BW_M1ThompsonFire();
-			TMF1 C 1;
-			TNT1 A 0 A_ZoomFactor(1);
-			TMF1 D 1 A_Startsound("M1Tom/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
-			TMF1 C 1 A_Refire();
-			goto ready;
-		Fire_ADS:
-			TNT1 A 0 BW_PrefireCheck(1,"Reload_ADS","DryFire_ADS");
-			TMF2 B 1 bright BW_M1ThompsonFire();
-			TMF2 C 1;
-			TNT1 A 0 A_ZoomFactor(1.2);
-			TMF2 D 1 A_Startsound("M1Tom/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
-			TMF2 C 1 A_Refire();
-			Goto Ready_ADS;
-		
-		DryFire:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
-			TMF1 A 1;
-			goto ready;
-		DryFire_ADS:
-			TNT1 A 0 A_Startsound("weapon/dryfire",13);
-			TMF2 A 1;
-			goto ready_ADS;
-		
-		NoAmmo:
-			TNT1 A 0 BW_JumpifAiming("NoAmmo_ADS");
-			TMF1 A 1;
-			goto ready;
-		NoAmmo_ADS:
-			TMF2 A 1;
-			goto ready_ADS;
+	Spawn:
+		TM1P A -1;
+		stop;
 
-		//rechamber too
-		Fidget:
+	Select:
+		TNT1 A 0 BW_WeaponRaise("Generic/SMG/Raise");
+		TMS1 AB 1;
+		TNT1 A 0 A_StartSound("M1Tom/Raise", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMS1 CD 1;
+		goto ready;
+
+	Deselect:
+		TNT1 A 0 BW_SetReloading(false);
+		TNT1 A 0 BW_ClearDualOverlays();
+		TNT1 A 0 A_Startsound("M1Tom/Lower",CHAN_AUTO,CHANF_OVERLAP);
+		TMS1 DC 1;
+		TNT1 A 0 A_StartSound("Generic/SMG/Holster", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMS1 BA 1;
+		TNT1 A 0 BW_WeaponLower();
+		wait;
+
+	Ready:
+		TMF1 A 1 
+		{
+			BW_GunBarrelSmoke(ofsPos:(22,0,-5));
+			return BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER2);
+		}
+		loop;
+
+	Ready_ADS:
+		TMF2 A 1 
+		{
+			BW_GunBarrelSmoke(ofsPos:(23,0,-3));
+			return BW_WeaponReady(WRF_ALLOWRELOAD);
+		}
+		loop;
+
+	Fire:
+		TNT1 A 0 BW_JumpifAiming("Fire_ADS");
+		TNT1 A 0 BW_PrefireCheck(1,"Reload","DryFire");
+		TMF1 B 1 bright BW_M1ThompsonFire();
+		TMF1 C 1;
+		TNT1 A 0 A_ZoomFactor(1);
+		TMF1 D 1 A_Startsound("M1Tom/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
+		TMF1 C 1 A_Refire();
+		goto ready;
+
+	Fire_ADS:
+		TNT1 A 0 BW_PrefireCheck(1,"Reload_ADS","DryFire_ADS");
+		TMF2 B 1 bright BW_M1ThompsonFire();
+		TMF2 C 1;
+		TNT1 A 0 A_ZoomFactor(1.2);
+		TMF2 D 1 A_Startsound("M1Tom/FireMech",CHAN_AUTO,CHANF_OVERLAP, 0.8);
+		TMF2 C 1 A_Refire();
+		Goto Ready_ADS;
+
+	DryFire:
+		TNT1 A 0 A_Startsound("weapon/dryfire",13);
+		TMF1 A 1;
+		goto ready;
+
+	DryFire_ADS:
+		TNT1 A 0 A_Startsound("weapon/dryfire",13);
+		TMF2 A 1;
+		goto ready_ADS;
+
+	NoAmmo:
+		TNT1 A 0 BW_JumpifAiming("NoAmmo_ADS");
+		TMF1 A 1;
+		goto ready;
+
+	NoAmmo_ADS:
+		TMF2 A 1;
+		goto ready_ADS;
+
+		//rechamber too (probably need new sprite)
+		 /*Fidget:
 			MP4C ABCDE 1 BW_Weaponready();
 			TNT1 A 0 A_Startsound("MP40/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C FGHI 1 BW_Weaponready();
@@ -124,126 +134,124 @@ Class BW_M1Thompson : BaseBWWeapon
 			TNT1 A 0 A_Startsound("MP40/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
 			MP4C JKLMNA 1 BW_Weaponready();
 			MP4U E 1 BW_WeaponReady();
-			goto ready;
-		
-		AltFire:
-			TNT1 A 0
+			goto ready;*/
+
+	AltFire:
+		TNT1 A 0
+		{
+			A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+			if(findinventory("AimingToken"))
 			{
-				A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
-				if(findinventory("AimingToken"))
-				{
-					A_setinventory("AimingToken",0);
-					return resolvestate("StopAim");
-				}
-				A_setinventory("AimingToken",1);
-				return resolvestate(null);
+				A_setinventory("AimingToken",0);
+				return resolvestate("StopAim");
 			}
-		StartAim:
-			TNT1 A 0 A_ZoomFactor(1.2);
-			TMS2 ABCD 1;
-			goto Ready_ADS;
-		StopAim:
-			TNT1 A 0 A_ZoomFactor(1.0);
-			TMS2 DCBA 1;
-			goto Ready;
+			A_setinventory("AimingToken",1);
+			return resolvestate(null);
+		}
+	StartAim:
+		TNT1 A 0 A_ZoomFactor(1.2);
+		TMS2 ABCD 1;
+		goto Ready_ADS;
 
+	StopAim:
+		TNT1 A 0 A_ZoomFactor(1.0);
+		TMS2 DCBA 1;
+		goto Ready;
 
-		
-		KickFlash:
-			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 BW_jumpifAkimbo("KickFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TM1K ABC 1;
-			TM1K DEF 1;
-			TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TM1K GGG 1;
-			TM1K FEDCBA 1;
-			goto ready;
-		SlideFlash:
-			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 BW_jumpifAkimbo("SlideFlash_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TM1K ABCD 1;
-			TM1K EFGG 1;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TM1K GGG 1;
-			TM1K GGG 1;
-			TM1K GGG 1;
-			TM1K GGG 1;
-			TM1K GGG 1;
-			TM1K GGG 1;
-		SlideFlashEnd:
-			TNT1 A 0 BW_jumpifAkimbo("SlideFlashEnd_Akimbo");
-			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TM1K FEDCBA 1;
-			goto ready;
-		KnifeGunFlash:
-			TNT1 A 0 BW_ClearDualOverlays();
-			TNT1 A 0 BW_jumpifAkimbo("KnifeGunFlash_Akimbo");
-			TMS1 DCBA 1;	//temporary
-			TNT1 A 5;
-			TMS1 ABCD 1;
-			stop;
+	KickFlash:
+		TNT1 A 0 BW_ClearDualOverlays();
+		TNT1 A 0 BW_jumpifAkimbo("KickFlash_Akimbo");
+		TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TM1K ABC 1;
+		TM1K DEF 1;
+		TNT1 A 0 A_StartSound("Generic/rattle/small", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TM1K GGG 1;
+		TM1K FEDCBA 1;
+		goto ready;
+	SlideFlash:
+		TNT1 A 0 BW_ClearDualOverlays();
+		TNT1 A 0 BW_jumpifAkimbo("SlideFlash_Akimbo");
+		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TM1K ABCD 1;
+		TM1K EFGG 1;
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TM1K GGG 1;
+		TM1K GGG 1;
+		TM1K GGG 1;
+		TM1K GGG 1;
+		TM1K GGG 1;
+		TM1K GGG 1;
+	SlideFlashEnd:
+		TNT1 A 0 BW_jumpifAkimbo("SlideFlashEnd_Akimbo");
+		TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TM1K FEDCBA 1;
+		goto ready;
 
+	KnifeGunFlash:
+		TNT1 A 0 BW_ClearDualOverlays();
+		TNT1 A 0 BW_jumpifAkimbo("KnifeGunFlash_Akimbo");
+		TMS1 DCBA 1;	//temporary
+		TNT1 A 5;
+		TMS1 ABCD 1;
+		stop;
 
-		
-		Reload_ADS:
-			TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
-			TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
-			TMS2 DCBA 1;
-		Reload:
-			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Reload_ADS");
-			TNT1 A 0 BW_CheckReload("EmptyReload","Fidget","NoAmmo",20,1);
-			TMF1 A 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 AB 2;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 CDEEE 2;
-			TNT1 A 0 A_startsound("M1Tom/MagOut",17);
-			TMR1 SRQPON 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 M 24;
-			TMR1 NOPQ 1;
-			TNT1 A 0 A_startsound("M1Tom/MagIn",18);
-			TMR1 RSTUUUUU 1;
-			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
-			TMR1 TSRE 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 DC 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 BA 2;
-			TMF1 A 2;
-			goto ready;
+	Reload_ADS:
+		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}
+		TNT1 A 0 A_StartSound("Generic/ADS", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+		TMS2 DCBA 1;
+	Reload:
+		TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Reload_ADS");
+		TNT1 A 0 BW_CheckReload("EmptyReload","Ready","NoAmmo",20,1);
+		TMF1 A 2;
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 AB 2;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 CDEEE 2;
+		TNT1 A 0 A_startsound("M1Tom/MagOut",17);
+		TMR1 SRQPON 1;
+		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 M 24;
+		TMR1 NOPQ 1;
+		TNT1 A 0 A_startsound("M1Tom/MagIn",18);
+		TMR1 RSTUUUUU 1;
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
+		TMR1 TSRE 1;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 DC 2;
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 BA 2;
+		TMF1 A 2;
+		goto ready;
 
-		EmptyReload:
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMF1 A 2;
-			TMR1 AB 2;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 CDEEE 2;
-			TNT1 A 0 A_startsound("M1Tom/MagOutEmpty",17);
-			TMR1 FGHIJKL 1;
-			TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 M 8;
-			TNT1 A 0 A_startsound("M1Tom/MagInEmpty",18);
-			TMR1 M 8;
-			TMR1 NOPQR 1;
-			TMR1 STUUUT 2;
-			TMR1 SE 1;
-			TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 DC 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR1 BA 2;
-			TMF1 A 1;
-			TMR3 ABCDEFGH 1;
-			TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR3 IJKL 1;
-			TNT1 A 0 A_Startsound("M1Tom/Bolt",10,CHANF_OVERLAP,0.7);
-			TMR3 MNHHH 2;
-			TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-			TMR3 HGFEDCBA 1;
-			goto ready;
+	EmptyReload:
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMF1 A 2;
+		TMR1 AB 2;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 CDEEE 2;
+		TNT1 A 0 A_startsound("M1Tom/MagOutEmpty",17);
+		TMR1 FGHIJKL 1;
+		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 M 8;
+		TNT1 A 0 A_startsound("M1Tom/MagInEmpty",18);
+		TMR1 M 8;
+		TMR1 NOPQR 1;
+		TMR1 STUUUT 2;
+		TMR1 SE 1;
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 DC 2;
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR1 BA 2;
+		TMF1 A 1;
+		TMR3 ABCDEFGH 1;
+		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR3 IJKL 1;
+		TNT1 A 0 A_Startsound("M1Tom/Bolt",10,CHANF_OVERLAP,0.7);
+		TMR3 MNHHH 2;
+		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
+		TMR3 HGFEDCBA 1;
+		goto ready;
 	}
 }
 
