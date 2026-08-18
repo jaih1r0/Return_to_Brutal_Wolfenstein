@@ -62,3 +62,37 @@ Player/Death5
 Player/Death6
 }
 $playeralias player male *death Player/Death
+
+Player/UseFail1	"Sounds/Player/UseFail/BJUseFail1.mp3"
+Player/UseFail2	"Sounds/Player/UseFail/BJUseFail2.mp3"
+Player/UseFail3	"Sounds/Player/UseFail/BJUseFail3.mp3"
+Player/UseFail4	"Sounds/Player/UseFail/BJUseFail4.mp3"
+$RANDOM Player/UseFail
+{
+Player/UseFail1
+Player/UseFail2
+Player/UseFail3
+Player/UseFail4
+}
+$playeralias player male *usefail Player/UseFail
+
+Player/Drowning1	"Sounds/Player/Interactions/BJDrowning1.wav"
+Player/Drowning2	"Sounds/Player/Interactions/BJDrowning2.wav"
+$RANDOM Player/Drowning
+{
+Player/Drowning1
+Player/Drowning2
+}
+$playeralias player male *pain-drowning Player/Drowning
+
+Player/Gasp	"Sounds/Player/Interactions/BJGasp.mp3"
+$playeralias player male *gasp Player/Gasp
+
+Player/Falling	"Sounds/Player/Interactions/BJFalling.mp3"
+$playeralias player male *falling Player/Falling
+
+Player/Dive	"Sounds/Player/Interactions/BJDive.mp3"
+$playeralias player male *dive Player/Dive
+
+Player/Surface	"Sounds/Player/Interactions/BJSurface.mp3"
+$playeralias player male *surface Player/Surface
