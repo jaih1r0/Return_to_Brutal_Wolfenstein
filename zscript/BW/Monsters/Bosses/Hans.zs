@@ -2,7 +2,7 @@ Class BW_HansGrosse : BW_Boss
 {
     default
     {
-        tag "Hans Grosse";
+        tag "-=Hans Grosse=-";
         Health 10000;
         Radius 32;
         Height 60;
@@ -315,7 +315,7 @@ Class BW_HansGrosse : BW_Boss
         bossbarinfo thisboss;
         thisboss.portrait = "graphics/BossPortraits/Hans.png";
         thisboss.angryPortrait = "graphics/BossPortraits/Hans_Struggle.png";
-        thisboss.presentation = "=Hans Grosse - The Arrogant Rival=";   //placeholder title
+        thisboss.presentation = "-=The Arrogant Rival=-";   //placeholder title
         thisboss.maxhp = self.spawnhealth();
         thisboss.ready = true;
         super.RequestBossBar(thisboss);
