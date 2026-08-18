@@ -4,6 +4,7 @@ Class BW_EnemyLugerBullets : BW_LugerBullets
     default
     {
         speed 50;
+		BW_Projectile.projectiledmg 12;
     }
 }
 
@@ -12,6 +13,7 @@ Class BW_EnemyM1911Bullets : BW_M1911Bullets
     default
     {
         speed 50;
+		BW_Projectile.projectiledmg 17;
     }
 }
 
@@ -20,6 +22,7 @@ Class BW_EnemyMP40Bullets : BW_MP40Bullets
 {
     default
     {
+		BW_Projectile.projectiledmg 12;
         speed 50;
     }
 }
@@ -28,6 +31,7 @@ Class BW_EnemyM1ThompsonBullets : BW_M1ThompsonBullets
 {
     default
     {
+		BW_Projectile.projectiledmg 17;
         speed 50;
     }
 }
@@ -36,6 +40,7 @@ Class BW_EnemySTG44Bullets : BW_STG44Bullets
 {
     default
     {
+		BW_Projectile.projectiledmg 20;
         speed 50;
     }
 }
@@ -44,6 +49,7 @@ Class BW_EnemyKar98Bullets : BW_Kar98Bullets
 {
     default
     {
+		BW_Projectile.projectiledmg 80;
         speed 50;
     }
 }
@@ -52,6 +58,7 @@ Class BW_Enemy12GABullets : BW_12GABullets
 {
     default
     {
+		BW_Projectile.projectiledmg 11;
         speed 50;
     }
 }
@@ -60,6 +67,7 @@ Class BW_EnemyMGBullets : BW_MGBullets
 {
     default
     {
+		BW_Projectile.projectiledmg 17;
         speed 50;
     }
 }

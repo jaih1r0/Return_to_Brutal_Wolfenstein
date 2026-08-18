@@ -315,7 +315,7 @@ Class BW_HansGrosse : BW_Boss
         bossbarinfo thisboss;
         thisboss.portrait = "graphics/BossPortraits/Hans.png";
         thisboss.angryPortrait = "graphics/BossPortraits/Hans_Struggle.png";
-        thisboss.presentation = "The first boss";   //placeholder title
+        thisboss.presentation = "=Hans Grosse - The Arrogant Rival=";   //placeholder title
         thisboss.maxhp = self.spawnhealth();
         thisboss.ready = true;
         super.RequestBossBar(thisboss);
