@@ -474,7 +474,7 @@ Class BW_12GABullets : BW_Projectile
 {
 	default
 	{
-		BW_Projectile.projectiledmg 25;	//why was this weaker than the luger?
+		BW_Projectile.projectiledmg 22;	//why was this weaker than the luger?
 		BW_Projectile.ripAmount 0;
 		damagetype "Shotgun";
 	}

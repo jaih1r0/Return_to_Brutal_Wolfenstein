@@ -35,7 +35,7 @@ Class BW_WhiteOfficer_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] repla
 		{
 			A_Light(2);
 			//A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-			BW_FireMonsterBullet("BW_EnemyLugerBullets");
+			BW_FireMonsterBullet("BW_EnemyLugerBullets", zofs: 34);
 			BW_MiscEffect.SpawnFireFlashFx(self,30,0,40);
 			A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
