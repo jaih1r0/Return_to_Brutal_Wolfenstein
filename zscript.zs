@@ -7,14 +7,20 @@ Version 4.10
 
 //zforms main include
 #include "zscript/BW/Menu/BW_ZForms/Include.zsc"
-
 #include "zscript/BW/Menu/StaticMenuInfo.zs"
 #include "zscript/BW/Menu/BW_ZFElements.zs"
+
+//StatusBarScreen Library by Lewisk3
+#include "ZScript/BW/IntermissionScreen/StatusScreen_base.zsc"
+#include "ZScript/BW/IntermissionScreen/StatusScreen_3D.zsc"
+#include "ZScript/BW/IntermissionScreen/StatusScreen_Shape2D.zsc"
 
 //actual bw menu classes
 #include "zscript/BW/Menu/MainMenu.zs"
 #include "zscript/BW/Menu/EpisodeMenu.zs"
 
+//Intermission Screen
+#include "ZScript/BW/IntermissionScreen/BW_StatScreen.zs"
 
 
 

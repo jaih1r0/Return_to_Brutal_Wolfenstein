@@ -31,125 +31,119 @@ Class BW_WhiteOfficer_Pistol : BW_MonsterBase //replaces Zombieman //[Pop] repla
 
 	int HowManyGrenadesHaveIThrown;
 		
-	void FireProjBullets()
-	{
-		A_Light(2);
-		//A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-		BW_FireMonsterBullet("BW_EnemyLugerBullets");
-		BW_MiscEffect.SpawnFireFlashFx(self,30,0,40);
-		A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
-		AmmoInMag--;
-	}
-
-	void FireProjGren()
-	{
-		A_Spawnprojectile("BW_enemyGrenade", 32, 0, 0, CMF_ABSOLUTEPITCH, self.pitch-5);
-		HowManyGrenadesHaveIThrown++;
-	}
-
-	override void PostBeginPlay()
-	{
-		Super.PostBeginPlay(); // call the super function for virtual functions so we don't break shit if GZdoom update.
-	}
-
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		AmmoInMag = random(4,8); //Luger P08
-	}
-
-	override void Tick()
-	{
-		Super.Tick();
-	}
-	States
-	{
-	Spawn:
-		WTGA Z 1;
-		TNT1 A 0;
-	Stand:
-		WTGA ZZZZ 5
+		void FireProjBullets()
 		{
-			A_LookEx();
-			A_SetScale(scale.X,Scale.Y+0.01);
+			A_Light(2);
+			//A_SpawnProjectile("BW_LugerBullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
+			BW_FireMonsterBullet("BW_EnemyLugerBullets");
+			BW_MiscEffect.SpawnFireFlashFx(self,30,0,40);
+			A_StartSound("Luger/Fire", CHAN_AUTO, CHANF_OVERLAP);
+			AmmoInMag--;
 		}
-		WTGA ZZZZ 5
+		
+		void FireProjGren()
 		{
-			A_LookEx();
-			A_SetScale(scale.X,Scale.Y-0.01);
+			A_Spawnprojectile("BW_enemyGrenade", 32, 0, 0, CMF_ABSOLUTEPITCH, self.pitch-5);
+			HowManyGrenadesHaveIThrown++;
 		}
-		Loop;
-	See:
-		TNT1 A 0
+		
+		override void PostBeginPlay()
 		{
-			A_SetScale(1,YscaleFix);
-			EnemyLastSighted = Level.MapTime;
-			if(AmmoInMag < 5)
+			Super.PostBeginPlay(); // call the super function for virtual functions so we don't break shit if GZdoom update.
+		}
+		
+		override void BeginPlay()
+		{
+			super.BeginPlay();
+			AmmoInMag = random(4,8); //Luger P08
+		}
+		
+		override void Tick()
+		{
+			Super.Tick();
+		}
+		
+		States
+		{
+		
+		Spawn:
+			WTGA Z 1;
+			TNT1 A 0;
+		Stand:
+			WTGA ZZZZ 5
 			{
-				bFRIGHTENED = true;
+				A_LookEx();
+				A_SetScale(scale.X,Scale.Y+0.01);
 			}
-			else
+			WTGA ZZZZ 5
 			{
-				bFRIGHTENED = false;
+				A_LookEx();
+				A_SetScale(scale.X,Scale.Y-0.01);
 			}
-		}
-	SeeContinue:
-		WTGA AAAABBBB 1 AI_SmartChase();
-		TNT1 A 0 A_Fallback();
-		WTGA CCCCDDDD 1 AI_SmartChase();
-		TNT1 A 0 A_Fallback();
-		Loop;
-	FallBack:
-		TNT1 A 0 A_Jump(255, "Fallback1", "Roll", "See");
-	FallBack1:
-		WTGA D 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA C 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA B 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA A 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA D 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA C 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA B 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-			return A_Jump(64,"Missile");
-		}
-		WTGA A 3 
-		{
-			A_FaceTarget(10);
-			A_Recoil(2);
-		}
-		Goto Missile;
+			Loop;
+		See:
+			TNT1 A 0
+			{
+				A_SetScale(1,YscaleFix);
+				EnemyLastSighted = Level.MapTime;
+				if(AmmoInMag < 5)
+				{
+					bFRIGHTENED = true;
+				}
+				else
+				{
+					bFRIGHTENED = false;
+				}
+			}
+		SeeContinue:
+			WTGA AAAABBBB 1 AI_SmartChase();
+			TNT1 A 0 A_Fallback();
+			WTGA CCCCDDDD 1 AI_SmartChase();
+			TNT1 A 0 A_Fallback();
+			Loop;
+		FallBack:
+			TNT1 A 0 A_Jump(255, "Fallback1", "Roll", "See");
+		FallBack1:
+			WTGA D 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA C 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA B 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA A 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA D 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA C 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA B 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+				return A_Jump(64,"Missile");
+			}
+			WTGA A 3 {
+				A_FaceTarget(10);
+				A_Recoil(2);
+			}
+			Goto Missile;
 		
 		////////////////
 		//Attack Logic// 
