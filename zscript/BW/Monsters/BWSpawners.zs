@@ -64,5 +64,6 @@ Class BW_BlackGuardSpawner : BW_Spawner
 	default
 	{
 		dropItem "BW_BlackGuard_STG44",Skill_All, 1;
+		dropItem "BW_BlackGuard_FG42",Skill_normal|Skill_hard, 1;
 	}
 }
