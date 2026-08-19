@@ -824,8 +824,18 @@ Class BW_BFGBALL : BFGBall replaces BFGBAll
 	}
 	states
 	{
+		Spawn:
+			BFS1 AABB 2 Bright A_SpawnItemEx("BW_LFShard", 0, 0, self.height / 2, frandom(1,-1), frandom(1,-1), 0, frandom(1,360), SXF_ABSOLUTEVELOCITY);
+			Loop;
 		Death:
-			TNT1 A 0 A_QuakeEx(2,2,2,15,0,400,"",QF_RELATIVE|QF_SCALEDOWN);
+			TNT1 A 0
+			{
+				A_QuakeEx(2,2,2,15,0,400,"",QF_RELATIVE|QF_SCALEDOWN);
+				for(int i = 0; i < 5; i++)
+				{
+					A_SpawnItemEx("BW_LFShard", 0, 0, self.height / 2, frandom(1,-1), frandom(1,-1), 0, frandom(1,360), SXF_ABSOLUTEVELOCITY);
+				}
+			}
 			BFE1 AB 3 Bright;
 			BFE1 C 3 Bright A_Explode(200,300,XF_THRUSTLESS);
 			BFE1 DEF 3 Bright;
@@ -839,6 +849,7 @@ Class LFedToken : inventory
 	uint origTrans;
 	int floatTimer;
 	bool brighty;
+	bool BigParticles;
 	override void attachtoowner(actor other)
 	{
 		super.attachtoowner(other);
@@ -846,6 +857,7 @@ Class LFedToken : inventory
 		other.vel = (frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(0.4,2.0));
 		origTrans = other.translation;
 		other.A_SetTranslation("BW_LFed");
+		other.A_SetRenderStyle(1, STYLE_ADD);
 		brighty = other.bBright;
 		other.bbright = true;
 		floatTimer = frandom(1,3.5) * TICRATE;
@@ -861,9 +873,27 @@ Class LFedToken : inventory
 		if(isfrozen())
 			return;
 		if(floatTimer > 0)
+		{
+			if(random(1,5) == 2)
+			{
+				owner.A_SpawnItemEx("BW_LFShard", 0, 0, owner.height / 2, frandom(1,-1), frandom(1,-1), frandom(1,-1), frandom(1,360), SXF_ABSOLUTEVELOCITY);
+			}
+			if(owner.Alpha > 0.25)
+			{
+				owner.Alpha = owner.Alpha - 0.025;
+			}
 			floatTimer--;
+		}
 		else
 		{
+			if(!BigParticles)
+			{
+				for(int i = 0; i < 5; i++)
+				{
+					owner.A_SpawnItemEx("BW_LFShard", 0, 0, owner.height / 2, frandom(1,-1), frandom(1,-1), 0, frandom(1,360), SXF_ABSOLUTEVELOCITY);
+				}
+				BigParticles = true;
+			}
 			owner.bnogravity = false;
 			if((owner.pos.z <= owner.floorz + 1 || owner.waterlevel > 2) && owner.health > 0)
 			{
@@ -892,6 +922,10 @@ Class LFedToken : inventory
 						spawnFxSmokeBasic();
 						spawnFxSmokeBasic();
 						spawnFxSmokeBasic();
+						for(int i = 0; i < 5; i++)
+						{
+							owner.A_SpawnItemEx("BW_LFShard", 0, 0, owner.height / 2, frandom(1,-1), frandom(1,-1), 0, frandom(1,360), SXF_ABSOLUTEVELOCITY);
+						}
 						for(int i = 0; i < bones; i++)
 						{
 							actor b = spawn("BW_BoneDebris",owner.pos + (0,0,owner.height));
