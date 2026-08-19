@@ -94,15 +94,24 @@ class wolfStatus : DoomStatusScreen
 			return;
 		}
 		
-		double timeri = 105.0;	//3 seconds i think
+		double timeri = 70.0;	//2 seconds i think
 		double raisetime = clamp(bordertimer - timeri, -timeri,0.0);
+		double addpos = 0;
+		
+		if(raisetime < 0.0)
+		{
+			double ps = BW_Statics.linearmap(raisetime,0,70,0.0,1.0);
+			double easy = ease_OutQuad(ps);
+			addpos = easy * timeri * 5;
+		}
+		
 		
 		//up
-		screen.drawtexture(border,false,pos.x,pos.y + raisetime
+		screen.drawtexture(border,false,pos.x,pos.y + addpos//raisetime
 		,DTA_DestWidthF,size.x,DTA_DestHeightF,size.y * 0.05,DTA_Alpha,alfa);
 		
 		//down
-		screen.drawtexture(border,false,pos.x,pos.y - raisetime + (size.y - 40)
+		screen.drawtexture(border,false,pos.x,pos.y - addpos + (size.y - 40)
 		,DTA_DestWidthF,size.x,DTA_DestHeightF,size.y * 0.05,DTA_Alpha,alfa,DTA_FlipY,true);
 	}
 	
@@ -115,10 +124,17 @@ class wolfStatus : DoomStatusScreen
 		
 		double timeri = 105.0;	//3 seconds i think
 		double raisetime = clamp(bordertimer - timeri, -timeri,0.0);
+		double addpos = 0;
 		
+		if(raisetime < 0.0)	//already at its end position, no need to do nothing else
+		{
+			double ps = BW_Statics.linearmap(raisetime,0,90,0.0,1.0);
+			double easy = ease_InQuad(ps);
+			addpos = easy * -timeri * 10;
+		}
 		if(muggen)
 		{
-			muggen.drawmug((300 + (raisetime * 10),320),(375,375), Alpha);
+			muggen.drawmug((300 + addpos,320),(375,375), Alpha);
 		}
 	}
 	
@@ -239,8 +255,15 @@ class wolfStatus : DoomStatusScreen
 		return String.Format("%02d:%02d",m,s);
 	}
 	
+	double ease_OutQuad(double x) 
+	{
+		return 1 - (1 - x) * (1 - x);
+	}
 	
-	
+	double ease_InQuad(double x) 
+	{
+		return x * x;
+	}
 	
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -398,11 +421,13 @@ class wolfStatus : DoomStatusScreen
 				playerScore = min(PlayerScore + 100, Players[consoleplayer].mo.score);
 				if (!(bcnt&3))
 					PlaySound("intermission/tick");
-				console.printf("counting score");
+				//console.printf("counting score");
 			}
 				
 			if(!intermissioncounter || playerScore >= Players[consoleplayer].mo.score)
 			{
+				if(muggen)
+					muggen.setend();
 				PlaySound("intermission/nextstage");
 				sp_state++;
 			}
@@ -511,7 +536,8 @@ Class BWInterMug ui
 		if(framedur <= 0)
 		{
 			framedur = singleframedur;
-			curframe++;
+			if(!onend)
+				curframe++;
 			if(curframe > texs.size())
 				curframe = 0;
 			if(curframe == endframe && !onend)
