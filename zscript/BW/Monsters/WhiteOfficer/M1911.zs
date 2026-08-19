@@ -29,7 +29,7 @@ Class BW_WhiteOfficer_M1911 : BW_WhiteOfficer_Pistol //replaces Zombieman //[Pop
 			Obituary "$OB_ZOMBIE";
 		}
 		
-		int HowManyGrenadesHaveIThrown;
+		//int HowManyGrenadesHaveIThrown;
 		
 		void FireProjBullets()
 		{
