@@ -510,6 +510,27 @@ MG42/MagIn	"Sounds/Weapons/Slot5/MG42/MG42_IN.ogg"
 MG42/MagOut	"Sounds/Weapons/Slot5/MG42/MG42_OUT.ogg"
 MG42/rechamber MG4CLIK
 
+
+//FG42
+
+FG42/Raise	"Sounds/Weapons/Slot5/FG42/FG42Raise.wav"
+FG42/Lower	"Sounds/Weapons/Slot5/FG42/FG42Drop.wav"
+
+FG42/MagIn	"Sounds/Weapons/Slot5/FG42/FG42MagIn.wav"
+FG42/MagOut	"Sounds/Weapons/Slot5/FG42/FG42MagOut.wav"
+FG42/MagInEmpty	"Sounds/Weapons/Slot5/FG42/FG42MagInEmpty.wav"
+FG42/MagOutEmpty	"Sounds/Weapons/Slot5/FG42/FG42MagOutEmpty.wav"
+FG42/Charge	"Sounds/Weapons/Slot5/FG42/FG42Charge.wav"
+
+FG42/Fire	"Sounds/Weapons/Slot5/FG42/Fire/FG42Fire.ogg"
+FG42/Bass	"Sounds/Weapons/Slot5/FG42/Fire/FG42Bass.wav"
+
+$RANDOM FG42/FireAdd { FG42/FireAdd1 FG42/FireAdd2 FG42/FireAdd3 }
+FG42/FireAdd1	"Sounds/Weapons/Slot5/FG42/Fire/FG42FireAdd1.wav"
+FG42/FireAdd2	"Sounds/Weapons/Slot5/FG42/Fire/FG42FireAdd2.wav"
+FG42/FireAdd3	"Sounds/Weapons/Slot5/FG42/Fire/FG42FireAdd3.wav"
+
+
 //Chaingun
 
 Chaingun/Raise	"Sounds/Weapons/Slot5/Chaingun/CHNGRaise.wav"
