@@ -79,6 +79,7 @@ Version 4.10
 #include "zscript/BW/Monsters/WhiteOfficer/Pistol.zs"
 #include "zscript/BW/Monsters/WhiteOfficer/M1911.zs"
 #include "zscript/BW/Monsters/BlackGuard/STG44.zs"
+#include "zscript/BW/Monsters/BlackGuard/FG42.zs"
 #include "zscript/BW/Monsters/Dogs/Doggie.zs"
 #include "zscript/BW/Monsters/Mutants/Mutant.zs"
 

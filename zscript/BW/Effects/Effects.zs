@@ -87,6 +87,47 @@ class BWSpark : BWFxBase
 	}
 }
 
+class BW_LFShard : BWFxBase
+{
+	default
+	{
+		renderstyle "Add";
+		+bright;
+		scale 1;
+		Alpha 0.5;
+		+NOGRAVITY;
+		+rollsprite;
+		+rollcenter;
+		Translation "112:127=250:254";
+	}
+	int Timer;
+	states
+	{
+		Spawn:
+			APLS AB random(2,5)
+			{
+				Timer++;
+				alpha += frandom(-0.10, 0.10);
+				A_setscale(self.scale.x + frandom(0.05,-0.05));
+				A_SetRoll(roll+random(1,90), SPF_INTERPOLATE);
+			}
+			TNT1 A 0 A_JumpIf(Timer >= 35, "SpawnEnd");
+			Loop;
+		SpawnEnd:
+			APLS ABABABABABABAB random(1,3)
+			{
+				A_fadeout(0.1);
+				A_setscale(self.scale.x - 0.02);
+			}
+			Stop;
+	}
+	override void Tick()
+	{
+		Super.Tick();
+		A_Weave(0,frandom(1,3),0,frandom(1,3));
+	}
+}
+
 Class BW_Splash : BWFxBase
 {
 	default
