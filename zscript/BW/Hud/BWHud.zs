@@ -13,12 +13,14 @@ Class BW_Hud : BaseStatusBar
 	double messageScale; 
 	int msgpos;
 	textureID mHudBlood;
+	textureID mHudReference;
 	uint mbloodtics;
 
 	override void Init()
 	{
 		Super.Init();
 		SetSize(0, 320, 240);
+		
 		BWFont = HUDFont.Create("BWFONT");
 		DV_Health = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Armor = dynamicvalueinterpolator.create(0,1,1,10);
@@ -27,6 +29,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Score = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_LeftAmmo = dynamicvalueinterpolator.create(0,1,1,10);
 		mHudBlood = texman.checkfortexture("graphics/HUD/pain1.png");
+		mHudReference = texman.checkfortexture("graphics/HUD/HUDREF.png");
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -116,27 +119,35 @@ Class BW_Hud : BaseStatusBar
 			return;
 		let pl = Cplayer.mo;
 		
+		//[Pop] This is a reference image.
+		/*
+		screen.drawtexture(mHudReference,false,0,0
+			,DTA_DestWidth, screen.getwidth()
+			,DTA_DestHeight,screen.getheight()
+			,DTA_Alpha,	1);
+		*/
 		drawbloodoverlay();
 
 		drawhudMessages();
 
 		//health
 		int hl = DV_Health.getvalue();//pl.health;
-		drawstring(BWFont,formatnumber(hl),(15,-25),DI_SCREEN_LEFT_BOTTOM ,healthcol);
+		drawstring(BWFont,formatnumber(hl),(45,-40),DI_SCREEN_LEFT_BOTTOM | DI_TEXT_ALIGN_CENTER,healthcol);
+		//mugshot
 		let mg = getmugshot(5);
-		drawtexture(mg,(25,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_BOTTOM,1.0,(-1,-1),(2.0,2.0));//,DI_SCREEN_CENTER_BOTTOM|DI_ITEM_BOTTOM);
-		
+		drawtexture(mg,(42,-45),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_CENTER_BOTTOM,1.0,(-1,-1),(2.0,2.0));//,DI_SCREEN_CENTER_BOTTOM|DI_ITEM_BOTTOM);
 		//armor
 		int amm = DV_Armor.getvalue();//GetArmorAmount();
 		if(amm > 0)
 		{
-			drawstring(BWFont,formatnumber(amm),(70,-25),DI_SCREEN_LEFT_BOTTOM,Font.CR_YELLOW);
+			drawstring(BWFont,formatnumber(amm),(135,-40),DI_SCREEN_LEFT_BOTTOM | DI_TEXT_ALIGN_CENTER,Font.CR_YELLOW);
 			TextureID armi;
 			vector2 amivec;
 			let ba = pl.findinventory("BasicArmor");
 			[armi,amivec] = GetIcon(ba,0);
-			drawTexture(armi,(50,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,1.0,(60,60),(4.0,4.0));
+			drawTexture(armi,(135,-45),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_CENTER_BOTTOM,1.0,(60,60),(4.0,4.0));
 		}
+		
 
 		//weapons
 		Ammo Primary, Secondary;
@@ -152,11 +163,12 @@ Class BW_Hud : BaseStatusBar
 					stam = "\cj";
 				if(am1 <= 1)
 					stam = "\ca";
-				drawstring(BWFont,""..stam..am1.."\ck/"..max1,(-140,-25),DI_SCREEN_RIGHT_BOTTOM);
+				drawstring(BWFont,""..stam..am1.."\ck/"..max1,(-100,-40),DI_SCREEN_RIGHT_BOTTOM | DI_TEXT_ALIGN_RIGHT);
 				TextureID armi;
 				vector2 amivec;
 				[armi,amivec] = GetIcon(Primary,0);
-				drawTexture(armi,(-150,-15),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
+				drawTexture(armi,(-40,-45),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER,1.0,(40,40),amivec * 2);
+				//[Pop] This one is the Ammo Reserve icon
 			}
 			
 			if(Secondary) //&& !pl.findinventory("BWAllowReloadCheck"))
@@ -168,21 +180,20 @@ Class BW_Hud : BaseStatusBar
 					stam = "\cj";
 				if(am2 < 1)
 					stam = "\ca";
-				drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-140,-45),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+				drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-100,-60),DI_SCREEN_RIGHT_BOTTOM | DI_TEXT_ALIGN_RIGHT,Font.CR_YELLOW);
 				TextureID armi;
 				vector2 amivec;
 				[armi,amivec] = GetIcon(Secondary,0);
-				drawTexture(armi,(-150,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
+				drawTexture(armi,(-80,-45),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER,1.0,(40,40),amivec * 2);
+				//[Pop] This one is the Ammo in Gun icon
 			}
 
 			//
-			int grenindY = -75;
 			bool isAkimbo;
 			if(cplayer.readyweapon is "BW_DualWeapon")
 			{
 				if(BW_DualWeapon(cplayer.readyweapon).Hud_IsAkimbo())
 				{
-					grenindY -= 15;
 					isAkimbo = true;
 					int am2 = DV_LeftAmmo.getvalue();	//Secondary.amount;
 					int max2 = BW_DualWeapon(cplayer.readyweapon).Ammoleft.maxamount;
@@ -191,57 +202,49 @@ Class BW_Hud : BaseStatusBar
 						stam = "\cj";
 					if(am2 < 1)
 						stam = "\ca";
-					drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-140,-65),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+					drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-100,-80),DI_SCREEN_RIGHT_BOTTOM | DI_TEXT_ALIGN_RIGHT,Font.CR_YELLOW);
 				}
 			}
 			
 			
 			//grenades
-			int gam = pl.countinv("BW_GrenadeAmmo");
-			if(gam > 0)
+			int GrenadeCount = CPlayer.mo.CountInv("BW_GrenadeAmmo");
+			for (GrenadeCount > 0; GrenadeCount--;)
 			{
-				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM);
-				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-			}	
-			else
-			{
-				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
-				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
+				DrawImage("GRNDA", (-40 + (GrenadeCount * -5), -80), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_CENTER);
 			}
 			
 			//axes
-			int aam = pl.countinv("BW_AxeAmmo");
-			if(aam > 0)
+			int AxeCount = CPlayer.mo.CountInv("BW_AxeAmmo");
+			for (AxeCount > 0; AxeCount--;)
 			{
-				drawimage("izras",(-160,grenindY-10),DI_SCREEN_RIGHT_BOTTOM);
-				drawstring(BWFont,""..aam,(-140,grenindY-20),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
+				DrawImage("IZRAS", (-40 + (AxeCount * -5), -100), DI_SCREEN_RIGHT_BOTTOM | DI_ITEM_CENTER);
 			}
-			else
-			{
-				drawimage("izras",(-160,grenindY-10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
-				drawstring(BWFont,""..aam,(-140,grenindY-20),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
-			}
+			
 			//weapon image
 			textureid wimg;	vector2 wimgsc;
 			[wimg,wimgsc] = geticon(cplayer.readyweapon,DI_SKIPICON|DI_SKIPALTICON);
-			if(wimg.isvalid())
+			if(cplayer.readyweapon.GetTag() != "Melee") //[Pop] Dont draw if its melee, no point in naming your fists aye?
 			{
-				drawtexture(wimg,(-200,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(90,60),wimgsc);
-				if(isAkimbo)
-					drawtexture(wimg,(-210,-40),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(90,60),wimgsc);
+				if(wimg.isvalid())
+				{
+					drawtexture(wimg,(-220,-50),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER_BOTTOM,1.0,(90,60),wimgsc);
+					if(isAkimbo)
+						drawtexture(wimg,(-230,-60),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER_BOTTOM,1.0,(90,60),wimgsc);
+				}
+				//weapon tag
+				drawstring(BWFont,cplayer.readyweapon.gettag(),(-190,-40),DI_SCREEN_RIGHT_BOTTOM|DI_TEXT_ALIGN_RIGHT);
 			}
-			//weapon tag
-			drawstring(BWFont,cplayer.readyweapon.gettag(),(-320,-12),DI_SCREEN_RIGHT_BOTTOM);
 		}
 		
 		//level info
 		bool Kcompl = level.killed_monsters >= Level.total_monsters;
 		bool Icompl = level.found_items >= Level.total_items;
 		bool Scompl = level.found_secrets >= Level.total_secrets;
-		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(20,5),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(20,20),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(20,35),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"T: "..level.TimeFormatted(),(20,50),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
+		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(40,20),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(40,35),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(40,50),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"T: "..level.TimeFormatted(),(40,65),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
 		
 		//score
 		if(scoreTics)
@@ -252,23 +255,23 @@ Class BW_Hud : BaseStatusBar
 				scalpha = BW_Statics.LinearMap(scoreTics,0,30,0.0,1.0);
 			if(scoreTics >= 63)
 				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
-			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-180,20),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
+			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-170,30),DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_LEFT,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
 		}
 		//drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
 		
 		if(combo_timer > 0)
 		{
-			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,100);
+			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,140);
 			int baralfa = clamp(prog * 255 / 100,0,128);
 			color barcol = color(baralfa,32,255,12);
-			fill(barcol,-180,40,prog,7,DI_SCREEN_RIGHT_TOP);
+			fill(barcol,-170,50,prog,7,DI_SCREEN_RIGHT_TOP);
 		}
 		if(combo_counter > 0)
 		{
 			double ccsc = 1.0;
 			if(counterTics)
 				ccsc = BW_Statics.LinearMap(counterTics,0,8,1.0,1.2);
-			drawstring(BWFont,string.format("x%d",combo_counter),(-180,40),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
+			drawstring(BWFont,string.format("x%d",combo_counter),(-170,50),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
 		}
 		
 		//slide thing
@@ -352,7 +355,7 @@ Class BW_Hud : BaseStatusBar
 
 	void drawammolist(ammo current)
 	{
-		vector2 drawpos = (-140,-130);
+		vector2 drawpos = (-100,-140);
 		for(let inv = cplayer.mo.inv; inv; inv = inv.inv)
 		{
 			if(inv is "BW_Ammo")
@@ -360,7 +363,7 @@ Class BW_Hud : BaseStatusBar
 				let tex = inv.althudicon;
 				if(tex)
 					DrawTexture(tex,drawpos - (20,-6),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER,1.0,box:(20,14));
-				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),drawpos,DI_SCREEN_RIGHT_BOTTOM,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
+				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),(drawpos.x + 40, drawpos.y),DI_SCREEN_RIGHT_BOTTOM| DI_TEXT_ALIGN_CENTER,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
 				drawpos -= (0,15);
 			}
 		}
