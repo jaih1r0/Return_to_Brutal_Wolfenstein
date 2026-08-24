@@ -105,6 +105,13 @@ optionvalue hudmsgpos
 	1,"above mugshot"
 }
 
+optionvalue HUDStyleType
+{
+	0,"RTBW Prototype HUD"
+	1,"RTCW PS2 HUD"
+	2,"RTCW XBox HUD"
+}
+
 optionvalue dualfiremode
 {
 	0,"default (individual)"
@@ -152,6 +159,10 @@ optionmenu RTBW_PerformanceMenu
 optionmenu RTBW_HudMenu
 {
 	Title "RTBW hud options"
+	
+	statictext ""
+	option "HUD Style:", "BW_HUDStyle", "HUDStyleType"
+	statictext "Currently does nothing, more styles to come."
 	statictext ""
 	option "disable custom hud messages","BW_Custommsg","OffOn"
 	statictext ""
