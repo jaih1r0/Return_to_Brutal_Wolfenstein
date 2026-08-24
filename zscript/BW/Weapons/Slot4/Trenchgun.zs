@@ -169,7 +169,7 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo_ADS");
 		BTGT E 1 {
 			BW_GunBarrelSmoke(ofsPos:(30,0,-3));
-			return BW_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER4);
 		}
 		loop;
 	Ready_NoAmmo_ADS:

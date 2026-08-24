@@ -27,6 +27,7 @@ Main focus for the mod are as follower (since some people seem to have it comple
 ## Compatibility
 
 Works in:
+* Uzdoom 4.14.3 (or newer)
 * Gzdoom 4.11.3 (or newer)
 * Lzdoom 4.11.4
 
@@ -36,7 +37,7 @@ wont work in:
 <br>
 
 ## Relevant links
-* [Latest GZDoom](https://zdoom.org/downloads)
+* [Latest UZ/GZDoom](https://zdoom.org/downloads)
 
 * [Latest LZDoom](https://forum.zdoom.org/viewtopic.php?t=62157)
 
