@@ -127,7 +127,6 @@ Class BW_Hud : BaseStatusBar
 			,DTA_Alpha,	1);
 		*/
 		drawbloodoverlay();
-
 		drawhudMessages();
 
 		//health
@@ -237,60 +236,18 @@ Class BW_Hud : BaseStatusBar
 			}
 		}
 		
-		//level info
-		bool Kcompl = level.killed_monsters >= Level.total_monsters;
-		bool Icompl = level.found_items >= Level.total_items;
-		bool Scompl = level.found_secrets >= Level.total_secrets;
-		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(40,20),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(40,35),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(40,50),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"T: "..level.TimeFormatted(),(40,65),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
-		
-		//score
-		if(scoreTics)
-		{
-			double scalpha = 1.0;
-			double scltx = 1.0;
-			if(scoreTics <= 30)
-				scalpha = BW_Statics.LinearMap(scoreTics,0,30,0.0,1.0);
-			if(scoreTics >= 63)
-				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
-			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-170,30),DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_LEFT,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
-		}
-		//drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
-		
-		if(combo_timer > 0)
-		{
-			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,140);
-			int baralfa = clamp(prog * 255 / 100,0,128);
-			color barcol = color(baralfa,32,255,12);
-			fill(barcol,-170,50,prog,7,DI_SCREEN_RIGHT_TOP);
-		}
-		if(combo_counter > 0)
-		{
-			double ccsc = 1.0;
-			if(counterTics)
-				ccsc = BW_Statics.LinearMap(counterTics,0,8,1.0,1.2);
-			drawstring(BWFont,string.format("x%d",combo_counter),(-170,50),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
-		}
+		DrawLevelInfo((40, 20), DI_SCREEN_LEFT_TOP | DI_TEXT_ALIGN_LEFT);
+		DrawComboScore((-170, 30), DI_SCREEN_RIGHT_TOP | DI_TEXT_ALIGN_LEFT, DI_SCREEN_RIGHT_TOP);
+		DrawOxygen((45,-130), DI_SCREEN_LEFT_BOTTOM | DI_TEXT_ALIGN_CENTER);
 		
 		//slide thing
 		//if(pl.findinventory("NoSliding"))
 		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
 		
-		//oxigen
-		int ox = GetAirTime();
-		if(ox < level.airsupply)
-		{
-			int oxam = thinker.tics2seconds(ox);
-			string airox = oxam <= 5 ? "O2: \ca"..oxam.."\c-" : "O2: \cz"..oxam.."\c-";
-			drawstring(BWFont,airox,(15,-105),DI_SCREEN_LEFT_BOTTOM ,healthcol);
-		}
-		
 		//keys
 		DrawHudKeys();
 		if(curammolist)
-			drawammolist(Primary);
+			drawammolist(Primary, (-100,-140), DI_SCREEN_RIGHT_BOTTOM|DI_TEXT_ALIGN_CENTER, DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER);
 	}
 	
 	static const string wolfkeys[] = {
@@ -353,17 +310,17 @@ Class BW_Hud : BaseStatusBar
 		}
 	}
 
-	void drawammolist(ammo current)
+	void drawammolist(ammo current, vector2 pos, int StringFlags, int TextureFlags)
 	{
-		vector2 drawpos = (-100,-140);
+		vector2 drawpos = pos;
 		for(let inv = cplayer.mo.inv; inv; inv = inv.inv)
 		{
 			if(inv is "BW_Ammo")
 			{
 				let tex = inv.althudicon;
 				if(tex)
-					DrawTexture(tex,drawpos - (20,-6),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER,1.0,box:(20,14));
-				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),(drawpos.x + 40, drawpos.y),DI_SCREEN_RIGHT_BOTTOM| DI_TEXT_ALIGN_CENTER,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
+					DrawTexture(tex,drawpos - (20,-6),TextureFlags,1.0,box:(20,14));
+				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),(drawpos.x + 40, drawpos.y),StringFlags,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
 				drawpos -= (0,15);
 			}
 		}
@@ -380,8 +337,62 @@ Class BW_Hud : BaseStatusBar
 			,DTA_Alpha,	alfa);
 		}
 	}
-
-
+	
+	void DrawComboScore(vector2 pos, int StringFlags, int FillFlags)
+	{
+		//score
+		if(scoreTics)
+		{
+			double scalpha = 1.0;
+			double scltx = 1.0;
+			if(scoreTics <= 30)
+				scalpha = BW_Statics.LinearMap(scoreTics,0,30,0.0,1.0);
+			if(scoreTics >= 63)
+				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
+			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),pos,StringFlags,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
+		}
+		//drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
+		
+		if(combo_timer > 0)
+		{
+			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,140);
+			int baralfa = clamp(prog * 255 / 100,0,128);
+			color barcol = color(baralfa,32,255,12);
+			fill(barcol,pos.x, pos.y+20,prog,7,FillFlags);
+		}
+		if(combo_counter > 0)
+		{
+			double ccsc = 1.0;
+			if(counterTics)
+				ccsc = BW_Statics.LinearMap(counterTics,0,8,1.0,1.2);
+			drawstring(BWFont,string.format("x%d",combo_counter),(pos.x,pos.y+20), StringFlags,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
+		}
+	}
+	
+	void DrawOxygen(vector2 pos, int StringFlags)
+	{
+		//oxigen
+		int ox = GetAirTime();
+		if(ox < level.airsupply)
+		{
+			int oxam = thinker.tics2seconds(ox);
+			string airox = oxam <= 5 ? "O2: \ca"..oxam.."\c-" : "O2: \cz"..oxam.."\c-";
+			drawstring(BWFont,airox,pos,StringFlags,healthcol);
+		}
+	}
+	
+	void DrawLevelInfo(vector2 pos, int StringFlags)
+	{
+		//level info
+		bool Kcompl = level.killed_monsters >= Level.total_monsters;
+		bool Icompl = level.found_items >= Level.total_items;
+		bool Scompl = level.found_secrets >= Level.total_secrets;
+		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(pos.x,pos.y),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(pos.x,pos.y+15),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(pos.x,pos.y+30),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"T: "..level.TimeFormatted(),(pos.x,pos.y+45),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
+	}
+	
 	//
 	// custom message drawing
 	//
