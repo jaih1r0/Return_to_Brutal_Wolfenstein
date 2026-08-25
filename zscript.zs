@@ -22,7 +22,10 @@ Version 4.10
 //Intermission Screen
 #include "ZScript/BW/IntermissionScreen/BW_StatScreen.zs"
 
-
+//HUD Stuff
+#include "zscript/BW/Hud/BWHud.zs"
+#include "zscript/BW/Hud/HUDStyle.RTBWPrototype.zs"
+#include "zscript/BW/Hud/BossBar.zs"
 
 #include "zscript/BW/Spawners/SpawnerBase.zs"
 
@@ -39,8 +42,7 @@ Version 4.10
 #include "zscript/BW/Effects/Footsteps.zs"
 #include "zscript/BW/Effects/Debris.zs"
 #include "zscript/BW/Effects/Casings.zs"
-#include "zscript/BW/Hud/BWHud.zs"
-#include "zscript/BW/Hud/BossBar.zs"
+
 #include "zscript/BW/Player/BWPlayer.zs"
 
 //Weapons

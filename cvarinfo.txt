@@ -23,6 +23,8 @@ user   float BW_BossBarScale = 2.0;
 user   float BW_BossBarOfsX = 0.0;
 user   float BW_BossBarOfsY = 0.0;
 
+user	int BW_HUDStyle = 0;
+
 //Nashgore Cvars
 
 server bool nashgore_permanentgore = false;

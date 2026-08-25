@@ -51,7 +51,7 @@ Class BW_PPSH41 : BaseBWWeapon
 	states
 	{
 	Spawn:
-		TM1P A -1;
+		PPSP A -1;
 		stop;
 
 	Select:

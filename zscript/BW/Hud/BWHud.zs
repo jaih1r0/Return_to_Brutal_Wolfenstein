@@ -13,12 +13,16 @@ Class BW_Hud : BaseStatusBar
 	double messageScale; 
 	int msgpos;
 	textureID mHudBlood;
+	textureID mHudReference;
 	uint mbloodtics;
+	
+	int HUDStyle;
 
 	override void Init()
 	{
 		Super.Init();
 		SetSize(0, 320, 240);
+		
 		BWFont = HUDFont.Create("BWFONT");
 		DV_Health = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_Armor = dynamicvalueinterpolator.create(0,1,1,10);
@@ -27,6 +31,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Score = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_LeftAmmo = dynamicvalueinterpolator.create(0,1,1,10);
 		mHudBlood = texman.checkfortexture("graphics/HUD/pain1.png");
+		mHudReference = texman.checkfortexture("graphics/HUD/HUDREF.png");
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -54,6 +59,8 @@ Class BW_Hud : BaseStatusBar
 		custommsg = 		CVar.GetCVar("BW_Custommsg", CPlayer).getbool(); 
 		msgpos =			CVar.GetCVar("BW_messagepos", CPlayer).getint();
 		curammolist =		CVar.GetCVar("BW_CurrentAmmoList", CPlayer).getbool(); 
+		
+		HUDStyle =		CVar.GetCVar("BW_HUDStyle", CPlayer).getint(); 
 	}
 	
 	override void Tick()
@@ -116,178 +123,23 @@ Class BW_Hud : BaseStatusBar
 			return;
 		let pl = Cplayer.mo;
 		
+		//[Pop] This is a reference image.
+		/*
+		screen.drawtexture(mHudReference,false,0,0
+			,DTA_DestWidth, screen.getwidth()
+			,DTA_DestHeight,screen.getheight()
+			,DTA_Alpha,	1);
+		*/
 		drawbloodoverlay();
-
 		drawhudMessages();
 
-		//health
-		int hl = DV_Health.getvalue();//pl.health;
-		drawstring(BWFont,formatnumber(hl),(15,-25),DI_SCREEN_LEFT_BOTTOM ,healthcol);
-		let mg = getmugshot(5);
-		drawtexture(mg,(25,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_BOTTOM,1.0,(-1,-1),(2.0,2.0));//,DI_SCREEN_CENTER_BOTTOM|DI_ITEM_BOTTOM);
-		
-		//armor
-		int amm = DV_Armor.getvalue();//GetArmorAmount();
-		if(amm > 0)
+		switch(HUDStyle)
 		{
-			drawstring(BWFont,formatnumber(amm),(70,-25),DI_SCREEN_LEFT_BOTTOM,Font.CR_YELLOW);
-			TextureID armi;
-			vector2 amivec;
-			let ba = pl.findinventory("BasicArmor");
-			[armi,amivec] = GetIcon(ba,0);
-			drawTexture(armi,(50,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,1.0,(60,60),(4.0,4.0));
+			default:
+			case 0:
+				DrawRTBWPrototypeHUD();
+				break;
 		}
-
-		//weapons
-		Ammo Primary, Secondary;
-		if(cplayer.readyweapon != null)
-		{
-			[Primary, Secondary] = GetCurrentAmmo();
-			if(primary)
-			{
-				int am1 = DV_Ammo1.getvalue();	//primary.amount;
-				int max1 = primary.maxamount;
-				string stam = "\ck";
-				if(am1 < max1)
-					stam = "\cj";
-				if(am1 <= 1)
-					stam = "\ca";
-				drawstring(BWFont,""..stam..am1.."\ck/"..max1,(-140,-25),DI_SCREEN_RIGHT_BOTTOM);
-				TextureID armi;
-				vector2 amivec;
-				[armi,amivec] = GetIcon(Primary,0);
-				drawTexture(armi,(-150,-15),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
-			}
-			
-			if(Secondary) //&& !pl.findinventory("BWAllowReloadCheck"))
-			{
-				int am2 = DV_Ammo2.getvalue();	//Secondary.amount;
-				int max2 = Secondary.maxamount;
-				string stam = "\ck";
-				if(am2 < max2)
-					stam = "\cj";
-				if(am2 < 1)
-					stam = "\ca";
-				drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-140,-45),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-				TextureID armi;
-				vector2 amivec;
-				[armi,amivec] = GetIcon(Secondary,0);
-				drawTexture(armi,(-150,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(40,40),amivec * 2);
-			}
-
-			//
-			int grenindY = -75;
-			bool isAkimbo;
-			if(cplayer.readyweapon is "BW_DualWeapon")
-			{
-				if(BW_DualWeapon(cplayer.readyweapon).Hud_IsAkimbo())
-				{
-					grenindY -= 15;
-					isAkimbo = true;
-					int am2 = DV_LeftAmmo.getvalue();	//Secondary.amount;
-					int max2 = BW_DualWeapon(cplayer.readyweapon).Ammoleft.maxamount;
-					string stam = "\ck";
-					if(am2 < max2)
-						stam = "\cj";
-					if(am2 < 1)
-						stam = "\ca";
-					drawstring(BWFont,""..stam..am2.."\ck/"..max2,(-140,-65),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-				}
-			}
-			
-			
-			//grenades
-			int gam = pl.countinv("BW_GrenadeAmmo");
-			if(gam > 0)
-			{
-				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM);
-				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-			}	
-			else
-			{
-				drawimage("GRNDA",(-160,grenindY+10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
-				drawstring(BWFont,""..gam,(-140,grenindY),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
-			}
-			
-			//axes
-			int aam = pl.countinv("BW_AxeAmmo");
-			if(aam > 0)
-			{
-				drawimage("izras",(-160,grenindY-10),DI_SCREEN_RIGHT_BOTTOM);
-				drawstring(BWFont,""..aam,(-140,grenindY-20),DI_SCREEN_RIGHT_BOTTOM,Font.CR_YELLOW);
-			}
-			else
-			{
-				drawimage("izras",(-160,grenindY-10),DI_SCREEN_RIGHT_BOTTOM,col:0xFF705050);
-				drawstring(BWFont,""..aam,(-140,grenindY-20),DI_SCREEN_RIGHT_BOTTOM,Font.CR_BRICK);
-			}
-			//weapon image
-			textureid wimg;	vector2 wimgsc;
-			[wimg,wimgsc] = geticon(cplayer.readyweapon,DI_SKIPICON|DI_SKIPALTICON);
-			if(wimg.isvalid())
-			{
-				drawtexture(wimg,(-200,-35),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(90,60),wimgsc);
-				if(isAkimbo)
-					drawtexture(wimg,(-210,-40),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_RIGHT_BOTTOM,1.0,(90,60),wimgsc);
-			}
-			//weapon tag
-			drawstring(BWFont,cplayer.readyweapon.gettag(),(-320,-12),DI_SCREEN_RIGHT_BOTTOM);
-		}
-		
-		//level info
-		bool Kcompl = level.killed_monsters >= Level.total_monsters;
-		bool Icompl = level.found_items >= Level.total_items;
-		bool Scompl = level.found_secrets >= Level.total_secrets;
-		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(20,5),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(20,20),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(20,35),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
-		drawstring(BWFont,"T: "..level.TimeFormatted(),(20,50),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
-		
-		//score
-		if(scoreTics)
-		{
-			double scalpha = 1.0;
-			double scltx = 1.0;
-			if(scoreTics <= 30)
-				scalpha = BW_Statics.LinearMap(scoreTics,0,30,0.0,1.0);
-			if(scoreTics >= 63)
-				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
-			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),(-180,20),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
-		}
-		//drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
-		
-		if(combo_timer > 0)
-		{
-			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,100);
-			int baralfa = clamp(prog * 255 / 100,0,128);
-			color barcol = color(baralfa,32,255,12);
-			fill(barcol,-180,40,prog,7,DI_SCREEN_RIGHT_TOP);
-		}
-		if(combo_counter > 0)
-		{
-			double ccsc = 1.0;
-			if(counterTics)
-				ccsc = BW_Statics.LinearMap(counterTics,0,8,1.0,1.2);
-			drawstring(BWFont,string.format("x%d",combo_counter),(-180,40),DI_SCREEN_RIGHT_TOP,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
-		}
-		
-		//slide thing
-		//if(pl.findinventory("NoSliding"))
-		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
-		
-		//oxigen
-		int ox = GetAirTime();
-		if(ox < level.airsupply)
-		{
-			int oxam = thinker.tics2seconds(ox);
-			string airox = oxam <= 5 ? "O2: \ca"..oxam.."\c-" : "O2: \cz"..oxam.."\c-";
-			drawstring(BWFont,airox,(15,-105),DI_SCREEN_LEFT_BOTTOM ,healthcol);
-		}
-		
-		//keys
-		DrawHudKeys();
-		if(curammolist)
-			drawammolist(Primary);
 	}
 	
 	static const string wolfkeys[] = {
@@ -350,17 +202,17 @@ Class BW_Hud : BaseStatusBar
 		}
 	}
 
-	void drawammolist(ammo current)
+	void drawammolist(ammo current, vector2 pos, int StringFlags, int TextureFlags)
 	{
-		vector2 drawpos = (-140,-130);
+		vector2 drawpos = pos;
 		for(let inv = cplayer.mo.inv; inv; inv = inv.inv)
 		{
 			if(inv is "BW_Ammo")
 			{
 				let tex = inv.althudicon;
 				if(tex)
-					DrawTexture(tex,drawpos - (20,-6),DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER,1.0,box:(20,14));
-				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),drawpos,DI_SCREEN_RIGHT_BOTTOM,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
+					DrawTexture(tex,drawpos - (20,-6),TextureFlags,1.0,box:(20,14));
+				drawstring(BWFont,string.format("%d/%d",inv.amount,inv.maxamount),(drawpos.x + 40, drawpos.y),StringFlags,translation: (current != null && current == inv) ? font.CR_YELLOW : font.CR_Untranslated);
 				drawpos -= (0,15);
 			}
 		}
@@ -377,8 +229,62 @@ Class BW_Hud : BaseStatusBar
 			,DTA_Alpha,	alfa);
 		}
 	}
-
-
+	
+	void DrawComboScore(vector2 pos, int StringFlags, int FillFlags)
+	{
+		//score
+		if(scoreTics)
+		{
+			double scalpha = 1.0;
+			double scltx = 1.0;
+			if(scoreTics <= 30)
+				scalpha = BW_Statics.LinearMap(scoreTics,0,30,0.0,1.0);
+			if(scoreTics >= 63)
+				scltx = BW_Statics.LinearMap(scoreTics,63,70,1.0,1.1);
+			drawstring(BWFont,string.format("Score: %05d",DV_Score.getvalue()),pos,StringFlags,Font.CR_GOLD,alpha:scalpha,scale:(scltx,scltx));
+		}
+		//drawstring(BWFont,string.format("Timer %d",combo_timer),(-170,30),DI_SCREEN_RIGHT_TOP,Font.CR_GREEN,alpha:0.5);
+		
+		if(combo_timer > 0)
+		{
+			int prog = BW_Statics.LinearMap(combo_timer,0,thinker.ticrate * 5,0,140);
+			int baralfa = clamp(prog * 255 / 100,0,128);
+			color barcol = color(baralfa,32,255,12);
+			fill(barcol,pos.x, pos.y+20,prog,7,FillFlags);
+		}
+		if(combo_counter > 0)
+		{
+			double ccsc = 1.0;
+			if(counterTics)
+				ccsc = BW_Statics.LinearMap(counterTics,0,8,1.0,1.2);
+			drawstring(BWFont,string.format("x%d",combo_counter),(pos.x,pos.y+20), StringFlags,Font.CR_GOLD,alpha:0.5,scale:(ccsc,ccsc));
+		}
+	}
+	
+	void DrawOxygen(vector2 pos, int StringFlags)
+	{
+		//oxigen
+		int ox = GetAirTime();
+		if(ox < level.airsupply)
+		{
+			int oxam = thinker.tics2seconds(ox);
+			string airox = oxam <= 5 ? "O2: \ca"..oxam.."\c-" : "O2: \cz"..oxam.."\c-";
+			drawstring(BWFont,airox,pos,StringFlags,healthcol);
+		}
+	}
+	
+	void DrawLevelInfo(vector2 pos, int StringFlags)
+	{
+		//level info
+		bool Kcompl = level.killed_monsters >= Level.total_monsters;
+		bool Icompl = level.found_items >= Level.total_items;
+		bool Scompl = level.found_secrets >= Level.total_secrets;
+		drawstring(BWFont,"K: "..level.killed_monsters.."/"..Level.total_monsters,(pos.x,pos.y),DI_SCREEN_LEFT_TOP,translation: Kcompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"I: "..level.found_items.."/"..Level.total_items,(pos.x,pos.y+15),DI_SCREEN_LEFT_TOP,translation: Icompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"S: "..level.found_secrets.."/"..Level.total_secrets,(pos.x,pos.y+30),DI_SCREEN_LEFT_TOP,translation: Scompl ? FONT.CR_YELLOW:FONT.CR_WHITE,scale:(0.85,0.85));
+		drawstring(BWFont,"T: "..level.TimeFormatted(),(pos.x,pos.y+45),DI_SCREEN_LEFT_TOP,scale:(0.85,0.85));
+	}
+	
 	//
 	// custom message drawing
 	//
