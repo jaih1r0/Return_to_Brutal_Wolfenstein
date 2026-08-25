@@ -139,6 +139,10 @@ Class BW_Hud : BaseStatusBar
 			case 0:
 				DrawRTBWPrototypeHUD();
 				break;
+				
+			case 2:
+				DrawRTCWXBoxHUD();
+				break;
 		}
 	}
 	
@@ -364,8 +368,8 @@ Class BW_Hud : BaseStatusBar
 		
 		double fontscale = 1.0 * messageScale;
 		int yfontsize = BWFont.mFont.getheight() * fontscale;
-		double startY = 70.;
-		double startX = 20.;
+		double startY = 80.;
+		double startX = 30.;
 		int flags = DI_SCREEN_LEFT | DI_ITEM_LEFT | DI_TEXT_ALIGN_LEFT;
 		int movedir = 1;
 
@@ -383,7 +387,7 @@ Class BW_Hud : BaseStatusBar
 					break;
 				default:	//over mugshot
 				case 1:
-					startY = -150.;
+					startY = -160.;
 					flags = DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT | DI_TEXT_ALIGN_LEFT;
 					movedir = -1;	//move upwards
 					break;
