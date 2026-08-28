@@ -10,7 +10,8 @@ Extend Class BW_Hud
 		int hl = DV_Health.getvalue();//pl.health;
 		//drawstring(BWFont,formatnumber(hl),(45,-40),DI_SCREEN_LEFT_BOTTOM | DI_TEXT_ALIGN_CENTER,healthcol);
 		DrawBar("Graphics/HUD/RTCWXBox/Health100.png", "Graphics/HUD/RTCWXBox/Health.png", hl, 100, (50,-50), 0, SHADER_VERT | SHADER_REVERSE, DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 1);
-		DrawBar("Graphics/HUD/RTCWXBox/Health200.png", "Graphics/HUD/RTCWXBox/Health100.png", hl-100, 100, (50,-50), 0, SHADER_VERT | SHADER_REVERSE, DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 1);
+		if(hl > 100)
+			DrawBar("Graphics/HUD/RTCWXBox/Health200.png", "Graphics/HUD/RTCWXBox/Health100.png", hl-100, 100, (50,-50), 0, SHADER_VERT | SHADER_REVERSE, DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 1);
 		//mugshot
 		//let mg = getmugshot(5);
 		//drawtexture(mg,(42,-45),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_CENTER_BOTTOM,1.0,(-1,-1),(2.0,2.0));//,DI_SCREEN_CENTER_BOTTOM|DI_ITEM_BOTTOM);
@@ -25,7 +26,8 @@ Extend Class BW_Hud
 			[armi,amivec] = GetIcon(ba,0);
 			//drawTexture(armi,(135,-45),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_CENTER_BOTTOM,1.0,(60,60),(4.0,4.0));
 			DrawBar("Graphics/HUD/RTCWXBox/Armor100.png", "Graphics/HUD/RTCWXBox/ArmorEmpty.png", amm, 100, (100,-50), 0, SHADER_VERT | SHADER_REVERSE, DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 1);
-			DrawBar("Graphics/HUD/RTCWXBox/Armor200.png", "Graphics/HUD/RTCWXBox/Armor100.png", amm-100, 100, (100,-50), 0, SHADER_VERT | SHADER_REVERSE, DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 1);
+			if(amm>100)
+				DrawBar("Graphics/HUD/RTCWXBox/Armor200.png", "Graphics/HUD/RTCWXBox/Armor100.png", amm-100, 100, (100,-50), 0, SHADER_VERT | SHADER_REVERSE, DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 1);
 		}
 		
 
@@ -126,7 +128,7 @@ Extend Class BW_Hud
 		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
 		
 		//keys
-		DrawHudKeys();
+		DrawKeys((45,25), 10, 20, DI_SCREEN_LEFT_TOP | DI_ITEM_CENTER);
 		//if(curammolist)
 			//drawammolist(Primary, (-100,-140), DI_SCREEN_RIGHT_BOTTOM|DI_TEXT_ALIGN_CENTER, DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER);
 	}

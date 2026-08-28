@@ -122,7 +122,7 @@ Extend Class BW_Hud
 		//	DrawImage("MYLEG",(110,-30),DI_SCREEN_LEFT_BOTTOM|DI_ITEM_LEFT_BOTTOM,0.5 + alfadeofs,(100,100),(2.0,2.0));
 		
 		//keys
-		DrawHudKeys();
+		DrawKeys((45,85), 10, 20, DI_SCREEN_LEFT_TOP | DI_ITEM_CENTER);
 		if(curammolist)
 			drawammolist(Primary, (-100,-140), DI_SCREEN_RIGHT_BOTTOM|DI_TEXT_ALIGN_CENTER, DI_SCREEN_RIGHT_BOTTOM|DI_ITEM_CENTER);
 	}
