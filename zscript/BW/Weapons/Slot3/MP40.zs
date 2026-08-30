@@ -396,7 +396,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		MP4S DEFG 1;
 		TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),31,1);
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
 		MP4S MNO 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 		MP4R QPONM 1;
@@ -448,7 +448,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		MP4S DEFG 1;
 		TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),31,1);
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
 		MP4S MNO 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 		MP4R QPONM 1;
@@ -514,7 +514,7 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		MP4S DEFG 1;
 		TNT1 A 0 A_startsound("MP40/In",CHAN_AUTO);
 		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeLeft.getclassname(),invoker.ammotype1.getclassname(),31,1);
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeLeft.getclassname(),invoker.ammotype1.getclassname(),32,1);
 		MP4S MNO 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
 		MP4R QPONM 1;
