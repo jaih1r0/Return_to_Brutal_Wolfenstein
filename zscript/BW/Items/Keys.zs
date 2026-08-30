@@ -1,26 +1,39 @@
-Class BW_Key : Inventory
+Class BW_Key : Key
 {
-    string actualKey;
-    property actualKey:actualKey;
+	string actualKey;
+	property actualKey:actualKey;
+	//[Pop] This should only be used for special keys, like the Diamond Key and Black Key
+	//use Species for everything else
+	//[Pop] NERVERMIND, until we rewrite the ACS for maps to check for Species instead of set key
+	
+	
     color keycolor;
 	property keycolor:keycolor;
     default
     {
+		Radius 20;
+		Height 16;
+		+NOTDMATCH;
+		+DONTGIB;
+		+FLOORCLIP;
+		Inventory.InterHubAmount 0;
         Inventory.PickupSound "pickup/key";
         Inventory.PickupMessage "You picked up a Key";
         +inventory.ALWAYSPICKUP;
-        BW_Key.actualKey "";
         BW_Key.keycolor 0xFFFFFF;
+		BW_Key.actualKey "";
         //+INVENTORY.NOSCREENFLASH;
     }
+	
     override bool trypickup(in out actor toucher)
     {
         if(toucher && toucher.player && actualKey != "")
             toucher.A_setinventory(actualKey,1);
-        //if(keycolor)
-		//	toucher.A_setblend(keycolor,0.3,10);
+        if(keycolor)
+			toucher.A_setblend(keycolor,0.3,10);
         return super.trypickup(toucher);
     }
+	
     override void PlayPickupSound(actor toucher)
 	{
 		double atten;
@@ -38,7 +51,8 @@ Class BW_BlackKey : BW_Key
     {
         Inventory.PickupMessage "You picked up the Black Key";
         +inventory.ALWAYSPICKUP;
-        BW_Key.actualKey "HasPickedUpBlackKey";
+        Inventory.Icon "TNT1A0";
+		BW_Key.actualKey "HasPickedUpBlackKey";
     }
     states
     {
@@ -52,8 +66,10 @@ Class BW_DiamondKey : BW_Key
 {
     default
     {
-        Inventory.PickupMessage "You picked up the Diamond Key";
+        +inventory.ALWAYSPICKUP;
+		Inventory.PickupMessage "You picked up the Diamond Key";
         BW_Key.actualKey "HasPickedUpDiamondKey";
+		Inventory.Icon "TNT1A0";
     }
     states
     {
@@ -63,22 +79,44 @@ Class BW_DiamondKey : BW_Key
     }
 }
 
-Class HasPickedUpBlackKey : inventory
+Class HasPickedUpBlackKey : Inventory
 {
+	Default
+	{
+		Inventory.Icon "NMEYA0";
+	}
+	
+	states
+    {
+        spawn:
+            NKEY A -1;
+            stop;
+    }
 }
 
-Class HasPickedUpDiamondKey : inventory
+Class HasPickedUpDiamondKey : Inventory
 {
+	Default
+	{
+		Inventory.Icon "DMEYA0";
+	}
+	
+	states
+    {
+        spawn:
+            DMEY A -1;
+            stop;
+    }
 }
 
 Class BW_YellowKey : BW_Key replaces YellowCard
 {
     Default
 	{
-		Inventory.Pickupmessage "$GOTYELWCARD";
-		Inventory.Icon "STKEYS1";
-        //species "YellowCard";
-        BW_Key.actualKey "YellowCard";
+		Inventory.Pickupmessage "$GOTGOLDKEY";
+		Inventory.Icon "YKEYA0";
+        Species "YellowCard";
+		BW_Key.actualKey "YellowCard";
         BW_Key.keycolor 0xFFDE60;
 	}
 	States
@@ -94,9 +132,10 @@ class BW_BlueKey : BW_Key replaces BlueCard
 {
 	Default
 	{
-		Inventory.Pickupmessage "Got a Silver key";
-		Inventory.Icon "STKEYS0";
-        BW_Key.actualKey "BlueCard";
+		Inventory.Pickupmessage "$GOTSILVERKEY";
+		Inventory.Icon "BKEYA0";
+        Species "BlueCard";
+		BW_Key.actualKey "BlueCard";
         BW_Key.keycolor 0xCECECE;
 	}
 	States
@@ -112,9 +151,10 @@ Class BW_RedKey : BW_Key replaces RedCard
 {
     Default
 	{
-		Inventory.Pickupmessage "$GOTREDCARD";
-		Inventory.Icon "STKEYS2";
-        BW_Key.actualKey "RedCard";
+		Inventory.Pickupmessage "$GOTCOPPERKEY";
+		Inventory.Icon "RKEYA0";
+        Species "RedCard";
+		BW_Key.actualKey "RedCard";
         BW_Key.keycolor 0xEC0B0D;
 	}
 	States

@@ -17,7 +17,9 @@ Class BW_Hud : BaseStatusBar
 	uint mbloodtics;
 	
 	int HUDStyle;
-
+	
+	Color pcol;
+	
 	override void Init()
 	{
 		Super.Init();
@@ -72,6 +74,8 @@ Class BW_Hud : BaseStatusBar
 		else
 			healthcol = Font.CR_YELLOW;
 		
+		pcol = CPlayer.GetDisplayColor() | 0xFF000000;
+		
 		if(menuactive || consolestate == c_up) 
 			updateCvars();
 		
@@ -123,13 +127,6 @@ Class BW_Hud : BaseStatusBar
 			return;
 		let pl = Cplayer.mo;
 		
-		//[Pop] This is a reference image.
-		/*
-		screen.drawtexture(mHudReference,false,0,0
-			,DTA_DestWidth, screen.getwidth()
-			,DTA_DestHeight,screen.getheight()
-			,DTA_Alpha,	1);
-		*/
 		drawbloodoverlay();
 		drawhudMessages();
 
@@ -139,69 +136,84 @@ Class BW_Hud : BaseStatusBar
 			case 0:
 				DrawRTBWPrototypeHUD();
 				break;
+			case 1:
+				DrawRTCWPS2HUD();
+				break;
+			case 2:
+				DrawRTCWXBoxHUD();
+				break;
 		}
 	}
 	
-	static const string wolfkeys[] = {
-		"HasPickedUpBlackKey","HasPickedUpDiamondKey",
-		"BlueCard","RedCard","YellowCard",
-		"BlueSkull","YellowSkull"//,"RedSkull"
+	static const string ignorelist[] =
+	{
+		"BW_BlackKey","BW_DiamondKey",
+		"BlueCard","RedCard","YellowCard"//,
+		//"BlueSkull","YellowSkull","RedSkull"
 	};
 	
-	protected virtual void DrawHudKeys()
-	{
-		Vector2 keypos = (-25 - 10, 2 + 25);
-		int rowc = 0;
-		double roww = 0;
-		for(let i = CPlayer.mo.Inv; i != null; i = i.Inv)
-		{
-			if (i is "Key" && i.Icon.IsValid())
-			{
-				//
-				
-				bool dontdrawme = true;
-				string kn = i.getclassname();
-				for(int j = 0; j < wolfkeys.size(); j++)
-				{
-					if(kn == wolfkeys[j])
-						dontdrawme = false;
-				}
-				if(dontdrawme)
-					continue;
-				
-				DrawTexture(i.Icon, keypos, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP,1.0,(15,15),(2.0,2.0));
-				Vector2 size = TexMan.GetScaledSize(i.Icon);
-				keypos.Y += size.Y + 2;
-				roww = max(roww, size.X);
-				if (++rowc == 3)
-				{
-					keypos.Y = 10 + 10;
-					keypos.X -= roww - 15 - 10;
-					roww = 0;
-					rowc = 0;
-				}
-			}
-			
-			if(i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
-			{
-				textureid ktx = i.Icon;
-				vector2 ofs = (-50,20);
-				if(i is "HasPickedUpBlackKey")
-				{
-					ktx = texman.checkfortexture("NK1CON");
-				}
-				else
-				{
-					ofs =( -50,30);
-					ktx = texman.checkfortexture("DK1CON");
-				}
-				DrawTexture(ktx,ofs, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP,1.0,(20,20),(2.0,2.0));
-				
-			}
-			
-		}
-	}
+	//[Pop] heres the function to handle the drawing of keys, it does look like a lot
+	//but its mainly some sprite checking and stuff to make sure it works right.
+	virtual void DrawKeys(vector2 pos, int keycount = 10, int space = 23, int flags = DI_ITEM_CENTER)
+    {
+        //from NC HUD
+        textureid icon, iconskull, iconcard;
+        vector2 size;
+        bool scaleup;
+        int count = 0;
+        
+        for(let i = CPlayer.mo.Inv; i != null; i = i.Inv)
+        {
+            if(i is "Key" || i is "HasPickedUpBlackKey" || i is "HasPickedUpDiamondKey")
+            {
+                // Draw up to defined keycount.
+                if(count == keycount)
+                {
+                    break;
+                }
+                
+                icon = i.AltHUDIcon;
 
+                if (!icon.IsValid())
+                {
+                    if(i.SpawnState && i.SpawnState.sprite != 0)
+                    {
+                        icon = i.SpawnState.GetSpriteTexture(0);
+                    }
+                    else
+                    {
+                        icon = i.Icon;
+                    }
+                    
+                    if(!icon.IsValid())
+                    {
+                        continue;
+                    }
+                }
+				
+                string kn = i.getclassname();
+				for(int j = 0; j < ignorelist.size(); j++)
+				{
+					if(kn == ignorelist[j])
+						icon = TexMan.CheckForTexture("TNT1A0");
+				}
+				
+                // Exclude keys which use 'TNT1A0' as their icon.
+                if (TexMan.GetName(icon) ~== "TNT1A0")
+                {
+                    continue;
+                }
+				
+                
+                // Scale the icon up if needed.
+                size = TexMan.GetScaledSize(icon);
+                scaleup = (size.x <= 11 && size.y <= 11);
+				DrawTexture(icon, (pos.x, pos.y), flags, box : (11, 11), scaleup ? (1, 1) : (1, 1));
+				pos.x += space;
+            }
+        }
+    }
+	
 	void drawammolist(ammo current, vector2 pos, int StringFlags, int TextureFlags)
 	{
 		vector2 drawpos = pos;
@@ -364,8 +376,8 @@ Class BW_Hud : BaseStatusBar
 		
 		double fontscale = 1.0 * messageScale;
 		int yfontsize = BWFont.mFont.getheight() * fontscale;
-		double startY = 70.;
-		double startX = 20.;
+		double startY = 80.;
+		double startX = 30.;
 		int flags = DI_SCREEN_LEFT | DI_ITEM_LEFT | DI_TEXT_ALIGN_LEFT;
 		int movedir = 1;
 
@@ -383,7 +395,7 @@ Class BW_Hud : BaseStatusBar
 					break;
 				default:	//over mugshot
 				case 1:
-					startY = -150.;
+					startY = -160.;
 					flags = DI_SCREEN_LEFT_BOTTOM | DI_ITEM_LEFT | DI_TEXT_ALIGN_LEFT;
 					movedir = -1;	//move upwards
 					break;

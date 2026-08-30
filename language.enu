@@ -1,5 +1,9 @@
 [enu default]
 
+GOTGOLDKEY = "\cfFound a Gold Key";
+GOTCOPPERKEY = "\caFound a Copper Key";
+GOTSILVERKEY = "\cwFound a Silver Key";
+
 OPTMNU_NASHGORE = "Customize NashGore NEXT";
 
 NASHGOREMNU_TITLE = "NashGore NEXT Options";

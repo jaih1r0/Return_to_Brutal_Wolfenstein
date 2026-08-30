@@ -25,6 +25,8 @@ Version 4.10
 //HUD Stuff
 #include "zscript/BW/Hud/BWHud.zs"
 #include "zscript/BW/Hud/HUDStyle.RTBWPrototype.zs"
+#include "zscript/BW/Hud/HUDStyle.RTCWXBox.zs"
+#include "zscript/BW/Hud/HUDStyle.RTCWPS2.zs"
 #include "zscript/BW/Hud/BossBar.zs"
 
 #include "zscript/BW/Spawners/SpawnerBase.zs"
