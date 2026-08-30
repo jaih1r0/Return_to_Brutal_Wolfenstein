@@ -17,7 +17,9 @@ Class BW_Hud : BaseStatusBar
 	uint mbloodtics;
 	
 	int HUDStyle;
-
+	
+	Color pcol;
+	
 	override void Init()
 	{
 		Super.Init();
@@ -72,6 +74,8 @@ Class BW_Hud : BaseStatusBar
 		else
 			healthcol = Font.CR_YELLOW;
 		
+		pcol = CPlayer.GetDisplayColor() | 0xFF000000;
+		
 		if(menuactive || consolestate == c_up) 
 			updateCvars();
 		
@@ -122,8 +126,6 @@ Class BW_Hud : BaseStatusBar
 		if(NoHud)
 			return;
 		let pl = Cplayer.mo;
-		
-		Color pcol = CPlayer.GetDisplayColor() | 0xFF000000;
 		
 		drawbloodoverlay();
 		drawhudMessages();
