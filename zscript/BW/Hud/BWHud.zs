@@ -139,7 +139,9 @@ Class BW_Hud : BaseStatusBar
 			case 0:
 				DrawRTBWPrototypeHUD();
 				break;
-				
+			case 1:
+				DrawRTCWPS2HUD();
+				break;
 			case 2:
 				DrawRTCWXBoxHUD();
 				break;
