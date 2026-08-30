@@ -123,13 +123,8 @@ Class BW_Hud : BaseStatusBar
 			return;
 		let pl = Cplayer.mo;
 		
-		//[Pop] This is a reference image.
-		/*
-		screen.drawtexture(mHudReference,false,0,0
-			,DTA_DestWidth, screen.getwidth()
-			,DTA_DestHeight,screen.getheight()
-			,DTA_Alpha,	1);
-		*/
+		Color pcol = CPlayer.GetDisplayColor() | 0xFF000000;
+		
 		drawbloodoverlay();
 		drawhudMessages();
 

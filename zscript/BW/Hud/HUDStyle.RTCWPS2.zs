@@ -6,8 +6,6 @@ Extend Class BW_Hud
 			return;
 		let pl = Cplayer.mo;
 		
-		Color pcol = CPlayer.GetDisplayColor() | 0xFF000000;
-		
 		DrawImage("Graphics/HUD/RTCWPS2/hp_ar_alpha.png", (75, -75), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER, 0.5, col: pcol);
 		DrawImage("Graphics/HUD/RTCWPS2/hp_ar.png", (75, -75), DI_SCREEN_LEFT_BOTTOM | DI_ITEM_CENTER);
 		//health
