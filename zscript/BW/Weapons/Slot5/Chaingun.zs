@@ -184,7 +184,7 @@ class BW_Chaingun : BaseBWWeapon
 			BW_SpawnCasing("BW_792Casing",20,2,-12,random(2,5),random(3,6),random(1,4));
 		}
 		
-		BW_HandleWeaponFeedback(4, 3, -1.2, frandom(+0.70, -0.70));
+		BW_HandleWeaponFeedback(4, 3, -0.6, frandom(+1.4, -1.4));
 		A_StartSound("Chaingun/Fire", CHAN_AUTO, CHANF_OVERLAP,0.75);
 		A_StartSound("Chaingun/FireBass", CHAN_AUTO, CHANF_OVERLAP,0.9);
 		A_StartSound("Chaingun/FireTail", CHAN_AUTO, CHANF_OVERLAP,0.5);
