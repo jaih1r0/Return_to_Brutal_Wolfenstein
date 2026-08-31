@@ -225,6 +225,24 @@ Class BW_Tesla : BaseBWWeapon
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", 0, CHANF_OVERLAP, 1);
 			BTSK FEDCBA 1;
 			goto ready;
+		
+		LowerGun:
+			BTSK ABCDEFGH 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			BTSK H 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			BTSK HGFEDCBA 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
 	}
 	
 	action void resetcharge()

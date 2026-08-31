@@ -157,6 +157,25 @@ Class BW_FlameThrower : BaseBWWeapon
 			TNT1 A 0 A_Stopsound(18);
 			TNT1 A 1;
 			stop;
+		
+		LowerGun:
+			TNT1 A 0 A_Clearoverlays(-5,-5);
+			BFLK ABCDEFGH 1 {
+				A_WeaponReady();
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			BFLK GH 1 {
+				A_WeaponReady();
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			BFLK HGFEDCBA 1 {
+				A_WeaponReady();
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
 
 		LoadSprites:
 			BFLO A 0;

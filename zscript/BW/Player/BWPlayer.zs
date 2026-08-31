@@ -8,9 +8,14 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 
 	uint bloodtics;
 
+	bool blockedGun, blockedbyUsable;
+	int blockedDist, blockedTics;
+	actor lookedActor;
+
 	override void tick()
 	{
 		super.tick();
+		UpdateBlockView();
 	}
 
 	override void CheckWeaponChange ()
@@ -109,6 +114,50 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 		}
 		else
 			YscaleFix = scale.y;
+	}
+
+	//get whatever is blocking the player view
+	void UpdateBlockView()
+	{
+		Vector3 direction = (Actor.AngleToVector(self.Angle),sin(-self.Pitch));
+		let trac = BW_PlayerInteractTracer.dotrace(self,direction, 64, 0,self);
+		let res = trac.results;
+		switch(res.hittype)
+		{
+			default:
+				blockedGun = false;
+				blockedbyUsable = false;
+				lookedActor = null;
+				blockedDist = 0;
+				blockedTics = 0;
+				break;
+
+			case TRACE_HitActor:
+				lookedActor = res.hitactor;
+				blockedGun = true;
+				blockedDist = res.distance;
+				blockedbyUsable = (lookedActor is "inventory");
+				blockedTics++;
+				break;
+
+			case TRACE_HitWall:	case TRACE_HitFloor:	case TRACE_HitCeiling:
+				if(res.hittexture == skyflatnum)
+				{
+					blockedGun = false;
+					blockedbyUsable = false;
+					lookedActor = null;
+					blockedDist = 0;
+					blockedTics = 0;
+					break;
+				}
+				blockedGun = true;
+				lookedActor = null;
+				blockedDist = res.distance;
+				blockedbyUsable = (res.hittype == TRACE_HitWall && (res.hitline.activation & SPAC_Use) != 0);
+				blockedTics++;
+				break;
+		}
+		//BW_Statics.SpawnIndicator(res.hitpos);
 	}
 	
 	Default
@@ -434,5 +483,39 @@ class Kicking : Inventory
 	Default
 	{
 		Inventory.MaxAmount 1;
+	}
+}
+
+
+Class BW_PlayerInteractTracer : LineTracer
+{
+	actor shooter;
+
+	static BW_PlayerInteractTracer dotrace(actor source, vector3 dir, double dist, int traceflags, actor ignore)
+	{
+		let trac = new("BW_PlayerInteractTracer");
+		if(trac)
+		{
+			double vz = source.player.viewz - source.pos.z;
+			trac.shooter = source;
+			trac.trace(trac.shooter.pos + (0,0,vz),trac.shooter.cursector,dir,dist,traceflags,0x01000000,false,ignore);
+		}
+		return trac;
+	}
+
+	override ETraceStatus TraceCallback()
+	{
+		if(results.HitType == TRACE_HitActor)
+		{
+			if(results.hitactor == shooter)
+				return TRACE_Skip;
+			
+			if(results.hitactor.bsolid || results.hitactor.bspecial)
+				return TRACE_Stop;
+			
+			
+			return TRACE_Skip;
+		}
+		return TRACE_Continue;
 	}
 }

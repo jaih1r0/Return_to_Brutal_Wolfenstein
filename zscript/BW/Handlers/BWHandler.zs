@@ -131,4 +131,28 @@ class BW_EventHandler : EventHandler
 			plr.score = 0;
 		}*/
 	}
+
+	/*override void renderoverlay(renderevent e)
+	{
+		let p = players[consoleplayer].mo;
+		let bwp = BWPlayer(p);
+		if(!bwp)
+			return;
+		string idk = "";
+		//if(bwp.blockedgun)
+		//	idk = "blocked by something";
+		if(bwp.blockedbyUsable)
+			idk = "Usable Line";
+		if(bwp.lookedActor != null && bwp.lookedActor is "inventory")
+			idk = "item";
+		
+		if(idk == "")
+			return;
+		vector2 sc = (screen.getwidth(), screen.getheight());
+		sc.x *= 0.5;
+		sc.y *= 0.97;
+		double alfa = 1.25 + sin(gametic * 10);
+		double textwid = confont.StringWidth(idk);
+		screen.drawtext(confont,font.cr_yellow,sc.x - textwid,sc.y,idk,DTA_SCALEX,2.0,DTA_SCALEY,2.0, DTA_ALPHA,alfa);
+	}*/
 }

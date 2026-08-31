@@ -420,6 +420,24 @@ Class BW_STG44 : BW_DualWeapon replaces supershotgun
 			STDK FEDCBA 1;
 			goto ready;
 		
+		LowerGun:
+			ST4K ABCDEFG 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			ST4K G 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			ST4K GFEDCBA 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
+		
 	}
 }
 

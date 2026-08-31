@@ -488,6 +488,24 @@ class BW_Luger : BW_DualWeapon
 			TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 			DLUS AABCDE 1;
 			goto ready;
+		
+		LowerGun:
+			LUGK ABCDEFG 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			LUGK G 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			LUGK GFEDCBA 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
 
 	}
 }

@@ -297,7 +297,7 @@ Extend Class BaseBWWeapon
     //////////////////////////////////////////////////////////////////////////////////////////////
     // replacement for vanilla weapon handling functions
     //////////////////////////////////////////////////////////////////////////////////////////////
-    Action State BW_WeaponReady(int BWRflags = 0)
+    Action State BW_WeaponReady(int BWRflags = 0, int bwweaponflags = 0)
 	{
 		if(countinv("BW_grenadeAmmo") < 1)
 		{
@@ -307,6 +307,8 @@ Extend Class BaseBWWeapon
 		}
 		BW_SetReloading(false);	//if its on ready state then its not reloading
 		A_Weaponready(BWRflags);
+		if(resolvestate("LowerGun") && !(bwweaponflags & BWWF_NoWeaponLower))
+			return BW_JumpifBlockedGun("LowerGun",0,false);
 		return resolvestate(null);
 	}
 
@@ -679,7 +681,20 @@ Extend Class BaseBWWeapon
 			t.hitline.Activate(player.mo,t.lineside,SPAC_USE);
 	}
 
-	
+	action state BW_JumpifBlockedGun(statelabel blk = null,int offset = 0, bool invertedcheck = false)
+	{
+		if(!(self is "BWPlayer"))
+			return resolvestate(null);
+		let bwp = BWPlayer(self);
+		if((!invertedcheck && bwp.blockedGun && bwp.blockedDist <= 32 && //maybe that 32 could be turned into a weapon property, like weaponlength, so every weapon reacts at a different distance
+			(!bwp.lookedActor || (bwp.lookedActor != null && bwp.lookedactor.bsolid && !bwp.lookedActor.bismonster)) && //we have absolutely no respect for our enemy
+			bwp.blockedTics > 35)	//only lower it after a second
+		|| (invertedcheck && !bwp.blockedGun))
+		{
+			return resolvestate(blk);
+		}
+		return resolvestate(null);
+	}
 	
 
 

@@ -225,6 +225,24 @@ class BW_M1911 : BaseBWWeapon
 			M45K FEDCBA 1;
 			goto WeaponReady;
 			//goto ready;
+		
+		LowerGun:
+			M45K ABCDEFG 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			M45K G 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			M45K GFEDCBA 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
 
 	}
 }
