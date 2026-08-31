@@ -19,11 +19,12 @@ Class BaseBWWeapon : DoomWeapon
 	}
 	
 	enum BWWR_Flags {
-		BWWF_NoAxe		= 1<<26,
-		BWWF_NoGrenade 	= 1<<27,
-		BWWF_NoKick 	= 1<<28,
-		BWWF_NoSlide 	= 1<<28,
-		BWWF_NoTaunt 	= 1<<29,
+		BWWF_NoAxe			= 1<<1,
+		BWWF_NoGrenade 		= 1<<2,
+		BWWF_NoKick 		= 1<<3,
+		BWWF_NoSlide 		= 1<<4,
+		BWWF_NoTaunt 		= 1<<5,
+		BWWF_NoWeaponLower 	= 1<<6,
 	};
 
 	enum BW_Overlays {

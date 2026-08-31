@@ -209,7 +209,25 @@ Class BW_MG42 : BaseBWWeapon
 				ps.frame = random(0,2);
 		}
 		stop;
-
+	
+	LowerGun:
+		BMGK ABCDEFGH 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("raisegun",0,true);
+		}
+	LowerGunLoop:
+		BMGK H 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("RaiseGun",0,true);
+		}
+		loop;
+	RaiseGun:
+		BMGK HGFEDCBA 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("LowerGun",0,false);
+		}
+		goto ready;
+	
 	LoadSprites:
 		BMGE E 0;
 		stop;

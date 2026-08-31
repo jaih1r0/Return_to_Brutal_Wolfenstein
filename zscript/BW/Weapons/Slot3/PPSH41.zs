@@ -249,6 +249,24 @@ Class BW_PPSH41 : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 		PPSR CBA 1;
 		goto ready;
+	
+	LowerGun:
+		PPSS DCB 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("raisegun",0,true);
+		}
+	LowerGunLoop:
+		PPSS B 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("RaiseGun",0,true);
+		}
+		loop;
+	RaiseGun:
+		PPSS BCD 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("LowerGun",0,false);
+		}
+		goto ready;
 	}
 }
 

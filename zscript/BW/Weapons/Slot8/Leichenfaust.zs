@@ -87,6 +87,24 @@ Class BW_Leichenfaust : BaseBWWeapon
 			BFPK FEDCBA 1;
 			goto ready;
 		
+		LowerGun:
+			BFPK ABCDEFGH 1 {
+				A_WeaponReady();
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			BFPK H 1 {
+				A_WeaponReady();
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			BFPK HGFEDCBA 1 {
+				A_WeaponReady();
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
+		
 	}
 	
 	action void firebfg()

@@ -252,6 +252,24 @@ Class BW_M1Thompson : BaseBWWeapon
 		TNT1 A 0 A_StartSound("Generic/Rattle/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 		TMR3 HGFEDCBA 1;
 		goto ready;
+	
+	LowerGun:
+		TM1K ABCDEFG 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("raisegun",0,true);
+		}
+	LowerGunLoop:
+		TM1K G 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("RaiseGun",0,true);
+		}
+		loop;
+	RaiseGun:
+		TM1K GFEDCBA 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("LowerGun",0,false);
+		}
+		goto ready;
 	}
 }
 

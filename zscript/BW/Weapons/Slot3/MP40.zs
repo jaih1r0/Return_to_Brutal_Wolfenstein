@@ -357,6 +357,24 @@ Class BW_MP40 : BW_DualWeapon Replaces Shotgun
 		TNT1 A 0 A_StartSound("Generic/Cloth/short", CHAN_AUTO, CHANF_OVERLAP, 1);
 		DM4K FEDCBA 1;
 		goto ready;
+	
+	LowerGun:
+		MP4K ABCDEFG 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("raisegun",0,true);
+		}
+	LowerGunLoop:
+		MP4K G 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("RaiseGun",0,true);
+		}
+		loop;
+	RaiseGun:
+		MP4K GFEDCBA 1 {
+			A_WeaponReady(WRF_ALLOWRELOAD);
+			return BW_JumpifBlockedGun("LowerGun",0,false);
+		}
+		goto ready;
 
 	Reload_ADS:
 		TNT1 A 0 {A_setinventory("AimingToken",0); A_ZoomFactor(1.0);}

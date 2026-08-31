@@ -172,6 +172,24 @@ class BW_Chaingun : BaseBWWeapon
 					ps.frame = random(4,7);
 			}
 			stop;
+		
+		LowerGun:
+			BCGK ABCDEFGH 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("raisegun",0,true);
+			}
+		LowerGunLoop:
+			BCGK H 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("RaiseGun",0,true);
+			}
+			loop;
+		RaiseGun:
+			BCGK HGFEDCBA 1 {
+				A_WeaponReady(WRF_ALLOWRELOAD);
+				return BW_JumpifBlockedGun("LowerGun",0,false);
+			}
+			goto ready;
 	}
 	
 	action void fireChaingun(bool second = false)
