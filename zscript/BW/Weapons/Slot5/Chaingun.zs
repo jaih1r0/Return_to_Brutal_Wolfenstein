@@ -5,7 +5,7 @@ class BW_Chaingun : BaseBWWeapon
 		weapon.slotnumber 5;
 		scale 0.75;
 		Inventory.PickupSound "Generic/Pickup/Rifle";
-		weapon.ammotype1 "BW_MGAmmo";//"Clip";
+		weapon.ammotype1 "BW_KarAmmo";//"Clip";
 		weapon.ammotype2 "ChaingunAmmoDrum";
 		weapon.ammogive1 100;
 		+weapon.noautofire;

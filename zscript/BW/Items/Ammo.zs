@@ -42,9 +42,9 @@ Class BW_KarAmmo : BW_Ammo
     default
     {
         inventory.amount 5;
-        inventory.maxamount 20;
+        inventory.maxamount 200;
         ammo.backpackamount 10;
-        ammo.BackpackMaxAmount 50;
+        ammo.BackpackMaxAmount 400;
         tag "7.92 x 57 Bullet";
         scale 0.3;
         inventory.althudicon "K98WB0";
@@ -57,16 +57,13 @@ Class BW_KarAmmo : BW_Ammo
     }
 }
 
-Class BW_MGAmmo : BW_Ammo
+Class BW_MGAmmo : BW_KarAmmo //[Pop] gonna unify them, shouldnt affect balancing too much
 {
     default
     {
         inventory.amount 50;
-        inventory.maxamount 200;
-        ammo.backpackamount 50;
-        ammo.BackpackMaxAmount 200;
-        tag "7.92 x 57 Bullet"; //not sure if this is correct
-        inventory.althudicon "HBUSE0";
+        tag "7.92 x 57 Bullet";
+        //inventory.althudicon "HBUSE0";
         scale 0.6;
     }
     states
@@ -121,9 +118,9 @@ Class BW_RUPistolAmmo : BW_Ammo
 {
     default
     {
-        inventory.amount 8;
+        inventory.amount 32;
         inventory.maxamount 142;
-        ammo.backpackamount 8;
+        ammo.backpackamount 32;
         ammo.BackpackMaxAmount 284;
         tag "7.62x25 Tokarev Bullet";
         scale 0.75;
