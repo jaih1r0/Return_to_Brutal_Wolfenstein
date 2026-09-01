@@ -7,6 +7,7 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 	double YscaleFix;	//port this over from monsters
 
 	uint bloodtics;
+	bool sliding;
 
 	bool blockedGun, blockedbyUsable;
 	int blockedDist, blockedTics;
@@ -16,6 +17,9 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 	{
 		super.tick();
 		UpdateBlockView();
+			
+		//[Pop] CHECK THIS LATER, for some reason its alternating true/false really fast when sliding
+		//A_LogInt(self.sliding);
 	}
 
 	override void CheckWeaponChange ()
@@ -300,86 +304,6 @@ Class BWPlayer : PlayerPawn//zmoveplayer//PlayerPawn
 			BLAZ KL 2;
 			BLAZ L -1;
 			Stop;
-		
-		//[Pop] This will be unused for now, but its here for when its needed
-		
-		KickCheckTakeToken:
-			TNT1 A 0;
-			TNT1 A 1 A_TakeInventory("Kicking",1);
-			Stop;
-		KickCheck:
-			TNT1 A 0;
-			TNT1 A 1;
-		DoKick:
-			TNT1 A 0;
-			TNT1 A 0 A_OverlayFlags(-10, PSPF_ADDWEAPON, false);
-			TNT1 A 0 A_OverlayOffset(-10, 0, 32);
-			TNT1 A 0 A_JumpIf(PressingCrouch() && momx != 0 && momy != 0, "Slide");
-			TNT1 A 0
-			{
-				A_PlaySound("KICK",69);
-			}
-			K1CK ABCDE 1;
-			K1CK F 2
-			{	
-				if (CountInv("PowerStrength") == 1)
-				{
-					//A_FireCustomMissile("SuperKickAttack", 0, 0, 5, -7);
-					return;
-				}			
-				//A_FireCustomMissile("KickAttack", 0, 0, 0, -7);
-				return;
-			}
-			K1CK EDCBA 1;
-			TNT1 A 0;
-			Goto KickCheckTakeToken;
-		Slide:
-			TNT1 A 0
-			{
-				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
-				A_StartSound("SLIDE", CHAN_WEAPON, CHAN_OVERLAP);
-			}
-			SLDK ABCD 1;
-		SlideLoop:
-			SLDK F 2
-			{
-				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
-				//A_CustomPunch(5, FALSE, 0, 0, 64);
-				A_Recoil(-24);
-			}
-			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK E 3
-			{
-				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
-				//A_CustomPunch(5, FALSE, 0, 0, 64);
-				A_Recoil(-8);
-			}
-			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK F 2
-			{
-				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
-				//A_CustomPunch(5, FALSE, 0, 0, 64);
-				A_Recoil(-8);
-			}
-			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK G 3
-			{
-				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
-				//A_CustomPunch(5, FALSE, 0, 0, 64);
-				A_Recoil(-8);
-			}
-			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK F 2
-			{
-				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
-				//A_CustomPunch(5, FALSE, 0, 0, 64);
-				A_Recoil(-6);
-			}
-			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			TNT1 A 0; //A_JumpIf(BW_SlideLoopSlope(), "SlideLoop")
-		SlideEnd:
-			SLDK HIJK 1;
-			Goto KickCheckTakeToken;
 	}
 }
 
@@ -486,6 +410,13 @@ class Kicking : Inventory
 	}
 }
 
+class Sliding : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+}
 
 Class BW_PlayerInteractTracer : LineTracer
 {
