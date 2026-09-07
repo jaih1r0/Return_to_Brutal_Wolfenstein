@@ -68,8 +68,8 @@ Class BW_CasingBase : Actor abstract
     states
     {
         Bounce:
-            TNT1 A 0 playbouncesound();
-            TNT1 A 0 A_jump(256,"Spawn");
+            TNT1 # 0 playbouncesound();
+            TNT1 # 0 A_jump(256,"Spawn");
             stop;
     }
     
@@ -80,32 +80,21 @@ Class BW_9MMCasing : BW_CasingBase
     states
     {
         spawn:
-            9MCS A 2 DoCasingRoll();
+            9MCS ABCDEFGHIJKL 2 DoCasingRoll();
             loop;
         Death:
-            TNT1 A 0 FinishRoll();
-            9MCS A -1;
+            9MCS # -1;
             stop;
     }
 }
 
-Class BW_45ACPCasing : BW_CasingBase
+Class BW_45ACPCasing : BW_9MMCasing
 {
 	Default
 	{
 		Scale 0.25;
 	}
 	
-    states
-    {
-        spawn:
-            9MCS A 2 DoCasingRoll();
-            loop;
-        Death:
-            TNT1 A 0 FinishRoll();
-            9MCS A -1;
-            stop;
-    }
 }
 
 Class BW_ShellCasing : BW_CasingBase
