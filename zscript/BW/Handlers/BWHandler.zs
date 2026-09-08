@@ -87,6 +87,12 @@ class BW_EventHandler : EventHandler
 			HandleKillCombos(e.thing);
 	}
 	
+	override void WorldThingDamaged(WorldEvent e)
+	{
+		if(e.thing && e.thing.bismonster)
+			ComboTimerReset(e.thing);
+	}
+	
     override void NetworkProcess(ConsoleEvent e)
     {
         let pl = players[e.Player].mo;
@@ -123,6 +129,39 @@ class BW_EventHandler : EventHandler
 		
 		ComboTimer = ComboSpace;
 		ComboCounter++;
+
+		/*if(plr.score > 9999)	//every 10000 points
+		{
+			console.printf("you got %d score points. %s earned.",plr.score,"soulsphere");
+			plr.A_GiveInventory("Soulsphere",1);
+			plr.score = 0;
+		}*/
+	}
+	
+	//[Pop] Lets reset the timer on damage as well, or maybe try adding a bit to it instead?
+	void ComboTimerReset(actor victim)
+	{
+		if(!victim)	//no monster killed
+			return;
+		if(!victim.target || !victim.target.player)	//monster was not killed by player
+			return;
+		let plr = victim.target.player.mo;
+		//int givescore = clamp(victim.spawnhealth(),1,100);
+		
+		//if(ComboCounter > 0)
+			//givescore *= ComboCounter;
+		//incentivize weapon combos
+		/*if(plr.player.readyweapon && plr.player.readyweapon.getclassname() != lastWeap)
+		{
+			lastWeap = plr.player.readyweapon.getclassname();
+			givescore *= 2;
+		}*/
+		//int sc = plr.score;
+		//plr.score += givescore;
+		
+		if(ComboCounter > 0 && ComboTimer < (ComboSpace - (ComboSpace/4)))
+			ComboTimer += ComboSpace/4;
+		//ComboCounter++;
 
 		/*if(plr.score > 9999)	//every 10000 points
 		{
