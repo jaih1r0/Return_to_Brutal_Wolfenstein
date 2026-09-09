@@ -112,9 +112,13 @@ class BW_Trenchgun : BaseBWWeapon
 		TNT1 A 0 A_ZoomFactor(1.0);
 		BTGF DE 1;
 		BTGF F 1;
-		BTGF G 1;
+		BTGF G 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER4);
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"Ready_NoAmmo");
-		BTGF H 1 A_ReFire("SlamPump");
+		BTGF H 1 
+		{
+			BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER4);
+			A_ReFire("SlamPump");
+		}
 	Pump:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
 		BTGH BC 1;

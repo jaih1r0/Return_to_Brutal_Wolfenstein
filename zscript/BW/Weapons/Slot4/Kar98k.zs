@@ -110,7 +110,7 @@ Class BW_Kar98K : BaseBWWeapon
 		K98F C 1 bright;
 		TNT1 A 0 A_ZoomFactor(1.0);
 		K98F DEF 1;
-		K98F GHI 1;
+		K98F GHI 1 BW_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWUSER3|WRF_ALLOWUSER4);
 		//K98F A 1;
 	Bolt:
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
