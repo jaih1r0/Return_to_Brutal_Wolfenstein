@@ -49,12 +49,12 @@ class BW_EventHandler : EventHandler
 		{
 			ComboTimer = ComboSpace / 2;
 			ComboCounter /= 2;
-			weaponSwapCount--; //[Pop]decrease to prevent too much ticking up?
+			weapSwapCount--; //[Pop]decrease to prevent too much ticking up?
 		}
 		else
 		{
 			ComboCounter = 0;
-			weaponSwapCount = 0;
+			weapSwapCount = 0;
 		}
 		
 		if(BW_DebrisLimit >= 0)		//limit the amount of debris
