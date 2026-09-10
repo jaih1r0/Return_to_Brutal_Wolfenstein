@@ -35,7 +35,7 @@ class BW_Footsteps : Thinker //the less actors the better
 			f_vol_cache = CVar.GetCVar('BW_FootstepsVol',fplayer);
 		f_enabled = f_enabled_cache.GetBool();
 		f_vol = f_vol_cache.GetFloat();
-		f_delay = 1.4; //]Pop] This one gets hardcoded for manual adjustment
+		f_delay = 1.2; //[Pop] This one gets hardcoded for manual adjustment
 		
 		updateTics--;
 		

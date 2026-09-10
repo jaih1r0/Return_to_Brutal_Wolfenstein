@@ -365,7 +365,7 @@ class Z_NashMove : inventory
 				// bump up the player's speed to compensate for the deceleration
 				// TO DO: math here is shit and wrong, please fix
 				double s = 0.7 + (1.1 - DECEL_MULT); //1.0
-				double mod = 1.5;
+				double mod = 1.65;
 				
 				//[Pop] Initialize the base value
 				s *= 2;
