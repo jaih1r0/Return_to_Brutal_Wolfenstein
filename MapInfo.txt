@@ -940,7 +940,7 @@ map BW4M5 "A dark Secret-Floor 5"
 {
 	titlepatch = "CWILV34"
 	next = "BW4M6"
-	secretnext = "Zim01"
+	secretnext = "DAA01"
 	sky1 = "SKY2"
 	music = Corner
 	par = 480
@@ -1050,7 +1050,7 @@ map BW5M5 "Trail of Madman-Floor 5"
 {
 	titlepatch = "CWILV44"
 	next = "BW5M6"
-	secretnext = "Zim02"
+	secretnext = "DAA02"
 	sky1 = "SKY1"
 	music = GRUNDGE
 	par = 360
@@ -1112,7 +1112,7 @@ map BW5M10 "Trail of Madman-Floor 10"
 	Interpic = BW5INTER
 }
 
-map Zim01 "Die ärgerliche Angelegenheit-ACT 1"
+map DAA01 "Die ärgerliche Angelegenheit-ACT 1"
 {
 	titlepatch = "OPIRK1"
 	next = "BW4M6"
@@ -1123,7 +1123,7 @@ map Zim01 "Die ärgerliche Angelegenheit-ACT 1"
 	Interpic = BW4INTER
 }
 
-map Zim02 "Die ärgerliche Angelegenheit-ACT 2"
+map DAA02 "Die ärgerliche Angelegenheit-ACT 2"
 {
 	titlepatch = "OPIRK2"
 	next = "BW5M6"
@@ -1134,7 +1134,7 @@ map Zim02 "Die ärgerliche Angelegenheit-ACT 2"
 	Interpic = BW5INTER
 }
 
-map Zim03 "Die ärgerliche Angelegenheit-ACT 3"
+map DAA03 "Die ärgerliche Angelegenheit-ACT 3"
 {
 	titlepatch = "OPIRK3"
 	next = "BW6M9"
@@ -1630,7 +1630,7 @@ map E1M1A "Escape from Wolfenstein-Floor 1"
 	par = 240
 }
 
-map E1M2 "Escape from Wolfenstein-Floor 2"
+map E1M2A "Escape from Wolfenstein-Floor 2"
 {
 	titlepatch = "CWILV01"
 	Next = "Endtitle"
@@ -1651,7 +1651,7 @@ map SOD17Old "Spear Of Destiny-Floor 17"
 	par = 330
 }
 
-map E7M18 "Spear of Destiny-Original Death Knight Boss Fight"
+map E7M18A "Spear of Destiny-Original Death Knight Boss Fight"
 {
 	next = E7M19
         //Interpic = Interpi2
@@ -1663,7 +1663,7 @@ map E7M18 "Spear of Destiny-Original Death Knight Boss Fight"
 }
 
 
-map E7M19 "Spear of Destiny-Original Angel of Death Boss Fight"
+map E7M19A "Spear of Destiny-Original Angel of Death Boss Fight"
 {
 	titlepatch = "SODB"
 	next = ENDTITLE

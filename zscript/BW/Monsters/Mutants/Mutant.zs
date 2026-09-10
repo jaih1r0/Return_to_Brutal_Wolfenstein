@@ -16,6 +16,7 @@ Class BW_Mutant : BW_MonsterBase //7078
         SeeSound "Mutant/Sight";
         PainSound "Mutant/Pain";
         DeathSound "Mutant/Death";
+		ActiveSound "Mutant/Sight";
         Scale 1;
         bloodcolor "FF00FF"; //magenta
         BW_MonsterBase.CanIReload false;    //i think they have a builtin bullets factory inside
@@ -85,25 +86,25 @@ Class BW_Mutant : BW_MonsterBase //7078
 				return A_Jump(256, "Attack1", "Attack2", "Attack3");
 			}
 		Attack1:
-			WMUT GG 3 A_FaceTarget();
+			WMUT GG 3 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
             WMUT H 6 MutantFire(2);
-            WMUT GG 3 A_FaceTarget();
+            WMUT GG 3 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
             WMUT I 6 MutantFire(2);
             WMUT G 6;
 			TNT1 A 0 A_Jump(90, "Attack1", "Attack2");
             goto see;
         Attack2:
-			WMUT GG 3 A_FaceTarget();
+			WMUT GG 3 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
             WMUT H 3 MutantFire(0);
-            WMUT G 3 A_FaceTarget();
+            WMUT G 3 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
             WMUT I 3 MutantFire(0);
             WMUT G 3;
             TNT1 A 0 A_Jump(90, "Attack1", "Attack2");
 			goto see;
         Attack3:
-            WMUT GGGGG 3 A_FaceTarget();
+            WMUT GGGGG 3 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
             WMUT H 3 MutantFire(1);
-            WMUT G 9 A_FaceTarget();
+            WMUT G 9 A_FaceTarget(45, 45, 0, 0, FAF_MIDDLE);
             TNT1 A 0 A_jumpif(checklof(),"Attack1");
             goto see;
         Melee:

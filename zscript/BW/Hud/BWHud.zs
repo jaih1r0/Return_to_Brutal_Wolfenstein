@@ -13,8 +13,10 @@ Class BW_Hud : BaseStatusBar
 	double messageScale; 
 	int msgpos;
 	textureID mHudBlood;
-	textureID mHudReference;
+	textureID mHUDDust;
 	uint mbloodtics;
+	bool missliding;
+	uint mslidetics;
 	
 	int HUDStyle;
 	
@@ -33,7 +35,7 @@ Class BW_Hud : BaseStatusBar
 		DV_Score = dynamicvalueinterpolator.create(0,1,1,10);
 		DV_LeftAmmo = dynamicvalueinterpolator.create(0,1,1,10);
 		mHudBlood = texman.checkfortexture("graphics/HUD/pain1.png");
-		mHudReference = texman.checkfortexture("graphics/HUD/HUDREF.png");
+		mHUDDust = texman.checkfortexture("graphics/HUD/SlideDustOverlay.png");
 	}
 	
 	override void Draw(int state, double TicFrac)
@@ -117,6 +119,7 @@ Class BW_Hud : BaseStatusBar
 		if(bwplay)
 		{
 			mbloodtics = bwplay.bloodtics;
+			missliding = bwplay.sliding;
 		}
 		
 	}
@@ -128,6 +131,7 @@ Class BW_Hud : BaseStatusBar
 		let pl = Cplayer.mo;
 		
 		drawbloodoverlay();
+		DrawSlideDust();
 		drawhudMessages();
 
 		switch(HUDStyle)
@@ -240,6 +244,23 @@ Class BW_Hud : BaseStatusBar
 			,DTA_DestHeight,screen.getheight()
 			,DTA_Alpha,	alfa);
 		}
+	}
+	
+	void DrawSlideDust()
+	{
+		if(missliding)
+		{
+			if(mslidetics < 30)
+				mslidetics+=3;
+		}
+		if(mslidetics > 0 && !missliding)
+			mslidetics--;
+			
+		double slidealfa = BW_Statics.linearmap(mslidetics,0,30,0.0,0.5,true);
+		screen.drawtexture(mhudDust,false,0,0
+			,DTA_DestWidth, screen.getwidth()
+			,DTA_DestHeight,screen.getheight()
+			,DTA_Alpha,	slidealfa, DTA_LegacyRenderStyle, STYLE_Add);
 	}
 	
 	void DrawComboScore(vector2 pos, int StringFlags, int FillFlags)

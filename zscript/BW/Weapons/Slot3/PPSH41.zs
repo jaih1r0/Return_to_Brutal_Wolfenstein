@@ -9,7 +9,7 @@ Class BW_PPSH41 : BaseBWWeapon
 		Weapon.AmmoType2 "BW_PPSH41Mag";
 		Weapon.AmmoUse2 0;
 		Weapon.AmmoGive2 0;
-		BaseBWWeapon.FullMag 20;
+		BaseBWWeapon.FullMag 71;
 		tag "PPSh-41";
 		Inventory.PickupSound "Generic/Pickup/SMG";
 		Obituary "$OB_MPPISTOL";

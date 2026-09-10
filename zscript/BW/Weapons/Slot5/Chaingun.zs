@@ -5,7 +5,7 @@ class BW_Chaingun : BaseBWWeapon
 		weapon.slotnumber 5;
 		scale 0.75;
 		Inventory.PickupSound "Generic/Pickup/Rifle";
-		weapon.ammotype1 "BW_MGAmmo";//"Clip";
+		weapon.ammotype1 "BW_KarAmmo";//"Clip";
 		weapon.ammotype2 "ChaingunAmmoDrum";
 		weapon.ammogive1 100;
 		+weapon.noautofire;
@@ -202,7 +202,7 @@ class BW_Chaingun : BaseBWWeapon
 			BW_SpawnCasing("BW_792Casing",20,2,-12,random(2,5),random(3,6),random(1,4));
 		}
 		
-		BW_HandleWeaponFeedback(4, 3, -1.2, frandom(+0.70, -0.70));
+		BW_HandleWeaponFeedback(4, 3, -0.6, frandom(+1.4, -1.4));
 		A_StartSound("Chaingun/Fire", CHAN_AUTO, CHANF_OVERLAP,0.75);
 		A_StartSound("Chaingun/FireBass", CHAN_AUTO, CHANF_OVERLAP,0.9);
 		A_StartSound("Chaingun/FireTail", CHAN_AUTO, CHANF_OVERLAP,0.5);

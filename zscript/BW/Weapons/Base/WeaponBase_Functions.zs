@@ -667,9 +667,15 @@ Extend Class BaseBWWeapon
 	{
 		let pl = BWPlayer(player.mo);
 		if(reset)
+		{
 			pl.slideAngle = 0.0;
+			pl.sliding = false;
+		}
 		else
+		{
 			pl.slideAngle = Angle - VectorAngle(player.cmd.forwardmove, player.cmd.sidemove);
+			pl.sliding = true;
+		}
 	}
 
     action void KickDoors(int dist = 70)

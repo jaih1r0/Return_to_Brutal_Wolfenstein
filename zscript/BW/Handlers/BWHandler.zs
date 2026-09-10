@@ -10,6 +10,7 @@ class BW_EventHandler : EventHandler
 	int ComboTimer;
 	int ComboCounter;
 	const ComboSpace = TICRATE * 5;	//5 secs, probably would be better to turn this into a cvar
+	int weapSwapCount;
 	string lastWeap;
 
 	array<actor>	worldDebris;
@@ -39,11 +40,22 @@ class BW_EventHandler : EventHandler
 			kicktimer--;
 		if(KnifeTimer > 0)
 			KnifeTimer--;
+		
 		if(ComboTimer > 0)
+		{
 			ComboTimer--;
+		}
+		else if(ComboCounter > 1 && ComboTimer < 1)
+		{
+			ComboTimer = ComboSpace / 2;
+			ComboCounter /= 2;
+			weapSwapCount--; //[Pop]decrease to prevent too much ticking up?
+		}
 		else
+		{
 			ComboCounter = 0;
-
+			weapSwapCount = 0;
+		}
 		
 		if(BW_DebrisLimit >= 0)		//limit the amount of debris
 		{
@@ -87,6 +99,12 @@ class BW_EventHandler : EventHandler
 			HandleKillCombos(e.thing);
 	}
 	
+	override void WorldThingDamaged(WorldEvent e)
+	{
+		if(e.thing && e.thing.bismonster)
+			ComboTimerReset(e.thing);
+	}
+	
     override void NetworkProcess(ConsoleEvent e)
     {
         let pl = players[e.Player].mo;
@@ -112,17 +130,30 @@ class BW_EventHandler : EventHandler
 		
 		if(ComboCounter > 0)
 			givescore *= ComboCounter;
+		
 		//incentivize weapon combos
-		/*if(plr.player.readyweapon && plr.player.readyweapon.getclassname() != lastWeap)
+		if(plr.player.readyweapon && plr.player.readyweapon.getclassname() != lastWeap)
 		{
 			lastWeap = plr.player.readyweapon.getclassname();
-			givescore *= 2;
-		}*/
+			weapSwapCount++; //[Pop] See below
+			givescore *= 1.5; //[Pop] but give some bonus points anyways
+		}
+		
+		//[Pop] This way we can prevent swapping a bunch stacking the combo tooo much
+		if(weapSwapCount > 3)
+		{
+			weapSwapCount = 0;
+			ComboCounter *= 1.5;
+		}
+		
 		int sc = plr.score;
 		plr.score += givescore;
 		
 		ComboTimer = ComboSpace;
 		ComboCounter++;
+
+		if(ComboTimer == 0)
+			lastWeap = "Null";
 
 		/*if(plr.score > 9999)	//every 10000 points
 		{
@@ -130,6 +161,19 @@ class BW_EventHandler : EventHandler
 			plr.A_GiveInventory("Soulsphere",1);
 			plr.score = 0;
 		}*/
+	}
+	
+	//[Pop] Lets reset the timer on damage as well, or maybe try adding a bit to it instead?
+	void ComboTimerReset(actor victim)
+	{
+		if(!victim)	//no monster killed
+			return;
+		if(!victim.target || !victim.target.player)	//monster was not killed by player
+			return;
+		
+		let plr = victim.target.player.mo;
+		if(ComboCounter > 0 && ComboTimer < (ComboSpace - (ComboSpace/4)))
+			ComboTimer += ComboSpace/4;
 	}
 
 	/*override void renderoverlay(renderevent e)
