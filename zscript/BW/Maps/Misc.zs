@@ -63,6 +63,7 @@ Class BW_StoneColumn : BW_ShootableDecoration replaces techpillar
                 BW_SpawnSmokeFx(20,20,50);
                 BW_SpawnSmokeFx(35,20,40);
                 BW_SpawnSmokeFx(50,20,40);
+                spawnDebris("BW_Stonebits",(pos.xy,pos.z + height * 0.5),random(10,16),sizemult:2.0);
             }
             TNT1 A 0 A_QuakeEx(1,1,1,35,0,250,"",QF_SCALEDOWN|QF_SCALEUP);
             TNT1 A 0 A_NoBlocking();
@@ -258,6 +259,7 @@ Class BW_Well1 : BW_ShootableDecoration replaces evileye
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_Stonebits",(pos.xy,pos.z + height * 0.5),random(10,16));
             PITW C -1;
             stop;
 
@@ -280,6 +282,7 @@ Class BW_HealingWell : BW_Well1
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_Stonebits",(pos.xy,pos.z + height * 0.5),random(10,16));
             PITW C -1;
             stop;
     }
@@ -349,6 +352,7 @@ Class BW_WashBasin : BW_ShootableDecoration Replaces HangTLookingUp
             stop;
         death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_Stonebits",(pos.xy,pos.z + height * 0.5),random(8,12));
             TNT1 AA 0 BW_SpawnSmokeFx(random(10,40),35,45);
             LAVA C -1;
             stop;

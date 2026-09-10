@@ -25,7 +25,10 @@ Class BW_ExplosiveBarrel : BW_ShootableDecoration replaces explosiveBarrel
             TNT1 A 0 A_Startsound("Barrel/Explosion");
             TNT1 A 0 A_NoBlocking();
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(10,40),45,50,gfx:"SMO1A0");
-            TNT1 A 0 {BW_MiscEffect.SpawnExplotionImpactFx(pos + (0,0,10));}
+            TNT1 A 0 {
+                spawnDebris("BW_MythrilScrap",(pos.xy,pos.z + height * 0.5),random(10,18));
+                BW_MiscEffect.SpawnExplotionImpactFx(pos + (0,0,10));
+            }
             TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
             TNT1 A 0 A_Explode(400,200,damagetype:"Explosive");
             MP1C A -1;
@@ -60,6 +63,7 @@ Class BW_WoodenBarrel : BW_ShootableDecoration  //7022
     }
     void bw_woodenbarrelDiefx()
     {
+        spawnDebris("BW_WoodDebris",(pos.xy,pos.z + height * 0.5),random(10,18),6);
         BW_SpawnSmokeFx(10,20,80,gfx:"DIRPD0");
         BW_SpawnSmokeFx(25,20,80,gfx:"DIRPD0");
     }
