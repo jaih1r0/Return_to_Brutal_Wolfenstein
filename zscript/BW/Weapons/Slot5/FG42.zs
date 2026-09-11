@@ -60,7 +60,7 @@ Class BW_FG42 : BW_DualWeapon
 			BW_FireBullets("BW_MGBullets",3,3,-1,35,"Bulletpuff","Machinegun",0,0,-3);
 			BW_HandleWeaponFeedback(2, 3, -1.0, frandom(+0.50, -0.50),d2:-6);
 			BW_SpawnCasing("BW_792Casing",29,-12,-10,random(2,5),random(3,6),random(1,4));
-			BW_AddBarrelHeat(16);
+			BW_AddBarrelHeat(16, false, true);
 		}
 		else
 		{
@@ -68,7 +68,7 @@ Class BW_FG42 : BW_DualWeapon
 			BW_FireBullets("BW_MGBullets",3,3,-1,35,"Bulletpuff","Machinegun",0,0,3);
 			BW_HandleWeaponFeedback(2, 3, -1.0, frandom(+0.50, -0.50),d2:6);
 			BW_SpawnCasing("BW_792Casing",29,12,-10,random(2,5),random(3,6),random(1,4));
-			BW_AddBarrelHeat(16);
+			BW_AddBarrelHeat(16, false, false);
 		}
 	}
 	
@@ -401,12 +401,12 @@ Class BW_FG42 : BW_DualWeapon
 
 	EmptyReload:
 		TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
-		FGR1 ABCD 1;
-		TNT1 A 0 A_startsound("FG42/MagOut",CHAN_AUTO);
-		FGR1 EFFFFFFFGHIIIIIJKLM 1;
+		FGR1 ABCDEFFFFFFF 1;
+		TNT1 A 0 A_startsound("FG42/MagOutEmpty",CHAN_AUTO);
+		FGR1 GHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
 		FGR1 NOOOOOOO 1;
-		TNT1 A 0 A_startsound("FG42/MagIn",CHAN_AUTO);
+		TNT1 A 0 A_startsound("FG42/MagInEmpty",CHAN_AUTO);
 		FGR1 OOONMPQRST 1;
 		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
 		FGR1 TTSRI 1;
@@ -424,119 +424,103 @@ Class BW_FG42 : BW_DualWeapon
 	Reload_Dual:
 		TNT1 A 0 BW_ClearDualOverlays();
 		//go single
-		DM4T JIHGFEDCBA 1;
-		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 31,"Reload_Left");
+		FGDS DCBA 1;
+		FGDT FEDCBA 1;
+		TNT1 A 0 A_jumpif(invoker.ammo2.amount > 19,"Reload_Left");
 	ReloadRight:
 		TNT1 A 0 A_jumpif(invoker.ammo2.amount < 1,"EmptyReloadRight");
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R ABCDEFGHIJKL 1;
 		TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R MNOPQRST 1;
-		TNT1 A 0 A_startsound("FG42/Out",CHAN_AUTO);
-		MP4R UVWXYZ 1;
-		MP4S ABCCC 1;
+		FGR1 ABCD 1;
+		TNT1 A 0 A_startsound("FG42/MagOut",CHAN_AUTO);
+		FGR1 EFFFFFFFGHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4S DEFG 1;
-		TNT1 A 0 A_startsound("FG42/In",CHAN_AUTO);
-		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
-		MP4S MNO 1;
+		FGR1 NOOOOOOO 1;
+		TNT1 A 0 A_startsound("FG42/MagIn",CHAN_AUTO);
+		FGR1 OOONMPQRST 1;
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
+		FGR1 TTSRI 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R QPONM 1;
-		MP4R GFEDCBA 1;
+		FGR1 HGFEDCBA 1;
 		goto FinishedRight;
 
 	EmptyReloadRight:
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R ABCDEFGHIJKL 1;
 		TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R MNOPQRST 1;
-		TNT1 A 0 A_startsound("FG42/Out",CHAN_AUTO);
-		MP4R UVWXYZ 1;
-		MP4S ABCCC 1;
+		FGR1 ABCDEFFFFFFF 1;
+		TNT1 A 0 A_startsound("FG42/MagOutEmpty",CHAN_AUTO);
+		FGR1 GHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4S DEFG 1;
-		TNT1 A 0 A_startsound("FG42/In",CHAN_AUTO);
-		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),32,1);
-		MP4S MNO 1;
+		FGR1 NOOOOOOO 1;
+		TNT1 A 0 A_startsound("FG42/MagInEmpty",CHAN_AUTO);
+		FGR1 OOONMPQRST 1;
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotype2.getclassname(),invoker.ammotype1.getclassname(),20,1);
+		FGR1 TTSRI 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R QPONM 1;
-		MP4R GFEDCBA 1;
+		FGR1 HGF 1;
 		//rechamber
-		MP4C ABCDE 1;
-		TNT1 A 0 A_Startsound("FG42/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
-		MP4C FGHI 1;
-		MP4C III 1 A_Weaponoffset(-0.35,0.5,WOF_ADD);
-		TNT1 A 0 A_Weaponoffset(0,32);
-		TNT1 A 0 A_Startsound("FG42/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
-		MP4C JKLMNA 1;
+		FGR2 ABCD 1;
+		TNT1 A 0 A_Startsound("FG42/Charge",CHAN_AUTO,CHANF_OVERLAP,0.7);
+		FGR2 E 1;
+		FGR2 FFFFFFFFFFFF 1;
+		FGR2 GH 1;
+		FGR1 FEDCBA 1;
 		goto FinishedRight;
 
 	FinishedRight:
-		TNT1 A 0 A_jumpif(invoker.ammoleft.amount > 31 || invoker.ammo1.amount < 1,"EndDualReload");
+		TNT1 A 0 A_jumpif(invoker.ammoleft.amount > 19 || invoker.ammo1.amount < 1,"EndDualReload");
 		//lower right
 	Reload_Left:
-		MP4U FGHI 1;
+		FG4S EFGH 1;
 		TNT1 A 1;
 		//raise left
-		MP4U ABCD 1;
+		FG4S ABCD 1;
 
 		//reload left
 	doReloadLeft:
 		TNT1 A 0 A_jumpif(invoker.ammoleft.amount < 1,"EmptyReloadLeft");
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R ABCDEFGHIJKL 1;
 		TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R MNOPQRST 1;
-		TNT1 A 0 A_startsound("FG42/Out",CHAN_AUTO);
-		MP4R UVWXYZ 1;
-		MP4S ABCCC 1;
+		FGR1 ABCD 1;
+		TNT1 A 0 A_startsound("FG42/MagOut",CHAN_AUTO);
+		FGR1 EFFFFFFFGHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4S DEFG 1;
-		TNT1 A 0 A_startsound("FG42/In",CHAN_AUTO);
-		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeLeft.getclassname(),invoker.ammotype1.getclassname(),32,1);
-		MP4S MNO 1;
+		FGR1 NOOOOOOO 1;
+		TNT1 A 0 A_startsound("FG42/MagIn",CHAN_AUTO);
+		FGR1 OOONMPQRST 1;
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeleft.getclassname(),invoker.ammotype1.getclassname(),20,1);
+		FGR1 TTSRI 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R QPONM 1;
-		MP4R GFEDCBA 1;
+		FGR1 HGFEDCBA 1;
 	FinishedLeft:
 		//lower left
-		MP4U FGHI 1;
+		FG4S EFGH 1;
 		TNT1 A 1;
 		//raise right
-		MP4U ABCD 1;
+		FG4S ABCD 1;
 		//back to dual
 	EndDualReload:
-		DM4T ABCDEFGHIJ 1;
+		FGDT ABCDEF 1;
+		FGDS ABCD 1;
 		goto ready_Dual;
 
 	EmptyReloadLeft:
-		TNT1 A 0 A_StartSound("Generic/Cloth/Medium", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R ABCDEFGHIJKL 1;
 		TNT1 A 0 A_StartSound("Generic/Rattle/Small", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R MNOPQRST 1;
-		TNT1 A 0 A_startsound("FG42/Out",CHAN_AUTO);
-		MP4R UVWXYZ 1;
-		MP4S ABCCC 1;
+		FGR1 ABCDEFFFFFFF 1;
+		TNT1 A 0 A_startsound("FG42/MagOutEmpty",CHAN_AUTO);
+		FGR1 GHIIIIIJKLM 1;
 		TNT1 A 0 A_StartSound("Generic/Ammo/MagFoley", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4S DEFG 1;
-		TNT1 A 0 A_startsound("FG42/In",CHAN_AUTO);
-		MP4S HIJKL 1;
-		TNT1 A 0 BW_AmmoIntoMag(invoker.ammotypeLeft.getclassname(),invoker.ammotype1.getclassname(),32,1);
-		MP4S MNO 1;
+		FGR1 NOOOOOOO 1;
+		TNT1 A 0 A_startsound("FG42/MagInEmpty",CHAN_AUTO);
+		FGR1 OOONMPQRST 1;
+		TNT1 A 0 BW_AmmoIntoMag(invoker.ammoleft.getclassname(),invoker.ammotype1.getclassname(),20,1);
+		FGR1 TTSRI 1;
 		TNT1 A 0 A_StartSound("Generic/Cloth/Short", CHAN_AUTO, CHANF_OVERLAP, 1);
-		MP4R QPONM 1;
-		MP4R GFEDCBA 1;
+		FGR1 HGF 1;
 		//rechamber
-		MP4C ABCDE 1;
-		TNT1 A 0 A_Startsound("FG42/BoltBack",CHAN_AUTO,CHANF_OVERLAP,0.7);
-		MP4C FGHI 1;
-		MP4C III 1 A_Weaponoffset(-0.35,0.5,WOF_ADD);
-		TNT1 A 0 A_Weaponoffset(0,32);
-		TNT1 A 0 A_Startsound("FG42/BoltRelease",CHAN_AUTO,CHANF_OVERLAP,0.7);
-		MP4C JKLMNA 1;
+		FGR2 ABCD 1;
+		TNT1 A 0 A_Startsound("FG42/Charge",CHAN_AUTO,CHANF_OVERLAP,0.7);
+		FGR2 E 1;
+		FGR2 FFFFFFFFFFFF 1;
+		FGR2 GH 1;
+		FGR1 FEDCBA 1;
 		goto FinishedLeft;
 	}
 }
