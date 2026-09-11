@@ -1,3 +1,9 @@
+
+
+//[Pop] HEY, this should be paratroopers in the future btw for sprites
+//please make sure we do that to differentiate the two, maybe even add custom handling for making them parachute in if placed in an open air sector?
+
+
 Class BW_BlackGuard_FG42 : BW_MonsterBase 
 {
 		Default
@@ -23,8 +29,8 @@ Class BW_BlackGuard_FG42 : BW_MonsterBase
 			DeathSound "BlackGuard/death";
 			ActiveSound "BlackGuard/Active";
 			
-			DropItem "BW_STGAmmo", 255, 30;
-			DropItem "BW_STG44", 100, 1;
+			DropItem "BW_MGAmmo", 255, 20;
+			DropItem "BW_FG42", 100, 1;
 			
 			Obituary "$OB_ZOMBIE";
 		}
