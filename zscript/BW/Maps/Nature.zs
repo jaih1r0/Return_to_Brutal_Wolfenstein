@@ -15,6 +15,7 @@ Class BW_Tree1 : BW_ShootableDecoration replaces LiveStick
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_WoodChunkDebris",(pos.xy,pos.z + height * 0.5),random(10,16));
             TNT1 AA 0 BW_SpawnSmokeFx(random(5,22),45,45,gfx:"DIRPC0");
             TNT1 AA 0 BW_SpawnSmokeFx(random(15,40),45,45,gfx:"DIRPD0");
             TRE2 B -1;

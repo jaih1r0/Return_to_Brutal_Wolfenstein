@@ -187,3 +187,74 @@ Class BW_BoneHeadDebris : BW_BouncingDebris
             stop;
     }
 }
+
+
+Class BW_WoodChunkDebris : BW_BouncingDebris
+{
+    default
+    {
+        scale 0.7;
+    }
+    states
+    {
+        spawn:
+            WSPX A 0;
+            WSPX # 0 {
+                self.frame = random(0,4);
+            }
+        SpawnLoop:
+            "####" "#" 1 rolldebris();
+            loop;
+        Death:
+            "####" "#" -1;
+            stop;
+    }
+    override void postbeginplay()
+    {
+        super.postbeginplay();
+        A_Setscale(scale.x + frandom(-0.1,0.1));
+    }
+}
+
+Class BW_GlassDebris : BW_BouncingDebris
+{
+    default
+    {
+        scale 0.2;
+    }
+    states
+    {
+        spawn:
+            MSC1 A 0;
+            MSC1 # 0 {
+                self.Frame = random(0,3);
+            }
+        SpawnLoop:
+            "####" "#" 1 rolldebris();
+            loop;
+        Death:
+            "####" "#" -1;
+            stop;
+    }
+    override void postbeginplay()
+    {
+        super.postbeginplay();
+        A_Setscale(scale.x + frandom(-0.1,0.1));
+    }
+}
+
+Class BW_GoldScrap : BW_MetalScrap
+{
+    default
+    {
+        translation "0:255=@55[251, 182, 43]";
+    }
+}
+
+Class BW_MythrilScrap : BW_MetalScrap
+{
+    default
+    {
+        translation "0:255=@55[74, 251, 43]";
+    }
+}

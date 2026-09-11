@@ -19,7 +19,7 @@ Class BW_Decoration : Actor abstract
             flare.destroy();
     }
 
-    void spawnDebris(string type,vector3 spos,int amount = 1,int maxforceXY = 10,int maxforceZ = 10)
+    void spawnDebris(string type,vector3 spos,int amount = 1,int maxforceXY = 10,int maxforceZ = 10, double sizemult = 1.0)
 	{
 		if(amount < 1)
 			return;
@@ -29,6 +29,8 @@ Class BW_Decoration : Actor abstract
 			if(deb)
 			{
 				deb.vel = (random(-maxforceXY,maxforceXY),random(-maxforceXY,maxforceXY),random(-maxforceZ,maxforceZ));
+				if(sizemult != 1.0)
+					deb.A_setscale(deb.scale.x * sizemult);
 			}
 		}
 	}

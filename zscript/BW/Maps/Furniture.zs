@@ -14,6 +14,7 @@ Class BW_KnightArmor : BW_ShootableDecoration Replaces ShortGreenColumn
             stop;
         Death:
             TNT1 AAAA 0 BW_SpawnSmokeFx(random(20,40),25,45);
+            TNT1 A 0 spawnDebris("BW_MetalScrap",(pos.xy,pos.z + height * 0.5),random(6,12));
             TNT1 A 0 A_Spawnitem("BW_AxeAmmo");
             TNT1 A 0 A_NoBlocking();
             CAD1 ABC 2;
@@ -44,6 +45,7 @@ Class  BW_Table1 : BW_ShootableDecoration Replaces TallGreenColumn
         
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_WoodDebris",(pos.xy,pos.z + height * 0.5),random(8,12),6);
             TNT1 AA 0 BW_SpawnSmokeFx(random(5,22),25,45,gfx:"DIRPD0");
             TABL D -1;
             stop;
@@ -71,6 +73,7 @@ Class BW_Table2 : BW_ShootableDecoration Replaces HeartColumn //36 translator do
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_WoodDebris",(pos.xy,pos.z + height * 0.5),random(8,12),6);
             TNT1 AA 0 BW_SpawnSmokeFx(random(10,30),25,45,gfx:"DIRPD0");
             TABL B -1;
             stop;
@@ -100,6 +103,7 @@ Class BW_Stove : BW_ShootableDecoration replaces DeadStick
         Death:
             DAMN AB 2;
             TNT1 A 0 A_Scream();
+            TNT1 A 0 spawnDebris("BW_MetalScrap",(pos.xy,pos.z + height * 0.5),random(10,18));
             TNT1 A 0 {BW_MiscEffect.SpawnExplotionImpactFx(pos + (0,0,10));}
             TNT1 A 0 A_Spawnitem("BW_BarrelExplosionFx");
             TNT1 A 0 A_QuakeEx(1,1,1,16,0,400,"",QF_SCALEDOWN);
@@ -127,6 +131,7 @@ Class BW_Bed : BW_ShootableDecoration replaces HeadCandles
             stop;
         Death:
             TNT1 A 0 A_NoBlocking();
+            TNT1 A 0 spawnDebris("BW_MetalScrap",(pos.xy,pos.z + height * 0.5),random(8,12));
             NOO1 A 1;
             NOO1 B -1;
             stop;

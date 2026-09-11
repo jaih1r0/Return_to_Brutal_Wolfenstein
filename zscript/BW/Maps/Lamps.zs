@@ -20,6 +20,7 @@ Class BW_Candleabra1 : BW_CeillingDecoration
             stop;
         Death:
             TNT1 A 0 killFlare();
+            TNT1 A 0 spawnDebris("BW_GoldScrap",(pos.xy,pos.z - height * 0.5),random(4,8),6);
             YCAN B 1;
             TNT1 A 0 A_Spawnitem("FallingCandelabra");
             YCAN D -1;
@@ -50,9 +51,24 @@ Class FallingCandelabra : Actor
             TNT1 A 0 A_Explode(30,10);
             TNT1 A 0 A_NoBlocking();
             TNT1 A 0 A_Startsound("DSBOTTLE");
-            YCAN C -1;
+            TNT1 A 0 spawnDebris("BW_GoldScrap",(pos.xy,pos.z + height * 0.5),random(8,12),6);
+            TNT1 A 1;
             stop;
     }
+
+    void spawnDebris(string type,vector3 spos,int amount = 1,int maxforceXY = 10,int maxforceZ = 10)
+	{
+		if(amount < 1)
+			return;
+		for(int i = 0; i < amount; i++)
+		{
+			actor deb = spawn(type,spos);
+			if(deb)
+			{
+				deb.vel = (random(-maxforceXY,maxforceXY),random(-maxforceXY,maxforceXY),random(-maxforceZ,maxforceZ));
+			}
+		}
+	}
 }
 
 Class BW_Candelabra3 : BW_CeillingDecoration
@@ -74,6 +90,7 @@ Class BW_Candelabra3 : BW_CeillingDecoration
             loop;
         death:
             TNT1 A 0;
+            TNT1 A 0 spawnDebris("BW_GlassDebris",(pos.xy,pos.z - height * 0.5),random(6,10),6);
             CAN5 D -1;
             stop;
     }
@@ -97,6 +114,7 @@ Class BW_GreyLamp : BW_CeillingDecoration
         death:
             TNT1 A 0 killFlare();
             TNT1 A 0 SpawnDyingFlare(gfx:"LENSA0");
+            TNT1 A 0 spawnDebris("BW_GlassDebris",(pos.xy,pos.z - height * 0.5),random(6,10),6);
             TNT1 AAAAA 0 SpawnDieSpark(0,1);
             EHI2 A -1;
             stop;
@@ -114,6 +132,7 @@ Class BW_GreyLamp2 : BW_GreyLamp replaces nonsolidmeat2
             GLOC Z -1; //bright;
             stop;
         death:
+            TNT1 A 0 spawnDebris("BW_GlassDebris",(pos.xy,pos.z - height * 0.5),random(6,10),6);
             EHI2 A -1;
             stop;
     }
@@ -131,6 +150,7 @@ Class BW_BlueLamp : BW_GreyLamp2
             stop;
         Death:
             TNT1 A 0 killFlare();
+            TNT1 A 0 spawnDebris("BW_GlassDebris",(pos.xy,pos.z - height * 0.5),random(6,10),6);
             BLOC B -1;
             stop;
     }
@@ -148,6 +168,7 @@ Class BW_RedLamp : BW_GreyLamp2
             stop;
         Death:
             TNT1 A 0 killFlare();
+            TNT1 A 0 spawnDebris("BW_GlassDebris",(pos.xy,pos.z - height * 0.5),random(6,10),6);
             RLOC B -1;
             stop;
     }
@@ -172,6 +193,7 @@ Class BW_LittleLamp : BW_CeillingDecoration //7061
             stop;
         Death:
             TNT1 A 0 killFlare();
+            TNT1 A 0 spawnDebris("BW_GlassDebris",(pos.xy,pos.z - height * 0.5),random(6,10),6);
             LLLM B -1;
             stop;
     }
@@ -198,6 +220,10 @@ Class BW_TechLamp1 : BW_ShootableDecoration Replaces Candelabra //35
         Death:
             TNT1 A 0 killFlare();
             TNT1 AA 0 BW_SpawnSmokeFx(random(20,40),25,45,gfx:"DIRPD0");
+            TNT1 A 0 {
+                spawnDebris("BW_GlassDebris",(pos.xy,pos.z + height * 0.5),random(6,10),8);
+                spawnDebris("BW_WoodDebris",(pos.xy,pos.z + height * 0.5),random(6,10),6);
+            }
             TNT1 A 0 SpawnDyingFlare(38,35,10,gfx:"LENSA0");
             TNT1 AAAAAA 0 SpawnDieSpark(35,2);
             TNT1 A 0 A_NoBlocking();
